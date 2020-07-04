@@ -52,6 +52,7 @@ try {
     $con_true = false;
 }
 if($con_true){
+	echo 'Create table: mw_broadcast<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_broadcast`;
                         CREATE TABLE IF NOT EXISTS `mw_broadcast` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -70,7 +71,7 @@ if($con_true){
                           KEY `publish` (`publish`)
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
 
-
+	echo 'Create table: mw_iblock<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_iblock`;
                         CREATE TABLE IF NOT EXISTS `mw_iblock` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -85,7 +86,7 @@ if($con_true){
                           KEY `ikey` (`ikey`),
                           KEY `name` (`name`) USING BTREE
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-
+	echo 'Create table: mw_iblock_content<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_iblock_content`;
                         CREATE TABLE IF NOT EXISTS `mw_iblock_content` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -97,7 +98,7 @@ if($con_true){
                           KEY `publish` (`publish`),
                           KEY `ikey` (`ikey`)
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-
+	echo 'Create table: mw_item_db<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_item_db`;
                         CREATE TABLE IF NOT EXISTS `mw_item_db` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -110,7 +111,7 @@ if($con_true){
                           PRIMARY KEY (`id`),
                           KEY `sid` (`sid`)
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-
+	echo 'Create table: mw_news<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_news`;
                         CREATE TABLE IF NOT EXISTS `mw_news` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -123,7 +124,7 @@ if($con_true){
                           KEY `publish` (`publish`),
                           KEY `fixed` (`fixed`)
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-
+	echo 'Create table: mw_session<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_session`;
                         CREATE TABLE IF NOT EXISTS `mw_session` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -135,7 +136,7 @@ if($con_true){
                           KEY `session_end` (`session_end`),
                           KEY `session_id` (`session_id`)
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-
+	echo 'Create table: mw_stop_spam<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_stop_spam`;
                         CREATE TABLE IF NOT EXISTS `mw_stop_spam` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -144,5 +145,5 @@ if($con_true){
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                         ALTER TABLE `mw_stop_spam` ADD INDEX(`ip`);");
-
+	echo 'MmoWeb installation completed!';
 }

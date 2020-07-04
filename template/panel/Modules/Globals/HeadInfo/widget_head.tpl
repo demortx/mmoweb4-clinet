@@ -9,10 +9,10 @@
                 <div class="font-size-h3 font-w600 ">{$.site.session->getName()}</div>
 
 
-                {if $.site.session->session.master_account.status == 0}
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">{$show_info[array_rand($show_info,1)]}</div>
-                {else}
+                {if $.site.session->session.master_account.status == 2}
                     <div class="font-size-sm font-w600 text-uppercase text-danger">{$lang_account_ban}</div>
+                {else}
+                    <div class="font-size-sm font-w600 text-uppercase text-muted">{$show_info[array_rand($show_info,1)]}</div>
                 {/if}
             </div>
             <div class="options-overlay bg-white">

@@ -91,3 +91,5 @@ fabric.properties
 /template/site/la2hard/
 /template/site/la2hard/*
 /template/site/la2hard/**/
+/GEN_SCSS
+/ЗАМЕТКИ
