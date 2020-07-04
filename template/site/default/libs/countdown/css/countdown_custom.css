@@ -1,0 +1,138 @@
+/* timer */
+
+.timer-container {
+    cursor: default;
+    height: 105px;
+}
+
+
+/* jQuery Countdown styles 2.0.0. */
+
+.is-countdown {}
+
+.countdown-rtl {
+    direction: rtl;
+}
+
+.countdown-holding span {}
+
+.countdown-row {
+    clear: both;
+    width: 100%;
+    padding: 0px 2px;
+    text-align: center;
+}
+
+.countdown-show1 .countdown-section {
+    width: 98%;
+}
+
+.countdown-show2 .countdown-section {
+    width: 48%;
+}
+
+.countdown-show3 .countdown-section {
+    width: 32.5%;
+}
+
+.countdown-show4 .countdown-section {
+    width: 24.5%;
+}
+
+.countdown-show5 .countdown-section {
+    width: 19.5%;
+}
+
+.countdown-show6 .countdown-section {
+    width: 16.25%;
+}
+
+.countdown-show7 .countdown-section {
+    width: 14%;
+}
+
+.countdown-section {
+    display: block;
+    float: left;
+    color: #ffe993;
+    font-size: 16px;
+    text-align: center;
+    /* background: url(../images/timer-item__bg.png) no-repeat; */
+    width: 98px;
+    height: 99px;
+    box-sizing: border-box;
+    padding-top: 24px;
+    position: relative;
+}
+
+
+/* 
+.countdown-section:nth-child(1):after {
+    content: "";
+    display: block;
+    background: url(../images/timer-item__add-l.png) no-repeat;
+    width: 30px;
+    height: 44px;
+    position: absolute;
+    left: -12px;
+    top: 56px;
+}
+
+.countdown-section:nth-child(3):after {
+    content: "";
+    display: block;
+    background: url(../images/timer-item__add-r.png) no-repeat;
+    width: 30px;
+    height: 44px;
+    position: absolute;
+    right: -10px;
+    top: 56px;
+} */
+
+.countdown-amount {
+    color: #ffe993;
+    font-size: 48px;
+    font-family: 'Mason Chronicles', 'Times New Roman', Times, serif;
+    display: block;
+    text-align: center;
+    margin-bottom: -4px;
+}
+
+.countdown-period {
+    display: inline-block;
+}
+
+.countdown-descr {
+    display: inline-block;
+    width: 100%;
+}
+
+.count_wrap {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.is-countdown {
+    margin-top: 8px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    position: relative;
+    left: 2px;
+}
+
+.counter {
+    color: #ffe993;
+    font-size: 48px;
+    cursor: default;
+}
+
+.counter__title {
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    text-align: center;
+    font-size: 36px;
+    color: rgb(255, 233, 147);
+    text-shadow: 0px 1px 1px #8c5941, 0px 2px 3px #8c5941, 0px 2px 3px #8c5941;
+}
