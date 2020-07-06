@@ -60,36 +60,40 @@ class SignUp extends MainModulesClass
 
         $cfg = get_instance()->config['cabinet'];
 
-        if ($cfg['registration_login'] AND !empty($_REQUEST['login'])) {
-            //Проверка префикса
-            if ($cfg['registration_login_prefix'] AND !empty($_REQUEST['login'])) {
-                if (isset($_REQUEST["prefix"]) AND isset($_SESSION["prefix_list"])) {
-                    if (in_array($_REQUEST["prefix"], $_SESSION['prefix_list']))
-                        $vars['prefix'] = $_REQUEST["prefix"];
-                }
-
-                if (!isset($vars['prefix']))
-                    return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_not_found_prefix'])->danger();
-
-            }
+        if ($cfg['registration_login']) {
 
             //Проверка логина
-            if (!isset($_REQUEST['login']) OR empty($_REQUEST['login']))
+            if ($cfg['registration_login_optional'] == false AND (!isset($_REQUEST['login']) OR empty($_REQUEST['login'])))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_login'])->danger();
-            else
+
+
+            if (isset($_REQUEST['login']) AND !empty($_REQUEST['login'])) {
                 $vars["login"] = $_REQUEST['login'];
 
-            //Проверка сервера
-            if (!isset($_REQUEST['sid']) OR empty($_REQUEST['sid']))
-                return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_sid'])->danger();
-            else {
-                if (checkSID((int)$_REQUEST['sid'])){
-                    $vars["sid"] = (int)$_REQUEST['sid'];
-                    get_instance()->set_sid((int) $vars["sid"], false);
-                } else
-                    return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_missing_sid'])->danger();
-            }
+                //Проверка префикса
+                if ($cfg['registration_login_prefix']) {
+                    if (isset($_REQUEST["prefix"]) AND isset($_SESSION["prefix_list"])) {
+                        if (in_array($_REQUEST["prefix"], $_SESSION['prefix_list']))
+                            $vars['prefix'] = $_REQUEST["prefix"];
+                    }
 
+                    if (!isset($vars['prefix']))
+                        return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_not_found_prefix'])->danger();
+
+                }
+
+
+                //Проверка сервера
+                if (!isset($_REQUEST['sid']) OR empty($_REQUEST['sid']))
+                    return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_sid'])->danger();
+                else {
+                    if (checkSID((int)$_REQUEST['sid'])) {
+                        $vars["sid"] = (int)$_REQUEST['sid'];
+                        get_instance()->set_sid((int)$vars["sid"], false);
+                    } else
+                        return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_missing_sid'])->danger();
+                }
+            }
 
         }
 

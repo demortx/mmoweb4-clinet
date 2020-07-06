@@ -48,9 +48,9 @@
                     <div class="block-content">
                         {if $config.cabinet.registration_login}
 
-                            <div class="form-group add-login" style="display: none;">
+                            <div class="form-group add-login" {if $config.cabinet.registration_login_hide AND $config.cabinet.registration_login_optional}style="display: none;"{/if}>
                                 <label for="t-signup-server">{$signup_title_input_server_lang}</label>
-                                <a href="javascript:void(0)" class="float-right text-primary-light login-hide" style="font-size: 11px;">{$signup_title_btn_hide_email_lang}</a>
+                                {if $config.cabinet.registration_login_optional}<a href="javascript:void(0)" class="float-right text-primary-light login-hide" style="font-size: 11px;">{$signup_title_btn_hide_email_lang}</a>{/if}
 
                                 <select class="form-control" id="t-signup-server" name="sid">
                                     {foreach $.site.config.project.server_info as $platform => $server_list}
@@ -63,7 +63,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group row add-login" style="display: none;">
+                            <div class="form-group row add-login" {if $config.cabinet.registration_login_hide AND $config.cabinet.registration_login_optional}style="display: none;"{/if}>
                                 <div class="col-12">
                                     <label for="t-signup-login">{$signup_title_input_login_lang}</label>
                                     <div class="input-group">
@@ -80,12 +80,13 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row btn-add-login">
+                            {if $config.cabinet.registration_login_optional}
+                            <div class="row btn-add-login" {if $config.cabinet.registration_login_hide == false}style="display: none;"{/if}>
                                 <div class="col-12 text-center">
                                     <a class="link-effect text-primary-light login-show" style="font-size: 11px;" href="javascript:void(0)">{$signup_title_btn_add_login_lang}</a>
                                 </div>
                             </div>
+                            {/if}
                         {/if}
 
                         {set $activ_tab = true}
@@ -312,7 +313,7 @@
         });
         $('.nav-link.active').click();
 
-
+        {if $config.cabinet.registration_login_optional}
         $('body').on('click', '.login-show',function(){
             $('.add-login').show();
             $('.btn-add-login').hide();
@@ -322,7 +323,7 @@
             $('.btn-add-login').show();
             $("input[name=login]").val('');
         });
-
+        {/if}
         $("#eye").click(function () {
             const this__ = $(this).find('.fa');
             const password = $("#t-signup-password");

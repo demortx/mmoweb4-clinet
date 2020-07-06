@@ -24,12 +24,13 @@ class func
     }
 
     public function widget_vote(){
-
-
-        return get_instance()->fenom->fetch(
-            get_tpl_file('widget_vote.tpl', get_class($this->this_main)),
-            get_lang('vote.lang')
-        );
+        if (isset(get_instance()->session->session['vote']) AND is_array(get_instance()->session->session['vote']) AND count(get_instance()->session->session['vote'])){
+            return get_instance()->fenom->fetch(
+                get_tpl_file('widget_vote.tpl', get_class($this->this_main)),
+                get_lang('vote.lang')
+            );
+        }else
+            return '';
     }
 
     public function ajax_cast(){

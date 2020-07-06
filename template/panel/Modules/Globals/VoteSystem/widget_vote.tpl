@@ -1,4 +1,3 @@
-
 {if $.site.session->session.vote? AND $.site.session->session.vote.list? AND count($.site.session->session.vote.list) > 0}
 <div class="block block-rounded ribbon ribbon-modern ribbon-primary animated fadeIn" data-toggle="appear">
     <div class="block-header">
@@ -27,7 +26,6 @@
         </div>
     </form>
 </div>
-
 {$.site._SEO->addTegHTML('footer', 'raty', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/jquery-raty/jquery.raty.js'])}
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {

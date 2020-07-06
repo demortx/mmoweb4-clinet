@@ -41,10 +41,12 @@ $system = array (
 		),
 		'registration_confirmation' => true,
 		'registration_stop_temp_email' => false,
+		'registration_login' => true,
+		'registration_login_optional' => false,
+		'registration_login_hide' => false,
 		'registration_login_prefix' => true,
 		'registration_login_prefix_type' => 'PP_',
 		'registration_login_prefix_count' => 6,
-		'registration_login' => true,
 		'registration_subscribe' => true,
 		'reminder_type'=>array(
 			'email' => true,
@@ -208,10 +210,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '69.7795',
-			'EUR' => '0.891421',
-			'UAH' => '26.682161',
-			'BTC' => '0.00011039648',
+			'RUB' => '71.45035',
+			'EUR' => '0.889244',
+			'UAH' => '27.089444',
+			'BTC' => '0.000110741628',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -250,88 +252,7 @@ $system = array (
 			'shop' => 1,
 		),
 	),
-	'event'=>array(
-		8 => 
-		array (
-			0 => 
-			array (
-				'id' => 1,
-				'title' => 'Первый евент тестовый',
-				'data'=>array(
-					1 => 
-					array (
-						'start' => 0,
-						'end' => 99,
-						'percent' => 0,
-					),
-					2 => 
-					array (
-						'start' => 100,
-						'end' => 499,
-						'percent' => 1,
-					),
-					3 => 
-					array (
-						'start' => 500,
-						'end' => 999,
-						'percent' => 3,
-					),
-					4 => 
-					array (
-						'start' => 1000,
-						'end' => 2999,
-						'percent' => 5,
-					),
-					5 => 
-					array (
-						'start' => 3000,
-						'end' => 7499,
-						'percent' => 7,
-					),
-					6 => 
-					array (
-						'start' => 7500,
-						'end' => 10000000,
-						'percent' => 10,
-					),
-				),
-				'item_enable' => 1,
-				'item'=>array(
-					1 => 
-					array (
-						'lv' => 2,
-						'id' => 5592,
-						'count' => 50,
-						'enc' => 0,
-					),
-					2 => 
-					array (
-						'lv' => 1,
-						'id' => 5591,
-						'count' => 50,
-						'enc' => 0,
-					),
-					3 => 
-					array (
-						'lv' => 3,
-						'id' => 1538,
-						'count' => 3,
-						'enc' => 0,
-					),
-					4 => 
-					array (
-						'lv' => 3,
-						'id' => 3936,
-						'count' => 1,
-						'enc' => 0,
-					),
-				),
-				'agrigator'=>array(
-					0 => 'all',
-				),
-			),
-		),
-	),
+	'event' => false,
 	'in_game_currency'=>array(
 		8 => 
 		array (
@@ -373,6 +294,7 @@ $system = array (
 		),
 	),
 	'plugins'=>array(
+		'__' => 'pl',
 		2 => 'stop_spam_email',
 		3 => 'support',
 		5 => 'manager_account',

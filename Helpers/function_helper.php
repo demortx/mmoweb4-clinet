@@ -629,9 +629,9 @@ if ( ! function_exists('get_utm')) {
         if(isset($_SERVER['HTTP_REFERER']) AND !isset($_COOKIE['http_referrer'])){
             $utm['http_referrer'] = $_SERVER['HTTP_REFERER'];
             setcookie("http_referrer", $utm['http_referrer'], time() + 7776000, '/');
-        }else
+        }elseif(isset($_COOKIE['http_referrer'])) {
             $utm['http_referrer'] = $_COOKIE["http_referrer"];
-
+        }
 
         if(isset($_SERVER['HTTP_REFERER']) AND !isset($_COOKIE['http_referrer_link'])){
             $rk = parse_url($_SERVER['HTTP_REFERER']);
@@ -642,9 +642,9 @@ if ( ! function_exists('get_utm')) {
             }elseif(isset($_COOKIE["http_referrer_link"])){
                 $utm['http_referrer_link'] = $_COOKIE["http_referrer_link"];
             }
-        }else
+        }elseif(isset($_COOKIE['http_referrer_link'])) {
             $utm['http_referrer_link'] = $_COOKIE["http_referrer_link"];
-
+        }
 
         //Кастомная метка специально вделенная под fingerprintjs
         if (isset($_GET["utm_fp"])){
