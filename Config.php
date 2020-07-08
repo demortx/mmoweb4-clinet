@@ -38,7 +38,7 @@ define("CACHEPATH",      '/cache');
 * Ready-made templates can be bought in the admin panel of mmoweb
 * Site template. Location: /template/site
 */
-define('TEMPLATE',       'lineagetwo'); //По умолчанию: default
+define('TEMPLATE',       'default'); //По умолчанию: default
 define('TEMPLATE_DIR',   VIEWPATH . '/site/'.TEMPLATE); //Sys: полный путь к файлам шаблона
 
 /**
