@@ -29,6 +29,12 @@ return array(
         'title_input_password_lang' => 'Пароль',
         'lang_button_create_acc' => 'Создать аккаунт',
 
+        'lang_popup_info_status' => 'Статус',
+        'lang_popup_info_active' => 'Активен',
+        'lang_popup_info_banned' => 'Заблокирован',
+        'lang_popup_info_last_login' => 'Последний вход',
+        'lang_popup_info_last_ip' => 'Последний IP',
+
     ),
     'en' => array(
 	
@@ -49,8 +55,12 @@ return array(
         'title_input_login_lang' => 'Login',
         'title_input_prefix_lang' => 'Prefix: It will be added to your login.',
         'title_input_password_lang' => 'Password',
-        'lang_button_create_acc' => 'Create game account',	
-	
-	
+        'lang_button_create_acc' => 'Create game account',
+
+        'lang_popup_info_status' => 'Status',
+        'lang_popup_info_active' => 'Active',
+        'lang_popup_info_banned' => 'Banned',
+        'lang_popup_info_last_login' => 'Last login',
+        'lang_popup_info_last_ip' => 'Last IP',
 	),
 );
