@@ -10,7 +10,7 @@ ini_set('display_errors', 0);
 
 class api {
 
-    public $api = 'dsf43gfn';
+    public $api_key = 'dsf43gfn';
     public $deny;
     public $allow;
     public $count;

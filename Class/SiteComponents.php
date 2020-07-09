@@ -299,6 +299,7 @@ class SiteComponents
                             if ($server_site_cfg[$sid]['re_rate'])
                                 $servers[$sid]['rate'] = $server_site_cfg[$sid]['rate'];
 
+                            $servers[$sid]['icon'] = $server_site_cfg[$sid]['icon'];
                             $servers[$sid]['img'] = $server_site_cfg[$sid]['img'];
                             $servers[$sid]['link'] = $server_site_cfg[$sid]['link'];
                             $servers[$sid]['chronicle'] = $server_site_cfg[$sid]['chronicle'];
@@ -309,6 +310,7 @@ class SiteComponents
                             $servers[$sid]['max_online'] = $server_site_cfg[$sid]['max_online'];
                         } else {
                             $servers[$sid]['img'] = '';
+                            $servers[$sid]['icon'] = '';
                             $servers[$sid]['link'] = '';
                             $servers[$sid]['chronicle'] = '';
                             $servers[$sid]['description'] = '';

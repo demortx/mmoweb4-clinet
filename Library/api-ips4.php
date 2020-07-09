@@ -11,7 +11,7 @@ ini_set('display_errors', 0);
 
 class api {
 
-    public $api = 'sedfcw4rx234e12';
+    public $api_key = 'sedfcw4rx234e12';
     public $deny;
     public $allow;
     public $count = 10;

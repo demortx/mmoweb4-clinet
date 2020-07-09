@@ -17,7 +17,7 @@ ini_set('display_errors', 0);
 
 class api {
 
-    public $api = 'dsfgvt5g3c5te';
+    public $api_key = 'dsfgvt5g3c5te';
     public $deny;
     public $allow;
     public $count = 10;
