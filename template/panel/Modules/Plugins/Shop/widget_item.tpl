@@ -58,8 +58,8 @@
                                 />
                                 <div class="checkbox__block"></div>
                                 {$.php.set_item($it.id,false,false,'<img data-item="'~$it.id~'" class="isel__img" src="%icon%" width="27px" data-toggle="popover" data-placement="top" data-content="%description%" data-original-title="%name% %add_name%"><div class="checkbox__content">%name% %add_name%</div>')}
-                                {if $it.enc>0}<span class="text-warning" title="Enchant">+{$it.enc}</span>{/if}
-                                {if $it.apiece?}<span class="text-success" title="Count pack">x{$it.count}</span>{/if}
+                                {if $it.enc>0}<span class="text-warning mr-5" title="Enchant">+{$it.enc}</span>{/if}
+                                {if $it.apiece?}<span class="text-success mr-5" title="Count pack">x{$it.count}</span>{/if}
                             </label>
                         </div>
                         <div class="isel__quantity">
