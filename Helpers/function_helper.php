@@ -524,6 +524,7 @@ if ( ! function_exists('captcha_check')) {
 
         $cfg = get_instance()->config['cabinet'];
 
+
         /*"g-recaptcha-response"
 
         'recaptcha_public_key' => '6Lc7_IMUAAAAANvbf2i4OsgKG_nndeh80eq5m071',
@@ -546,26 +547,37 @@ if ( ! function_exists('captcha_check')) {
                 break;
             case 'recaptchav2':
 
+                if(!isset($_POST['g-recaptcha-response']))
+                    return false;
 
+                if (empty($_POST['g-recaptcha-response']))
+                    return false;
 
+                $recaptcha = new \ReCaptcha\ReCaptcha($cfg['recaptcha_secret_key']);
 
+                $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 
-                break;
-            case 'recaptchav2inv':
-
-
-
-
+                return $resp->isSuccess();
 
                 break;
             case 'recaptchav3':
 
+                if(!isset($_POST['captcha']))
+                    return false;
 
+                if (empty($_POST['captcha']))
+                    return false;
 
+                $recaptcha = new \ReCaptcha\ReCaptcha($cfg['recaptcha_secret_key']);
 
+                $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+                    ->setScoreThreshold(0.5)
+                    ->verify($_POST['captcha'], $_SERVER['REMOTE_ADDR']);
+
+                return $resp->isSuccess();
 
                 break;
-            case 'false':
+            case false:
                 return true;
                 break;
             default:

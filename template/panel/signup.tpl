@@ -230,7 +230,10 @@
                                 </div>
                                 <div class="col-sm-12 text-sm-right push">
 
-                                    <button type="submit" class="btn btn-alt-success submit-form {if $config.cabinet.captcha == 'recaptchav2inv'}g-recaptcha{/if}" {if $config.cabinet.captcha == 'recaptchav2inv'}data-sitekey="{$config.cabinet.recaptcha_public_key}" data-callback="onSubmitReInv"{/if}>
+                                    <button type="submit" class="btn btn-alt-success submit-form {if $config.cabinet.captcha == 'recaptchav2inv'}g-recaptcha{/if}"
+                                            {if $config.cabinet.captcha == 'recaptchav2inv'}
+                                                data-sitekey="{$config.cabinet.recaptcha_public_key}" data-callback="onSubmitReInv"
+                                            {/if}>
                                        {$signup_title_btn_submit_lang}
                                     </button>
                                 </div>
