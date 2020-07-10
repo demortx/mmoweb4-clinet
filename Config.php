@@ -56,6 +56,7 @@ define('ADMIN_PANEL',       true);
 define('ADMIN_LOGIN',       'admin');
 define('ADMIN_PASSWORD',    'admin');
 define('ADMIN_IP',          '*'); //All ip: *
+define('ADMIN_URL',          'admin'); // URL - /admin
 
 define('TEMPLATE_WYSIWYG',  true); //Использовать WYSIWYG HTML Editor или textarea
 /**

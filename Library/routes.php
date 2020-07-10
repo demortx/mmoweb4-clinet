@@ -58,9 +58,9 @@ $route['site-reconstruction'] = "Pages/site_reconstruction";
 $route['panel-reconstruction'] = "Panel/panel_reconstruction";
 //админ панель
 if (ADMIN_PANEL AND (ADMIN_IP == '*' OR ADMIN_IP == get_ip())) {
-    $route['admin'] = "Panel/admin";
-    $route['admin/(:any)'] = "Panel/admin/$1";
-    $route['admin/(:any)/(:any)'] = "Panel/admin/$1/$2";
+    $route[ADMIN_URL] = "Panel/admin";
+    $route[ADMIN_URL.'/(:any)'] = "Panel/admin/$1";
+    $route[ADMIN_URL.'/(:any)/(:any)'] = "Panel/admin/$1/$2";
 }
 //Пути для сайта
 $route['(:any)'] = 'Pages/page_static/$1';

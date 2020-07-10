@@ -29,7 +29,7 @@ class func
 
 
 
-        $title = get_lang('ingame.lang')['title_popup_lang'] . get_sid_name(false);
+        $title = get_lang('ingame.lang')['title_popup_lang'] . get_sid_name(false, true);
 
         $content = get_instance()->fenom->fetch(
             get_tpl_file('ajax_open_form.tpl', get_class($this->this_main)),
