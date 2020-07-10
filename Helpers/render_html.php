@@ -104,10 +104,10 @@ if (!function_exists('render_menu')) {
         $str = '';
         foreach ($TEMP['menu'] as $key => $buttons) {
 
-            if (!isset($rules[$key]))
+            if (!isset($rules[$key]) AND !isset($buttons["custom_btn"]))
                 continue;
 
-            if (!isset($buttons["ul"]) AND $buttons['empty_hide'])
+            if (!isset($buttons["ul"]) AND !isset($buttons['empty_hide']) OR $buttons['empty_hide'])
                 continue;
 
             if(isset($buttons["init"]) AND is_callable($buttons["init"]))

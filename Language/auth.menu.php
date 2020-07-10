@@ -105,6 +105,38 @@ return array(
                 return '';
         }
     ),
+    'in_game' => array(
+        //'custom_btn' => true, //Раскоментируй чтоб кнопка появилась активирует вариант кастомного меню и уберет правила проверки активных кнопок
+        'enable' => true,
+        'level' => 450,
+        'empty_hide' => false,
+        'href' => 'javascript:void(0);',
+        'icon' => 'fa fa-fw fa-gamepad',
+        'target' => '_self',
+        'class' => 'submit-btn',
+        'btn_ajax' => btn_ajax("Modules\Globals\InGameCurrency\InGameCurrency", "open_form", [1]),
+        'name' => array(
+            'ru' => 'Перевести в игру',
+            'en' => 'Transfer to game',
+        ),
+        'title' => array(
+            'ru' => 'Перевести в игру',
+            'en' => 'Transfer to game',
+        ),
+        'function' => function(&$buttons){
+            if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
+                $balance = get_instance()->session->session['user_data']['balance'];
+
+                if (floatval($balance) <= 0)
+                    return '';
+                else {
+                    $name_valute = get_instance()->config['payment_system']['short_name_valute'];
+                    return ' : <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
+                }
+            }else
+                return '';
+        }
+    ),
     'donations' => array(
         'enable' => true,
         'level' => 500,
