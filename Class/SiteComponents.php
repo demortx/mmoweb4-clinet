@@ -99,14 +99,14 @@ class SiteComponents
 
     static $forum_profile = array(
         'ipb3' => 'index.php?/user/:id-:account/',
-        'ips4' => 'index.php?/user/:id-:account/',
+        'ipb4' => 'index.php?/user/:id-:account/',
         'xenforo1' => 'members/:account.:id/',
         'xenforo2' => 'members/:id/',
     );
 
     static $forum_url = array(
         'ipb3' => 'index.php?showtopic=:id',
-        'ips4' => 'index.php?showtopic=:id',
+        'ipb4' => 'index.php?showtopic=:id',
         'xenforo2' => 'index.php?threads/:id/',
     );
 
