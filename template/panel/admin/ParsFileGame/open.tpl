@@ -30,7 +30,7 @@
                 </a>
             </div>
             <div class="col-6 col-xl-3">
-                <a class="block block-link-shadow text-right" href="{$.php.set_url('admin/files/icon?sid='~$select_sid)}">
+                <a class="block block-link-shadow text-right" href="{$.php.set_url($.const.ADMIN_URL~'/files/icon?sid='~$select_sid)}">
                     <div class="block-content block-content-full clearfix">
                         <div class="float-left mt-10 d-none d-sm-block">
                             <i class="fa fa-close fa-3x text-body-bg-dark"></i>
@@ -41,7 +41,7 @@
                 </a>
             </div>
             <div class="col-6 col-xl-3">
-                <a class="block block-link-shadow text-right" href="{$.php.set_url('admin/files/delete?sid='~$select_sid)}">
+                <a class="block block-link-shadow text-right" href="{$.php.set_url($.const.ADMIN_URL~'/files/delete?sid='~$select_sid)}">
                     <div class="block-content block-content-full clearfix">
                         <div class="float-left mt-10 d-none d-sm-block">
                             <i class="fa fa-trash fa-3x text-body-bg-dark"></i>
@@ -93,7 +93,7 @@
     <div class="block-content text-center">
         {if $select_platform == 'lineage2'}
 
-            <form action="{$.php.set_url('/admin/files/parser?sid='~$select_sid, false)}" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'//files/parser?sid='~$select_sid, false)}" method="post" onsubmit="return false;">
 
 
                 <div class="form-group row">

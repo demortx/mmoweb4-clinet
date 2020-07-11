@@ -20,7 +20,7 @@
                         <td class="font-w600">{$file.time}</td>
                         <td>{$file.file}</td>
                         <td class="d-none d-sm-table-cell">
-                            <a href="{$.php.set_url('admin/lang/panel?file='~$file.file)}" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$StaticPages_edit_page}">
+                            <a href="{$.php.set_url($.const.ADMIN_URL~'/lang/panel?file='~$file.file)}" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$StaticPages_edit_page}">
                                 <i class="fa fa-pencil"></i>
                             </a>
                         </td>

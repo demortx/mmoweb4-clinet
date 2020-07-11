@@ -5,7 +5,7 @@
         <div class="block-content">
             <div class="row justify-content-center py-20">
                 <div class="col-xl-12">
-                    <form action="{$.php.set_url('admin/lang/panel?file='~$file~'&save=1')}" method="post" novalidate="novalidate">
+                    <form action="{$.php.set_url($.const.ADMIN_URL~'/lang/panel?file='~$file~'&save=1')}" method="post" novalidate="novalidate">
                         <div class="input_list">
 
                             <ul class="nav nav-tabs nav-tabs-block " data-toggle="tabs" role="tablist">

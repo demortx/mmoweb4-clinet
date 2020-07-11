@@ -2,7 +2,7 @@
     {include '/panel/breadcrumb.tpl'}
     <h2 class="content-heading">
         {$StaticPages_title}
-        <a href="{$.php.set_url('admin/pages/add')}" class="btn btn-sm btn-rounded btn-outline-primary float-right"><i class="fa fa-plus mr-5"></i>{$StaticPages_btn_add}</a>
+        <a href="{$.php.set_url($.const.ADMIN_URL~'/pages/add')}" class="btn btn-sm btn-rounded btn-outline-primary float-right"><i class="fa fa-plus mr-5"></i>{$StaticPages_btn_add}</a>
     </h2>
     <div class="block block-rounded">
         <div class="block-content  p-0">
@@ -39,7 +39,7 @@
                             <a href="{$.php.set_url($page.url)}" target="_blank" class="btn btn-sm btn-circle btn-alt-primary mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$StaticPages_go_page}">
                                 <i class="si si-action-redo"></i>
                             </a>
-                            <a href="{$.php.set_url('admin/pages/edit?page='~$key)}" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$StaticPages_edit_page}">
+                            <a href="{$.php.set_url($.const.ADMIN_URL~'/pages/edit?page='~$key)}" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$StaticPages_edit_page}">
                                 <i class="fa fa-pencil"></i>
                             </a>
                         </td>

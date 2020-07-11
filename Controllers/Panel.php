@@ -45,7 +45,7 @@ class Panel extends Controller {
         $rules['panel-reconstruction'] = true;
         $rules['panel'] = true;
         if (ADMIN_PANEL) {
-            $rules['admin'] = true;
+            $rules[ADMIN_URL] = true;
         }
         if(!in_array($this->url->segment(1) ,array_keys($rules)))
             show_404();

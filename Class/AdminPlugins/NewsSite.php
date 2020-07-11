@@ -56,7 +56,7 @@ class NewsSite
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/news'),
+                'url' => set_url(ADMIN_URL.'/news'),
                 'icon' => 'fa fa-3x fa-newspaper-o',
                 'title' => get_lang('admin.lang')['btn_title_NewsSite'],
                 'desc' => get_lang('admin.lang')['btn_desc_NewsSite'],
@@ -141,7 +141,7 @@ class NewsSite
         $STH->execute();
         $id = $this->db->lastInsertId();
 
-        echo $this->ajaxmsg->notify(get_lang('admin.lang')['NewsSite_ajax_add_news'])->location('admin/news/edit?news='.$id)->success();
+        echo $this->ajaxmsg->notify(get_lang('admin.lang')['NewsSite_ajax_add_news'])->location(ADMIN_URL.'/news/edit?news='.$id)->success();
         exit;
 
     }

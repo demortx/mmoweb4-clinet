@@ -2,7 +2,7 @@
     {include '/panel/breadcrumb.tpl'}
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url('admin/news/add_save', false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/news/add_save', false)}" novalidate="novalidate" method="post" onsubmit="return false;">
                 <div class="block block-rounded">
                     <ul class="nav nav-tabs nav-tabs-block" data-toggle="tabs" role="tablist">
                         {foreach $language_list as $lg => $name_lg first=$first}

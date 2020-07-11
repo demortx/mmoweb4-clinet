@@ -83,7 +83,7 @@ class ParsFileGame
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/files'),
+                'url' => set_url(ADMIN_URL.'/files'),
                 'icon' => 'fa fa-3x fa-cube',
 
                 'title' => get_lang('admin.lang')['btn_title_ParsFileGame'],

@@ -1,7 +1,7 @@
 <div class="content">
     {include '/panel/breadcrumb.tpl'}
     <h2 class="content-heading pt-20">
-        <a href="{$.php.set_url('admin/lang/panel')}" class="btn btn-sm btn-rounded btn-alt-primary float-right">{$LangEditor_panel_btn}</a>
+        <a href="{$.php.set_url($.const.ADMIN_URL~'/lang/panel')}" class="btn btn-sm btn-rounded btn-alt-primary float-right">{$LangEditor_panel_btn}</a>
         <a href="https://mmoweb.ru/panel/plugin/template" class="btn btn-sm btn-rounded btn-alt-secondary float-right mr-5">{$LangEditor_shop_btn}</a>
         <i class="fa fa-code mr-5"></i> {$LangEditor_title}
     </h2>
@@ -16,7 +16,7 @@
                     <div class="font-size-sm text-muted mt-5">
                         {if $tpl_info.lang? AND $.php.is_array($tpl_info.lang)}
                             {foreach $tpl_info.lang as $lg}
-                                <a href="{$.php.set_url('admin/lang/'~$tpl_name)~'?lang='~$lg}" title="{$LangEditor_edit_lang} {$lg}">[{$lg}]</a>
+                                <a href="{$.php.set_url($.const.ADMIN_URL~'/lang/'~$tpl_name)~'?lang='~$lg}" title="{$LangEditor_edit_lang} {$lg}">[{$lg}]</a>
                             {/foreach}
                         {else}
                             {$LangEditor_not_found_lang}

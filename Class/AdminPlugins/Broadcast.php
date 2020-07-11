@@ -61,7 +61,7 @@ class Broadcast
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/broadcast'),
+                'url' => set_url(ADMIN_URL.'/broadcast'),
                 'icon' => 'fa fa-3x fa-twitch',
                 'title' => get_lang('admin.lang')['btn_title_Broadcast'],
                 'desc' => get_lang('admin.lang')['btn_desc_Broadcast'],
@@ -291,7 +291,7 @@ class Broadcast
             $STH->bindValue(':publish', (int) $_POST['publish']);
             $STH->execute();
 
-            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_add_stream'])->location('admin/broadcast')->success();
+            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_add_stream'])->location(ADMIN_URL.'/broadcast')->success();
             exit;
 
         }else {
@@ -336,7 +336,7 @@ class Broadcast
                 $STH->bindValue(':id', $id);
                 $STH->execute();
 
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_update_stream'])->location('admin/broadcast')->success();
+                echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_update_stream'])->location(ADMIN_URL.'/broadcast')->success();
                 exit;
 
             }else {

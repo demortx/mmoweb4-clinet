@@ -25,7 +25,7 @@
                         <span class="badge badge-success">{count($cache)}</span>
                     </td>
                     <td>
-                        <a href="{$.php.set_url('admin/cache/'~$key)}" class="btn btn-sm btn-rounded btn-outline-secondary float-right mr-5"><i class="fa fa-braille mr-5"></i>Clear</a>
+                        <a href="{$.php.set_url($.const.ADMIN_URL~'/cache/'~$key)}" class="btn btn-sm btn-rounded btn-outline-secondary float-right mr-5"><i class="fa fa-braille mr-5"></i>Clear</a>
                     </td>
                 </tr>
                 </tbody>

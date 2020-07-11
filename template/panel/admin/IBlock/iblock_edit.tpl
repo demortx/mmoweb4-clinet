@@ -2,7 +2,7 @@
     {include '/panel/breadcrumb.tpl'}
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url('admin/iblock/edit_save?iblock='~$iblock_select, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/iblock/edit_save?iblock='~$iblock_select, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
 
                 <div class="block block-rounded">
                     <div class="block-content">

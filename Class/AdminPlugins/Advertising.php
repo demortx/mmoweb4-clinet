@@ -46,7 +46,7 @@ class Advertising
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/advertising'),
+                'url' => set_url(ADMIN_URL.'/advertising'),
                 'icon' => 'fa fa-3x fa-pie-chart',
                 'title' => get_lang('admin.lang')['btn_title_Advertising'],
                 'desc' => get_lang('admin.lang')['btn_desc_Advertising'],

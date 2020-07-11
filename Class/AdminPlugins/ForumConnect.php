@@ -50,7 +50,7 @@ class ForumConnect
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/forum'),
+                'url' => set_url(ADMIN_URL.'/forum'),
                 'icon' => 'fa fa-3x fa-forumbee',
                 'title' => get_lang('admin.lang')['btn_title_ForumConnect'],
                 'desc' => get_lang('admin.lang')['btn_desc_ForumConnect'],

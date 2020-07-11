@@ -57,7 +57,7 @@ class IBlock
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/iblock'),
+                'url' => set_url(ADMIN_URL.'/iblock'),
                 'icon' => 'fa fa-3x fa-list-ul',
                 'title' => get_lang('admin.lang')['btn_title_IBlock'],
                 'desc' => get_lang('admin.lang')['btn_desc_IBlock'],
@@ -148,7 +148,7 @@ class IBlock
         $STH->bindValue(':publish', (int) $_POST['publish']);
         $STH->execute();
         $id = $this->db->lastInsertId();
-        echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_create_success'])->location('admin/iblock/edit?iblock='.$id)->success();
+        echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_create_success'])->location(ADMIN_URL.'/iblock/edit?iblock='.$id)->success();
         exit;
     }
     //Рендер шаблона редактирование
@@ -289,7 +289,7 @@ class IBlock
                 $STH->execute();
                 $cid = $this->db->lastInsertId();
 
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_content_add_success'])->location('admin/iblock/content_edit?iblock=' . $id . '&content=' . $cid)->success();
+                echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_content_add_success'])->location(ADMIN_URL.'/iblock/content_edit?iblock=' . $id . '&content=' . $cid)->success();
                 exit;
             }
         }

@@ -46,7 +46,7 @@ class ClearCache
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/cache'),
+                'url' => set_url(ADMIN_URL.'/cache'),
                 'icon' => 'fa fa-3x fa-archive',
                 'title' => get_lang('admin.lang')['btn_title_ClearCache'],
                 'desc' => get_lang('admin.lang')['btn_desc_ClearCache'],

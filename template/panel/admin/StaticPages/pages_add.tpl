@@ -3,7 +3,7 @@
 
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url('admin/pages/add_save', false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/pages/add_save', false)}" novalidate="novalidate" method="post" onsubmit="return false;">
 
 
                 <div class="block block-rounded">

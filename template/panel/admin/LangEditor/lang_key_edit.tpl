@@ -5,7 +5,7 @@
         <div class="block-content">
             <div class="row justify-content-center py-20">
                 <div class="col-xl-9">
-                    <form action="{$.php.set_url('admin/lang/'~$tpl_name~'?lang='~$s_lang~'&save=1')}" method="post" novalidate="novalidate">
+                    <form action="{$.php.set_url($.const.ADMIN_URL~'/lang/'~$tpl_name~'?lang='~$s_lang~'&save=1')}" method="post" novalidate="novalidate">
                         <div class="input_list">
                         {foreach $lang_key as $key => $value}
                             {if is_bool($value)}

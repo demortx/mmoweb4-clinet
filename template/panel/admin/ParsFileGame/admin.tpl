@@ -22,7 +22,7 @@
                                     {if $.php.is_array($server_list) AND $.php.count($server_list)}
                                         {foreach $server_list as $sid => $server}
                                             <li class="nav-item">
-                                                <a class="nav-link d-flex align-items-center justify-content-between" href="{$.php.set_url('admin/files?sid='~$sid)}">
+                                                <a class="nav-link d-flex align-items-center justify-content-between" href="{$.php.set_url($.const.ADMIN_URL~'/files?sid='~$sid)}">
                                                     <span><i class="fa fa-fw fa-folder mr-5"></i> {$server.name}</span>
                                                 </a>
                                             </li>

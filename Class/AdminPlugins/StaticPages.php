@@ -42,7 +42,7 @@ class StaticPages
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/pages'),
+                'url' => set_url(ADMIN_URL.'/pages'),
                 'icon' => 'fa fa-3x fa-object-group',
                 'title' => get_lang('admin.lang')['btn_title_StaticPages'],
                 'desc' => get_lang('admin.lang')['btn_desc_StaticPages'],
@@ -155,7 +155,7 @@ class StaticPages
                 if ($page != $url)
                     $page = $url;
 
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['StaticPages_ajax_page_edit'])->location('admin/pages/edit?page='.$page)->success();
+                echo $this->ajaxmsg->notify(get_lang('admin.lang')['StaticPages_ajax_page_edit'])->location(ADMIN_URL.'/pages/edit?page='.$page)->success();
             }else
                 echo $this->ajaxmsg->notify(get_lang('admin.lang')['StaticPages_ajax_page_already'])->danger();
         }else
@@ -186,7 +186,7 @@ class StaticPages
                 $fw = fopen(ROOT_DIR.CACHEPATH.'/Pages/'.$url.'.json', "a+");
                 fwrite($fw, $json);
                 fclose($fw);
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['StaticPages_ajax_page_add'])->location('admin/pages/edit?page='.$url)->success();
+                echo $this->ajaxmsg->notify(get_lang('admin.lang')['StaticPages_ajax_page_add'])->location(ADMIN_URL.'/pages/edit?page='.$url)->success();
             }else
                 echo $this->ajaxmsg->notify(get_lang('admin.lang')['StaticPages_ajax_page_already'])->danger();
         }else

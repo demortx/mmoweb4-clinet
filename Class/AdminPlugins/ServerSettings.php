@@ -74,7 +74,7 @@ class ServerSettings
     public function onMenu(){
         return array(
             array(
-                'url' => set_url('admin/servers'),
+                'url' => set_url(ADMIN_URL.'/servers'),
                 'icon' => 'fa fa-3x fa-server',
                 'title' => get_lang('admin.lang')['btn_title_ServerSettings'],
                 'desc' => get_lang('admin.lang')['btn_desc_ServerSettings'],

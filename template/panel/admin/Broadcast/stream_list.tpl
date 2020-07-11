@@ -2,8 +2,8 @@
     {include '/panel/breadcrumb.tpl'}
     <h2 class="content-heading">
         {$Broadcast_title}
-        <a href="{$.php.set_url('admin/broadcast/add')}" class="btn btn-sm btn-rounded btn-outline-primary float-right"><i class="fa fa-plus mr-5"></i>{$Broadcast_btn_add}</a>
-        <a href="{$.php.set_url('admin/broadcast/delete_cache')}" class="btn btn-sm btn-rounded btn-outline-secondary float-right mr-5"><i class="fa fa-braille mr-5"></i>{$Broadcast_btn_delete_cache}</a>
+        <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/add')}" class="btn btn-sm btn-rounded btn-outline-primary float-right"><i class="fa fa-plus mr-5"></i>{$Broadcast_btn_add}</a>
+        <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/delete_cache')}" class="btn btn-sm btn-rounded btn-outline-secondary float-right mr-5"><i class="fa fa-braille mr-5"></i>{$Broadcast_btn_delete_cache}</a>
     </h2>
     <div class="block block-rounded">
         <div class="block-content  p-0">
@@ -39,13 +39,13 @@
                         </td>
                         <td>{$stream.game}</td>
                         <td class="d-none d-sm-table-cell">
-                            <form action="{$.php.set_url('admin/broadcast/refresh?stream='~$stream.id, false)}" novalidate="novalidate" method="post" onsubmit="return false;" style="display: inline-block;">
+                            <form action="{$.php.set_url($.const.ADMIN_URL~'/broadcast/refresh?stream='~$stream.id, false)}" novalidate="novalidate" method="post" onsubmit="return false;" style="display: inline-block;">
                                 <input type="hidden" name="stream" value="{$stream.id}">
                                 <button type="submit" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5 submit-form" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_refresh_page}">
                                     <i class="fa fa-refresh"></i>
                                 </button>
                             </form>
-                            <a href="{$.php.set_url('admin/broadcast/delete?stream='~$stream.id)}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-circle btn-alt-danger mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_delete_stream}">
+                            <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/delete?stream='~$stream.id)}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-circle btn-alt-danger mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_delete_stream}">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </td>
@@ -62,7 +62,7 @@
         $('.modification_status').on('change', function() {
             var id = $(this).attr('id');
             $.ajax({
-                url: "{$.php.set_url('admin/broadcast/status', false)}",
+                url: "{$.php.set_url($.const.ADMIN_URL~'/broadcast/status', false)}",
                 data : {
                     "stream": id,
                     "status": this.checked
