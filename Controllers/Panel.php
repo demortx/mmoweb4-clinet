@@ -494,7 +494,7 @@ class Panel extends Controller {
         if(isset($_POST['login']) AND isset($_POST['password'])){
             if ($_POST['login'] == ADMIN_LOGIN AND $_POST['password'] == ADMIN_PASSWORD){
                 $_SESSION['ADMIN'] = true;
-                echo $this->ajaxmsg->notify(get_lang('signin.admin.lang')['signin_ajax_success_login'], '/admin')->success();
+                echo $this->ajaxmsg->notify(get_lang('signin.admin.lang')['signin_ajax_success_login'], '/'.ADMIN_URL)->success();
             }else
                 echo $this->ajaxmsg->notify(get_lang('signin.admin.lang')['signin_ajax_error_login'])->danger();
             return;

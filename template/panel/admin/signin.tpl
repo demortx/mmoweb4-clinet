@@ -2,7 +2,7 @@
 <div class="row mx-0 justify-content-center">
     <div class="col-lg-6 col-xl-4">
         <div class="content content-full overflow-hidden">
-            <form action="/admin" method="post" onsubmit="return false;">
+            <form action="/{$.const.ADMIN_URL}" method="post" onsubmit="return false;">
                 <div class="block block-themed block-rounded block-shadow">
                     <div class="block-header bg-gd-dusk">
                         <h3 class="block-title">{$signin_title_desc_lang}</h3>
