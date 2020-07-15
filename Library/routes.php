@@ -8,9 +8,9 @@ $route['(\w{2})'] = $route['default_controller'];
 
 
 //Обработчик апи
-$route['api/(:any)']['post'] = "api/$1";
+$route['api/(:any)'] = "api/$1";
 if (WEB_ITEM_DB)
-    $route['api/item']['get'] = "api/item";
+    $route['api/item'] = "api/item";
 
 //Обработка запросов для панели АВТОРИЗОВАННОГО ПОЛЬЗОВАТЕЛЯ
 $route['panel'] = "Panel/main";

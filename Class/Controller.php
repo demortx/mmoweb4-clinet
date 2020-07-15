@@ -347,12 +347,8 @@ class Controller
      */
     public function status_plugin($name){
 
-
-        if (isset($this->config['project']['server_plugins'][$this->sid])){
-            if (is_array($this->config['project']['server_plugins'][$this->sid]))
-                return in_array($name, $this->config['project']['server_plugins'][$this->sid]);
-            else
-                return false;
+        if (isset($this->config['project']['server_plugins'][$this->sid][$name])){
+            return $this->config['project']['server_plugins'][$this->sid][$name];
         }else
             return false;
 

@@ -40,7 +40,6 @@ $system = array (
 			'phone' => true,
 		),
 		'registration_confirmation' => true,
-		'registration_stop_temp_email' => false,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -53,8 +52,8 @@ $system = array (
 			'phone' => true,
 		),
 		'captcha' => false,
-		'recaptcha_public_key' => '6Lc7_IMUAAAAANvbf2i4OsgKG_nndeh80eq5m071',
-		'recaptcha_secret_key' => '6Lc7_IMUAAAAAPVIdOkoEYGMUAT3fJnAdsswFcQs',
+		'recaptcha_public_key' => '6LctDLAZAAAAAOTDi9TlsbUmHjRz0-1DuxbPZuGm',
+		'recaptcha_secret_key' => '6LctDLAZAAAAAJDYRDcx5TGZxrNjffJ5YzOvEMOI',
 	),
 	'game'=>array(
 		0 => 'lineage2',
@@ -129,13 +128,11 @@ $system = array (
 			9 => 
 			array (
 				'bonus_cod' => true,
-				'warehouse' => true,
 				'discount' => true,
 			),
 			8 => 
 			array (
 				'bonus_cod' => true,
-				'warehouse' => true,
 				'discount' => true,
 			),
 			7 => 
@@ -210,10 +207,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '71.45035',
-			'EUR' => '0.889244',
-			'UAH' => '27.089444',
-			'BTC' => '0.000110741628',
+			'RUB' => '70.745833',
+			'EUR' => '0.874348',
+			'UAH' => '27.02829',
+			'BTC' => '0.000108501471',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -295,7 +292,6 @@ $system = array (
 	),
 	'plugins'=>array(
 		'__' => 'pl',
-		2 => 'stop_spam_email',
 		3 => 'support',
 		5 => 'manager_account',
 		6 => 'bonus_cod',
