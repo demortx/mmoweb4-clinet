@@ -177,8 +177,10 @@ if ( ! function_exists('get_sid')) {
                 return $sid;
         }
 
-        return array_shift($system['project']['server_sort'][get_platform()]);
-
+        if (isset($system['project']['server_sort'][get_platform()]) AND is_array($system['project']['server_sort'][get_platform()]) AND count($system['project']['server_sort'][get_platform()]))
+            return array_shift($system['project']['server_sort'][get_platform()]);
+        else
+            return 0;
     }
 }
 // ------------------------------------------------------------------------
