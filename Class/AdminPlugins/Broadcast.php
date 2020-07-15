@@ -200,7 +200,7 @@ class Broadcast
                 exit;
             }
             curl_close($ch);
-
+            $result = remove_emoji($result);
             $result = json_decode($result,true);
 
             if($result != NULL AND isset($result['stream'])){
@@ -233,15 +233,17 @@ class Broadcast
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $response = curl_exec($ch);
         curl_close($ch);
+        $response = remove_emoji($response);
         $data = json_decode($response, true);
+
         if (is_array($data) AND isset($data['items'])){
             if (count($data['items'])) {
-                $users = array_shift($data['items']);
-                $user_info['name'] = $users["snippet"]["channelTitle"];
-                $user_info['user_id'] = (int)$users["snippet"]['channelId'];
-                $user_info['logo'] = $users["snippet"]["thumbnails"]["default"]["url"];
-                $user_info['preview'] = $users["snippet"]["thumbnails"]["medium"]["url"];
-                $user_info['online'] = 1;
+                $users                  = array_shift($data['items']);
+                $user_info['name']      = $users["snippet"]["channelTitle"];
+                $user_info['user_id']   = $users["snippet"]['channelId'];
+                $user_info['logo']      = $users["snippet"]["thumbnails"]["default"]["url"];
+                $user_info['preview']   = $users["snippet"]["thumbnails"]["medium"]["url"];
+                $user_info['online']    = 1;
             }else{
                 $user_info['name'] = $name;
                 $user_info['user_id'] = $name;
