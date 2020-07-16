@@ -128,6 +128,9 @@ class SiteComponents
                     if ($data === false OR isset($data['cache_end'])) {
 
                         $curl = new \Curl\Curl($cfg['url']);
+                        $curl->setOpt(CURLOPT_SSL_VERIFYHOST, false);
+                        $curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
+
                         $curl->setTimeout(10);
                         $result = $curl->post(array('api_key' => $cfg['api_key'], 'method' => 'last_post', 'count' => $count, 'allow' => get_lang($cfg['allow']), 'deny' => get_lang($cfg['deny'])));
 
