@@ -15,7 +15,7 @@ class Api extends Controller
 
     public function gateway(){
 
-        //header("Content-Type: text/xml");
+
         header('Content-Type: application/xml; charset=utf-8');
         if(!isset($_POST['hash'])) {
             echo (new \Curl\XMLFormatter())->format(array("error" => "Not Hash","code" => 0));
@@ -122,10 +122,16 @@ class Api extends Controller
     public function shop(){
         $this->gateway();
 
-        if(SaveShopConfig($_POST)) {
-            echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
+        if (isset($_POST['cfg'])){
+
+            $cfg = unserialize($_POST['cfg']);
+
+            if(SaveShopConfig($cfg)) {
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
+            }else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
         }else
-            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
+            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Not found cfg!", "status" => "error"));
 
     }
 
