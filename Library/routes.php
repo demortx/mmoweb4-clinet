@@ -9,6 +9,8 @@ $route['(\w{2})'] = $route['default_controller'];
 
 //Обработчик апи
 $route['api/(:any)'] = "api/$1";
+$route['api/payment/(:any)/(:any)'] = "api/payment/$1/$2";
+
 if (WEB_ITEM_DB)
     $route['api/item'] = "api/item";
 

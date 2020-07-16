@@ -96,3 +96,15 @@ define('YOUTUBE',               'AIzaSyDYcMbUnQGYPFTO-ADy1D4MrYI4xt-0_FY');
 define('WEB_ITEM_DB',            true);
 //Access-Control-Allow-Origin
 define('ACAO_DB_GETAWAY',        '*');
+
+/**
+ * Переопределения принятия платежа,
+ * функция не стабильна может быть проблемы доставки платежа при атаке на сайт.
+ * (Пользоватся только в крайней необходимости)
+ *
+ * Overrides of payment acceptance,
+ * the function is not stable there may be problems with the payment delivery when the site is attacked.
+ * (Use only when absolutely necessary)
+ */
+define('PAYMENT_GATEWAY',   true);
+define('PAYMENT_KEY',       'DFCPQ'); //EXEMPLE: https://mw4.mmoweb.ru/api/payment/unitpay/DFCPQ

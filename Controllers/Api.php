@@ -206,5 +206,46 @@ class Api extends Controller
 
     }
 
+    public function payment($payment = false, $key = false){
+
+        if (PAYMENT_GATEWAY !== true)
+            exit(json_encode(array("error" => "Error PAYMENT_GATEWAY disable ", 'code' => 0 )));
+        if ($key == false)
+            exit(json_encode(array("error" => "Error empty key", 'code' => 1 )));
+        if ($key != PAYMENT_KEY)
+            exit(json_encode(array("error" => "Error error PAYMENT_KEY", 'code' => 2 )));
+        if ($payment == false)
+            exit(json_encode(array("error" => "Error empty payment", 'code' => 3 )));
+
+        $config = get_instance()->config['payment_system'];
+
+        if (!isset($config[$payment]))
+            exit(json_encode(array("error" => "Error not found", 'code' => 4 )));
+        if ($config[$payment] !== true)
+            exit(json_encode(array("error" => "Error payment disable", 'code' => 5 )));
+
+        $curl = new \Curl\Curl(API_URL);
+        $curl->setTimeout(100);
+        $curl->setHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        $url = API_URL.'v1/Payment/ipn/'.$payment;
+
+        if (is_array($_POST) AND count($_POST) > 0) {
+            if (is_array($_GET) AND count($_GET) > 0)
+                $url .= '?' . http_build_query($_GET);
+
+            $curl->post($url, $_POST);
+        }else
+            $curl->get($url, $_GET);
+
+        $headers = $curl->getResponseHeaders();
+        foreach ($headers as $key => $header) {
+            if (in_array($key, array('Status-Line', 'Content-Type')))
+                header($key.': '.$header);
+        }
+        echo $curl->getRawResponse();
+        exit;
+    }
+
 
 }
