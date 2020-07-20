@@ -527,11 +527,6 @@ if ( ! function_exists('captcha_check')) {
         $cfg = get_instance()->config['cabinet'];
 
 
-        /*"g-recaptcha-response"
-
-        'recaptcha_public_key' => '6Lc7_IMUAAAAANvbf2i4OsgKG_nndeh80eq5m071',
-                'recaptcha_secret_key' => '6Lc7_IMUAAAAAPVIdOkoEYGMUAT3fJnAdsswFcQs',*/
-
         switch ($cfg['captcha']){
             case 'captcha':
 

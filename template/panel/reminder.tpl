@@ -119,8 +119,6 @@
                                 <script src='https://www.google.com/recaptcha/api.js'></script>
                                 <div class="g-recaptcha" data-sitekey="{$config.cabinet.recaptcha_public_key}"></div>
                                 <br>
-                            {elseif $config.cabinet.captcha == 'recaptchav2inv'}
-                                <script src='https://www.google.com/recaptcha/api.js'></script>
                             {elseif $config.cabinet.captcha == 'recaptchav3'}
                                 <input type="hidden" id="captcha" name="captcha">
                                 <script src='https://www.google.com/recaptcha/api.js?render={$config.cabinet.recaptcha_public_key}'></script>

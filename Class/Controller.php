@@ -83,7 +83,7 @@ class Controller
         $this->sortable_server_list();
 
 
-        if($this->config['project']['protocol_site'] == 'https' AND !is_https()){
+        if($this->config['project']['protocol_site'] == 'https' AND !is_https() AND HTTP_FORWARDING){
             header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
             exit;
         }

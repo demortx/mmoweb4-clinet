@@ -89,22 +89,22 @@
               <div class="gw-burger__line gw-burger__line_pos_bottom"></div>
             </div>
             <div class="navigation__list">
-              <a href="{$L_MENU_BTN_HOME_URL}" class="nav__link">
+              <a href="{$.php.set_url($L_MENU_BTN_HOME_URL)}" class="nav__link">
                 <div class="nav__name">{$L_MENU_BTN_HOME}</div>
               </a>
-              <a href="{$L_MENU_BTN_REG_URL}" class="nav__link">
+              <a href="{$.php.set_url($L_MENU_BTN_REG_URL)}" class="nav__link">
                 <div class="nav__name">{$L_MENU_BTN_REG}</div>
               </a>
-              <a href="{$L_MENU_BTN_FILE_URL}" data-open-window="files" class="nav__link">
+              <a href="{$.php.set_url($L_MENU_BTN_FILE_URL)}" data-open-window="files" class="nav__link">
                 <div class="nav__name">{$L_MENU_BTN_FILE}</div>
               </a>
-              <a href="{$L_MENU_BTN_ABOUT_URL}" class="nav__link">
+              <a href="{$.php.set_url($L_MENU_BTN_ABOUT_URL)}" class="nav__link">
                 <div class="nav__name">{$L_MENU_BTN_ABOUT}</div>
               </a>
-              <a href="{$L_MENU_BTN_DONATE_URL}" class="nav__link">
+              <a href="{$.php.set_url($L_MENU_BTN_DONATE_URL)}" class="nav__link">
                 <div class="nav__name">{$L_MENU_BTN_DONATE}</div>
               </a>
-              <a href="{$L_MENU_BTN_FORUM_URL}" target="_blank" class="nav__link">
+              <a href="{$.php.set_url($L_MENU_BTN_FORUM_URL)}" target="_blank" class="nav__link">
                 <div class="nav__name">{$L_MENU_BTN_FORUM}</div>
               </a>
             </div>
@@ -213,18 +213,18 @@
         <div class="footer__nav">
           <div class="f-nav footer__f-nav">
             <div class="f-nav__list">
-              <a href="{$L_MENU_BTN_HOME_URL}" class="f-nav__item">{$L_MENU_BTN_HOME}</a>
-              <a href="{$L_MENU_BTN_REG_URL}" class="f-nav__item">{$L_MENU_BTN_REG}</a>
-              <a href="{$L_MENU_BTN_FILE_URL}" data-open-window="files" class="f-nav__item">{$L_MENU_BTN_FILE}</a>
-              <a href="{$L_MENU_BTN_ABOUT_URL}" class="f-nav__item">{$L_MENU_BTN_ABOUT}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_HOME_URL}" class="f-nav__item">{$L_MENU_BTN_HOME}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_REG_URL}" class="f-nav__item">{$L_MENU_BTN_REG}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_FILE_URL}" data-open-window="files" class="f-nav__item">{$L_MENU_BTN_FILE}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_ABOUT_URL}" class="f-nav__item">{$L_MENU_BTN_ABOUT}</a>
             </div>
           </div>
           <div class="f-nav footer__f-nav">
             <div class="f-nav__list">
-              <a href="{$L_MENU_BTN_SUPPORT_URL}" class="f-nav__item">{$L_MENU_BTN_SUPPORT}</a>
-              <a href="{$L_MENU_BTN_RULES_URL}" class="f-nav__item">{$L_MENU_BTN_RULES}</a>
-              <a href="{$L_MENU_BTN_DONATE_URL}" class="f-nav__item">{$L_MENU_BTN_DONATE}</a>
-              <a href="{$L_MENU_BTN_FORUM_URL}" class="f-nav__item">{$L_MENU_BTN_FORUM}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_SUPPORT_URL)}" class="f-nav__item">{$L_MENU_BTN_SUPPORT}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_RULES_URL)}" class="f-nav__item">{$L_MENU_BTN_RULES}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_DONATE_URL)}" class="f-nav__item">{$L_MENU_BTN_DONATE}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_FORUM_URL)}" class="f-nav__item">{$L_MENU_BTN_FORUM}</a>
             </div>
           </div>
         </div>

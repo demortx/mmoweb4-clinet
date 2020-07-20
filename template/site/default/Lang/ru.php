@@ -10,31 +10,31 @@ defined('ROOT_DIR') OR exit('No direct script access allowed');
 return array (
 
     'L_MENU_BTN_HOME' => 'Главная',
-    'L_MENU_BTN_HOME_URL' => set_url('/'),
+    'L_MENU_BTN_HOME_URL' => '/',
 
     'L_MENU_BTN_REG' => 'Регистрация',
-    'L_MENU_BTN_REG_URL' => set_url('sign-up'),
+    'L_MENU_BTN_REG_URL' => 'sign-up',
 
     'L_MENU_BTN_FILE' => 'Файлы',
-    'L_MENU_BTN_FILE_URL' => set_url('javascript:void(0);'),
+    'L_MENU_BTN_FILE_URL' => 'javascript:void(0);',
 
     'L_MENU_BTN_ABOUT' => 'О сервере',
-    'L_MENU_BTN_ABOUT_URL' => set_url('about'),
+    'L_MENU_BTN_ABOUT_URL' => 'about',
 
     'L_MENU_BTN_DONATE' => 'Пожертвования',
-    'L_MENU_BTN_DONATE_URL' => set_url('donations'),
+    'L_MENU_BTN_DONATE_URL' => 'donations',
 
     'L_MENU_BTN_FORUM' => 'Форум',
-    'L_MENU_BTN_FORUM_URL' => set_url('https://forum.mmoweb.ru/'),
+    'L_MENU_BTN_FORUM_URL' => 'https://forum.mmoweb.ru/',
 
     'L_MENU_BTN_CP' => 'Личный кабинет',
-    'L_MENU_BTN_CP_URL' => set_url('sign-in'),
+    'L_MENU_BTN_CP_URL' => 'sign-in',
 
 	'L_MENU_BTN_SUPPORT' => 'Тех.Поддержка',
-	'L_MENU_BTN_SUPPORT_URL' => set_url('panel/support'),
+	'L_MENU_BTN_SUPPORT_URL' => 'panel/support',
 
 	'L_MENU_BTN_RULES' => 'Правила',
-	'L_MENU_BTN_RULES_URL' => set_url('rules'),
+	'L_MENU_BTN_RULES_URL' => 'rules',
 
 
 	'L_TIMER_TEXT' => 'Сервер успешно стартовал!',

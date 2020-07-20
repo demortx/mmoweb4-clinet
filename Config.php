@@ -106,5 +106,12 @@ define('ACAO_DB_GETAWAY',        '*');
  * the function is not stable there may be problems with the payment delivery when the site is attacked.
  * (Use only when absolutely necessary)
  */
-define('PAYMENT_GATEWAY',   true);
+define('PAYMENT_GATEWAY',   false);
 define('PAYMENT_KEY',       'DFCPQ'); //EXEMPLE: https://mw4.mmoweb.ru/api/payment/unitpay/DFCPQ
+
+/**
+ * SYS*
+ * Для хостеров - если у вас проблемы с заголовками на передачу HTTPS, HTTP_X_FORWARDED_PROTO или HTTP_FRONT_END_HTTPS
+ * И происходит постоянный ридирект поставте значение в false
+ */
+define('HTTP_FORWARDING',   true); //Производить ли ридирект если в админ панели выстовлено https а обрашение на http
