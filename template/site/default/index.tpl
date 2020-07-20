@@ -213,10 +213,10 @@
         <div class="footer__nav">
           <div class="f-nav footer__f-nav">
             <div class="f-nav__list">
-              <a href="{$.php.set_url($L_MENU_BTN_HOME_URL}" class="f-nav__item">{$L_MENU_BTN_HOME}</a>
-              <a href="{$.php.set_url($L_MENU_BTN_REG_URL}" class="f-nav__item">{$L_MENU_BTN_REG}</a>
-              <a href="{$.php.set_url($L_MENU_BTN_FILE_URL}" data-open-window="files" class="f-nav__item">{$L_MENU_BTN_FILE}</a>
-              <a href="{$.php.set_url($L_MENU_BTN_ABOUT_URL}" class="f-nav__item">{$L_MENU_BTN_ABOUT}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_HOME_URL)}" class="f-nav__item">{$L_MENU_BTN_HOME}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_REG_URL)}" class="f-nav__item">{$L_MENU_BTN_REG}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_FILE_URL)}" data-open-window="files" class="f-nav__item">{$L_MENU_BTN_FILE}</a>
+              <a href="{$.php.set_url($L_MENU_BTN_ABOUT_URL)}" class="f-nav__item">{$L_MENU_BTN_ABOUT}</a>
             </div>
           </div>
           <div class="f-nav footer__f-nav">
