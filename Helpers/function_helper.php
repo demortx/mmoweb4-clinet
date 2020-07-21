@@ -510,10 +510,21 @@ if ( ! function_exists('btn_ajax')) {
      * @param string $action URL куда будут отправлены данные
      * @return string Атрибуты для вставки HTML кнопки
      */
-    function btn_ajax($class , $method , $param = array('e'=>0), $action = '/input')
+    function btn_ajax($class = null, $method = null, $param = array('e'=>0), $action = '/input')
     {
 
-        return 'data-post="module_form='.$class.'&module='.$method.'&'.http_build_query($param).'" data-action="'.$action.'"';
+        if($class != null)
+            $param['module_form'] = $class;
+        if($method != null)
+            $param['module'] = $method;
+
+        $str = "";
+        if(is_array($param) AND count($param))
+            $str .= 'data-post="'.http_build_query($param).'" ';
+
+        $str .= 'data-action="'.$action.'" ';
+
+        return $str;
 
     }
 }

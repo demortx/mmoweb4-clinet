@@ -53,6 +53,7 @@ $route['reminder/phone'] = "Panel/reminder_phone";
 
 $route['input'] = "In";
 $route['captcha/img'] = "In/captchaImg";
+$route['prefix/refresh'] = "In/prefix_list";
 $route['text'] = "In/txt";
 
 //тех работы

@@ -87,6 +87,12 @@ class AjaxMsg
         return $this;
     }
 
+    public function set_select($select_el, $select_set){
+        $this->response["select_el"] = $select_el;
+        $this->response["select_set"] = $select_set;
+        return $this;
+    }
+
     public function popup_close($id = "modal-ajax"){
         if(!empty($id)){
             if(!empty($this->response["eval"]))

@@ -63,18 +63,18 @@ class SignUp extends MainModulesClass
         if ($cfg['registration_login']) {
 
             //Проверка логина
-            if ($cfg['registration_login_optional'] == false AND (!isset($_REQUEST['login']) OR empty($_REQUEST['login'])))
+            if ($cfg['registration_login_optional'] == false AND (!isset($_POST['login']) OR empty($_POST['login'])))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_login'])->danger();
 
 
-            if (isset($_REQUEST['login']) AND !empty($_REQUEST['login'])) {
-                $vars["login"] = $_REQUEST['login'];
+            if (isset($_POST['login']) AND !empty($_POST['login'])) {
+                $vars["login"] = $_POST['login'];
 
                 //Проверка префикса
                 if ($cfg['registration_login_prefix']) {
-                    if (isset($_REQUEST["prefix"]) AND isset($_SESSION["prefix_list"])) {
-                        if (in_array($_REQUEST["prefix"], $_SESSION['prefix_list']))
-                            $vars['prefix'] = $_REQUEST["prefix"];
+                    if (isset($_POST["prefix"]) AND isset($_SESSION["prefix_list"])) {
+                        if (in_array($_POST["prefix"], $_SESSION['prefix_list']))
+                            $vars['prefix'] = $_POST["prefix"];
                     }
 
                     if (!isset($vars['prefix']))
@@ -84,11 +84,11 @@ class SignUp extends MainModulesClass
 
 
                 //Проверка сервера
-                if (!isset($_REQUEST['sid']) OR empty($_REQUEST['sid']))
+                if (!isset($_POST['sid']) OR empty($_POST['sid']))
                     return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_sid'])->danger();
                 else {
-                    if (checkSID((int)$_REQUEST['sid'])) {
-                        $vars["sid"] = (int)$_REQUEST['sid'];
+                    if (checkSID((int)$_POST['sid'])) {
+                        $vars["sid"] = (int)$_POST['sid'];
                         get_instance()->set_sid((int)$vars["sid"], false);
                     } else
                         return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_missing_sid'])->danger();
@@ -98,50 +98,50 @@ class SignUp extends MainModulesClass
         }
 
         //Проверка Пароля
-        if (!isset($_REQUEST['password']) OR empty($_REQUEST['password']))
+        if (!isset($_POST['password']) OR empty($_POST['password']))
             return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_password'])->danger();
         else
-            $vars["password"] = $_REQUEST['password'];
+            $vars["password"] = $_POST['password'];
 
 
         //Регистрация по почте
-        if (isset($cfg['registration_type']['email']) AND $_REQUEST["type_reg"] == '#r-email') {
+        if (isset($cfg['registration_type']['email']) AND $_POST["type_reg"] == '#r-email') {
 
             $vars['type'] = 'email';
 
             //Проверка Почты
-            if (!isset($_REQUEST['email']) OR empty($_REQUEST['email']))
+            if (!isset($_POST['email']) OR empty($_POST['email']))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_email'])->danger();
             else
-                $vars["email"] = $_REQUEST['email'];
+                $vars["email"] = $_POST['email'];
 
         //Регистрация через телефон
-        } elseif (isset($cfg['registration_type']['phone']) AND $_REQUEST["type_reg"] == '#r-phone') {
+        } elseif (isset($cfg['registration_type']['phone']) AND $_POST["type_reg"] == '#r-phone') {
 
             $vars['type'] = 'phone';
 
             //Проверка телефона
-            if (!isset($_REQUEST['phone']) OR empty($_REQUEST['phone']))
+            if (!isset($_POST['phone']) OR empty($_POST['phone']))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_phone'])->danger();
             else
-                $vars["phone"] = $_REQUEST['phone'];
+                $vars["phone"] = $_POST['phone'];
 
             //Проверка телефона
-            if (!isset($_REQUEST['phone_code']) OR empty($_REQUEST['phone_code']))
+            if (!isset($_POST['phone_code']) OR empty($_POST['phone_code']))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_phone_code'])->danger();
             else
-                $vars["phone_code"] = $_REQUEST['phone_code'];
+                $vars["phone_code"] = $_POST['phone_code'];
 
             //Проверка телефона
-            if (!isset($_REQUEST['sms_cod']) OR empty($_REQUEST['sms_cod']))
+            if (!isset($_POST['sms_cod']) OR empty($_POST['sms_cod']))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_sms_cod'])->danger();
             else
-                $vars["sms_cod"] = $_REQUEST['sms_cod'];
+                $vars["sms_cod"] = $_POST['sms_cod'];
 
 
             //Проверка Почты
-            if (isset($_REQUEST['email-phone']) OR !empty($_REQUEST['email-phone']))
-                $vars["email"] = $_REQUEST['email-phone'];
+            if (isset($_POST['email-phone']) OR !empty($_POST['email-phone']))
+                $vars["email"] = $_POST['email-phone'];
 
 
 
@@ -150,14 +150,14 @@ class SignUp extends MainModulesClass
 
 
         //Проверка правил
-        if (!isset($_REQUEST["terms"]))
+        if (!isset($_POST["terms"]))
             return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_terms'])->danger();
         else
-            $vars["terms"] = $_REQUEST["terms"];
+            $vars["terms"] = $_POST["terms"];
 
         //подписка
-        if (isset($_REQUEST["subscribe"]))
-            $vars["subscribe"] = $_REQUEST["subscribe"];
+        if (isset($_POST["subscribe"]))
+            $vars["subscribe"] = $_POST["subscribe"];
 
 
         if (!captcha_check())
@@ -227,8 +227,8 @@ class SignUp extends MainModulesClass
             $api = new GlobalApi();
             $vars = array();
             $vars["type"] = 'sms';
-            $vars["phone_code"] = isset($_REQUEST["phone_code"]) ? intval($_REQUEST["phone_code"]) : 0;
-            $vars["phone"] = isset($_REQUEST["phone"]) ? intval($_REQUEST["phone"]) : 0;
+            $vars["phone_code"] = isset($_POST["phone_code"]) ? intval($_POST["phone_code"]) : 0;
+            $vars["phone"] = isset($_POST["phone"]) ? intval($_POST["phone"]) : 0;
 
             if ($vars["phone_code"] < 1)
                 $send = get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_sms_phone_code_empty'])->danger();

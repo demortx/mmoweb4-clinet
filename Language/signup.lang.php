@@ -28,7 +28,7 @@ return array(
 
         'signup_title_input_terms_lang' => 'Я согласен с правилами',
         'signup_title_input_subscribe_lang' => 'Я согласен на получение информации об акциях',
-        'signup_title_btn_submit_lang' => 'Зарегистрироватся',
+        'signup_title_btn_submit_lang' => 'Зарегистрироваться',
 
 
 

@@ -50,6 +50,26 @@ class In extends Controller
 
     }
 
+    public function prefix_list(){
+
+        if($this->config['cabinet']['registration_login_prefix']) {
+            if(isset($_SESSION['prefix_list']))
+                unset($_SESSION['prefix_list']);
+
+            $i = 0;
+            while ($i < $this->config['cabinet']['registration_login_prefix_count']) {
+                $i++;
+                $_SESSION['prefix_list'][] = prefix();
+            }
+            foreach ($_SESSION['prefix_list'] as $px) {
+                $send[] = array('name' => $px, 'value' => $px);
+            }
+
+            echo $this->ajaxmsg->set_select('.prefix_select', $send)->send();
+        }
+
+    }
+
     public function txt(){
 
         $type = isset($_GET['type']) ? $_GET['type'] : '';

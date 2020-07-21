@@ -83,6 +83,7 @@ $ignore_detect_lang_page = array(
     '/api/payment/alikassa/'.PAYMENT_KEY,
     '/text',
     '/captcha/img',
+    '/prefix/refresh',
 );
 
 $search_get = strstr($_SERVER['REQUEST_URI'], '?', true);
