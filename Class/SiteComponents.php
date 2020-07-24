@@ -463,7 +463,12 @@ class SiteComponents
         $data = get_cache('iblock_'.$ikey.'_'.$lang.'_'.$count, false, true);
         if ($data === false OR isset($data['cache_end'])) {
             $iblock = array();
-            $iblock_main = self::db()->query('SELECT tpl FROM `mw_iblock` WHERE publish=1 AND ikey='.self::db()->quote($ikey).';')->fetch(\PDO::FETCH_ASSOC);
+            $iblock_main = self::db()->query('SELECT tpl FROM `mw_iblock` WHERE publish=1 AND ikey='.self::db()->quote($ikey).';');
+
+            if (!$iblock_main)
+                return 'IBlock '.$ikey.' not found from DB';
+
+            $iblock_main = $iblock_main->fetch(\PDO::FETCH_ASSOC);
             if(isset($iblock_main['tpl'])){
                 $iblock['tpl'] = $iblock_main['tpl'];
                 unset($iblock_main);

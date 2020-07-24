@@ -140,11 +140,12 @@ class IBlock
     }
     //POST сохранение
     public function addIBlockSave(){
-        $STH = $this->db->prepare('INSERT INTO `mw_iblock` (`name`, `tpl`, `ikey`, `publish`)
+        $STH = $this->db->prepare('INSERT INTO `mw_iblock` (`name`, `tpl`, `ikey`,`date`, `publish`)
                                             VALUES (:name, :tpl, :ikey, :publish);');
         $STH->bindValue(':name', trim($_POST['name']));
         $STH->bindValue(':tpl', trim($_POST['tpl']));
         $STH->bindValue(':ikey', trim($_POST['ikey']));
+        $STH->bindValue(':date', date("Y-m-d H:i:s"));
         $STH->bindValue(':publish', (int) $_POST['publish']);
         $STH->execute();
         $id = $this->db->lastInsertId();
@@ -367,7 +368,7 @@ class IBlock
                                   `name` varchar(100) NOT NULL,
                                   `tpl` varchar(100) NOT NULL,
                                   `ikey` varchar(100) NOT NULL,
-                                  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                  `date` datetime NOT NULL,
                                   `publish` int(1) NOT NULL DEFAULT '1'
                                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                 
@@ -386,7 +387,7 @@ class IBlock
                                   `id` int(11) NOT NULL,
                                   `ikey` varchar(100) NOT NULL,
                                   `json` mediumtext NOT NULL,
-                                  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                  `date` datetime NOT NULL,
                                   `publish` int(1) NOT NULL DEFAULT '1'
                                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                 

@@ -238,15 +238,13 @@ if( ! function_exists('get_lang')){
             }
         }
 
-        if(is_string($file) AND file_exists($file)){
-            get_instance()->language[$file] = include_once $file;
-        }
-
         if (!isset(get_instance()->language[$file])){
 
             if(file_exists(ROOT_DIR. "/Language/" . $file . ".php"))
                 get_instance()->language[$file] = include_once ROOT_DIR. "/Language/" . $file . ".php";
-            else
+            elseif(is_string($file) AND file_exists($file)){
+                get_instance()->language[$file] = include_once $file;
+            } else
                 get_instance()->language[$file] = array();
 
         }

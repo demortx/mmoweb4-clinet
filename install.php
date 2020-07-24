@@ -51,7 +51,9 @@ try {
     echo $e->getMessage();
     $con_true = false;
 }
+
 if($con_true){
+
 	echo 'Create table: mw_broadcast<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_broadcast`;
                         CREATE TABLE IF NOT EXISTS `mw_broadcast` (
@@ -65,7 +67,7 @@ if($con_true){
                           `online` int(1) NOT NULL DEFAULT '0',
                           `preview` varchar(150) NOT NULL,
                           `json` mediumtext NOT NULL,
-                          `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          `date` datetime NOT NULL,
                           `publish` int(1) NOT NULL DEFAULT '1',
                           PRIMARY KEY (`id`),
                           KEY `publish` (`publish`)
@@ -78,7 +80,7 @@ if($con_true){
                           `name` varchar(100) NOT NULL,
                           `tpl` varchar(100) NOT NULL,
                           `ikey` varchar(100) NOT NULL,
-                          `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          `date` datetime NOT NULL,
                           `publish` int(1) NOT NULL DEFAULT '1',
                           PRIMARY KEY (`id`),
                           UNIQUE KEY `ikey_2` (`ikey`),
@@ -92,7 +94,7 @@ if($con_true){
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `ikey` varchar(100) NOT NULL,
                           `json` mediumtext NOT NULL,
-                          `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          `date` datetime NOT NULL,
                           `publish` int(1) NOT NULL DEFAULT '1',
                           PRIMARY KEY (`id`),
                           KEY `publish` (`publish`),
@@ -116,7 +118,7 @@ if($con_true){
                         CREATE TABLE IF NOT EXISTS `mw_news` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `json` mediumtext NOT NULL,
-                          `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          `date` datetime NOT NULL,
                           `author` varchar(100) NOT NULL,
                           `publish` int(1) NOT NULL DEFAULT '1',
                           `fixed` int(1) NOT NULL DEFAULT '0',
@@ -131,7 +133,7 @@ if($con_true){
                           `session_id` varchar(150) NOT NULL DEFAULT '',
                           `data` mediumtext,
                           `ip` varchar(16) DEFAULT NULL,
-                          `session_end` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          `session_end` datetime NOT NULL,
                           PRIMARY KEY (`id`,`session_end`,`session_id`),
                           KEY `session_end` (`session_end`),
                           KEY `session_id` (`session_id`)

@@ -228,7 +228,7 @@ class NewsSite
                                 CREATE TABLE `mw_news` (
   `id` int(11) NOT NULL,
   `json` mediumtext NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date` datetime NOT NULL,
   `author` varchar(100) NOT NULL,
   `publish` int(1) NOT NULL DEFAULT '1',
   `fixed` int(1) NOT NULL DEFAULT '0'

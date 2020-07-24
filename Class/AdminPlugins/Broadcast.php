@@ -196,8 +196,9 @@ class Broadcast
 
             $result = curl_exec($ch);
             if (curl_errno($ch) AND $error) {
-                echo $this->ajaxmsg->notify('getTwithc - Error:' . curl_error($ch))->danger();
-                exit;
+                return false;
+                //echo $this->ajaxmsg->notify('getTwithc - Error:' . curl_error($ch))->danger();
+                //exit;
             }
             curl_close($ch);
             $result = remove_emoji($result);
@@ -256,8 +257,9 @@ class Broadcast
 
         }else{
             if ($error) {
-                echo $this->ajaxmsg->notify('getYoutube - Error:' . $response)->danger();
-                exit;
+                return false;
+                //echo $this->ajaxmsg->notify('getYoutube - Error:' . $response)->danger();
+                //exit;
             }
         }
 
@@ -278,7 +280,7 @@ class Broadcast
 
         if (is_array($user_info) AND isset($user_info['json'])){
 
-            $STH = $this->db->prepare('INSERT INTO `mw_broadcast` (`chanel`,`name`,`user_id`,`logo`,`type`,`game`,`online`,`preview`, `json`, `publish`)
+            $STH = $this->db->prepare('INSERT INTO `mw_broadcast` (`chanel`,`name`,`user_id`,`logo`,`type`,`game`,`online`,`preview`,`date`, `json`, `publish`)
                                             VALUES (:chanel, :name, :user_id, :logo, :type, :game, :online, :preview, :json,  :publish);');
 
             $STH->bindValue(':chanel', $user);
@@ -289,6 +291,7 @@ class Broadcast
             $STH->bindValue(':game', $user_info['game']);
             $STH->bindValue(':online', $user_info['online']);
             $STH->bindValue(':preview', $user_info['preview']);
+            $STH->bindValue(':date', date("Y-m-d H:i:s"));
             $STH->bindValue(':json', $user_info['json']);
             $STH->bindValue(':publish', (int) $_POST['publish']);
             $STH->execute();
@@ -406,7 +409,7 @@ class Broadcast
               `online` int(1) NOT NULL DEFAULT '0',
               `preview` varchar(150) NOT NULL,
               `json` mediumtext NOT NULL,
-              `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              `date` datetime NOT NULL,
               `publish` int(1) NOT NULL DEFAULT '1'
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
             
