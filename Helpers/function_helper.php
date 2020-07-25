@@ -771,9 +771,17 @@ if ( ! function_exists('detect_lang')) {
         $config['language_abbr'] = select_lang();
         $config['sess_expiration'] = 36000000;
 
-
         $config_project = include ROOT_DIR . '/Library/config.php';
-        $config['base_url'] = $config_project['project']['url_site'];
+
+        if(isset($_SERVER['HTTP_HOST']) AND !empty($_SERVER['HTTP_HOST']))
+            $pars_url = parse_url($_SERVER['HTTP_HOST']);
+        elseif(isset($_SERVER['SERVER_NAME']) AND !empty($_SERVER['SERVER_NAME']))
+            $pars_url = parse_url($_SERVER['SERVER_NAME']);
+        else{
+            $pars_url = parse_url($config_project['project']['url_site']);
+        }
+
+        $config['base_url'] = $config_project['project']['protocol_site'].'://'.$pars_url["path"].'/';
 
         $index_page    = '';//$config['index_page'];
         /* default language abbreviation */
