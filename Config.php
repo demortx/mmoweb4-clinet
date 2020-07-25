@@ -114,4 +114,4 @@ define('PAYMENT_KEY',       'DFCPQ'); //EXEMPLE: https://mw4.mmoweb.ru/api/payme
  * Для хостеров - если у вас проблемы с заголовками на передачу HTTPS, HTTP_X_FORWARDED_PROTO или HTTP_FRONT_END_HTTPS
  * И происходит постоянный ридирект поставте значение в false
  */
-define('HTTP_FORWARDING',   true); //Производить ли ридирект если в админ панели выстовлено https а обрашение на http
+define('HTTP_FORWARDING',   false); //Производить ли ридирект если в админ панели выстовлено https а обрашение на http
