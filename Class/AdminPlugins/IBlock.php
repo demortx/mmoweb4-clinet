@@ -140,13 +140,14 @@ class IBlock
     }
     //POST сохранение
     public function addIBlockSave(){
+
         $STH = $this->db->prepare('INSERT INTO `mw_iblock` (`name`, `tpl`, `ikey`,`date`, `publish`)
-                                            VALUES (:name, :tpl, :ikey, :publish);');
+                                            VALUES (:name, :tpl, :ikey, :date, :publish);');
         $STH->bindValue(':name', trim($_POST['name']));
         $STH->bindValue(':tpl', trim($_POST['tpl']));
         $STH->bindValue(':ikey', trim($_POST['ikey']));
         $STH->bindValue(':date', date("Y-m-d H:i:s"));
-        $STH->bindValue(':publish', (int) $_POST['publish']);
+        $STH->bindValue(':publish', $_POST['publish']);
         $STH->execute();
         $id = $this->db->lastInsertId();
         echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_create_success'])->location(ADMIN_URL.'/iblock/edit?iblock='.$id)->success();

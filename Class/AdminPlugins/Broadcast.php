@@ -281,7 +281,7 @@ class Broadcast
         if (is_array($user_info) AND isset($user_info['json'])){
 
             $STH = $this->db->prepare('INSERT INTO `mw_broadcast` (`chanel`,`name`,`user_id`,`logo`,`type`,`game`,`online`,`preview`,`date`, `json`, `publish`)
-                                            VALUES (:chanel, :name, :user_id, :logo, :type, :game, :online, :preview, :json,  :publish);');
+                                            VALUES (:chanel, :name, :user_id, :logo, :type, :game, :online, :preview, :date, :json,  :publish);');
 
             $STH->bindValue(':chanel', $user);
             $STH->bindValue(':name', $user_info['name']);
