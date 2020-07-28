@@ -218,7 +218,7 @@ class Security
             return $str;
         }
         if (empty($charset)) {
-            $charset = conf('charset');
+            $charset = 'UTF-8';
         }
         do {
             $matches = $matches1 = 0;
@@ -409,7 +409,7 @@ class Security
      */
     protected function _decode_entity($match)
     {
-        return $this->entity_decode($match[0], strtoupper(conf('charset')));
+        return $this->entity_decode($match[0], strtoupper('UTF-8'));
     }
 
     /**

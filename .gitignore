@@ -91,6 +91,10 @@ fabric.properties
 /template/site/la2hard/
 /template/site/la2hard/*
 /template/site/la2hard/**/
+/template/site/fange
+/template/site/fange/
+/template/site/fange/*
+/template/site/fange/**/
 /GEN_SCSS
 /ЗАМЕТКИ
 /template/site/lineagetwo
@@ -102,7 +106,7 @@ fabric.properties
 /template/site/multiworld/
 /template/site/multiworld/*
 /template/site/multiworld/**/
-/template/site/fange
-/template/site/fange/
-/template/site/fange/*
-/template/site/fange/**/
+/template/site/l2hot
+/template/site/l2hot/
+/template/site/l2hot/*
+/template/site/l2hot/**/
