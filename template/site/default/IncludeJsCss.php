@@ -17,7 +17,7 @@ return array(
             'body' => array(),
             'footer' => array(
                 //<!-- Get-Web Libs  -->
-                ['idx' => 'jquery', 'typex' => 'script', 'src' => TEMPLATE_DIR.'/libs/jquery/jquery-3.4.1.min.js'],
+                ['idx' => 'jquery', 'typex' => 'script', 'src' => TEMPLATE_DIR.'/libs/jquery/jquery-3.4.1.js'],
                 ['idx' => 'jquery', 'typex' => 'link', 'rel' => 'stylesheet', 'href' => TEMPLATE_DIR.'/libs/fontello/css/fontello.css'],
                 ['idx' => 'jquery', 'typex' => 'link', 'rel' => 'stylesheet', 'href' => TEMPLATE_DIR.'/fonts/BeaufortforLOL/fonts.css'],
                 //<!-- fancybox -->

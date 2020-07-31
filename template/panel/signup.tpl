@@ -67,7 +67,7 @@
                                 <div class="col-12">
                                     <label for="t-signup-login">{$signup_title_input_login_lang}</label>
                                     <div class="input-group">
-                                        {if $config.cabinet.registration_login_prefix}
+                                        {if $config.cabinet.registration_login_prefix} 
                                             <div class="input-group-prepend">
                                                 <select class="form-control prefix_select" data-toggle="tooltip" data-placement="top" name="prefix" title="{$signup_title_input_prefix_lang}" style="border-radius: .25rem 0 0 .25rem;">
                                                     {foreach $prefix_list as $prefix first=$first}
@@ -75,12 +75,13 @@
                                                     {/foreach}
                                                 </select>
                                             </div>
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn btn-secondary submit-btn" title="Refresh prefix" {$.php.btn_ajax(null, null, ['refresh' => 'prefix'], '/prefix/refresh')}>
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
                                         {/if}
-                                        <div class="input-group-prepend">
-                                            <button type="button" class="btn btn-secondary submit-btn" title="Refresh prefix" {$.php.btn_ajax(null, null, ['refresh' => 'prefix'], '/prefix/refresh')}>
-                                                <i class="fa fa-refresh"></i>
-                                            </button>
-                                        </div>
+
                                         <input type="text" class="form-control" id="t-signup-login" name="login" placeholder="Login">
                                     </div>
                                 </div>
