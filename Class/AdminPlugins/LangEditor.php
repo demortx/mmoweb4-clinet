@@ -181,6 +181,7 @@ class LangEditor
                 $lang_files = array();
                 foreach ($tpl_dir as $file) {
                     if($file != "." && $file != ".."){
+                        if (in_array($file, array('auth.menu.php', 'menu.php'))) continue;
 
                         $lang_files[] = array(
                             'file' => $file,
@@ -189,6 +190,8 @@ class LangEditor
 
                     }
                 }
+
+
                 return $this->fenom->fetch("panel:admin/LangEditor/lang_files.tpl",
                     array_merge(
                         array(
