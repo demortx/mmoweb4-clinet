@@ -1223,3 +1223,30 @@ if (!function_exists('remove_emoji')) {
         return $clear_string;
     }
 }
+
+if (!file_exists('log_write')){
+
+    function log_write($file, $data, $date_add = true, $eol = PHP_EOL){
+
+        if($date_add)
+            $file .= date("m.d.y");
+
+        $new_file = false;
+        $msg = '';
+
+        if ( ! file_exists(ROOT_DIR."/Debug/log_" . $file . ".php"))
+            $new_file = true;
+
+        $fw = fopen(ROOT_DIR."/Debug/log_" . $file . ".php", "a+");
+
+        if($new_file)
+            $msg .= "<?php defined('ROOT_DIR') OR exit('No direct script access allowed'); ?>".PHP_EOL;
+
+        $msg .= $data.$eol;
+
+        fwrite($fw, $msg);
+        fclose($fw);
+
+    }
+
+}

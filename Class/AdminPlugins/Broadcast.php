@@ -196,20 +196,22 @@ class Broadcast
 
             $result = curl_exec($ch);
             if (curl_errno($ch) AND $error) {
+                log_write('broadcast', 'getTwithc - Error:' . curl_error($ch));
                 return false;
                 //echo $this->ajaxmsg->notify('getTwithc - Error:' . curl_error($ch))->danger();
                 //exit;
             }
             curl_close($ch);
             $result = remove_emoji($result);
-            $result = json_decode($result,true);
+            $json = json_decode($result,true);
 
-            if($result != NULL AND isset($result['stream'])){
-                $user_info['preview'] = $result['stream']['preview']['small'];
-                $user_info['game'] = $result['stream']['game'];
-                $user_info['json'] = json_encode($result);
+            if($json != NULL AND isset($json['stream'])){
+                $user_info['preview'] = $json['stream']['preview']['small'];
+                $user_info['game'] = $json['stream']['game'];
+                $user_info['json'] = $result;
                 $user_info['online'] = 1;
             }else{
+                log_write('broadcast', 'getTwithc - Error json:' .$result);
                 $user_info['preview'] = '';
                 $user_info['game'] = '';
                 $user_info['json'] = '';
@@ -246,6 +248,7 @@ class Broadcast
                 $user_info['preview']   = $users["snippet"]["thumbnails"]["medium"]["url"];
                 $user_info['online']    = 1;
             }else{
+                log_write('broadcast', 'getYoutube - Error json:' . $response);
                 $user_info['name'] = $name;
                 $user_info['user_id'] = $name;
                 $user_info['logo'] = '';
@@ -257,6 +260,7 @@ class Broadcast
 
         }else{
             if ($error) {
+                log_write('broadcast', 'getYoutube - Error:' . $response);
                 return false;
                 //echo $this->ajaxmsg->notify('getYoutube - Error:' . $response)->danger();
                 //exit;

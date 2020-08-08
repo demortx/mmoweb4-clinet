@@ -134,14 +134,17 @@ class SiteComponents
                         $curl->setTimeout(10);
                         $result = $curl->post(array('api_key' => $cfg['api_key'], 'method' => 'last_post', 'count' => $count, 'allow' => get_lang($cfg['allow']), 'deny' => get_lang($cfg['deny'])));
 
-                        if ($curl->error)
+                        if ($curl->error) {
+                            log_write('forum', 'GET last_post:' . $curl->errorCode . ' ' . $curl->errorMessage);
                             $result = array('error' => $curl->errorCode . ' ' . $curl->errorMessage);
+                        }
                         if (is_object($result))
                             $result = json_decode(json_encode($result), true);
 
                         if (is_array($result) AND $result['error'] == 0) {
                             set_cache('forum_' . $lang . '_' . $count, $result, CACHE_FORUM);
                         } else {
+                            log_write('forum', 'Save:' . (is_array($result) ? json_decode($result) : $result));
                             set_cache('forum_' . $lang . '_' . $count, $data["data"], CACHE_FORUM);
                             $result = $data["data"];
                         }
@@ -242,6 +245,7 @@ class SiteComponents
             }
 
         } else {
+            log_write('online_site', 'Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code']);
             $send['error'] = 'Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'];
         }
         return $send;
