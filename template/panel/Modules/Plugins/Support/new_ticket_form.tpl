@@ -12,6 +12,18 @@
         </div>
     </div>
     {$template_ticket}
+
+    {if $ajax == true}
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label text-right border-right" for="files_list">
+            {$form_title_title_files}
+        </label>
+        <div class="col-lg-7">
+            <input type="file" id="files_list" name="files">
+        </div>
+    </div>
+    {/if}
+
     <div class="block-content block-content-sm block-content-full block-settings-save-fix">
         <div class="row justify-content-center">
             <button type="submit" class="btn btn-alt-primary submit-form">
@@ -20,3 +32,9 @@
         </div>
     </div>
 </form>
+
+<script>
+{if $ajax == true}
+    window.FileUploaderInit();
+{/if}
+</script>

@@ -28,4 +28,3 @@
         <textarea id="support_message" name="message" rows="9" class="form-control" placeholder="{$form_title_message_bot}" required=""></textarea>
     </div>
 </div>
-

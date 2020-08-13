@@ -107,6 +107,10 @@
     <!-- END Multiple Chat (auto height) -->
 </div>
 <!-- END Page Content -->
+{$.site._SEO->addTegHTML('head', 'fileuploader_font', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/js/plugins/fileuploader/font/font-fileuploader.css?ver=0.1'])}
+{$.site._SEO->addTegHTML('head', 'fileuploader_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/js/plugins/fileuploader/jquery.fileuploader.min.css?ver=0.1'])}
+{$.site._SEO->addTegHTML('head', 'fileuploader_theme', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/js/plugins/fileuploader/jquery.fileuploader-theme-thumbnails.css?ver=0.3'])}
+{$.site._SEO->addTegHTML('footer', 'fileuploader_js', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/fileuploader/jquery.fileuploader.min.js?ver=0.1'])}
 
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
@@ -225,18 +229,29 @@
              * Add a message to a chat window
              *
              */
-            static chatAddMessage(chatId, chatMsg,date_create,reviewed, chatMsgLevel, chatInput) {
+            static chatAddMessage(chatId, chatMsg, attachments, date_create, reviewed, chatMsgLevel, chatInput) {
 
                 /* Get chat window*/
                 let chatWindow = jQuery('.js-chat-talk[data-chat-id="' + chatId + '"]');
 
                 /* If message and chat window exists*/
                 if (chatMsg && chatWindow.length) {
+                    let attachment = '';
+
+                    if (attachments){
+                        attachment = '<div>';
+                        $.each(attachments, function (index, img) {
+                            attachment += '<img height="50px" class="mr-10" src="/'+img+'">';
+                        });
+                        attachment += '</div>';
+                    }
                     /* Post it to its related window (if message level is 'self', make it stand out)*/
                     chatWindow.append('<div class="' + classesMsgBase + ' ' + ((chatMsgLevel == '0') ? classesMsgSelf : classesMsgOther) + '" style="width: max-content;max-width: 75%;white-space: pre-line;">'
                         + chatMsg/*.replace(/\n/g, '<br>')*/
                         + '</div>'
-                        + '<div class="font-w400 font-size-xs text-muted ' + ((chatMsgLevel == '0') ? 'text-right' : 'text-left') + '">'+date_create
+                        + '<div class="font-w400 font-size-xs text-muted ' + ((chatMsgLevel == '0') ? 'text-right' : 'text-left') + '">'
+                        + attachment
+                        + date_create
                         +((chatMsgLevel == '0') ? ((reviewed == '1') ? ' <i class="fa fa-check" title="Read"></i>' : '') : '')
                         +'</div>'
                         + '</div>');
@@ -271,8 +286,8 @@
              * Add message
              *
              */
-            static addMessage(chatId, chatMsg,date_create,reviewed, chatMsgLevel, chatInput) {
-                this.chatAddMessage(chatId, chatMsg,date_create,reviewed, chatMsgLevel, chatInput);
+            static addMessage(chatId, chatMsg, attachments, date_create,reviewed, chatMsgLevel, chatInput) {
+                this.chatAddMessage(chatId, chatMsg, attachments, date_create,reviewed, chatMsgLevel, chatInput);
             }
         }
 
@@ -299,17 +314,133 @@
                 id: 'chat-window' + data.head.tid,
                 title: '<img class="img-avatar img-avatar16" src="/template/panel/assets/media/avatars/avatar.png" alt=""><span class="ml-5">' + theme + '</span>',
                 html: '<div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="' + data.head.tid + '" style="height: 140px;"></div>' +
-                    '<div class="js-chat-form block-content block-content-full block-content-sm bg-body-light"><form action="/input" method="post" onsubmit="return false;">{$.php.form_hide_input("Modules\\\Plugins\\\Support\\\Support", "send_msg")}<input type="hidden" name="ticket_id" value="' + data.head.tid + '"><div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-comment text-primary"></i></span></div>   <textarea class="form-control js-chat-input"  name="message" data-in-id="' + data.head.tid + '" rows="2" placeholder="..."></textarea><div class="input-group-append"><button type="button" class="btn btn-secondary submit-btn"><i class="fa fa-send text-primary"></i></button></div></div></form></div>',
+                    '<div class="js-chat-form block-content block-content-full block-content-sm bg-body-light">' +
+                    '<form action="/input" method="post" onsubmit="return false;">{$.php.form_hide_input("Modules\\\Plugins\\\Support\\\Support", "send_msg")}'+
+                    '<input type="hidden" name="ticket_id" value="' + data.head.tid + '">' +
+                    '<div class="input-group input-group-lg"><div class="input-group-prepend">' +
+                    '<span class="input-group-text"><i class="fa fa-comment"></i></span>' +
+                    '</div>' +
+                    '<textarea class="form-control js-chat-input"  name="message" data-in-id="' + data.head.tid + '" rows="2" placeholder="..."></textarea>' +
+                    '<div class="input-group-append">' +
+                        '<button type="button" class="btn btn-secondary attachments"><i class="fa fa-paperclip"></i></button>' +
+                        '<button type="button" class="btn btn-secondary submit-btn"><i class="fa fa-send text-primary"></i></button>' +
+                    '</div></div>' +
+                    '<div class="add_attachments" style="display:none;"><input type="file" class="files_list" name="files"></div>'+
+                    '</form></div>',
                 closable: true
             });
             BeCompChat.init();
             $.each(data.msg, function (index, ticket) {
-                BeCompChat.addMessage(data.head.tid, ticket.text,ticket.date_create,ticket.reviewed, ticket.answer);
+                BeCompChat.addMessage(data.head.tid, ticket.text, ticket.attachments, ticket.date_create,ticket.reviewed, ticket.answer);
             });
         };
         window.sendTicket = function (data) {
             $('textarea[data-in-id='+data.tid+']').val('');
-            BeCompChat.addMessage(data.tid, data.text,data.date_create, 0, 0);
+
+            if (data.attachments && $('input.files_list').length){
+                let fr = $.fileuploader.getInstance($('input.files_list').get(0));
+                if (fr) {
+                    fr.reset();
+                    jQuery('.js-chat-form').find('.add_attachments').hide();
+                }
+            }
+            BeCompChat.addMessage(data.tid, data.text, data.attachments, data.date_create, 0, 0);
+        };
+
+
+        window.FileUploaderInit = function(){
+            $('input[name="files"]').unbind();
+            $('input[name="files"]').fileuploader({
+
+                limit: 5,
+                extensions: ['jpg', 'gif', 'png',],
+                fileMaxSize: 2,
+                changeInput: ' ',
+                theme: 'thumbnails',
+                enableApi: true,
+                addMore: true,
+                {ignore}
+                thumbnails: {
+                    box: '<div class="fileuploader-items">' +
+                        '<ul class="fileuploader-items-list">' +
+                        '<li class="fileuploader-thumbnails-input"><div class="fileuploader-thumbnails-input-inner"><i>+</i></div></li>' +
+                        '</ul>' +
+                        '</div>',
+                    item: '<li class="fileuploader-item">' +
+                        '<div class="fileuploader-item-inner">' +
+                        '<div class="type-holder">${extension}</div>' +
+                        '<div class="actions-holder">' +
+                        '<button type="button" class="fileuploader-action fileuploader-action-remove" title="${captions.remove}"><i class="fileuploader-icon-remove"></i></button>' +
+                        '</div>' +
+                        '<div class="thumbnail-holder">' +
+                        '${image}' +
+                        '<span class="fileuploader-action-popup"></span>' +
+                        '</div>' +
+                        '<div class="content-holder"><h5>${name}</h5><span>${size2}</span></div>' +
+                        '<div class="progress-holder">${progressBar}</div>' +
+                        '</div>' +
+                        '</li>',
+                    item2: '<li class="fileuploader-item">' +
+                        '<div class="fileuploader-item-inner">' +
+                        '<div class="type-holder">${extension}</div>' +
+                        '<div class="actions-holder">' +
+                        '<a href="${file}" class="fileuploader-action fileuploader-action-download" title="${captions.download}" download><i class="fileuploader-icon-download"></i></a>' +
+                        '<button type="button" class="fileuploader-action fileuploader-action-remove" title="${captions.remove}"><i class="fileuploader-icon-remove"></i></button>' +
+                        '</div>' +
+                        '<div class="thumbnail-holder">' +
+                        '${image}' +
+                        '<span class="fileuploader-action-popup"></span>' +
+                        '</div>' +
+                        '<div class="content-holder"><h5 title="${name}">${name}</h5><span>${size2}</span></div>' +
+                        '<div class="progress-holder">${progressBar}</div>' +
+                        '</div>' +
+                        '</li>',
+                    {/ignore}
+                    startImageRenderer: true,
+                    canvasImage: false,
+                    _selectors: {
+                        list: '.fileuploader-items-list',
+                        item: '.fileuploader-item',
+                        start: '.fileuploader-action-start',
+                        retry: '.fileuploader-action-retry',
+                        remove: '.fileuploader-action-remove'
+                    },
+                    onItemShow: function(item, listEl, parentEl, newInputEl, inputEl) {
+                        var plusInput = listEl.find('.fileuploader-thumbnails-input'),
+                            api = $.fileuploader.getInstance(inputEl.get(0));
+
+                        plusInput.insertAfter(item.html)[api.getOptions().limit && api.getChoosedFiles().length >= api.getOptions().limit ? 'hide' : 'show']();
+
+                        if(item.format == 'image') {
+                            item.html.find('.fileuploader-item-icon').hide();
+                        }
+                    },
+                    onItemRemove: function(html, listEl, parentEl, newInputEl, inputEl) {
+                        var plusInput = listEl.find('.fileuploader-thumbnails-input'),
+                            api = $.fileuploader.getInstance(inputEl.get(0));
+
+                        html.children().animate({ 'opacity': 0}, 200, function() {
+                            html.remove();
+
+                            if (api.getOptions().limit && api.getChoosedFiles().length - 1 < api.getOptions().limit)
+                                plusInput.show();
+                        });
+                    }
+                },
+                dragDrop: {
+                    container: '.fileuploader-thumbnails-input'
+                },
+                afterRender: function(listEl, parentEl, newInputEl, inputEl) {
+                    var plusInput = listEl.find('.fileuploader-thumbnails-input'),
+                        api = $.fileuploader.getInstance(inputEl.get(0));
+
+                    plusInput.on('click', function() {
+                        api.open();
+                    });
+
+                    api.getOptions().dragDrop.container = plusInput;
+                },
+            });
         };
 
         $('#content-new-ticket').on('change', '#support_category', function (e) {
@@ -324,6 +455,15 @@
             }else{
                 $('#info_sharing_yes').hide();
                 $('#info_sharing_no').show();
+            }
+        });
+        $('body').on('click', '.attachments', function (e) {
+            let form_file = $(this).parents('form').find('.add_attachments');
+            if (form_file.is(':hidden')) {
+                window.FileUploaderInit();
+                form_file.slideDown();
+            }else{
+                form_file.hide();
             }
         });
         $('body').on('change', '#account_name', function (e) {

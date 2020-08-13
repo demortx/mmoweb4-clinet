@@ -47,6 +47,9 @@ return array(
         'error_account_char_not_found' => 'На этом аккаунте нет персонажей',
         'form_title_title' => 'Тема',
         'form_title_title_text' => 'Укажите тему сообщения',
+        'form_title_title_files' => 'Прикрепить изображения
+            <div style="font-size: 0.8em;">Общий размер не превышает 2&nbsp;МБ</div>
+            <div style="font-size: 0.8em;">В формате JPG, GIF или PNG</div>',
 
         //Пропал предмет
         'form_title_sharing' => 'Был ли доступ у других игроков к вашему аккаунту?',
@@ -142,6 +145,9 @@ return array(
         'error_account_char_not_found' => 'There are no characters on this account.',
         'form_title_title' => 'Subject',
         'form_title_title_text' => 'Specify tech support subject',
+        'form_title_title_files' => 'Attach images
+            <div style="font-size: 0.8em;">The total size does not exceed 2&nbsp;MB</div>
+            <div style="font-size: 0.8em;">JPG, GIF or PNG format</div>',
 
         //Пропал предмет
         'form_title_sharing' => 'Did other players have access to your account?',

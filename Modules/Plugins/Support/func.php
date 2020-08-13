@@ -66,7 +66,7 @@ class func
                 array(
                     'content_ticket_list' => $this->fragment_ticket_list(),
                     'char_list' => get_instance()->session->getGameChars(),
-                    'new_ticket_form' => $this->new_ticket_form()
+                    'new_ticket_form' => $this->new_ticket_form(0, false)
 
                 ),
                 get_lang('support.lang')
@@ -188,7 +188,7 @@ class func
             else
                 $category = intval($_REQUEST['category']);
 
-            $send = get_instance()->ajaxmsg->html($this->new_ticket_form($category), '#content-new-ticket')->success();
+            $send = get_instance()->ajaxmsg->html($this->new_ticket_form($category, true), '#content-new-ticket')->success();
         }else
             $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
 
@@ -196,9 +196,53 @@ class func
 
     }
 
+    public function attachments(){
+
+
+        // initialize FileUploader
+        $FileUploader = new \FileUploader('files', array(
+            'limit' => 5,
+            'maxSize' => null,
+            'fileMaxSize' => 2,
+            'extensions' => ['jpg', 'gif', 'png',],
+            'required' => false,
+            'uploadDir' => ROOT_DIR.'/Files/support/',
+            'title' => ['auto', 12],
+            'replace' => true,
+            'editor' => array(
+                'maxWidth' => null,
+                'maxHeight' => null,
+                'crop' => false,
+                'quality' => 70
+            ),
+            'listInput' => true,
+            'files' => null
+        ));
+
+        // call to upload the files
+        $data = $FileUploader->upload();
+
+
+        if ($data['hasWarnings'] == false AND $data['isSuccess'] == false)
+            return null;
+        elseif($data['hasWarnings'] == true)
+            return array('error' => implode("<br>", $data['warnings']));
+        elseif($data['isSuccess'] == true){
+            $files = array();
+            foreach ($data['files'] as $f){
+                if ($f['uploaded'])
+                    $files[] = $f['file'];
+            }
+            return $files;
+        }else
+            return null;
+
+    }
+
     public function ajax_create_ticket(){
         $api = new GlobalApi();
         $vars = array();
+
 
         if (!isset($_REQUEST['category']) OR empty($_REQUEST['category']))
             return get_instance()->ajaxmsg->notify(get_lang('support.lang')['support_ajax_empty_category'])->danger();
@@ -220,6 +264,13 @@ class func
         else
             $vars['message'] = $_REQUEST['message'];
 
+        $attachments = $this->attachments();
+        if (!empty($attachments)){
+            if (isset($attachments['error']))
+                return get_instance()->ajaxmsg->notify($attachments['error'])->danger();
+            else
+                $vars['attachments'] = $attachments;
+        }
 
 
         if (get_instance()->session->isLogin()) {
@@ -278,7 +329,13 @@ class func
         else
             $vars['message'] = $_REQUEST['message'];
 
-
+        $attachments = $this->attachments();
+        if (!empty($attachments)){
+            if (isset($attachments['error']))
+                return get_instance()->ajaxmsg->notify($attachments['error'])->danger();
+            else
+                $vars['attachments'] = $attachments;
+        }
 
 
         if (get_instance()->session->isLogin()) {
@@ -305,6 +362,7 @@ class func
                         $message = array(
                             'tid' => $vars['tid'],
                             'text' => $vars['message'],
+                            'attachments' => isset($vars['attachments']) ? $vars['attachments'] : null,
                             'date_create' => date("Y-m-d H:i:s"),
                         );
 
@@ -355,7 +413,7 @@ class func
         );
     }
 
-    public function new_ticket_form($type = 0){
+    public function new_ticket_form($type = 0, $ajax = false){
 
         switch ($type){
             case 6:
@@ -370,7 +428,7 @@ class func
                 $template = 'template_ticket_8.tpl';
                 $param = array(
                     'payment_system' => get_instance()->config['payment_system'],
-                    'payment_list' => $this->payment_list,
+                    'payment_list' => $this->payment_list
                 );
                 break;
             default:
@@ -383,7 +441,7 @@ class func
             get_tpl_file('new_ticket_form.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-
+                    'ajax' => $ajax,
                     'category_select' => $type,
                     'template_ticket' => get_instance()->fenom->fetch(get_tpl_file($template, get_class($this->this_main)),array_merge($param,get_lang('support.lang'))),
                 ),

@@ -273,8 +273,11 @@ if (!function_exists('set_url')) {
         if (empty($str))
             return '#';
 
-        if (strpos($str, 'javascript:void') !== false OR $str == '#')
+        if (strpos($str, 'javascript:void') !== false)
             return 'javascript:void(0);';
+        elseif ($str == '#')
+            return '#';
+
 
         $config_project = get_instance()->config;;
 

@@ -12,7 +12,29 @@ window.auth_ulogin = function (token) {
 
     send_ajax('module_form=Modules%5CGlobals%5CSignIn%5CSignIn&module=signin_social&token='+token, true);
 };
+
+(function($) {
+    $.fn.serializefiles = function() {
+        var obj = $(this);
+        /* ADD FILE TO PARAM AJAX */
+        var formData = new FormData();
+        $.each($(obj).find("input[type='file']"), function(i, tag) {
+            $.each($(tag)[0].files, function(i, file) {
+                formData.append(tag.name, file);
+            });
+        });
+        var params = $(obj).serializeArray();
+        $.each(params, function (i, val) {
+            formData.append(val.name, val.value);
+        });
+        return formData;
+    };
+})(jQuery);
+
 $(document).ready(function(){
+
+
+
     /*
         .submit-btn - class btn
         atribut - data-post="get_param"
@@ -23,13 +45,20 @@ $(document).ready(function(){
     $('body').on('click', '.submit-btn, .submit-form', function (e) {
         e.preventDefault();
         var el = $(this);
-        var post = el.data('post') || $(el).parents('form').serialize();
+        var post = el.data('post') || $(el).parents('form').serializefiles();
         var response_loc = el.parents('form').attr('name');
         var action = el.data('action') || el.parents('form').attr('action') || "/input";
         var method = el.parents('form').attr('method') || "POST";
 
         var elBlock = jQuery(e.currentTarget).closest('.block');
 
+        var contentType = false;
+        var processData = false;
+
+        if(typeof post === 'string' || post instanceof String){
+            contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+            processData = true;
+        }
 
         $.ajax({
             url: action,
@@ -37,6 +66,8 @@ $(document).ready(function(){
             type: method,
             cache: false,
             dataType: 'json',
+            contentType: contentType,
+            processData: processData,
             beforeSend: function () {
                 el.attr("disabled","disabled");
                 jQuery('#page-header-loader').addClass('show');
