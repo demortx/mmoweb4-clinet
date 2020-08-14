@@ -38,10 +38,16 @@
                                                 В город
                                             </button>*}
 
-                                            {if $.site.config.in_game_currency[get_sid()]['config']['char']?}
-                                            <button type="button" class="btn btn-sm btn-outline-secondary submit-btn" {$.php.btn_ajax("Modules\Globals\InGameCurrency\InGameCurrency", "open_form", ['login' => $login, 'char' => $char.name])}>
-                                                {$lang_w_btn_buy} {$payment_system.short_name_valute}
-                                            </button>
+                                            {if $.site.config.in_game_currency[get_sid()]['config']['char']? AND $.php.is_array($.site.config.in_game_currency[get_sid()]['settings'])}
+                                                {foreach $.site.config.in_game_currency[get_sid()]['settings'] as $_currency}
+                                                    {if $_currency['type'] == 'char'}
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary submit-btn" title="{$lang_w_btn_buy} {$_currency['long_name']}" {$.php.btn_ajax("Modules\Globals\InGameCurrency\InGameCurrency", "open_form", ['login' => $login, 'char' => $char.name])}>
+                                                            {$lang_w_btn_buy} {$_currency['short_name']}
+                                                        </button>
+                                                        {break}
+                                                    {/if}
+                                                {/foreach}
+
                                             {/if}
                                         </div>
                                     </td>

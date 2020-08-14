@@ -166,7 +166,7 @@ return array(
         'Broadcast_th_game' => 'Игра',
         'Broadcast_refresh_page' => 'Обновить',
         'Broadcast_delete_stream' => 'Удалить',
-        'Broadcast_in_platform' => 'Плошадка',
+        'Broadcast_in_platform' => 'Площадка',
         'Broadcast_profile' => 'Профиль',
         'Broadcast_profile_desc' => 'Укажите имя аккаунта',
         'Broadcast_in_enable' => 'Активность',
