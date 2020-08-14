@@ -27,7 +27,7 @@ class ParserItem
             case 'lineage2':
 
                 $this->files_list = $files_list;
-            break;
+                break;
 
         }
 
@@ -91,14 +91,19 @@ class ParserItem
                 if ($file_name == 'itemname-e.txt') {
                     $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('name', 'additionalname', 'description'));
                 }else
-                    $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('icon'));
+                    $temp = $this->L2ClientDat($dir, 2, 2, -1, -1, array('icon'));
 
                 foreach ($temp as $item_id=>$item) {
 
                     if ($file_name == 'itemname-e.txt'){
 
+                        $item['additionalname'] = $this->trim($item['additionalname']);
+                        if ($item['additionalname'] == 'None'){
+                            $item['additionalname'] = '';
+                        }
+
                         $items[$item_id]['name'] = $this->trim($item['name']);
-                        $items[$item_id]['add_name'] = $this->trim($item['additionalname']);
+                        $items[$item_id]['add_name'] = $item['additionalname'];
                         $items[$item_id]['description'] = $this->trim($item['description']);
                         $items[$item_id]['icon'] = '';
                     }else{
@@ -197,6 +202,7 @@ class ParserItem
 
         if ($type == 2)
         {
+
             $temp = array_slice(explode("\t", trim($str)), 1, -1);
             $keys = array();
 
