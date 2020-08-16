@@ -303,14 +303,31 @@ class SeoX
         if ($this->advertising === false)
             $this->advertising = include ROOT_DIR . '/Library/advertising.php';
 
-        //Google
+        //Google Analytics
         if (isset($this->advertising['gawpid']) AND !empty($this->advertising['gawpid'])){
-            $this->addTeg('head', 'googletagmanager', 'script', array('src' => 'https://www.googletagmanager.com/gtag/js?id='.$this->advertising['gawpid'], 'async'=>'true'));
-            $this->addTeg('head', 'googletagmanager_js', 'script', array('js' => "window.dataLayer = window.dataLayer || []; 
+            $this->addTeg('head', 'googleanalytics', 'script', array('src' => 'https://www.googletagmanager.com/gtag/js?id='.$this->advertising['gawpid'], 'async'=>'true'));
+            $this->addTeg('head', 'googleanalytics_js', 'script', array('js' => "window.dataLayer = window.dataLayer || []; 
             function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());"
             ." gtag('config', '".$this->advertising['gawpid']."'" .( $this->advertising['ga_anonymize'] ? ",{ 'anonymize_ip': true }" : '' ).");"));
+
+
+
+
         }
+        //Google Tag Manager
+        if (isset($this->advertising['gt_manager']) AND !empty($this->advertising['gt_manager'])){
+
+            $this->addTeg('head', 'googletagmanager_js', 'script', array('js' => "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','".$this->advertising['gt_manager']."');"));
+
+            $this->addTeg('body', 'googletagmanager_noscript', 'html', array('html' => '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id='.$this->advertising['gt_manager'].'" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>'));
+        }
+
+
         //Yandex
         if (isset($this->advertising['ymid']) AND !empty($this->advertising['ymid'])) {
 

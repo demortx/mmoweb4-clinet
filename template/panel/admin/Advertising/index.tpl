@@ -10,7 +10,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label" for="val-gawpid">{$Advertising_title_gid}</label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" id="val-gawpid" name="gawpid" value="{$advertising_config.gawpid}" placeholder="Exemple: GTM-NG8592T">
+                                <input type="text" class="form-control" id="val-gawpid" name="gawpid" value="{$advertising_config.gawpid}" placeholder="Exemple: UA-74186324-6">
                                 <div class="form-text text-muted">{$Advertising_title_gid_desc}</div>
                             </div>
                         </div>
@@ -29,6 +29,14 @@
                                 <div class="form-text text-muted">{$Advertising_title_ganon_desc}</div>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-gt_manager">{$Advertising_title_gt_manager}</label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="val-gt_manager" name="gt_manager" value="{$advertising_config.gt_manager}" placeholder="Exemple: GTM-58QMKT3">
+                            </div>
+                        </div>
+
                         <hr>
                         <h3 class="text-center">Yandex Metrika</h3>
 

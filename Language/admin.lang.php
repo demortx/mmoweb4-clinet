@@ -183,6 +183,9 @@ return array(
         'Advertising_title_gid_desc' => 'Вы можете ввести свой идентификатор веб-ресурса для <a href="https://www.google.com/analytics/" target="_blank">Google Analytics</a> в это поле. HTML-код для работы Google Analytics будет автоматически вставляться во все доступные страницы.',
         'Advertising_title_ganon' => 'Анонимизировать IP-адреса для Google Analytics',
         'Advertising_title_ganon_desc' => 'Если Google Analytics выше включён и Вы хотите анонимизировать IP-адреса для него, то включите данную опцию.',
+        'Advertising_title_gt_manager' => 'Google Tag Manager',
+
+
         'Advertising_title_yam' => 'Яндекс.Метрика: Номер счётчика',
         'Advertising_title_yam_desc' => 'Вы можете ввести номер счётчика <a href="https://metrika.yandex.ru" target="_blank">Яндекс.Метрика</a> в поле выше. Код для работы Яндекс.Метрики будет автоматически вставляться во все доступные страницы.',
         'Advertising_title_yamwiz' => 'Яндекс.Метрика: Вебвизор, карта скроллинга, аналитика форм',
@@ -381,6 +384,7 @@ return array(
         'Advertising_title_gid_desc' => 'You can enter the identifier of a web resource for <a href= "https://www.google.com/analytics/" target=" _ blank"> Google Analytics </a> into this field. The HTML for Google Analytics will automatically be inserted into all available pages.',
         'Advertising_title_ganon' => 'Anonymize IP Addresses for Google Analytics',
         'Advertising_title_ganon_desc' => 'If Google Analytics is enabled above and you want to anonymize the IP addresses for it, then enable this option.',
+        'Advertising_title_gt_manager' => 'Google Tag Manager',
         'Advertising_title_yam' => 'Yandex. Metrics: counter ID',
         'Advertising_title_yam_desc' => 'You can enter number of the counter <a href= "https://metrika.yandex.ru" target=" _ blank"> Yandex. The metrics </a> is in the field above. The code for Yandex.Metrica will automatically be inserted into all available pages.',
         'Advertising_title_yamwiz' => 'Yandex.Metrica: Webvisor, scrolling map, form analytics',

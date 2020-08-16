@@ -368,7 +368,9 @@ class Controller
                     $temp_server_list[$ids] = $this->config['project']['server_info'][$platform_][$ids];
                     unset($this->config['project']['server_info'][$platform_][$ids]);
                 }
-                if (count($this->config['project']['server_info'][$platform_]) > 0) {
+                if (isset($this->config['project']['server_info'][$platform_])
+                    AND is_array($this->config['project']['server_info'][$platform_])
+                    AND count($this->config['project']['server_info'][$platform_]) > 0) {
                     foreach ($this->config['project']['server_info'][$platform_] as $ids => $set)
                         $temp_server_list[$ids] = $set;
 
