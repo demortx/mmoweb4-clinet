@@ -62,7 +62,7 @@
 
                                         <div class="input-group-prepend">
                                             <span class="input-group-text p-0"><img id="captcha-img" style="border-radius: 5% 0 0 5%;" class="btn-secondary" src="/captcha/img"></span>
-                                            <button type="button" class="btn btn-secondary"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-secondary" onclick="$('#captcha-img').attr('src','/captcha/img?'+Math.random());"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                                         </div>
                                         <input type="text" class="form-control" id="captcha" name="captcha" placeholder="">
                                     </div>

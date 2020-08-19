@@ -111,7 +111,7 @@ class SignIn extends MainModulesClass
 
 
         if (!captcha_check())
-            return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_error_captcha'])->danger();
+            return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_error_captcha'])->eval_js(captcha_reload('sign_in'))->danger();
         //Передаем UTM метки
         $vars["utm"] = get_utm();
 

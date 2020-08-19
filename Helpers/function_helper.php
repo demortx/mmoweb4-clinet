@@ -596,6 +596,44 @@ if ( ! function_exists('captcha_check')) {
 
 // ------------------------------------------------------------------------
 
+if ( ! function_exists('captcha_reload')) {
+
+    function captcha_reload($actions = 'sign_up'){
+
+        $cfg = get_instance()->config['cabinet'];
+
+
+        switch ($cfg['captcha']){
+            case 'captcha':
+
+                return "$('#captcha-img').attr('src','/captcha/img?'+Math.random());";
+
+                break;
+            case 'recaptchav2':
+
+                return "grecaptcha.reset();";
+
+                break;
+            case 'recaptchav3':
+
+
+                return "grecaptcha.ready(function() { grecaptcha.execute('".$cfg['recaptcha_public_key']."', { action: '".$actions."'}) .then(function(token) { $('#captcha').val(token); }); });";
+
+
+                break;
+            case false:
+                return true;
+                break;
+            default:
+                return 'console.log("Error captcha_reload");';
+
+        }
+
+    }
+}
+
+// ------------------------------------------------------------------------
+
 if ( ! function_exists('get_utm')) {
 
     function get_utm($type = false){
