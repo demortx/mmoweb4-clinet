@@ -171,9 +171,9 @@ class SignUp extends MainModulesClass
 
             if (isset($response['error'])) {
                 if (isset($response["response"]->input))
-                    $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->eval_js(captcha_reload('sign_up'))->danger();
                 else
-                    $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+                    $send = get_instance()->ajaxmsg->notify($response['error'])->eval_js(captcha_reload('sign_up'))->danger();
 
 
             } else {
@@ -209,7 +209,7 @@ class SignUp extends MainModulesClass
             }
 
         } else {
-            $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->eval_js(captcha_reload('sign_up'))->danger();
         }
 
         return $send;

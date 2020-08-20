@@ -123,9 +123,9 @@ class SignIn extends MainModulesClass
 
             if (isset($response['error'])) {
                 if (isset($response["response"]->input))
-                    $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->eval_js(captcha_reload('sign_in'))->danger();
                 else
-                    $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+                    $send = get_instance()->ajaxmsg->notify($response['error'])->eval_js(captcha_reload('sign_in'))->danger();
 
 
             } else {
@@ -147,12 +147,12 @@ class SignIn extends MainModulesClass
                     $send = get_instance()->ajaxmsg->notify( (string) $response["response"]->success, '/panel')->success();
 
                 }else
-                    $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+                    $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->eval_js(captcha_reload('sign_in'))->danger();
 
             }
 
         } else {
-            $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->eval_js(captcha_reload('sign_in'))->danger();
         }
 
         return $send;

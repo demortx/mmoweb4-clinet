@@ -123,3 +123,6 @@ fabric.properties
 /template/site/titanwars/*
 /template/site/titanwars/**/
 
+template/site/.DS_Store
+template/.DS_Store
+.DS_Store
