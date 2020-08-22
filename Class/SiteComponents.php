@@ -293,12 +293,18 @@ class SiteComponents
                 if (is_array($servers_temp)) {
                     $i = 0;
                     foreach ($servers_temp as $sid => $info) {
-                        if ($info["status"] != true) continue;
+
 
                         $servers[$sid]['name'] = $info['name'];
                         $servers[$sid]['rate'] = $info['rate'];
 
                         if (isset($server_site_cfg[$sid])) {
+
+
+                            if(isset($server_site_cfg[$sid]['hide']) AND $server_site_cfg[$sid]['hide'] == 0) {
+                                unset($servers[$sid]);
+                                continue;
+                            }
 
                             if ($server_site_cfg[$sid]['re_name'] AND !empty($server_site_cfg[$sid]['name']))
                                 $servers[$sid]['name'] = $server_site_cfg[$sid]['name'];
@@ -326,11 +332,30 @@ class SiteComponents
                             $servers[$sid]['time_zone'] = '';
                             $servers[$sid]['max_online'] = '5000';
                         }
+                        if ($info["status"] == true) {
 
-                        $servers[$sid]['online'] = self::get_cache_online($sid);
-                        $servers[$sid]['online_history'] = self::get_cache_online_history($sid, $chart_interval);
+                            $servers[$sid]['online'] = self::get_cache_online($sid);
+                            $servers[$sid]['online_history'] = self::get_cache_online_history($sid, $chart_interval);
+                        }else{
 
-                        if (is_array($servers[$sid]['online_history']) AND count($servers[$sid]['online_history']) > 0) {
+                            $servers[$sid]['online'] = array(
+                                "login" => 0,
+                                "server" => 0,
+                                "online" => 0,
+                                "online_multiple" => 0,
+                                "characters" => 0,
+                                "clan" => 0,
+                                "data" => 0,
+                                "max_online" => 0,
+                                "max_online_multiple" => 0,
+                                "date" => array()
+                            );
+                        }
+
+
+                        if (isset($servers[$sid]['online_history'])
+                            AND is_array($servers[$sid]['online_history'])
+                            AND count($servers[$sid]['online_history']) > 0) {
                             if ($chart_percent)
                             {
                                 foreach ($servers[$sid]['online_history'] AS &$online) {

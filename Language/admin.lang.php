@@ -141,6 +141,11 @@ return array(
         'ServerSettings_online_gs' => 'По гейм серверу',
         'ServerSettings_ajax_edit_success' => 'Настройки успешно изменены',
 
+        'ServerSettings_hide_s' => 'Статус сервера',
+        'ServerSettings_hide_sdesc' => 'Отображение сервера на сайте',
+        'ServerSettings_hide_yes' => 'Виден',
+        'ServerSettings_hide_no' => 'Скрыт',
+
         //IBlock
         'IBlock_title' => 'Инфо блоки',
         'IBlock_btn_add' => 'Добавить блок',
@@ -253,7 +258,7 @@ return array(
         'LangEditor_edit_lang' => 'Open language package:',
         'LangEditor_btn_save' => 'Save',
         'LangEditor_btn_reset' => 'Reset all current changes',
-        'LangEditor_btn_add' => 'Add language label',
+        'LangEditor_btn_add' => 'Add',
         'LangEditor_add_key_name' => 'Enter the desired key name',
         'LangEditor_add_key_low' => 'The key cannot be shorter, than 4 characters. For example: L_KEYNAME_1',
         'LangEditor_title_files' => 'Available files',
@@ -341,6 +346,11 @@ return array(
         'ServerSettings_online_ls' => 'By the login',
         'ServerSettings_online_gs' => 'By the game server',
         'ServerSettings_ajax_edit_success' => 'Settings are successfully changed',
+
+        'ServerSettings_hide_s' => 'Server status site',
+        'ServerSettings_hide_sdesc' => 'Displaying the server on the site',
+        'ServerSettings_hide_yes' => 'Show',
+        'ServerSettings_hide_no' => 'Hide',
 
         //IBlock
         'IBlock_title' => 'Info blocks',

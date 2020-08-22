@@ -123,6 +123,22 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-max_online-{$sid_}">
+                                                    {$ServerSettings_hide_s} <i class="fa fa-info-circle" title="{$ServerSettings_notice_tpl}"></i>
+                                                    <div class="text-muted"><small>{$ServerSettings_hide_sdesc}</small></div>
+                                                </label>
+                                                <div class="col-lg-8">
+                                                    <div class="custom-control custom-checkbox custom-control-inline mb-5">
+                                                        <input class="custom-control-input" type="radio" name="info[{$sid_}][hide]" id="hide-show-{$sid_}" value="1" {if $server_cfg[$sid_]['hide']?}{if $server_cfg[$sid_]['hide']==1}checked{/if}{else}checked{/if}>
+                                                        <label class="custom-control-label" for="hide-show-{$sid_}">{$ServerSettings_hide_yes}</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox custom-control-inline mb-5">
+                                                        <input class="custom-control-input" type="radio" name="info[{$sid_}][hide]" id="hide-hide-{$sid_}" value="0" {if $server_cfg[$sid_]['hide']? AND $server_cfg[$sid_]['hide']==0}checked{/if}>
+                                                        <label class="custom-control-label" for="hide-hide-{$sid_}">{$ServerSettings_hide_no}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-text text-muted text-center pb-10"><small>{$ServerSettings_info}</small></div>
                                     </div>

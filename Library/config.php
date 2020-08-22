@@ -18,7 +18,6 @@ $system = array (
 			'donations' => true,
 			'forum' => true,
 		),
-		'manager_ma' => true,
 		'pin_shield' => true,
 		'tab_active_log' => true,
 		'max_game_accounts' => 9,
@@ -40,6 +39,7 @@ $system = array (
 			'phone' => true,
 		),
 		'registration_confirmation' => true,
+		'registration_stop_temp_email' => false,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -88,7 +88,7 @@ $system = array (
 				9 => 
 				array (
 					'name' => 'L2R Old',
-					'status' => true,
+					'status' => false,
 					'game' => 'lineage2',
 					'rate' => 1,
 				),
@@ -207,15 +207,16 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '70.745833',
-			'EUR' => '0.874348',
-			'UAH' => '27.02829',
-			'BTC' => '0.000108501471',
+			'RUB' => '72.873333',
+			'EUR' => '0.849488',
+			'UAH' => '27.647167',
+			'BTC' => '8.5270035E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
 		'unitpay_pay_type' => false,
 		'unitpay_currency' => 'RUB',
+		'unitpay_platform' => 'unitpay.ru',
 		'nextpay' => true,
 		'nextpay_product_id' => 10611,
 		'freekassa' => true,
@@ -292,9 +293,8 @@ $system = array (
 	),
 	'plugins'=>array(
 		'__' => 'pl',
+		2 => 'stop_spam_email',
 		3 => 'support',
-		5 => 'manager_account',
-		6 => 'bonus_cod',
 	),
 );
 return $system;
