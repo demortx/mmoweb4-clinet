@@ -23,7 +23,7 @@ $system = array (
 		'max_game_accounts' => 9,
 		'signin_type'=>array(
 			'email' => true,
-			'phone' => true,
+			'login' => true,
 		),
 		'signin_social' => true,
 		'signin_social_type'=>array(
@@ -36,10 +36,8 @@ $system = array (
 		),
 		'registration_type'=>array(
 			'email' => true,
-			'phone' => true,
 		),
 		'registration_confirmation' => true,
-		'registration_stop_temp_email' => false,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -88,7 +86,7 @@ $system = array (
 				9 => 
 				array (
 					'name' => 'L2R Old',
-					'status' => false,
+					'status' => true,
 					'game' => 'lineage2',
 					'rate' => 1,
 				),
@@ -146,7 +144,6 @@ $system = array (
 			9 => 
 			array (
 				'rating' => true,
-				'shop' => true,
 				'support' => true,
 				'donations' => true,
 				'settings' => true,
@@ -156,7 +153,6 @@ $system = array (
 			8 => 
 			array (
 				'rating' => true,
-				'shop' => true,
 				'support' => true,
 				'donations' => true,
 				'settings' => true,
@@ -207,10 +203,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '72.873333',
-			'EUR' => '0.849488',
-			'UAH' => '27.647167',
-			'BTC' => '8.5270035E-5',
+			'RUB' => '74.806538',
+			'EUR' => '0.847328',
+			'UAH' => '27.44364',
+			'BTC' => '8.5796366E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -293,7 +289,6 @@ $system = array (
 	),
 	'plugins'=>array(
 		'__' => 'pl',
-		2 => 'stop_spam_email',
 		3 => 'support',
 	),
 );

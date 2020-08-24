@@ -7,8 +7,31 @@ return array(
 
 
         'signin_title_input_server_lang' => 'Выберите сервер',
-        'signin_title_input_email_lang' => 'Телефон или e-mail',
-        'signin_title_input_email_lang_placeholder' => 'Телефон или e-mail',
+        'signin_title_input_email_lang' => 'E-mail',
+        'signin_title_input_email_lang_placeholder' => 'E-mail',
+
+        'signin_title_input_email_phone_lang' => 'Телефон или e-mail',
+        'signin_title_input_email_phone_lang_placeholder' => 'Телефон или e-mail',
+
+        'signin_title_input_email_phone_login_lang' => 'Телефон, E-mail или Логин',
+        'signin_title_input_email_phone_login_lang_placeholder' => 'Телефон, E-mail или Логин',
+
+        'signin_title_input_phone_login_lang' => 'Телефон или Логин',
+        'signin_title_input_phone_login_lang_placeholder' => 'Телефон или Логин',
+
+        'signin_title_input_phone_lang' => 'Телефон',
+        'signin_title_input_phone_lang_placeholder' => 'Телефон',
+
+        'signin_title_input_email_login_lang' => 'E-mail или Логин',
+        'signin_title_input_email_login_lang_placeholder' => 'E-mail или Логин',
+
+        'signin_title_input_login_lang' => 'Логин',
+        'signin_title_input_login_lang_placeholder' => 'Логин',
+
+
+
+
+
         'signin_title_input_password_lang' => 'Пароль',
 
         'signin_title_input_captcha_lang' => 'Капча',
@@ -32,6 +55,7 @@ return array(
         'signin_ajax_empty_phone' => 'Поле «Телефон» не может быть пустым!',
         'signin_ajax_empty_phone_code' => 'Специальное поле «phone_code» не может быть пустым, обратитесь с ошибкой в саппорт!',
 
+        'signin_ajax_login_error_type' => 'Этот способ авторизации отключен Администратором!',
         'signin_ajax_login_error' => 'Произошла ошибка, обратитесь к администрации!',
 
         'signin_title_not_active_login_type' => '<br>Администратор отключил все варианты авторизации!<br><br><br>',
@@ -45,8 +69,29 @@ return array(
 
 
 		'signin_title_input_server_lang' => 'Select server',
-		'signin_title_input_email_lang' => 'Phone or e-mail',
-		'signin_title_input_email_lang_placeholder' => 'Phone or e-mail',
+		'signin_title_input_email_lang' => 'E-mail',
+		'signin_title_input_email_lang_placeholder' => 'E-mail',
+
+        'signin_title_input_email_phone_lang' => 'Phone or e-mail',
+        'signin_title_input_email_phone_lang_placeholder' => 'Phone or e-mail',
+
+        'signin_title_input_email_phone_login_lang' => 'Phone, E-mail or Login',
+        'signin_title_input_email_phone_login_lang_placeholder' => 'Phone, E-mail or Login',
+
+        'signin_title_input_phone_login_lang' => 'Phone or Login',
+        'signin_title_input_phone_login_lang_placeholder' => 'Phone or Login',
+
+        'signin_title_input_phone_lang' => 'Phone',
+        'signin_title_input_phone_lang_placeholder' => 'Phone',
+
+        'signin_title_input_email_login_lang' => 'E-mail or Login',
+        'signin_title_input_email__login_lang_placeholder' => 'E-mail or Login',
+
+
+        'signin_title_input_login_lang' => 'Login',
+        'signin_title_input_login_lang_placeholder' => 'Login',
+
+
 		'signin_title_input_password_lang' => 'Password',
 
 		'signin_title_input_captcha_lang' => 'Captcha',
@@ -70,6 +115,7 @@ return array(
 		'signin_ajax_empty_phone' => 'The "Phone" field cannot be empty!',
 		'signin_ajax_empty_phone_code' => 'The special field "phone_code" cannot be empty, contact support with an error!',
 
+        'signin_ajax_login_error_type' => 'This authorization method is disabled by the Administrator!',
 		'signin_ajax_login_error' => 'An error has occurred, please contact the administration!',
 
 		'signin_title_not_active_login_type' => '<br> The administrator has disabled all authorization options! <br> <br> <br>',

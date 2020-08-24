@@ -61,53 +61,64 @@ class SignIn extends MainModulesClass
         $vars['type'] = 'signin';
 
 
-        if ($_REQUEST['type_login'] == 'phone'){
-            $vars['type_login'] = 'phone';
+        if ($_POST['type_login'] == 'phone'){
 
             //Проверка телефона
-            if (!isset($_REQUEST['phone']) OR empty($_REQUEST['phone']))
+            if (!isset($_POST['phone']) OR empty($_POST['phone']))
                 return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_phone'])->danger();
             else
-                $vars["phone"] = str_replace(array(' ', '-'), '', $_REQUEST['phone']);
+                $vars["phone"] = str_replace(array(' ', '-'), '', $_POST['phone']);
 
             //Проверка телефона
-            if (!isset($_REQUEST['phone_code']) OR empty($_REQUEST['phone_code']))
+            if (!isset($_POST['phone_code']) OR empty($_POST['phone_code']))
                 return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_phone_code'])->danger();
             else
-                $vars["phone_code"] = $_REQUEST['phone_code'];
+                $vars["phone_code"] = $_POST['phone_code'];
 
-
+            $vars['type_login'] = 'phone';
 
         }else{
-            $vars['type_login'] = 'email';
 
-            if (!isset($_REQUEST['email']) OR empty($_REQUEST['email']))
+            if (!isset($_POST['email']) OR empty($_POST['email']))
                 return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_email_phone'])->danger();
-            else
-                $vars["email"] = $_REQUEST['email'];
+
+
+            if (preg_match("/.+@.+\..+/i", $_POST['email'])) {
+                $vars["email"] = $_POST['email'];
+                $vars['type_login'] = 'email';
+            }else{
+                $vars["login"] = $_POST['email'];
+                $vars['type_login'] = 'login';
+                $vars['type'] = 'signin_ig_login';
+            }
 
         }
 
 
+
+        if (!array_key_exists($vars['type_login'], get_instance()->config['cabinet']['signin_type']))
+            return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error_type'])->danger();
+
+
         //Проверка Пароля
-        if (!isset($_REQUEST['password']) OR empty($_REQUEST['password']))
+        if (!isset($_POST['password']) OR empty($_POST['password']))
             return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_password'])->danger();
         else
-            $vars["password"] = $_REQUEST['password'];
+            $vars["password"] = $_POST['password'];
 
         //Проверка сервера
-        if (!isset($_REQUEST['sid']) OR empty($_REQUEST['sid']))
+        if (!isset($_POST['sid']) OR empty($_POST['sid']))
             return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_sid'])->danger();
         else{
-            $vars["sid"] = $_REQUEST['sid'];
+            $vars["sid"] = $_POST['sid'];
             get_instance()->set_sid((int) $vars["sid"], false);
         }
 
 
 
         //подписка
-        if (isset($_REQUEST["remember-me"]))
-            $vars["remember-me"] = $_REQUEST["remember-me"];
+        if (isset($_POST["remember-me"]))
+            $vars["remember-me"] = $_POST["remember-me"];
 
 
         if (!captcha_check())
@@ -169,10 +180,10 @@ class SignIn extends MainModulesClass
         $vars['type'] = 'signin_social';
 
 
-        if (!isset($_REQUEST['token']) OR empty($_REQUEST['token']))
+        if (!isset($_POST['token']) OR empty($_POST['token']))
             return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_email_phone'])->danger();
         else
-            $vars["token"] = $_REQUEST['token'];
+            $vars["token"] = $_POST['token'];
 
 
         $vars['host'] = $_SERVER['HTTP_HOST'];

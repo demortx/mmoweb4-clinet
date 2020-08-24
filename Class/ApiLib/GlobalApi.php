@@ -78,6 +78,10 @@ class GlobalApi extends \Api
 
             $response = $this->init()->addParam('signin_social', $vars)->post('v1/Globals/user/log-in-social')->response();
 
+        } elseif ($vars['type'] == 'signin_ig_login') {
+
+            $response = $this->init()->addParam('signin_ig_login', $vars)->post('v1/Globals/user/log-ig-login')->response();
+
         } else
             return false;
 

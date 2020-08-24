@@ -149,6 +149,32 @@ class Panel extends Controller {
             die;
         }
 
+        $lang = get_lang('signin.lang');
+
+
+        if(isset($this->config['cabinet']['signin_type']) and is_array($this->config['cabinet']['signin_type'])){
+            $str_lg = 'signin_title_input_';
+
+            if (array_key_exists('email', $this->config['cabinet']['signin_type'])) {
+                $str_lg .= 'email_';
+            }
+            if (array_key_exists('phone', $this->config['cabinet']['signin_type'])) {
+                $str_lg .= 'phone_';
+            }
+            if (array_key_exists('login', $this->config['cabinet']['signin_type'])) {
+                $str_lg .= 'login_';
+            }
+            $str_lg .= 'lang';
+
+
+            if (isset($lang[$str_lg]))
+                $lang['signin_title_input_email_lang'] = $lang[$str_lg];
+
+        }
+
+
+
+
         $this->initTPL(
             array_merge(
                 array(
@@ -157,7 +183,7 @@ class Panel extends Controller {
                             array(
                                 'config' => $this->config
                             ),
-                            get_lang('signin.lang')
+                            $lang
                         )
                     ),
                     '_FOOTER' => false,
