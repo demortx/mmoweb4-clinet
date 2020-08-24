@@ -42,7 +42,7 @@
 
 
                         {set $activ_tab = true}
-                        {if $config.cabinet.signin_type.email?}
+                        {if $config.cabinet.signin_type.email? OR $config.cabinet.signin_type.login?}
                         <div class="form-group row input-email">
                             <div class="col-12">
                                 <label for="email">{$signin_title_input_email_lang}</label>
