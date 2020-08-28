@@ -859,8 +859,14 @@ if ( ! function_exists('detect_lang')) {
                 $URI->uri_string = preg_replace("|^\/?$uri_abbr\/?|", '', $URI->uri_string);
                 if ($URI->uri_string == '/')
                     $URI->uri_string = '';
+
+                $get_param = '';
+                if(isset($_GET) AND count($_GET) > 0){
+                    $get_param .= '?'.http_build_query($_GET);
+                }
+
                 /* redirect */
-                header('Location: '.$config['base_url'].$index_page.$URI->uri_string);
+                header('Location: '.$config['base_url'].$index_page.$URI->uri_string.$get_param);
                 exit;
             }
 
@@ -921,8 +927,13 @@ if ( ! function_exists('detect_lang')) {
                 if ($URI->uri_string == '/')
                     $URI->uri_string = '';
 
+                $get_param = '';
+                if(isset($_GET) AND count($_GET) > 0){
+                    $get_param .= '?'.http_build_query($_GET);
+                }
+
                 /* redirect */
-                header('Location: '.$config['base_url'].$index_page.$URI->uri_string);
+                header('Location: '.$config['base_url'].$index_page.$URI->uri_string.$get_param);
                 exit;
             }
 
