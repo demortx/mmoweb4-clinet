@@ -59,12 +59,16 @@ class User
         }
     }
 
+
     public function rebootSession(){
         $this->isLogin = null;
         $this->isLogin();
 
     }
 
+    /**
+     * @return bool|null
+     */
     public function isLogin(){
 
         if($this->isLogin === null)
@@ -174,8 +178,12 @@ class User
     {
         $this->connection_db();
 
+        $session = $this->parsData($session);
+
         set_platform($session['master_account']['platform']);
         set_sid($session['master_account']['select_sid']);
+
+
 
         $STH = $this->db->prepare('INSERT INTO `mw_session`(`session_id`,`data`,`ip`,`session_end`) VALUES (:session_id,:data,:ip,:session_end);');
         $STH->execute(
@@ -190,9 +198,15 @@ class User
         $this->session = $session;
     }
 
+    /**
+     * @param $data
+     * @return bool
+     */
     public function updateSessionDB($data){
 
         $this->connection_db();
+
+        $data = $this->parsData($data);
 
         if (isset($data["master_account"]["select_sid"]) AND $this->getSid() != $data["master_account"]["select_sid"]){
             set_sid($data['master_account']['select_sid']);
@@ -228,7 +242,9 @@ class User
 
     }
 
-
+    /**
+     * @return int
+     */
     public function checkShield(){
 
         if ($this->session['master_account']['shield'] == 1)
@@ -238,6 +254,9 @@ class User
 
     }
 
+    /**
+     * @return string
+     */
     public function getName(){
 
         if (is_array($this->session['master_account']['email']))
@@ -247,6 +266,9 @@ class User
 
     }
 
+    /**
+     * @return bool|string
+     */
     public function getPhone(){
 
         if (is_array($this->session['master_account']['phone']))
@@ -256,6 +278,9 @@ class User
 
     }
 
+    /**
+     * @return bool|string
+     */
     public function getEmail(){
 
         if (is_array($this->session['master_account']['email']))
@@ -265,6 +290,11 @@ class User
 
     }
 
+    /**
+     * @param bool $account_name
+     * @param bool $full
+     * @return array
+     */
     public function getGameAccount($account_name = false, $full = false){
         $accounts = array();
 
@@ -290,6 +320,11 @@ class User
         return $accounts;
     }
 
+    /**
+     * @param bool $account_name
+     * @param bool $full
+     * @return array
+     */
     public function getGameChars($account_name = false, $full = false){
         $chars = array();
 
@@ -323,6 +358,10 @@ class User
         return $chars;
     }
 
+    /**
+     * @param string $type
+     * @return int|string
+     */
     public function getDiscount($type = 'game_valute'){
 
         if(isset($this->config['discount'][get_sid()])){
@@ -343,5 +382,31 @@ class User
             return 0;
         }
 
+    }
+
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    private function parsData($data){
+
+
+        if (isset($data['user_data']["account"]) AND is_array($data['user_data']["account"])){
+            $temp = array();
+
+            foreach ($data['user_data']["account"] as $login => $account_info) {
+                if (preg_match("/item\d/", $login)) {
+                    $login = substr($login, 4);
+                }
+
+                $temp[$login] = $account_info;
+            }
+            $data['user_data']["account"] = $temp;
+        }
+
+
+
+        return $data;
     }
 }

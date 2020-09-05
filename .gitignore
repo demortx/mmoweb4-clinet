@@ -122,6 +122,10 @@ fabric.properties
 /template/site/titanwars/
 /template/site/titanwars/*
 /template/site/titanwars/**/
+/template/site/itsu
+/template/site/itsu/
+/template/site/itsu/*
+/template/site/itsu/**/
 
 template/site/.DS_Store
 template/.DS_Store
