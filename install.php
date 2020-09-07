@@ -132,7 +132,7 @@ if($con_true){
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `session_id` varchar(150) NOT NULL DEFAULT '',
                           `data` mediumtext,
-                          `ip` varchar(16) DEFAULT NULL,
+                          `ip` varchar(45) DEFAULT NULL,
                           `session_end` datetime NOT NULL,
                           PRIMARY KEY (`id`,`session_end`,`session_id`),
                           KEY `session_end` (`session_end`),
@@ -142,7 +142,7 @@ if($con_true){
     $DB->query("DROP TABLE IF EXISTS `mw_stop_spam`;
                         CREATE TABLE IF NOT EXISTS `mw_stop_spam` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
-                          `ip` varchar(250) DEFAULT NULL,
+                          `ip` varchar(45) DEFAULT NULL,
                           `date` int(11) DEFAULT NULL,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
