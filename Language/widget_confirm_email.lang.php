@@ -29,7 +29,7 @@ return array(
 
         //bind_email
         'lang_title_bind_email' => 'Привязка Email',
-        'lang_desc_bind_email' => 'Подлкючение E-mail позволит вам воспользоваться полным функционалом Личного Кабинета.',
+        'lang_desc_bind_email' => 'Подключение E-mail позволит вам воспользоваться полным функционалом Личного Кабинета.',
         'lang_pin_label_placeholder' => 'PIN-CODE',
         'lang_btn_send_email_bind_email' => 'Выслать код',
 

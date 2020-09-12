@@ -9,7 +9,7 @@
 return array(
     'ru' => array(
         'title_lang' => 'Склад на сервере: ',
-        'title_select_wh' => 'Выбирите предмет',
+        'title_select_wh' => 'Выберите предмет',
         'title_wh_empty' => 'Склад пуст',
 
         'title_select_account' => 'Выберите аккуант',

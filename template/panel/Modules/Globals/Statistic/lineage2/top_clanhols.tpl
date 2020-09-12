@@ -10,6 +10,9 @@
     </thead>
     <tbody>
     {foreach $top_list as $key => $row  index=$index}
+        {if empty($row.holl_id)}
+            {continue}
+        {/if}
         <tr>
             <th scope="row">{$index+1}</th>
             <th>{$row.holl_id}</th>

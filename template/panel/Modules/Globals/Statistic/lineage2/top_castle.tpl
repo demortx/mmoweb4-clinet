@@ -11,6 +11,9 @@
     </thead>
     <tbody>
     {foreach $top_list as $key => $row  index=$index}
+        {if empty($row.castle)}
+            {continue}
+        {/if}
         <tr>
             <th scope="row">{$index+1}</th>
             <td>

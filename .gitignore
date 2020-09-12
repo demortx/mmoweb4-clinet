@@ -126,6 +126,10 @@ fabric.properties
 /template/site/itsu/
 /template/site/itsu/*
 /template/site/itsu/**/
+/template/site/arcana
+/template/site/arcana/
+/template/site/arcana/*
+/template/site/arcana/**/
 
 template/site/.DS_Store
 template/.DS_Store
