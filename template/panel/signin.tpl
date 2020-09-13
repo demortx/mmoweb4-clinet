@@ -1,4 +1,5 @@
 <!-- Page Content -->
+{if $_IFRAME == false}
 <div class="row mx-0 justify-content-center">
     <div class="col-lg-6 col-xl-4">
         <div class="content content-full overflow-hidden">
@@ -7,7 +8,7 @@
                 <h1 class="h4 font-w700 mt-30 mb-10">{$signin_title_lang}</h1>
             </div>
             <!-- END Header -->
-
+{/if}
 
             <!-- Sign In Form -->
             <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
@@ -15,7 +16,8 @@
             <form class="js-validation-signin" action="/input" method="post" onsubmit="return false;">
                 {$.php.form_hide_input("Modules\Globals\SignIn\SignIn", "signin")}
                 <input id="type_login" name="type_login" type="hidden" value="email">
-                <div class="block block-themed block-rounded block-shadow">
+                <div class="block block-themed block-rounded block-shadow {if $_IFRAME}mb-0{/if}">
+                    {if $.get.title != 'false'}
                     <div class="block-header bg-gd-dusk">
                         <h3 class="block-title">{$signin_title_desc_lang}</h3>
                         <div class="block-options">
@@ -26,6 +28,7 @@
                             </select>
                         </div>
                     </div>
+                    {/if}
                     <div class="block-content">
                         <div class="form-group">
                             <label for="select-server">{$signin_title_input_server_lang}</label>
@@ -173,10 +176,13 @@
                 </div>
             </form>
             <!-- END Sign In Form -->
+{if $_IFRAME == false}
         </div>
     </div>
 </div>
 <!-- END Page Content -->
+{/if}
+
 
 {if $config.cabinet.signin_type.phone?}
     {$.site._SEO->addTegHTML('head', 'telInput_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/css/intl-telInput/intlTelInput.css?ver=0.1'])}

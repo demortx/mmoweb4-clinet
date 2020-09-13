@@ -1,3 +1,4 @@
+{if $_IFRAME == false}
 <div class="row mx-0 justify-content-center">
     <div class="col-lg-6 col-xl-4">
         <div class="content content-full overflow-hidden">
@@ -6,13 +7,15 @@
                 <h1 class="h4 font-w700 mt-30 mb-10">{$signup_title_lang}</h1>
             </div>
             <!-- END Header -->
-
+{/if}
 
             <form class="js-validation-signin" action="/input" method="post" id="form_signup" onsubmit="return false;">
                 {$.php.form_hide_input("Modules\Globals\SignUp\SignUp", "signup")}
                 <input id="type_reg" name="type_reg" type="hidden" value="#r-email">
 
-                <div class="block block-themed block-rounded block-shadow">
+                <div class="block block-themed block-rounded block-shadow {if $_IFRAME}mb-0{/if}">
+
+                    {if $.get.title != 'false'}
                     <div class="block-header bg-gd-emerald">
                         <h3 class="block-title">{$signup_title_desc_lang}</h3>
                         <div class="block-options">
@@ -23,6 +26,9 @@
                             </select>
                         </div>
                     </div>
+                    {/if}
+
+
                     <ul class="nav nav-tabs nav-tabs-alt row no-gutters" data-toggle="tabs" role="tablist">
 
 
@@ -256,9 +262,13 @@
                 </div>
             </form>
             <!-- END Sign Up Form -->
+
+{if $_IFRAME == false}
         </div>
     </div>
 </div>
+{/if}
+
 {if $config.cabinet.registration_type.phone?}
     {$.site._SEO->addTegHTML('head', 'telInput_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/css/intl-telInput/intlTelInput.css?ver=0.1'])}
     {$.site._SEO->addTegHTML('footer', 'telInput', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/intl-telInput/intlTelInput.js?ver=0.1'])}

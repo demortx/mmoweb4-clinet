@@ -434,6 +434,7 @@ class Controller
                     '_SEO_HEAD' => $this->seo->getHead(),
                     '_SEO_BODY' => $this->seo->getBody(),
                     '_SEO_FOOTER' => $this->seo->getFooter(),
+                    '_IFRAME' => false
 
                 ),
                 $param

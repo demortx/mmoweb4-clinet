@@ -4,9 +4,9 @@
         {$_SEO_BODY}
         <!-- Page Container-->
             <div id="page-container" class="{$_PAGE_CONTENT_CLASS} {$_PAGE_CONTENT_CLASS_ADD}">
-            {$_MENU}
+            {if $_IFRAME == false}{$_MENU}{/if}
             <!-- Main Container -->
-            <main id="main-container">
+            <main {if $_IFRAME == false}id="main-container"{/if}>
                 {if $_CONTENT?}
                     <div class="content content-full">
                         {$_CONTENT}
@@ -16,7 +16,7 @@
                 {/if}
             </main>
             <!-- END Main Container -->
-                {if $_FOOTER}
+                {if $_FOOTER AND ($_IFRAME == false)}
                     {include "/panel/footer.tpl"}
                 {/if}
                 <!-- Pop Out Modal -->

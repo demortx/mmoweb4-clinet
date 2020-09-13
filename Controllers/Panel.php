@@ -172,8 +172,9 @@ class Panel extends Controller {
 
         }
 
-
-
+        $iframe = false;
+        if (isset($_GET['iframe']))
+            $iframe = true;
 
         $this->initTPL(
             array_merge(
@@ -181,12 +182,14 @@ class Panel extends Controller {
                     '_CONTENT_FULL' => $this->fenom->fetch("panel:signin.tpl",
                         array_merge(
                             array(
-                                'config' => $this->config
+                                'config' => $this->config,
+                                '_IFRAME' => $iframe
                             ),
                             $lang
                         )
                     ),
                     '_FOOTER' => false,
+                    '_IFRAME' => $iframe
                 ),
                 get_lang('login.menu.lang')
             )
@@ -214,6 +217,10 @@ class Panel extends Controller {
             }
         }
 
+        $iframe = false;
+        if (isset($_GET['iframe']))
+            $iframe = true;
+
         //get_instance()->seo->addTeg('head', 'telInput', 'link', ['rel'=>'stylesheet', 'href'=>'/template/panel/assets/css/intl-telInput/intlTelInput.css?ver=0.1']);
         $this->initTPL(
             array_merge(
@@ -223,12 +230,14 @@ class Panel extends Controller {
                         array_merge(
                             array(
                                 'config' => $this->config,
-                                'prefix_list' => @$_SESSION['prefix_list']
+                                'prefix_list' => @$_SESSION['prefix_list'],
+                                '_IFRAME' => $iframe
                             ),
                             get_lang('signup.lang')
                         )
                     ),
                     '_FOOTER' => false,
+                    '_IFRAME' => $iframe
 
                 ),
                 get_lang('login.menu.lang')
