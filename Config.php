@@ -70,16 +70,17 @@ define('HEADER_IP',         'REMOTE_ADDR'); // Источник ип адрес�
 * Кеширование информации сайт и лк. Время в секундах
 * Caching information site and cp. Time in seconds
 */
-define('CACHE_NEWS',            600);
-define('CACHE_IBLOCK',          600);
-define('CACHE_FORUM',           600);
-define('CACHE_ONLINE',          600);
-define('CACHE_RATING',          600);
-define('CACHE_HISTORY_ONLINE',  86400);
-define('CACHE_STREAM',          600);
+define('CACHE_NEWS',                    600);
+define('CACHE_IBLOCK',                  600);
+define('CACHE_FORUM',                   600);
+define('CACHE_ONLINE',                  600);
+define('CACHE_RATING',                  600);
+define('CACHE_HISTORY_ONLINE',          86400);
+define('CACHE_STREAM',                  600);
+define('CACHE_CLEAR_SESSION',           1800);
 #TODO Реализовать очистку временных файлов
-define('DEL_CACHE_THROTTLER',   86400);
-define('DEL_CACHE_DEBUG',       604800);
+define('DEL_CACHE_THROTTLER',           86400);
+define('DEL_CACHE_DEBUG',               604800);
 
 /**
  * Ключи стриминговых площадок
@@ -115,3 +116,11 @@ define('PAYMENT_KEY',       'DFCPQ'); //EXEMPLE: https://mw4.mmoweb.ru/api/payme
  * И происходит постоянный ридирект поставте значение в false
  */
 define('HTTP_FORWARDING',   false); //Производить ли ридирект если в админ панели выстовлено https а обрашение на http
+
+/**
+ * Plugin Support
+ * Найстроки плагина суппорта, загрузка файлов
+ * Support plugin builders, file upload
+ */
+define('LIMIT_FILES',   5);
+define('MAX_SIZE',      2); //mb

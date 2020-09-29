@@ -216,6 +216,23 @@ return array(
         ),
         'function' => function(&$buttons){return false;}
     ),
+    'market' => array(
+        'enable' => true,
+        'level' => 650,
+        'empty_hide' => false,
+        'href' => '/panel/market',
+        'icon' => 'fa fa-bank',
+        'target' => '_self',
+        'name' => array(
+            'ru' => 'Рынок',
+            'en' => 'Market',
+        ),
+        'title' => array(
+            'ru' => 'Рынок',
+            'en' => 'Market',
+        ),
+        'function' => function(&$buttons){return false;}
+    ),
     'forum' => array(
         'enable' => true,
         'level' => 700,

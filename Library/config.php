@@ -18,12 +18,14 @@ $system = array (
 			'donations' => true,
 			'forum' => true,
 		),
+		'manager_ma' => true,
 		'pin_shield' => true,
 		'tab_active_log' => true,
 		'max_game_accounts' => 9,
 		'signin_type'=>array(
 			'email' => true,
 			'login' => true,
+			'phone' => true,
 		),
 		'signin_social' => true,
 		'signin_social_type'=>array(
@@ -38,6 +40,7 @@ $system = array (
 			'email' => true,
 		),
 		'registration_confirmation' => true,
+		'registration_stop_temp_email' => false,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -185,7 +188,7 @@ $system = array (
 	'settings' => 1,
 	'visualization'=>array(
 		'cabinet_layout_login' => 'left',
-		'cabinet_layout_login_menu_fixed' => 'fixed',
+		'cabinet_layout_login_menu_fixed' => 'default',
 		'cabinet_layout_login_color_menu' => 'white',
 		'cabinet_layout_login_color' => 'default',
 		'cabinet_layout_no_login' => 'top',
@@ -203,10 +206,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '74.806538',
-			'EUR' => '0.847328',
-			'UAH' => '27.44364',
-			'BTC' => '8.5796366E-5',
+			'RUB' => '75.25525',
+			'EUR' => '0.843536',
+			'UAH' => '27.972303',
+			'BTC' => '9.6480566E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -289,7 +292,10 @@ $system = array (
 	),
 	'plugins'=>array(
 		'__' => 'pl',
+		2 => 'stop_spam_email',
 		3 => 'support',
+		5 => 'manager_account',
+		6 => 'bonus_cod',
 	),
 );
 return $system;

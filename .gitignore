@@ -130,6 +130,10 @@ fabric.properties
 /template/site/arcana/
 /template/site/arcana/*
 /template/site/arcana/**/
+/template/site/server-games
+/template/site/server-games/
+/template/site/server-games/*
+/template/site/server-games/**/
 
 template/site/.DS_Store
 template/.DS_Store

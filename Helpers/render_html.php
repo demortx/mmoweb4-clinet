@@ -515,6 +515,10 @@ if (!function_exists('valid_parse_row')) {
             $row_key = 'row';
         elseif (array_key_exists('row justify-content-center', $array))
             $row_key = 'row justify-content-center';
+        elseif (array_key_exists('row gutters-tiny', $array))
+            $row_key = 'row gutters-tiny';
+        elseif (array_key_exists('row no-gutters', $array))
+            $row_key = 'row no-gutters';
         else
             $row_key = false;
 

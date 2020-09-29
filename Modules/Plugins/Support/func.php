@@ -201,9 +201,9 @@ class func
 
         // initialize FileUploader
         $FileUploader = new \FileUploader('files', array(
-            'limit' => 5,
+            'limit' => LIMIT_FILES,
             'maxSize' => null,
-            'fileMaxSize' => 2,
+            'fileMaxSize' => MAX_SIZE,
             'extensions' => ['jpg', 'gif', 'png',],
             'required' => false,
             'uploadDir' => ROOT_DIR.'/Files/support/',

@@ -229,6 +229,8 @@ class User
             $this->session['vote'] = $data['vote'];
 
 
+        //Триггер на очистку истекших сессия
+        $this->clearSession();
 
 
         $STH = $this->db->prepare('UPDATE `mw_session` SET `data`= :data WHERE session_id = :session_id;');
@@ -408,5 +410,16 @@ class User
 
 
         return $data;
+    }
+
+    /**
+     * Очистка сессиий
+     */
+    private function clearSession(){
+
+        if (get_cache('clear_session') == false){
+            $this->db->query('DELETE FROM mw_session WHERE session_end < NOW();');
+            set_cache('clear_session', 'true', CACHE_CLEAR_SESSION);
+        }
     }
 }
