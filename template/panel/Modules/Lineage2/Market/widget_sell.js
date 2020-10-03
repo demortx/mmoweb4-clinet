@@ -47,3 +47,13 @@ class BeFormWizard {
 
 // Initialize when page loads
 jQuery(() => { BeFormWizard.init(); });
+
+
+
+$('body').on('click', '.btn-section', function (e) {
+    $('.btn-section').removeClass('active');
+    let _this = $(this);
+    _this.addClass('active');
+    $('#input_section').val(_this.data('type'));
+
+});

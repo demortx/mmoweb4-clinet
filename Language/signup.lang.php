@@ -83,6 +83,7 @@ return array(
         'signup_completed_text_2' => 'направлено письмо с данными регистрации.',
         'signup_completed_desc_2' => 'Если письмо не пришло проверьте папку спам.',
         'signup_completed_desc_3' => 'Не сообщайте регистрационные данные 3 лицам.',
+        'signup_completed_save_data' => 'Сохранить в .txt файл.',
 
 
         /*        signup_code.tpl          */
@@ -177,7 +178,7 @@ return array(
 		'signup_completed_text_2' => 'a letter was sent with registration data.',
 		'signup_completed_desc_2' => 'If the message did not arrive, check the spam folder.',
 		'signup_completed_desc_3' => 'Do not give registration data to 3 persons.',
-
+        'signup_completed_save_data' => 'Save to .txt file.',
 
 		/* signup_code.tpl */
 

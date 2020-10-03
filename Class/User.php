@@ -134,7 +134,7 @@ class User
      */
     public function setSessionIdCookie($session_id, $session_end)
     {
-        set_cookie('id_mw', $session_id, strtotime($session_end));
+        set_cookie('id_mw', $session_id, strtotime($session_end), '.');
         $this->session_id = $session_id;
     }
 

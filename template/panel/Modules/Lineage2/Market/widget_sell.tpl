@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.2'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.5'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -33,41 +33,42 @@
             <div class="tab-pane active" id="wizard-section" role="tabpanel">
                 <div class="row">
                     <div class="col-12 col-lg-6 offset-lg-3">
-
+                        <input type="hidden" id="input_section" name="section" value="armor">
 
 
                         <div class="list-group push">
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="armor">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active btn-section" data-type="armor" >
                                 <img src="/template/panel/assets/media/market/armor.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Броня <br><small>Защита мягких тканей</small></span>
                                 <span class="badge badge-pill badge-secondary">1</span>
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="weapon">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="weapon" >
                                 <img src="/template/panel/assets/media/market/sword.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Оружие <br><small>Острое и опасное</small></span>
                                 <span class="badge badge-pill badge-secondary">7</span>
+
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="jewelry">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="jewelry" >
                                 <img src="/template/panel/assets/media/market/jewelry.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Бижутерия <br><small>Шик, блеск и красота</small></span>
                                 <span class="badge badge-pill badge-secondary">3</span>
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="consumables">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="consumables" >
                                 <img src="/template/panel/assets/media/market/miscellaneous.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Расходники <br><small>Выпил, закусил</small></span>
                                 <span class="badge badge-pill badge-secondary">0</span>
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="coin">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="coin" >
                                 <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Адена <br><small>Много не бывает</small></span>
                                 <span class="badge badge-pill badge-secondary">8</span>
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="character">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="character" >
                                 <img src="/template/panel/assets/media/market/wizard.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Персонажи <br><small>Нигибаторы даром</small></span>
                                 <span class="badge badge-pill badge-secondary">1</span>
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-type="etc">
+                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="etc" >
                                 <img src="/template/panel/assets/media/market/shelf.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Другое <br><small>Свалка помойка</small></span>
                                 <span class="badge badge-pill badge-secondary">13</span>

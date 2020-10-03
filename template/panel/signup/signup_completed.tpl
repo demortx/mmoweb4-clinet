@@ -36,7 +36,7 @@
                     {if $.session.signup.subscribe?}
                         <tr><td>{$signup_completed_subscribe}</td><td><i class="fa fa-check"></i> {$.session.signup.subscribe}</td></tr>
                     {/if}
-                    <tr><td colspan="2" class="text-center"><a class="link-effect" href="/text?type=registration&{if $.session.signup.prefix?}prefix={$.session.signup.prefix}&{/if}{if $.session.signup.login?}login={$.session.signup.prefix}{$.session.signup.login}&{/if}{if $.session.signup.email?}email={$.session.signup.email}&{/if}{if $.session.signup.pin?}pin={$.session.signup.pin}&{/if}{if $.session.signup.phone?}phone={$.session.signup.phone}&{/if}{if $.session.signup.password?}password={$.session.signup.password}{/if}"><i class="fa fa-save"></i> Сохранить в .txt файл.</a></td></tr>
+                    <tr><td colspan="2" class="text-center"><a class="link-effect" href="/text?type=registration&{if $.session.signup.prefix?}prefix={$.session.signup.prefix}&{/if}{if $.session.signup.login?}login={$.session.signup.prefix}{$.session.signup.login}&{/if}{if $.session.signup.email?}email={$.session.signup.email}&{/if}{if $.session.signup.pin?}pin={$.session.signup.pin}&{/if}{if $.session.signup.phone?}phone={$.session.signup.phone}&{/if}{if $.session.signup.password?}password={$.session.signup.password}{/if}"><i class="fa fa-save"></i> {$signup_completed_save_data}</a></td></tr>
                     </tbody>
                 </table>
                 <br><br>
