@@ -1273,7 +1273,7 @@ if (!function_exists('remove_emoji')) {
     }
 }
 
-if (!file_exists('log_write')){
+if (!function_exists('log_write')){
 
     function log_write($file, $data, $date_add = true, $eol = PHP_EOL){
 
