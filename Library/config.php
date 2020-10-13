@@ -18,7 +18,6 @@ $system = array (
 			'donations' => true,
 			'forum' => true,
 		),
-		'manager_ma' => true,
 		'pin_shield' => true,
 		'tab_active_log' => true,
 		'max_game_accounts' => 9,
@@ -40,7 +39,6 @@ $system = array (
 			'email' => true,
 		),
 		'registration_confirmation' => true,
-		'registration_stop_temp_email' => false,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -174,6 +172,8 @@ $system = array (
 		),
 	),
 	'site'=>array(
+		'url_website' => 'https://mw4.mmoweb.ru/',
+		'url_forum' => 'https://forum.mmoweb.ru/',
 		'status' => true,
 		'status_site_jobs' => false,
 		'status_site_jobs_msg' => 'Sorry, we&#039;re currently unavailable. Please check back later.',
@@ -206,10 +206,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '75.25525',
-			'EUR' => '0.843536',
-			'UAH' => '27.972303',
-			'BTC' => '9.6480566E-5',
+			'RUB' => '77.161267',
+			'EUR' => '0.847914',
+			'UAH' => '28.266432',
+			'BTC' => '8.7046454E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -234,6 +234,9 @@ $system = array (
 		'payu_currency' => 'EUR',
 		'alikassa' => true,
 		'alikassa_currency' => 'RUB',
+		'enot' => true,
+		'enot_id' => 5581,
+		'enot_currency' => 'RUB',
 	),
 	'discount'=>array(
 		'project'=>array(
@@ -292,9 +295,7 @@ $system = array (
 	),
 	'plugins'=>array(
 		'__' => 'pl',
-		2 => 'stop_spam_email',
 		3 => 'support',
-		5 => 'manager_account',
 		6 => 'bonus_cod',
 	),
 );

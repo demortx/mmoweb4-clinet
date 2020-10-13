@@ -56,7 +56,7 @@ return array(
         'enable' => true,
         'level' => 400,
         'empty_hide' => false,
-        'href' => 'https://forum.mmoweb.ru/',
+        'href' => isset(get_instance()->config['site']['url_forum']) ? get_instance()->config['site']['url_forum'] : '/',
         'icon' => 'si si-bubbles',
         'target' => '_blank',
         'name' => array(
