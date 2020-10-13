@@ -76,14 +76,14 @@ class Panel extends Controller {
 
     public function logout(){
 
-        delete_cookie('id_mw');
+        delete_cookie('id_mw', '.');
         header('Location: /sign-in', TRUE, 301);
         die;
     }
 
     public function rating(){
 
-        /**@var $rating \Modules\Globals\Statistic\Statistic*/
+        /** @var $rating \Modules\Globals\Statistic\Statistic */
         $rating = $this->getModule('Modules\Globals\Statistic\Statistic');
 
 

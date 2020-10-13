@@ -127,6 +127,23 @@ if ( ! function_exists('delete_cookie'))
      */
     function delete_cookie($name, $domain = '', $path = '/')
     {
+        if ($domain == '.'){
+            if(isset($_SERVER['HTTP_HOST']) AND !empty($_SERVER['HTTP_HOST']))
+                $pars_url = parse_url($_SERVER['HTTP_HOST']);
+            elseif(isset($_SERVER['SERVER_NAME']) AND !empty($_SERVER['SERVER_NAME']))
+                $pars_url = parse_url($_SERVER['SERVER_NAME']);
+            else
+                $pars_url["path"] = '/';
+
+            if(substr_count($pars_url["path"], '.') > 1){
+                $pars_url["path"] = stristr($pars_url["path"], '.');
+            }else{
+                $pars_url["path"] = '.' . $pars_url["path"];
+            }
+
+            $domain = $pars_url["path"];
+        }
+
         setcookie($name, '', 0, $path, $domain);
     }
 }

@@ -278,31 +278,46 @@ if (!function_exists('set_url')) {
         elseif ($str == '#')
             return '#';
 
+        $url = parse_url($str);
+
+        if (count($url) < 1)
+            return '#';
+
 
         $config_project = get_instance()->config;;
 
+        if (!isset($url['host']) AND $add_url_site){
+            $url_cfg = parse_url($config_project['project']['url_site']);
+            $url['scheme'] = $url_cfg['scheme'];
+            $url['host'] = $url_cfg['host'];
 
-        $url_lang = '';
+        }
+
+        if (isset($url['host'])){
+            if (!isset($url_cfg))
+                $url_cfg = parse_url($config_project['project']['url_site']);
+
+            if ($url['host'] != $url_cfg['host'])
+                $lang_det = false;
+        }
+
+        if (isset($url['path'])){
+            if (substr($url['path'], 0, 1) != '/')
+                $url['path'] = '/'.$url['path'];
+        }
+
+
         if (DETECT_LANG AND $lang_det) {
             $url_lang = select_lang();
-            $url_lang .= (($str[0] == '/' OR $str =='/') ? '' : '/');
-        }
 
-        if (strpos($str, 'http') !== false) {
-            return $str;
-        }
-
-        if ($add_url_site) {
-
-            if (!(DETECT_LANG AND $lang_det)){
-                if (mb_substr($config_project['project']['url_site'], -1) == '/' AND mb_substr($str, 0, 1) == '/'){
-                    $str = substr($str, 1);
-                }
+            if (isset($url['path'])){
+                $url['path'] = '/'.$url_lang.$url['path'];
+            }else{
+                $url['path'] = '/'.$url_lang;
             }
+        }
 
-            return $config_project['project']['url_site'] . $url_lang . ($str == '/' ? '' : $str);
-        }else
-            return mb_substr($str, 0, 1) == '/' ? $str : '/'.$str;
+        return reverse_parse_url($url);
 
     }
 }

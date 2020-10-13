@@ -134,6 +134,10 @@ fabric.properties
 /template/site/server-games/
 /template/site/server-games/*
 /template/site/server-games/**/
+/template/site/moon-land
+/template/site/moon-land/
+/template/site/moon-land/*
+/template/site/moon-land/**/
 
 template/site/.DS_Store
 template/.DS_Store
