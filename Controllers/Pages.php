@@ -15,13 +15,13 @@ class Pages extends Controller {
         parent::__construct();
 
         if ($this->config['site']['status'] == 0) {
-            header('Location: /sign-in', TRUE, 301);
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
             die;
         }
 
         //если в шаблоне нет info.php он не является шаблоном
         if (!file_exists(ROOT_DIR.TEMPLATE_DIR.'/Info.php')){
-            header('Location: /sign-in', TRUE, 301);
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
             die;
         }
 
@@ -38,7 +38,7 @@ class Pages extends Controller {
             }
 
             if ($redirect){
-                header('Location: /site-reconstruction', TRUE, 301);
+                header('Location: '.set_url('/site-reconstruction', false), TRUE, 301);
                 die;
             }
         }

@@ -40,7 +40,7 @@ spl_autoload_register(function ($class) {
             include_once ROOT_DIR.TEMPLATE_DIR . '/Pages.php';
             $loud = true;
         }else {
-            header('Location: /sign-in', TRUE, 301);
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
             die;
         }
     }else if (file_exists($path . '/Class/' . $class . '.php')) {

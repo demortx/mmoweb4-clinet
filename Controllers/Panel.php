@@ -26,7 +26,7 @@ class Panel extends Controller {
             }
 
             if ($redirect){
-                header('Location: /panel-reconstruction', TRUE, 301);
+                header('Location: '.set_url('/panel-reconstruction', false), TRUE, 301);
                 die;
             }
         }
@@ -56,7 +56,7 @@ class Panel extends Controller {
     public function main(){
 
         if (!$this->session->isLogin()) {
-            header('Location: /sign-in', TRUE, 301);
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
             die;
         }
 
@@ -77,7 +77,7 @@ class Panel extends Controller {
     public function logout(){
 
         delete_cookie('id_mw', '.');
-        header('Location: /sign-in', TRUE, 301);
+        header('Location: '.set_url('/sign-in', false), TRUE, 301);
         die;
     }
 
@@ -101,7 +101,7 @@ class Panel extends Controller {
     public function shop($s1 = false, $s2 = false, $s3 = false){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel/shop', TRUE, 301);
+            header('Location: '.set_url('/panel/shop', false), TRUE, 301);
             die;
         }
 
@@ -123,7 +123,7 @@ class Panel extends Controller {
     public function donations(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel/donations', TRUE, 301);
+            header('Location: '.set_url('/panel/donations', false), TRUE, 301);
             die;
         }
 
@@ -145,7 +145,7 @@ class Panel extends Controller {
     public function signin(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
 
@@ -201,7 +201,7 @@ class Panel extends Controller {
     public function signup(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
 
@@ -248,11 +248,11 @@ class Panel extends Controller {
     public function signup_activation(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
         if (!isset($_SESSION['signup'])) {
-            header('Location: /sign-up', TRUE, 301);
+            header('Location: '.set_url('/sign-up', false), TRUE, 301);
             die;
         }
         $this->initTPL(
@@ -278,11 +278,11 @@ class Panel extends Controller {
     public function signup_completed(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
         if (!isset($_SESSION['signup'])) {
-            header('Location: /sign-up', TRUE, 301);
+            header('Location: '.set_url('/sign-up', false), TRUE, 301);
             die;
         }
         $this->initTPL(
@@ -307,12 +307,12 @@ class Panel extends Controller {
 
         //Проверяем сессию если авторизован то переноправляем в кабинет
         if ($this->session->isLogin() ){
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
 
             //Проверяем ключь по регулярке
         }elseif ($cfg['registration_confirmation'] == false OR !preg_match("/^[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}$/i", $code)){
-            header('Location: /sign-up', TRUE, 301);
+            header('Location: '.set_url('/sign-up', false), TRUE, 301);
             die;
         }
 
@@ -392,7 +392,7 @@ class Panel extends Controller {
     public function reminder(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
 
@@ -417,7 +417,7 @@ class Panel extends Controller {
     public function reminder_email(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
 
@@ -444,7 +444,7 @@ class Panel extends Controller {
     public function reminder_phone(){
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel'), TRUE, 301);
             die;
         }
 
@@ -472,7 +472,7 @@ class Panel extends Controller {
 
 
         if ($this->session->isLogin()) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
 
@@ -499,7 +499,7 @@ class Panel extends Controller {
     public function panel_reconstruction(){
 
         if ($this->config['cabinet']['status_cabinet_jobs'] == false) {
-            header('Location: /panel', TRUE, 301);
+            header('Location: '.set_url('/panel', false), TRUE, 301);
             die;
         }
 
