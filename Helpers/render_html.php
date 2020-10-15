@@ -839,3 +839,121 @@ if (!function_exists('render_menu_bonus_cod')) {
 
 
 }
+
+//Группа чекбоксов
+//Радио-кнопки
+
+//{
+//    "type": "checkbox-group",
+//    "required": false,
+//    "label": "Группа чекбоксов",
+//    "toggle": false,
+//    "inline": false,
+//    "name": "checkbox-group-1602795479293",
+//    "access": false,
+//    "other": false,
+//    "values": [
+//      {
+//        "label": "Вариант 1",
+//        "value": "1",
+//        "selected": true
+//      }
+//    ]
+//  },
+//  {
+//    "type": "radio-group",
+//    "required": false,
+//    "label": "Радио-кнопки",
+//    "inline": false,
+//    "name": "radio-group-1602795485192",
+//    "access": false,
+//    "other": false,
+//    "values": [
+//      {
+//        "label": "Вариант 1",
+//        "value": "1",
+//        "selected": false
+//      },
+//      {
+//        "label": "Вариант 2",
+//        "value": "2",
+//        "selected": false
+//      },
+//      {
+//        "label": "Вариант 3",
+//        "value": "3",
+//        "selected": false
+//      }
+//    ]
+//  },
+
+if (!function_exists('render_formbuilder')){
+
+    function render_formbuilder(array $form, $value = false){
+
+        $lable = substr(md5(mt_rand()), 0, 7);
+
+        if ($form['type'] != 'hidden') {
+            $str = '<div class="form-group row">
+                    <label class="col-lg-4 col-form-label" for="val-' . $lable . '">' . $form['label'] . '</label>
+                        <div class="col-lg-8">';
+        }
+
+
+        switch ($form['type']){
+
+            case "hidden":
+                $str .= '<input type="' .$form['type']. '" name="'.$form['name'].'" value="'.$form['value'].'">';
+                break;
+
+            case "text":
+            case "number":
+            case "date":
+                $str .= '<input type="' .$form['type']. '" class="form-control" 
+                    id="val-' .$lable. '" 
+                    name="'.$form['name'].'" 
+                    value=""'
+                    .(isset($form['maxlength']) ? ' maxlength="' .$form['maxlength']. '"' : '').
+                    (isset($form['placeholder']) ? ' placeholder="'.$form['placeholder'].'" ' : '').
+                    (isset($form['min']) ? ' min="'.$form['min'].'" ' : '').
+                    (isset($form['max']) ? ' max="'.$form['max'].'" ' : '').
+                    (isset($form['step']) ? ' step="'.$form['step'].'" ' : '')
+                    . '">';
+                break;
+
+
+            case "textarea":
+                $str .= '<textarea 
+                    ' .(isset($form['rows']) ? 'rows="' .$form['rows']. '" ' : 'rows="3" '). '
+                    id="val-' .$lable. '" 
+                    name="' .$form['name']. '" 
+                    class="form-control '.$form['subtype'].'" '
+                    .(isset($form['maxlength']) ? ' maxlength="' .$form['maxlength']. '"' : '')
+                    .(isset($form['placeholder']) ? ' placeholder="'.$form['placeholder'].'"' : '')
+                    . '></textarea>';
+                break;
+
+            case "select":
+                $str .= '<select class="form-control" id="val-' .$lable. '" name="' .$form['name']. '" '
+                    .(isset($form['placeholder']) ? ' placeholder="'.$form['placeholder'].'"' : '')
+                    .($form['multiple'] ? ' multiple' : '')
+                    .'>';
+
+                    foreach ($form['values'] as $opt){
+                        $str .= '<option value="'.$opt['value'].'"   '.($opt['selected']? 'selected' : '').'>'.$opt['label'].'</option>';
+                    }
+                $str .= '</select>';
+                break;
+
+
+        }
+        if ($form['type'] != 'hidden') {
+            if (isset($form['description']))
+                $str .= '<div class="form-text text-muted">' . $form['description'] . '</div>';
+
+            $str .= '</div></div>';
+        }
+        return $str;
+    }
+
+}

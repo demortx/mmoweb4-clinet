@@ -93,7 +93,7 @@
     <div class="block-content text-center">
         {if $select_platform == 'lineage2'}
 
-            <form action="{$.php.set_url($.const.ADMIN_URL~'//files/parser?sid='~$select_sid, false)}" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'//files/parser?sid='~$select_sid, false, false)}" method="post" onsubmit="return false;">
 
 
                 <div class="form-group row">

@@ -153,11 +153,7 @@
                             </div>
                             <div class="col-sm-6 text-sm-right push">
                                 <button type="submit"
-                                        class="btn btn-alt-primary submit-form {if $config.cabinet.captcha == 'recaptchav2inv'}g-recaptcha{/if}"
-                                        {if $config.cabinet.captcha == 'recaptchav2inv'}
-                                            data-sitekey="{$config.cabinet.recaptcha_public_key}"
-                                           
-                                        {/if}>
+                                        class="btn btn-alt-primary submit-form">
                                     <i class="si si-login mr-10"></i> {$login_menu_lang_btn_signin}
                                 </button>
                             </div>

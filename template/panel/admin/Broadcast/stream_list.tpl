@@ -39,7 +39,7 @@
                         </td>
                         <td>{$stream.game}</td>
                         <td class="d-none d-sm-table-cell">
-                            <form action="{$.php.set_url($.const.ADMIN_URL~'/broadcast/refresh?stream='~$stream.id, false)}" novalidate="novalidate" method="post" onsubmit="return false;" style="display: inline-block;">
+                            <form action="{$.php.set_url($.const.ADMIN_URL~'/broadcast/refresh?stream='~$stream.id, false, false)}" novalidate="novalidate" method="post" onsubmit="return false;" style="display: inline-block;">
                                 <input type="hidden" name="stream" value="{$stream.id}">
                                 <button type="submit" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5 submit-form" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_refresh_page}">
                                     <i class="fa fa-refresh"></i>

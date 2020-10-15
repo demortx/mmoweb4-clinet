@@ -138,6 +138,10 @@ fabric.properties
 /template/site/moon-land/
 /template/site/moon-land/*
 /template/site/moon-land/**/
+/template/site/e-global
+/template/site/e-global/
+/template/site/e-global/*
+/template/site/e-global/**/
 
 template/site/.DS_Store
 template/.DS_Store

@@ -7,7 +7,7 @@
     </style>
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url($.const.ADMIN_URL~'/servers/save', false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/servers/save', false, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
 
                 <ul class="nav nav-tabs nav-tabs-block rounded" data-toggle="tabs" role="tablist">
                     {foreach $server_info as $plat => $srv_list first=$first}

@@ -141,13 +141,14 @@ class IBlock
     //POST сохранение
     public function addIBlockSave(){
 
-        $STH = $this->db->prepare('INSERT INTO `mw_iblock` (`name`, `tpl`, `ikey`,`date`, `publish`)
-                                            VALUES (:name, :tpl, :ikey, :date, :publish);');
+        $STH = $this->db->prepare('INSERT INTO `mw_iblock` (`name`, `tpl`, `ikey`,`date`, `publish`, `json`)
+                                            VALUES (:name, :tpl, :ikey, :date, :publish, :formbuilder);');
         $STH->bindValue(':name', trim($_POST['name']));
         $STH->bindValue(':tpl', trim($_POST['tpl']));
         $STH->bindValue(':ikey', trim($_POST['ikey']));
         $STH->bindValue(':date', date("Y-m-d H:i:s"));
         $STH->bindValue(':publish', $_POST['publish']);
+        $STH->bindValue(':formbuilder', $_POST['formbuilder']);
         $STH->execute();
         $id = $this->db->lastInsertId();
         echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_create_success'])->location(ADMIN_URL.'/iblock/edit?iblock='.$id)->success();
@@ -176,11 +177,12 @@ class IBlock
             $id = intval($_GET['iblock']);
             $iblock = $this->db->query('SELECT * FROM `mw_iblock` WHERE id='.$id.' LIMIT 1;')->fetch(\PDO::FETCH_ASSOC);
             if ($iblock){
-                $STH = $this->db->prepare('UPDATE `mw_iblock` SET `name`=:name, `tpl`=:tpl, `publish`=:publish WHERE id=:id;');
+                $STH = $this->db->prepare('UPDATE `mw_iblock` SET `name`=:name, `tpl`=:tpl, `publish`=:publish, `json` = :formbuilder WHERE id=:id;');
                 $STH->bindValue(':name', trim($_POST['name']));
                 $STH->bindValue(':tpl', trim($_POST['tpl']));
                 $STH->bindValue(':publish', (int) $_POST['publish']);
                 $STH->bindValue(':id', (int) $id);
+                $STH->bindValue(':formbuilder', $_POST['formbuilder']);
                 $STH->execute();
 
                 echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_edit_success'])->success();
@@ -260,11 +262,14 @@ class IBlock
         if (isset($_GET['iblock'])){
             $id = intval($_GET['iblock']);
 
+            $iblock = $this->db->query('SELECT * FROM mw_iblock WHERE id='.$id.' LIMIT 1;')->fetch(\PDO::FETCH_ASSOC);
+
             return $this->fenom->fetch("panel:admin/IBlock/content_add.tpl",
                 array_merge(
                     array(
                         'language_list' => $this->config["site"]["language_list"],
-                        'iblock_select' => $id
+                        'iblock_select' => $id,
+                        'formbuilder' => json_decode($iblock['json'], true)
                     ),
                     get_lang('admin.lang')
                 )
@@ -303,7 +308,9 @@ class IBlock
             $id = intval($_GET['iblock']);
             $cid = intval($_GET['content']);
 
+            $iblock = $this->db->query('SELECT * FROM mw_iblock WHERE id='.$id.' LIMIT 1;')->fetch(\PDO::FETCH_ASSOC);
             $content = $this->db->query('SELECT * FROM `mw_iblock_content` WHERE id='.$cid.' LIMIT 1;')->fetch(\PDO::FETCH_ASSOC);
+
 
             $content['json'] = json_decode($content['json'], true);
             $content['date'] = date("Y-m-d\TH:i:s", strtotime($content['date']));
@@ -315,7 +322,8 @@ class IBlock
                         'language_list' => $this->config["site"]["language_list"],
                         'content_param' => $content,
                         'content_select' => $cid,
-                        'iblock_select' => $id
+                        'iblock_select' => $id,
+                        'formbuilder' => json_decode($iblock['json'], true)
                     ),
                     get_lang('admin.lang')
                 )
@@ -370,7 +378,8 @@ class IBlock
                                   `tpl` varchar(100) NOT NULL,
                                   `ikey` varchar(100) NOT NULL,
                                   `date` datetime NOT NULL,
-                                  `publish` int(1) NOT NULL DEFAULT '1'
+                                  `publish` int(1) NOT NULL DEFAULT '1',
+                                  `json` mediumtext NOT NULL
                                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                 
                                 ALTER TABLE `mw_iblock`

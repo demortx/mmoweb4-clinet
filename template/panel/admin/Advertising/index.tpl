@@ -2,7 +2,7 @@
     {include '/panel/breadcrumb.tpl'}
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url($.const.ADMIN_URL~'/advertising/save', false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/advertising/save', false, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
                 <div class="block block-rounded">
                     <div class="block-content">
                         <h3 class="text-center">Google Analytics</h3>

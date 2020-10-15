@@ -2,7 +2,7 @@
     {include '/panel/breadcrumb.tpl'}
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url($.const.ADMIN_URL~'/iblock/content_save?iblock='~$iblock_select, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/iblock/content_save?iblock='~$iblock_select, false, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
                 <div class="block block-rounded">
                     <ul class="nav nav-tabs nav-tabs-block" data-toggle="tabs" role="tablist">
                         {foreach $language_list as $lg => $name_lg first=$first}
@@ -14,44 +14,37 @@
                     <div class="block-content tab-content overflow-hidden">
                         {foreach $language_list as $lg => $name_lg first=$first}
                             <div class="tab-pane fade {if $first}show active{/if}" id="btabs-{$lg}" role="tabpanel">
+                                {if $.php.is_array($formbuilder) AND $.php.count($formbuilder)}
+                                    {foreach $formbuilder as $el}
+                                        {set $el.name = "content[{$lg}][{$el.name}]"}
+                                        {$.php.render_formbuilder($el)}
+                                    {/foreach}
+                                {else}
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input}</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title]" value="" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-img-{$lg}">Image url</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-img-{$lg}" name="content[{$lg}][img]" value="" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-url-{$lg}">URL</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-url-{$lg}" name="content[{$lg}][url]" value="" placeholder="#">
+                                        </div>
+                                    </div>
 
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input}</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title]" value="" placeholder="">
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <textarea rows="10" name="content[{$lg}][body]" class="form-control textarea"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input} №2</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title2]" value="" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-img-{$lg}">Image url</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-img-{$lg}" name="content[{$lg}][img]" value="" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-url-{$lg}">URL</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-url-{$lg}" name="content[{$lg}][url]" value="" placeholder="#">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-lg-12">
-                                        <textarea rows="10" name="content[{$lg}][body]" class="form-control textarea"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-lg-12">
-                                        <textarea rows="10" name="content[{$lg}][body2]" class="form-control textarea"></textarea>
-                                    </div>
-                                </div>
-
+                                {/if}
                             </div>
                         {/foreach}
                     </div>
@@ -107,7 +100,7 @@
         tinyMCE.baseURL = '/template/panel/assets/js/plugins/tiny_mce';
         tinyMCE.suffix = '.min';
         tinymce.init({
-            selector: '.textarea',
+            selector: '.tinymce',
             language : "{$.site._LANG}",
             element_format : 'html',
             width : "100%",
