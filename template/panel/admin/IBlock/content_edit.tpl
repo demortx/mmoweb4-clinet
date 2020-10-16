@@ -124,7 +124,7 @@
         tinyMCE.baseURL = '/template/panel/assets/js/plugins/tiny_mce';
         tinyMCE.suffix = '.min';
         tinymce.init({
-            selector: '.textarea',
+            selector: '.tinymce',
             language : "{$.site._LANG}",
             element_format : 'html',
             width : "100%",

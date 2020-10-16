@@ -232,6 +232,12 @@ class IBlock
                 $item['json'] = json_decode($item['json'], true);
                 $item['json'] = get_lang($item['json']);
                 if (count($item['json'])) {
+                    $item['tl_con_sys'] = 'Новость повреждена';
+                    foreach ($item['json'] as $ei){
+                        $item['tl_con_sys'] = $ei;
+                        break;
+                    }
+
                     $item['img'] = isset($item['json']['img']) ? $item['json']['img'] : '#';
                     $item['title'] = isset($item['json']['title']) ? $item['json']['title'] : 'Новость повреждена';
                     $item['body'] = isset($item['json']['body']) ? $item['json']['body'] : 'Новость повреждена';

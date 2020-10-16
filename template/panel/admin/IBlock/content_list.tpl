@@ -21,7 +21,7 @@
                 {foreach $content_list as $block}
                     <tr>
                         <td class="font-w600">{$block.date}</td>
-                        <td>{$block.title}</td>
+                        <td>{$block.tl_con_sys}</td>
                         <td>
                             {if $block.publish == 1}<i class="si si-check text-success"></i>{else}<i class="si si-close text-warning"></i>{/if}
                         </td>

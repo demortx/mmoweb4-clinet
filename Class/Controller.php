@@ -27,11 +27,11 @@ class Controller
         'content' => array(),
 
     );
-
-    public $fenom = null;
+    /** @var Fenom $fenom */
+    public $fenom;
     public $ajaxmsg = null;
     /**
-     * @var \SeoX
+     * @var $seo \SeoX
      */
     public $seo = null;
 

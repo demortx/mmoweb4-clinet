@@ -56,13 +56,20 @@ class SeoX
 
     public function loudSite()
     {
+        global $_TEMP;
         $this->head = array();
         $this->body = array();
         $this->footer = array();
         $url = $this->parsUrl($this->url_site);
 
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/Headers.php')){
-            $temp = include_once ROOT_DIR.TEMPLATE_DIR.'/Headers.php';
+
+            if(!isset($_TEMP['site_headers']))
+                $temp = $_TEMP['site_headers'] = include_once ROOT_DIR.TEMPLATE_DIR.'/Headers.php';
+            else
+                $temp = $_TEMP['site_headers'];
+
+
             $this->seo = get_lang($temp);
             unset($temp);
 
