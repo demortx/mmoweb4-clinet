@@ -82,6 +82,7 @@ if($con_true){
                           `ikey` varchar(100) NOT NULL,
                           `date` datetime NOT NULL,
                           `publish` int(1) NOT NULL DEFAULT '1',
+                          `json` mediumtext NOT NULL,
                           PRIMARY KEY (`id`),
                           UNIQUE KEY `ikey_2` (`ikey`),
                           KEY `publish` (`publish`),

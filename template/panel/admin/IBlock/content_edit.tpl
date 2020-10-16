@@ -15,45 +15,60 @@
                         {foreach $language_list as $lg => $name_lg first=$first}
                             <div class="tab-pane fade {if $first}show active{/if}" id="btabs-{$lg}" role="tabpanel">
 
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input}</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title]" value="{if $content_param.json[$lg]['title']?}{$content_param.json[$lg]['title']}{/if}" placeholder="">
-                                    </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input} №2</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title2]" value="{if $content_param.json[$lg]['title2']?}{$content_param.json[$lg]['title2']}{/if}" placeholder="">
-                                    </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-img-{$lg}">Image url</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-img-{$lg}" name="content[{$lg}][img]" value="{if $content_param.json[$lg]['img']?}{$content_param.json[$lg]['img']}{/if}" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-url-{$lg}">URL</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="val-url-{$lg}" name="content[{$lg}][url]" value="{if $content_param.json[$lg]['url']?}{$content_param.json[$lg]['url']}{/if}" placeholder="#">
-                                    </div>
-                                </div>
+                                {if $.php.is_array($formbuilder) AND $.php.count($formbuilder)}
+                                {foreach $formbuilder as $el}
+                                    {if $content_param.json[$lg][$el.name]?}
+                                        {set $par = $content_param.json[$lg][$el.name]}
+                                    {else}
+                                        {set $par = false}
+                                    {/if}
 
-                                <div class="form-group row">
-                                    <div class="col-lg-12">
-                                        <textarea rows="10" name="content[{$lg}][body]" class="form-control textarea">{if $content_param.json[$lg]['body']?}{$content_param.json[$lg]['body']}{/if}</textarea>
-                                    </div>
-                                </div>
+                                    {set $el.name = "content[{$lg}][{$el.name}]"}
 
-                                <div class="form-group row">
-                                    <div class="col-lg-12">
-                                        <textarea rows="10" name="content[{$lg}][body2]" class="form-control textarea">{if $content_param.json[$lg]['body2']?}{$content_param.json[$lg]['body2']}{/if}</textarea>
+                                    {$.php.render_formbuilder($el, $par)}
+                                {/foreach}
+                                {else}
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input}</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title]" value="{if $content_param.json[$lg]['title']?}{$content_param.json[$lg]['title']}{/if}" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
 
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-title-{$lg}">{$StaticPages_name_input} №2</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-title-{$lg}" name="content[{$lg}][title2]" value="{if $content_param.json[$lg]['title2']?}{$content_param.json[$lg]['title2']}{/if}" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-img-{$lg}">Image url</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-img-{$lg}" name="content[{$lg}][img]" value="{if $content_param.json[$lg]['img']?}{$content_param.json[$lg]['img']}{/if}" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-url-{$lg}">URL</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="val-url-{$lg}" name="content[{$lg}][url]" value="{if $content_param.json[$lg]['url']?}{$content_param.json[$lg]['url']}{/if}" placeholder="#">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <textarea rows="10" name="content[{$lg}][body]" class="form-control textarea">{if $content_param.json[$lg]['body']?}{$content_param.json[$lg]['body']}{/if}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+                                            <textarea rows="10" name="content[{$lg}][body2]" class="form-control textarea">{if $content_param.json[$lg]['body2']?}{$content_param.json[$lg]['body2']}{/if}</textarea>
+                                        </div>
+                                    </div>
+                                {/if}
                             </div>
                         {/foreach}
                     </div>
