@@ -284,14 +284,15 @@ if (!function_exists('set_url')) {
             return '#';
 
 
-        $config_project = get_instance()->config;;
+        $config_project = get_instance()->config;
 
         if (!isset($url['host']) AND $add_url_site){
             $url_cfg = parse_url($config_project['project']['url_site']);
             $url['scheme'] = $url_cfg['scheme'];
             $url['host'] = $url_cfg['host'];
 
-        }
+        }else
+            $lang_det = false;
 
         if (isset($url['host'])){
             if (!isset($url_cfg))

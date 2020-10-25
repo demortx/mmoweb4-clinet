@@ -3,7 +3,7 @@
 
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
-            <form action="{$.php.set_url($.const.ADMIN_URL~'/pages/edit_save?page='~$page_select, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/pages/edit_save?page='~$page_select, false, false)}" novalidate="novalidate" method="post" onsubmit="return false;">
                 <input type="hidden" value="{$page_param.date}">
 
                 <div class="block block-rounded">

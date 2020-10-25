@@ -62,7 +62,7 @@
         $('.modification_status').on('change', function() {
             var id = $(this).attr('id');
             $.ajax({
-                url: "{$.php.set_url($.const.ADMIN_URL~'/broadcast/status', false)}",
+                url: "{$.php.set_url($.const.ADMIN_URL~'/broadcast/status', false, false)}",
                 data : {
                     "stream": id,
                     "status": this.checked
