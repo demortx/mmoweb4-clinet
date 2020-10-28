@@ -77,6 +77,7 @@ class Panel extends Controller {
     public function logout(){
 
         delete_cookie('id_mw', '.');
+        delete_cookie('id_mw', '');
         header('Location: '.set_url('/sign-in', false), TRUE, 301);
         die;
     }

@@ -145,8 +145,8 @@ class Send {
 
                     #Удаление сессии
                     if (isset($POST['end_session'])) {
-                        set_cookie('id_mw', null, -1, '.');
-
+                        delete_cookie('id_mw', '.');
+                        delete_cookie('id_mw', '');
                     }#Отлавливаем обновление сессии
                     else if (isset($POST['send_data'])) {
                         $this->core->session->update($POST['send_data']);
