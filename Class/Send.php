@@ -145,7 +145,7 @@ class Send {
 
                     #Удаление сессии
                     if (isset($POST['end_session'])) {
-                        set_cookie('id_mw', null, -1);
+                        set_cookie('id_mw', null, -1, '.');
 
                     }#Отлавливаем обновление сессии
                     else if (isset($POST['send_data'])) {
