@@ -99,10 +99,12 @@ class User
                     }else{
                         $this->isLogin = false;
                         delete_cookie('id_mw', '.');
+                        delete_cookie('id_mw', '');
                     }
                 }else{
                     $this->isLogin = false;
                     delete_cookie('id_mw', '.');
+                    delete_cookie('id_mw', '');
                 }
             }else
                 $this->isLogin = false;
