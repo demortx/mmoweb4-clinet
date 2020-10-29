@@ -143,12 +143,12 @@ class IBlock
 
         $STH = $this->db->prepare('INSERT INTO `mw_iblock` (`name`, `tpl`, `ikey`,`date`, `publish`, `json`)
                                             VALUES (:name, :tpl, :ikey, :date, :publish, :formbuilder);');
-        $STH->bindValue(':name', trim($_POST['name']));
-        $STH->bindValue(':tpl', trim($_POST['tpl']));
-        $STH->bindValue(':ikey', trim($_POST['ikey']));
+        $STH->bindValue(':name', trim($_POST['ib_name']));
+        $STH->bindValue(':tpl', trim($_POST['ib_tpl']));
+        $STH->bindValue(':ikey', trim($_POST['ib_ikey']));
         $STH->bindValue(':date', date("Y-m-d H:i:s"));
-        $STH->bindValue(':publish', $_POST['publish']);
-        $STH->bindValue(':formbuilder', $_POST['formbuilder']);
+        $STH->bindValue(':publish', $_POST['ib_publish']);
+        $STH->bindValue(':formbuilder', $_POST['ib_formbuilder']);
         $STH->execute();
         $id = $this->db->lastInsertId();
         echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_create_success'])->location(ADMIN_URL.'/iblock/edit?iblock='.$id)->success();
@@ -178,11 +178,11 @@ class IBlock
             $iblock = $this->db->query('SELECT * FROM `mw_iblock` WHERE id='.$id.' LIMIT 1;')->fetch(\PDO::FETCH_ASSOC);
             if ($iblock){
                 $STH = $this->db->prepare('UPDATE `mw_iblock` SET `name`=:name, `tpl`=:tpl, `publish`=:publish, `json` = :formbuilder WHERE id=:id;');
-                $STH->bindValue(':name', trim($_POST['name']));
-                $STH->bindValue(':tpl', trim($_POST['tpl']));
-                $STH->bindValue(':publish', (int) $_POST['publish']);
+                $STH->bindValue(':name', trim($_POST['ib_name']));
+                $STH->bindValue(':tpl', trim($_POST['ib_tpl']));
+                $STH->bindValue(':publish', (int) $_POST['ib_publish']);
                 $STH->bindValue(':id', (int) $id);
-                $STH->bindValue(':formbuilder', $_POST['formbuilder']);
+                $STH->bindValue(':formbuilder', $_POST['ib_formbuilder']);
                 $STH->execute();
 
                 echo $this->ajaxmsg->notify(get_lang('admin.lang')['IBlock_ajax_edit_success'])->success();

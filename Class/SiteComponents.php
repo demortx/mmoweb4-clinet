@@ -19,7 +19,7 @@ class SiteComponents
         }
     }
 
-    static function News($count = 10, $page = 1, $pagination = true){
+    static function News($count = 10, $page = 1, $pagination = true, $tpl = 'news.tpl', $tpl_pag='news_pagination.tpl'){
 
         if (isset($_GET['news']) AND is_numeric($_GET['news']) AND $_GET['news'] > 0)
             $page = $_GET['news'];
@@ -74,7 +74,7 @@ class SiteComponents
             $paginator = new \Paginator($news_count, $count, ($page+1), '(:num)');
             $paginator->setMaxPagesToShow(5);
 
-            $render['PAGINATION'] = get_instance()->fenom->fetch('site:news_pagination.tpl',
+            $render['PAGINATION'] = get_instance()->fenom->fetch('site:'.$tpl_pag,
                 array_merge(
                     $paginator->toArray(),
                     loud_lang_site()
@@ -83,7 +83,7 @@ class SiteComponents
         }else
             $render['PAGINATION'] = '';
 
-        return get_instance()->fenom->fetch('site:news.tpl',
+        return get_instance()->fenom->fetch('site:'.$tpl,
             array_merge(
                 $render,
                 loud_lang_site()
@@ -110,7 +110,7 @@ class SiteComponents
         'xenforo2' => 'index.php?threads/:id/',
     );
 
-    static function Forum($count = false){
+    static function Forum($count = false, $tpl = 'forum.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/forum.tpl')) {
             $cfg = include_once ROOT_DIR . '/Library/forum_config.php';
 
@@ -175,7 +175,7 @@ class SiteComponents
                         $forum[] = $post;
                     }
 
-                    return get_instance()->fenom->fetch('site:forum.tpl',
+                    return get_instance()->fenom->fetch('site:'.$tpl,
                         array_merge(
                             array(
                                 'posts' => $forum
@@ -191,7 +191,7 @@ class SiteComponents
             return 'Tpl forum.tpl not found';
     }
 
-    static function Rating($count = 10){
+    static function Rating($count = 10, $tpl = 'rating.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/rating.tpl')) {
 
             $platform = get_platform();
@@ -210,7 +210,7 @@ class SiteComponents
 
             }
 
-            return get_instance()->fenom->fetch('site:rating.tpl',
+            return get_instance()->fenom->fetch('site:'.$tpl,
                 array_merge(
                     array(
                         'platform' => $platform,
@@ -283,7 +283,7 @@ class SiteComponents
         return $online;
     }
 
-    static function Server($count = 10, $chart_interval = 10, $chart_percent = false){
+    static function Server($count = 10, $chart_interval = 10, $chart_percent = false, $tpl = 'server_status.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/server_status.tpl')) {
             $platform = get_platform();
             $server_site_cfg = include_once ROOT_DIR . '/Library/server_config.php';
@@ -399,7 +399,7 @@ class SiteComponents
                 iterator_to_array($period)
             );
 
-            return get_instance()->fenom->fetch('site:server_status.tpl',
+            return get_instance()->fenom->fetch('site:'.$tpl,
                 array_merge(
                     array(
                         'platform' => $platform,
@@ -423,7 +423,7 @@ class SiteComponents
         $adm->updateStreams();
     }
 
-    static function Streams($count = 10){
+    static function Streams($count = 10, $tpl = 'streams.tpl'){
 
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/streams.tpl')) {
 
@@ -457,7 +457,7 @@ class SiteComponents
                 unset($item['json'], $item['online'], $item['preview'], $item['date'], $item['id']);
             }
 
-            return get_instance()->fenom->fetch('site:streams.tpl',
+            return get_instance()->fenom->fetch('site:'.$tpl,
                 array_merge(
                     array(
                         'stream_exist' => count($stream) > 0,
@@ -472,9 +472,9 @@ class SiteComponents
             return 'Tpl streams.tpl not found';
     }
 
-    static function Language(){
+    static function Language($tpl = 'language.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/language.tpl')) {
-            return get_instance()->fenom->fetch('site:language.tpl',
+            return get_instance()->fenom->fetch('site:'.$tpl,
                 array_merge(
                     array(
                         '_LANG' => select_lang(),
