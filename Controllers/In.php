@@ -125,7 +125,7 @@ class In extends Controller
             exit($this->ajaxmsg->notify('Game data cleared')->post('start')->success());
         }
 
-        if($_POST['open']){
+        if(isset($_POST['give'])){
 
             if (!isset($_SESSION['promo_game']['items']))
                 exit($this->ajaxmsg->notify('You need to start the game')->post('need_start')->danger());
