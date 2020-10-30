@@ -108,4 +108,86 @@ class In extends Controller
 
     }
 
+    public function promo_game(){
+
+        if (!isset($_POST['id']) AND empty($_POST['id']))
+            exit($this->ajaxmsg->notify('Empty ID promo')->post('error_id')->danger());
+
+        if (!isset($this->config['promo_game'][(int)$_POST['id']]) AND !is_array($this->config['promo_game'][(int)$_POST['id']]))
+            exit($this->ajaxmsg->notify('There are no promo settings')->post('not_settings')->danger());
+
+        if (isset($_POST['start'])){
+            $_SESSION['promo_game'] = array(
+                'id' => $_POST['id'],
+                'items' => array(),
+                'status' => 'start'
+            );
+            exit($this->ajaxmsg->notify('Game data cleared')->post('start')->success());
+        }
+
+        if($_POST['open']){
+
+            if (!isset($_SESSION['promo_game']['items']))
+                exit($this->ajaxmsg->notify('You need to start the game')->post('need_start')->danger());
+
+            if ($this->config['promo_game'][(int)$_POST['id']]['max'] <= (count($_SESSION['promo_game']['items']) + 1))
+                exit($this->ajaxmsg->notify('You won max number of items: '.$this->config['promo_game'][(int)$_POST['id']]['max'])->post('max_win')->danger());
+
+
+            $items = $this->get_random_item((int)$_POST['id'], 1, (count($_SESSION['promo_game']['items']) + 1));
+            if (count($items) > 0){
+                foreach ($items as $id => $item){
+                    $_SESSION['promo_bonus'][] = $id;
+                }
+
+                if ($this->config['promo_game'][(int)$_POST['id']]['max'] <= (count($_SESSION['promo_game']['items']) + 1)){
+                    $_SESSION['promo_game']['status'] = 'finish';
+                    $finish = true;
+                }else{
+                    $_SESSION['promo_game']['status'] = 'wait';
+                    $finish = false;
+                }
+
+
+                exit($this->ajaxmsg->notify('Your prize')->post(['items' => $items, 'next' => $finish])->success());
+            }
+
+        }
+
+
+    }
+
+    private function get_random_item($id, $count = 1, $group = 0)
+    {
+
+        $i = 0;
+        $item_delivery = array();
+        while ($i < $count) {
+
+            $chance = mt_rand(1, 1000) / 10;
+            $chance_sum = 0;
+
+            foreach ($this->config['promo_game'][$id]['items'] as $iid => $item) {
+
+                if (isset($item['gr'])) {
+                    if ($item['gr'] != $group)
+                        continue;
+                }
+
+                $chance_sum += floatval($item["chance"]);
+                if ($chance <= $chance_sum) {
+                    $item_delivery[$iid] = $item;
+                    break;
+                }
+            }
+
+
+            $i++;
+        }
+
+        return $item_delivery;
+
+
+    }
+
 }

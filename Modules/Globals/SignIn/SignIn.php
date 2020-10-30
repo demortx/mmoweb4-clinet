@@ -120,6 +120,8 @@ class SignIn extends MainModulesClass
         if (isset($_POST["remember-me"]))
             $vars["remember-me"] = $_POST["remember-me"];
 
+        if (isset($_SESSION['promo_game']['status']) AND $_SESSION['promo_game']['status'] == 'finish')
+            $vars["promo_game"] = $_SESSION['promo_game'];
 
         if (!captcha_check())
             return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_error_captcha'])->eval_js(captcha_reload('sign_in'))->danger();
@@ -187,6 +189,9 @@ class SignIn extends MainModulesClass
 
 
         $vars['host'] = $_SERVER['HTTP_HOST'];
+
+        if (isset($_SESSION['promo_game']['status']) AND $_SESSION['promo_game']['status'] == 'finish')
+            $vars["promo_game"] = $_SESSION['promo_game'];
 
         //Передаем UTM метки
         $vars["utm"] = get_utm();

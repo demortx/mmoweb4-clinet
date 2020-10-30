@@ -159,6 +159,9 @@ class SignUp extends MainModulesClass
         if (isset($_POST["subscribe"]))
             $vars["subscribe"] = $_POST["subscribe"];
 
+        if (isset($_SESSION['promo_game']['status']) AND $_SESSION['promo_game']['status'] == 'finish')
+            $vars["promo_game"] = $_SESSION['promo_game'];
+
 
         if (!captcha_check())
             return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_error_captcha'])->eval_js(captcha_reload('sign_up'))->danger();

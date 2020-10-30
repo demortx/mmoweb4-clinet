@@ -55,6 +55,7 @@ $route['input'] = "In";
 $route['captcha/img'] = "In/captchaImg";
 $route['prefix/refresh'] = "In/prefix_list";
 $route['text'] = "In/txt";
+$route['promo-game'] = "In/promo_game";
 
 //тех работы
 $route['site-reconstruction'] = "Pages/site_reconstruction";
