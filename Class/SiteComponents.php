@@ -428,18 +428,18 @@ class SiteComponents
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/streams.tpl')) {
 
 
-            $data = get_cache('broadcast_c', false, true, false);
+            $data = get_cache('broadcast_c_'.$count, false, true, false);
 
             if ($data === false OR isset($data['cache_end'])) {
-                set_cache('broadcast_c', $data['data'], CACHE_STREAM);
+                set_cache('broadcast_c_'.$count, $data['data'], CACHE_STREAM);
                 self::streamUpdate();
 
                 $stream = self::db()->query('SELECT * FROM `mw_broadcast` WHERE publish=1 AND online=1 LIMIT ' . intval($count) . ';')->fetchAll(\PDO::FETCH_ASSOC);
 
                 if (is_array($stream) AND count($stream)) {
-                    set_cache('broadcast_c', $stream, CACHE_STREAM);
+                    set_cache('broadcast_c_'.$count, $stream, CACHE_STREAM);
                 } else {
-                    set_cache('broadcast_c', array(), CACHE_STREAM);
+                    set_cache('broadcast_c_'.$count, array(), CACHE_STREAM);
                 }
             } else
                 $stream = $data['data'];
