@@ -91,7 +91,7 @@ class ParserItem
                 if ($file_name == 'itemname-e.txt') {
                     $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('name', 'additionalname', 'description'));
                 }else
-                    $temp = $this->L2ClientDat($dir, 2, 2, -1, -1, array('icon'));
+                    $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('icon'));
 
                 foreach ($temp as $item_id=>$item) {
 
