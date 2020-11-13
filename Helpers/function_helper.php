@@ -717,6 +717,9 @@ if ( ! function_exists('get_utm')) {
         }elseif(isset($_COOKIE["utm_mw"])){
             $utm['utm_mw'] = $_COOKIE["utm_mw"];
         }
+        //Если клоуд фаир передает iso брать его и передовать
+        if (isset($_SERVER['HTTP_CF_IPCOUNTRY']))
+            $utm['utm_iso'] = $_SERVER['HTTP_CF_IPCOUNTRY'];
 
 
         //Для гугл трекера

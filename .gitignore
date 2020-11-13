@@ -154,6 +154,10 @@ fabric.properties
 /template/site/evilax/
 /template/site/evilax/*
 /template/site/evilax/**/
+/template/site/interluderu
+/template/site/interluderu/
+/template/site/interluderu/*
+/template/site/interluderu/**/
 
 template/site/.DS_Store
 template/.DS_Store
