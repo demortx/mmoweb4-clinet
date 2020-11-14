@@ -258,6 +258,12 @@ class GlobalApi extends \Api
 
     //БАЛАНС
 
+    public function invoice($vars){
+
+        $response = $this->init()->addParam('invoice', $vars)->get('v1/Globals/payment/invoice')->response();
+        return $response;
+    }
+
     public function checkout($vars){
 
         $response = $this->init()->addParam('checkout', $vars)->post('v1/Globals/payment/checkout')->response();

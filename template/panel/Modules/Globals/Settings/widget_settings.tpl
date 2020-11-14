@@ -18,6 +18,11 @@
             <a class="nav-link" href="#log-list">{$lang_tab_title_logs}</a>
         </li>
         {/if}
+        {if $.site.config.cabinet.tab_active_invoice}
+        <li class="nav-item">
+            <a class="nav-link" href="#invoice-list">{$lang_tab_title_invoice}</a>
+        </li>
+        {/if}
 
 
     </ul>
@@ -75,6 +80,43 @@
                             <td class="font-w600">{$log.description}</td>
                             <td class="d-none d-sm-table-cell">{$log.ip}</td>
                             <td class="d-none d-sm-table-cell">{$log.date}</td>
+                        </tr>
+                    {/foreach}
+                {/if}
+                </tbody>
+            </table>
+        </div>
+        {/if}
+
+        {if $.site.config.cabinet.tab_active_invoice}
+        <div class="tab-pane mb-20" id="invoice-list" role="tabpanel">
+            <h4 class="font-w400 text-center">{$lang_tab_title_invoice}</h4>
+
+            <table class="table table-bordered table-striped table-vcenter log-list-table ">
+                <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="d-none d-sm-table-cell">{$lang_tab_invoice_th_payment}</th>
+                    <th class="">{$.site.config.payment_system.long_name_valute}</th>
+                    <th class="">{$lang_tab_invoice_th_sum}</th>
+                    <th class="d-none d-sm-table-cell">{$lang_tab_logs_th_date}</th>
+                    {if $.site.config.cabinet.tab_active_invoice_detail}<th class=""></th>{/if}
+                </tr>
+                </thead>
+
+
+
+
+                <tbody>
+                {if $.site.session->session.user_data.invoice? AND $.php.is_array($.site.session->session.user_data.invoice)}
+                    {foreach $.site.session->session.user_data.invoice as $invoice}
+                        <tr>
+                            <td class="text-center">{$invoice.id}</td>
+                            <td class="d-none d-sm-table-cell">{$invoice.ps}</td>
+                            <td class="font-w600">{$invoice.c}</td>
+                            <td class="font-w600">{$invoice.s} {$invoice.cur}</td>
+                            <td class="d-none d-sm-table-cell">{$invoice.dc}</td>
+                            {if $.site.config.cabinet.tab_active_invoice_detail}<td class="text-center"><a href="{$.php.set_url('/invoice/'~$invoice.payid)}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-external-link"></i></a></td>{/if}
                         </tr>
                     {/foreach}
                 {/if}

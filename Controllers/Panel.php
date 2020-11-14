@@ -42,6 +42,10 @@ class Panel extends Controller {
         $rules['sign-up'] = true;
         $rules['reminder'] = true;
         $rules['logout'] = true;
+
+        if (isset($this->config['cabinet']['tab_active_invoice_detail']) AND $this->config['cabinet']['tab_active_invoice_detail'])
+            $rules['invoice'] = true;
+
         $rules['panel-reconstruction'] = true;
         $rules['panel'] = true;
         if (ADMIN_PANEL) {
@@ -553,6 +557,64 @@ class Panel extends Controller {
 
                 ),
                 get_lang('admin.lang')
+            )
+        );
+
+    }
+
+    public function invoice($order_id){
+        //var_dump($order_id);
+        $api = new GlobalApi();
+        $response = $api->invoice(array('uid' => $order_id));
+        $data = array();
+
+        if($response['ok']){
+
+            if(isset($response["response"]->success)) {
+                $error = false;
+                $msg = (string) $response["response"]->success;
+
+                $response = json_decode(json_encode($response["response"]),true);
+                if (isset($response['data'])){
+                    $data = $response['data'];
+
+                    if (!empty($data["shop_items"]))
+                        $data["shop_items"] = json_decode($data["shop_items"], true);
+
+                }else{
+                    $error = true;
+                    $msg = 'Format error';
+                }
+
+            }elseif(isset($response['error'])){
+                $error = true;
+                $msg = $response['error'];
+            }else{
+                $error = true;
+                $msg = (string) $response["response"]->error;
+            }
+
+        }else
+            $error = true;
+
+
+
+        $this->initTPL(
+            array_merge(
+                array(
+                    '_CONTENT_FULL' => $this->fenom->fetch("panel:invoice.tpl",
+                        array(
+                            'response_error' => $error,
+                            'response_error_msg' => $msg,
+                            'response_data' => $data,
+                        )
+                    ),
+
+                    '_PAGE_CONTENT_CLASS' => 'main-content-boxed',
+                    '_FOOTER' => false,
+
+                ),
+                get_lang('reconstruction.lang')
             )
         );
 

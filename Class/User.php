@@ -34,7 +34,12 @@ class User
         'user_data' => array(
             'logs' => '',
             'balance' => '',
+            'invoice' => '',
+            'discount' => '',
+            'social' => '',
+            'warehouse' => '',
         ),
+
 
     );
 

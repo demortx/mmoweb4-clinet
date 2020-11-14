@@ -50,6 +50,8 @@ $route['reminder/email'] = "Panel/reminder_email";
 $route['reminder/([A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4})$'] = "Panel/reminder_email_code/$1";
 $route['reminder/phone'] = "Panel/reminder_phone";
 
+$route['invoice/(:any)'] = "Panel/invoice/$1";
+
 
 $route['input'] = "In";
 $route['captcha/img'] = "In/captchaImg";

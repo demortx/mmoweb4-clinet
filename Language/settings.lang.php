@@ -26,10 +26,13 @@ return array(
         "lang_tab_title_account_hide" => "Скрытые аккаунты",
         "lang_tab_title_account_hide_desc" => "Управление скрытыми аккаунтами",
         "lang_tab_title_logs" => "Логи действий",
+        "lang_tab_title_invoice" => "Платежи",
 
         "lang_tab_title_logs_desc" => "Логи последних операций",
         "lang_tab_logs_th_action" => "Действие",
         "lang_tab_logs_th_date" => "Дата",
+        "lang_tab_invoice_th_payment" => "Платежный шлюз",
+        "lang_tab_invoice_th_sum" => "Сумма",
 
 
 
@@ -58,12 +61,15 @@ return array(
 		"lang_tab_title_manager" => "MA management",
 		"lang_tab_title_manager_desc" => "Manage master accounts",
 		"lang_tab_title_logs" => "Action logs",
+        "lang_tab_title_invoice" => "Invoice",
         "lang_tab_title_account_hide" => "Hide account",
         "lang_tab_title_account_hide_desc" => "Hidden Account Management",
 
 		"lang_tab_title_logs_desc" => "Logs of recent operations",
 		"lang_tab_logs_th_action" => "Action",
 		"lang_tab_logs_th_date" => "Date",
+        "lang_tab_invoice_th_payment" => "Payment gateway",
+        "lang_tab_invoice_th_sum" => "Sum",
 
 
 

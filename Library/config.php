@@ -18,9 +18,12 @@ $system = array (
 			'donations' => true,
 			'forum' => true,
 		),
+		'manager_ma' => true,
 		'pin_shield' => true,
 		'tab_active_log' => true,
-		'max_game_accounts' => 9,
+		'tab_active_invoice' => true,
+		'tab_active_invoice_detail' => true,
+		'max_game_accounts' => 10,
 		'signin_type'=>array(
 			'email' => true,
 			'login' => true,
@@ -37,8 +40,10 @@ $system = array (
 		),
 		'registration_type'=>array(
 			'email' => true,
+			'phone' => true,
 		),
 		'registration_confirmation' => true,
+		'registration_stop_temp_email' => true,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -145,7 +150,6 @@ $system = array (
 			9 => 
 			array (
 				'rating' => true,
-				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -154,7 +158,6 @@ $system = array (
 			8 => 
 			array (
 				'rating' => true,
-				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -163,7 +166,6 @@ $system = array (
 			7 => 
 			array (
 				'rating' => true,
-				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -206,10 +208,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '77.161267',
-			'EUR' => '0.847914',
-			'UAH' => '28.266432',
-			'BTC' => '8.7046454E-5',
+			'RUB' => '77.376',
+			'EUR' => '0.844894',
+			'UAH' => '28.132592',
+			'BTC' => '6.1281226E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -252,7 +254,88 @@ $system = array (
 			'shop' => 1,
 		),
 	),
-	'event' => false,
+	'event'=>array(
+		8 => 
+		array (
+			0 => 
+			array (
+				'id' => 1,
+				'title' => 'Первый евент тестовый',
+				'data'=>array(
+					1 => 
+					array (
+						'start' => 0,
+						'end' => 99,
+						'percent' => 0,
+					),
+					2 => 
+					array (
+						'start' => 100,
+						'end' => 499,
+						'percent' => 1,
+					),
+					3 => 
+					array (
+						'start' => 500,
+						'end' => 999,
+						'percent' => 3,
+					),
+					4 => 
+					array (
+						'start' => 1000,
+						'end' => 2999,
+						'percent' => 5,
+					),
+					5 => 
+					array (
+						'start' => 3000,
+						'end' => 7499,
+						'percent' => 7,
+					),
+					6 => 
+					array (
+						'start' => 7500,
+						'end' => 10000000,
+						'percent' => 10,
+					),
+				),
+				'item_enable' => 1,
+				'item'=>array(
+					1 => 
+					array (
+						'lv' => 2,
+						'id' => 5592,
+						'count' => 50,
+						'enc' => 0,
+					),
+					2 => 
+					array (
+						'lv' => 1,
+						'id' => 5591,
+						'count' => 50,
+						'enc' => 0,
+					),
+					3 => 
+					array (
+						'lv' => 3,
+						'id' => 1538,
+						'count' => 3,
+						'enc' => 0,
+					),
+					4 => 
+					array (
+						'lv' => 3,
+						'id' => 3936,
+						'count' => 1,
+						'enc' => 0,
+					),
+				),
+				'agrigator'=>array(
+					0 => 'all',
+				),
+			),
+		),
+	),
 	'in_game_currency'=>array(
 		8 => 
 		array (
@@ -295,8 +378,9 @@ $system = array (
 	),
 	'plugins'=>array(
 		'__' => 'pl',
-		3 => 'support',
-		6 => 'bonus_cod',
+		2 => 'stop_spam_email',
+		5 => 'manager_account',
 	),
+	'promo_game' => 0,
 );
 return $system;

@@ -157,7 +157,6 @@
             $('#sum_USD').html(sum_usd);
 
             if(!slider){
-                console.log('here');
                 sum_slider.update({
                     from: sum
                 });

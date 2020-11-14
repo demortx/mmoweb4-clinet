@@ -76,10 +76,7 @@ class api {
                 }
                 $this->allow = implode( ',', $temp_allow );
             }
-            if (empty($this->deny))
-            { $this->allow = " topics.node_id IN (".$this->allow.") AND "; }
-            else
-            { $this->allow = " AND topics.node_id IN (".$this->allow.") AND "; }
+            $this->allow = " topics.node_id IN (".$this->allow.") AND ";
         }
 
         $db = $this->db();

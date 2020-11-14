@@ -10,7 +10,7 @@ ini_set('display_errors', 0);
 
 class api {
 
-    public $api_key = 'dsf43gfn';
+    public $api_key = 'SCEGvre5yhb3';
     public $deny;
     public $allow;
     public $count;
@@ -83,16 +83,12 @@ class api {
                 $this->allow = implode( ',', $temp_allow );
             }
 
-            if (empty($this->deny))
-            { $this->allow = " forum_id IN (".$this->allow.") AND "; }
-            else
-            { $this->allow = " AND forum_id IN (".$this->allow.") AND "; }
+            $this->allow = " forum_id IN (".$this->allow.") AND ";
         }
 
         $db = $this->db();
 
-		$fsql = "
-						SELECT
+		$fsql = "SELECT
 						tops.tid,
 						tops.title,
 						tops.last_post,
