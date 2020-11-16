@@ -31,8 +31,10 @@
                     <td class="d-none d-sm-table-cell">
                         {if $m_a.status == 0}
                             <span class="badge badge-success">Active</span>
+                        {elseif $m_a.status == 1}
+                            <span class="badge badge-warning">not confirmed</span>
                         {else}
-                            <span class="badge badge-warning">BAN</span>
+                            <span class="badge badge-danger">BAN</span>
                         {/if}
                     </td>
                     <td class="text-center">

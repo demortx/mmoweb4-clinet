@@ -200,10 +200,10 @@ class func
 
     public function ajax_change_password_account_open(){
 
-        if (!isset($_REQUEST['account']) OR empty($_REQUEST['account']))
+        if (!isset($_POST['account']) OR empty($_POST['account']))
             return get_instance()->ajaxmsg->notify(get_lang('settings.lang')['ajax_empty_account'])->danger();
 
-        $account = $_REQUEST['account'];
+        $account = $_POST['account'];
         $title = get_lang('settings.lang')['title_change_password_account'] . $account;
 
         $content = get_instance()->fenom->fetch(
@@ -229,32 +229,32 @@ class func
         $api = new GlobalApi();
         $vars = array();
 
-        if (!isset($_REQUEST['account']) OR empty($_REQUEST['account']))
+        if (!isset($_POST['account']) OR empty($_POST['account']))
             return get_instance()->ajaxmsg->notify(get_lang('settings.lang')['ajax_empty_account'])->danger();
         else
-            $vars['account'] = $_REQUEST['account'];
+            $vars['account'] = $_POST['account'];
 
-        if (!isset($_REQUEST['password_old']) OR empty($_REQUEST['password_old']))
+        if (!isset($_POST['password_old']) OR empty($_POST['password_old']))
             return get_instance()->ajaxmsg->notify(get_lang('widget_change_password.lang')['ajax_empty_password_old'])->danger();
         else
-            $vars["password_old"] = $_REQUEST['password_old'];
+            $vars["password_old"] = $_POST['password_old'];
 
-        if (!isset($_REQUEST['password_new']) OR empty($_REQUEST['password_new']))
+        if (!isset($_POST['password_new']) OR empty($_POST['password_new']))
             return get_instance()->ajaxmsg->notify(get_lang('widget_change_password.lang')['ajax_empty_password_new'])->danger();
         else
-            $vars["password_new"] = $_REQUEST['password_new'];
+            $vars["password_new"] = $_POST['password_new'];
 
-        if (!isset($_REQUEST['password_new_confirm']) OR empty($_REQUEST['password_new_confirm']))
+        if (!isset($_POST['password_new_confirm']) OR empty($_POST['password_new_confirm']))
             return get_instance()->ajaxmsg->notify(get_lang('widget_change_password.lang')['ajax_empty_password_new_confirm'])->danger();
         else
-            $vars["password_new_confirm"] = $_REQUEST['password_new_confirm'];
+            $vars["password_new_confirm"] = $_POST['password_new_confirm'];
 
         //Проверка пин кода
         if (get_instance()->config['cabinet']['pin_shield']) {
-            if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+            if (!isset($_POST['pin']) OR empty($_POST['pin']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
             else
-                $vars["pin"] = $_REQUEST['pin'];
+                $vars["pin"] = $_POST['pin'];
         }
 
         if (get_instance()->session->isLogin()) {
@@ -290,10 +290,10 @@ class func
     }
 
     public function ajax_forgot_password_account_open(){
-        if (!isset($_REQUEST['account']) OR empty($_REQUEST['account']))
+        if (!isset($_POST['account']) OR empty($_POST['account']))
             return get_instance()->ajaxmsg->notify(get_lang('settings.lang')['ajax_empty_account'])->danger();
 
-        $account = $_REQUEST['account'];
+        $account = $_POST['account'];
         $title = get_lang('settings.lang')['title_forgot_password_account'] . $account;
 
         $content = get_instance()->fenom->fetch(
@@ -319,18 +319,18 @@ class func
         $api = new GlobalApi();
         $vars = array();
 
-        if (!isset($_REQUEST['account']) OR empty($_REQUEST['account']))
+        if (!isset($_POST['account']) OR empty($_POST['account']))
             return get_instance()->ajaxmsg->notify(get_lang('settings.lang')['ajax_empty_account'])->danger();
         else
-            $vars['account'] = $_REQUEST['account'];
+            $vars['account'] = $_POST['account'];
 
 
         //Проверка пин кода
         if (get_instance()->config['cabinet']['pin_shield']) {
-            if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+            if (!isset($_POST['pin']) OR empty($_POST['pin']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
             else
-                $vars["pin"] = $_REQUEST['pin'];
+                $vars["pin"] = $_POST['pin'];
         }
 
 
@@ -374,10 +374,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['set_sid']) OR empty($_REQUEST['set_sid']))
+            if (!isset($_POST['set_sid']) OR empty($_POST['set_sid']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_social.lang')['signin_ajax_empty_sid'])->danger();
             else{
-                $vars["sid"] = $_REQUEST['set_sid'];
+                $vars["sid"] = $_POST['set_sid'];
                 get_instance()->set_sid((int) $vars["sid"], false);
             }
 
@@ -431,10 +431,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['token']) OR empty($_REQUEST['token']))
+            if (!isset($_POST['token']) OR empty($_POST['token']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_social.lang')['social_empty_token'])->danger();
             else
-                $vars["token"] = $_REQUEST['token'];
+                $vars["token"] = $_POST['token'];
 
 
             $vars['host'] = $_SERVER['HTTP_HOST'];
@@ -487,10 +487,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['delete']) OR empty($_REQUEST['delete']))
+            if (!isset($_POST['delete']) OR empty($_POST['delete']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_social.lang')['social_empty_token'])->danger();
             else
-                $vars["delete"] = $_REQUEST['delete'];
+                $vars["delete"] = $_POST['delete'];
 
 
 
@@ -543,10 +543,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['type']) OR empty($_REQUEST['type']))
+            if (!isset($_POST['type']) OR empty($_POST['type']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_type'])->danger();
             else
-                $vars["type"] = $_REQUEST['type'];
+                $vars["type"] = $_POST['type'];
 
 
 
@@ -592,18 +592,18 @@ class func
             }
 
             //Проверка сервера
-            if (!isset($_REQUEST['enable']) OR empty($_REQUEST['enable']))
+            if (!isset($_POST['enable']) OR empty($_POST['enable']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_type'])->danger();
             else
-                $vars["enable"] = $_REQUEST['enable'];
+                $vars["enable"] = $_POST['enable'];
 
 
             if (!_boolean($vars["enable"]) AND get_instance()->session->checkShield()){
                 //Пин не передан открываем попап с вводом пина
-                if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
-                    $vars["pin"] = $_REQUEST['pin'];
+                    $vars["pin"] = $_POST['pin'];
 
             }
 
@@ -652,26 +652,26 @@ class func
         if (get_instance()->session->isLogin()) {
 
 
-            if (!isset($_REQUEST['password_old']) OR empty($_REQUEST['password_old']))
+            if (!isset($_POST['password_old']) OR empty($_POST['password_old']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_change_password.lang')['ajax_empty_password_old'])->danger();
             else
-                $vars["password_old"] = $_REQUEST['password_old'];
+                $vars["password_old"] = $_POST['password_old'];
 
-            if (!isset($_REQUEST['password_new']) OR empty($_REQUEST['password_new']))
+            if (!isset($_POST['password_new']) OR empty($_POST['password_new']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_change_password.lang')['ajax_empty_password_new'])->danger();
             else
-                $vars["password_new"] = $_REQUEST['password_new'];
+                $vars["password_new"] = $_POST['password_new'];
 
-            if (!isset($_REQUEST['password_new_confirm']) OR empty($_REQUEST['password_new_confirm']))
+            if (!isset($_POST['password_new_confirm']) OR empty($_POST['password_new_confirm']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_change_password.lang')['ajax_empty_password_new_confirm'])->danger();
             else
-                $vars["password_new_confirm"] = $_REQUEST['password_new_confirm'];
+                $vars["password_new_confirm"] = $_POST['password_new_confirm'];
             //Проверка пин кода
             if (get_instance()->config['cabinet']['pin_shield']) {
-                if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
-                    $vars["pin"] = $_REQUEST['pin'];
+                    $vars["pin"] = $_POST['pin'];
             }
 
 
@@ -752,10 +752,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['cod_confirm']) OR empty($_REQUEST['cod_confirm']))
+            if (!isset($_POST['cod_confirm']) OR empty($_POST['cod_confirm']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_confirm_email.lang')['empty_cod_confirm'])->danger();
             else
-                $vars["cod_confirm"] = $_REQUEST['cod_confirm'];
+                $vars["cod_confirm"] = $_POST['cod_confirm'];
 
 
 
@@ -808,25 +808,25 @@ class func
         if (get_instance()->session->isLogin()) {
 
             //Проверка сервера
-            if (!isset($_REQUEST['type']) OR empty($_REQUEST['type']))
+            if (!isset($_POST['type']) OR empty($_POST['type']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_type'])->danger();
             else
-                $vars["type"] = $_REQUEST['type'];
+                $vars["type"] = $_POST['type'];
 
             if (get_instance()->config['cabinet']['pin_shield']) {
                 //Проверка сервера
-                if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
-                    $vars["pin"] = $_REQUEST['pin'];
+                    $vars["pin"] = $_POST['pin'];
             }
 
             if ($vars["type"] == 'enable'){
                 //Проверка сервера
-                if (!isset($_REQUEST['telegram']) OR empty($_REQUEST['telegram']))
+                if (!isset($_POST['telegram']) OR empty($_POST['telegram']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_confirm_email.lang')['empty_cod_confirm'])->danger();
                 else
-                    $vars["telegram"] = $_REQUEST['telegram'];
+                    $vars["telegram"] = $_POST['telegram'];
             }
 
 
@@ -879,17 +879,17 @@ class func
         if (get_instance()->session->isLogin()) {
 
             //Проверка сервера
-            if (!isset($_REQUEST['email']) OR empty($_REQUEST['email']))
+            if (!isset($_POST['email']) OR empty($_POST['email']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_confirm_email.lang')['empty_email'])->danger();
             else
-                $vars["email"] = $_REQUEST['email'];
+                $vars["email"] = $_POST['email'];
 
             if (get_instance()->config['cabinet']['pin_shield']) {
                 //Проверка сервера
-                if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
-                    $vars["pin"] = $_REQUEST['pin'];
+                    $vars["pin"] = $_POST['pin'];
             }
 
 
@@ -934,10 +934,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['cod_confirm']) OR empty($_REQUEST['cod_confirm']))
+            if (!isset($_POST['cod_confirm']) OR empty($_POST['cod_confirm']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_confirm_email.lang')['empty_cod_confirm'])->danger();
             else
-                $vars["cod_confirm"] = $_REQUEST['cod_confirm'];
+                $vars["cod_confirm"] = $_POST['cod_confirm'];
 
 
             $response = $api->bind_email($vars);
@@ -989,23 +989,23 @@ class func
         if (get_instance()->session->isLogin()) {
 
             //Проверка телефона
-            if (!isset($_REQUEST['phone']) OR empty($_REQUEST['phone']))
+            if (!isset($_POST['phone']) OR empty($_POST['phone']))
                 return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_phone'])->danger();
             else
-                $vars["phone"] = str_replace(array(' ', '-'), '', $_REQUEST['phone']);
+                $vars["phone"] = str_replace(array(' ', '-'), '', $_POST['phone']);
 
             //Проверка телефона
-            if (!isset($_REQUEST['phone_code']) OR empty($_REQUEST['phone_code']))
+            if (!isset($_POST['phone_code']) OR empty($_POST['phone_code']))
                 return get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_empty_phone_code'])->danger();
             else
-                $vars["phone_code"] = $_REQUEST['phone_code'];
+                $vars["phone_code"] = $_POST['phone_code'];
 
             if (get_instance()->config['cabinet']['pin_shield']) {
                 //Проверка сервера
-                if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
-                    $vars["pin"] = $_REQUEST['pin'];
+                    $vars["pin"] = $_POST['pin'];
             }
 
 
@@ -1050,10 +1050,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['cod_confirm']) OR empty($_REQUEST['cod_confirm']))
+            if (!isset($_POST['cod_confirm']) OR empty($_POST['cod_confirm']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_confirm_email.lang')['empty_cod_confirm'])->danger();
             else
-                $vars["cod_confirm"] = $_REQUEST['cod_confirm'];
+                $vars["cod_confirm"] = $_POST['cod_confirm'];
 
 
             $response = $api->bind_phone($vars);
@@ -1104,10 +1104,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['mid']) OR empty($_REQUEST['mid']))
+            if (!isset($_POST['mid']) OR empty($_POST['mid']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_manager.lang')['ajax_empty_mid'])->danger();
             else{
-                $vars["mid"] = $_REQUEST['mid'];
+                $vars["mid"] = $_POST['mid'];
             }
 
             $response = $api->manager_change($vars);
@@ -1152,10 +1152,10 @@ class func
 
 
             //Проверка сервера
-            if (!isset($_REQUEST['mid']) OR empty($_REQUEST['mid']))
+            if (!isset($_POST['mid']) OR empty($_POST['mid']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_manager.lang')['ajax_empty_mid'])->danger();
             else{
-                $vars["mid"] = $_REQUEST['mid'];
+                $vars["mid"] = $_POST['mid'];
             }
 
             $response = $api->manager_delete($vars);
@@ -1199,21 +1199,21 @@ class func
         if (get_instance()->session->isLogin() AND get_instance()->check_plugin('manager_account')) {
 
 
-            if (!isset($_REQUEST['email']) OR empty($_REQUEST['email']))
+            if (!isset($_POST['email']) OR empty($_POST['email']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_manager.lang')['ajax_empty_email'])->danger();
             else
-                $vars["email"] = $_REQUEST['email'];
+                $vars["email"] = $_POST['email'];
 
-            if (!isset($_REQUEST['password']) OR empty($_REQUEST['password']))
+            if (!isset($_POST['password']) OR empty($_POST['password']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_manager.lang')['ajax_empty_password'])->danger();
             else
-                $vars["password"] = $_REQUEST['password'];
+                $vars["password"] = $_POST['password'];
             //Проверка пин кода
             if (get_instance()->config['cabinet']['pin_shield']) {
-                if (!isset($_REQUEST['pin']) OR empty($_REQUEST['pin']))
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
-                    $vars["pin"] = $_REQUEST['pin'];
+                    $vars["pin"] = $_POST['pin'];
             }
 
             $response = $api->manager_add($vars);
@@ -1256,15 +1256,15 @@ class func
         if (get_instance()->session->isLogin() AND get_instance()->check_plugin('manager_account')) {
 
 
-            if (!isset($_REQUEST['mid']) OR empty($_REQUEST['mid']))
+            if (!isset($_POST['mid']) OR empty($_POST['mid']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_manager.lang')['ajax_empty_mid'])->danger();
             else
-                $vars["mid"] = $_REQUEST['mid'];
+                $vars["mid"] = $_POST['mid'];
 
-            if (!isset($_REQUEST['key']) OR empty($_REQUEST['key']))
+            if (!isset($_POST['key']) OR empty($_POST['key']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_manager.lang')['ajax_empty_key'])->danger();
             else
-                $vars["key"] = $_REQUEST['key'];
+                $vars["key"] = $_POST['key'];
 
 
             $response = $api->manager_confirm($vars);
