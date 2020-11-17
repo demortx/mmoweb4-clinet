@@ -120,7 +120,7 @@ class func
     }
 
     public function widget_reset_pin(){
-        if (get_instance()->config['cabinet']['pin_shield'] == false){
+        if (check_pin() == false){
             return '';
         }
 
@@ -250,7 +250,7 @@ class func
             $vars["password_new_confirm"] = $_POST['password_new_confirm'];
 
         //Проверка пин кода
-        if (get_instance()->config['cabinet']['pin_shield']) {
+        if (check_pin("pins_change_password_account")) {
             if (!isset($_POST['pin']) OR empty($_POST['pin']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
             else
@@ -326,7 +326,7 @@ class func
 
 
         //Проверка пин кода
-        if (get_instance()->config['cabinet']['pin_shield']) {
+        if (check_pin("pins_forgot_password_account")) {
             if (!isset($_POST['pin']) OR empty($_POST['pin']))
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
             else
@@ -587,7 +587,7 @@ class func
 
         if (get_instance()->session->isLogin()) {
 
-            if (get_instance()->config['cabinet']['pin_shield'] == false) {
+            if (check_pin() == false) {
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_type'])->danger();
             }
 
@@ -667,7 +667,7 @@ class func
             else
                 $vars["password_new_confirm"] = $_POST['password_new_confirm'];
             //Проверка пин кода
-            if (get_instance()->config['cabinet']['pin_shield']) {
+            if (check_pin("pins_change_pwd_ma")) {
                 if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else
@@ -813,7 +813,7 @@ class func
             else
                 $vars["type"] = $_POST['type'];
 
-            if (get_instance()->config['cabinet']['pin_shield']) {
+            if (check_pin("pins_bind_telegram")) {
                 //Проверка сервера
                 if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
@@ -884,7 +884,7 @@ class func
             else
                 $vars["email"] = $_POST['email'];
 
-            if (get_instance()->config['cabinet']['pin_shield']) {
+            if (check_pin("pins_bind_email_send_code")) {
                 //Проверка сервера
                 if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
@@ -1000,7 +1000,7 @@ class func
             else
                 $vars["phone_code"] = $_POST['phone_code'];
 
-            if (get_instance()->config['cabinet']['pin_shield']) {
+            if (check_pin("pins_bind_phone_send_code")) {
                 //Проверка сервера
                 if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
@@ -1209,7 +1209,7 @@ class func
             else
                 $vars["password"] = $_POST['password'];
             //Проверка пин кода
-            if (get_instance()->config['cabinet']['pin_shield']) {
+            if (check_pin("pins_manager_add")) {
                 if (!isset($_POST['pin']) OR empty($_POST['pin']))
                     return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
                 else

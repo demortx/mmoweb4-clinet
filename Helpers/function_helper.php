@@ -1348,3 +1348,37 @@ if (!function_exists('log_write')){
     }
 
 }
+
+if (!function_exists('check_pin')){
+
+    function check_pin($type = false){
+
+        $settings = get_instance()->settings_pin;
+        $pin_shield = get_instance()->config['cabinet']['pin_shield'];
+        $user_shield = get_instance()->session->checkShield();
+
+        if ($pin_shield){
+            if ($type === false)
+                return _boolean($user_shield);
+            else{
+
+                if (isset($settings[$type])){
+
+                    if (isset(get_instance()->config['cabinet'][$type]) AND get_instance()->config['cabinet'][$type] === false)
+                        return false;
+                    else{
+                        if ($settings[$type])
+                            return true;
+                        else
+                            return _boolean($user_shield);
+                    }
+                }
+                return _boolean($user_shield);
+            }
+        }else
+            return false;
+
+    }
+
+}
+

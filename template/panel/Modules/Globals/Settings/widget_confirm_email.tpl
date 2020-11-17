@@ -1,6 +1,5 @@
 {if $.site.session->session.master_account.email_valid == 0}
 
-
     {if $.php.is_array($.site.session->session.master_account.email)}
 
             <div class="form-group row">
@@ -16,7 +15,7 @@
                         {$.php.form_hide_input("Modules\Globals\Settings\Settings", "bind_email_send_code")}
                         <div class="input-group div-send-bind-email">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                            {if $.site.config.cabinet.pin_shield}<input type="text" class="form-control" style="max-width: 130px !important;" id="pin" name="pin" placeholder="{$lang_pin_label_placeholder}">{/if}
+                            {if $.php.check_pin("pins_bind_email_send_code")}<input type="text" class="form-control" style="max-width: 130px !important;" id="pin" name="pin" placeholder="{$lang_pin_label_placeholder}">{/if}
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-alt-danger submit-form">
                                     <i class="fa fa-envelope-o"></i>

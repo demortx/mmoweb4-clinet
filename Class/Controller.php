@@ -65,6 +65,18 @@ class Controller
     public $ip_cabinet_exceptions = array();
 
 
+    //настройка пин кода
+    public $settings_pin = array(
+        "pins_change_password_account"  => true,
+        "pins_forgot_password_account"  => true,
+        "pins_change_pwd_ma"            => true,
+        "pins_bind_telegram"            => true,
+        "pins_bind_email_send_code"     => true,
+        "pins_bind_phone_send_code"     => true,
+        "pins_manager_add"              => true,
+    );
+
+
     /**
      * Class constructor
      *

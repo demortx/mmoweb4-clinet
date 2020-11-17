@@ -10,13 +10,13 @@
 
                 {if $.php.is_array($.site.session->session.master_account.telegram)}
                     <input type="hidden" name="type" value="enable">
-                    {if $.site.config.cabinet.pin_shield}<input type="text" class="form-control" id="pin" name="pin" placeholder="PIN-CODE"> {/if}
+                    {if $.php.check_pin("pins_bind_telegram")}<input type="text" class="form-control" id="pin" name="pin" placeholder="PIN-CODE"> {/if}
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-alt-success submit-form"><i class="fa fa-check"></i>  {$lang_btn_confirm_telegram}</button>
                     </div>
                 {else}
                     <input type="hidden" name="type" value="disable">
-                    {if $.site.config.cabinet.pin_shield}<input type="text" class="form-control" id="pin" name="pin" placeholder="PIN-CODE"> {/if}
+                    {if $.php.check_pin("pins_bind_telegram")}<input type="text" class="form-control" id="pin" name="pin" placeholder="PIN-CODE"> {/if}
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-alt-danger submit-form"><i class="fa fa-check"></i>  {$lang_btn_disable_telegram}</button>
                     </div>

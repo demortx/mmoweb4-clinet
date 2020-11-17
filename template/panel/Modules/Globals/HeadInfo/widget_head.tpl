@@ -57,15 +57,6 @@
                                         </a>
                                     </li>
                                     {/if}
-                                    {*<li class="nav-item">
-                                        <a class="nav-link d-flex align-items-center justify-content-between p-1" href="javascript:void(0)">
-                                            <span><i class="fa fa-fw fa-expeditedssl mr-5"></i> PIN-code</span>
-                                            <label class="css-control css-control-sm css-control-success css-switch p-0">
-                                                <input type="checkbox" class="css-control-input" {if $.php.get_instance()->session->checkShield()}checked="checked"{/if}>
-                                                <span class="css-control-indicator"></span>
-                                            </label>
-                                        </a>
-                                    </li>*}
                                 </ul>
                         </div>
 

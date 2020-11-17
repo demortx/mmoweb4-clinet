@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="input-group col-6">
-                        {if $.site.config.cabinet.pin_shield}
+                        {if $.php.check_pin("pins_bind_phone_send_code")}
                         <input type="text" class="form-control" style="max-width: 130px !important;" id="pin" name="pin" placeholder="{$lang_pin_label_placeholder}">
                         {/if}
                         <div class="input-group-append">

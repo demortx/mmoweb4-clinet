@@ -31,7 +31,6 @@
             if($(this).is(':checked'))
             {
                 $('.form-pin-code-disable').hide('slow');
-                /*$('.form-pin-recovery').show('slow');*/
                 if (pin_code_enable == 0){
                     send_ajax('{$.php.http_build_query(['module_form' => "Modules\Globals\Settings\Settings",'module' => "pin_system"])}&enable=true', true);
                     $(this).attr("disabled", true);
@@ -40,14 +39,13 @@
                 if (pin_code_enable == 1){
                     $('.form-pin-code-disable').show('fade');
                 }
-                /*$('.form-pin-recovery').hide('fade');*/
 
             }
         });
     });
 </script>
-{*{if get_instance()->session->checkShield()}*}
-<div class="form-group row {*form-pin-recovery*}">
+
+<div class="form-group row">
     <label class="col-md-4 col-form-label text-right border-right" for="name">
         {$lang_title}
     </label>
@@ -64,5 +62,4 @@
 
     </div>
 </div>
-{*{/if}*}
 <hr>

@@ -30,7 +30,7 @@
             <input type="password" class="form-control" id="input_password_new_confirm" name="password_new_confirm">
         </div>
     </div>
-    {if $.site.config.cabinet.pin_shield}
+    {if $.php.check_pin("pins_change_pwd_ma")}
     <div class="form-group row">
         <label class="col-md-4 col-form-label text-right border-right" for="input_password_pin">
             {$lang_input_password_pin}
