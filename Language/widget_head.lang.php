@@ -44,6 +44,10 @@ return array(
         'lang_title_sale' => 'Скидка',
         'lang_btn_go_info_sale' => 'Подробно о скидке',
 
+        'lang_btn_bc_title' => 'Код',
+        'lang_btn_bc_desc' => 'Бонус-код',
+        'lang_btn_bc_open' => 'Активировать',
+
 
 
 
@@ -84,8 +88,10 @@ return array(
 
         'lang_title_sale' => 'Discount',
         'lang_btn_go_info_sale' => 'Discount Details',
-	
-	
-	
+
+
+        'lang_btn_bc_title' => 'Cod',
+        'lang_btn_bc_desc' => 'Bonus-cod',
+        'lang_btn_bc_open' => 'Activate',
     ),
 );

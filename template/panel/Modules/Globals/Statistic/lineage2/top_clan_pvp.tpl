@@ -5,7 +5,7 @@
         <th>Name</th>
         <th>Ally</th>
         <th>Castle</th>
-        <th>Clan holl</th>
+        <th>Clan hall</th>
         <th>Level</th>
         <th>Rep</th>
         <th>Member</th>

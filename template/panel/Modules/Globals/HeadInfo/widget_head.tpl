@@ -1,6 +1,6 @@
 <div class="row invisible" data-toggle="appear">
     <!-- Row #1 -->
-    <div class="col-12 col-xl-{if $status_warehouse}6{else}8{/if}">
+    <div class="col-12 col-xl-{$row_col}">
         <div class="block block-rounded block-bordered block-link-shadow options-container" >
             <div class="block-content block-content-full clearfix">
                 <div class="float-right mt-15 d-none d-sm-block">
@@ -101,7 +101,7 @@
     </div>
     {/if}
 
-    <div class="col-4 col-xl-{if $status_discount}2{else}4{/if}">
+    <div class="col-4 col-xl-2">
         <div class="block block-rounded block-bordered block-link-shadow options-container" >
             <div class="block-content block-content-full clearfix">
                 <div class="float-right mt-15 d-none d-sm-block">
@@ -147,15 +147,35 @@
             <div class="options-overlay bg-white">
                 <div class="options-overlay-content">
                     <h3 class="h4 mb-5">{$lang_title_sale} {$.site.session->session.user_data.discount}%</h3>
-
                     <a href="#" class="link-effect h6 mb-5"><i class="fa fa-info-circle"></i> {$lang_btn_go_info_sale}</a>
-
-
                 </div>
             </div>
         </div>
     </div>
     {/if}
+
+    {if $status_bonus_cod}
+        <div class="col-4 col-xl-2">
+            <div class="block block-rounded block-bordered block-link-shadow options-container" >
+                <div class="block-content block-content-full clearfix">
+                    <div class="float-right mt-15 d-none d-sm-block">
+                        <i class="fa fa-gift fa-2x "></i>
+                    </div>
+                    <div class="font-size-h3 font-w600">{$lang_btn_bc_title}</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-muted">{$lang_btn_bc_desc}</div>
+                </div>
+                <div class="options-overlay bg-white">
+                    <div class="options-overlay-content">
+                        <h3 class="h4 mb-5">{$lang_btn_bc_desc}</h3>
+                        <button type="button" class="btn btn-sm btn-rounded btn-dual-secondary h6 mb-5 submit-btn" {$.php.btn_ajax("Modules\Plugins\BonusCod\BonusCod", "ajax_open_form")}><i class="fa fa-dropbox"></i> {$lang_btn_bc_open}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {/if}
+
+
+
     <!-- END Row #1 -->
 </div>
 
