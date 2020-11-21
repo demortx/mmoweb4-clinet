@@ -120,7 +120,7 @@ class func
     }
 
     public function widget_reset_pin(){
-        if (check_pin() == false){
+        if (get_instance()->config['cabinet']['pin_shield'] == false){
             return '';
         }
 
