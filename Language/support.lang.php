@@ -92,7 +92,7 @@ return array(
 
 
         'category' => array(
-            0 => 'Выберите категорию',
+            //0 => 'Выберите категорию',
             1 => 'Общие вопросы',
             2 => 'Сайт, Форум, ЛК',
             3 => 'Ошибки клиента',
@@ -190,7 +190,7 @@ return array(
 
 
         'category' => array(
-            0 => 'Choose subject',
+            //0 => 'Choose subject',
             1 => 'Common questions',
             2 => 'Website, forum, personal account',
             3 => 'Client mistakes',

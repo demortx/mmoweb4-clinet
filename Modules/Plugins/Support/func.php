@@ -18,7 +18,7 @@ class func
     public $this_main = false;
     //Language/support.lang.php
     public $category = array(
-        0 => 'Выберите категорию',
+        //0 => 'Выберите категорию',
         1 => 'Общие вопросы',
         2 => 'Сайт, Форум, ЛК',
         3 => 'Ошибки клиента',
@@ -413,7 +413,7 @@ class func
         );
     }
 
-    public function new_ticket_form($type = 0, $ajax = false){
+    public function new_ticket_form($type = 1, $ajax = false){
 
         switch ($type){
             case 6:

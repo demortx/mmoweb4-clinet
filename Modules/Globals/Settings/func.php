@@ -587,7 +587,7 @@ class func
 
         if (get_instance()->session->isLogin()) {
 
-            if (check_pin() == false) {
+            if (get_instance()->config['cabinet']['pin_shield'] == false) {
                 return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_type'])->danger();
             }
 
