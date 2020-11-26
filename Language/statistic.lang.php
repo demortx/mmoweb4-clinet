@@ -44,7 +44,7 @@ return array(
             'top_clan_pvp'     => 'Top Clan PvP',
             'top_ally'         => 'Top Aliance',
             'top_castle'       => 'Castles',
-            'top_clanhols'     => 'Holl clan',
+            'top_clanhols'     => 'Clan hall',
             'top_hero'         => 'Heroes',
             'top_statistic'    => 'Common analytics',
             'online_history'   => 'Online\'s history',
