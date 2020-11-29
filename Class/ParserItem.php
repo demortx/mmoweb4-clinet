@@ -62,11 +62,29 @@ class ParserItem
 
                         $items[$item_id]['name'] = $item['name'];
                         $items[$item_id]['add_name'] = $item['add_name'];
-                        $items[$item_id]['description'] = str_replace(array('u,', '\\0'), "", $item['description']);
+                        $items[$item_id]['description'] = filter_var(str_replace(array('u,', '\\0'), "", $item['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $items[$item_id]['icon'] = '';
+                        $items[$item_id]['icon_panel'] = '';
+                        $items[$item_id]['grade'] = '';
+                        $items[$item_id]['stackable'] = 0;
 
                     }else{
                         if(!isset($items[$item_id]))continue;
+
+
+                        if (isset($item["crystal_type"])){
+                            $item["crystal_type"] = str_replace(array("[", "]"), "", $item["crystal_type"]);
+                            $items[$item_id]['grade'] = $item["crystal_type"] == 'crystal_free' ? '' : $item["crystal_type"];
+                        }
+
+                        if (isset($item["consume_type"])){
+                            $item["consume_type"] = str_replace(array("[", "]"), "", $item["consume_type"]);
+                            switch($item["consume_type"]){
+                                case"consume_type_normal":    $items[$item_id]['stackable'] = 0; break;
+                                case"consume_type_stackable": $items[$item_id]['stackable'] = 1; break;
+                                case"consume_type_asset":     $items[$item_id]['stackable'] = 1; break;
+                            }
+                        }
 
                         if(!empty(trim($item['icon[4]']))){
                             $items[$item_id]['icon'] = explode(".", trim($item['icon[4]']));
@@ -91,7 +109,7 @@ class ParserItem
                 if ($file_name == 'itemname-e.txt') {
                     $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('name', 'additionalname', 'description'));
                 }else
-                    $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('icon'));
+                    $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('icon', 'icon_panel', 'crystal_type', 'consume_type'));
 
                 foreach ($temp as $item_id=>$item) {
 
@@ -104,15 +122,44 @@ class ParserItem
 
                         $items[$item_id]['name'] = $this->trim($item['name']);
                         $items[$item_id]['add_name'] = $item['additionalname'];
-                        $items[$item_id]['description'] = $this->trim($item['description']);
+                        $items[$item_id]['description'] = filter_var($this->trim($item['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $items[$item_id]['icon'] = '';
+                        $items[$item_id]['icon_panel'] = '';
+                        $items[$item_id]['grade'] = '';
+                        $items[$item_id]['stackable'] = 0;
+
                     }else{
                         if(!isset($items[$item_id]))continue;
-                        if (!isset($item["icon"]))continue;
-                        $temp_ = explode("]", $this->trim($item["icon"], 2));
-                        $temp_ = explode(".", $temp_[0]);
-                        $items[$item_id]['icon'] = strtolower($temp_[count($temp_) - 1]);
-                        unset($temp_);
+
+
+                        if (isset($item["crystal_type"])){
+                            $item["crystal_type"] = str_replace(array("[", "]"), "", $item["crystal_type"]);
+                            $items[$item_id]['grade'] = $item["crystal_type"] == 'crystal_free' ? '' : $item["crystal_type"];
+                        }
+
+                        if (isset($item["consume_type"])){
+                            $item["consume_type"] = str_replace(array("[", "]"), "", $item["consume_type"]);
+                            switch($item["consume_type"]){
+                                case"consume_type_normal":    $items[$item_id]['stackable'] = 0; break;
+                                case"consume_type_stackable": $items[$item_id]['stackable'] = 1; break;
+                                case"consume_type_asset":     $items[$item_id]['stackable'] = 1; break;
+                            }
+                        }
+
+
+
+                        if (isset($item["icon_panel"]) AND !empty($item["icon_panel"])) {
+                            $item["icon_panel"] = trim($item['icon_panel']);
+                            $item["icon_panel"] = str_replace(array("[", "]", "{", "}"), "", $item["icon_panel"]);
+                            $item["icon_panel"] = explode(";", $item["icon_panel"]);
+                            $items[$item_id]['icon_panel'] = strtolower($item["icon_panel"][0]);
+                        }
+
+                        if (isset($item["icon"]) AND !empty($item["icon"])) {
+                            $item["icon"] = explode("]", $this->trim($item["icon"], 2));
+                            $item["icon"] = explode(".", $item["icon"][0]);
+                            $items[$item_id]['icon'] = strtolower($item["icon"][count($item["icon"]) - 1]);
+                        }
                     }
 
                 }
@@ -188,10 +235,10 @@ class ParserItem
     ///L2FileEdit END
     ///
     ///L2ClientDat START
-    /*
-    	Описание:  класс для загрузки клиентских файлов Lineage 2, раскодированных при помощи L2ClientDat
-    	Автор: Gaikotsu
-      Изменил: Demort
+    /**
+        Описание:  класс для загрузки клиентских файлов Lineage 2, раскодированных при помощи L2ClientDat
+        Автор: Gaikotsu
+        Изменил: Demort
     */
     public function L2ClientDat($fName, $type, $idx1 = -1, $idx2 = -1, $idx3 = -1, $field = false){
 
@@ -286,5 +333,6 @@ class ParserItem
         return strpos($str, "=") != 0 ? trim(substr($str, strpos($str, "=") + 1, strlen($str))) : "";
     }
     ///L2ClientDat END
+
 
 }

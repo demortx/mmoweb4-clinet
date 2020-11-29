@@ -73,7 +73,7 @@ class ParsFileGame
                 'en' => 'Game file parser',
             ),
             'author' => 'Demort',
-            'version' => '0.1'
+            'version' => '0.2'
         );
     }
 
@@ -217,7 +217,7 @@ class ParsFileGame
                 $i = 0;
                 foreach ($items as $id => $item){
                     $i++;
-                    $this->db->prepare("INSERT INTO mw_item_db(`item_id`,`name`,`add_name`,`description`,`icon`,`sid`) VALUES(:item_id, :name, :add_name, :description, :icon, :sid);")
+                    $this->db->prepare("INSERT INTO mw_item_db(`item_id`,`name`,`add_name`,`description`,`icon`,`icon_panel`,`grade`,`stackable`,`sid`) VALUES(:item_id, :name, :add_name, :description, :icon, :icon_panel, :grade, :stackable, :sid);")
                         ->execute(
                             array(
                                 ':item_id' => $id,
@@ -225,6 +225,9 @@ class ParsFileGame
                                 ':add_name' => $item['add_name'],
                                 ':description' => $item['description'],
                                 ':icon' => $item['icon'],
+                                ':icon_panel' => $item['icon_panel'],
+                                ':grade' => $item['grade'],
+                                ':stackable' => $item['stackable'],
                                 ':sid' => $this->sid
                             ));
 
@@ -280,6 +283,9 @@ class ParsFileGame
                                   `add_name` varchar(250) DEFAULT NULL,
                                   `description` varchar(1200) DEFAULT NULL,
                                   `icon` varchar(100) DEFAULT NULL,
+                                  `icon_panel` varchar(100) DEFAULT NULL,
+                                  `grade` varchar(3) DEFAULT NULL,
+                                  `stackable` int(1) NOT NULL DEFAULT '0',
                                   `sid` int(11) NOT NULL DEFAULT '0'
                                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                 
