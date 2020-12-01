@@ -30,20 +30,20 @@ class SiteComponents
         if ($page<0)
             $page = 0;
 
-        $news_count = get_cache('news_count', true);
+        $news_count = get_cache('news_count_'.$count, true);
         if ($news_count == false) {
             $news_count = self::db()->query('SELECT COUNT(*) AS count_all FROM `mw_news` WHERE publish=1;')->fetch(\PDO::FETCH_ASSOC)['count_all'];
-            set_cache('news_count', $news_count, CACHE_NEWS);
+            set_cache('news_count_'.$count, $news_count, CACHE_NEWS);
         }
 
         if (ceil($news_count / $count) >= $page) {
 
-            $data = get_cache('news_' . $page, false, true);
+            $data = get_cache('news_' . $page . '_' . $count, false, true);
             if ($data === false OR isset($data['cache_end'])) {
                 $news_list = self::db()->query('SELECT * FROM `mw_news` WHERE publish=1 ORDER BY fixed DESC, `date` DESC LIMIT ' . intval($count) . ' OFFSET ' . ($page * $count) . ';')
                     ->fetchAll(\PDO::FETCH_ASSOC);
                 if (is_array($news_list)) {
-                    set_cache('news_' . $page, $news_list, CACHE_NEWS);
+                    set_cache('news_' . $page . '_' . $count, $news_list, CACHE_NEWS);
                 } else
                     $news_list = array();
             } else

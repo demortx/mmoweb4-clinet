@@ -203,23 +203,27 @@ class func
 //}
                 $att = '';
                 if ($item["a_a_t"] > -1){
-                    $att .= $this->att[$item["a_a_t"]] . ": " . $item["a_a_v"];
-                    $att .= $this->att[0] . ": " . $item["d_a_0"];
-                    $att .= $this->att[1] . ": " . $item["d_a_1"];
-                    $att .= $this->att[2] . ": " . $item["d_a_2"];
-                    $att .= $this->att[3] . ": " . $item["d_a_3"];
-                    $att .= $this->att[4] . ": " . $item["d_a_4"];
-                    $att .= $this->att[5] . ": " . $item["d_a_5"];
+                    $att .= $this->att[$item["a_a_t"]] . ": " . $item["a_a_v"] . PHP_EOL;
+                    $att .= $this->att[0] . ": " . $item["d_a_0"] . PHP_EOL;
+                    $att .= $this->att[1] . ": " . $item["d_a_1"] . PHP_EOL;
+                    $att .= $this->att[2] . ": " . $item["d_a_2"] . PHP_EOL;
+                    $att .= $this->att[3] . ": " . $item["d_a_3"] . PHP_EOL;
+                    $att .= $this->att[4] . ": " . $item["d_a_4"] . PHP_EOL;
+                    $att .= $this->att[5] . ": " . $item["d_a_5"] . PHP_EOL;
                 }
 
                 $count = '';
                 if ($item['i_c'] > 1)
                     $count = 'x'.$item['i_c'];
 
+                $enc = '';
+                if ($item['i_e'] > 0)
+                    $enc = '+'.$item['i_c'];
+
                 //итд
                 //грейды предметов итд в ключах '%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%stackable%', '%stackable%'
 
-                $i = '<a class="list-group-item list-group-item-action text-left p-1" data-uid="'.$item['uid'].'" href="javascript:void(0)"><img src="%icon%" width="22px" class="mr-1" title="%name%">%name% %add_name% '.$count.'</a>';
+                $i = '<a class="list-group-item list-group-item-action text-left p-1" data-uid="'.$item['uid'].'" href="javascript:void(0)" title="'.$att.'"><img src="%icon%" width="22px" class="mr-1" title="%name%">%name% '.$enc.' '.$count.'</a>';
                 $html .= set_item($item['i_i'],false,false, $i);
 
 
