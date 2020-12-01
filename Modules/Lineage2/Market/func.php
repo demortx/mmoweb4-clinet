@@ -16,6 +16,14 @@ class func
 
     public $this_main = false;
     public $shop = array();
+    public $att = array(
+        0 => "Fire",
+        1 => "Water",
+        2 => "Wind",
+        3 => "Earth",
+        4 => "Holy",
+        5 => "Dark",
+    );
 
     public function __construct($this_main)
     {
@@ -168,17 +176,10 @@ class func
 
         return $send;
     }
-    
-    public $att = array(
-        0 => "Fire",
-        1 => "Water",
-        2 => "Wind",
-        3 => "Earth",
-        4 => "Holy",
-        5 => "Dark",
-    );
-    
+
     private function items_form($items){
+        $lib = include_once ROOT_DIR.'/Library/lineage2db_augmentation.php';
+
 
         if (is_array($items)){
             $html = '<div class="list-group push size-2" style="font-size: 85%;">';
@@ -203,6 +204,7 @@ class func
 //}
                 $att = '';
                 if ($item["a_a_t"] > -1){
+                    $att .= 'Attributes' . PHP_EOL;
                     $att .= $this->att[$item["a_a_t"]] . ": " . $item["a_a_v"] . PHP_EOL;
                     $att .= $this->att[0] . ": " . $item["d_a_0"] . PHP_EOL;
                     $att .= $this->att[1] . ": " . $item["d_a_1"] . PHP_EOL;
@@ -220,10 +222,17 @@ class func
                 if ($item['i_e'] > 0)
                     $enc = '+'.$item['i_c'];
 
+                $aug = '';
+                if($item['i_a_1'] > 0){
+                    $aug .= 'Augmentation' . PHP_EOL;
+                    $aug .= $lib['augmentation'][$item['i_a_1']] . PHP_EOL;
+                    $aug .= $lib['augmentation'][$item['i_a_2']];
+                }
+
                 //итд
                 //грейды предметов итд в ключах '%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%stackable%', '%stackable%'
 
-                $i = '<a class="list-group-item list-group-item-action text-left p-1" data-uid="'.$item['uid'].'" href="javascript:void(0)" title="'.$att.'"><img src="%icon%" width="22px" class="mr-1" title="%name%">%name% '.$enc.' '.$count.'</a>';
+                $i = '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u'.$item['uid'].'" data-uid="'.$item['uid'].'"  data-count="'.$item['i_c'].'"  data-stackable="%stackable%" data-name="%name% '.$enc.' '.$count.'" data-icon="%icon%" href="javascript:void(0)" title="'.$att.' '.$aug.'"><img src="%icon%" width="22px" class="mr-1" title="%name%">%name% '.$enc.' '.$count.'</a>';
                 $html .= set_item($item['i_i'],false,false, $i);
 
 

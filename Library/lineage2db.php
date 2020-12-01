@@ -369,4 +369,5 @@ return array(
         "grave_robber_akata"=>array("npc_id"=>'25501',"npc_name"=>'Grave Robber Leader Akata',"level"=>'30',"respawn"=>'36',"random"=>'24'),
         "spirits_of_nellis"=>array("npc_id"=>' 25504',"npc_name"=>'Nellis Vengeful Spirit',"level"=>'39',"respawn"=>'36',"random"=>'24'),
     ),
+
 );

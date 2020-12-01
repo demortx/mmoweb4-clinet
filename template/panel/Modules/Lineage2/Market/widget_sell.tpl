@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.16'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.25'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -128,7 +128,7 @@
 
                         </div>
                     </div>
-                    <div class="col-6 col-md-3">
+                    <div class="col-12 col-md-3">
                         <h6 class="text-center">Выбирите предмет</h6>
                         <div id="inventory_list">
 
@@ -136,9 +136,36 @@
                     </div>
                     <div class="col-12 col-md-5">
                         <h6 class="text-center">Укажите цену</h6>
+
+                        <div class="form-group row">
+                            <label class="col-12">Вариант продажи</label>
+                            <div class="col-12">
+                                <div class="custom-control custom-radio custom-control-inline mb-5">
+                                    <input class="custom-control-input" type="radio" name="type" id="example-radio1" value="1" checked="">
+                                    <label class="custom-control-label" for="example-radio1">Продажа в розницу</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline mb-5">
+                                    <input class="custom-control-input" type="radio" name="type" id="example-radio2" value="2">
+                                    <label class="custom-control-label" for="example-radio2">Продажа оптом</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <table class="table table-bordered table-striped table-vcenter"  style="font-size: 85%;">
+                            <thead>
+                            <tr>
+                                <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;">#</th>
+                                <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;">Название</th>
+                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Цена</th>
+                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Действие</th>
+                            </tr>
+                            </thead>
+                            <tbody id="basket">
+                            </tbody>
+                        </table>
                     </div>
-
-
                 </div>
 
             </div>

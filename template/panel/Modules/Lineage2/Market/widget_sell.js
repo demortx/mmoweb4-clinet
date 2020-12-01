@@ -73,6 +73,47 @@ $('.check_char_market').on('click', function(){
             '<i class="si si-cloud-download mr-5"></i>Загрузить инвентарь</button>' +
             '</div>');
     }
+});
+
+$('body').on('click', '.select_item_mr', function (e) {
+    let uid = $(this).data('uid');
+    let count = $(this).data('count');
+    let stackable = $(this).data('stackable');
+    let name = $(this).data('name');
+    let icon = $(this).data('icon');
+
+    if (!$(this).hasClass('active')){
+        $(this).addClass('active');
 
 
+        if(stackable == 1 && count > 1 )
+            stackable = '<input type="number" min="1" max="'+count+'" value="'+count+'" name="add[i]['+uid+'][count]" class="form-control form-control-sm" placeholder="Count">';
+        else
+            stackable = '';
+
+        var btn = '<div class="input-group">'
+            +stackable
+            +'<span class="input-group-append float-right">'
+            +'<button type="button" data-uid="'+uid+'" class="btn btn-sm btn-secondary  item_remove"><i class="fa fa-times"></i></button>'
+            +'</span>'
+            +'</div>';
+        $('#basket').append(
+            '<tr class="'+uid+'">'
+            +'<td class="hidden-xs text-center"><img src="'+icon+'" width="22" class="label_img"></td>'
+            +'<td class="hidden-xs text-center">'+name+'</td>'
+            +'<td class="hidden-xs text-center"><input type="number" min="0" max="30000" name="add[i]['+uid+'][price]" class="form-control form-control-sm" placeholder="Price"></td>'
+            +'<td class="text-center" style="width: 120px;">' + btn + '</td></tr>'
+        );
+
+    }else{
+        $(this).removeClass('active');
+        $('.'+uid).remove();
+    }
+
+});
+
+$('body').on('click', '.item_remove', function (e) {
+    var uid = $(this).data('uid');
+    $('#u'+uid).removeClass('active');
+    $('.'+uid).remove();
 });

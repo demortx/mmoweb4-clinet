@@ -393,7 +393,7 @@ if (!function_exists('set_item')) {
             return $item;
         }else{
             unset($item['popup']);
-            return str_replace(array('%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%stackable%', '%stackable%', '%sid%' ) , array_values($item), $pattern);
+            return str_replace(array('%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%grade%', '%stackable%', '%sid%' ) , array_values($item), $pattern);
         }
 
     }
