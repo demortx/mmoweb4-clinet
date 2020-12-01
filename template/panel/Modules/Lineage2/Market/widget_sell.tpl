@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.25'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.29'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -19,7 +19,7 @@
 
     <!-- Form -->
     <form action="/input"  method="post" onsubmit="return false;">
-        {$.php.form_hide_input("Modules\Plugins\Market\Market", "ajax_sell_item")}
+        {$.php.form_hide_input("Modules\Lineage2\Market\Market", "ajax_sell_item")}
         <input type="hidden" id="input_section" name="section" value="armor">
         <!-- Wizard Progress Bar -->
         <div class="block-content block-content-sm">
@@ -170,28 +170,39 @@
 
             </div>
             <!-- END Step 2 -->
-
             <!-- Step 3 -->
             <div class="tab-pane" id="wizard-confirm" role="tabpanel">
-                <div class="form-group">
-                    <label for="wizard-progress-location">Location</label>
-                    <input class="form-control" type="text" id="wizard-progress-location" name="wizard-progress-location">
-                </div>
-                <div class="form-group">
-                    <label for="wizard-progress-skills">Skills</label>
-                    <select class="form-control" id="wizard-progress-skills" name="wizard-progress-skills" size="1">
-                        <option value="">Please select your best skill</option>
-                        <option value="1">Photoshop</option>
-                        <option value="2">HTML</option>
-                        <option value="3">CSS</option>
-                        <option value="4">JavaScript</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="css-control css-control-primary css-switch" for="wizard-progress-terms">
-                        <input type="checkbox" class="css-control-input" id="wizard-progress-terms" name="wizard-progress-terms">
-                        <span class="css-control-indicator"></span> Agree with the terms
-                    </label>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table id="basket-confirm" class="table table-bordered table-striped table-vcenter">
+                            <thead>
+                            <tr>
+                                <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;">#</th>
+                                <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;">Название</th>
+                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Цена</th>
+                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Количество</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-5">
+                        {if $.php.check_pin("pins_market_sell_item")}
+                        <label class="col-12">Введите PIN</label>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text short_name_icon"><i class="fa fa-expeditedssl"></i></span>
+                                </div>
+                                <input type="number" maxlength="4" name="pin" class="form-control" id="count-in-game" placeholder="PIN">
+                            </div>
+                        </div>
+                        {/if}
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="signup-terms" name="terms">
+                            <label class="custom-control-label" for="signup-terms">Согласен с <a href="#">правилами</a></label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- END Step 3 -->

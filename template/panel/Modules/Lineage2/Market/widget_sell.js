@@ -69,7 +69,7 @@ $('.check_char_market').on('click', function(){
     if($('#inventory_'+id).length){
         $('#inventory_'+id).show();
     }else{
-        $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="e=0&amp;module_form=Modules%5CLineage2%5CMarket%5CMarket&amp;module=ajax_loud_inventory&amp;char_id='+id+'&amp;char_name='+name+'&amp;account_name='+account+'" data-action="/input">' +
+        $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="module_form=Modules%5CLineage2%5CMarket%5CMarket&amp;module=ajax_loud_inventory&amp;char_id='+id+'&amp;char_name='+name+'&amp;account_name='+account+'" data-action="/input">' +
             '<i class="si si-cloud-download mr-5"></i>Загрузить инвентарь</button>' +
             '</div>');
     }
@@ -87,7 +87,7 @@ $('body').on('click', '.select_item_mr', function (e) {
 
 
         if(stackable == 1 && count > 1 )
-            stackable = '<input type="number" min="1" max="'+count+'" value="'+count+'" name="add[i]['+uid+'][count]" class="form-control form-control-sm" placeholder="Count">';
+            stackable = '<input type="number" min="1" max="'+count+'" value="'+count+'" name="i['+uid+'][count]" class="form-control form-control-sm" placeholder="Count">';
         else
             stackable = '';
 
@@ -101,7 +101,7 @@ $('body').on('click', '.select_item_mr', function (e) {
             '<tr class="'+uid+'">'
             +'<td class="hidden-xs text-center"><img src="'+icon+'" width="22" class="label_img"></td>'
             +'<td class="hidden-xs text-center">'+name+'</td>'
-            +'<td class="hidden-xs text-center"><input type="number" min="0" max="30000" name="add[i]['+uid+'][price]" class="form-control form-control-sm" placeholder="Price"></td>'
+            +'<td class="hidden-xs text-center"><input type="number" min="0" max="30000" name="i['+uid+'][price]" class="form-control form-control-sm" placeholder="Price"></td>'
             +'<td class="text-center" style="width: 120px;">' + btn + '</td></tr>'
         );
 
@@ -117,3 +117,18 @@ $('body').on('click', '.item_remove', function (e) {
     $('#u'+uid).removeClass('active');
     $('.'+uid).remove();
 });
+
+$(".btn[data-wizard], .nav-link[href='#wizard-confirm']").click(function(e) {
+    var b = $("#basket").clone();
+
+    $(b).children("thead").children("th").children(".action-toggle").toggle();
+
+    var i = $(b).children("tr").children("td").children("input");
+
+    i.replaceWith("<span>" + ($(i).val() == "" ? 0 : $(i).val()) + "</span>");
+
+    $(b).children("tr").children("td").children("div.input-group").remove();
+
+    $("#basket-confirm").children("tbody").html("");
+    $("#basket-confirm").append(b);
+})

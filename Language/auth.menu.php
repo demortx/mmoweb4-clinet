@@ -217,7 +217,7 @@ return array(
         'function' => function(&$buttons){return false;}
     ),
     'market' => array(
-        'enable' => true,
+        'enable' => function(){ return get_instance()->check_plugin('market');},
         'level' => 650,
         'empty_hide' => false,
         'href' => '/panel/market',

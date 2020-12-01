@@ -245,6 +245,65 @@ class func
 
     public function ajax_sell_item(){
 
+        $api = new LineageApi();
+        $vars = array();
 
+        if (get_instance()->session->isLogin()) {
+
+
+            if (!isset($_POST['section']) OR empty($_POST['section']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["section"] = $_POST['section'];
+
+            if (!isset($_POST['type']) OR empty($_POST['type']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["type"] = intval($_POST['type']);
+
+            if (!isset($_POST['i']) OR empty($_POST['i']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["i"] = $_POST['i'];
+
+
+            if (check_pin("pins_market_sell_item")) {
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
+                    return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
+                else
+                    $vars["pin"] = $_POST['pin'];
+            }
+            
+
+            $response = $api->market_buy($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->data->user_data)) {
+
+                        $data = json_encode($response["response"]->data);
+                        $data = json_decode($data, true);
+                        get_instance()->session->updateSessionDB($data);
+
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->html($response["response"]->data->user_data->balance, '.balance_html')->success();
+
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        return $send;
     }
 }
