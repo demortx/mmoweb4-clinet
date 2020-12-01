@@ -30,6 +30,7 @@ class func
         'paygol',
         'alikassa',
         'enot',
+        'ipay',
 
     );
 

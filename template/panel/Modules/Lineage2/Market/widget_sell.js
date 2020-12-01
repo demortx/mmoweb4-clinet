@@ -57,3 +57,10 @@ $('body').on('click', '.btn-section', function (e) {
     $('#input_section').val(_this.data('type'));
 
 });
+
+$('.check_char_market').on('click', function(){
+    var id = $(this).data('id');
+    $('.check_char_market').removeClass('active');
+    $(this).addClass('active');
+
+});

@@ -103,17 +103,26 @@ if($con_true){
                         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
 	echo 'Create table: mw_item_db<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_item_db`;
-                        CREATE TABLE IF NOT EXISTS `mw_item_db` (
-                          `id` int(11) NOT NULL AUTO_INCREMENT,
-                          `item_id` bigint(20) NOT NULL,
-                          `name` varchar(250) DEFAULT NULL,
-                          `add_name` varchar(250) DEFAULT NULL,
-                          `description` varchar(1200) DEFAULT NULL,
-                          `icon` varchar(100) DEFAULT NULL,
-                          `sid` int(11) NOT NULL DEFAULT '0',
-                          PRIMARY KEY (`id`),
-                          KEY `sid` (`sid`)
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
+                                CREATE TABLE `mw_item_db` (
+                                  `id` int(11) NOT NULL,
+                                  `item_id` bigint(20) NOT NULL,
+                                  `name` varchar(250) DEFAULT NULL,
+                                  `add_name` varchar(250) DEFAULT NULL,
+                                  `description` varchar(1200) DEFAULT NULL,
+                                  `icon` varchar(100) DEFAULT NULL,
+                                  `icon_panel` varchar(100) DEFAULT NULL,
+                                  `grade` varchar(3) DEFAULT NULL,
+                                  `stackable` int(1) NOT NULL DEFAULT '0',
+                                  `sid` int(11) NOT NULL DEFAULT '0'
+                                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                                
+                                ALTER TABLE `mw_item_db`
+                                  ADD PRIMARY KEY (`id`),
+                                  ADD KEY `item_id` (`item_id`),
+                                  ADD KEY `sid` (`sid`);
+                                
+                                ALTER TABLE `mw_item_db`
+                                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;");
 	echo 'Create table: mw_news<br>';
     $DB->query("DROP TABLE IF EXISTS `mw_news`;
                         CREATE TABLE IF NOT EXISTS `mw_news` (

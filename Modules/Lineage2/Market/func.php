@@ -111,4 +111,13 @@ class func
 
     }
 
+
+
+
+    //AJAX
+
+    public function ajax_sell_item(){
+
+
+    }
 }

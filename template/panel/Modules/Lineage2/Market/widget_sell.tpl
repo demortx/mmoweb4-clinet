@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.5'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.6'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -18,7 +18,9 @@
     <!-- END Step Tabs -->
 
     <!-- Form -->
-    <form action="be_forms_wizard.html" method="post">
+    <form action="/input"  method="post" onsubmit="return false;">
+        {$.php.form_hide_input("Modules\Plugins\Market\Market", "ajax_sell_item")}
+        <input type="hidden" id="input_section" name="section" value="armor">
         <!-- Wizard Progress Bar -->
         <div class="block-content block-content-sm">
             <div class="progress" data-wizard="progress" style="height: 8px;">
@@ -33,7 +35,7 @@
             <div class="tab-pane active" id="wizard-section" role="tabpanel">
                 <div class="row">
                     <div class="col-12 col-lg-6 offset-lg-3">
-                        <input type="hidden" id="input_section" name="section" value="armor">
+
 
 
                         <div class="list-group push">
@@ -83,10 +85,59 @@
 
             <!-- Step 2 -->
             <div class="tab-pane" id="wizard-item" role="tabpanel">
-                <div class="form-group">
-                    <label for="wizard-progress-bio">Bio</label>
-                    <textarea class="form-control" id="wizard-progress-bio" name="wizard-progress-bio" rows="9"></textarea>
+
+
+                <div class="row gutters-tiny">
+                    <div class="col-6 col-md-2">
+                        <h6 class="text-center">Выбирите аккаунт</h6>
+                        <div class="list-group push"  id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
+                            {foreach $.site.session->session.user_data.account as $login => $info first=$first index=$index}
+                                <a class="list-group-item list-group-item-action align-items-center p-1 pl-10 {if $first}active{/if}" id="{$login}-tab" data-idx="{$index}" data-toggle="pill" href="#{$login}" role="tab" aria-controls="{$login}" aria-selected="true">
+                                    {$login} {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}<span class="float-right text-right"><i class="fa fa-user-o"></i> {$.php.count($info.char_list)}</span>{/if}
+                                </a>
+                            {/foreach}
+                        {else}
+                            Нет аккаунтов
+                        {/if}
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h6 class="text-center">Выбирите персонажа</h6>
+                        <div class="tab-content" id="v-pills-tabContent">
+                        {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
+                            {foreach $.site.session->session.user_data.account as $login => $info first=$first2}
+                                <div class="tab-pane fade {if $first2}show active{/if}" id="{$login}" role="tabpanel" aria-labelledby="{$login}-tab">
+                                    <div class="list-group push">
+                                        {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
+                                            {foreach $info.char_list as $char_id => $char}
+                                                <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" href="javascript:void(0)">
+                                                    {$char.name}
+                                                    <span class="float-right mr-5 ">Lv.{$char.level}</span>
+                                                </a>
+                                            {/foreach}
+                                        {else}
+                                            <a class="list-group-item list-group-item-action align-items-center text-center p-1" href="javascript:void(0)">
+                                                <i class="fa fa-info-circle ml-1 mr-5"></i> Нет персонажей
+                                            </a>
+                                        {/if}
+                                    </div>
+                                </div>
+                            {/foreach}
+                        {/if}
+
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <h6 class="text-center">Выбирите предмет</h6>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <h6 class="text-center">Укажите цену</h6>
+                    </div>
+
+
                 </div>
+
             </div>
             <!-- END Step 2 -->
 
@@ -129,8 +180,8 @@
                     <button type="button" class="btn btn-alt-secondary" data-wizard="next">
                         Вперед <i class="fa fa-angle-right ml-5"></i>
                     </button>
-                    <button type="submit" class="btn btn-alt-primary d-none" data-wizard="finish">
-                        <i class="fa fa-check mr-5"></i> Подтвердить
+                    <button type="submit" class="btn btn-alt-primary d-none submit-form" data-wizard="finish">
+                        <i class="fa fa-check mr-5 "></i> Подтвердить
                     </button>
                 </div>
             </div>

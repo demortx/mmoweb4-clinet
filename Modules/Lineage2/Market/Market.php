@@ -45,7 +45,7 @@ class Market extends MainModulesClass
 
         return array(
             //'ajax_open_form' => function () { return $this->func->ajax_open_form(); },
-            //'ajax_get_bonus' => function () { return $this->func->ajax_get_bonus(); },
+            'ajax_sell_item' => function () { return $this->func->ajax_sell_item(); },
 
         );
 

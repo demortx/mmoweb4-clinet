@@ -62,9 +62,9 @@ $system = array (
 			'email' => true,
 			'phone' => true,
 		),
-		'captcha' => false,
-		'recaptcha_public_key' => '6LctDLAZAAAAAOTDi9TlsbUmHjRz0-1DuxbPZuGm',
-		'recaptcha_secret_key' => '6LctDLAZAAAAAJDYRDcx5TGZxrNjffJ5YzOvEMOI',
+		'captcha' => 'recaptchav2',
+		'recaptcha_public_key' => '6LeCmeoZAAAAANZaPVS-pdnIGTiWo9f7bWKa4QVg',
+		'recaptcha_secret_key' => '6LeCmeoZAAAAAJPRRDUp4c2J1-DrIrA4gtl2pt-V',
 	),
 	'game'=>array(
 		0 => 'lineage2',
@@ -157,6 +157,7 @@ $system = array (
 			9 => 
 			array (
 				'rating' => true,
+				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -165,6 +166,7 @@ $system = array (
 			8 => 
 			array (
 				'rating' => true,
+				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -215,10 +217,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '76.2139',
-			'EUR' => '0.843409',
-			'UAH' => '28.364013',
-			'BTC' => '5.3634145E-5',
+			'RUB' => '76.0966',
+			'EUR' => '0.83439',
+			'UAH' => '28.403969',
+			'BTC' => '5.4117737E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -389,6 +391,7 @@ $system = array (
 		3 => 'support',
 		5 => 'manager_account',
 		6 => 'bonus_cod',
+		8 => 'market',
 	),
 	'promo_game' => 0,
 );
