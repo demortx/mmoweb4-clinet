@@ -9,6 +9,7 @@
 namespace Market;
 
 use ApiLib\GlobalApi;
+use ApiLib\LineageApi;
 
 class func
 {
@@ -115,6 +116,119 @@ class func
 
 
     //AJAX
+
+    public function ajax_loud_inventory(){
+        $api = new LineageApi();
+        $vars = array('temp');
+
+        if (!get_instance()->session->isLogin())
+            return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        //аккаунт
+        if (!isset($_POST['account_name']) OR empty($_POST['account_name']))
+            return get_instance()->ajaxmsg->notify(get_lang('bonus_cod.lang')['ajax_empty_account_name'])->danger();
+        else
+            $vars["account_name"] = $_POST['account_name'];
+
+        //персонаж
+        if (!isset($_POST['char_name']) OR empty($_POST['char_name']))
+            return get_instance()->ajaxmsg->notify(get_lang('bonus_cod.lang')['ajax_empty_char_name'])->danger();
+        else
+            $vars["char_name"] = $_POST['char_name'];
+
+        if (!isset($_POST['char_id']) OR empty($_POST['char_id']))
+            return get_instance()->ajaxmsg->notify(get_lang('bonus_cod.lang')['ajax_empty_char_name'])->danger();
+
+
+        $response = $api->character_items($vars);
+
+        if ($response['ok']) {
+
+            if (isset($response['error'])) {
+                if (isset($response["response"]->input))
+                    $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                else
+                    $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+            } else {
+                if (isset($response["response"]->items)) {
+                    $items = json_encode($response["response"]->items);
+                    $items = json_decode($items, true);
+                    $send = get_instance()->ajaxmsg->html($this->items_form($items), '#inventory_'.$_POST['char_id'])->notify((string)$response["response"]->success)->success();
+
+                } else
+                    $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
+            }
+
+        } else {
+            $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+        }
+
+
+        return $send;
+    }
+    
+    public $att = array(
+        0 => "Fire",
+        1 => "Water",
+        2 => "Wind",
+        3 => "Earth",
+        4 => "Holy",
+        5 => "Dark",
+    );
+    
+    private function items_form($items){
+
+        if (is_array($items)){
+            $html = '<div class="list-group push size-2" style="font-size: 85%;">';
+
+            foreach ($items as $item){
+//array(15) {
+//  ["uid"]=> "5016229"
+//  ["i_a_1"]=> "0"
+//  ["i_a_2"]=> "0"
+//  ["i_i"]=> "2368"
+//  ["i_e"]=> "0"
+//  ["i_c"]=> "1"
+//  ["i_w"]=> "0"
+//  ["a_a_t"]=> "0"
+//  ["a_a_v"]=> "0"
+//  ["d_a_0"]=> "0"
+//  ["d_a_1"]=> "0"
+//  ["d_a_2"]=> "0"
+//  ["d_a_3"]=> "0"
+//  ["d_a_4"]=> "0"
+//  ["d_a_5"]=> "0"
+//}
+                $att = '';
+                if ($item["a_a_t"] > -1){
+                    $att .= $this->att[$item["a_a_t"]] . ": " . $item["a_a_v"];
+                    $att .= $this->att[0] . ": " . $item["d_a_0"];
+                    $att .= $this->att[1] . ": " . $item["d_a_1"];
+                    $att .= $this->att[2] . ": " . $item["d_a_2"];
+                    $att .= $this->att[3] . ": " . $item["d_a_3"];
+                    $att .= $this->att[4] . ": " . $item["d_a_4"];
+                    $att .= $this->att[5] . ": " . $item["d_a_5"];
+                }
+
+                $count = '';
+                if ($item['i_c'] > 1)
+                    $count = 'x'.$item['i_c'];
+
+                //итд
+                //грейды предметов итд в ключах '%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%stackable%', '%stackable%'
+
+                $i = '<a class="list-group-item list-group-item-action text-left p-1" data-uid="'.$item['uid'].'" href="javascript:void(0)"><img src="%icon%" width="22px" class="mr-1" title="%name%">%name% %add_name% '.$count.'</a>';
+                $html .= set_item($item['i_i'],false,false, $i);
+
+
+            }
+            $html .= '</div>';
+            return $html;
+        }else
+            return 'На этом персонаже нет предметов';
+    }
 
     public function ajax_sell_item(){
 

@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.6'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.16'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -111,7 +111,7 @@
                                     <div class="list-group push">
                                         {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
                                             {foreach $info.char_list as $char_id => $char}
-                                                <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" href="javascript:void(0)">
+                                                <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" href="javascript:void(0)">
                                                     {$char.name}
                                                     <span class="float-right mr-5 ">Lv.{$char.level}</span>
                                                 </a>
@@ -130,6 +130,9 @@
                     </div>
                     <div class="col-6 col-md-3">
                         <h6 class="text-center">Выбирите предмет</h6>
+                        <div id="inventory_list">
+
+                        </div>
                     </div>
                     <div class="col-12 col-md-5">
                         <h6 class="text-center">Укажите цену</h6>

@@ -59,8 +59,20 @@ $('body').on('click', '.btn-section', function (e) {
 });
 
 $('.check_char_market').on('click', function(){
-    var id = $(this).data('id');
+    let id = $(this).data('id');
+    let name = $(this).data('name');
+    let account = $(this).data('account');
+
     $('.check_char_market').removeClass('active');
     $(this).addClass('active');
+    $('.inv-div').hide();
+    if($('#inventory_'+id).length){
+        $('#inventory_'+id).show();
+    }else{
+        $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="e=0&amp;module_form=Modules%5CLineage2%5CMarket%5CMarket&amp;module=ajax_loud_inventory&amp;char_id='+id+'&amp;char_name='+name+'&amp;account_name='+account+'" data-action="/input">' +
+            '<i class="si si-cloud-download mr-5"></i>Загрузить инвентарь</button>' +
+            '</div>');
+    }
+
 
 });

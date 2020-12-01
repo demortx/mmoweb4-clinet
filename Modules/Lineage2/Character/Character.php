@@ -6,9 +6,10 @@
  * Time: 19:38
  */
 
-namespace Modules\Globals\Character;
+namespace Modules\Lineage2\Character;
 
 use ApiLib\GlobalApi;
+use ApiLib\LineageApi;
 use Modules\MainModulesClass;
 
 
@@ -62,10 +63,10 @@ class Character extends MainModulesClass
      */
     public function ajax_character_items()
     {
-        $api = new GlobalApi();
+        $api = new LineageApi();
         $vars = array('temp');
 
-        if (get_instance()->session->isLogin())
+        if (!get_instance()->session->isLogin())
             return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
 
 

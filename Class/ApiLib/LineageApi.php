@@ -9,10 +9,13 @@
 namespace ApiLib;
 
 
-class Lineage extends \Api
+class LineageApi extends \Api
 {
 
-
+    public function __construct($url = false, $key = false)
+    {
+        parent::__construct($url, $key);
+    }
 
     //Получение списка предметов персонажа
     public function character_items($vars){
