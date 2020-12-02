@@ -89,20 +89,15 @@ $('body').on('click', '.select_item_mr', function (e) {
         if(stackable == 1 && count > 1 )
             stackable = '<input type="number" min="1" max="'+count+'" value="'+count+'" name="i['+uid+'][count]" class="form-control form-control-sm" placeholder="Count">';
         else
-            stackable = '';
+            stackable = '1';
 
-        var btn = '<div class="input-group">'
-            +stackable
-            +'<span class="input-group-append float-right">'
-            +'<button type="button" data-uid="'+uid+'" class="btn btn-sm btn-secondary  item_remove"><i class="fa fa-times"></i></button>'
-            +'</span>'
-            +'</div>';
         $('#basket').append(
             '<tr class="'+uid+'">'
-            +'<td class="hidden-xs text-center"><img src="'+icon+'" width="22" class="label_img"></td>'
-            +'<td class="hidden-xs text-center">'+name+'</td>'
-            +'<td class="hidden-xs text-center"><input type="number" min="0" max="30000" name="i['+uid+'][price]" class="form-control form-control-sm" placeholder="Price"></td>'
-            +'<td class="text-center" style="width: 120px;">' + btn + '</td></tr>'
+            +'<td class="text-center"><img src="'+icon+'" width="22" class="label_img"></td>'
+            +'<td class="text-center">'+name+'</td>'
+            +'<td class="text-center"><input type="number" min="0" max="30000" name="i['+uid+'][price]" class="form-control form-control-sm" placeholder="Price"></td>'
+            +'<td class="text-center">' + stackable + '</td>'
+            +'<td class="text-center" style="width: 120px;"><button type="button" data-uid="'+uid+'" class="btn btn-sm btn-secondary  item_remove"><i class="fa fa-times"></i></button></td></tr>'
         );
 
     }else{
@@ -125,10 +120,12 @@ $(".btn[data-wizard], .nav-link[href='#wizard-confirm']").click(function(e) {
 
     var i = $(b).children("tr").children("td").children("input");
 
-    i.replaceWith("<span>" + ($(i).val() == "" ? 0 : $(i).val()) + "</span>");
+    $(i).each(function() {
+        $( this ).replaceWith("<span>" + ($(this).val() == "" ? 0 : $(this).val()) + "</span>");;
+    });
 
     $(b).children("tr").children("td").children("div.input-group").remove();
 
-    $("#basket-confirm").children("tbody").html("");
+    $("#basket-confirm").children("tbody").remove();
     $("#basket-confirm").append(b);
 })

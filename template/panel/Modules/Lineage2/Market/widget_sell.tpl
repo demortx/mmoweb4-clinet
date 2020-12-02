@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.29'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.35'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -159,7 +159,8 @@
                                 <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;">#</th>
                                 <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;">Название</th>
                                 <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Цена</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Действие</th>
+                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Кол-во</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody id="basket">
@@ -180,7 +181,7 @@
                                 <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;">#</th>
                                 <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;">Название</th>
                                 <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Цена</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Количество</th>
+                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;">Кол-во</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
@@ -188,7 +189,7 @@
                     </div>
                     <div class="col-lg-5">
                         {if $.php.check_pin("pins_market_sell_item")}
-                        <label class="col-12">Введите PIN</label>
+                        <label class="col-12">Введите PIN-CODE</label>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -199,8 +200,8 @@
                         </div>
                         {/if}
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="signup-terms" name="terms">
-                            <label class="custom-control-label" for="signup-terms">Согласен с <a href="#">правилами</a></label>
+                            <input type="checkbox" class="custom-control-input" id="market-terms" name="terms">
+                            <label class="custom-control-label" for="market-terms">Согласен с <a href="#">правилами</a></label>
                         </div>
                     </div>
                 </div>

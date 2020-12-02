@@ -46,7 +46,7 @@ return array(
         'lang_input_email_or_phone' => 'Enter login account master<br><small>Email or Phone</small>',
         'lang_input_password' => 'Enter password',
 
-        "lang_input_password_pin" => "enter PIN-CODE",
+        "lang_input_password_pin" => "Enter PIN-CODE",
         "lang_button_add" => "Connect",
         "lang_list_ma" => "List of connected accounts",
         "lang_list_ma_empty" => "No connected accounts",
