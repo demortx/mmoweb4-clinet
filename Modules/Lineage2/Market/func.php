@@ -204,26 +204,12 @@ class func
 
 
         if (is_array($items)){
-            $html = '<div class="list-group push size-2" style="font-size: 85%;">';
+
+            $html_item = '';
+            $html_item_disable = '';
 
             foreach ($items as $item){
-//array(15) {
-//  ["uid"]=> "5016229"
-//  ["i_a_1"]=> "0"
-//  ["i_a_2"]=> "0"
-//  ["i_i"]=> "2368"
-//  ["i_e"]=> "0"
-//  ["i_c"]=> "1"
-//  ["i_w"]=> "0"
-//  ["a_a_t"]=> "0"
-//  ["a_a_v"]=> "0"
-//  ["d_a_0"]=> "0"
-//  ["d_a_1"]=> "0"
-//  ["d_a_2"]=> "0"
-//  ["d_a_3"]=> "0"
-//  ["d_a_4"]=> "0"
-//  ["d_a_5"]=> "0"
-//}
+
                 $att = '';
                 if ($item["a_a_t"] > -1){
                     $att .= 'Attributes' . PHP_EOL;
@@ -259,13 +245,17 @@ class func
 
                 $item = array_merge($item, $item_info);
                 if($this->check_item($item))
-                    $status = 'true';
-                else
-                    $status = 'false';
+                    $html_item .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u'.$item['uid'].'" data-uid="'.$item['uid'].'"  data-count="'.$item['i_c'].'"  data-stackable="'.$item['stackable'].'" data-name="'.$item['name'].' '.$enc.' '.$count.'" data-icon="'.$item['icon'].'" href="javascript:void(0)" title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</a>';
 
-                $html .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u'.$item['uid'].'" data-uid="'.$item['uid'].'"  data-count="'.$item['i_c'].'"  data-stackable="'.$item['stackable'].'" data-name="'.$item['name'].' '.$enc.' '.$count.'" data-icon="'.$item['icon'].'" data-status="'.$status.'" href="javascript:void(0)" title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</a>';
+                else
+                    $html_item_disable .= '<div class="list-group-item list-group-item-action text-left p-1 not-sell"  title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1 imgdis" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</div>';
 
             }
+
+
+            $html = '<div class="list-group push size-2" style="font-size: 85%;">';
+            $html .= $html_item;
+            $html .= $html_item_disable;
             $html .= '</div>';
             return $html;
         }else
@@ -274,12 +264,11 @@ class func
 
     public function check_item($item){
 
-
-        if(in_array($item["i_i"] , explode(';',$this->market["items_allowed"])))
+        if(in_array($item["i_i"] , explode(',',$this->market["items_allowed"])))
             return true;
-        elseif( in_array($item["i_i"] , explode(';',$this->market["items_prohibited"])))
+        elseif( in_array($item["i_i"] , explode(',',$this->market["items_prohibited"])))
             return false;
-        elseif( ($item["i_a_1"] != 0) AND !in_array("augmentation", $this->market["options"]))//'options'  "augmentation"
+        elseif( ($item["i_a_1"] != 0) AND !in_array("augmentation", $this->market["options"]))
             return false;
         elseif( ($item["stackable"] != 0) AND !in_array("stackable", $this->market["options"]))
             return false;
@@ -288,13 +277,13 @@ class func
         else{
 
             if(is_array($this->market["grade"])) {
-                if (!array_key_exists($item["grade"], $this->market["grade"]))
+                if (!in_array($item["grade"], $this->market["grade"]))
                     return false;
             }else
                 return false;
 
             if(is_array($this->market["type"])){
-                if(!array_key_exists($item["type"], $this->market["type"]))
+                if(!in_array($item["type"], $this->market["type"]))
                     return false;
             }else
                 return false;
@@ -305,7 +294,7 @@ class func
 
     public function ajax_sell_item(){
 
-        $api = new LineageApi();
+
         $vars = array();
 
         if (get_instance()->session->isLogin()) {
@@ -326,6 +315,11 @@ class func
             else
                 $vars["i"] = $_POST['i'];
 
+            if (!isset($_POST['terms']) OR empty($_POST['terms']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["terms"] = $_POST['terms'];
+
 
             if (check_pin("pins_market_sell_item")) {
                 if (!isset($_POST['pin']) OR empty($_POST['pin']))
@@ -335,7 +329,9 @@ class func
             }
 
 
-            $response = $api->market_buy($vars);
+
+            $api = new LineageApi();
+            $response = $api->market_sell($vars);
 
             if ($response['ok']) {
 

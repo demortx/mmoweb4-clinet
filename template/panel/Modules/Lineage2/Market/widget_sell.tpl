@@ -1,5 +1,21 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
 {$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.41'])}
+<style>
+    .not-sell {
+        cursor: not-allowed! important;
+        background-color: rgba(0,0,0,.03);
+    }
+    .imgdis {
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+        filter: gray;
+        -webkit-filter: grayscale(1);
+    }
+</style>
+
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -201,6 +217,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6" style="margin-left: auto; margin-top: auto;">
+                                {if $.php.check_pin("pins_market_sell_item")}
                                 <label class="">Введите PIN-CODE</label>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -210,6 +227,7 @@
                                         <input type="number" maxlength="4" name="pin" class="form-control" id="count-in-game" placeholder="PIN">
                                     </div>
                                 </div>
+                                {/if}
                                 <div class="custom-control custom-checkbox text-right">
                                     <input type="checkbox" class="custom-control-input" id="market-terms" name="terms">
                                     <label class="custom-control-label" for="market-terms">Согласен с <a href="#">правилами</a></label>

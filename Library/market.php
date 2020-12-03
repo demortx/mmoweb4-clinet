@@ -58,8 +58,8 @@ $market = array (
 			2 => 'shield',
 			3 => 'accessary',
 		),
-		'items_prohibited' => 4037,
-		'items_allowed' => 51,
+		'items_prohibited' => '4037,43',
+		'items_allowed' => '57,54',
 		'price'=>array(
 			1 => 
 			array (
@@ -73,7 +73,7 @@ $market = array (
 	),
 	9 => 
 	array (
-		'status' => true,
+		'status' => false,
 		'bl_status' => false,
 		'bl_config'=>array(
 			1 => 
