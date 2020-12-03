@@ -375,6 +375,45 @@ if ( ! function_exists('SaveShopConfig')) {
 
     }
 }
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('SaveMarketConfig')) {
+
+    function SaveMarketConfig($savedata)
+    {
+
+        $cfg_file = ROOT_DIR . "/Library/market.php";
+
+
+        $fopen = fopen($cfg_file, "w");
+
+        if (file_exists($cfg_file)) {
+
+
+            if ($fopen) {
+                fwrite($fopen, "<?php\n");
+                fwrite($fopen, "/********************************\n");
+                fwrite($fopen, "* Dev and Code by Demort\n");
+                fwrite($fopen, "* Skype x88xax88x / email : demortx@gmail.com\n");
+                fwrite($fopen, "* https://mmoweb.ru\n");
+                fwrite($fopen, "* Market - Lineage\n");
+                fwrite($fopen, " ********************************/\n");
+                fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");
+                fwrite($fopen, "\$market = array();\n");
+
+                cfgWrite($fopen, $savedata, "\$market =");
+                fwrite($fopen, "return \$market;");
+                fclose($fopen);
+
+                return true;
+
+            }
+
+        } else
+            return false;
+
+    }
+}
 
 // ------------------------------------------------------------------------
 

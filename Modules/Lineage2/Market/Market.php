@@ -11,15 +11,39 @@ use Modules\MainModulesClass;
 
 class Market extends MainModulesClass
 {
+    public $market = array();
+    public $sid;
 
     public function __construct()
     {
 
         $this->mDir = dirname(__FILE__);
 
+        $this->market = &get_instance()->market;
+        $this->sid = get_instance()->sid;
+
+        if (isset($this->market[$this->sid]))
+            $this->market = $this->market[$this->sid];
+        else
+            $this->market = false;
+
+
         include_once $this->mDir."/func.php";
         $this->func = new \Market\func( $this );
 
+    }
+
+    public function status(){
+
+        if ($this->market === false)
+            return false;
+        else
+        {
+            if (isset($this->market['status']) AND $this->market['status'])
+                return true;
+            else
+                return false;
+        }
     }
 
     public function info()
@@ -43,6 +67,9 @@ class Market extends MainModulesClass
     public function onAjax()
     {
 
+        if ($this->status() == false)
+            return array();
+
         return array(
             //'ajax_open_form' => function () { return $this->func->ajax_open_form(); },
             'ajax_loud_inventory' => function () { return $this->func->ajax_loud_inventory(); },
@@ -54,6 +81,28 @@ class Market extends MainModulesClass
 
     public function renderWindow()
     {
+
+        if ($this->status() == false) {
+            return array(
+                '/panel/market' => array(
+                    'header' => 'Торговая <small>площадка</small>',
+                    'row' => array(
+                        array(
+                            'class' => 'col-12 col-md-12',
+                            'level' => 1,
+                            'widget_market_disable' => function () {
+                                return $this->func->widget_market_disable();
+                            },
+                        ),
+
+
+                    ),
+                ),
+            );
+
+        }
+
+
         $content = array(
             '/panel/market' => array(
                 'header' => 'Торговая <small>площадка</small>',

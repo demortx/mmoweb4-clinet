@@ -71,6 +71,7 @@ $ignore_detect_lang_page = array(
     '/api/connection_check',
     '/api/config',
     '/api/shop',
+    '/api/market',
     '/api/service',
     '/api/item',
     '/api/payment/unitpay/'.PAYMENT_KEY,

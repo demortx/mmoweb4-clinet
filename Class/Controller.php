@@ -41,6 +41,7 @@ class Controller
 
     public $config = null;
     public $shop = null;
+    public $market = null;
 
     /* Project ID*/
     public $pid = null;
@@ -89,7 +90,14 @@ class Controller
         self::$instance =& $this;
 
         $this->config = include ROOT_DIR . '/Library/config.php';
-        $this->shop = include ROOT_DIR . '/Library/shop.php';
+
+        if (file_exists(ROOT_DIR . '/Library/shop.php'))
+            $this->shop = include ROOT_DIR . '/Library/shop.php';
+
+        if (file_exists(ROOT_DIR . '/Library/market.php'))
+            $this->market = include ROOT_DIR . '/Library/market.php';
+
+
         if (!is_array($this->config))
             $this->config = array();
         //Сортируем список серверов

@@ -15,7 +15,7 @@ class func
 {
 
     public $this_main = false;
-    public $shop = array();
+    public $market = array();
     public $att = array(
         0 => "Fire",
         1 => "Water",
@@ -29,7 +29,8 @@ class func
     {
         /**@var $this_main \Modules\Lineage2\Market\Market*/
         $this->this_main = $this_main;
-        $this->shop = &get_instance()->shop;
+        $this->market = $this->this_main->market;
+
     }
 
     public function widget_categories_vertical(){
@@ -132,6 +133,12 @@ class func
                 get_lang('market.lang')
             )
         );
+
+    }
+
+    public function widget_market_disable(){
+
+        return error_404_html('Внимание', 'Рынок отключен администрацией', 'Рынок отключен или еще не настроен.');
 
     }
 
@@ -244,18 +251,56 @@ class func
                     $aug .= $lib['augmentation'][$item['i_a_2']];
                 }
 
-                //итд
-                //грейды предметов итд в ключах '%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%stackable%', '%stackable%'
 
-                $i = '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u'.$item['uid'].'" data-uid="'.$item['uid'].'"  data-count="'.$item['i_c'].'"  data-stackable="%stackable%" data-name="%name% '.$enc.' '.$count.'" data-icon="%icon%" href="javascript:void(0)" title="'.$att.' '.$aug.'"><img src="%icon%" width="22px" class="mr-1" title="%name%">%name% '.$enc.' '.$count.'</a>';
-                $html .= set_item($item['i_i'],false,false, $i);
+                $item_info = set_item($item['i_i'],false,true);
 
+                if (!is_array($item_info))
+                    continue;
+
+                $item = array_merge($item, $item_info);
+                if($this->check_item($item))
+                    $status = 'true';
+                else
+                    $status = 'false';
+
+                $html .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u'.$item['uid'].'" data-uid="'.$item['uid'].'"  data-count="'.$item['i_c'].'"  data-stackable="'.$item['stackable'].'" data-name="'.$item['name'].' '.$enc.' '.$count.'" data-icon="'.$item['icon'].'" data-status="'.$status.'" href="javascript:void(0)" title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</a>';
 
             }
             $html .= '</div>';
             return $html;
         }else
             return 'На этом персонаже нет предметов';
+    }
+
+    public function check_item($item){
+
+
+        if(in_array($item["i_i"] , explode(';',$this->market["items_allowed"])))
+            return true;
+        elseif( in_array($item["i_i"] , explode(';',$this->market["items_prohibited"])))
+            return false;
+        elseif( ($item["i_a_1"] != 0) AND !in_array("augmentation", $this->market["options"]))//'options'  "augmentation"
+            return false;
+        elseif( ($item["stackable"] != 0) AND !in_array("stackable", $this->market["options"]))
+            return false;
+        elseif( ($item["a_a_t"] > -1) AND !in_array("attributes", $this->market["options"]))
+            return false;
+        else{
+
+            if(is_array($this->market["grade"])) {
+                if (!array_key_exists($item["grade"], $this->market["grade"]))
+                    return false;
+            }else
+                return false;
+
+            if(is_array($this->market["type"])){
+                if(!array_key_exists($item["type"], $this->market["type"]))
+                    return false;
+            }else
+                return false;
+
+            return true;
+        }
     }
 
     public function ajax_sell_item(){
