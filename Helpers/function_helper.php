@@ -1382,3 +1382,18 @@ if (!function_exists('check_pin')){
 
 }
 
+if (!function_exists('get_class_name')) {
+    function get_class_name($class_id, $lib = 'lineage2db')
+    {
+        global $TEMP;
+
+        if (!isset($TEMP[$lib]) AND file_exists(ROOT_DIR . "/Library/{$lib}.php")) {
+            $TEMP[$lib] = include_once ROOT_DIR . "/Library/{$lib}.php";
+        }
+
+        if (isset($TEMP[$lib]['prof'][$class_id]))
+            return $TEMP[$lib]['prof'][$class_id];
+        else
+            return 'N/A';
+    }
+}

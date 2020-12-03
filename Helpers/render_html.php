@@ -341,7 +341,7 @@ if (!function_exists('set_item')) {
                 exit;
             }
 
-            $result = $db->prepare('SELECT `id`, `item_id`, `name`, `add_name`, `description`, `icon`, `icon_panel`, `grade`, `stackable` FROM mw_item_db WHERE `item_id` = :item_id AND `sid`=:sid ');
+            $result = $db->prepare('SELECT `id`, `item_id`, `name`, `add_name`, `description`, `icon`, `icon_panel`, `grade`, `type`, `stackable` FROM mw_item_db WHERE `item_id` = :item_id AND `sid`=:sid ');
             $result->execute(array(':item_id' => $item_id, ':sid' => $sid));
             $item = $TEMP[$sid][$item_id] = $result->fetch(PDO::FETCH_ASSOC);
             unset($result);
@@ -356,6 +356,7 @@ if (!function_exists('set_item')) {
                 'icon' => '',
                 'icon_panel' => '',
                 'grade' => '',
+                'type' => '',
                 'stackable' => 0,
                 'sid' => $sid,
             );
@@ -387,13 +388,14 @@ if (!function_exists('set_item')) {
             $item['description'] = isset($item['description']) ? $item['description'] : '';
             $item['icon_panel'] = isset($item['icon_panel']) ? $item['icon_panel'] : '';
             $item['grade'] = isset($item['grade']) ? $item['grade'] : '';
+            $item['type'] = isset($item['type']) ? $item['type'] : '';
             $item['stackable'] = isset($item['stackable']) ? $item['stackable'] : 0;
             $item['sid'] = $sid;
 
             return $item;
         }else{
             unset($item['popup']);
-            return str_replace(array('%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%grade%', '%stackable%', '%sid%' ) , array_values($item), $pattern);
+            return str_replace(array('%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%grade%', '%stackable%', '%type%', '%sid%' ) , array_values($item), $pattern);
         }
 
     }

@@ -40,6 +40,7 @@ class ParsFileGame
             'armorgrp.txt',
             'etcitemgrp.txt',
             'weapongrp.txt',
+            'itemdata.txt',
         ),
         'boi' => array(
             'itemname-e.txt',
@@ -217,7 +218,7 @@ class ParsFileGame
                 $i = 0;
                 foreach ($items as $id => $item){
                     $i++;
-                    $this->db->prepare("INSERT INTO mw_item_db(`item_id`,`name`,`add_name`,`description`,`icon`,`icon_panel`,`grade`,`stackable`,`sid`) VALUES(:item_id, :name, :add_name, :description, :icon, :icon_panel, :grade, :stackable, :sid);")
+                    $this->db->prepare("INSERT INTO mw_item_db(`item_id`,`name`,`add_name`,`description`,`icon`,`icon_panel`,`grade`,`type`,`stackable`,`sid`) VALUES(:item_id, :name, :add_name, :description, :icon, :icon_panel, :grade, :type, :stackable, :sid);")
                         ->execute(
                             array(
                                 ':item_id' => $id,
@@ -228,6 +229,7 @@ class ParsFileGame
                                 ':icon_panel' => $item['icon_panel'],
                                 ':grade' => $item['grade'],
                                 ':stackable' => $item['stackable'],
+                                ':type' => $item['type'],
                                 ':sid' => $this->sid
                             ));
 
@@ -285,6 +287,7 @@ class ParsFileGame
                                   `icon` varchar(100) DEFAULT NULL,
                                   `icon_panel` varchar(100) DEFAULT NULL,
                                   `grade` varchar(3) DEFAULT NULL,
+                                  `type` varchar(10) DEFAULT NULL,
                                   `stackable` int(1) NOT NULL DEFAULT '0',
                                   `sid` int(11) NOT NULL DEFAULT '0'
                                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

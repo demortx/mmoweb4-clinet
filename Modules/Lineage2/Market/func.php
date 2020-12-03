@@ -120,6 +120,21 @@ class func
 
     }
 
+    public function widget_sell_character(){
+
+        return get_instance()->fenom->fetch(
+            get_tpl_file('widget_sell_character.tpl', get_class($this->this_main)),
+            array_merge(
+                array(
+                    //'social_list' => $this->soc_network,
+                    //'soc_list' => $soc_list,
+                ),
+                get_lang('market.lang')
+            )
+        );
+
+    }
+
 
 
 
@@ -273,7 +288,7 @@ class func
                 else
                     $vars["pin"] = $_POST['pin'];
             }
-            
+
 
             $response = $api->market_buy($vars);
 

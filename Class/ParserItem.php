@@ -54,6 +54,10 @@ class ParserItem
 
             foreach ($this->files_list as $file_name => $dir) {
 
+                if ($file_name == 'itemdata.txt')
+                    continue;
+
+
                 $temp = $this->L2FileEdit($dir, 'id');
 
                 foreach ($temp as $item_id=>$item) {
@@ -66,6 +70,7 @@ class ParserItem
                         $items[$item_id]['icon'] = '';
                         $items[$item_id]['icon_panel'] = '';
                         $items[$item_id]['grade'] = '';
+                        $items[$item_id]['type'] = '';
                         $items[$item_id]['stackable'] = 0;
 
                     }else{
@@ -100,11 +105,13 @@ class ParserItem
                 unset($temp);
             }
 
-            return $items;
 
         }elseif ($this->type == 'L2ClientDat'){
 
             foreach ($this->files_list as $file_name => $dir) {
+
+                if ($file_name == 'itemdata.txt')
+                    continue;
 
                 if ($file_name == 'itemname-e.txt') {
                     $temp = $this->L2ClientDat($dir, 2, 1, -1, -1, array('name', 'additionalname', 'description'));
@@ -126,6 +133,7 @@ class ParserItem
                         $items[$item_id]['icon'] = '';
                         $items[$item_id]['icon_panel'] = '';
                         $items[$item_id]['grade'] = '';
+                        $items[$item_id]['type'] = '';
                         $items[$item_id]['stackable'] = 0;
 
                     }else{
@@ -166,11 +174,31 @@ class ParserItem
                 unset($temp);
 
             }
-            return $items;
 
 
-        }else
-            return false;
+
+        }
+
+        //парсим PTS itemdata.txt нужна только для маркета
+        if (count($items) > 0) {
+            foreach ($this->files_list as $file_name => $dir) {
+
+                if ($file_name == 'itemdata.txt' AND file_exists($dir)) {
+                    $items_server = $this->getServerFile($dir);
+                    foreach ($items_server as $id => $it){
+                        if (isset($items[$id])){
+                            $items[$id]['grade'] = $it['grade'];
+                            $items[$id]['stackable'] = $it['stackable'];
+                            $items[$id]['type'] = $it['gtype'];
+                        }
+                    }
+                    //$items
+                }
+            }
+        }
+
+
+        return $items;
 
 
 
@@ -334,5 +362,101 @@ class ParserItem
     }
     ///L2ClientDat END
 
+    /// Pars PTS files
+    public function getServerFile($itemdata_dir){
 
+        if(!file_exists( $itemdata_dir))
+            exit('not fount file ' . $itemdata_dir);
+
+        $items = array();
+
+
+        $file=fopen($itemdata_dir,"r");
+        while(!feof($file)){
+            $str=fgets($file,8000);
+            if(strlen($str)<3)continue;
+            if($str[0]=='/')continue;
+
+            if(preg_match('/item_begin\s*(\w*)\s*(\d*)\s*\[(.*?)\]\s*/x',$str,$item)){
+                $gtype     = $item[1];
+                $item_id   = $item[2];
+
+                $items[$item_id] = array(
+                    'gtype'         => $gtype,
+                    'grade'         => NULL,
+                    'stackable'     => NULL,
+                );
+
+
+                switch($this->regElem($str,"crystal_type")){
+                    case"crystal_free":    $items[$item_id]['grade'] = 'cry_free'; break;
+
+                    default:
+                        $items[$item_id]['grade']     = $this->regElem($str,"crystal_type");
+                }
+
+                switch($this->regElem($str,"consume_type")){
+                    case"consume_type_normal":    $items[$item_id]['stackable'] = 0; break;
+                    case"consume_type_stackable": $items[$item_id]['stackable'] = 1; break;
+                    case"consume_type_asset":     $items[$item_id]['stackable'] = 1; break;
+                }
+
+                switch($items[$item_id]['gtype']){
+
+                    case"weapon":case"shadow_weapon":
+
+                    if ($items[$item_id]['gtype'] == 'weapon')
+                        $items[$item_id]['gtype']    = 'weapon';
+                    else
+                        $items[$item_id]['gtype']    = "shadow_weapon";
+
+                    switch($this->regElem3($str,"slot_bit_type")){
+                        case"lhand":
+                            $items[$item_id]['gtype']    = 'shield';
+                            break;
+                    }
+                    break;
+                    case"accessary":
+                        $items[$item_id]['gtype']    = "accessary";
+                        break;
+                    case"armor":
+                        $items[$item_id]['gtype']    = "armor";
+                        switch($this->regElem3($str,"slot_bit_type")){
+                            case"lhand":
+                                $items[$item_id]['gtype']    = 'shield';
+                                break;
+                        }
+                        break;
+                    case"etcitem":
+                        $items[$item_id]['gtype']    = "etcitem";
+                        break;
+                    case"questitem":
+                        $items[$item_id]['gtype']    = "questitem";
+                        break;
+                    default:
+                        $items[$item_id]['gtype']    = 'none';
+                }
+            }
+        }
+        fclose($file);
+        return $items;
+
+    }
+
+    public function regElem($str,$name,$default=NULL){
+        if(preg_match("/\s".$name."\s*=\s*([^\s]*?)\s/",$str,$array)){
+            return $array[1];
+        } else {
+            return $default;
+        }
+    }
+
+    public function regElem3($str,$name,$default=NULL){
+        if(preg_match("/\t".$name."\s*=\s*\{(.*?)\}\t/",$str,$array)){
+            return $array[1];
+        } else {
+            return $default;
+        }
+    }
+    /// Pars PTS files END
 }

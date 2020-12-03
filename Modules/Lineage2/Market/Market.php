@@ -122,6 +122,21 @@ class Market extends MainModulesClass
 
             ),
 
+            '/panel/market/sell-character' => array(
+                'header' => 'Продажа <small>персонажа</small>',
+
+                'row' => array(
+                    array(
+                        'class' => 'col-12 col-md-12',
+                        'level' => 1,
+                        'widget_sell' => function() { return $this->func->widget_sell_character();},
+                    ),
+
+                ),
+
+
+            ),
+
 
 
         );

@@ -6,9 +6,6 @@
     <!-- Step Tabs -->
     <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" href="#wizard-section" data-toggle="tab">1. Выберите категорию</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#wizard-item" data-toggle="tab">2. Выберите предмет(ы)</a>
         </li>
         <li class="nav-item">
@@ -24,69 +21,15 @@
         <!-- Wizard Progress Bar -->
         <div class="block-content block-content-sm">
             <div class="progress" data-wizard="progress" style="height: 8px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
         <!-- END Wizard Progress Bar -->
 
         <!-- Steps Content -->
         <div class="block-content block-content-full tab-content" style="min-height: 265px;">
-            <!-- Step 1 -->
-            <div class="tab-pane active" id="wizard-section" role="tabpanel">
-                <div class="row">
-                    <div class="col-12 col-lg-6 offset-lg-3">
-
-
-
-                        <div class="list-group push">
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active btn-section" data-type="armor" >
-                                <img src="/template/panel/assets/media/market/armor.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Броня <br><small>Защита мягких тканей</small></span>
-                                <span class="badge badge-pill badge-secondary">1</span>
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="weapon" >
-                                <img src="/template/panel/assets/media/market/sword.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Оружие <br><small>Острое и опасное</small></span>
-                                <span class="badge badge-pill badge-secondary">7</span>
-
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="jewelry" >
-                                <img src="/template/panel/assets/media/market/jewelry.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Бижутерия <br><small>Шик, блеск и красота</small></span>
-                                <span class="badge badge-pill badge-secondary">3</span>
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="consumables" >
-                                <img src="/template/panel/assets/media/market/miscellaneous.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Расходники <br><small>Выпил, закусил</small></span>
-                                <span class="badge badge-pill badge-secondary">0</span>
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="coin" >
-                                <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Адена <br><small>Много не бывает</small></span>
-                                <span class="badge badge-pill badge-secondary">8</span>
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="character" >
-                                <img src="/template/panel/assets/media/market/wizard.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Персонажи <br><small>Нигибаторы даром</small></span>
-                                <span class="badge badge-pill badge-secondary">1</span>
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="etc" >
-                                <img src="/template/panel/assets/media/market/shelf.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Другое <br><small>Свалка помойка</small></span>
-                                <span class="badge badge-pill badge-secondary">13</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <!-- END Step 1 -->
-
             <!-- Step 2 -->
             <div class="tab-pane" id="wizard-item" role="tabpanel">
-
-
                 <div class="row gutters-tiny">
                     <div class="col-6 col-md-2">
                         <h6 class="text-center">Выбирите аккаунт</h6>
@@ -111,7 +54,7 @@
                                         <div class="list-group push">
                                             {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
                                                 {foreach $info.char_list as $char_id => $char}
-                                                    <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" href="javascript:void(0)">
+                                                    <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" data-level="{$char.level}" data-pvp="{$char.pvp}" data-pk="{$char.pk}" data-clan-name="{if $.php.is_string($char.clan)}{$char.clan}{else}-/-{/if}" data-class="{$.php.get_class_name($char.class_id)}" data-online="{$char.time}" href="javascript:void(0)">
                                                         {$char.name}
                                                         <span class="float-right mr-5 ">Lv.{$char.level}</span>
                                                     </a>
@@ -128,44 +71,19 @@
 
                         </div>
                     </div>
+                    <div class="col-12 col-md-4 offset-md-1">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <div id="char-info">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-3">
-                        <h6 class="text-center">Выбирите предмет</h6>
                         <div id="inventory_list">
 
                         </div>
-                    </div>
-                    <div class="col-12 col-md-5">
-                        <h6 class="text-center">Укажите цену</h6>
-
-                        <div class="form-group row">
-                            <label class="col-12">Вариант продажи</label>
-                            <div class="col-12">
-                                <div class="custom-control custom-radio custom-control-inline mb-5">
-                                    <input class="custom-control-input" type="radio" name="type" id="example-radio1" value="1" checked="">
-                                    <label class="custom-control-label" for="example-radio1">Продажа в розницу</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline mb-5">
-                                    <input class="custom-control-input" type="radio" name="type" id="example-radio2" value="2">
-                                    <label class="custom-control-label" for="example-radio2">Продажа оптом</label>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <table class="table table-bordered table-striped table-vcenter"  style="font-size: 85%;">
-                            <thead>
-                            <tr>
-                                <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;text-align: center;">#</th>
-                                <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Название</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Цена</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Кол-во</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody id="basket">
-                            </tbody>
-                        </table>
                     </div>
                 </div>
 
@@ -176,17 +94,7 @@
             <div class="tab-pane" id="wizard-confirm" role="tabpanel">
                 <div class="row" style="min-height: 225px;">
                     <div class="col-lg-6">
-                        <table id="basket-confirm" class="table table-bordered table-striped table-vcenter">
-                            <thead>
-                            <tr>
-                                <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;text-align: center;">#</th>
-                                <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Название</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Цена</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Кол-во</th>
-                            </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <div id="char-confirm"></div>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">

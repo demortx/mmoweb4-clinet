@@ -59,7 +59,7 @@ $('body').on('click', '.btn-section', function (e) {
 });
 
 $('.check_char_market').on('click', function(){
-    let id = $(this).data('id');
+    var id = $(this).data('id');
     let name = $(this).data('name');
     let account = $(this).data('account');
 
@@ -72,6 +72,46 @@ $('.check_char_market').on('click', function(){
         $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="module_form=Modules%5CLineage2%5CMarket%5CMarket&amp;module=ajax_loud_inventory&amp;char_id='+id+'&amp;char_name='+name+'&amp;account_name='+account+'" data-action="/input">' +
             '<i class="si si-cloud-download mr-5"></i>Загрузить инвентарь</button>' +
             '</div>');
+    }
+
+    if ($("#char-info").length) {
+        $("#char-info").children(".block").remove();
+
+        var seconds = parseInt($(this).data("online"), 10);
+
+        var days = Math.floor(seconds / (3600*24));
+        seconds  -= days*3600*24;
+        var hrs   = Math.floor(seconds / 3600);
+        seconds  -= hrs*3600;
+        var mnts = Math.floor(seconds / 60);
+        seconds  -= mnts*60;
+
+        $("#char-info").append(
+            '<div class="block block-link-shadow">'
+            +'<div class="block-content block-content-full clearfix bg-body-light">'
+            +'<div class="float-left">'
+            +'<div class="font-w600 mb-5">' + $(this).data("name") + ' <small>(' + $(this).data("clan-name") + '</small>)</div>'
+            +'<div class="font-size-sm text-muted">' + $(this).data("class") + ', Lv. ' + $(this).data("level") + '</div>'
+            +'</div>'
+            +'</div>'
+            +'<div class="block-content text-center" style="border: #f6f7f9 solid 1px; border-top: 0;">'
+            +'<div class="row items-push">'
+            +'<div class="col-4">'
+            +'<div class="mb-5"><b>PvP</b></div>'
+            +'<div class="font-size-sm text-muted">' + $(this).data("pvp") + '</div>'
+            +'</div>'
+            +'<div class="col-4">'
+            +'<div class="mb-5"><b>PK</b></div>'
+            +'<div class="font-size-sm text-muted">' + $(this).data("pk") + '</div>'
+            +'</div>'
+            +'<div class="col-4">'
+            +'<div class="mb-5"><b>Online</b></div>'
+            +'<div class="font-size-sm text-muted">' + days + " d, " + hrs + ' h</div>'
+            +'</div>'
+            +'</div>'
+            +'</div>'
+            +'</div>'
+        );
     }
 });
 
@@ -104,7 +144,6 @@ $('body').on('click', '.select_item_mr', function (e) {
         $(this).removeClass('active');
         $('.'+uid).remove();
     }
-
 });
 
 $('body').on('click', '.item_remove', function (e) {
@@ -114,18 +153,24 @@ $('body').on('click', '.item_remove', function (e) {
 });
 
 $(".btn[data-wizard], .nav-link[href='#wizard-confirm']").click(function(e) {
-    var b = $("#basket").clone();
+    if ($("#basket").length) { // items sell
+        var b = $("#basket").clone();
 
-    $(b).children("thead").children("th").children(".action-toggle").toggle();
+        var i = $(b).children("tr").children("td").children("input");
 
-    var i = $(b).children("tr").children("td").children("input");
+        $(i).each(function() {
+            $( this ).replaceWith("<span>" + ($(this).val() == "" ? 0 : $(this).val()) + "</span>");;
+        });
 
-    $(i).each(function() {
-        $( this ).replaceWith("<span>" + ($(this).val() == "" ? 0 : $(this).val()) + "</span>");;
-    });
+        $(b).children("tr").children("td").children("div.input-group").remove();
 
-    $(b).children("tr").children("td").children("div.input-group").remove();
+        $("#basket-confirm").children("tbody").remove();
+        $("#basket-confirm").append(b);
+    }
+    else { //char sell
+        var b = $("#char-info").clone();
 
-    $("#basket-confirm").children("tbody").remove();
-    $("#basket-confirm").append(b);
+        $("#char-confirm").children().remove();
+        $("#char-confirm").append(b);
+    }
 })
