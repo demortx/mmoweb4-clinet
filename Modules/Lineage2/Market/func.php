@@ -244,10 +244,11 @@ class func
                     continue;
 
                 $item = array_merge($item, $item_info);
-                if($this->check_item($item))
-                    $html_item .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u'.$item['uid'].'" data-uid="'.$item['uid'].'"  data-count="'.$item['i_c'].'"  data-stackable="'.$item['stackable'].'" data-name="'.$item['name'].' '.$enc.' '.$count.'" data-icon="'.$item['icon'].'" href="javascript:void(0)" title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</a>';
+                if($this->check_item($item)) {
+                    $price = $this->check_price($item["i_i"]);
+                    $html_item .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u' . $item['uid'] . '" data-uid="' . $item['uid'] . '"  data-count="' . $item['i_c'] . '"  data-stackable="' . $item['stackable'] . '" data-name="' . $item['name'] . ' ' . $enc . ' ' . $count . '" data-icon="' . $item['icon'] . '" '.$price.' href="javascript:void(0)" title="' . $att . ' ' . $aug . '"><img src="' . $item['icon'] . '" width="22px" class="mr-1" title="' . $item['name'] . '">' . $item['name'] . ' ' . $enc . ' ' . $count . '</a>';
 
-                else
+                }else
                     $html_item_disable .= '<div class="list-group-item list-group-item-action text-left p-1 not-sell"  title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1 imgdis" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</div>';
 
             }
@@ -260,6 +261,21 @@ class func
             return $html;
         }else
             return 'На этом персонаже нет предметов';
+    }
+
+    public function check_price($item_id){
+
+        if(is_array($this->market["price"]) AND count($this->market["price"]) > 0){
+            foreach ($this->market["price"] as $cfg){
+
+                if ($cfg['id'] == $item_id){
+                    return ' data-min="'.$cfg['min'].'" data-max="'.$cfg['max'].'" data-step="'.$cfg['step'].'" ';
+                }
+            }
+        }
+
+        return '';
+
     }
 
     public function check_item($item){

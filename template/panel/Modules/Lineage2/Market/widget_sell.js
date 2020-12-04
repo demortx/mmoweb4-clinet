@@ -122,12 +122,20 @@ $('body').on('click', '.select_item_mr', function (e) {
     let name = $(this).data('name');
     let icon = $(this).data('icon');
 
+    let min = $(this).data('min');
+    let max = $(this).data('max');
+    let step = $(this).data('step');
+
+    if(min != undefined){ min = 'min="'+min+'"'; }else min = '';
+    if(max != undefined){ max = 'max="'+max+'"'; }else max = '';
+    if(step != undefined){ step = 'step="'+step+'"'; }else step = '';
+
     if (!$(this).hasClass('active')){
         $(this).addClass('active');
 
 
         if(stackable == 1 && count > 1 )
-            stackable = '<input type="number" min="1" max="'+count+'" value="'+count+'" name="i['+uid+'][count]" class="form-control form-control-sm" placeholder="Count">';
+            stackable = '<input type="number" min="1" max="'+count+'" value="'+count+'" name="i['+uid+'][count]" '+step+' class="form-control form-control-sm" placeholder="Count">';
         else
             stackable = '1';
 
@@ -135,7 +143,7 @@ $('body').on('click', '.select_item_mr', function (e) {
             '<tr class="'+uid+'">'
             +'<td class="text-center"><img src="'+icon+'" width="22" class="label_img"></td>'
             +'<td class="text-center">'+name+'</td>'
-            +'<td class="text-center"><input type="number" min="0" max="30000" name="i['+uid+'][price]" class="form-control form-control-sm" placeholder="Price"></td>'
+            +'<td class="text-center"><input type="number" min="0" max="30000" name="i['+uid+'][price]" '+min+' '+max+' class="form-control form-control-sm" placeholder="Price"></td>'
             +'<td class="text-center">' + stackable + '</td>'
             +'<td class="text-center" style="width: 120px;"><button type="button" data-uid="'+uid+'" class="btn btn-sm btn-secondary  item_remove"><i class="fa fa-times"></i></button></td></tr>'
         );
