@@ -1,5 +1,6 @@
+{$.site._SEO->addTegHTML('head', 'codebase', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/assets/js/plugins/nestable2/jquery.nestable.min.css'])}
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.44'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.45'])}
 <style>
     .not-sell {
         cursor: not-allowed! important;
@@ -14,8 +15,16 @@
         filter: gray;
         -webkit-filter: grayscale(1);
     }
-</style>
+    .dd-handle > span.pull-right {
+        font-size: 9px;
+    }
+    .check_char_market.active .dd-handle {
+        color: #3f9ce8;
+    }
 
+
+
+</style>
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -36,7 +45,7 @@
     <!-- Form -->
     <form action="/input"  method="post" onsubmit="return false;">
         {$.php.form_hide_input("Modules\Lineage2\Market\Market", "ajax_sell_item")}
-        <input type="hidden" id="input_section" name="section" value="armor">
+        <input type="hidden" id="input_section" name="section" value="{$.php.current($section_status)}">
         <!-- Wizard Progress Bar -->
         <div class="block-content block-content-sm">
             <div class="progress" data-wizard="progress" style="height: 8px;">
@@ -55,42 +64,56 @@
 
 
                         <div class="list-group push">
+                            {if $.php.in_array('armor', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active btn-section" data-type="armor" >
                                 <img src="/template/panel/assets/media/market/armor.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Броня <br><small>Защита мягких тканей</small></span>
-                                <span class="badge badge-pill badge-secondary">1</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['armor']?}{$count_section['armor']}{else}0{/if}</span>
                             </button>
+                            {/if}
+                            {if $.php.in_array('weapon', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="weapon" >
                                 <img src="/template/panel/assets/media/market/sword.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Оружие <br><small>Острое и опасное</small></span>
-                                <span class="badge badge-pill badge-secondary">7</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['weapon']?}{$count_section['weapon']}{else}0{/if}</span>
 
                             </button>
+                            {/if}
+                            {if $.php.in_array('jewelry', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="jewelry" >
                                 <img src="/template/panel/assets/media/market/jewelry.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Бижутерия <br><small>Шик, блеск и красота</small></span>
-                                <span class="badge badge-pill badge-secondary">3</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['jewelry']?}{$count_section['jewelry']}{else}0{/if}</span>
                             </button>
+                            {/if}
+                            {if $.php.in_array('consumables', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="consumables" >
                                 <img src="/template/panel/assets/media/market/miscellaneous.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Расходники <br><small>Выпил, закусил</small></span>
-                                <span class="badge badge-pill badge-secondary">0</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['consumables']?}{$count_section['consumables']}{else}0{/if}</span>
                             </button>
+                            {/if}
+                            {if $.php.in_array('coin', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="coin" >
                                 <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Адена <br><small>Много не бывает</small></span>
-                                <span class="badge badge-pill badge-secondary">8</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['coin']?}{$count_section['coin']}{else}0{/if}</span>
                             </button>
+                            {/if}
+                            {if $.php.in_array('character', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="character" >
                                 <img src="/template/panel/assets/media/market/wizard.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Персонажи <br><small>Нигибаторы даром</small></span>
-                                <span class="badge badge-pill badge-secondary">1</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['character']?}{$count_section['character']}{else}0{/if}</span>
                             </button>
+                            {/if}
+                            {if $.php.in_array('etc', $section_status)}
                             <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="etc" >
                                 <img src="/template/panel/assets/media/market/shelf.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Другое <br><small>Свалка помойка</small></span>
-                                <span class="badge badge-pill badge-secondary">13</span>
+                                <span class="badge badge-pill badge-secondary">{if $count_section['etc']?}{$count_section['etc']}{else}0{/if}</span>
                             </button>
+                            {/if}
                         </div>
                     </div>
                 </div>
@@ -101,56 +124,47 @@
 
             <!-- Step 2 -->
             <div class="tab-pane" id="wizard-item" role="tabpanel">
-
-
                 <div class="row gutters-tiny">
                     <div class="col-6 col-md-2">
-                        <h6 class="text-center">Выбирите аккаунт</h6>
-                        <div class="list-group push"  id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
-                                {foreach $.site.session->session.user_data.account as $login => $info first=$first index=$index}
-                                    <a class="list-group-item list-group-item-action align-items-center p-1 pl-10 {if $first}active{/if}" id="{$login}-tab" data-idx="{$index}" data-toggle="pill" href="#{$login}" role="tab" aria-controls="{$login}" aria-selected="true">
-                                        {$login} {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}<span class="float-right text-right"><i class="fa fa-user-o"></i> {$.php.count($info.char_list)}</span>{/if}
-                                    </a>
-                                {/foreach}
-                            {else}
-                                Нет аккаунтов
-                            {/if}
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <h6 class="text-center">Выбирите персонажа</h6>
-                        <div class="tab-content" id="v-pills-tabContent">
-                            {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
-                                {foreach $.site.session->session.user_data.account as $login => $info first=$first2}
-                                    <div class="tab-pane fade {if $first2}show active{/if}" id="{$login}" role="tabpanel" aria-labelledby="{$login}-tab">
-                                        <div class="list-group push">
-                                            {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
-                                                {foreach $info.char_list as $char_id => $char}
-                                                    <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" href="javascript:void(0)">
-                                                        {$char.name}
-                                                        <span class="float-right mr-5 ">Lv.{$char.level}</span>
-                                                    </a>
-                                                {/foreach}
-                                            {else}
-                                                <a class="list-group-item list-group-item-action align-items-center text-center p-1" href="javascript:void(0)">
-                                                    <i class="fa fa-info-circle ml-1 mr-5"></i> Нет персонажей
-                                                </a>
-                                            {/if}
+                        <h6 class="text-center">Выберите персонажа</h6>
+                        <div class="js-nestable-connected-icons dd">
+                            <ol class="dd-list">
+                                {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
+                                    {foreach $.site.session->session.user_data.account as $login => $info first=$first index=$index}
+                                        <li class="dd-item">
+                                            <div class="dd-handle">
+                                                <i class="fa fa-caret-down"></i> {$login}
+                                            </div>
+                                            <ol class="dd-list">
+                                                {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
+                                                    {foreach $info.char_list as $char_key => $char first=$first2}
+                                                        <li class="dd-item check_char_market" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}">
+                                                            <div class="dd-handle">
+                                                                {$char.name} <span class="pull-right">Lv.{$char.level}</span>
+                                                            </div>
+                                                        </li>
+                                                    {/foreach}
+                                                {/if}
+                                            </ol>
+                                        </li>
+                                    {/foreach}
+                                {else}
+                                    <li class="dd-item" data-id="11">
+                                        <div class="dd-handle">
+                                            <i class="fa fa-briefcase mr-5"></i> Нет аккаунтов
                                         </div>
-                                    </div>
-                                {/foreach}
-                            {/if}
-
+                                    </li>
+                                {/if}
+                            </ol>
                         </div>
                     </div>
                     <div class="col-12 col-md-3">
-                        <h6 class="text-center">Выбирите предмет</h6>
+                        <h6 class="text-center">Выберите предмет</h6>
                         <div id="inventory_list">
 
                         </div>
                     </div>
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-7">
                         <h6 class="text-center">Укажите цену</h6>
 
                         <div class="form-group row">
@@ -173,9 +187,9 @@
                             <thead>
                             <tr>
                                 <th style="width: 32px;padding-top: 3px;padding-bottom: 3px;text-align: center;">#</th>
-                                <th style="width: 40%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Название</th>
+                                <th style="width: 35%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Название</th>
                                 <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Цена</th>
-                                <th style="width: 30%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Кол-во</th>
+                                <th style="width: 35%;padding-top: 3px;padding-bottom: 3px;text-align: center;">Кол-во</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -218,15 +232,15 @@
                         <div class="row">
                             <div class="col-lg-6" style="margin-left: auto; margin-top: auto;">
                                 {if $.php.check_pin("pins_market_sell_item")}
-                                <label class="">Введите PIN-CODE</label>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text short_name_icon"><i class="fa fa-expeditedssl"></i></span>
+                                    <label class="">Введите PIN-CODE</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text short_name_icon"><i class="fa fa-expeditedssl"></i></span>
+                                            </div>
+                                            <input type="number" maxlength="4" name="pin" class="form-control" id="count-in-game" placeholder="PIN">
                                         </div>
-                                        <input type="number" maxlength="4" name="pin" class="form-control" id="count-in-game" placeholder="PIN">
                                     </div>
-                                </div>
                                 {/if}
                                 <div class="custom-control custom-checkbox text-right">
                                     <input type="checkbox" class="custom-control-input" id="market-terms" name="terms">
@@ -263,4 +277,3 @@
     </form>
     <!-- END Form -->
 </div>
-<!-- END Progress Wizard -->

@@ -138,16 +138,36 @@ class Api extends Controller
     public function market(){
         $this->gateway();
 
-        if (isset($_POST['cfg'])){
+        if (isset($_POST['cfg'])) {
 
             $cfg = unserialize($_POST['cfg']);
 
-            if(SaveMarketConfig($cfg)) {
-                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
-            }else
-                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
+            if (SaveMarketConfig($cfg)) {
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config", "text" => "Successfully updated the project settings!", "status" => "success"));
+            } else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config", "text" => "Error! Failed to update configuration!", "status" => "error"));
+
+
+        }elseif(isset($_POST['update'])){
+            /**@var $market Modules\Lineage2\Market\Market*/
+            $market = $this->getModule('Modules\Lineage2\Market\Market');
+            if($market->update_shop($_POST['update'])){
+                echo (new \Curl\XMLFormatter())->format(array("title" => "ok", "text" => "ok", "status" => "success"));
+            }else{
+                $market->update_shop(array('shop_id' => $_POST['update']['shop']['id']));
+                echo (new \Curl\XMLFormatter())->format(array("title" => "error", "text" => "error", "status" => "error"));
+            }
+
+
+        }elseif(isset($_POST['delete'])){
+            /**@var $market Modules\Lineage2\Market\Market*/
+            $market = $this->getModule('Modules\Lineage2\Market\Market');
+            if($market->update_shop($_POST['delete']))
+                echo (new \Curl\XMLFormatter())->format(array("title" => "ok", "text" => "ok", "status" => "success"));
+            else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "error", "text" => "error", "status" => "error"));
         }else
-            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Not found cfg!", "status" => "error"));
+            echo (new \Curl\XMLFormatter())->format(array("title" => "Action was not found","text" => "You have transferred data for which there is no handler", "status" => "error"));
 
     }
 

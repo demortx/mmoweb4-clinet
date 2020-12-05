@@ -161,7 +161,40 @@ $('body').on('click', '.item_remove', function (e) {
 });
 
 $(".btn[data-wizard], .nav-link[href='#wizard-confirm']").click(function(e) {
+    var err = false;
+
     if ($("#basket").length) { // items sell
+
+        $(".count-control").each(function() {
+            var item = $(".select_item_mr[data-uid='" + $(this).data("uid") + "']");
+
+            if ($(this).val() > $(item).data("count"))
+            {
+                $(this).addClass("is-invalid");
+
+                $(this).parent().append("<span class='invalid-feedback text-left'>Count is invalid</span>");
+
+                err = true;
+            }
+        })
+
+        $(".price-control").each(function() {
+            var item = $(".select_item_mr[data-uid='" + $(this).data("uid") + "']");
+
+            if ($(this).val() > $(item).data("max") || $(this).val() < $(item).data("min"))
+            {
+                $(this).addClass("is-invalid");
+
+                $(this).parent().append("<span class='invalid-feedback text-left'>Price is invalid</span>");
+
+                err = true;
+            }
+        })
+
+        if (err) {
+            return false;
+        }
+
         var b = $("#basket").clone();
 
         var i = $(b).children("tr").children("td").children("input");

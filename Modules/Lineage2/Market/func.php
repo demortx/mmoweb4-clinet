@@ -16,6 +16,7 @@ class func
 
     public $this_main = false;
     public $market = array();
+    public $sid;
     public $att = array(
         0 => "Fire",
         1 => "Water",
@@ -25,27 +26,301 @@ class func
         5 => "Dark",
     );
 
+
+    public $datatable;
+    public $datatable_column;
+
     public function __construct($this_main)
     {
         /**@var $this_main \Modules\Lineage2\Market\Market*/
         $this->this_main = $this_main;
         $this->market = $this->this_main->market;
+        $this->sid = get_sid();
+//si.`id`,
+//                                                    si.`shop_id`,
+//                                                    s.`section`,
+//                                                    s.`type`,
+//                                                    s.`data_create`,
+//                                                    si.`item_id`,
+//                                                    si.`price`,
+//                                                    si.`count`,
+//                                                    si.`enc`,
+//                                                    si.`aug_1`,
+//                                                    si.`aug_2`,
+//                                                    si.`a_att_type`,
+//                                                    si.`a_att_value`,
+//                                                    si.`d_att_0`,
+//                                                    si.`d_att_1`,
+//                                                    si.`d_att_2`,
+//                                                    si.`d_att_3`,
+//                                                    si.`d_att_4`,
+//                                                    si.`d_att_5`,
+//                                                    i.`name`,
+//                                                    i.`add_name`,
+//                                                    i.`description`,
+//                                                    i.`icon`,
+//                                                    i.`icon_panel`,
+//                                                    i.`grade`,
+//                                                    i.`stackable`
+        $this->datatable  = new \DataTable('Modules\\\Lineage2\\\Market\\\Market', 'ajax_get_market_list');
+        $this->datatable_column = array(
+            'icon' => array(
+                'name' => '',
+                'orderable' => 'false',
+                'position' => 0,
+                'formatter' => function($val, $row) {
+                    return '<img src="'.check_icon_item($val, $this->sid).'" width="15px">';
+                }
+            ),
+            'name' => array(
+                'name' => 'Название',
+                'orderable' => 'false',
+                'position' => 1,
+                'formatter' => function($val, $row) {
+                    return $val;
+                }
+            ),
+            'aug_1' => array(
+                'name' => 'Аугоментация',
+                'orderable' => 'false',
+                'position' => 2,
+                'formatter' => function($val, $row) {
+                    return get_augmentation($val) . '</br>' .  get_augmentation($row['aug_2']);
+                }
+            ),
+            'a_att_type' => array(
+                'name' => 'Аттрибут',
+                'orderable' => 'false',
+                'position' => 3,
+                'formatter' => function($val, $row) {
 
+                    if ($val < 0)
+                        return '';
+
+                    $att = $this->att[$val] . ": " . $row["a_att_value"] . '</br>';
+                    $att .= $this->att[0] . ": " . $row["d_att_0"] . '</br>';
+                    $att .= $this->att[1] . ": " . $row["d_att_1"] . '</br>';
+                    $att .= $this->att[2] . ": " . $row["d_att_2"] . '</br>';
+                    $att .= $this->att[3] . ": " . $row["d_att_3"] . '</br>';
+                    $att .= $this->att[4] . ": " . $row["d_att_4"] . '</br>';
+                    $att .= $this->att[5] . ": " . $row["d_att_5"];
+
+                    return $att;
+                }
+            ),
+            'count' => array(
+                'name' => 'В наличии',
+                'orderable' => 'true',
+                'position' => 4,
+                'formatter' => function($val, $row) {
+                    return $val;
+                }
+            ),
+            'price' => array(
+                'name' => 'Цена',
+                'orderable' => 'true',
+                'position' => 5,
+                'formatter' => function($val, $row) {
+                    $cfg = $this->check_price($row["item_id"], 'array');
+                    if (isset($cfg["step"])){
+
+                        return (float) $val . ' за x'.$cfg["step"];
+                    }else
+                        return (float) $val . ' за x1';
+                }
+            ),
+
+
+
+        );//Создаем разметку для таблицы
+        $this->datatable->loudColumn($this->datatable_column);
+    }
+
+    /**
+     * @return array
+     */
+    private function get_count_section(){
+        $count_section = array();
+        $count_temp = $this->this_main->db->query('SELECT 
+            s.section, COUNT(i.id) as counts
+            FROM `mw_market_shop_items` AS i
+            LEFT JOIN `mw_market_shop` AS s ON s.id = i.shop_id
+            GROUP BY s.section')
+            ->fetchAll(\PDO::FETCH_ASSOC);
+
+        if (!is_null($count_temp)){
+            foreach ($count_temp as $sec) {
+                $count_section[$sec['section']] = $sec['counts'];
+            }
+
+        }
+        return $count_section;
     }
 
     public function widget_categories_vertical(){
+
 
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_categories.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    //'social_list' => $this->soc_network,
-                    //'soc_list' => $soc_list,
+                    'count_section' => $this->get_count_section(),
+                    'section_status' => $this->market['section'],
                 ),
                 get_lang('market.lang')
             )
         );
 
+    }
+
+    public function widget_list_market(){
+        $url_array = get_instance()->url->segment_array();
+        if(isset($url_array[3]) AND in_array($url_array[3], $this->market['section'])){
+            $section = $url_array[3];
+            $this->datatable->addPost(['sid' => $this->sid, 'section' => $section]);
+
+            return get_instance()->fenom->fetch(
+                get_tpl_file('widget_list_market.tpl', get_class($this->this_main)),
+                array_merge(
+                    array(
+                        "datatable_render" => $this->datatable->renderTemplate(),
+                    ),
+                    get_lang('market.lang')
+                )
+            );
+
+        }else
+            return error_404_html('Внимание', 'Раздел отключен', 'Рынок отключен или еще не настроен.');
+
+    }
+
+    public function ajax_get_market_list(){
+        
+        if (isset($_POST['custom'])) {
+      
+            $section = isset($_POST['custom']['section']) ? $_POST['custom']['section'] : false;
+
+            if (!in_array($section, $this->market['section']))
+                return false;
+
+            $columns = isset($_POST['columns']) ? $_POST['columns'] : array();
+            $draw = isset ( $_POST['draw'] ) ? intval( $_POST['draw'] ) : 0;
+            $start = isset($_POST['start']) ? intval($_POST['start']) : 0;;
+            $length = isset($_POST['length']) ? intval($_POST['length']) : 30;
+            $order = isset($_POST['order']) ? $_POST['order'] : array();
+            $search = isset($_POST['search']) ? $_POST['search'] : array();
+
+
+            $limit_sql = '';
+            if ( isset($start) && $length != -1 ) {
+                $limit_sql = "LIMIT $start, ".$length;
+            }
+            $order_sql = '';
+            if ( is_array($order) && count($order) ) {
+                foreach($order as $order_val){
+                    $key = $columns[ $order_val['column'] ]['name'];
+                    if( isset($this->datatable_column[$key]) ) {
+                        if ($columns[ $order_val['column'] ]['orderable'] == 'true') {
+                            $dir = $order_val['dir'] === 'asc' ? 'ASC' : 'DESC';
+                            $orderBy[] = '`' . $key . '` ' . $dir;
+                        }
+                    }
+                    $key = null;
+                }
+                $order_sql = 'ORDER BY ' . implode(', ', $orderBy);
+            }
+            $where = '';
+
+            if(!empty($search['value'])){
+                $field_search = array('i.`name`', 'i.`add_name`', 'i.`description`');
+                $globalSearch = array();
+                foreach($field_search as $column){
+                    $globalSearch[] = "$column LIKE ".$this->this_main->db->quote('%'.$search['value'].'%');
+                }
+                if (is_array($globalSearch) AND count( $globalSearch ) ) {
+                    $where = 'AND ('.implode(' OR ', $globalSearch).')';
+                }
+                unset($globalSearch);
+            }
+
+            $section = $this->this_main->db->quote($section);
+            $this->sid = intval($this->sid);
+
+            $result = $this->this_main->db->query("SELECT
+                                                    si.`id`, 
+                                                    si.`shop_id`,
+                                                    s.`type`,
+                                                    s.`data_create`,
+                                                    si.`item_id`,
+                                                    si.`price`, 
+                                                    si.`count`, 
+                                                    si.`enc`, 
+                                                    si.`aug_1`, 
+                                                    si.`aug_2`, 
+                                                    si.`a_att_type`, 
+                                                    si.`a_att_value`, 
+                                                    si.`d_att_0`, 
+                                                    si.`d_att_1`, 
+                                                    si.`d_att_2`, 
+                                                    si.`d_att_3`, 
+                                                    si.`d_att_4`, 
+                                                    si.`d_att_5`,
+                                                    i.`name`,
+                                                    i.`add_name`,
+                                                    i.`description`,
+                                                    i.`icon`,
+                                                    i.`icon_panel`,
+                                                    i.`grade`,
+                                                    i.`stackable`
+                                                    FROM `mw_market_shop_items` AS si
+                                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
+                                                    WHERE s.sid = {$this->sid} AND s.`section`= {$section}  {$where}
+                                              {$order_sql}
+                                              {$limit_sql};")->fetchAll(\PDO::FETCH_ASSOC);
+            $out = array();
+            foreach($result as $value){
+                $row = array();
+                foreach($this->datatable_column as $name_colum => $data){
+                    if ( isset( $data['formatter'] ) ) {
+                        $row[ $data['position'] ] = $data['formatter']( (isset($value[$name_colum]) ? $value[$name_colum] : NULL), $value);
+                    }
+                    else {
+                        $row[ $data['position'] ] = $value[ $name_colum ];
+                    }
+                }
+                $out[] = $row;
+            }
+            $result = $out;
+            unset($out , $row);
+
+            // Data set length after filtering
+            $recordsFiltered = $this->this_main->db->query("SELECT COUNT(si.`id`)
+                                    FROM `mw_market_shop_items` AS si
+                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
+                                    WHERE s.sid = {$this->sid} AND s.`section`= {$section}  {$where};")->fetch(\PDO::FETCH_UNIQUE)[0];
+
+            $recordsTotal = $this->this_main->db->query("SELECT COUNT(si.`id`)
+                                    
+                                    FROM `mw_market_shop_items` AS si
+                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                    WHERE s.sid = {$this->sid} AND s.`section`= {$section} ;")->fetch(\PDO::FETCH_UNIQUE)[0];
+
+
+            return json_encode( array(
+                "draw"            => $draw,
+                "recordsTotal"    => intval( $recordsTotal ),
+                "recordsFiltered" => intval( $recordsFiltered ),
+                "data"            =>  $result
+            ));
+            
+            
+            
+        }
+
+
+        return '';
     }
 
     public function widget_total_stats(){
@@ -112,8 +387,8 @@ class func
             get_tpl_file('widget_sell.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    //'social_list' => $this->soc_network,
-                    //'soc_list' => $soc_list,
+                    'count_section' => $this->get_count_section(),
+                    'section_status' => $this->market['section'],
                 ),
                 get_lang('market.lang')
             )
@@ -122,6 +397,8 @@ class func
     }
 
     public function widget_sell_character(){
+        if (!in_array('character', $this->market['section']))
+            return error_404_html('Внимание', 'Продажа персонажей отключена администрацией', 'Рынок отключен или еще не настроен.');
 
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_sell_character.tpl', get_class($this->this_main)),
@@ -147,6 +424,9 @@ class func
 
     //AJAX
 
+    /**
+     * @return false|string
+     */
     public function ajax_loud_inventory(){
         $api = new LineageApi();
         $vars = array('temp');
@@ -199,9 +479,11 @@ class func
         return $send;
     }
 
+    /**
+     * @param $items
+     * @return string
+     */
     private function items_form($items){
-        $lib = include_once ROOT_DIR.'/Library/lineage2db_augmentation.php';
-
 
         if (is_array($items)){
 
@@ -233,8 +515,9 @@ class func
                 $aug = '';
                 if($item['i_a_1'] > 0){
                     $aug .= 'Augmentation' . PHP_EOL;
-                    $aug .= $lib['augmentation'][$item['i_a_1']] . PHP_EOL;
-                    $aug .= $lib['augmentation'][$item['i_a_2']];
+
+                    $aug .= get_augmentation($item['i_a_1']) . PHP_EOL;
+                    $aug .= get_augmentation($item['i_a_1']);
                 }
 
 
@@ -263,21 +546,34 @@ class func
             return 'На этом персонаже нет предметов';
     }
 
-    public function check_price($item_id){
+    /**
+     * @param $item_id
+     * @param string $type
+     * @return string
+     */
+    public function check_price($item_id, $type = 'html'){
 
         if(is_array($this->market["price"]) AND count($this->market["price"]) > 0){
             foreach ($this->market["price"] as $cfg){
 
                 if ($cfg['id'] == $item_id){
-                    return ' data-min="'.$cfg['min'].'" data-max="'.$cfg['max'].'" data-step="'.$cfg['step'].'" ';
+                    if ($type == 'html')
+                        return ' data-min="'.$cfg['min'].'" data-max="'.$cfg['max'].'" data-step="'.$cfg['step'].'" ';
+                    else
+                        return $cfg;
                 }
             }
         }
-
-        return '';
-
+        if ($type == 'html')
+            return '';
+        else
+            false;
     }
 
+    /**
+     * @param $item
+     * @return bool
+     */
     public function check_item($item){
 
         if(in_array($item["i_i"] , explode(',',$this->market["items_allowed"])))
@@ -308,6 +604,9 @@ class func
         }
     }
 
+    /**
+     * @return false|string
+     */
     public function ajax_sell_item(){
 
 
@@ -359,16 +658,11 @@ class func
 
                 } else {
 
-                    if (isset($response["response"]->data->user_data)) {
-
-                        $data = json_encode($response["response"]->data);
-                        $data = json_decode($data, true);
-                        get_instance()->session->updateSessionDB($data);
-
-                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->html($response["response"]->data->user_data->balance, '.balance_html')->success();
-
+                    if (isset($response["response"]->success)) {
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/market')->success();
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
                 }
             } else {
                 $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();

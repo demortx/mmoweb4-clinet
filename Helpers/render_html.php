@@ -362,23 +362,8 @@ if (!function_exists('set_item')) {
             );
         }
 
-
-
         //поиск картинки предмета
-        if (!isset($item['icon']) OR !empty($item['icon'])){
-            if (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.png'))
-                $item['icon'] = '/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.png';
-            elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.jpg'))
-                $item['icon'] = '/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.jpg';
-            elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.gif'))
-                $item['icon'] = '/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.gif';
-            elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.jpeg'))
-                $item['icon'] = '/template/panel/assets/media/icon/'.$sid.'/'.$item['icon'].'.jpeg';
-            else
-                $item['icon'] = '/template/panel/assets/media/icon/no_icon.png';
-        }else
-            $item['icon'] = '/template/panel/assets/media/icon/no_icon.png';
-
+        $item['icon'] = check_icon_item($item['icon'], $sid);
 
         if ($return_array) {
             $item['id'] = isset($item['id']) ? $item['id'] : 0;
@@ -399,6 +384,28 @@ if (!function_exists('set_item')) {
         }
 
     }
+}
+
+if (!function_exists('check_icon_item')) {
+
+    function check_icon_item($icon, $sid){
+        if (!empty($icon)){
+            if (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.png'))
+                $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.png';
+            elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.jpg'))
+                $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.jpg';
+            elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.gif'))
+                $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.gif';
+            elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.jpeg'))
+                $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.jpeg';
+            else
+                $icon = '/template/panel/assets/media/icon/no_icon.png';
+        }else
+            $icon = '/template/panel/assets/media/icon/no_icon.png';
+
+        return $icon;
+    }
+
 }
 
 if (!function_exists('render_menu_server')) {

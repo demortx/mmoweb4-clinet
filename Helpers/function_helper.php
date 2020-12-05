@@ -1436,3 +1436,22 @@ if (!function_exists('get_class_name')) {
             return 'N/A';
     }
 }
+
+if (!function_exists('get_augmentation')) {
+    function get_augmentation($aug_id, $lib = 'lineage2db_augmentation')
+    {
+        global $TEMP;
+
+        if (empty($aug_id))
+            return '';
+
+        if (!isset($TEMP[$lib]) AND file_exists(ROOT_DIR . "/Library/{$lib}.php")) {
+            $TEMP[$lib] = include_once ROOT_DIR . "/Library/{$lib}.php";
+        }
+
+        if (isset($TEMP[$lib]['augmentation'][$aug_id]))
+            return $TEMP[$lib]['augmentation'][$aug_id];
+        else
+            return 'N/A';
+    }
+}
