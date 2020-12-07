@@ -1,30 +1,8 @@
-{$.site._SEO->addTegHTML('head', 'codebase', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/assets/js/plugins/nestable2/jquery.nestable.min.css'])}
+{$.site._SEO->addTegHTML('head', 'nestable2', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/assets/js/plugins/nestable2/jquery.nestable.min.css'])}
+{$.site._SEO->addTegHTML('head', 'market_style', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/market_style.css?2'])}
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
 {$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.45'])}
-<style>
-    .not-sell {
-        cursor: not-allowed! important;
-        background-color: rgba(0,0,0,.03);
-    }
-    .imgdis {
-        filter: grayscale(100%);
-        -webkit-filter: grayscale(100%);
-        -moz-filter: grayscale(100%);
-        -ms-filter: grayscale(100%);
-        -o-filter: grayscale(100%);
-        filter: gray;
-        -webkit-filter: grayscale(1);
-    }
-    .dd-handle > span.pull-right {
-        font-size: 9px;
-    }
-    .check_char_market.active .dd-handle {
-        color: #3f9ce8;
-    }
 
-
-
-</style>
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">

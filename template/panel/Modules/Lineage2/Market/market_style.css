@@ -1,0 +1,61 @@
+.not-sell {
+    cursor: not-allowed! important;
+    background-color: rgba(0,0,0,.03);
+}
+.imgdis {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: gray;
+    -webkit-filter: grayscale(1);
+}
+.dd-handle > span.pull-right {
+    font-size: 9px;
+}
+.check_char_market.active .dd-handle {
+    color: #3f9ce8;
+}
+
+.item-name {
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    font-size: 13px;
+}
+
+.item-name img {
+    margin-right: 5px;
+}
+
+.item-grade {
+    display: inline-block;
+    min-width: 16px;
+    padding: 0 4px;
+    height: 16px;
+    background: #333;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: 10%;
+    text-transform: uppercase;
+}
+
+.item-price {
+    margin-right: 10px;
+    line-height: 32px;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.item-name__additional {
+    color: #ff3b00;
+}

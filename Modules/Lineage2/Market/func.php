@@ -44,19 +44,22 @@ class func
                 'orderable' => 'false',
                 'position' => 0,
                 'formatter' => function($val, $row) {
-                    return '<img src="'.check_icon_item($val, $this->sid).'" width="15px">';
+                    return '<span class="item-name">'
+                        . '<img src="'.check_icon_item($val, $this->sid).'" width="32px">'
+                        . $row['name'] . ' <span class="item-name__additional">' . $row['add_name'] . "</span>"
+                        . ($row['enc'] > 0 ? "+" . $row['enc'] : '');
                 }
             ),
-            'name' => array(
-                'name' => 'Название',
-                'orderable' => 'false',
+            'grade' => array(
+                'name' => 'Ранг',
+                'orderable' => 'true',
                 'position' => 1,
                 'formatter' => function($val, $row) {
-                    return $val;
+                    return '<span class="item-grade">' . ($val == "non" ? "NG" : $val) . '</span>';
                 }
             ),
             'aug_1' => array(
-                'name' => 'Аугоментация',
+                'name' => 'Аугментация',
                 'orderable' => 'false',
                 'position' => 2,
                 'formatter' => function($val, $row) {
@@ -64,21 +67,19 @@ class func
                 }
             ),
             'a_att_type' => array(
-                'name' => 'Аттрибут',
+                'name' => 'Атрибут',
                 'orderable' => 'false',
                 'position' => 3,
                 'formatter' => function($val, $row) {
 
-                    if ($val < 0)
-                        return '';
+                    $att = ($row['a_att_value'] > 0 ? $this->att[$val] . ' ' . $row['a_att_value'] . "<br>" : '');
 
-                    $att = $this->att[$val] . ": " . $row["a_att_value"] . '</br>';
-                    $att .= $this->att[0] . ": " . $row["d_att_0"] . '</br>';
-                    $att .= $this->att[1] . ": " . $row["d_att_1"] . '</br>';
-                    $att .= $this->att[2] . ": " . $row["d_att_2"] . '</br>';
-                    $att .= $this->att[3] . ": " . $row["d_att_3"] . '</br>';
-                    $att .= $this->att[4] . ": " . $row["d_att_4"] . '</br>';
-                    $att .= $this->att[5] . ": " . $row["d_att_5"];
+                    $att .= ($row["d_att_0"] != 0 ? $this->att[0] . " " . $row["d_att_0"] . '<br>' : '');
+                    $att .= ($row["d_att_1"] != 0 ? $this->att[1] . " " . $row["d_att_1"] . '<br>' : '');
+                    $att .= ($row["d_att_2"] != 0 ? $this->att[2] . " " . $row["d_att_2"] . '<br>' : '');
+                    $att .= ($row["d_att_3"] != 0 ? $this->att[3] . " " . $row["d_att_3"] . '<br>' : '');
+                    $att .= ($row["d_att_4"] != 0 ? $this->att[4] . " " . $row["d_att_4"] . '<br>' : '');
+                    $att .= ($row["d_att_5"] != 0 ? $this->att[5] . " " . $row["d_att_5"] : '');
 
                     return $att;
                 }
@@ -97,14 +98,18 @@ class func
                 'position' => 5,
                 'formatter' => function($val, $row) {
                     $cfg = $this->check_price($row["item_id"], 'array');
+                    $r = '<div class="btn-group"><span class="item-price">';
                     if (isset($cfg["step"])){
 
-                        return (float) $val . ' за x'.$cfg["step"];
+                        $r .= number_format((float) $val, 2, '.', '') . ' за x'.$cfg["step"];
                     }else
-                        return (float) $val . ' за x1';
+                        $r .= number_format((float) $val, 2, '.', '');
+
+                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop", ['id' => $row['id']]).'>Купить</button>';
+
+                    return $r . "</div>";
                 }
             ),
-
 
 
         );//Создаем разметку для таблицы
