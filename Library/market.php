@@ -47,6 +47,16 @@ $market = array (
 				'commision' => 25,
 			),
 		),
+		'commision' => 20,
+		'withdrawal_ma' => true,
+		'withdrawal_bank' => true,
+		'withdrawal_bank_list'=>array(
+			'qiwi' => 'Qiwi',
+			'webmoney' => 'WebMoney',
+			'paypal' => 'PayPal',
+			'money_yandex' => 'Яндекс деньги',
+			'card' => 'Card Visa, MasterCard',
+		),
 		'moderation' => false,
 		'options'=>array(
 			0 => 'augmentation',

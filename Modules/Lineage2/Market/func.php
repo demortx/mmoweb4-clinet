@@ -36,32 +36,7 @@ class func
         $this->this_main = $this_main;
         $this->market = $this->this_main->market;
         $this->sid = get_sid();
-//si.`id`,
-//                                                    si.`shop_id`,
-//                                                    s.`section`,
-//                                                    s.`type`,
-//                                                    s.`data_create`,
-//                                                    si.`item_id`,
-//                                                    si.`price`,
-//                                                    si.`count`,
-//                                                    si.`enc`,
-//                                                    si.`aug_1`,
-//                                                    si.`aug_2`,
-//                                                    si.`a_att_type`,
-//                                                    si.`a_att_value`,
-//                                                    si.`d_att_0`,
-//                                                    si.`d_att_1`,
-//                                                    si.`d_att_2`,
-//                                                    si.`d_att_3`,
-//                                                    si.`d_att_4`,
-//                                                    si.`d_att_5`,
-//                                                    i.`name`,
-//                                                    i.`add_name`,
-//                                                    i.`description`,
-//                                                    i.`icon`,
-//                                                    i.`icon_panel`,
-//                                                    i.`grade`,
-//                                                    i.`stackable`
+
         $this->datatable  = new \DataTable('Modules\\\Lineage2\\\Market\\\Market', 'ajax_get_market_list');
         $this->datatable_column = array(
             'icon' => array(
@@ -372,8 +347,7 @@ class func
             get_tpl_file('widget_withdrawal.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    //'social_list' => $this->soc_network,
-                    //'soc_list' => $soc_list,
+                    'market_cfg' => $this->market,
                 ),
                 get_lang('market.lang')
             )
@@ -647,6 +621,81 @@ class func
 
             $api = new LineageApi();
             $response = $api->market_sell($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->success)) {
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/market')->success();
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        return $send;
+    }
+
+    public function ajax_withdrawal(){
+        $vars = array();
+
+        if (get_instance()->session->isLogin()) {
+
+//withdrawal_type: withdrawal_bank
+//delivery_method: qiwi
+//wallet: 12
+//withdrawal_sum: 12
+
+            if (!isset($_POST['withdrawal_type']) OR empty($_POST['withdrawal_type']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["withdrawal_type"] = $_POST['withdrawal_type'];
+
+            if ($_POST['withdrawal_type'] == 'withdrawal_bank') {
+
+                if (!isset($_POST['delivery_method']) or empty($_POST['delivery_method']))
+                    return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                else
+                    $vars["delivery_method"] = $_POST['delivery_method'];
+
+                if (!isset($_POST['wallet']) or empty($_POST['wallet']))
+                    return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                else
+                    $vars["wallet"] = $_POST['wallet'];
+            }
+
+            if (!isset($_POST['withdrawal_sum']) OR empty($_POST['withdrawal_sum']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["withdrawal_sum"] = $_POST['withdrawal_sum'];
+
+
+
+            if (check_pin("pins_market_withdrawal")) {
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
+                    return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
+                else
+                    $vars["pin"] = $_POST['pin'];
+            }
+
+
+
+            $api = new LineageApi();
+            if ($_POST['withdrawal_type'] == 'withdrawal_bank')
+                $response = $api->market_withdraw($vars);
+            else
+                $response = $api->market_transfer($vars);
 
             if ($response['ok']) {
 

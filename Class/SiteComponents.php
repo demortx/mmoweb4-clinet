@@ -30,10 +30,10 @@ class SiteComponents
         if ($page<0)
             $page = 0;
 
-        $news_count = get_cache('news_count_'.$count, true);
+        $news_count = get_cache('news_count', true);
         if ($news_count == false) {
             $news_count = self::db()->query('SELECT COUNT(*) AS count_all FROM `mw_news` WHERE publish=1;')->fetch(\PDO::FETCH_ASSOC)['count_all'];
-            set_cache('news_count_'.$count, $news_count, CACHE_NEWS);
+            set_cache('news_count', $news_count, CACHE_NEWS);
         }
 
         if (ceil($news_count / $count) >= $page) {

@@ -90,6 +90,7 @@ class Market extends MainModulesClass
             'ajax_get_market_list' => function () { return $this->func->ajax_get_market_list(); },
             'ajax_loud_inventory' => function () { return $this->func->ajax_loud_inventory(); },
             'ajax_sell_item' => function () { return $this->func->ajax_sell_item(); },
+            'ajax_withdrawal' => function () { return $this->func->ajax_withdrawal(); },
 
         );
 
