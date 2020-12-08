@@ -14,6 +14,7 @@ use ApiLib\LineageApi;
 class func
 {
 
+
     public $this_main = false;
     public $market = array();
     public $sid;
@@ -44,10 +45,16 @@ class func
                 'orderable' => 'false',
                 'position' => 0,
                 'formatter' => function($val, $row) {
-                    return '<span class="item-name">'
-                        . '<img src="'.check_icon_item($val, $this->sid).'" width="32px">'
-                        . $row['name'] . ' <span class="item-name__additional">' . $row['add_name'] . "</span>"
-                        . ($row['enc'] > 0 ? "+" . $row['enc'] : '');
+                    return '<div class="item-name">'
+                        . '<img src="'.check_icon_item($val, $this->sid).'">'
+                        . '<div>'
+                        . "<span class='item-name__content'>" . $row['name'] . ' <span class="item-name__additional">' . $row['add_name'] . "</span>"
+                        . ($row['enc'] > 0 ? "+" . $row['enc'] : '') . "</span>"
+                        . (get_augmentation($row['aug_1']) != "" ? "<span class='item-augment'>"
+                            . "<span>" . get_augmentation($row['aug_1']) . "</span><span>" . get_augmentation($row['aug_2']) . "</span>"
+                            . "</span>" : "")
+                        . "</div>"
+                        . "</div>";
                 }
             ),
             'grade' => array(
@@ -58,18 +65,10 @@ class func
                     return '<span class="item-grade">' . ($val == "non" ? "NG" : $val) . '</span>';
                 }
             ),
-            'aug_1' => array(
-                'name' => 'Аугментация',
-                'orderable' => 'false',
-                'position' => 2,
-                'formatter' => function($val, $row) {
-                    return get_augmentation($val) . '</br>' .  get_augmentation($row['aug_2']);
-                }
-            ),
             'a_att_type' => array(
                 'name' => 'Атрибут',
                 'orderable' => 'false',
-                'position' => 3,
+                'position' => 2,
                 'formatter' => function($val, $row) {
 
                     $att = ($row['a_att_value'] > 0 ? $this->att[$val] . ' ' . $row['a_att_value'] . "<br>" : '');
@@ -87,7 +86,7 @@ class func
             'count' => array(
                 'name' => 'В наличии',
                 'orderable' => 'true',
-                'position' => 4,
+                'position' => 3,
                 'formatter' => function($val, $row) {
                     return $val;
                 }
@@ -95,7 +94,7 @@ class func
             'price' => array(
                 'name' => 'Цена',
                 'orderable' => 'true',
-                'position' => 5,
+                'position' => 4,
                 'formatter' => function($val, $row) {
                     $cfg = $this->check_price($row["item_id"], 'array');
                     $r = '<div class="btn-group"><span class="item-price">';
@@ -114,6 +113,8 @@ class func
 
         );//Создаем разметку для таблицы
         $this->datatable->loudColumn($this->datatable_column);
+
+
     }
 
     /**
@@ -428,6 +429,11 @@ class func
         if (!isset($_POST['char_id']) OR empty($_POST['char_id']))
             return get_instance()->ajaxmsg->notify(get_lang('bonus_cod.lang')['ajax_empty_char_name'])->danger();
 
+        if (!isset($_POST['type']) OR empty($_POST['type']))
+            $type = 'select';
+        else
+            $type = $_POST['type'];
+
 
         $response = $api->character_items($vars);
 
@@ -443,7 +449,7 @@ class func
                 if (isset($response["response"]->items)) {
                     $items = json_encode($response["response"]->items);
                     $items = json_decode($items, true);
-                    $send = get_instance()->ajaxmsg->html($this->items_form($items), '#inventory_'.$_POST['char_id'])->notify((string)$response["response"]->success)->success();
+                    $send = get_instance()->ajaxmsg->html($this->items_form($items, $type), '#inventory_'.$_POST['char_id'])->notify((string)$response["response"]->success)->success();
 
                 } else
                     $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
@@ -462,7 +468,7 @@ class func
      * @param $items
      * @return string
      */
-    private function items_form($items){
+    private function items_form($items, $type){
 
         if (is_array($items)){
 
@@ -506,7 +512,7 @@ class func
                     continue;
 
                 $item = array_merge($item, $item_info);
-                if($this->check_item($item)) {
+                if($this->check_item($item) AND $type == 'select') {
                     $price = $this->check_price($item["i_i"]);
                     $html_item .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u' . $item['uid'] . '" data-uid="' . $item['uid'] . '"  data-count="' . $item['i_c'] . '"  data-stackable="' . $item['stackable'] . '" data-name="' . $item['name'] . ' ' . $enc . ' ' . $count . '" data-icon="' . $item['icon'] . '" '.$price.' href="javascript:void(0)" title="' . $att . ' ' . $aug . '"><img src="' . $item['icon'] . '" width="22px" class="mr-1" title="' . $item['name'] . '">' . $item['name'] . ' ' . $enc . ' ' . $count . '</a>';
 
@@ -726,4 +732,69 @@ class func
 
         return $send;
     }
+
+    public function ajax_sell_character(){
+        $vars = array();
+
+        if (get_instance()->session->isLogin()) {
+
+
+            if (!isset($_POST['character']) OR empty($_POST['character']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["character"] = $_POST['character'];
+
+            if (!isset($_POST['account']) OR empty($_POST['account']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["account"] = $_POST['account'];
+
+            if (!isset($_POST['price']) OR empty($_POST['price']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["price"] = $_POST['price'];
+
+
+            if (!isset($_POST['terms']) OR empty($_POST['terms']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars["terms"] = $_POST['terms'];
+
+            if (check_pin("pins_market_sell_char")) {
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
+                    return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
+                else
+                    $vars["pin"] = $_POST['pin'];
+            }
+
+
+            $api = new LineageApi();
+            $response = $api->market_character($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->success)) {
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/market')->success();
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        return $send;
+    }
+
+
 }

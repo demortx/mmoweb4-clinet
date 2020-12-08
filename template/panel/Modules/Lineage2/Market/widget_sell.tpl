@@ -1,7 +1,7 @@
 {$.site._SEO->addTegHTML('head', 'nestable2', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/assets/js/plugins/nestable2/jquery.nestable.min.css'])}
-{$.site._SEO->addTegHTML('head', 'market_style', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/market_style.css?2'])}
+{$.site._SEO->addTegHTML('head', 'market_style', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/market_style.css?6'])}
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.45'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.52'])}
 
 
 <!-- Progress Wizard -->
@@ -76,13 +76,6 @@
                                 <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
                                 <span class="mr-auto">Адена <br><small>Много не бывает</small></span>
                                 <span class="badge badge-pill badge-secondary">{if $count_section['coin']?}{$count_section['coin']}{else}0{/if}</span>
-                            </button>
-                            {/if}
-                            {if $.php.in_array('character', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="character" >
-                                <img src="/template/panel/assets/media/market/wizard.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Персонажи <br><small>Нигибаторы даром</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['character']?}{$count_section['character']}{else}0{/if}</span>
                             </button>
                             {/if}
                             {if $.php.in_array('etc', $section_status)}

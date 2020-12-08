@@ -35,6 +35,11 @@ class LineageApi extends \Api
 
         return $response;
     }
+    public function market_character($vars){
+        $response = $this->init()->addParam('market', $vars)->post('v1/Lineage2/market/sell-character')->response();
+
+        return $response;
+    }
     public function market_sell_delete($vars){
         $response = $this->init()->addParam('market', $vars)->delete('v1/Lineage2/market/sell')->response();
 

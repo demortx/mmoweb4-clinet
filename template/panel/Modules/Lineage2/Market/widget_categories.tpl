@@ -52,7 +52,8 @@
 </div>
 
 
-<a class="btn btn-block btn-hero btn-noborder btn-rounded btn-success mb-10" href="{$.php.set_url('/panel/market/sell')}">Продать предметы</a>
+<a class="btn btn-block btn-hero btn-noborder btn-rounded btn-success mb-10" href="{$.php.set_url('/panel/market/sell')}"><i class="fa fa-gavel mr-5"></i> Продать предметы</a>
+<a class="btn btn-block btn-hero btn-noborder btn-rounded btn-primary mb-10" href="{$.php.set_url('/panel/market/sell-character')}"><i class="fa fa-female mr-5"></i> Продать персонажа</a>
 <p class="text-center">
     <a class="text-muted" href="{$.php.set_url('/panel/market/rules')}">Правила сервиса</a>
     <br>

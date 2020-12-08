@@ -9,7 +9,7 @@
                     а так же продать свои почки,глаза и печень.
                 </p>
 
-                <a href="{$.php.set_url('/panel/market/sell')}" class="btn btn-block btn-outline-primary  mb-10">Продать предметы</a>
+                <a href="{$.php.set_url('/panel/market/my-sell')}" class="btn btn-block btn-outline-primary  mb-10">Ваши предметы на рынке</a>
 
             </div>
             <div class="col-12 col-md-5">

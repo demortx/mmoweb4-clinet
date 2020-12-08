@@ -76,7 +76,9 @@ class Controller
         "pins_bind_phone_send_code"     => true,
         "pins_manager_add"              => true,
         "pins_market_sell_item"         => true,
+        "pins_market_sell_char"        => true,
         "pins_market_withdrawal"        => true,
+
     );
 
 

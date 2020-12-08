@@ -69,12 +69,35 @@ $('.check_char_market').on('click', function(){
     if($('#inventory_'+id).length){
         $('#inventory_'+id).show();
     }else{
-        $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="module_form=Modules%5CLineage2%5CMarket%5CMarket&amp;module=ajax_loud_inventory&amp;char_id='+id+'&amp;char_name='+name+'&amp;account_name='+account+'" data-action="/input">' +
+        $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="module_form=Modules%5CLineage2%5CMarket%5CMarket&module=ajax_loud_inventory&char_id='+id+'&char_name='+name+'&account_name='+account+'&type=select" data-action="/input">' +
+            '<i class="si si-cloud-download mr-5"></i>Загрузить инвентарь</button>' +
+            '</div>');
+    }
+    
+});
+
+
+$('.check_char_sell_market').on('click', function(){
+    var id = $(this).data('id');
+    let name = $(this).data('name');
+    let account = $(this).data('account');
+
+    $('.check_char_sell_market').removeClass('active');
+    $(this).addClass('active');
+    $('.inv-div').hide();
+    if($('#inventory_'+id).length){
+        $('#inventory_'+id).show();
+    }else{
+        $('#inventory_list').append('<div id="inventory_'+id+'" class="inv-div text-center"><button type="button" class="btn btn-outline-primary submit-btn" data-post="module_form=Modules%5CLineage2%5CMarket%5CMarket&module=ajax_loud_inventory&char_id='+id+'&char_name='+name+'&account_name='+account+'&type=not_select" data-action="/input">' +
             '<i class="si si-cloud-download mr-5"></i>Загрузить инвентарь</button>' +
             '</div>');
     }
 
     if ($("#char-info").length) {
+        $('#set_character').val($(this).data("name"));
+        $('#set_account').val($(this).data("account"));
+
+
         $("#char-info").children(".block").remove();
 
         var seconds = parseInt($(this).data("online"), 10);
@@ -110,10 +133,21 @@ $('.check_char_market').on('click', function(){
             +'</div>'
             +'</div>'
             +'</div>'
+            +'<div class="form-group row">' +
+            '<div class="col-lg-12">' +
+            '<div class="input-group">' +
+            '<div class="input-group-prepend">' +
+            '<span class="input-group-text">Цена</span>' +
+            '</div>' +
+            '<input type="number" class="form-control" id="price" name="price" placeholder="10.00">' +
+            '</div>' +
+            '</div>' +
+            '</div>'
             +'</div>'
         );
     }
 });
+
 
 $('body').on('click', '.select_item_mr', function (e) {
     let uid = $(this).data('uid');

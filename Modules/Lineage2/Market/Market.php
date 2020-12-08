@@ -7,10 +7,12 @@
  */
 
 namespace Modules\Lineage2\Market;
+use ApiLib\LineageApi;
 use Modules\MainModulesClass;
 
 class Market extends MainModulesClass
 {
+    private $integrity_time = 600;
     public $market = array();
     public $sid;
     public $db;
@@ -46,7 +48,7 @@ class Market extends MainModulesClass
 
         include_once $this->mDir."/func.php";
         $this->func = new \Market\func( $this );
-
+        $this->integrity_check();
     }
 
     public function status(){
@@ -91,6 +93,7 @@ class Market extends MainModulesClass
             'ajax_loud_inventory' => function () { return $this->func->ajax_loud_inventory(); },
             'ajax_sell_item' => function () { return $this->func->ajax_sell_item(); },
             'ajax_withdrawal' => function () { return $this->func->ajax_withdrawal(); },
+            'ajax_sell_character' => function () { return $this->func->ajax_sell_character(); },
 
         );
 
@@ -227,6 +230,21 @@ class Market extends MainModulesClass
 
             ),
 
+            '/panel/market/my-sell' => array(
+                'header' => 'Ваши предметы <small>на рынке</small>',
+
+                'row' => array(
+                    array(
+                        'class' => 'col-12 col-md-12',
+                        'level' => 1,
+                        'widget_sell' => function() { return $this->func->widget_sell_character();},
+                    ),
+
+                ),
+
+
+            ),
+
 
 
         );
@@ -261,10 +279,12 @@ class Market extends MainModulesClass
 
                 foreach ($data['item_shop'] as $shop_item) {
                     $STH = $this->db->prepare('INSERT INTO `mw_market_shop_items` 
-                                                                (`id`, `shop_id`, `price`, `item_id`, `count`, `enc`, `aug_1`, `aug_2`, `a_att_type`, `a_att_value`, `d_att_0`, `d_att_1`, `d_att_2`, `d_att_3`, `d_att_4`, `d_att_5`) 
-                                                        VALUES  (:id, :shop_id, :price, :item_id, :count, :enc, :aug_1, :aug_2, :a_att_type, :a_att_value, :d_att_0, :d_att_1, :d_att_2, :d_att_3, :d_att_4, :d_att_5);');
+                                                                (`id`, `shop_id`, `char_info`, `char_inventory`, `price`, `item_id`, `count`, `enc`, `aug_1`, `aug_2`, `a_att_type`, `a_att_value`, `d_att_0`, `d_att_1`, `d_att_2`, `d_att_3`, `d_att_4`, `d_att_5`) 
+                                                        VALUES  (:id, :shop_id, :char_info, :char_inventory, :price, :item_id, :count, :enc, :aug_1, :aug_2, :a_att_type, :a_att_value, :d_att_0, :d_att_1, :d_att_2, :d_att_3, :d_att_4, :d_att_5);');
                     $STH->bindValue(':id', $shop_item['id']);
                     $STH->bindValue(':shop_id', $shop_item['shop_id']);
+                    $STH->bindValue(':char_info', $shop_item['char_info']);
+                    $STH->bindValue(':char_inventory', $shop_item['char_inventory']);
                     $STH->bindValue(':price', $shop_item['price']);
                     $STH->bindValue(':item_id', $shop_item['item_id']);
                     $STH->bindValue(':count', $shop_item['count']);
@@ -287,6 +307,8 @@ class Market extends MainModulesClass
         }
         return false;
     }
+
+
     public function delete_shop($data){
         if (isset($data['shop_id']) AND is_numeric($data['shop_id'])){
             $id = intval($data['shop_id']);
@@ -299,6 +321,43 @@ class Market extends MainModulesClass
             return $STH->execute();
         }
         return false;
+    }
+
+
+
+
+    private function integrity_check(){
+        $check = get_cache('integrity_check_market', true);
+        if ($check == false) {
+            set_cache('integrity_check_market', 1, $this->integrity_time);
+            $vars['items'] = array();
+
+            $shop_list_temp = $this->db->query('SELECT id, shop_id FROM mw_market_shop_items;')->fetchAll(\PDO::FETCH_ASSOC);
+            foreach ($shop_list_temp as $item) {
+                $vars['items'][$item['shop_id']][] = $item['id'];
+            }
+
+            if (count($vars['items']) < 1)
+                $vars['items'] = 0;
+
+            $api = new LineageApi();
+
+            $response = $api->market_get($vars);
+            if ($response['ok']) {
+                if (!isset($response['error'])) {
+                    if (isset($response["response"]->success) AND isset($response["response"]->market)) {
+                        $data = json_decode(json_encode($response["response"]->market), true);
+                        if (is_array($data)) {
+                            foreach ($data as $item) {
+                                $this->delete_shop(['shop_id' => $item['shop_id']]);
+                                if (isset($item['update']))
+                                    $this->update_shop($item['update']);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public function install(){
@@ -315,6 +374,8 @@ class Market extends MainModulesClass
 CREATE TABLE `mw_market_shop_items` (
   `id` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL COMMENT 'Ид магазина',
+  `char_info` text NOT NULL COMMENT 'Информация о персонаже',
+  `char_inventory` mediumtext NOT NULL COMMENT 'Информация об инвентаре персонажа',
   `price` decimal(12,6) NOT NULL COMMENT 'Цена за товар или еденицу товара',
   `item_id` int(11) NOT NULL COMMENT 'ид предмета',
   `count` int(11) NOT NULL COMMENT 'количество предметов',

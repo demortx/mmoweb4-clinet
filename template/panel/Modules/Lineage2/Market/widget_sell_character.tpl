@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'wizard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js?ver=0.1'])}
-{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.41'])}
+{$.site._SEO->addTegHTML('footer', 'wizard_sell', 'script', ['src'=> $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/widget_sell.js?ver=0.52'])}
 
 <!-- Progress Wizard -->
 <div class="js-wizard-simple block">
@@ -16,8 +16,9 @@
 
     <!-- Form -->
     <form action="/input"  method="post" onsubmit="return false;">
-        {$.php.form_hide_input("Modules\Lineage2\Market\Market", "ajax_sell_item")}
-        <input type="hidden" id="input_section" name="section" value="armor">
+        {$.php.form_hide_input("Modules\Lineage2\Market\Market", "ajax_sell_character")}
+        <input type="hidden" id="set_character" name="character" value="0">
+        <input type="hidden" id="set_account" name="account" value="0">
         <!-- Wizard Progress Bar -->
         <div class="block-content block-content-sm">
             <div class="progress" data-wizard="progress" style="height: 8px;">
@@ -54,7 +55,7 @@
                                         <div class="list-group push">
                                             {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
                                                 {foreach $info.char_list as $char_id => $char}
-                                                    <a class="list-group-item list-group-item-action align-items-center check_char_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" data-level="{$char.level}" data-pvp="{$char.pvp}" data-pk="{$char.pk}" data-clan-name="{if $.php.is_string($char.clan)}{$char.clan}{else}-/-{/if}" data-class="{$.php.get_class_name($char.class_id)}" data-online="{$char.time}" href="javascript:void(0)">
+                                                    <a class="list-group-item list-group-item-action align-items-center check_char_sell_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" data-level="{$char.level}" data-pvp="{$char.pvp}" data-pk="{$char.pk}" data-clan-name="{if $.php.is_string($char.clan)}{$char.clan}{else}-/-{/if}" data-class="{$.php.get_class_name($char.class_id)}" data-online="{$char.time}" href="javascript:void(0)">
                                                         {$char.name}
                                                         <span class="float-right mr-5 ">Lv.{$char.level}</span>
                                                     </a>
@@ -100,10 +101,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <p><b>Памятка:</b></p>
-                                <p>Выбранные вами товары буду сняты с персонажа. После выставления ваша лавка попадет на модерацию, после чего появится в списках товаров. Вы так же можете вернуть все товары после выставления на рынок, все предметы будут доставлены на персонажа или персонажей, с которых они были изъяты. Подробнее можно ознакомится <a href="#">на форуме</a>
+                                <p>Выбанный вами персонаж будет заблокирован на вашем аккаунте до его покупки или снятие его с торгов. Подробнее можно ознакомится <a href="#">на форуме</a>
                                 <div class="alert alert-primary">
                                     <b class="alert-heading">Внимание!</b>
-                                    В момент снятия предметов персонаж должен быть офлайн.
+                                    В момент продажи, персонаж должен быть офлайн.
                                 </div>
                             </div>
                         </div>

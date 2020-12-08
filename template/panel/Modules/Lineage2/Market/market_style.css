@@ -20,17 +20,28 @@
 
 .item-name {
     font-weight: bold;
+    display: flex;
     white-space: nowrap;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
     max-width: 200px;
-    text-overflow: ellipsis;
-    font-size: 13px;
 }
 
 .item-name img {
     margin-right: 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.item-name > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.item-name > div > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .item-grade {
@@ -53,9 +64,42 @@
     line-height: 32px;
     font-weight: bold;
     white-space: nowrap;
-    font-size: 13px;
 }
 
 .item-name__additional {
     color: #ff3b00;
+}
+
+.item-augment {
+    font-size: 9px;
+}
+
+.item-augment span:first-child::after {
+    display: inline;
+    content: " \00B7";
+}
+
+.item-augment span:last-child {
+    margin-left: 3px;
+}
+
+.ajax_get_market_list {
+    font-size: 13px;
+}
+
+.ajax_get_market_list td {
+    text-align: center;
+}
+
+.ajax_get_market_list td,
+.ajax_get_market_list th {
+    border: none;
+}
+
+.ajax_get_market_list td:first-child {
+    text-align: left;
+}
+
+.ajax_get_market_list td:last-child {
+    text-align: right;
 }
