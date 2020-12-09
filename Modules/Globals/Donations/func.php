@@ -31,6 +31,7 @@ class func
         'alikassa',
         'enot',
         'ipay',
+        'paysafecard',
 
     );
 
