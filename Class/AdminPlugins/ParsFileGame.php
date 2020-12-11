@@ -74,7 +74,7 @@ class ParsFileGame
                 'en' => 'Game file parser',
             ),
             'author' => 'Demort',
-            'version' => '0.2'
+            'version' => '0.3'
         );
     }
 
@@ -170,9 +170,35 @@ class ParsFileGame
 
 
         $files_check = array();
+        $encoding_check = array();
+        $enclist = array(
+            'UTF-8', 'ASCII',
+            'ISO-8859-1', 'ISO-8859-2', 'ISO-8859-3', 'ISO-8859-4', 'ISO-8859-5',
+            'ISO-8859-6', 'ISO-8859-7', 'ISO-8859-8', 'ISO-8859-9', 'ISO-8859-10',
+            'ISO-8859-13', 'ISO-8859-14', 'ISO-8859-15', 'ISO-8859-16',
+            'Windows-1251', 'Windows-1252', 'Windows-1254',
+        );
         //Проверка наличие файлов
         foreach ($this->files[$this->platform] as $file){
             $files_check[$file] = file_exists(ROOT_DIR.'/Files/'.$this->sid.'/'.$file) ? true : ROOT_DIR.'/Files/'.$this->sid.'/'.$file;
+
+            if ($files_check[$file] === true) {
+                $str = file_get_contents(ROOT_DIR.'/Files/'.$this->sid.'/'.$file);
+                if (mb_detect_encoding($str, $enclist) != "UTF-8") {
+                    $encoding_check[$file] = false;
+                } else {
+                    $first3 = substr($str, 0, 3);
+                    if ($first3 == chr(0xEF) . chr(0xBB) . chr(0xBF)) {
+                        $encoding_check[$file] = false;
+                    } else {
+                        $encoding_check[$file] = true;
+                    }
+                }
+            }else
+                $encoding_check[$file] = false;
+
+            
+            unset($str);
         }
 
 
@@ -184,6 +210,7 @@ class ParsFileGame
                     'count_item' => $items['item'],
                     'no_icon' => $no_icon['item'],
                     'files_check' => $files_check,
+                    'encoding_check' => $encoding_check,
                     'select_platform' => $this->platform,
                     'config' => $this->config
                 ),

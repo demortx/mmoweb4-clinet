@@ -63,7 +63,8 @@
             <tr>
                 <th>File</th>
                 <th>Status</th>
-                <th class="text-right">Dir</th>
+                <th>Dir</th>
+                <th class="text-right">Encoding</th>
             </tr>
             </thead>
             <tbody>
@@ -75,8 +76,11 @@
                     <td>
                         {if $file_dir !== true}<span class="badge badge-danger">{$ParsFileGame_item_no_find}</span>{else}<span class="badge badge-success">{$ParsFileGame_item_find}</span>{/if}
                     </td>
-                    <td class="text-right">
+                    <td>
                         <span class="text-black">{if $file_dir === true} {else}{$file_dir}{/if}</span>
+                    </td>
+                    <td  class="text-right">
+                        {if $encoding_check[$file_name] !== true}<span class="badge badge-danger">Set UTF-8 without BOM</span>{else}<span class="badge badge-success">UTF-8 [OK]</span>{/if}
                     </td>
                 </tr>
             {/foreach}
@@ -93,7 +97,7 @@
     <div class="block-content text-center">
         {if $select_platform == 'lineage2'}
 
-            <form action="{$.php.set_url($.const.ADMIN_URL~'//files/parser?sid='~$select_sid, false, false)}" method="post" onsubmit="return false;">
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/files/parser?sid='~$select_sid, false, false)}" method="post" onsubmit="return false;">
 
 
                 <div class="form-group row">

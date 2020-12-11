@@ -158,6 +158,11 @@ fabric.properties
 /template/site/interluderu/
 /template/site/interluderu/*
 /template/site/interluderu/**/
+/template/site/tirael
+/template/site/tirael/
+/template/site/tirael/*
+/template/site/tirael/**/
+
 
 template/site/.DS_Store
 template/.DS_Store

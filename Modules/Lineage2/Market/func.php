@@ -121,6 +121,7 @@ class func
      * @return array
      */
     private function get_count_section(){
+        $this->this_main->init_db();
         $count_section = array();
         $count_temp = $this->this_main->db->query('SELECT 
             s.section, COUNT(i.id) as counts
@@ -178,7 +179,7 @@ class func
     public function ajax_get_market_list(){
         
         if (isset($_POST['custom'])) {
-      
+            $this->this_main->init_db();
             $section = isset($_POST['custom']['section']) ? $_POST['custom']['section'] : false;
 
             if (!in_array($section, $this->market['section']))

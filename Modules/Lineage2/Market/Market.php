@@ -15,7 +15,7 @@ class Market extends MainModulesClass
     private $integrity_time = 600;
     public $market = array();
     public $sid;
-    public $db;
+    public $db = false;
 
     public function __construct()
     {
@@ -31,19 +31,7 @@ class Market extends MainModulesClass
             $this->market = false;
 
 
-        try {
-            $this->db = get_instance()->db();
-        }catch (\Exception $e){
-            echo error_404_html(500, 'Error connecting to database', DEBUG ? $e->getMessage() : '', '/', true);
-            exit;
-        }
 
-
-        $table = $this->db->query("SHOW TABLES LIKE 'mw_market_shop'")->fetch(\PDO::FETCH_ASSOC);
-
-        if ($table === false){
-            $this->install();
-        }
 
 
         include_once $this->mDir."/func.php";
@@ -51,6 +39,16 @@ class Market extends MainModulesClass
 
         if (get_instance()->session->isLogin())
             $this->integrity_check();
+    }
+
+    public function init_db(){
+        try {
+            if ($this->db === false)
+                $this->db = get_instance()->db();
+        }catch (\Exception $e){
+            echo error_404_html(500, 'Error connecting to database', DEBUG ? $e->getMessage() : '', '/', true);
+            exit;
+        }
     }
 
     public function status(){
@@ -259,7 +257,7 @@ class Market extends MainModulesClass
      * @param $data
      */
     public function update_shop($data){
-
+        $this->init_db();
         if (isset($data['shop']) AND isset($data['item_shop'])){
             $this->delete_shop(['shop_id' => $data['shop']['id']]);
 
@@ -312,6 +310,7 @@ class Market extends MainModulesClass
 
 
     public function delete_shop($data){
+        $this->init_db();
         if (isset($data['shop_id']) AND is_numeric($data['shop_id'])){
             $id = intval($data['shop_id']);
             $STH = $this->db->prepare('DELETE FROM mw_market_shop WHERE id=:id;');
@@ -329,6 +328,7 @@ class Market extends MainModulesClass
 
 
     private function integrity_check(){
+        $this->init_db();
         $check = get_cache('integrity_check_market', true);
         if ($check == false) {
             set_cache('integrity_check_market', 1, $this->integrity_time);
@@ -363,6 +363,7 @@ class Market extends MainModulesClass
     }
 
     public function install(){
+        $this->init_db();
         $this->db->query("CREATE TABLE `mw_market_shop` (
   `id` int(11) NOT NULL COMMENT 'ID Магазина',
   `mid` int(11) NOT NULL COMMENT 'ID мастер аккаунта',
