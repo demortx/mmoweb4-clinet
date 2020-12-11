@@ -37,7 +37,7 @@ class Market extends MainModulesClass
         include_once $this->mDir."/func.php";
         $this->func = new \Market\func( $this );
 
-        if (get_instance()->session->isLogin())
+        if (get_instance()->session->isLogin() AND $this->market !== false)
             $this->integrity_check();
     }
 
