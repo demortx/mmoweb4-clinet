@@ -55,8 +55,8 @@
                                         <div class="list-group push">
                                             {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
                                                 {foreach $info.char_list as $char_id => $char}
-                                                    <a class="list-group-item list-group-item-action align-items-center check_char_sell_market p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" data-level="{$char.level}" data-pvp="{$char.pvp}" data-pk="{$char.pk}" data-clan-name="{if $.php.is_string($char.clan)}{$char.clan}{else}-/-{/if}" data-class="{$.php.get_class_name($char.class_id)}" data-online="{$char.time}" href="javascript:void(0)">
-                                                        {$char.name}
+                                                    <a class="list-group-item list-group-item-action align-items-center  {if $char.ban != 1}check_char_sell_market{/if} p-1" data-id="{$char.id}" data-account="{$login}" data-name="{$char.name}" data-level="{$char.level}" data-pvp="{$char.pvp}" data-pk="{$char.pk}" data-clan-name="{if $.php.is_string($char.clan)}{$char.clan}{else}-/-{/if}" data-class="{$.php.get_class_name($char.class_id)}" data-online="{$char.time}" href="javascript:void(0)">
+                                                        {$char.name} {if $char.ban == 1}<code>[BAN]</code>{/if}
                                                         <span class="float-right mr-5 ">Lv.{$char.level}</span>
                                                     </a>
                                                 {/foreach}

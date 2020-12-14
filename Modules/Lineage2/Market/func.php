@@ -30,6 +30,7 @@ class func
 
     public $datatable;
     public $datatable_column;
+    public $datatable_column_character;
 
     public function __construct($this_main)
     {
@@ -112,7 +113,45 @@ class func
 
 
         );//Создаем разметку для таблицы
-        $this->datatable->loudColumn($this->datatable_column);
+        $this->datatable_column_character = array(
+            'char_info' => array(
+                'name' => 'Чар инфо',
+                'orderable' => 'true',
+                'position' => 0,
+                'formatter' => function($val, $row) {
+                    return $val;
+                }
+            ),
+            'char_inventory' => array(
+                'name' => 'инвентарь',
+                'orderable' => 'true',
+                'position' => 1,
+                'formatter' => function($val, $row) {
+                    return $val;
+                }
+            ),
+            'price' => array(
+                'name' => 'Цена',
+                'orderable' => 'true',
+                'position' => 2,
+                'formatter' => function($val, $row) {
+                    $cfg = $this->check_price($row["item_id"], 'array');
+                    $r = '<div class="btn-group"><span class="item-price">';
+                    if (isset($cfg["step"])){
+
+                        $r .= number_format((float) $val, 2, '.', '') . ' за x'.$cfg["step"];
+                    }else
+                        $r .= number_format((float) $val, 2, '.', '');
+
+                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop", ['id' => $row['id']]).'>Купить</button>';
+
+                    return $r . "</div>";
+                }
+            ),
+
+
+        );//Создаем разметку для таблицы
+
 
 
     }
@@ -159,6 +198,13 @@ class func
         $url_array = get_instance()->url->segment_array();
         if(isset($url_array[3]) AND in_array($url_array[3], $this->market['section'])){
             $section = $url_array[3];
+
+
+            if($section != 'character')
+                $this->datatable->loudColumn($this->datatable_column);
+            else
+                $this->datatable->loudColumn($this->datatable_column_character);
+
             $this->datatable->addPost(['sid' => $this->sid, 'section' => $section]);
 
             return get_instance()->fenom->fetch(
@@ -184,6 +230,14 @@ class func
 
             if (!in_array($section, $this->market['section']))
                 return false;
+
+            if($section != 'character')
+                $this->datatable->loudColumn($this->datatable_column);
+            else {
+                $this->datatable->loudColumn($this->datatable_column_character);
+                //переназначаем поля для выборки
+                $this->datatable_column = $this->datatable_column_character;
+            }
 
             $columns = isset($_POST['columns']) ? $_POST['columns'] : array();
             $draw = isset ( $_POST['draw'] ) ? intval( $_POST['draw'] ) : 0;
@@ -233,6 +287,8 @@ class func
                                                     si.`shop_id`,
                                                     s.`type`,
                                                     s.`data_create`,
+                                                    si.`char_info`,
+                                                    si.`char_inventory`,
                                                     si.`item_id`,
                                                     si.`price`, 
                                                     si.`count`, 
