@@ -105,7 +105,7 @@ class func
                     }else
                         $r .= number_format((float) $val, 2, '.', '');
 
-                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop", ['id' => $row['id']]).'>Купить</button>';
+                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>Купить</button>';
 
                     return $r . "</div>";
                 }
@@ -115,19 +115,32 @@ class func
         );//Создаем разметку для таблицы
         $this->datatable_column_character = array(
             'char_info' => array(
-                'name' => 'Чар инфо',
+                'name' => 'Персонаж',
                 'orderable' => 'true',
                 'position' => 0,
                 'formatter' => function($val, $row) {
-                    return $val;
+                    $char = json_decode($val, true);
+
+                    return
+                        "<span>"
+                        . $char['name'] . "<br><small>" . get_class_name($char['class_id']) . " (Lv. " . $char['level'] . ")</small>"
+                        . "</span>";
                 }
             ),
             'char_inventory' => array(
-                'name' => 'инвентарь',
+                'name' => 'Инвентарь',
                 'orderable' => 'true',
                 'position' => 1,
                 'formatter' => function($val, $row) {
-                    return $val;
+                    $inv = array_values(json_decode($val, true));
+
+                    $r = "";
+
+                    for ($i = 0; $i < 5; $i++) {
+                        $r .= set_item($inv[$i]['i_i'], false, false, '<span data-item="%id%" style="margin: 0 1px;"><img src="%icon%" width="32px"></span>');
+                    }
+
+                    return $r . '<button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $row['shop_id']]).'>Весь инвентарь</button>';
                 }
             ),
             'price' => array(
@@ -143,7 +156,7 @@ class func
                     }else
                         $r .= number_format((float) $val, 2, '.', '');
 
-                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop", ['id' => $row['id']]).'>Купить</button>';
+                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>Купить</button>';
 
                     return $r . "</div>";
                 }
@@ -458,6 +471,14 @@ class func
 
 
 
+    public function widget_my_sell(){
+
+        var_dump(get_instance()->session->session["master_account"]['mid']);
+
+
+
+
+    }
 
     //AJAX
 
@@ -853,5 +874,164 @@ class func
         return $send;
     }
 
+    public function ajax_buy_shop_popup(){
+
+        if (get_instance()->session->isLogin()) {
+
+
+            if (!isset($_POST['id']) OR empty($_POST['id']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $id = intval($_POST['id']);
+
+            $item = $this->sql_get_item_shop($id);
+
+            if (!isset($item['id']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();//предмет не найден он был ранее продан или снят с продажи
+
+            $items_all = array();
+
+
+            if ($item['type'] == 3){ //если товар персонаж
+
+
+
+            }else if ($item['type'] == 1) {//проверка на оптовый магазин
+
+                //удалить дубль предмета
+                $items_all = $this->sql_get_item_shop(false, $item['shop_id']);
+
+            }
+
+
+
+
+
+
+
+
+            $title = "Покупка " . $item['name'];
+
+            $content = get_instance()->fenom->fetch(
+                get_tpl_file('ajax_buy_shop.tpl', get_class($this->this_main)),
+                array_merge(
+                    array(
+                        'char_list' => get_instance()->session->getGameChars(),
+                        'item' => $item,
+                        'items_all' => $items_all,
+                        'item_id' => $id,
+                    ),
+                    get_lang('bonus_cod.lang')
+                )
+            );
+
+            $footer = '<div class="row justify-content-between">
+                    <span class="pull-left" style="line-height: 30px;">К оплате: 123</span>
+                    <button type="submit" class="btn btn-alt-primary pull-right submit-form"><i class="si si-action-redo mr-5"></i> Купить</button>
+                   </div>';
+
+            return get_instance()->ajaxmsg->popup($title, $content, $footer)->send();
+
+
+
+        }else
+            return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+    }
+
+    public function ajax_show_inventory(){
+
+        if (get_instance()->session->isLogin()) {
+
+            if (!isset($_POST['id']) OR empty($_POST['id']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $id = intval($_POST['id']);
+
+
+            $title = "Инвентарь";
+
+            $result = $this->this_main->db->query("SELECT `char_inventory` FROM `mw_market_shop_items`
+                                                    WHERE shop_id = {$id} LIMIT 1;")->fetch(\PDO::FETCH_ASSOC);
+
+            if (!isset($result['char_inventory']) OR empty($result['char_inventory']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();//Персонаж у которого был запрошен инвентарь был продан или снят с продажи
+
+
+
+            $inv = array_values(json_decode($result['char_inventory'], true));
+
+            $content = get_instance()->fenom->fetch(
+                get_tpl_file('ajax_show_inventory.tpl', get_class($this->this_main)),
+                array_merge(
+                    array(
+                        'inventory' => ($inv == null ? "Пусто" : $inv),
+                    ),
+                    get_lang('bonus_cod.lang')
+                )
+            );
+
+            $footer = '';
+
+            return get_instance()->ajaxmsg->popup($title, $content, $footer)->send();
+
+
+        }else
+            return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+    }
+
+    //SQL
+
+    private function sql_get_item_shop($item_id = false, $shop_id = false){
+
+        if ($item_id !== false){
+            $where = 'si.`id`';
+            $id = $item_id;
+        }else{
+            $where = 'si.`shop_id`';
+            $id = $shop_id;
+        }
+
+        $query = $this->this_main->db->prepare("SELECT
+                                                    si.`id`, 
+                                                    si.`shop_id`,
+                                                    s.`type`,
+                                                    s.`data_create`,
+                                                    si.`char_info`,
+                                                    si.`char_inventory`,
+                                                    si.`item_id`,
+                                                    si.`price`, 
+                                                    si.`count`, 
+                                                    si.`enc`, 
+                                                    si.`aug_1`, 
+                                                    si.`aug_2`, 
+                                                    si.`a_att_type`, 
+                                                    si.`a_att_value`, 
+                                                    si.`d_att_0`, 
+                                                    si.`d_att_1`, 
+                                                    si.`d_att_2`, 
+                                                    si.`d_att_3`, 
+                                                    si.`d_att_4`, 
+                                                    si.`d_att_5`,
+                                                    i.`name`,
+                                                    i.`add_name`,
+                                                    i.`description`,
+                                                    i.`icon`,
+                                                    i.`icon_panel`,
+                                                    i.`grade`,
+                                                    i.`stackable`
+                                                    FROM `mw_market_shop_items` AS si
+                                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
+                                                    WHERE {$where}=:id;");
+
+        $query->bindValue(':id', $id);
+        $query->execute();
+        if ($item_id !== false)
+            return $query->fetch(\PDO::FETCH_ASSOC);
+        else
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
 
 }

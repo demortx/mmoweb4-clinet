@@ -94,6 +94,9 @@ class Market extends MainModulesClass
             'ajax_sell_item' => function () { return $this->func->ajax_sell_item(); },
             'ajax_withdrawal' => function () { return $this->func->ajax_withdrawal(); },
             'ajax_sell_character' => function () { return $this->func->ajax_sell_character(); },
+            'ajax_buy_shop_popup' => function () { return $this->func->ajax_buy_shop_popup(); },
+            'ajax_buy_shop' => function () { return $this->func->ajax_buy_shop(); },
+            'ajax_show_inventory' => function () { return $this->func->ajax_show_inventory(); },
 
         );
 
@@ -237,7 +240,7 @@ class Market extends MainModulesClass
                     array(
                         'class' => 'col-12 col-md-12',
                         'level' => 1,
-                        'widget_sell' => function() { return $this->func->widget_sell_character();},
+                        'widget_sell' => function() { return $this->func->widget_my_sell();},
                     ),
 
                 ),
