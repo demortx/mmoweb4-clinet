@@ -1,156 +1,120 @@
-<h2 class="content-heading">Последнии товары</h2>
+{$.site._SEO->addTegHTML('head', 'market_style', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/market_style.css?6'])}
+
+<h2 class="content-heading">Последние товары</h2>
 
 <div class="block rounded">
     <ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" href="#armor">Броня</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#weapon">Оружие</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#jewelry">Бижутерия</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#consumables">Расходники</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#coin">Адена</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#character">Персонажи</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#etc">Другое</a>
-        </li>
+        {foreach $new as $category => $items first=$first}
+            <li class="nav-item">
+                <a class="nav-link {if $first}active{/if}" href="#{$category}">{$.php.get_translation($category)}</a>
+            </li>
+        {/foreach}
     </ul>
 
     <div class="block-content tab-content p-0">
-        <div class="tab-pane active" id="armor" role="tabpanel">
-            <div class="table-responsive">
-                <table class="table table-hover table-vcenter">
-                    <tbody>
+        {foreach $new as $category => $items first=$first}
+            <div class="tab-pane {if $first}active{/if}" id="{$category}" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-hover table-vcenter">
+                        <thead>
                         <tr>
-                            {$.php.set_item(4037,false,false,'<td width="32"><img data-item="57" src="%icon%" width="32px" data-toggle="popover" data-placement="left" data-content="%description%" data-original-title="%name% %add_name%"></td><th>%name% %add_name%</th>')}
-                            <td class="text-center">
-                                <p class="text-muted mb-0">Заточка</p>
-                                <p class="font-w600 mb-0">+5</p>
-                            </td>
-                            <td class="text-center" data-toggle="popover" title="Аугментация" data-placement="right" data-html="true" data-content="Wild Magic 10 lvl" data-original-title="Аугментация">
-                                <p class="text-muted mb-0">Аугментация</p>
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id="aug_1" checked="" disabled>
-                                    <label class="custom-control-label" for="aug_1" ></label>
-                                </div>
-                            </td>
-                            <td class="text-center" data-toggle="popover" title="Атрибут" data-placement="left" data-html="true" data-content="Wild Magic 10 lvl" data-original-title="Атрибут">
-                                <p class="text-muted mb-0">Атрибут</p>
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id="att_1" disabled>
-                                    <label class="custom-control-label" for="att_1"></label>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <p class="text-muted mb-0">РаР</p>
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id="rar_1" checked="" disabled>
-                                    <label class="custom-control-label" for="rar_1"></label>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <p class="text-muted mb-0">Цена</p>
-                                <p class="font-w600 mb-0">250</p>
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-primary">
-                                        Купить
-                                    </button>
-                                </div>
-                            </td>
+                            <th style="width: 250px;">Лот</th>
+                            {if $category == "character"}
+                                <th>Инвентарь</th>
+                            {/if}
+                            {if $category != "coin" && $category != "character"}
+                                <th style="width: 50px;" class="text-center">Ранг</th>
+                                {if $category == "weapon" || $category == "armor"}
+                                    <th class="text-center">Атрибут</th>
+                                {/if}
+                                <th class="text-center">В наличии</th>
+                            {/if}
+                            <th class="text-center" style="width: 180px;">Цена</th>
                         </tr>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {if $items == null}
+                            <tr>
+                            <td colspan="5" class="text-center">No Items</td>
+                        {else}
+                            {foreach $items as $item}
+                                <tr>
+                                    <td>
+                                        {if $category == "character"}
+                                            <span>
+                                    <b>{$item.char_info.name}</b>
+                                    <br>
+                                    <small>{$.php.get_class_name($item.char_info.class_id)} (Lv. {$item.char_info.level})</small>
+                                </span>
+                                        {else}
+                                            <div class="item-name">
+                                                <img src="{$.php.check_icon_item($item.icon, $sid)}">
+                                                <div>
+                                        <span class="item-name__content">{$item.name} <span class="item-name__additional">{$item.add_name}</span>
+                                        {if $item.enc > 0}
+                                            +{$item.enc}
+                                        {/if}
+                                        </span>
+                                                </div>
+                                            </div>
+                                        {/if}
+                                    </td>
+                                    {if $category == "character"}
+                                        <td>
+                                            {foreach 1..5 as $value index=$index}
+                                                {$.php.set_item($item.char_inventory[$index].i_i, false, false, '<span data-item="%id%" style="margin: 0 1px;"><img src="%icon%" width="32px"></span>')}
+                                            {/foreach}
+                                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $item.shop_id])}>Весь инвентарь</button>
+                                        </td>
+                                    {/if}
+                                    {if $category != "coin" && $category != "character"}
+                                        <td class="text-center">
+                                            {if $item.grade != "" && $item.grade != "non"}
+                                                <span class="item-grade">{$item.grade}</span>
+                                            {/if}
+                                        </td>
+                                        {if $category == "armor" || $category == "weapon"}
+                                            <td class="text-center">
+                                                {if $item.a_att_value > 0}
+                                                    {$att_type[$item.a_att_type]} {$item.a_att_value}<br>
+                                                {/if}
+                                                {if $item.d_att_0 > 0}
+                                                    {$att_type[0]} {$item.d_att_0}<br>
+                                                {/if}
+                                                {if $item.d_att_1 > 0}
+                                                    {$att_type[1]} {$item.d_att_1}<br>
+                                                {/if}
+                                                {if $item.d_att_2 > 0}
+                                                    {$att_type[2]} {$item.d_att_2}<br>
+                                                {/if}
+                                                {if $item.d_att_3 > 0}
+                                                    {$att_type[3]} {$item.d_att_3}<br>
+                                                {/if}
+                                                {if $item.d_att_4 > 0}
+                                                    {$att_type[4]} {$item.d_att_4}<br>
+                                                {/if}
+                                                {if $item.d_att_5 > 0}
+                                                    {$att_type[5]} {$item.d_att_5}
+                                                {/if}
+                                            </td>
+                                        {/if}
+                                        <td class="text-center">
+                                            {$item.count}
+                                        </td>
+                                    {/if}
+                                    <td class="text-right">
+                                        <div class="btn-group">
+                                            <span class="item-price">{$item.price}</span>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $item.id])}>Купить</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {/foreach}
+                        {/if}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="tab-pane" id="weapon" role="tabpanel">
-            <h4 class="font-w400">Profile Content</h4>
-            <p>...</p>
-        </div>
-        <div class="tab-pane" id="jewelry" role="tabpanel">
-            <h4 class="font-w400">Profile Content</h4>
-            <p>...</p>
-        </div>
-        <div class="tab-pane" id="consumables" role="tabpanel">
-            <h4 class="font-w400">Profile Content</h4>
-            <p>...</p>
-        </div>
-        <div class="tab-pane" id="coin" role="tabpanel">
-            <h4 class="font-w400">Profile Content</h4>
-            <p>...</p>
-        </div>
-        <div class="tab-pane" id="character" role="tabpanel">
-
-
-            <div class="table-responsive">
-                <table class="table table-hover table-vcenter">
-                    <tbody>
-                    <tr>
-                        <td width="32">
-                            <img data-item="57" src="{$.site.dir_panel}/assets/media/market/character/RankingWnd_FaceIcon_Darkelf_magician_M.png" width="32px">
-                        </td>
-                        <th>Demort</th>
-
-                        <td class="text-center">
-                            <p class="text-muted mb-0">Уровень</p>
-                            <p class="font-w600 mb-0">76</p>
-                        </td>
-                        <td class="text-center">
-                            <p class="text-muted mb-0">Класс</p>
-                            <p class="font-w600 mb-0">Spellsinger</p>
-                        </td>
-                        <td class="text-center">
-                            <p class="text-muted mb-0">Нублес</p>
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" id="nub_1" checked="" disabled>
-                                <label class="custom-control-label" for="nub_1" ></label>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <p class="text-muted mb-0">Геройство</p>
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" id="hero_1" disabled>
-                                <label class="custom-control-label" for="hero_1"></label>
-                            </div>
-                        </td>
-                        <td class="text-center"  data-toggle="popover" title="Сабкласс" data-placement="left" data-html="true" data-content="Necromancer LvL:45<br>Spectral Dancer LvL:65<br>Warsmith LvL:75" data-original-title="Атрибут">
-                            <p class="text-muted mb-0">Сабкласс</p>
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" id="sub_1" checked="" disabled>
-                                <label class="custom-control-label" for="sub_1"></label>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <p class="text-muted mb-0">Цена</p>
-                            <p class="font-w600 mb-0">250</p>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-primary">
-                                    Купить
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-        </div>
-        <div class="tab-pane" id="etc" role="tabpanel">
-            <h4 class="font-w400">Profile Content</h4>
-            <p>...</p>
-        </div>
+        {/foreach}
     </div>
 </div>

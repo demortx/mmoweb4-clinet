@@ -402,14 +402,69 @@ class func
         );
     }
 
-    public function widget_new_item(){
+    public function widget_new_item()
+    {
+        $new = [];
+
+        foreach ($this->market['section'] as $section)
+        {
+            $result = $this->this_main->db->prepare("SELECT
+                                                    si.`id`, 
+                                                    si.`shop_id`,
+                                                    s.`type`,
+                                                    s.`data_create`,
+                                                    si.`char_info`,
+                                                    si.`char_inventory`,
+                                                    si.`item_id`,
+                                                    si.`price`, 
+                                                    si.`count`, 
+                                                    si.`enc`, 
+                                                    si.`aug_1`, 
+                                                    si.`aug_2`, 
+                                                    si.`a_att_type`, 
+                                                    si.`a_att_value`, 
+                                                    si.`d_att_0`, 
+                                                    si.`d_att_1`, 
+                                                    si.`d_att_2`, 
+                                                    si.`d_att_3`, 
+                                                    si.`d_att_4`, 
+                                                    si.`d_att_5`,
+                                                    i.`name`,
+                                                    i.`add_name`,
+                                                    i.`description`,
+                                                    i.`icon`,
+                                                    i.`icon_panel`,
+                                                    i.`grade`,
+                                                    i.`stackable`
+                                                    FROM `mw_market_shop_items` AS si
+                                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
+                                                    WHERE s.sid = :sid AND s.`section` = :section LIMIT 5;");
+            $result->bindValue(":sid", $this->sid);
+            $result->bindValue(":section", $section);
+            $result->execute();
+
+            $data = $result->fetchAll();
+
+            if ($section == "character")
+            {
+                foreach ($data as &$item)
+                {
+                    $item['char_info'] = json_decode($item['char_info'], true);
+                    $item['char_inventory'] = array_values(json_decode($item['char_inventory'], true));
+                }
+            }
+
+            $new[$section] = $data;
+        }
 
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_new_item.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    //'social_list' => $this->soc_network,
-                    //'soc_list' => $soc_list,
+                    'new' => $new,
+                    'att_type' => $this->att,
+                    'sid' => $this->sid,
                 ),
                 get_lang('market.lang')
             )
@@ -472,12 +527,64 @@ class func
 
 
     public function widget_my_sell(){
+        $result = $this->this_main->db->prepare("SELECT
+                                                    si.`id`, 
+                                                    si.`shop_id`,
+                                                    s.`type`,
+                                                    s.`data_create`,
+                                                    s.`section`,
+                                                    si.`char_info`,
+                                                    si.`char_inventory`,
+                                                    si.`item_id`,
+                                                    si.`price`, 
+                                                    si.`count`, 
+                                                    si.`enc`, 
+                                                    si.`aug_1`, 
+                                                    si.`aug_2`, 
+                                                    si.`a_att_type`, 
+                                                    si.`a_att_value`, 
+                                                    si.`d_att_0`, 
+                                                    si.`d_att_1`, 
+                                                    si.`d_att_2`, 
+                                                    si.`d_att_3`, 
+                                                    si.`d_att_4`, 
+                                                    si.`d_att_5`,
+                                                    i.`name`,
+                                                    i.`add_name`,
+                                                    i.`description`,
+                                                    i.`icon`,
+                                                    i.`icon_panel`,
+                                                    i.`grade`,
+                                                    i.`stackable`
+                                                    FROM `mw_market_shop_items` AS si
+                                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
+                                                    WHERE s.sid = :sid AND s.`mid` = :mid;");
+        $result->bindValue(":sid", $this->sid);
+        $result->bindValue(":mid", get_instance()->session->session["master_account"]['mid']);
+        $result->execute();
 
-        var_dump(get_instance()->session->session["master_account"]['mid']);
+        $data = $result->fetchAll();
 
+        foreach ($data as &$item)
+        {
+            if ($item['char_info'] != "0")
+            {
+                $item['char_info'] = json_decode($item['char_info'], true);
+                $item['char_inventory'] = json_decode($item['char_inventory'], true);
+            }
+        }
 
-
-
+        return get_instance()->fenom->fetch(
+            get_tpl_file('widget_my_sell.tpl', get_class($this->this_main)),
+            array_merge(
+                array(
+                    "data" => $data,
+                    "sid" => $this->sid,
+                ),
+                get_lang('market.lang')
+            )
+        );
     }
 
     //AJAX

@@ -1455,3 +1455,22 @@ if (!function_exists('get_augmentation')) {
             return 'N/A';
     }
 }
+
+if (!function_exists('get_translation')) {
+    function get_translation($str, $language_file = 'market.lang')
+    {
+        global $TEMP;
+
+        if (empty($str))
+            return '';
+
+        if (!isset($TEMP['get_translation'])) {
+            $TEMP['get_translation'] = get_lang($language_file);
+        }
+
+        if (isset($TEMP['get_translation'][$str]))
+            return $TEMP['get_translation'][$str];
+        else
+            return $str;
+    }
+}
