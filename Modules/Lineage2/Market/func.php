@@ -998,26 +998,44 @@ class func
 
             $items_all = array();
 
+            if ($item['type'] == "3"){ //если товар персонаж
+                $item['char_info'] = json_decode($item['char_info'], true);
+                $item['char_inventory'] = array_values(json_decode($item['char_inventory'], true));
 
-            if ($item['type'] == 3){ //если товар персонаж
 
-
-
-            }else if ($item['type'] == 1) {//проверка на оптовый магазин
+            }else if ($item['type'] == "2") {//проверка на оптовый магазин
 
                 //удалить дубль предмета
                 $items_all = $this->sql_get_item_shop(false, $item['shop_id']);
 
             }
 
-
-
-
-
-
-
-
             $title = "Покупка " . $item['name'];
+
+            $package_price = 0;
+
+            if ($items_all != null)
+            {
+                foreach ($items_all as $value)
+                {
+                    $package_price += $value['price'];
+                }
+            }
+            else
+            {
+                $package_price = $item['price'];
+            }
+
+            $cfg = $this->check_price($item["item_id"], 'array');
+
+            if ($cfg['step'])
+            {
+                $price = $package_price . " за <span id='price-multiplier'>" . $cfg['step'] . "</span>";
+            }
+            else
+            {
+                $price = $package_price;
+            }
 
             $content = get_instance()->fenom->fetch(
                 get_tpl_file('ajax_buy_shop.tpl', get_class($this->this_main)),
@@ -1027,13 +1045,17 @@ class func
                         'item' => $item,
                         'items_all' => $items_all,
                         'item_id' => $id,
+                        'package_price' => $package_price,
+                        'sid' => $this->sid,
+                        'att' => $this->att,
+                        'step' => $cfg['step'],
                     ),
                     get_lang('bonus_cod.lang')
                 )
             );
 
             $footer = '<div class="row justify-content-between">
-                    <span class="pull-left" style="line-height: 30px;">К оплате: 123</span>
+                    <span class="pull-left" style="line-height: 30px;">К оплате: ' . $price . '</span>
                     <button type="submit" class="btn btn-alt-primary pull-right submit-form"><i class="si si-action-redo mr-5"></i> Купить</button>
                    </div>';
 
@@ -1082,6 +1104,63 @@ class func
 
             return get_instance()->ajaxmsg->popup($title, $content, $footer)->send();
 
+
+        }else
+            return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+    }
+
+    public function ajax_buy_shop(){
+        if (get_instance()->session->isLogin()) {
+
+
+            if (!isset($_POST['id']) OR empty($_POST['id']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $id = intval($_POST['id']);
+
+
+
+
+
+
+        }else
+            return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+    }
+
+    public function ajax_stop_selling(){
+        if (get_instance()->session->isLogin()) {
+            $vars = array();
+
+            if (!isset($_POST['id']) OR empty($_POST['id']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars['id'] = intval($_POST['id']);
+
+
+            $api = new LineageApi();
+            $response = $api->market_sell_delete($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->success)) {
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/market')->success();
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+
+            return $send;
 
         }else
             return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();

@@ -52,7 +52,7 @@
                             {$item.price}
                         </td>
                         <td class="text-right">
-                            <button class="btn btn-sm btn-outline-primary submit-btn">Снять с продажи</button>
+                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_stop_selling", ['id' => $item.id])}>Снять с продажи</button>
                         </td>
                     </tr>
                 {/foreach}

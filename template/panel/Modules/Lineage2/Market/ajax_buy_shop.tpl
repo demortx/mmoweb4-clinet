@@ -3,31 +3,93 @@
 
 <div class="row">
     <div class="col-lg-12 text-center">
-        <div id="product-image">
-            <img src="https://l2e-global.com/template/panel/assets/media/icon/61/icon/armor_t77_ul_i00.png?2"> Tallum Plate Armor
-        </div>
+        {if $item.type == '3'}
+            <div id="product-image">
+                {$item.char_info.name}
+                <br>
+                <small>{$.php.get_class_name($item.char_info.class_id)} (Lv. {$item.char_info.level})</small>
+            </div>
+        {else}
+            <div id="product-image">
+                <img src="{$.php.check_icon_item($item.icon, $sid)}"> {$item.name}
+            </div>
+        {/if}
         <table class="table table-borderless table-striped table-vcenter">
+            {if $items_all != null}
+                <tr>
+                    <td style="width: 50%" class="text-right"><b>Содержит</b></td>
+                    <td class="text-left">
+                        {foreach $items_all as $item}
+                            <div><img width="16px" src="{$.php.check_icon_item($item.icon, $sid)}"> {$item.name} x{$item.count}</div>
+                        {/foreach}
+                    </td>
+                </tr>
+            {/if}
+            {if $item.enc > 0}
+                <tr>
+                    <td style="width: 50%" class="text-right"><b>Заточка</b></td><td class="text-left">+{$item.enc}</td>
+                </tr>
+            {/if}
+            {if $items_all == null && $item.type != "3"}
+                <tr>
+                    <td style="width: 50%" class="text-right"><b>Количество</b></td><td class="text-left">x{$item.count}</td>
+                </tr>
+            {/if}
             <tr>
-                <td style="width: 50%" class="text-right"><b>Содержит</b></td>
-                <td class="text-left">
-                    <div><img width="16px" src="https://l2e-global.com/template/panel/assets/media/icon/61/icon/armor_t77_ul_i00.png?2"> Tallum Plate Armor</div>
-                    <div><img width="16px" src="https://l2e-global.com/template/panel/assets/media/icon/61/icon/armor_t77_ul_i00.png?2"> Tallum Helm</div>
-                    <div><img width="16px" src="https://l2e-global.com/template/panel/assets/media/icon/61/icon/armor_t77_ul_i00.png?2"> Tallum Gloves</div>
-                    <div><img width="16px" src="https://l2e-global.com/template/panel/assets/media/icon/61/icon/armor_t77_ul_i00.png?2"> Tallum Boots</div>
-                </td>
+                <td style="width: 50%" class="text-right"><b>Цена</b></td><td class="text-left">{$package_price}{if $step} за {$step}{/if}</td>
             </tr>
-            <tr>
-                <td style="width: 50%" class="text-right"><b>Заточка</b></td><td class="text-left">+0</td>
-            </tr>
-            <tr>
-                <td class="text-right"><b>Количество</b></td><td class="text-left">x1</td>
-            </tr>
-            <tr>
-                <td class="text-right"><b>Цена</b></td><td class="text-left">650.000000</td>
-            </tr>
-            <tr>
-                <td class="text-right"><b>Аугмент</b></td><td class="text-left">-//-</td>
-            </tr>
+            {if $item.aug_1 != "0"}
+                <tr>
+                    <td style="width: 50%" class="text-right">
+                        <b>Аугмент</b>
+                    </td>
+                    <td class="text-left">
+                        {$.php.get_augmentation($item.aug_1)}<br>{$.php.get_augmentation($item.aug_2)}
+                    </td>
+                </tr>
+            {/if}
+            {if $item.a_att_type > 0 || $item.d_att_0 > 0 || $item.d_att_1 > 0 || $item.d_att_2 > 0 || $item.d_att_3 > 0 || $item.d_att_4 > 0 || $item.d_att_5 > 0}
+                <tr>
+                    <td style="width: 50%" class="text-right">
+                        <b>Атрибут</b>
+                    </td>
+                    <td class="text-left">
+                        {if $item.a_att_type > 0}
+                            {$att[$item.a_att_type]} {$item.a_att_value}
+                        {/if}
+                        {if $item.d_att_0 > 0}
+                            {$att[0]} {$item.d_att_0}
+                        {/if}
+                        {if $item.d_att_1 > 0}
+                            {$att[1]} {$item.d_att_1}
+                        {/if}
+                        {if $item.d_att_2 > 0}
+                            {$att[2]} {$item.d_att_2}
+                        {/if}
+                        {if $item.d_att_3 > 0}
+                            {$att[3]} {$item.d_att_3}
+                        {/if}
+                        {if $item.d_att_4 > 0}
+                            {$att[4]} {$item.d_att_4}
+                        {/if}
+                        {if $item.d_att_5 > 0}
+                            {$att[5]} {$item.d_att_5}
+                        {/if}
+                    </td>
+                </tr>
+            {/if}
+            {if $item.type == "3"}
+                <tr>
+                    <td class="text-right" style="width: 50%;"><b>Инвентарь</b></td>
+                    <td class="text-left" style="width: 50%;">
+                        {foreach 1..5 as $value index=$index}
+                            {$.php.set_item($item.char_inventory[$index].i_i, false, false, '<span data-item="%id%" style="margin: 0;"><img src="%icon%" width="32px"></span>')}
+                        {/foreach}
+                        <br>
+                        <button type="submit" class="btn btn-sm btn-outline-primary submit-btn mt-1" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $item.shop_id])}>Весь инвентарь</button>
+                    </td>
+                </tr>
+            {/if}
         </table>
     </div>
 </div>
@@ -69,14 +131,27 @@
                     </div>
                 </div>
             </div>
-            
+
         {else}
             <p class="alert alert-warning font-w600 text-center" style="border-radius: 3px;">
                 У вас нет игровых аккаунтов на этом сервере:  {$.php.get_sid_name()}
             </p>
         {/if}
-        
-        
+
+        {if $item.count > 1 && $item.type != "3"}
+            <div class="form-group row justify-content-center">
+                <label class="col-10" for="count">Введите количество</label>
+                <div class="col-10">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-calculator"></i></span>
+                        </div>
+                        <input type="number" maxlength="4" name="count" class="form-control" id="count" placeholder="1">
+                    </div>
+                </div>
+            </div>
+        {/if}
+
         {if $.php.check_pin("pins_change_password_account")}
             <div class="form-group row justify-content-center" >
                 <label class="col-10" for="pin">Введите PIN-CODE</label>
@@ -91,7 +166,7 @@
             </div>
 
         {/if}
-        
+
     </div>
 </div>
 
@@ -104,6 +179,7 @@
         let account_id = $(this).val();
         let char_name_market = $('#char_name_market');
 
+        {if $item.type != "3"}
         if (account_id != '0') {
             $('.char_name_div_market').show(200);
             char_name_market.find('option').remove().end().prop('disabled', true);
@@ -125,8 +201,15 @@
         } else {
             $('.char_name_div_market').hide(200);
         }
+        {/if}
     });
     $('#account_name_market').trigger('change');
 
+    $(document).ready(function() {
+        var initial = $('#price-multiplier').text();
 
+        $('#count').keyup(function() {
+            $('#price-multiplier').text(parseFloat(initial) * $('#count').val());
+        })
+    })
 </script>

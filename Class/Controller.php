@@ -78,6 +78,7 @@ class Controller
         "pins_market_sell_item"         => true,
         "pins_market_sell_char"        => true,
         "pins_market_withdrawal"        => true,
+        "pins_market_buy_shop"        => true,
 
     );
 

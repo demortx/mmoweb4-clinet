@@ -97,6 +97,7 @@ class Market extends MainModulesClass
             'ajax_buy_shop_popup' => function () { return $this->func->ajax_buy_shop_popup(); },
             'ajax_buy_shop' => function () { return $this->func->ajax_buy_shop(); },
             'ajax_show_inventory' => function () { return $this->func->ajax_show_inventory(); },
+            'ajax_stop_selling' => function () { return $this->func->ajax_stop_selling(); },
 
         );
 
@@ -307,6 +308,8 @@ class Market extends MainModulesClass
                 }
                 return true;
             }
+        }elseif(isset($data['shop_id'])){
+            $this->delete_shop(['shop_id' => $data['shop_id']]);
         }
         return false;
     }
