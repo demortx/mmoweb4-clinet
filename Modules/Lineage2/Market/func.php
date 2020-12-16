@@ -1110,8 +1110,20 @@ class func
     }
 
     public function ajax_buy_shop(){
+
+
+
+
         if (get_instance()->session->isLogin()) {
             $vars = array();
+
+            if (!isset($_POST['account_name']) OR empty($_POST['account_name']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+            else
+                $vars['account'] = $_POST['account_name'];
+
+            if (isset($_POST['char_name']))
+                $vars['character'] = $_POST['char_name'];
 
             if (!isset($_POST['id']) OR empty($_POST['id']))
                 return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();

@@ -152,7 +152,7 @@
             </div>
         {/if}
 
-        {if $.php.check_pin("pins_change_password_account")}
+        {if $.php.check_pin("pins_market_buy_shop")}
             <div class="form-group row justify-content-center" >
                 <label class="col-10" for="pin">Введите PIN-CODE</label>
                 <div class="col-10">

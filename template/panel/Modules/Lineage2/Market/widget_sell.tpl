@@ -142,11 +142,11 @@
                             <label class="col-12">Вариант продажи</label>
                             <div class="col-12">
                                 <div class="custom-control custom-radio custom-control-inline mb-5">
-                                    <input class="custom-control-input" type="radio" name="type" id="example-radio1" value="1" checked="">
+                                    <input class="custom-control-input" type="radio" name="type" id="example-radio1" value="2" checked="">
                                     <label class="custom-control-label" for="example-radio1">Продажа в розницу</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline mb-5">
-                                    <input class="custom-control-input" type="radio" name="type" id="example-radio2" value="2">
+                                    <input class="custom-control-input" type="radio" name="type" id="example-radio2" value="1">
                                     <label class="custom-control-label" for="example-radio2">Продажа оптом</label>
                                 </div>
 
