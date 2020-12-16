@@ -35,6 +35,11 @@
                     <td style="width: 50%" class="text-right"><b>Количество</b></td><td class="text-left">x{$item.count}</td>
                 </tr>
             {/if}
+            {if $item.count > 1 && $item.type == "1"}
+                <tr>
+                    <td style="width: 50%" class="text-right"><b>Вы получите</b></td><td class="text-left"><span class="price-multiplier">{$step}</span></td>
+                </tr>
+            {/if}
             <tr>
                 <td style="width: 50%" class="text-right"><b>Цена</b></td><td class="text-left">{$package_price}{if $step} за {$step}{/if}</td>
             </tr>
@@ -138,7 +143,7 @@
             </p>
         {/if}
 
-        {if $item.count > 1 && $item.type != "3"}
+        {if $item.count > 1 && $item.type == "1"}
             <div class="form-group row justify-content-center">
                 <label class="col-10" for="count">Введите количество</label>
                 <div class="col-10">
@@ -206,10 +211,12 @@
     $('#account_name_market').trigger('change');
 
     $(document).ready(function() {
-        var initial = $('#price-multiplier').text();
+        var initial = $('.price-multiplier:eq(0)').text();
+        var initial_price = $('#price-final').data('initial');
 
         $('#count').keyup(function() {
-            $('#price-multiplier').text(parseFloat(initial) * $('#count').val());
+            $('.price-multiplier').text(parseFloat(initial) * $('#count').val());
+            $('#price-final').text((initial_price * $('#count').val()).toFixed(2));
         })
     })
 </script>

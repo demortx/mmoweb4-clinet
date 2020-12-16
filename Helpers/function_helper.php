@@ -1094,11 +1094,11 @@ if ( ! function_exists('set_cache')) {
     {
         $key = ROOT_DIR . CACHEPATH .'/' . $key . '.txt';
 
-        $contents = [
+        $contents = array(
             'time' => time(),
             'ttl' => $ttl,
             'data' => $value,
-        ];
+        );
 
 
         $data = serialize($contents);

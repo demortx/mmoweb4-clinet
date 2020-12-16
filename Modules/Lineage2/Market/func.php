@@ -1003,7 +1003,7 @@ class func
                 $item['char_inventory'] = array_values(json_decode($item['char_inventory'], true));
 
 
-            }else if ($item['type'] == "2") {//проверка на оптовый магазин
+            }else if ($item['type'] == "1") {//проверка на оптовый магазин
 
                 //удалить дубль предмета
                 $items_all = $this->sql_get_item_shop(false, $item['shop_id']);
@@ -1026,16 +1026,9 @@ class func
                 $package_price = $item['price'];
             }
 
-            $cfg = $this->check_price($item["item_id"], 'array');
+            $package_price = number_format($package_price, 2, '.', '');
 
-            if ($cfg['step'])
-            {
-                $price = $package_price . " за <span id='price-multiplier'>" . $cfg['step'] . "</span>";
-            }
-            else
-            {
-                $price = $package_price;
-            }
+            $cfg = $this->check_price($item["item_id"], 'array');
 
             $content = get_instance()->fenom->fetch(
                 get_tpl_file('ajax_buy_shop.tpl', get_class($this->this_main)),
@@ -1055,7 +1048,7 @@ class func
             );
 
             $footer = '<div class="row justify-content-between">
-                    <span class="pull-left" style="line-height: 30px;">К оплате: ' . $price . '</span>
+                    <span class="pull-left" style="line-height: 30px;">К оплате: <span id="price-final" data-initial="' . $package_price . '">' . $package_price . '</span></span>
                     <button type="submit" class="btn btn-alt-primary pull-right submit-form"><i class="si si-action-redo mr-5"></i> Купить</button>
                    </div>';
 
@@ -1132,6 +1125,13 @@ class func
 
             if (isset($_POST['count']))
                 $vars['count'] = intval($_POST['count']);
+
+            if (check_pin("pins_market_buy_shop")) {
+                if (!isset($_POST['pin']) OR empty($_POST['pin']))
+                    return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
+                else
+                    $vars["pin"] = $_POST['pin'];
+            }
 
 
 
