@@ -1111,14 +1111,42 @@ class func
 
     public function ajax_buy_shop(){
         if (get_instance()->session->isLogin()) {
-
+            $vars = array();
 
             if (!isset($_POST['id']) OR empty($_POST['id']))
                 return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
             else
-                $id = intval($_POST['id']);
+                $vars['id'] = intval($_POST['id']);
+
+            if (isset($_POST['count']))
+                $vars['count'] = intval($_POST['count']);
 
 
+
+            $api = new LineageApi();
+            $response = $api->market_buy($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->success)) {
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/market')->success();
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+
+            return $send;
 
 
 

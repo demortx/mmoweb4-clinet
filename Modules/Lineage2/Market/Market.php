@@ -331,8 +331,6 @@ class Market extends MainModulesClass
     }
 
 
-
-
     private function integrity_check(){
         $this->init_db();
         $check = get_cache('integrity_check_market', true);
