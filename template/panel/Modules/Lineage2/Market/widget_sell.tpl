@@ -43,47 +43,47 @@
 
                         <div class="list-group push">
                             {if $.php.in_array('armor', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active btn-section" data-type="armor" >
-                                <img src="/template/panel/assets/media/market/armor.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Броня <br><small>Защита мягких тканей</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['armor']?}{$count_section['armor']}{else}0{/if}</span>
-                            </button>
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active btn-section" data-type="armor" >
+                                    <img src="/template/panel/assets/media/market/armor.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">Броня <br><small>Защита мягких тканей</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['armor']?}{$count_section['armor']}{else}0{/if}</span>
+                                </button>
                             {/if}
                             {if $.php.in_array('weapon', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="weapon" >
-                                <img src="/template/panel/assets/media/market/sword.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Оружие <br><small>Острое и опасное</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['weapon']?}{$count_section['weapon']}{else}0{/if}</span>
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="weapon" >
+                                    <img src="/template/panel/assets/media/market/sword.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">Оружие <br><small>Острое и опасное</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['weapon']?}{$count_section['weapon']}{else}0{/if}</span>
 
-                            </button>
+                                </button>
                             {/if}
                             {if $.php.in_array('jewelry', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="jewelry" >
-                                <img src="/template/panel/assets/media/market/jewelry.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Бижутерия <br><small>Шик, блеск и красота</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['jewelry']?}{$count_section['jewelry']}{else}0{/if}</span>
-                            </button>
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="jewelry" >
+                                    <img src="/template/panel/assets/media/market/jewelry.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">Бижутерия <br><small>Шик, блеск и красота</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['jewelry']?}{$count_section['jewelry']}{else}0{/if}</span>
+                                </button>
                             {/if}
                             {if $.php.in_array('consumables', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="consumables" >
-                                <img src="/template/panel/assets/media/market/miscellaneous.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Расходники <br><small>Выпил, закусил</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['consumables']?}{$count_section['consumables']}{else}0{/if}</span>
-                            </button>
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="consumables" >
+                                    <img src="/template/panel/assets/media/market/miscellaneous.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">Расходники <br><small>Выпил, закусил</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['consumables']?}{$count_section['consumables']}{else}0{/if}</span>
+                                </button>
                             {/if}
                             {if $.php.in_array('coin', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="coin" >
-                                <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Адена <br><small>Много не бывает</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['coin']?}{$count_section['coin']}{else}0{/if}</span>
-                            </button>
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="coin" >
+                                    <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">Адена <br><small>Много не бывает</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['coin']?}{$count_section['coin']}{else}0{/if}</span>
+                                </button>
                             {/if}
                             {if $.php.in_array('etc', $section_status)}
-                            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="etc" >
-                                <img src="/template/panel/assets/media/market/shelf.png" width="32" width="32" class="mr-15">
-                                <span class="mr-auto">Другое <br><small>Свалка помойка</small></span>
-                                <span class="badge badge-pill badge-secondary">{if $count_section['etc']?}{$count_section['etc']}{else}0{/if}</span>
-                            </button>
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="etc" >
+                                    <img src="/template/panel/assets/media/market/shelf.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">Другое <br><small>Свалка помойка</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['etc']?}{$count_section['etc']}{else}0{/if}</span>
+                                </button>
                             {/if}
                         </div>
                     </div>
@@ -142,11 +142,11 @@
                             <label class="col-12">Вариант продажи</label>
                             <div class="col-12">
                                 <div class="custom-control custom-radio custom-control-inline mb-5">
-                                    <input class="custom-control-input" type="radio" name="type" id="example-radio1" value="2" checked="">
+                                    <input class="custom-control-input sell-type" type="radio" name="type" id="example-radio1" value="2" checked="">
                                     <label class="custom-control-label" for="example-radio1">Продажа в розницу</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline mb-5">
-                                    <input class="custom-control-input" type="radio" name="type" id="example-radio2" value="1">
+                                    <input class="custom-control-input sell-type" type="radio" name="type" id="example-radio2" value="1">
                                     <label class="custom-control-label" for="example-radio2">Продажа оптом</label>
                                 </div>
 
@@ -248,3 +248,29 @@
     </form>
     <!-- END Form -->
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('.sell-type').change(function() {
+            var t = $('.sell-type:checked').val();
+
+            $('.list-group-item-action').each(function() {
+                if ($(this).data('stackable') == "1") {
+                    if (t == 2) {
+                        $(this).addClass('not-sell').removeClass("select_item_mr").attr("data-prev-class", "select_item_mr");
+
+                        $("tr." + $(this).data("uid")).remove();
+                    }
+                    else {
+                        $(this).removeClass('not-sell').addClass($(this).data("prev-class"));
+                    }
+                }
+            })
+        })
+
+        $('.not-sell').click(function(e) {
+            e.preventDefault();
+        })
+    })
+
+</script>

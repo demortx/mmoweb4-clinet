@@ -35,7 +35,7 @@
                     <td style="width: 50%" class="text-right"><b>Количество</b></td><td class="text-left">x{$item.count}</td>
                 </tr>
             {/if}
-            {if $item.count > 1 && $item.type == "1"}
+            {if $item.count > 1}
                 <tr>
                     <td style="width: 50%" class="text-right"><b>Вы получите</b></td><td class="text-left"><span class="price-multiplier">{$step}</span></td>
                 </tr>
@@ -143,7 +143,7 @@
             </p>
         {/if}
 
-        {if $item.count > 1 && $item.type == "1"}
+        {if $item.count > 1}
             <div class="form-group row justify-content-center">
                 <label class="col-10" for="count">Введите количество</label>
                 <div class="col-10">
@@ -151,7 +151,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calculator"></i></span>
                         </div>
-                        <input type="number" maxlength="4" name="count" class="form-control" id="count" placeholder="1">
+                        <input type="number" maxlength="4" name="count" class="form-control" id="count" value="1">
                     </div>
                 </div>
             </div>

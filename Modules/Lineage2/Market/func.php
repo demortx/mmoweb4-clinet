@@ -1041,7 +1041,7 @@ class func
                         'package_price' => $package_price,
                         'sid' => $this->sid,
                         'att' => $this->att,
-                        'step' => $cfg['step'],
+                        'step' => ($cfg['step'] == null ? 1 : $cfg['step']),
                     ),
                     get_lang('bonus_cod.lang')
                 )
