@@ -623,6 +623,21 @@ class func
                             array(
                                 'count_shop' => $items['success'],
                                 'history_list' => $items['history'],
+                                'item_status' => [
+                                    0 => 'На продаже',
+                                    1 => 'Продано',
+                                    2 => 'Возврат',
+                                    3 => 'ошибка при выдаче',
+                                ],
+                                'shop_status' => [
+                                    -1 => 'Ошибка',
+                                    0 => 'На модерации',
+                                    1 => 'Оказано, возвращено',
+                                    2 => 'Заблокирован (нет возврата)',
+                                    3 => 'Снятие с продажи игроком',
+                                    4 => 'Выставлен на рынок',
+                                    5 => 'Продано',
+                                ],
                             ),
                             get_lang('market.lang')
                         )
@@ -904,10 +919,6 @@ class func
 
         if (get_instance()->session->isLogin()) {
 
-//withdrawal_type: withdrawal_bank
-//delivery_method: qiwi
-//wallet: 12
-//withdrawal_sum: 12
 
             if (!isset($_POST['withdrawal_type']) OR empty($_POST['withdrawal_type']))
                 return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
@@ -943,6 +954,7 @@ class func
 
 
 
+
             $api = new LineageApi();
             if ($_POST['withdrawal_type'] == 'withdrawal_bank')
                 $response = $api->market_withdraw($vars);
@@ -960,6 +972,14 @@ class func
                 } else {
 
                     if (isset($response["response"]->success)) {
+
+
+                        if (isset($response["response"]->data->user_data)) {
+                            $data = json_encode($response["response"]->data);
+                            $data = json_decode($data, true);
+                            get_instance()->session->updateSessionDB($data);
+                        }
+
                         $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/market')->success();
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
