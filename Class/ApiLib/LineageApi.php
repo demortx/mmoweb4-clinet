@@ -70,5 +70,10 @@ class LineageApi extends \Api
 
         return $response;
     }
+    public function transfer_log($vars){
+        $response = $this->init()->addParam('market', $vars)->get('v1/Lineage2/market/transfer')->response();
+
+        return $response;
+    }
 
 }

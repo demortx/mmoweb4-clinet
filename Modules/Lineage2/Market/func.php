@@ -495,7 +495,7 @@ class func
 
         $api = new LineageApi();
         $vars = array('temp');
-        $response = $api->history($vars);
+        $response = $api->transfer_log($vars);
 
         if ($response['ok']) {
 
@@ -516,12 +516,17 @@ class func
                     //$items['success']  - тут кол во магазинов
                     //$items['log']  - тут все магазины и в них вложены предметы
 
+
+                    //	0 - создана,
+                    // 1 - подтверждена,
+                    // 2 - отклонена средства возвращены на баланс рынка,
+                    // 3 - отклонена средства изъяты
                     return get_instance()->fenom->fetch(
                         get_tpl_file('widget_log_transfer.tpl', get_class($this->this_main)),
                         array_merge(
                             array(
                                 'count_log' => $items['success'],
-                                'log_list' => $items['history'],
+                                'log_list' => $items['log'],
                             ),
                             get_lang('market.lang')
                         )
