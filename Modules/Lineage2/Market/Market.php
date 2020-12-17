@@ -199,8 +199,14 @@ class Market extends MainModulesClass
                         'level' => 1,
                         'widget_withdrawal' => function() { return $this->func->widget_withdrawal();},
                     ),
+                    array(
+                        'class' => 'col-12 col-md-12',
+                        'level' => 2,
+                        'widget_log_transfer' => function() { return $this->func->widget_log_transfer();},
+                    ),
 
                 ),
+
 
 
             ),

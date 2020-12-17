@@ -486,6 +486,62 @@ class func
 
     }
 
+    public function widget_log_transfer(){
+
+        if (!get_instance()->session->isLogin()){
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
+            die;
+        }
+
+        $api = new LineageApi();
+        $vars = array('temp');
+        $response = $api->history($vars);
+
+        if ($response['ok']) {
+
+            if (isset($response['error'])) {
+                if (isset($response["response"]->input))
+                    return error_404_html(200, 'Oops.. You just found an error page..', $response['error'], '/panel/market');
+                else
+                    return error_404_html(200, 'Oops.. You just found an error page..', $response['error'], '/panel/market');
+
+            } else {
+
+
+                if (isset($response["response"]->success)) {
+                    $items = json_encode($response["response"]);
+                    $items = json_decode($items, true);
+
+
+                    //$items['success']  - тут кол во магазинов
+                    //$items['log']  - тут все магазины и в них вложены предметы
+
+                    return get_instance()->fenom->fetch(
+                        get_tpl_file('widget_log_transfer.tpl', get_class($this->this_main)),
+                        array_merge(
+                            array(
+                                'count_log' => $items['success'],
+                                'log_list' => $items['history'],
+                            ),
+                            get_lang('market.lang')
+                        )
+                    );
+
+
+                } else{
+                    header('Location: '.set_url('/sign-in', false), TRUE, 301);
+                    die;
+                }
+
+
+            }
+
+        } else {
+            return error_404_html(200, 'Oops.. You just found an error page..', 'Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'], '/panel/market');
+        }
+
+    }
+
     public function widget_sell(){
 
         return get_instance()->fenom->fetch(
