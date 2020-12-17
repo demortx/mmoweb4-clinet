@@ -1,3 +1,4 @@
+<div  id="w_user_info">
 <div class="block rounded">
     <div class="block-content">
         <h5>Профиль  <small class="float-right">Баланс: {$.php.intval($.site.session->session.user_data.market.balance)}</small></h5>
@@ -41,8 +42,8 @@
                 <div class="font-size-h4 font-w600">{$.php.intval($.site.session->session.user_data.market.level)}</div>
                 <div class="font-size-sm font-w600 text-uppercase text-muted">Уровень</div>
                 <p class="mt-10">
-                    <a href="{$.php.set_url('/panel/market/log')}" class="mr-5" title="Общая история"><i class="si si-book-open fa-2x"></i></a>
-                    <a href="{$.php.set_url('/panel/market/settings')}"  title="Настройки"><i class="si si-settings fa-2x"></i></a>
+                    <a href="{$.php.set_url('/panel/market/history')}" class="mr-5" title="Общая история"><i class="si si-book-open fa-2x"></i></a>
+                    <a href="javascript:void();" title="Обновить" class="submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_refresh_info")}><i class="si si-refresh fa-2x"></i></a>
                 </p>
 
             </div>
@@ -53,4 +54,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

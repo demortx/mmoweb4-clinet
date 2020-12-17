@@ -587,6 +587,62 @@ class func
         );
     }
 
+    public function widget_history(){
+
+        if (!get_instance()->session->isLogin()){
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
+            die;
+        }
+
+        $api = new LineageApi();
+        $vars = array('temp');
+        $response = $api->history($vars);
+
+        if ($response['ok']) {
+
+            if (isset($response['error'])) {
+                if (isset($response["response"]->input))
+                    return error_404_html(200, 'Oops.. You just found an error page..', $response['error'], '/panel/market');
+                else
+                    return error_404_html(200, 'Oops.. You just found an error page..', $response['error'], '/panel/market');
+
+            } else {
+
+
+                if (isset($response["response"]->success)) {
+                    $items = json_encode($response["response"]);
+                    $items = json_decode($items, true);
+
+
+                    //$items['success']  - тут кол во магазинов
+                    //$items['history']  - тут все магазины и в них вложены предметы
+
+                    return get_instance()->fenom->fetch(
+                        get_tpl_file('widget_history.tpl', get_class($this->this_main)),
+                        array_merge(
+                            array(
+                                'count_shop' => $items['success'],
+                                'history_list' => $items['history'],
+                            ),
+                            get_lang('market.lang')
+                        )
+                    );
+
+
+                } else{
+                    header('Location: '.set_url('/sign-in', false), TRUE, 301);
+                    die;
+                }
+
+
+            }
+
+        } else {
+            return error_404_html(200, 'Oops.. You just found an error page..', 'Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'], '/panel/market');
+        }
+
+    }
+
     //AJAX
 
     /**
@@ -1206,6 +1262,48 @@ class func
             return get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
     }
 
+    public function ajax_refresh_info(){
+
+
+        $vars = array('temp');
+
+        if (get_instance()->session->isLogin()) {
+
+
+            $api = new LineageApi();
+            $response = $api->refresh_info($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->data->user_data)) {
+
+                        $data = json_encode($response["response"]->data);
+                        $data = json_decode($data, true);
+                        get_instance()->session->updateSessionDB($data);
+
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->html($this->widget_user_bar(), '#w_user_info')->success();
+
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        return $send;
+
+    }
+
     //SQL
 
     private function sql_get_item_shop($item_id = false, $shop_id = false){
@@ -1259,5 +1357,9 @@ class func
             return $query->fetchAll(\PDO::FETCH_ASSOC);
 
     }
+
+
+
+
 
 }

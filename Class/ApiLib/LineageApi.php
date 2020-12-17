@@ -60,5 +60,15 @@ class LineageApi extends \Api
 
         return $response;
     }
+    public function refresh_info($vars){
+        $response = $this->init()->addParam('market', $vars)->get('v1/Lineage2/market/info')->response();
+
+        return $response;
+    }
+    public function history($vars){
+        $response = $this->init()->addParam('market', $vars)->get('v1/Lineage2/market/history')->response();
+
+        return $response;
+    }
 
 }

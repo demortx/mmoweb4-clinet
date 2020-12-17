@@ -98,6 +98,7 @@ class Market extends MainModulesClass
             'ajax_buy_shop' => function () { return $this->func->ajax_buy_shop(); },
             'ajax_show_inventory' => function () { return $this->func->ajax_show_inventory(); },
             'ajax_stop_selling' => function () { return $this->func->ajax_stop_selling(); },
+            'ajax_refresh_info' => function () { return $this->func->ajax_refresh_info(); },
 
         );
 
@@ -242,6 +243,21 @@ class Market extends MainModulesClass
                         'class' => 'col-12 col-md-12',
                         'level' => 1,
                         'widget_sell' => function() { return $this->func->widget_my_sell();},
+                    ),
+
+                ),
+
+
+            ),
+
+            '/panel/market/history' => array(
+                'header' => 'История <small>продаж</small>',
+
+                'row' => array(
+                    array(
+                        'class' => 'col-12 col-md-12',
+                        'level' => 1,
+                        'widget_sell' => function() { return $this->func->widget_history();},
                     ),
 
                 ),

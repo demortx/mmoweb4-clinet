@@ -38,9 +38,9 @@
                 <label class="col-12" for="withdrawal_sum">Сумма вывода</label>
                 <div class="col-12">
                     <div class="input-group input-group-lg">
-                        <input type="number" min="200" class="form-control" id="withdrawal_sum" name="withdrawal_sum" placeholder="200">
+                        <input type="number" min="1" max="{$.php.intval($.site.session->session.user_data.market.balance)}" value="{$.php.intval($.site.session->session.user_data.market.balance)}" class="form-control" id="withdrawal_sum" name="withdrawal_sum" placeholder="200">
                         <div class="input-group-append">
-                            <span class="input-group-text font-w600">Unit</span>
+                            <span class="input-group-text font-w600">Доступно: {$.php.intval($.site.session->session.user_data.market.balance)} Unit</span>
                         </div>
                     </div>
                 </div>
