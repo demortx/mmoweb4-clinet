@@ -110,7 +110,7 @@ class Market extends MainModulesClass
         if ($this->status() == false) {
             return array(
                 '/panel/market' => array(
-                    'header' => 'Торговая <small>площадка</small>',
+                    'header' => get_lang('market.lang')['market_title'],
                     'row' => array(
                         array(
                             'class' => 'col-12 col-md-12',
@@ -130,7 +130,7 @@ class Market extends MainModulesClass
 
         $content = array(
             '/panel/market' => array(
-                'header' => 'Торговая <small>площадка</small>',
+                'header' => get_lang('market.lang')['market_title'],
                 'row' => array(
                     array(
                         'class' => 'col-12 col-md-3',
@@ -166,7 +166,7 @@ class Market extends MainModulesClass
                 ),
             ),
             '/panel/market/(armor|weapon|jewelry|consumables|coin|character|etc)' => array(
-                'header' => 'Торговая <small>площадка</small>',
+                'header' => get_lang('market.lang')['market_title'],
                 'row' => array(
                     array(
                         'class' => 'col-12 col-md-3',
@@ -191,7 +191,7 @@ class Market extends MainModulesClass
             ),
 
             '/panel/market/withdrawal' => array(
-                'header' => 'Вывод <small>средств</small>',
+                'header' => get_lang('market.lang')['withdrawal_title'],
 
                 'row' => array(
                     array(
@@ -212,7 +212,7 @@ class Market extends MainModulesClass
             ),
 
             '/panel/market/sell' => array(
-                'header' => 'Продажа <small>предметов</small>',
+                'header' => get_lang('market.lang')['sell_title'],
 
                 'row' => array(
                     array(
@@ -227,7 +227,7 @@ class Market extends MainModulesClass
             ),
 
             '/panel/market/sell-character' => array(
-                'header' => 'Продажа <small>персонажа</small>',
+                'header' => get_lang('market.lang')['sell_character_title'],
 
                 'row' => array(
                     array(
@@ -242,7 +242,7 @@ class Market extends MainModulesClass
             ),
 
             '/panel/market/my-sell' => array(
-                'header' => 'Ваши предметы <small>на рынке</small>',
+                'header' => get_lang('market.lang')['my_sell_title'],
 
                 'row' => array(
                     array(
@@ -257,7 +257,7 @@ class Market extends MainModulesClass
             ),
 
             '/panel/market/history' => array(
-                'header' => 'История <small>продаж</small>',
+                'header' => get_lang('market.lang')['history_title'],
 
                 'row' => array(
                     array(

@@ -2,7 +2,7 @@
 
 <div class="block support-grid rounded">
     <div class="block-header block-header-default">
-        <h3 class="block-title d-none d-md-block">Список товаров на {$.php.get_sid_name(true, true)}
+        <h3 class="block-title d-none d-md-block">{$widget_my_sell_title} {$.php.get_sid_name(true, true)}
         </h3>
     </div>
     <div class="block-content">
@@ -10,10 +10,10 @@
             <table class="table table-striped table-vcenter">
                 <thead>
                 <tr>
-                    <th>Категория</th>
-                    <th>Лот</th>
-                    <th class="text-center">Количество</th>
-                    <th class="text-center">Цена</th>
+                    <th>{$widget_my_sell_title_category}</th>
+                    <th>{$widget_my_sell_title_lot}</th>
+                    <th class="text-center">{$widget_my_sell_title_amount}</th>
+                    <th class="text-center">{$widget_my_sell_title_price}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -52,7 +52,7 @@
                             {$item.price}
                         </td>
                         <td class="text-right">
-                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_stop_selling", ['id' => $item.id])}>Снять с продажи</button>
+                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_stop_selling", ['id' => $item.id])}>{$widget_my_sell_remove}</button>
                         </td>
                     </tr>
                 {/foreach}

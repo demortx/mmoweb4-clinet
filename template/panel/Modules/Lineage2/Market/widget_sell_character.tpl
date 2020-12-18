@@ -6,10 +6,10 @@
     <!-- Step Tabs -->
     <ul class="nav nav-tabs nav-tabs-block nav-fill" role="tablist">
         <li class="nav-item">
-            <a class="nav-link" href="#wizard-item" data-toggle="tab">2. Выберите предмет(ы)</a>
+            <a class="nav-link" href="#wizard-item" data-toggle="tab">{$widget_sell_character_title_1}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#wizard-confirm" data-toggle="tab">3. Подтвердите действие</a>
+            <a class="nav-link" href="#wizard-confirm" data-toggle="tab">{$widget_sell_character_title_2}</a>
         </li>
     </ul>
     <!-- END Step Tabs -->
@@ -33,7 +33,7 @@
             <div class="tab-pane" id="wizard-item" role="tabpanel">
                 <div class="row gutters-tiny">
                     <div class="col-6 col-md-2">
-                        <h6 class="text-center">Выбирите аккаунт</h6>
+                        <h6 class="text-center">{$widget_sell_choose_account}</h6>
                         <div class="list-group push"  id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
                                 {foreach $.site.session->session.user_data.account as $login => $info first=$first index=$index}
@@ -42,12 +42,12 @@
                                     </a>
                                 {/foreach}
                             {else}
-                                Нет аккаунтов
+                                {$widget_sell_no_accs}
                             {/if}
                         </div>
                     </div>
                     <div class="col-6 col-md-2">
-                        <h6 class="text-center">Выбирите персонажа</h6>
+                        <h6 class="text-center">{$widget_sell_choose_char}</h6>
                         <div class="tab-content" id="v-pills-tabContent">
                             {if $.php.is_array($.site.session->session.user_data.account) AND $.php.count($.site.session->session.user_data.account)}
                                 {foreach $.site.session->session.user_data.account as $login => $info first=$first2}
@@ -62,7 +62,7 @@
                                                 {/foreach}
                                             {else}
                                                 <a class="list-group-item list-group-item-action align-items-center text-center p-1" href="javascript:void(0)">
-                                                    <i class="fa fa-info-circle ml-1 mr-5"></i> Нет персонажей
+                                                    <i class="fa fa-info-circle ml-1 mr-5"></i> {$widget_sell_no_chars}
                                                 </a>
                                             {/if}
                                         </div>
@@ -100,17 +100,17 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="col-lg-12">
-                                <p><b>Памятка:</b></p>
-                                <p>Выбанный вами персонаж будет заблокирован на вашем аккаунте до его покупки или снятие его с торгов. Подробнее можно ознакомится <a href="#">на форуме</a>
+                                <p><b>{$widget_sell_reminder}</b></p>
+                                <p>{$widget_sell_character_reminder_desc} <a href="{$widget_sell_reminder_desc_forum_url}">{$widget_sell_reminder_desc_forum}</a></p>
                                 <div class="alert alert-primary">
-                                    <b class="alert-heading">Внимание!</b>
-                                    В момент продажи, персонаж должен быть офлайн.
+                                    <b class="alert-heading">{$widget_sell_reminder_alert}</b>
+                                    {$widget_sell_character_reminder_alert_desc}
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6" style="margin-left: auto; margin-top: auto;">
-                                <label class="">Введите PIN-CODE</label>
+                                <label class="">{$ajax_buy_shop_pin}</label>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="custom-control custom-checkbox text-right">
                                     <input type="checkbox" class="custom-control-input" id="market-terms" name="terms">
-                                    <label class="custom-control-label" for="market-terms">Согласен с <a href="#">правилами</a></label>
+                                    <label class="custom-control-label" for="market-terms">{$widget_sell_rules} <a href="{$widget_sell_rules_url}">{$widget_sell_rules_rules}</a></label>
                                 </div>
                             </div>
                         </div>
@@ -137,15 +137,15 @@
             <div class="row">
                 <div class="col-6">
                     <button type="button" class="btn btn-alt-secondary" data-wizard="prev">
-                        <i class="fa fa-angle-left mr-5"></i> Назад
+                        <i class="fa fa-angle-left mr-5"></i> {$widget_sell_back}
                     </button>
                 </div>
                 <div class="col-6 text-right">
                     <button type="button" class="btn btn-alt-secondary" data-wizard="next">
-                        Вперед <i class="fa fa-angle-right ml-5"></i>
+                        {$widget_sell_go} <i class="fa fa-angle-right ml-5"></i>
                     </button>
                     <button type="submit" class="btn btn-alt-primary d-none submit-form" data-wizard="finish">
-                        <i class="fa fa-check mr-5 "></i> Подтвердить
+                        <i class="fa fa-check mr-5 "></i> {$widget_sell_send}
                     </button>
                 </div>
             </div>

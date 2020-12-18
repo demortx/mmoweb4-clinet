@@ -17,7 +17,7 @@
         <table class="table table-borderless table-striped table-vcenter">
             {if $items_all != null}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>Содержит</b></td>
+                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_contains}</b></td>
                     <td class="text-left">
                         {foreach $items_all as $item}
                             <div><img width="16px" src="{$.php.check_icon_item($item.icon, $sid)}"> {$item.name} x{$item.count}</div>
@@ -27,26 +27,26 @@
             {/if}
             {if $item.enc > 0}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>Заточка</b></td><td class="text-left">+{$item.enc}</td>
+                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_enchant}</b></td><td class="text-left">+{$item.enc}</td>
                 </tr>
             {/if}
             {if $items_all == null && $item.type != "3"}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>Количество</b></td><td class="text-left">x{$item.count}</td>
+                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_amount}</b></td><td class="text-left">x{$item.count}</td>
                 </tr>
             {/if}
             {if $item.count > 1}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>Вы получите</b></td><td class="text-left"><span class="price-multiplier">{$step}</span></td>
+                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier">{$step}</span></td>
                 </tr>
             {/if}
             <tr>
-                <td style="width: 50%" class="text-right"><b>Цена</b></td><td class="text-left">{$package_price}{if $step} за {$step}{/if}</td>
+                <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_price}</b></td><td class="text-left">{$package_price}{if $step} {$ajax_buy_shop_for} {$step}{/if}</td>
             </tr>
             {if $item.aug_1 != "0"}
                 <tr>
                     <td style="width: 50%" class="text-right">
-                        <b>Аугмент</b>
+                        <b>{$ajax_buy_shop_augment}</b>
                     </td>
                     <td class="text-left">
                         {$.php.get_augmentation($item.aug_1)}<br>{$.php.get_augmentation($item.aug_2)}
@@ -56,7 +56,7 @@
             {if $item.a_att_type > 0 || $item.d_att_0 > 0 || $item.d_att_1 > 0 || $item.d_att_2 > 0 || $item.d_att_3 > 0 || $item.d_att_4 > 0 || $item.d_att_5 > 0}
                 <tr>
                     <td style="width: 50%" class="text-right">
-                        <b>Атрибут</b>
+                        <b>{$ajax_buy_shop_attribute}</b>
                     </td>
                     <td class="text-left">
                         {if $item.a_att_type > 0}
@@ -85,13 +85,13 @@
             {/if}
             {if $item.type == "3"}
                 <tr>
-                    <td class="text-right" style="width: 50%;"><b>Инвентарь</b></td>
+                    <td class="text-right" style="width: 50%;"><b>{$ajax_buy_shop_inventory}</b></td>
                     <td class="text-left" style="width: 50%;">
                         {foreach 1..5 as $value index=$index}
                             {$.php.set_item($item.char_inventory[$index].i_i, false, false, '<span data-item="%id%" style="margin: 0;"><img src="%icon%" width="32px"></span>')}
                         {/foreach}
                         <br>
-                        <button type="submit" class="btn btn-sm btn-outline-primary submit-btn mt-1" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $item.shop_id])}>Весь инвентарь</button>
+                        <button type="submit" class="btn btn-sm btn-outline-primary submit-btn mt-1" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $item.shop_id])}>{$ajax_buy_shop_all_inventory}</button>
                     </td>
                 </tr>
             {/if}
@@ -115,7 +115,7 @@
                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                         </div>
                         <select id="account_name_market" name="account_name" class="form-control" size="1">
-                            <option value="0">Выберите аккаунт</option>
+                            <option value="0">{$ajax_buy_shop_choose_account}</option>
                             {foreach $.site.session->session.user_data.account as $login => $info}
                                 <option value="{$login}">{$login} {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}({count($info.char_list)}){/if}</option>
                             {/foreach}
@@ -139,13 +139,13 @@
 
         {else}
             <p class="alert alert-warning font-w600 text-center" style="border-radius: 3px;">
-                У вас нет игровых аккаунтов на этом сервере:  {$.php.get_sid_name()}
+                {$ajax_buy_shop_no_accs}  {$.php.get_sid_name()}
             </p>
         {/if}
 
         {if $item.count > 1}
             <div class="form-group row justify-content-center">
-                <label class="col-10" for="count">Введите количество</label>
+                <label class="col-10" for="count">{$ajax_buy_shop_enter_amount}</label>
                 <div class="col-10">
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
@@ -159,7 +159,7 @@
 
         {if $.php.check_pin("pins_market_buy_shop")}
             <div class="form-group row justify-content-center" >
-                <label class="col-10" for="pin">Введите PIN-CODE</label>
+                <label class="col-10" for="pin">{$ajax_buy_shop_pin}</label>
                 <div class="col-10">
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend">

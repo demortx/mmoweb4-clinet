@@ -12,14 +12,14 @@
                         <div style="display: flex;">
                             {$.php.set_item($sell.item_id, false,false, '<div class="item-name"><img src="%icon%"><div><span class="item-name__content">%name% <span class="item-name__additional">%add_name%</span></span></div></div>')}
                             <div style="margin-left: auto; line-height: 32px;">
-                                <small>{$item_status[$sell.status]} {if $sell.status == 1}за {$.php.number_format($sell.earned_money, 2, ".", "")}{/if}</small>
+                                <small>{$item_status[$sell.status]}{if $sell.status == 1} {$ajax_buy_shop_for} {$.php.number_format($sell.earned_money, 2, ".", "")} <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="{$comission_notify}">?</span>{/if}</small>
                             </div>
                         </div>
                     {/foreach}
                     <br>
                 </div>
                 <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                    Дата создания: {$item.update.shop.data_create}
+                    {$creation_date} {$item.update.shop.data_create}
                 </div>
             </div>
         </div>

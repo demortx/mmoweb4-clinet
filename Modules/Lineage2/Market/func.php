@@ -59,7 +59,7 @@ class func
                 }
             ),
             'grade' => array(
-                'name' => 'Ранг',
+                'name' => get_lang('market.lang')['grade'],
                 'orderable' => 'true',
                 'position' => 1,
                 'formatter' => function($val, $row) {
@@ -67,7 +67,7 @@ class func
                 }
             ),
             'a_att_type' => array(
-                'name' => 'Атрибут',
+                'name' => get_lang('market.lang')['attribute'],
                 'orderable' => 'false',
                 'position' => 2,
                 'formatter' => function($val, $row) {
@@ -85,7 +85,7 @@ class func
                 }
             ),
             'count' => array(
-                'name' => 'В наличии',
+                'name' => get_lang('market.lang')['quantity'],
                 'orderable' => 'true',
                 'position' => 3,
                 'formatter' => function($val, $row) {
@@ -93,7 +93,7 @@ class func
                 }
             ),
             'price' => array(
-                'name' => 'Цена',
+                'name' => get_lang('market.lang')['price'],
                 'orderable' => 'true',
                 'position' => 4,
                 'formatter' => function($val, $row) {
@@ -105,7 +105,7 @@ class func
                     }else
                         $r .= number_format((float) $val, 2, '.', '');
 
-                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>Купить</button>';
+                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>' . get_lang('market.lang')['buy'] . '</button>';
 
                     return $r . "</div>";
                 }
@@ -115,7 +115,7 @@ class func
         );//Создаем разметку для таблицы
         $this->datatable_column_character = array(
             'char_info' => array(
-                'name' => 'Персонаж',
+                'name' => get_lang('market.lang')['character_column'],
                 'orderable' => 'true',
                 'position' => 0,
                 'formatter' => function($val, $row) {
@@ -128,7 +128,7 @@ class func
                 }
             ),
             'char_inventory' => array(
-                'name' => 'Инвентарь',
+                'name' => get_lang('market.lang')['inventory'],
                 'orderable' => 'true',
                 'position' => 1,
                 'formatter' => function($val, $row) {
@@ -140,7 +140,7 @@ class func
                         $r .= set_item($inv[$i]['i_i'], false, false, '<span data-item="%id%" style="margin: 0 1px;"><img src="%icon%" width="32px"></span>');
                     }
 
-                    return $r . '<button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $row['shop_id']]).'>Весь инвентарь</button>';
+                    return $r . '<button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $row['shop_id']]).'>'.get_lang('market.lang')['all_inventory'].'</button>';
                 }
             ),
             'price' => array(
@@ -156,7 +156,7 @@ class func
                     }else
                         $r .= number_format((float) $val, 2, '.', '');
 
-                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>Купить</button>';
+                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>'.get_lang('market.lang')['buy'].'</button>';
 
                     return $r . "</div>";
                 }
@@ -231,12 +231,12 @@ class func
             );
 
         }else
-            return error_404_html('Внимание', 'Раздел отключен', 'Рынок отключен или еще не настроен.');
+            return error_404_html(get_lang('market.lang')['warning'], get_lang('market.lang')['section_disabled'], get_lang('market.lang')['section_disabled_desc']);
 
     }
 
     public function ajax_get_market_list(){
-        
+
         if (isset($_POST['custom'])) {
             $this->this_main->init_db();
             $section = isset($_POST['custom']['section']) ? $_POST['custom']['section'] : false;
@@ -365,9 +365,9 @@ class func
                 "recordsFiltered" => intval( $recordsFiltered ),
                 "data"            =>  $result
             ));
-            
-            
-            
+
+
+
         }
 
 
@@ -561,17 +561,23 @@ class func
                     //$items['success']  - тут кол во магазинов
                     //$items['log']  - тут все магазины и в них вложены предметы
 
-
-                    //	0 - создана,
+                    //  0 - создана,
                     // 1 - подтверждена,
                     // 2 - отклонена средства возвращены на баланс рынка,
                     // 3 - отклонена средства изъяты
+
                     return get_instance()->fenom->fetch(
                         get_tpl_file('widget_log_transfer.tpl', get_class($this->this_main)),
                         array_merge(
                             array(
                                 'count_log' => $items['success'],
                                 'log_list' => $items['log'],
+                                'status' => [
+                                    0 => get_lang('market.lang')['created'],
+                                    1 => get_lang('market.lang')['accepted'],
+                                    2 => get_lang('market.lang')['rejected_refunded'],
+                                    3 => get_lang('market.lang')['rejected_not_refunded']
+                                ],
                             ),
                             get_lang('market.lang')
                         )
@@ -609,7 +615,7 @@ class func
 
     public function widget_sell_character(){
         if (!in_array('character', $this->market['section']))
-            return error_404_html('Внимание', 'Продажа персонажей отключена администрацией', 'Рынок отключен или еще не настроен.');
+            return error_404_html(get_lang('market.lang')['warning'], get_lang('market.lang')['section_disabled'], get_lang('market.lang')['section_disabled_desc']);
 
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_sell_character.tpl', get_class($this->this_main)),
@@ -626,7 +632,7 @@ class func
 
     public function widget_market_disable(){
 
-        return error_404_html('Внимание', 'Рынок отключен администрацией', 'Рынок отключен или еще не настроен.');
+        return error_404_html(get_lang('market.lang')['warning'], get_lang('market.lang')['section_disabled'], get_lang('market.lang')['section_disabled_desc']);
 
     }
 
@@ -730,19 +736,19 @@ class func
                                 'count_shop' => $items['success'],
                                 'history_list' => $items['history'],
                                 'item_status' => [
-                                    0 => 'На продаже',
-                                    1 => 'Продано',
-                                    2 => 'Возврат',
-                                    3 => 'ошибка при выдаче',
+                                    0 => get_lang('market.lang')['item_status_selling'],
+                                    1 => get_lang('market.lang')['item_status_sold'],
+                                    2 => get_lang('market.lang')['item_status_refunded'],
+                                    3 => get_lang('market.lang')['item_status_error'],
                                 ],
                                 'shop_status' => [
-                                    -1 => 'Ошибка',
-                                    0 => 'На модерации',
-                                    1 => 'Оказано, возвращено',
-                                    2 => 'Заблокирован (нет возврата)',
-                                    3 => 'Снятие с продажи игроком',
-                                    4 => 'Выставлен на рынок',
-                                    5 => 'Продано',
+                                    -1 => get_lang('market.lang')['shop_status_error'],
+                                    0 => get_lang('market.lang')['shop_status_modaration'],
+                                    1 => get_lang('market.lang')['shop_status_rejected_refunded'],
+                                    2 => get_lang('market.lang')['shop_status_rejected_not_refunded'],
+                                    3 => get_lang('market.lang')['shop_status_removed_by_player'],
+                                    4 => get_lang('market.lang')['shop_status_selling'],
+                                    5 => get_lang('market.lang')['shop_status_sold'],
                                 ],
                             ),
                             get_lang('market.lang')
@@ -890,7 +896,7 @@ class func
             $html .= '</div>';
             return $html;
         }else
-            return 'На этом персонаже нет предметов';
+            return get_lang('market.lang')['no_items'];
     }
 
     /**
@@ -963,22 +969,22 @@ class func
 
 
             if (!isset($_POST['section']) OR empty($_POST['section']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_section'])->danger();
             else
                 $vars["section"] = $_POST['section'];
 
             if (!isset($_POST['type']) OR empty($_POST['type']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_type'])->danger();
             else
                 $vars["type"] = intval($_POST['type']);
 
             if (!isset($_POST['i']) OR empty($_POST['i']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_i'])->danger();
             else
                 $vars["i"] = $_POST['i'];
 
             if (!isset($_POST['terms']) OR empty($_POST['terms']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_terms'])->danger();
             else
                 $vars["terms"] = $_POST['terms'];
 
@@ -1027,25 +1033,25 @@ class func
 
 
             if (!isset($_POST['withdrawal_type']) OR empty($_POST['withdrawal_type']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_withdrawal_type'])->danger();
             else
                 $vars["withdrawal_type"] = $_POST['withdrawal_type'];
 
             if ($_POST['withdrawal_type'] == 'withdrawal_bank') {
 
                 if (!isset($_POST['delivery_method']) or empty($_POST['delivery_method']))
-                    return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                    return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_delivery_method'])->danger();
                 else
                     $vars["delivery_method"] = $_POST['delivery_method'];
 
                 if (!isset($_POST['wallet']) or empty($_POST['wallet']))
-                    return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                    return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_wallet'])->danger();
                 else
                     $vars["wallet"] = $_POST['wallet'];
             }
 
             if (!isset($_POST['withdrawal_sum']) OR empty($_POST['withdrawal_sum']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('market.lang')['ajax_empty_sum'])->danger();
             else
                 $vars["withdrawal_sum"] = $_POST['withdrawal_sum'];
 
@@ -1225,13 +1231,13 @@ class func
                         'att' => $this->att,
                         'step' => ($cfg['step'] == null ? 1 : $cfg['step']),
                     ),
-                    get_lang('bonus_cod.lang')
+                    get_lang('market.lang')
                 )
             );
 
             $footer = '<div class="row justify-content-between">
-                    <span class="pull-left" style="line-height: 30px;">К оплате: <span id="price-final" data-initial="' . $package_price . '">' . $package_price . '</span></span>
-                    <button type="submit" class="btn btn-alt-primary pull-right submit-form"><i class="si si-action-redo mr-5"></i> Купить</button>
+                    <span class="pull-left" style="line-height: 30px;">' . get_lang('market.lang')['pay_amount'] . '<span id="price-final" data-initial="' . $package_price . '">' . $package_price . '</span></span>
+                    <button type="submit" class="btn btn-alt-primary pull-right submit-form"><i class="si si-action-redo mr-5"></i> ' . get_lang('market.lang')['buy'] .'</button>
                    </div>';
 
             return get_instance()->ajaxmsg->popup($title, $content, $footer)->send();

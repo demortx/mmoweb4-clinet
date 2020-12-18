@@ -1,6 +1,6 @@
 {$.site._SEO->addTegHTML('head', 'market_style', 'link', ['rel' => "stylesheet", "href" => $.const.VIEWPATH~'/panel/Modules/Lineage2/Market/market_style.css?6'])}
 
-<h2 class="content-heading">Последние товары</h2>
+<h2 class="content-heading">{$widget_new_item_title}</h2>
 
 <div class="block rounded">
     <ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs" role="tablist">
@@ -18,18 +18,18 @@
                     <table class="table table-hover table-vcenter">
                         <thead>
                         <tr>
-                            <th style="width: 250px;">Лот</th>
+                            <th style="width: 250px;">{$widget_my_sell_title_lot}</th>
                             {if $category == "character"}
-                                <th>Инвентарь</th>
+                                <th>{$inventory}</th>
                             {/if}
                             {if $category != "coin" && $category != "character"}
-                                <th style="width: 50px;" class="text-center">Ранг</th>
+                                <th style="width: 50px;" class="text-center">{$grade}</th>
                                 {if $category == "weapon" || $category == "armor"}
-                                    <th class="text-center">Атрибут</th>
+                                    <th class="text-center">{$attribute}</th>
                                 {/if}
-                                <th class="text-center">В наличии</th>
+                                <th class="text-center">{$quantity}</th>
                             {/if}
-                            <th class="text-center" style="width: 180px;">Цена</th>
+                            <th class="text-center" style="width: 180px;">{$price}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -64,7 +64,7 @@
                                             {foreach 1..5 as $value index=$index}
                                                 {$.php.set_item($item.char_inventory[$index].i_i, false, false, '<span data-item="%id%" style="margin: 0 1px;"><img src="%icon%" width="32px"></span>')}
                                             {/foreach}
-                                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $item.shop_id])}>Весь инвентарь</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $item.shop_id])}>{$all_inventory}</button>
                                         </td>
                                     {/if}
                                     {if $category != "coin" && $category != "character"}
@@ -105,7 +105,7 @@
                                     <td class="text-right">
                                         <div class="btn-group">
                                             <span class="item-price">{$item.price}</span>
-                                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $item.id])}>Купить</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $item.id])}>{$buy}</button>
                                         </div>
                                     </td>
                                 </tr>
