@@ -75,5 +75,10 @@ class LineageApi extends \Api
 
         return $response;
     }
+    public function stat_log($vars){
+        $response = $this->init()->addParam('market', $vars)->get('v1/Lineage2/market/stat')->response();
+
+        return $response;
+    }
 
 }

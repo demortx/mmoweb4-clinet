@@ -376,12 +376,57 @@ class func
 
     public function widget_total_stats(){
 
+
+
+        if (!get_instance()->session->isLogin()){
+            header('Location: '.set_url('/sign-in', false), TRUE, 301);
+            die;
+        }
+
+
+
+
+        $data = get_cache('widget_total_stats_market', false, true);
+        $items = array();
+        if ($data === false OR isset($data['cache_end'])) {
+            set_cache('widget_total_stats_market', $data["data"],CACHE_NEWS);
+
+            $api = new LineageApi();
+            $vars = array('temp');
+            $response = $api->stat_log($vars);
+
+            if ($response['ok']) {
+                if (!isset($response['error'])) {
+                    if (isset($response["response"]->success)) {
+                        $items = json_encode($response["response"]);
+                        $items = json_decode($items, true);
+
+                        set_cache('widget_total_stats_market', $items,CACHE_NEWS);
+                    }
+                }
+            }
+
+        } else
+            $items = $data["data"];
+
+
+        if (!isset($items['success'])){
+            $items = array(
+                'stat' =>
+                    array (
+                        'sales_today' => '-//-',
+                        'sales_week' => '-//-',
+                        'news_today' => '-//-',
+                        'news_week' => '-//-',
+                    ),
+            );
+        }
+
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_total_stats.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    //'social_list' => $this->soc_network,
-                    //'soc_list' => $soc_list,
+                    'info' => $items,
                 ),
                 get_lang('market.lang')
             )

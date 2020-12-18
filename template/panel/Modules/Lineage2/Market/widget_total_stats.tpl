@@ -26,7 +26,7 @@
                             Продаж сегодня
                         </td>
                         <td class="text-right">
-                            <em class="font-size-sm text-muted">143</em>
+                            <em class="font-size-sm text-muted">{$info.stat.sales_today}</em>
                         </td>
                     </tr>
                     <tr>
@@ -37,7 +37,7 @@
                             Продаж за неделю
                         </td>
                         <td class="text-right">
-                            <em class="font-size-sm text-muted">303</em>
+                            <em class="font-size-sm text-muted">{$info.stat.sales_week}</em>
                         </td>
                     </tr>
                     <tr>
@@ -48,7 +48,7 @@
                             Новых сегодня
                         </td>
                         <td class="text-right">
-                            <em class="font-size-sm text-muted">25</em>
+                            <em class="font-size-sm text-muted">{$info.stat.news_today}</em>
                         </td>
                     </tr>
                     <tr>
@@ -59,7 +59,7 @@
                             Новых за неделю
                         </td>
                         <td class="text-right">
-                            <em class="font-size-sm text-muted">67</em>
+                            <em class="font-size-sm text-muted">{$info.stat.news_week}</em>
                         </td>
                     </tr>
                     </tbody>
