@@ -184,7 +184,7 @@ class Panel extends Controller {
         $this->initTPL(
             array_merge(
                 array(
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:signin.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('signin.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -231,7 +231,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:signup.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('signup.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -264,7 +264,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:signup/signup_activation.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('signup/signup_activation.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -294,7 +294,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:signup/signup_completed.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('signup/signup_completed.tpl'),
                         get_lang('signup.lang')
                     ),
                     '_FOOTER' => false,
@@ -375,7 +375,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:signup/signup_code.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('signup/signup_code.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -404,7 +404,7 @@ class Panel extends Controller {
         $this->initTPL(
             array_merge(
                 array(
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:reminder.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('reminder.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -430,7 +430,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:reminder/reminder_email.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('reminder/reminder_email.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -457,7 +457,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:reminder/reminder_phone.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('reminder/reminder_phone.tpl'),
                         array_merge(
                             array(
                                 'config' => $this->config,
@@ -485,7 +485,7 @@ class Panel extends Controller {
             array_merge(
                 array(
 
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:reminder/reminder_email_code.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('reminder/reminder_email_code.tpl'),
                         array_merge(
                             array(
                                 'code' => $code,
@@ -511,7 +511,7 @@ class Panel extends Controller {
         $this->initTPL(
             array_merge(
                 array(
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:reconstruction.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('reconstruction.tpl'),
                         array(
                             'message' => $this->config['cabinet']['status_cabinet_jobs_msg'],
                         )
@@ -546,7 +546,7 @@ class Panel extends Controller {
             $content_full = $admin->init($s1, $s2);
 
         }else{
-            $content_full = $this->fenom->fetch("panel:admin/signin.tpl", get_lang('signin.admin.lang') );
+            $content_full = $this->fenom->fetch(get_tpl_file('admin/signin.tpl'), get_lang('signin.admin.lang') );
         }
 
         $this->initTPL(
@@ -602,7 +602,7 @@ class Panel extends Controller {
         $this->initTPL(
             array_merge(
                 array(
-                    '_CONTENT_FULL' => $this->fenom->fetch("panel:invoice.tpl",
+                    '_CONTENT_FULL' => $this->fenom->fetch(get_tpl_file('invoice.tpl'),
                         array(
                             'response_error' => $error,
                             'response_error_msg' => $msg,

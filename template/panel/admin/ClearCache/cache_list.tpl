@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <h2 class="content-heading">Кеш сайта</h2>
     <div class="block block-rounded">
 

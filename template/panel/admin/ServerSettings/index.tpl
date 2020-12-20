@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <style>
         .form-group {
             margin-bottom: 5px;

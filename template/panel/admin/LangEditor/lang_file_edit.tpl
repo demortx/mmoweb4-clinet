@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <h2 class="content-heading"> {$file} <small>Panel</small></h2>
     <div class="block block-rounded">
         <div class="block-content">

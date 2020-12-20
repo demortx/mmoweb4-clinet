@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <h2 class="content-heading">
         {$IBlock_content_title}
         <a href="{$.php.set_url($.const.ADMIN_URL~'/iblock/content_add?iblock='~$iblock_select)}" class="btn btn-sm btn-rounded btn-outline-primary float-right"><i class="fa fa-plus mr-5"></i>{$IBlock_btn_add_element}</a>

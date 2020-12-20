@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <h2 class="content-heading pt-20">{$ParsFileGame_title}
         <small>
             <button type="button" class="btn btn-sm btn-rounded btn-primary d-md-none float-right ml-5 waves-effect waves-light" data-toggle="class-toggle" data-target=".js-inbox-nav" data-class="d-none d-md-block">Меню</button>

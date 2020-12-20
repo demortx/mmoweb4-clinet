@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <div class="row justify-content-center py-20">
         <div class="col-xl-12">
             <form action="{$.php.set_url($.const.ADMIN_URL~'/news/edit_save?news='~$news_select, false, false)}" novalidate="novalidate" method="post" onsubmit="return false;">

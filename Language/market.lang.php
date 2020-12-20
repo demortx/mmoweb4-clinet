@@ -161,7 +161,6 @@ return array(
         'weapon' => "Оружие",
         'weapon_desc' => "Острое и опасное",
         'jewerly' => "Бижутерия",
-        'jewelry' => "Бижутерия",
         'jewelry_desc' => "Шик, блеск и красота",
         'character' => "Персонажи",
         'character_desc' => "Персонажи",

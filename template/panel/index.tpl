@@ -1,5 +1,5 @@
 <!doctype html>
-    {include "/panel/head.tpl"}
+    {include $.php.get_tpl_file('head.tpl')}
     <body>
         {$_SEO_BODY}
         <!-- Page Container-->
@@ -17,7 +17,7 @@
             </main>
             <!-- END Main Container -->
                 {if $_FOOTER AND ($_IFRAME == false)}
-                    {include "/panel/footer.tpl"}
+                    {include $.php.get_tpl_file('footer.tpl')}
                 {/if}
                 <!-- Pop Out Modal -->
                 <div class="modal fade" id="modal-ajax" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
@@ -44,6 +44,6 @@
         </div>
         <!-- END Page Container -->
         <!-- Core JS -->
-        {include "/panel/javascript.tpl"}
+        {include $.php.get_tpl_file('javascript.tpl')}
     </body>
 </html>

@@ -1,5 +1,5 @@
 <div class="content">
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
     <h2 class="content-heading"><img class="img-avatar" src="{$.const.VIEWPATH~'/site/'~$tpl_name~$tpl_info.poster}" alt="{$tpl_name}"> {$tpl_info.name} [{$s_lang}] <small>{$tpl_info.author} &bull; {$tpl_info.html}</small></h2>
     <div class="block block-rounded">
         <div class="block-content">

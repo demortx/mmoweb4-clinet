@@ -1,4 +1,4 @@
-{include '/panel/breadcrumb.tpl'}
+{include $.php.get_tpl_file('breadcrumb.tpl')}
 <h2 class="content-heading">
     <button type="button" class="btn btn-sm btn-rounded btn-alt-secondary float-right">View More..</button>
     <i class="si si-star mr-5"></i> Featured Courses

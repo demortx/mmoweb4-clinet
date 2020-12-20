@@ -1,5 +1,5 @@
 {if !$.site.session->isLogin}
-    {include '/panel/breadcrumb.tpl'}
+    {include $.php.get_tpl_file('breadcrumb.tpl')}
 {/if}
 
 <h2 class="content-heading">Rating {$.php.get_sid_name(true, true)}</h2>

@@ -407,7 +407,7 @@ class Controller
         }
     }
 
-    /**
+    /** {include $.php.get_tpl_file('breadcrumb.tpl')}
      * Рендер шаблона
      */
     public function initTPL($param){
@@ -442,13 +442,13 @@ class Controller
         }
         if (!isset($param['_MENU'])) {
             if ($menu == 'left')
-                $menu = $this->fenom->fetch("panel:menu_left.tpl", get_lang('login.menu.lang'));
+                $menu = $this->fenom->fetch(get_tpl_file('menu_left.tpl'), get_lang('login.menu.lang'));
             else
-                $menu = $this->fenom->fetch("panel:menu_top.tpl", get_lang('login.menu.lang'));
+                $menu = $this->fenom->fetch(get_tpl_file('menu_top.tpl'), get_lang('login.menu.lang'));
         }
 
 
-        $this->fenom->display("panel:index.tpl",
+        $this->fenom->display(get_tpl_file('index.tpl'),
             array_merge(
                 array(
                     '_PAGE_CONTENT_CLASS' => $page_container_class,

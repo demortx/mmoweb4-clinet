@@ -662,29 +662,37 @@ if (!function_exists('error_404_html')) {
 
 if (!function_exists('get_tpl_file')) {
 
-    function get_tpl_file($name, $name_module, $sub_dir = 'panel')
+    /**
+     * @param $name
+     * @param bool|string $name_module
+     * @param string $sub_dir
+     * @return bool|string
+     */
+    function get_tpl_file($name, $name_module = false, $sub_dir = 'panel')
     {
-
-        $dir = explode('\\', $name_module);
-        if (count($dir) > 3) {
-            array_pop($dir);
+        $dir = '';
+        if ($name_module !== false) {
+            $dir = explode('\\', $name_module);
+            if (count($dir) > 3) {
+                array_pop($dir);
+            }
+            $dir = implode('/', $dir) . '/';
         }
-        $dir = implode('/', $dir);
 
         //поиск кастомного варианта
-        if (file_exists(ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . '/custom/' . $name)) {
+        if (file_exists(ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . 'custom/' . $name)) {
 
             return $sub_dir . ':' . $dir . '/custom/' . $name;
 
         }//Поиск
-        elseif (file_exists(ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . '/' . $name)) {
+        elseif (file_exists(ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . '' . $name)) {
 
             return $sub_dir . ':' . $dir . '/' . $name;
 
         } else {
             echo 'Шаблон ' . $name . ' Не найден!<br> В деректории :'
-                . ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . '/custom/' . $name . '<br>и<br>'
-                . ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . '/' . $name;
+                . ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . 'custom/' . $name . '<br>и<br>'
+                . ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . '' . $name;
             return false;
         }
 

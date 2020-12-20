@@ -1,0 +1,5 @@
+Кастомизация стандартных шаблонов кабинета к примеру: template/panel/index.tpl итд
+Скопируйте шаблон который хотите изменить в эту директорию он загрузится
+
+Customization of cabinet templates, for example: template / panel / index.tpl, etc.
+Copy the template you want to change into this directory it will be loaded
