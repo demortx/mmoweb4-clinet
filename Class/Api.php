@@ -194,6 +194,7 @@ class Api
         if($new_file)
             $msg .= "<?php defined('ROOT_DIR') OR exit('No direct script access allowed'); ?>".PHP_EOL;
 
+        $msg .= "URL --" . $this->curl->url .PHP_EOL;
         $msg .= "SEND --" . json_encode($send) .PHP_EOL;
 
         $msg .= "REPLY --" . json_encode($return) .PHP_EOL;

@@ -2,10 +2,14 @@
 
 <div class="row">
     {foreach $history_list as $item index=$index}
+
+<!--
+{$.php.var_dump($item.update)}
+-->
         <div class="col-lg-4 col-md-4">
             <div class="block block-bordered">
                 <div class="block-header">
-                    <h3 class="block-title">{$.php.get_translation($item.update.shop.section)}</h3>
+                    <h3 class="block-title">{$.php.get_translation($item.update.shop.section)} ({$shop_type[$item.update.shop.type]}) <small class="pull-right">#{$item.update.shop.id}</small></h3>
                 </div>
                 <div class="block-content">
                     {foreach $item.update.item_shop as $sell}

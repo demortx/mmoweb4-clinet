@@ -16,7 +16,7 @@ return array(
         'armor_desc' => "Soft tissues defense",
         'weapon' => "Weapon",
         'weapon_desc' => "Sharp and dangerous",
-        'jewerly' => "Jewelry",
+        'jewelry' => "Jewelry",
         'jewelry' => "Jewelry",
         'jewelry_desc' => "Style and beauty",
         'character' => "Characters",
@@ -150,6 +150,8 @@ return array(
         'widget_total_stats_sales_week' => 'Sales for week',
         'widget_total_stats_new_today' => 'New for today',
         'widget_total_stats_new_week' => 'New for week',
+        'widget_sell_sell_type_3' => 'Character Sell',
+
     ),
     'ru' => array(
         'title_popup_lang' => 'Buy Item',
@@ -160,7 +162,7 @@ return array(
         'armor_desc' => "Защита мягких тканей",
         'weapon' => "Оружие",
         'weapon_desc' => "Острое и опасное",
-        'jewerly' => "Бижутерия",
+        'jewelry' => "Бижутерия",
         'jewelry_desc' => "Шик, блеск и красота",
         'character' => "Персонажи",
         'character_desc' => "Персонажи",
@@ -293,5 +295,6 @@ return array(
         'widget_total_stats_sales_week' => 'Продаж за неделю',
         'widget_total_stats_new_today' => 'Новых сегодня',
         'widget_total_stats_new_week' => 'Новых за неделю',
+        'widget_sell_sell_type_3' => 'Продажа персонажа',
     ),
 );

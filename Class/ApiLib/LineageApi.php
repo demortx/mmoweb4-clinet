@@ -26,7 +26,7 @@ class LineageApi extends \Api
 
     //MARKET
     public function market_get($vars){
-        $response = $this->init()->addParam('market', $vars)->get('v1/Lineage2/market/get')->response();
+        $response = $this->init()->addParam('market', $vars)->post('v1/Lineage2/market/get')->response();
 
         return $response;
     }

@@ -265,19 +265,32 @@ class func
                 $limit_sql = "LIMIT $start, ".$length;
             }
             $order_sql = '';
+            $order_ = true;
+            $orderBy = array();
             if ( is_array($order) && count($order) ) {
+
                 foreach($order as $order_val){
                     $key = $columns[ $order_val['column'] ]['name'];
                     if( isset($this->datatable_column[$key]) ) {
                         if ($columns[ $order_val['column'] ]['orderable'] == 'true') {
                             $dir = $order_val['dir'] === 'asc' ? 'ASC' : 'DESC';
                             $orderBy[] = '`' . $key . '` ' . $dir;
+                            $order_ = false;
                         }
                     }
                     $key = null;
                 }
-                $order_sql = 'ORDER BY ' . implode(', ', $orderBy);
+
+
             }
+
+            if ($order_)
+                $orderBy[] = 'si.`id` DESC';
+
+            if (count($orderBy))
+                $order_sql = 'ORDER BY ' . implode(', ', $orderBy);
+
+
             $where = '';
 
             if(!empty($search['value'])){
@@ -750,6 +763,11 @@ class func
                                     4 => get_lang('market.lang')['shop_status_selling'],
                                     5 => get_lang('market.lang')['shop_status_sold'],
                                 ],
+                                'shop_type' => [
+                                    1 => get_lang('market.lang')['widget_sell_sell_type_1'],
+                                    2 => get_lang('market.lang')['widget_sell_sell_type_2'],
+                                    3 => get_lang('market.lang')['widget_sell_sell_type_3'],
+                                ],
                             ),
                             get_lang('market.lang')
                         )
@@ -863,7 +881,7 @@ class func
 
                 $enc = '';
                 if ($item['i_e'] > 0)
-                    $enc = '+'.$item['i_c'];
+                    $enc = '+'.$item['i_e'];
 
                 $aug = '';
                 if($item['i_a_1'] > 0){

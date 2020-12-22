@@ -32,16 +32,16 @@
             {/if}
             {if $items_all == null && $item.type != "3"}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_amount}</b></td><td class="text-left">x{$item.count}</td>
+                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_amount}</b></td><td class="text-left">{$.php.number_format($item.count, 0, ',', ',')}</td>
                 </tr>
             {/if}
             {if $item.count > 1}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier">{$step}</span></td>
+                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier" data-value="{$step}">{$.php.number_format($step, 0, ',', ',')}</span></td>
                 </tr>
             {/if}
             <tr>
-                <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_price}</b></td><td class="text-left">{$package_price}{if $step} {$ajax_buy_shop_for} {$step}{/if}</td>
+                <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_price}</b></td><td class="text-left">{$package_price}{if $step} {$ajax_buy_shop_for} {$.php.number_format($step, 0, ',', ',')}{/if}</td>
             </tr>
             {if $item.aug_1 != "0"}
                 <tr>
@@ -211,11 +211,11 @@
     $('#account_name_market').trigger('change');
 
     $(document).ready(function() {
-        var initial = $('.price-multiplier:eq(0)').text();
+        var initial = $('.price-multiplier:eq(0)').data('value');
         var initial_price = $('#price-final').data('initial');
 
         $('#count').keyup(function() {
-            $('.price-multiplier').text(parseFloat(initial) * $('#count').val());
+            $('.price-multiplier').text((parseFloat(initial) * $('#count').val()).toLocaleString('en-US'));
             $('#price-final').text((initial_price * $('#count').val()).toFixed(2));
         })
     })
