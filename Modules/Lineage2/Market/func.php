@@ -649,6 +649,52 @@ class func
 
     }
 
+    public function widget_withdrawal_item(){
+
+        $name_id = intval(get_instance()->url->segment(4));
+
+        $api = new LineageApi();
+        $vars = array('id' => $name_id);
+        $response = $api->transfer_log($vars);
+
+        if ($response['ok'])
+        {
+            if (isset($response['error'])) {
+                if (isset($response["response"]->input))
+                    return error_404_html(200, 'Oops.. You just found an error page..', $response['error'], '/panel/market');
+                else
+                    return error_404_html(200, 'Oops.. You just found an error page..', $response['error'], '/panel/market');
+
+            } else {
+                if (isset($response["response"]->success)) {
+                    return get_instance()->fenom->fetch(
+                        get_tpl_file('widget_withdrawal_item.tpl', get_class($this->this_main)),
+                        array_merge(
+                            array(
+                                'log_list' => (array)$response['response']->log,
+                                'status' => [
+                                    0 => get_lang('market.lang')['created'],
+                                    1 => get_lang('market.lang')['accepted'],
+                                    2 => get_lang('market.lang')['rejected_refunded'],
+                                    3 => get_lang('market.lang')['rejected_not_refunded']
+                                ],
+                            ),
+                            get_lang('market.lang')
+                        )
+                    );
+                }
+                else
+                {
+                    header('Location: '.set_url('/sign-in', false), TRUE, 301);
+                    die;
+                }
+            }
+        }
+        else
+        {
+            return error_404_html(200, 'Oops.. You just found an error page..', 'Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'], '/panel/market');
+        }
+    }
 
 
     public function widget_my_sell(){
@@ -1453,6 +1499,7 @@ class func
         return $send;
 
     }
+
 
     //SQL
 

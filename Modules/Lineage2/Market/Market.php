@@ -211,6 +211,23 @@ class Market extends MainModulesClass
 
             ),
 
+            '/panel/market/withdrawal/\d+' => array(
+                'header' => get_lang('market.lang')['withdrawal_title'],
+
+                'row' => array(
+                    array(
+                        'class' => 'col-lg-6 offset-lg-3',
+                        'level' => 1,
+                        'widget_withdrawal_item' => function() { return $this->func->widget_withdrawal_item();},
+                    ),
+
+
+                ),
+
+
+
+            ),
+
             '/panel/market/sell' => array(
                 'header' => get_lang('market.lang')['sell_title'],
 

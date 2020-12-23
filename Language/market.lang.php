@@ -151,6 +151,8 @@ return array(
         'widget_total_stats_new_today' => 'New for today',
         'widget_total_stats_new_week' => 'New for week',
         'widget_sell_sell_type_3' => 'Character Sell',
+        'widget_history_withdrawal_item' => 'Withdrawal Request, ',
+        'widget_log_title_comment' => 'Comment',
 
     ),
     'ru' => array(
@@ -296,5 +298,8 @@ return array(
         'widget_total_stats_new_today' => 'Новых сегодня',
         'widget_total_stats_new_week' => 'Новых за неделю',
         'widget_sell_sell_type_3' => 'Продажа персонажа',
+        'widget_history_withdrawal_item' => 'Заявка на вывод, ',
+        'widget_log_title_comment' => 'Комментарий',
+
     ),
 );
