@@ -57,16 +57,21 @@ class Pages extends Controller {
     public function page_static($s1 = false, $s2 = false){
 
         $s1 = trim(strtolower($s1));
+
         if (in_array($s1, array('page_static', 'initTPL', 'index')))
             show_404();
 
-        $s2 = trim(strtolower($s2));
 
-        if(method_exists($this, $s1)){
+        $s2 = trim(strtolower($s2));
+        $s1_this = str_replace('-', '_', $s1);
+        if (in_array($s1_this, array('page_static', 'initTPL', 'index')))
+            show_404();
+
+        if(method_exists($this, $s1_this)){
             //Перезагружаем заголовки и файлы
             $this->seo->loudSite();
 
-            $this->$s1($s2);
+            $this->$s1_this($s2);
         }else{
 
             if (is_dir(ROOT_DIR.CACHEPATH.'/Pages')) {

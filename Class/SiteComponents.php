@@ -144,7 +144,7 @@ class SiteComponents
                         if (is_array($result) AND $result['error'] == 0) {
                             set_cache('forum_' . $lang . '_' . $count, $result, CACHE_FORUM);
                         } else {
-                            log_write('forum', 'Save:' . (is_array($result) ? json_decode($result) : $result));
+                            log_write('forum', 'Save:' . (is_array($result) ? json_encode($result) : $result));
                             set_cache('forum_' . $lang . '_' . $count, $data["data"], CACHE_FORUM);
                             $result = $data["data"];
                         }
@@ -284,7 +284,7 @@ class SiteComponents
     }
 
     static function Server($count = 10, $chart_interval = 10, $chart_percent = false, $tpl = 'server_status.tpl'){
-        if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/server_status.tpl')) {
+        if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/'.$tpl)) {
             $platform = get_platform();
             $server_site_cfg = include_once ROOT_DIR . '/Library/server_config.php';
             $servers = array();

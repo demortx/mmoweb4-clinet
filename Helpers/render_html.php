@@ -678,9 +678,13 @@ if (!function_exists('get_tpl_file')) {
             }
             $dir = implode('/', $dir) . '/';
         }
+        //поиск вариант в шаблоне сайта
+        if (file_exists(ROOT_DIR . TEMPLATE_DIR . '/' . $sub_dir . '/' . $dir . '' . $name)) {
 
-        //поиск кастомного варианта
-        if (file_exists(ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . 'custom/' . $name)) {
+            return 'site:' . $sub_dir . '/' . $dir . '' . $name;
+
+        }//поиск кастомного варианта
+        elseif (file_exists(ROOT_DIR . VIEWPATH . '/' . $sub_dir . '/' . $dir . 'custom/' . $name)) {
 
             return $sub_dir . ':' . $dir . '/custom/' . $name;
 

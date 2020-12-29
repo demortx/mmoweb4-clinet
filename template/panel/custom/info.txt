@@ -3,3 +3,15 @@
 
 Customization of cabinet templates, for example: template / panel / index.tpl, etc.
 Copy the template you want to change into this directory it will be loaded
+
+
+-----------------------ADD-----------------------
+
+Добавлена возможность переопределять шаблоны в шаблоне сайта
+Пример: template/site/valhalla-age/panel
+Папка: panel аналог папки - template/panel (ВАЖНО! Соблюдать иерархию папок распространяется только на tpl шаблоны)
+
+
+Added the ability to override templates in the site template
+Example: template / site / valhalla-age / panel
+Folder: panel analogue of the folder - template / panel (IMPORTANT! Observe the folder hierarchy applies only to tpl templates)

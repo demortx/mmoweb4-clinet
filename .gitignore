@@ -162,6 +162,10 @@ fabric.properties
 /template/site/tirael/
 /template/site/tirael/*
 /template/site/tirael/**/
+/template/site/valhalla-age
+/template/site/valhalla-age/
+/template/site/valhalla-age/*
+/template/site/valhalla-age/**/
 
 
 template/site/.DS_Store
