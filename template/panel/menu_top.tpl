@@ -56,7 +56,6 @@
 
                 <ul class="nav-main-header">
                     {$.php.render_menu_server()}
-                    <li></li>
                 </ul>
             </div>
         </div>

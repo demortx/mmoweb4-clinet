@@ -359,9 +359,15 @@ class SiteComponents
                             if ($chart_percent)
                             {
                                 foreach ($servers[$sid]['online_history'] AS &$online) {
-                                    $online = ceil($online * 100 / (int)$servers[$sid]['max_online']);
-                                    if ($online > 100)
+
+                                    if ($servers[$sid]['max_online'] < 1) {
                                         $online = 100;
+                                    }else{
+                                        $online = ceil($online * 100 / (int)$servers[$sid]['max_online']);
+                                        if ($online > 100)
+                                            $online = 100;
+                                    }
+
                                 }
                             }
                         }else
