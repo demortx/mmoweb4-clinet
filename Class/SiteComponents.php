@@ -19,6 +19,14 @@ class SiteComponents
         }
     }
 
+    /**
+     * @param int $count
+     * @param int $page
+     * @param bool $pagination
+     * @param string $tpl
+     * @param string $tpl_pag
+     * @return mixed
+     */
     static function News($count = 10, $page = 1, $pagination = true, $tpl = 'news.tpl', $tpl_pag='news_pagination.tpl'){
 
         if (isset($_GET['news']) AND is_numeric($_GET['news']) AND $_GET['news'] > 0)
@@ -110,6 +118,12 @@ class SiteComponents
         'xenforo2' => 'index.php?threads/:id/',
     );
 
+    /**
+     * @param bool $count
+     * @param string $tpl
+     * @return mixed|string
+     * @throws ErrorException
+     */
     static function Forum($count = false, $tpl = 'forum.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/forum.tpl')) {
             $cfg = include_once ROOT_DIR . '/Library/forum_config.php';
@@ -191,6 +205,11 @@ class SiteComponents
             return 'Tpl forum.tpl not found';
     }
 
+    /**
+     * @param int $count
+     * @param string $tpl
+     * @return mixed|string
+     */
     static function Rating($count = 10, $tpl = 'rating.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/rating.tpl')) {
 
@@ -228,6 +247,10 @@ class SiteComponents
             return 'Tpl rating.tpl not found';
     }
 
+    /**
+     * @param $sid
+     * @return mixed
+     */
     static function api_get_online($sid)
     {
         $api = new GlobalApi();
@@ -250,6 +273,11 @@ class SiteComponents
         }
         return $send;
     }
+
+    /**
+     * @param $sid
+     * @return mixed
+     */
     static function get_cache_online($sid){
 
         $data = get_cache('online_'.$sid, false, true, false);
@@ -266,6 +294,12 @@ class SiteComponents
         }
         return $data['data'];
     }
+
+    /**
+     * @param $sid
+     * @param $count
+     * @return array
+     */
     static function get_cache_online_history($sid, $count){
         $data = get_cache('rating_'.$sid, false, true, false);
         $online = array();
@@ -283,6 +317,14 @@ class SiteComponents
         return $online;
     }
 
+    /**
+     * @param int $count
+     * @param int $chart_interval
+     * @param bool $chart_percent
+     * @param string $tpl
+     * @return mixed|string
+     * @throws Exception
+     */
     static function Server($count = 10, $chart_interval = 10, $chart_percent = false, $tpl = 'server_status.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/'.$tpl)) {
             $platform = get_platform();
@@ -421,6 +463,9 @@ class SiteComponents
             return 'Tpl server_status.tpl not found';
     }
 
+    /**
+     *
+     */
     static function streamUpdate(){
         $fenom = false;
         $ajaxsmg = false;
@@ -429,6 +474,11 @@ class SiteComponents
         $adm->updateStreams();
     }
 
+    /**
+     * @param int $count
+     * @param string $tpl
+     * @return mixed|string
+     */
     static function Streams($count = 10, $tpl = 'streams.tpl'){
 
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/streams.tpl')) {
@@ -478,6 +528,10 @@ class SiteComponents
             return 'Tpl streams.tpl not found';
     }
 
+    /**
+     * @param string $tpl
+     * @return mixed|string
+     */
     static function Language($tpl = 'language.tpl'){
         if (file_exists(ROOT_DIR.TEMPLATE_DIR.'/language.tpl')) {
             return get_instance()->fenom->fetch('site:'.$tpl,
@@ -493,7 +547,14 @@ class SiteComponents
             return 'Tpl language.tpl not found';
     }
 
-    static function IBlock($ikey, $count=1){
+    /**
+     * @param $ikey
+     * @param int $count
+     * @param array $var
+     * @return mixed|string
+     */
+    static function IBlock($ikey, $count=1, $var = array()){
+
         $lang = select_lang();
         $data = get_cache('iblock_'.$ikey.'_'.$lang.'_'.$count, false, true);
         if ($data === false OR isset($data['cache_end'])) {
@@ -531,6 +592,7 @@ class SiteComponents
                     array_merge(
                         array(
                             'iblock' => $iblock,
+                            'iblock_var' => $var,
                         ),
                         loud_lang_site()
                     )

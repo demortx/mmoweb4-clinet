@@ -87,10 +87,16 @@ class Pages extends Controller {
 
                     if (_boolean($json['show'])) {
 
+
                         $page = get_lang($json['page']);
+
+                        if (isset($json['engine_tpl']) AND $json['engine_tpl'] == '1')
+                            $page["body"] = $this->fenom->compileCode($page["body"])->fetch(loud_lang_site());
+
                         if($json['template'] == 'site'){
                             //Перезагружаем заголовки и файлы
                             $this->seo->loudSite();
+
                             $_CONTENT = $this->fenom->fetch("site:static.tpl",
                                 array(
                                     'title' => $page["title"],

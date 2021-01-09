@@ -32,6 +32,7 @@ class func
         'enot',
         'ipay',
         'paysafecard',
+        'ips_payment',
 
     );
 

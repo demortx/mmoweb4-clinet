@@ -18,7 +18,6 @@ $system = array (
 			'donations' => true,
 			'forum' => true,
 		),
-		'manager_ma' => true,
 		'pin_shield' => true,
 		'pins_change_password_account' => true,
 		'pins_forgot_password_account' => true,
@@ -27,6 +26,10 @@ $system = array (
 		'pins_bind_email_send_code' => true,
 		'pins_bind_phone_send_code' => true,
 		'pins_manager_add' => false,
+		'pins_market_sell_item' => true,
+		'pins_market_buy_shop' => true,
+		'pins_market_sell_char' => true,
+		'pins_market_withdrawal' => true,
 		'tab_active_log' => true,
 		'tab_active_invoice' => true,
 		'tab_active_invoice_detail' => true,
@@ -78,8 +81,9 @@ $system = array (
 		'secret_key' => 'vSItF01ZW^s0z7HU(m5A',
 		'server'=>array(
 			'lineage2'=>array(
-				0 => 9,
-				1 => 8,
+				0 => 110,
+				1 => 88,
+				2 => 9,
 			),
 			'boi'=>array(
 				0 => 7,
@@ -87,8 +91,9 @@ $system = array (
 		),
 		'server_sort'=>array(
 			'lineage2'=>array(
-				0 => 8,
-				1 => 9,
+				0 => 9,
+				1 => 88,
+				2 => 110,
 			),
 			'boi'=>array(
 				0 => 7,
@@ -96,19 +101,26 @@ $system = array (
 		),
 		'server_info'=>array(
 			'lineage2'=>array(
+				110 => 
+				array (
+					'name' => 'Advext GF',
+					'status' => true,
+					'game' => 'lineage2',
+					'rate' => 1,
+				),
+				88 => 
+				array (
+					'name' => 'MasterWork',
+					'status' => true,
+					'game' => 'lineage2',
+					'rate' => 1,
+				),
 				9 => 
 				array (
 					'name' => 'L2R Old',
 					'status' => true,
 					'game' => 'lineage2',
 					'rate' => 1,
-				),
-				8 => 
-				array (
-					'name' => 'Gracia Final',
-					'status' => true,
-					'game' => 'lineage2',
-					'rate' => 7,
 				),
 			),
 			'boi'=>array(
@@ -122,11 +134,15 @@ $system = array (
 			),
 		),
 		'server_options'=>array(
-			9 => 
+			110 => 
 			array (
 				'global_balance' => true,
 			),
-			8 => 
+			88 => 
+			array (
+				'global_balance' => true,
+			),
+			9 => 
 			array (
 				'global_balance' => true,
 			),
@@ -136,12 +152,19 @@ $system = array (
 			),
 		),
 		'server_plugins'=>array(
-			9 => 
+			110 => 
 			array (
 				'bonus_cod' => true,
+				'warehouse' => true,
 				'discount' => true,
 			),
-			8 => 
+			88 => 
+			array (
+				'bonus_cod' => true,
+				'warehouse' => true,
+				'discount' => true,
+			),
+			9 => 
 			array (
 				'bonus_cod' => true,
 				'discount' => true,
@@ -154,19 +177,34 @@ $system = array (
 			),
 		),
 		'server_menu'=>array(
-			9 => 
+			110 => 
 			array (
 				'rating' => true,
+				'shop' => true,
 				'support' => true,
+				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
 				'site' => true,
 			),
-			8 => 
+			88 => 
 			array (
 				'rating' => true,
+				'shop' => true,
 				'support' => true,
+				'market' => true,
+				'donations' => true,
+				'settings' => true,
+				'forum' => true,
+				'site' => true,
+			),
+			9 => 
+			array (
+				'rating' => true,
+				'shop' => true,
+				'support' => true,
+				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -217,10 +255,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '76.0966',
-			'EUR' => '0.83439',
-			'UAH' => '28.403969',
-			'BTC' => '5.4117737E-5',
+			'RUB' => '74.0836',
+			'EUR' => '0.817996',
+			'UAH' => '28.331616',
+			'BTC' => '2.4582455E-5',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -231,6 +269,7 @@ $system = array (
 		'nextpay_product_id' => 10611,
 		'freekassa' => true,
 		'freekassa_merchant_id' => 60178,
+		'freekassa_currency' => 'RUB',
 		'paypal' => true,
 		'paypal_currency' => 'EUR',
 		'paygol' => true,
@@ -248,6 +287,11 @@ $system = array (
 		'enot' => true,
 		'enot_id' => 5581,
 		'enot_currency' => 'RUB',
+		'ipay' => true,
+		'ipay_currency' => 'GEL',
+		'paysafecard' => true,
+		'paysafecard_currency' => 'USD',
+		'ips_payment' => true,
 	),
 	'discount'=>array(
 		'project'=>array(
@@ -263,134 +307,12 @@ $system = array (
 			'shop' => 1,
 		),
 	),
-	'event'=>array(
-		8 => 
-		array (
-			0 => 
-			array (
-				'id' => 1,
-				'title' => 'Первый евент тестовый',
-				'data'=>array(
-					1 => 
-					array (
-						'start' => 0,
-						'end' => 99,
-						'percent' => 0,
-					),
-					2 => 
-					array (
-						'start' => 100,
-						'end' => 499,
-						'percent' => 1,
-					),
-					3 => 
-					array (
-						'start' => 500,
-						'end' => 999,
-						'percent' => 3,
-					),
-					4 => 
-					array (
-						'start' => 1000,
-						'end' => 2999,
-						'percent' => 5,
-					),
-					5 => 
-					array (
-						'start' => 3000,
-						'end' => 7499,
-						'percent' => 7,
-					),
-					6 => 
-					array (
-						'start' => 7500,
-						'end' => 10000000,
-						'percent' => 10,
-					),
-				),
-				'item_enable' => 1,
-				'item'=>array(
-					1 => 
-					array (
-						'lv' => 2,
-						'id' => 5592,
-						'count' => 50,
-						'enc' => 0,
-					),
-					2 => 
-					array (
-						'lv' => 1,
-						'id' => 5591,
-						'count' => 50,
-						'enc' => 0,
-					),
-					3 => 
-					array (
-						'lv' => 3,
-						'id' => 1538,
-						'count' => 3,
-						'enc' => 0,
-					),
-					4 => 
-					array (
-						'lv' => 3,
-						'id' => 3936,
-						'count' => 1,
-						'enc' => 0,
-					),
-				),
-				'agrigator'=>array(
-					0 => 'all',
-				),
-			),
-		),
-	),
-	'in_game_currency'=>array(
-		8 => 
-		array (
-			'config'=>array(
-				'char' => true,
-				'account' => true,
-			),
-			'settings'=>array(
-				0 => 
-				array (
-					'id' => 1,
-					'type' => 'char',
-					'long_name' => 'Coin of Luck',
-					'short_name' => 'Col',
-					'icon' => 'https://mw4.mmoweb.ru/template/panel/assets/media/icon/8/etc_cp_potion_i00.png',
-					'message' => 'Вы можете передать на персонажа Family Coin
-Обратите внимание!
-Вы можете приобрести все желаемые итемы напрямую в ЛК в разделах &quot;Магазин&quot; и &quot;Услуги&quot;, не переводя Family Coins в игру на персонажа!',
-					'message_no_auth' => 'Вы можете передать на персонажа Family Coin
-не авторизованный',
-					'item_id' => 4037,
-					'give_count' => 1,
-					'price' => '1.000',
-				),
-				1 => 
-				array (
-					'id' => 2,
-					'type' => 'account',
-					'long_name' => 'Point',
-					'short_name' => 'PB',
-					'icon' => 'https://mw4.mmoweb.ru/template/panel/assets/media/avatars/avatar.png',
-					'message' => 'Покупка поинтов в комюнити борд',
-					'message_no_auth' => null,
-					'item_id' => 0,
-					'give_count' => 1,
-					'price' => '12.001',
-				),
-			),
-		),
-	),
+	'event' => false,
+	'in_game_currency' => false,
 	'plugins'=>array(
 		'__' => 'pl',
 		2 => 'stop_spam_email',
 		3 => 'support',
-		5 => 'manager_account',
-		6 => 'bonus_cod',
 		8 => 'market',
 	),
 	'promo_game' => 0,

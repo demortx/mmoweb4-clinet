@@ -50,6 +50,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-dis">{$StaticPages_engine_tpl}</label>
+                            <div class="col-lg-8">
+                                <div class="custom-control custom-radio custom-control-inline mb-5">
+                                    <input class="custom-control-input" type="radio" name="engine_tpl" id="et1" value="0" {if $page_param.engine_tpl == '0'}checked=""{/if}>
+                                    <label class="custom-control-label" for="et1">No</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline mb-5">
+                                    <input class="custom-control-input" type="radio" name="engine_tpl" id="et2" value="1" {if $page_param.engine_tpl == '1'}checked=""{/if}>
+                                    <label class="custom-control-label" for="et2">Yes</label>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
