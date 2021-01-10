@@ -3,7 +3,13 @@ define( "ROOT_DIR", dirname( __FILE__ ) );
 ini_set('display_errors', 1);
 error_reporting(E_ALL & ~E_NOTICE);//
 
+if (file_exists(ROOT_DIR.'/Files/blocked_install.txt'))
+{
+    exit('<h1>MmoWeb v4 Installation</h1><br>Installation is complete, remove "/Files/blocked_install.txt" file to re-install!');
+}
+
 $folder_list = array(
+    'Config.php',
     'cache',
     'cache/crest',
     'cache/Pages',
@@ -16,47 +22,16 @@ $folder_list = array(
     'Library/shop.php',
     'template/compiled',
 );
+$php_module_list = array(
+    'curl' => 'cURL',
+    'json' => 'json',
+    'pdo_mysql' => 'SimpleXML',
+    'SimpleXML' => 'PDO MySql',
+    'zip' => 'Zip',
+);
+$db_table_install = array(
 
-foreach ($folder_list as $file){
-    if(decoct(fileperms($file) & 0777) != 777)
-        echo 'Изменить права с ' .decoct(fileperms($file) & 0777) . ' на 777 -> '. $file . '<br>';
-
-}
-
-$missing_modules = array();
-$php_modules = get_loaded_extensions();
-
-if (! in_array('curl', $php_modules) ) {
-    $missing_modules[] = 'curl';
-}
-if (! in_array('json', $php_modules) ) {
-    $missing_modules[] = 'Json';
-}
-if (! in_array('pdo_mysql', $php_modules) ) {
-    $missing_modules[] = 'PDO MySql';
-}
-
-
-foreach ($missing_modules as $miss_lib) {
-    echo 'Необходима библиотека - ' . $miss_lib . '<br>';
-}
-
-
-$system = require_once ROOT_DIR.'/Config.php';
-try {
-    $DB = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
-    $con_true = true;
-} catch (PDOException $e) {
-    echo 'Нет конекта к базе сайта <br>';
-    echo $e->getMessage();
-    $con_true = false;
-}
-
-if($con_true){
-
-	echo 'Create table: mw_broadcast<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_broadcast`;
-                        CREATE TABLE IF NOT EXISTS `mw_broadcast` (
+    'mw_broadcast' => "CREATE TABLE `mw_broadcast` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `chanel` varchar(150) NOT NULL,
                           `name` varchar(150) NOT NULL,
@@ -71,11 +46,8 @@ if($con_true){
                           `publish` int(1) NOT NULL DEFAULT '1',
                           PRIMARY KEY (`id`),
                           KEY `publish` (`publish`)
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-
-	echo 'Create table: mw_iblock<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_iblock`;
-                        CREATE TABLE IF NOT EXISTS `mw_iblock` (
+                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;",
+    'mw_iblock' => "CREATE TABLE `mw_iblock` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `name` varchar(100) NOT NULL,
                           `tpl` varchar(100) NOT NULL,
@@ -88,10 +60,8 @@ if($con_true){
                           KEY `publish` (`publish`),
                           KEY `ikey` (`ikey`),
                           KEY `name` (`name`) USING BTREE
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-	echo 'Create table: mw_iblock_content<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_iblock_content`;
-                        CREATE TABLE IF NOT EXISTS `mw_iblock_content` (
+                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;",
+    'mw_iblock_content' => "CREATE TABLE `mw_iblock_content` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `ikey` varchar(100) NOT NULL,
                           `json` mediumtext NOT NULL,
@@ -100,10 +70,8 @@ if($con_true){
                           PRIMARY KEY (`id`),
                           KEY `publish` (`publish`),
                           KEY `ikey` (`ikey`)
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-	echo 'Create table: mw_item_db<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_item_db`;
-                                CREATE TABLE `mw_item_db` (
+                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;",
+    'mw_item_db' => "CREATE TABLE `mw_item_db` (
                                   `id` int(11) NOT NULL,
                                   `item_id` bigint(20) NOT NULL,
                                   `name` varchar(250) DEFAULT NULL,
@@ -123,10 +91,8 @@ if($con_true){
                                   ADD KEY `sid` (`sid`);
                                 
                                 ALTER TABLE `mw_item_db`
-                                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;");
-	echo 'Create table: mw_news<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_news`;
-                        CREATE TABLE IF NOT EXISTS `mw_news` (
+                                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;",
+    'mw_news' => "CREATE TABLE `mw_news` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `json` mediumtext NOT NULL,
                           `date` datetime NOT NULL,
@@ -136,10 +102,8 @@ if($con_true){
                           PRIMARY KEY (`id`),
                           KEY `publish` (`publish`),
                           KEY `fixed` (`fixed`)
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-	echo 'Create table: mw_session<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_session`;
-                        CREATE TABLE IF NOT EXISTS `mw_session` (
+                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;",
+    'mw_session' => "CREATE TABLE `mw_session` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `session_id` varchar(150) NOT NULL DEFAULT '',
                           `data` mediumtext,
@@ -148,15 +112,14 @@ if($con_true){
                           PRIMARY KEY (`id`,`session_end`,`session_id`),
                           KEY `session_end` (`session_end`),
                           KEY `session_id` (`session_id`)
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;");
-	echo 'Create table: mw_stop_spam<br>';
-    $DB->query("DROP TABLE IF EXISTS `mw_stop_spam`;
-                        CREATE TABLE IF NOT EXISTS `mw_stop_spam` (
+                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;",
+    'mw_stop_spam' => "CREATE TABLE `mw_stop_spam` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `ip` varchar(45) DEFAULT NULL,
                           `date` int(11) DEFAULT NULL,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-                        ALTER TABLE `mw_stop_spam` ADD INDEX(`ip`);");
-	echo 'MmoWeb installation completed!';
-}
+                        ALTER TABLE `mw_stop_spam` ADD INDEX(`ip`);",
+
+);
+include ROOT_DIR.'/template/panel/install/index.php';
