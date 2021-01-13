@@ -40,8 +40,12 @@ class func
         'paymentwall',
         'pagseguro',
         'nextpay',
-
-
+        'paygol',
+        'alikassa',
+        'enot',
+        'ipay',
+        'paysafecard',
+        'ips_payment',
     );
     //Список тикетов
     public $tickets = array(
@@ -53,6 +57,9 @@ class func
     {
         /**@var $this_main \Modules\Plugins\Support\Support*/
         $this->this_main = $this_main;
+
+        if (isset(get_instance()->config['payment_system']['sorting_pay']))
+            $this->payment_list = get_instance()->config['payment_system']['sorting_pay'];
     }
 
     public function widget_ticket_index(){

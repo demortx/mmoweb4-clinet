@@ -30,6 +30,10 @@ class func
         'nextpay',
         'paygol',
         'alikassa',
+        'enot',
+        'ipay',
+        'paysafecard',
+        'ips_payment',
     );
     public $advertising = false;
 
@@ -41,6 +45,9 @@ class func
 
         if ($this->advertising === false)
             $this->advertising = include ROOT_DIR . '/Library/advertising.php';
+
+        if (isset(get_instance()->config['payment_system']['sorting_pay']))
+            $this->payment_list = get_instance()->config['payment_system']['sorting_pay'];
     }
 
 
