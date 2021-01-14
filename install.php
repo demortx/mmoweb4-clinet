@@ -7,6 +7,7 @@ if (file_exists(ROOT_DIR.'/Files/blocked_install.txt'))
 {
     exit('<h1>MmoWeb v4 Installation</h1><br>Installation is complete, remove "/Files/blocked_install.txt" file to re-install!');
 }
+require_once ROOT_DIR.'/Config.php';
 
 $folder_list = array(
     'Config.php',
@@ -25,8 +26,8 @@ $folder_list = array(
 $php_module_list = array(
     'curl' => 'cURL',
     'json' => 'json',
-    'pdo_mysql' => 'SimpleXML',
-    'SimpleXML' => 'PDO MySql',
+    'pdo_mysql' => 'PDO MySql',
+    'SimpleXML' => 'SimpleXML',
     'zip' => 'Zip',
 );
 $db_table_install = array(
