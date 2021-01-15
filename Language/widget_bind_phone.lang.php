@@ -49,4 +49,20 @@ return array (
 	
 	
 	),
+	'es'=>array(
+	
+		'lang_title' => 'Cambiar Contraseña de la Cuenta Maestra',
+		'label_title_input_phone_lang' => 'Confirmar móvil',
+		'label_desc_input_phone_lang' => 'Un SMS con un código de verificación será enviado a tu número de móvil!',
+		'label_input_phone_sms_lang' => 'Código SMS',
+		'label_btn_phone_sms_lang' => 'Enviar SMS',
+		'lang_pin_label_placeholder' => 'Código-PIN',
+		'lang_btn_show_code' => 'Tengo un código SMS.',
+		'lang_label_placeholder' => 'Ingresar código SMS',
+		'lang_btn_confirm_phone' => 'Confirmar móvil',
+		'lang_text_send_phone' => 'Un SMS con un código de verificación será enviado a tu número de móvil.',
+		'lang_text_send_phone_2' => 'Se te envió un SMS con un código de verificación. Ingresa el código recibido y haz click en \'Confirmar Móvil\'.',
+	
+	
+	),
 );

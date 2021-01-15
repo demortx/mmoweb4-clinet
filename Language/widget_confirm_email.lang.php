@@ -87,4 +87,30 @@ return array(
 	
 	
     ),
+	 'es' => array(
+
+        'lang_title' => 'Confirmar Correo Electrónico!',
+        'lang_btn_send_email' => 'Enviar correo electrónico de verificación',
+        'lang_text_send_email' => 'Te será enviado un correo electrónico con un código de verificación. Utiliza el código en el correo electrónico para confirmar tu correo electrónico.',
+        'lang_label_input' => 'Código de Verificación',
+        'lang_label_placeholder' => 'Ingresa el código de verificación',
+        'lang_btn_confirm_email' => 'Confirmar correo electrónico',
+        'lang_desc_confirm' => 'Un correo electrónico confirmado te permite tomar ventaja de todas las funciones de tu Cuenta Maestra.',
+
+        'lang_btn_show_code' => 'Tengo un código de verificación',
+
+        //ajax
+        'empty_cod_confirm' => 'El campo de código de verificación no puede estar vacío!',
+        'empty_email' => 'El campo de dirección de correo electrónico no puede estar vacío!',
+
+
+
+        //bind_email
+        'lang_title_bind_email' => 'Asociar correo electrónico',
+        'lang_desc_bind_email' => 'Asociar un correo electrónico te permite tomar ventaja de todas las funciones de tu Cuenta Maestra.',
+        'lang_pin_label_placeholder' => 'Código-PIN',
+        'lang_btn_send_email_bind_email' => 'Enviar código',	
+	
+	
+    ),
 );

@@ -181,4 +181,63 @@ return array(
   
       'reminder_menu_lang_btn_change' => 'Αλλαγή password',
       ),
+	  'es' => array(
+		'reminder_title_lang' => 'Bienvenido al Panel de Cuenta',
+		'reminder_title_desc_lang' => 'Restablecer contraseña de Cuenta Maestra',
+
+
+		'reminder_title_tab_email_lang' => 'Correo Electrónico',
+		'reminder_title_tab_phone_lang' => 'Número de Móvil',
+
+
+		'reminder_title_input_email_lang' => 'Correo Electrónico',
+		'reminder_desc_input_email_lang' => 'Una confirmación de restablecimiento de contraseña fue enviada a tu correo electrónica',
+		'reminder_title_input_captcha_lang' => 'CAPTCHA',
+
+
+		'reminder_title_input_phone_lang' => 'SMS',
+		'reminder_desc_input_phone_lang' => 'Un SMS con un código será enviado a tu número de móvil',
+		'reminder_input_phone_sms_lang' => 'Código SMS',
+		'reminder_btn_phone_sms_lang' => 'Enviar SMS',
+
+		'reminder_title_not_active_reminder_type' => '<br> El administrador ha deshabilitado todas las opciones de recuperación de contraseña! <br> <br> <br>',
+
+		'reminder_menu_lang_btn_reminder' => 'Restablecer contraseña',
+
+		'login_menu_lang_btn_signin' => 'Iniciar Sesión',
+		'login_menu_lang_btn_logout' => 'Cerrar Sesión',
+
+
+		// AJAX
+		'reminder_ajax_email_disable' => 'El método de recuperación de correo electrónico ha sido deshabilitado por el administrador!',
+		'reminder_ajax_sms_disable' => 'El metódo de recuperación de SMS ha sido deshabilitado por el administrador!',
+
+		'reminder_ajax_empty_code' => 'El campo \'Código SMS\' no puede estar vacío!',
+		'reminder_ajax_empty_password' => 'El campo \'Contraseña\' no puede estar vacío!',
+
+
+
+
+		// PAGE
+		'reminder_phone_title' => 'Una nueva contraseña ha sido enviada a tu número de móvil',
+		'reminder_phone_text' => 'Una nueva contraseña ha sido enviada a tu número de móvil. Utilízala para recuperar la contraseña de tu Cuenta Maestra!',
+		'reminder_phone_text_desc' => 'Si no has recibido un SMS con una nueva contraseña, inténtalo nuevamente o informa a la administración!',
+
+		'reminder_email_title' => 'Instrucciones de recuperación de contraseña enviadas',
+		'reminder_email_text' => 'Un correo electrónico con instrucciones sobre como recuperar tu contraseña ha sido enviado a tu dirección de correo electrónico. Para cambiar la contraseña, sigue el vínculo en el correo electrónico! ',
+		'reminder_email_text_desc' => 'Si no ves el correo electrónico, verifica tu carpeta de spam.',
+
+
+		// PAGE CODE
+		'reminder_title_code_lang' => 'Bienvenido al Panel de Cuenta',
+		'reminder_title_code_desc_lang' => 'Recuperación de Contraseña',
+
+		'reminder_title_input_code_lang' => 'Código SMS',
+		'reminder_desc_input_code_lang' => 'Código SMS para cambiar la contraseña',
+
+		'reminder_title_input_password_lang' => 'Nueva contraseña',
+		'reminder_desc_input_password_lang' => 'Ingresa una nueva contraseña',
+
+		'reminder_menu_lang_btn_change' => 'Cambiar contraseña',
+    ),
 );

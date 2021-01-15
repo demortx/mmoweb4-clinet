@@ -51,4 +51,17 @@ return array(
         "ajax_empty_password_new" => 'Το πεδίο «Νέο password» δεν μπορεί να είναι κενό!',
         "ajax_empty_password_new_confirm" => 'Το πεδίο «Επαλήθευση password» δεν μπορεί να είναι κενό!',
     ),
+	'es' => array(
+
+        "lang_title" => 'Cambiar Contraseña de la Cuenta Maestra',
+        "lang_input_password_old" => "Contraseña actual",
+        "lang_input_password_new" => "Nueva contraseña",
+        "lang_input_password_new_confirm" => "Re-ingresa contraseña",
+        "lang_input_password_pin" => "Ingresa tu Código-PIN",
+        "lang_button_change" => "Cambiar contraseña",
+
+        "ajax_empty_password_old" => 'El campo \'Contraseña actual\' no puede estar vacío!',
+        "ajax_empty_password_new" => 'El campo \'Nueva contraseña\' no puede estar vacío!',
+        "ajax_empty_password_new_confirm" => 'El campo \'Re-ingresa contraseña\' no puede estar vacío!',
+    ),
 );

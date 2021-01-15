@@ -42,7 +42,7 @@ return array(
             'top_exp'          => 'Top EXP',
             'top_clan'         => 'Top Clan',
             'top_clan_pvp'     => 'Top Clan PvP',
-            'top_ally'         => 'Top Aliance',
+            'top_ally'         => 'Top Alliance',
             'top_castle'       => 'Castles',
             'top_clanhols'     => 'Clan Halls',
             'top_hero'         => 'Heroes',
@@ -71,7 +71,7 @@ return array(
             'top_exp'          => 'Top EXP',
             'top_clan'         => 'Top Clan',
             'top_clan_pvp'     => 'Top Clan PvP',
-            'top_ally'         => 'Top Aliance',
+            'top_ally'         => 'Top Alliance',
             'top_castle'       => 'Castles',
             'top_clanhols'     => 'Clan Halls',
             'top_hero'         => 'Heroes',
@@ -91,5 +91,34 @@ return array(
         'server_rating_empty' => 'Δεν υπάρχουν ακόμη διαθέσιμες πληροφορίες. Ελέγξτε ξανά αργότερα.',	
 	
 	
-    )
+    ),
+	'es' => array(
+
+        'lang_page' => array(
+            'top_pvp'          => 'Top PvP',
+            'top_pk'           => 'Top PK',
+            'top_exp'          => 'Top EXP',
+            'top_clan'         => 'Top Clan',
+            'top_clan_pvp'     => 'Top Clan PvP',
+            'top_ally'         => 'Top Alianza',
+            'top_castle'       => 'Castillos',
+            'top_clanhols'     => 'Clan Halls',
+            'top_hero'         => 'Héroes',
+            'top_statistic'    => 'Estadísticas Generales',
+            'online_history'   => 'Tiempo en línea',
+            'top_rank'         => 'Top Rank',
+            'top_pkw'          => 'Top Wins',
+            'top_pkt'          => 'Top Fights',
+        ),
+        'lang_history'=> array(
+            'online' => 'En línea',
+            'online_multiple' => 'En línea',
+            'characters' => 'Personajes',
+            'clan' => 'Clanes',
+        ),
+
+        'server_rating_empty' => 'Todavía no hay información disponible. Por favor verifica nuevamente más tarde.',	
+	
+	
+    ),
 );

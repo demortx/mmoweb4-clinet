@@ -16,4 +16,8 @@ return array (
 		'throttle_error' => 'Έχετε υπερβεί το όριο αιτημάτων, προσπαθήστε ξανά αργότερα!',
 		'session_lost' => 'Το profile session σας έχει λήξει, παρακαλούμε συνδεθείτε ξανά!',
 	),
+	'es' => array (
+		'throttle_error' => 'Número de consultas superado, inténtalo nuevamente más tarde!',
+		'session_lost' => 'Tu sesión de perfil ha expirado, por favor inicia sesión nuevamente!',
+	),
 );

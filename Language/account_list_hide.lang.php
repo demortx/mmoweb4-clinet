@@ -35,4 +35,13 @@ return array(
 
 
     ),
+	    'es' => array(
+
+        'lang_list_hide_account' => 'Cuentas de juego ocultas',
+        'lang_list_hide_account_empty' => 'No tienes cuentas de juego ocultas',
+        'text_hide_account_info' => 'Lista de cuentas de juego que estaban ocultas de la página principal. Puedes verlas en la lista de todas las cuentas de juego en la página principal de tu Cuenta Maestra.',
+
+
+
+    ),
 );

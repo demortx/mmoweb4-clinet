@@ -232,6 +232,8 @@ $system = array (
 		'language_list'=>array(
 			'ru' => 'Russian',
 			'en' => 'English',
+			'gr' => 'gr',
+			'es' => 'es',
 		),
 	),
 	'settings' => 1,
@@ -255,10 +257,10 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '73.8775',
-			'EUR' => '0.821172',
-			'UAH' => '27.882436',
-			'BTC' => '2.8711378E-5',
+			'RUB' => '73.502399',
+			'EUR' => '0.827815',
+			'UAH' => '28.081133',
+			'BTC' => '2.7579782E-5',
 		),
 		'sorting_pay'=>array(
 			0 => 'alikassa',

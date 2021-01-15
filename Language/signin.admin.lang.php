@@ -65,4 +65,24 @@ return array(
 	
 	
     ),
+	'es' => array(
+
+        'signin_title_desc_lang' => 'Inicio de Sesión de Panel de Aministrador',
+        'signin_title_input_email_lang' => 'Inicio de Sesión',
+        'signin_title_input_email_lang_placeholder' => 'Inicio de Sesión',
+        'signin_title_input_password_lang' => 'Contraseña',
+        'login_menu_lang_btn_signin' => 'Iniciar Sesión',
+        'login_menu_lang_btn_logout' => 'Cerrar Sesión',
+
+        /*         AJAX          */
+
+        'signin_ajax_success_login' => 'Has iniciado sesión correctamente!',
+        'signin_ajax_error_login' => 'Usuario o contraseña incorrectos!',
+        'parser_ajax_success' => 'Todos los cambios han sido guardados!',
+        'parser_ajax_error' => 'El formato de archivo no fue transferido!',
+        'parser_ajax_error_files' => 'Error al analizar archivos!',
+
+	
+	
+    ),
 );

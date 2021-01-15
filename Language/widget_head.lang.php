@@ -132,4 +132,44 @@ return array(
         'lang_btn_bc_desc' => 'Bonus Code',
         'lang_btn_bc_open' => 'Εξαργύρωση',
     ),
+	'es' => array(
+
+        'show_info' => array(
+            '¿Necesitas ayuda? Contacta con soporte!',
+            '¿Tienes preguntas relacionadas con el juego? Visita el foro!',
+            'Debes conocer las promociones que se están realizando ahora!',
+            'Suscríbete a nuestro boletín!',
+            'Seguramente hay algo que tu quisieras compartir con el mundo! Discute sobre ello en los foros!',
+            '¿Algo no está claro en el juego? Entonces visita nuestra wiki!',
+        ),
+
+
+        'lang_account_ban' => 'Tu Cuenta Maestra ha sido prohibida.',
+        'lang_title_master_account' => 'Cuenta Maestra',
+        'lang_btn_go_settings' => 'Ajustes',
+        'lang_btn_go_check_email' => 'Confirmar correo electrónico',
+        'lang_btn_go_check_phone' => 'Confirmar móvil',
+        'lang_btn_last_enter' => 'Último inicio de sesión',
+        'lang_btn_reset_pin' => 'Restablecer Código-PIN',
+
+
+        'lang_title_warehouse' => 'Baúl',
+        'lang_btn_go_warehouse' => 'Abrir baúl',
+        'lang_btn_go_info_warehouse' => 'Más información',
+
+
+        'lang_title_balance' => 'Saldo',
+        'lang_btn_go_transfer_game' => 'Transferir al juego',
+        'lang_btn_go_enroll' => 'Recargar saldo',
+        'lang_btn_go_refresh' => 'Actualizar',
+
+
+        'lang_title_sale' => 'Descuento',
+        'lang_btn_go_info_sale' => 'Detalles del descuento',
+
+
+        'lang_btn_bc_title' => 'Código de Bonus',
+        'lang_btn_bc_desc' => 'Código de Bonus',
+        'lang_btn_bc_open' => 'Canjear',
+    ),
 );

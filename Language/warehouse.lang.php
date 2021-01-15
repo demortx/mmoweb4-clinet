@@ -70,4 +70,25 @@ return array(
 	
 	
 	),
+	'es' => array(
+	
+	    'title_lang' => 'Baúl en el Servidor: ',
+        'title_select_wh' => 'Elegir un artículo',
+        'title_wh_empty' => 'Tu baúl está vacío',
+
+        'title_select_account' => 'Elegir una Cuenta de Juego',
+        'title_select_account_empty' => 'No tienes cuentas de juego en este servidor',
+        'title_select_char' => 'Elegir un Personaje',
+        'title_select_char_empty' => 'No se encontraron personajes',
+        'title_btn_send_item' => 'Transferir al personaje seleccionado',
+
+        'title_tab_char_name' => 'Por Nombre de Personaje',
+        'title_tab_char_name_desc' => 'Transferir un artículo a otro personaje. Ingresa el nombre del personaje al que deseas transferir el artículo.',
+
+
+        'ajax_empty_wh_id' => 'No has seleccionado un artículo!',
+        'ajax_empty_wh_char_name' => 'No has seleccionado un personaje al cual transferirle el artículo!',
+	
+	
+    ),
 );

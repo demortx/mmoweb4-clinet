@@ -34,4 +34,13 @@ return array(
         'error_response_data' => 'Σφάλμα κατά τη λήψη στοιχείων λογαριασμού!',
 
     ),
+	'es' => array(
+
+        'lang_title' => 'Cuentas de Redes Sociales conectadas',
+        'lang_text_no_connect' => 'Desconectadas',
+
+        'social_empty_token' => 'Token no proporcionado!',
+        'error_response_data' => 'Error al recuperar los datos del perfil!',
+
+    ),
 );

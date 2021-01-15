@@ -60,4 +60,22 @@ return array(
         'invalid_folder_path' => 'Ο φάκελος μεταφορτώσεων δεν υπάρχει ή δεν μπορεί να γραφτεί',
         'default' => 'Άγνωστο σφάλμα μεταφόρτωσης',
     ),
+	'es' => array(
+
+        UPLOAD_ERR_INI_SIZE => 'El archivo subido excede la directiva upload_max_filesize en php.ini',
+        UPLOAD_ERR_FORM_SIZE => 'El archivo subido excede la directiva MAX_FILE_SIZE que fue específicada en el formulario HTML',
+        UPLOAD_ERR_PARTIAL => 'El archivo subido solo fue subido parcialmente',
+        UPLOAD_ERR_NO_FILE => 'Ningún archivo fue subido',
+        UPLOAD_ERR_NO_TMP_DIR => 'Falta una carpeta temporal',
+        UPLOAD_ERR_CANT_WRITE => 'No se pudo escribir el archivo en el disco',
+        UPLOAD_ERR_EXTENSION => 'Subida de archivo bloqueada por extensión',
+        'accepted_file_types' => 'El tipo de archivo no está permitido para ',
+        'file_uploads' => 'La opción de subida de archivo está deshabilitada en php.ini',
+        'max_file_size' => ' es demasiado grande',
+        'max_files_size' => 'Los archivos son demasiado grandes',
+        'max_number_of_files' => 'El máximo número de archivos ha sido excedido',
+        'required_and_no_file' => 'No se seleccionó ningun archivo. Por favor selecciona uno.',
+        'invalid_folder_path' => 'La carpeta de subido no existe o no se puede escribir',
+        'default' => 'Error de subida desconocido',
+    ),
 );

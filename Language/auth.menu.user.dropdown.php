@@ -11,6 +11,7 @@ return array(
         'name' => array(
             'ru' => 'Настройки',
             'en' => 'Settings',
+			'es' => 'Ajustes',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -27,6 +28,7 @@ return array(
         'name' => array(
             'ru' => 'Выйти',
             'en' => 'Logout',
+			'es' => 'Cerrar sesión',
         ),
         'function' => function(&$buttons){return false;}
     ),*/

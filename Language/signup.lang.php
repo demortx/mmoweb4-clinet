@@ -283,4 +283,98 @@ return array(
 		'signup_ajax_sms_phone_empty' => 'Το πεδίο «Αριθμός Κινητού» δεν μπορεί να είναι κενό!',	
 	
     ),
+	'es' => array(
+
+		'signup_title_lang' => 'Bienvenido al Panel de Cuenta',
+		'signup_title_desc_lang' => 'Crear una nueva Cuenta Maestra',
+
+		'signup_title_tab_email_lang' => 'Dirección de Correo Electrónico',
+		'signup_title_tab_phone_lang' => 'Móvil',
+
+		'signup_title_input_login_lang' => 'ID',
+		'signup_title_input_server_lang' => 'Seleccionar Servidor',
+		'signup_title_input_prefix_lang' => 'Prefijo (será añadido antes de tu ID)',
+		'signup_title_input_email_lang' => 'Correo Electrónico',
+		'signup_desc_input_email_lang' => 'Un correo electrónico de confirmación será enviado a la dirección de correo electrónico especificada.',
+		'signup_title_btn_add_email_lang' => 'Añadir Correo Electrónico',
+		'signup_title_btn_add_login_lang' => 'Crear la primera cuenta de juego',
+		'signup_title_btn_hide_email_lang' => 'Ocultar',
+		'signup_desc_input_email_phone_lang' => 'Un correo electrónico de confirmación será enviado a la dirección de correo electrónico especificada.',
+		'signup_title_input_password_lang' => 'Contraseña',
+		'signup_title_input_password_confirm_lang' => 'Re-ingresa contraseña',
+
+		'signup_title_input_phone_lang' => 'Móvil',
+		'signup_desc_input_phone_lang' => 'Un SMS con un código será enviado al número de móvil especificado.',
+		'signup_input_phone_sms_lang' => 'Código SMS',
+		'signup_btn_phone_sms_lang' => 'Enviar SMS',
+
+
+		'signup_title_input_terms_lang' => 'He leído y acepto el Acuerdo de Usuario',
+		'signup_title_input_subscribe_lang' => 'Me gustaría recibir correos electrónicos promocionales',
+		'signup_title_btn_submit_lang' => 'Crear Cuenta Maestra',
+
+
+
+		'signup_title_btn_sign_in_lang' => 'Iniciar Sesión',
+		'signup_title_btn_read_terms_lang' => 'Leer Acuerdo de Usuario',
+
+		'signup_title_input_captcha_lang' => 'CAPTCHA',
+
+
+		'signup_title_not_active_reg_type' => '<br> Todos los métodos de registro están deshabilitados! <br> <br> <br>',
+
+
+		/* AJAX */
+		'signup_ajax_not_found_type_reg' => 'Error de registro. Este método de registro no está disponible para esta cuenta. Por favor actualiza la página!',
+		'signup_ajax_error_captcha' => 'La verificación CAPTCHA falló! Por favor resuelve el CAPTCHA nuevamente!',
+		'signup_ajax_not_found_prefix' => 'El prefijo seleccionado es inválido! Por favor actualiza la página!',
+		'signup_ajax_empty_login' => 'El campo \'ID\' no puede estar vacío!',
+		'signup_ajax_empty_sid' => 'Por favor selecciona un servidor de la lista \'Seleccionar Servidor\'!',
+		'signup_ajax_missing_sid' => 'Servidor inválido seleccionado de la lista \'Seleccionar Servidor\'! Por favor actualiza la página!',
+		'signup_ajax_empty_password' => 'El campo \'Contraseña\' no puede estar vacío!',
+		'signup_ajax_empty_email' => 'El campo \'Dirección de Correo Electrónico\' no puede estar vacío!',
+		'signup_ajax_empty_phone' => 'El campo \'Móvil\' no puede estar vacío!',
+		'signup_ajax_empty_phone_code' => 'El campo \'Código Móvil\' no puede estar vacío! Por favor contacta con soporte y provéeles los detalles del error!',
+		'signup_ajax_empty_sms_cod' => 'El campo \'Código SMS\' no puede estar vacío! Por favor contacta con soporte y provéeles los detalles del error!',
+		'signup_ajax_empty_terms' => 'Debes aceptar el Acuerdo de Usuario!',
+
+
+		/* signup_activation.tpl */
+
+		'signup_activation_title' => 'Activar tu Cuenta Maestra',
+		'signup_activation_text_1' => 'Un correo electrónico con instrucciones para completar tu registro',
+		'signup_activation_text_2' => 'ha sido enviado a tu dirección de correo electrónico.',
+		'signup_activation_text_desc_1' => 'Sigue el vínculo en el correo electrónico para activar tu Cuenta Maestra.',
+		'signup_activation_text_desc_2' => 'Si no ves el correo electrónico, verifica tu carpeta de spam.',
+
+		/* signup_completed.tpl */
+
+
+		'signup_completed_title' => 'Cuenta Maestra Activada',
+		'signup_completed_desc' => 'ADVERTENCIA: <br> Acabas de crear una Cuenta Maestra. Cada Cuenta Maestra puede contener hasta 10 cuentas de juego las cuales pueden ser creadas a través del Panel de Cuenta Maestra.',
+
+		'signup_completed_prefix' => 'Prefijo de tu cuenta de juego:',
+		'signup_completed_login' => 'ID de tu cuenta de juego:',
+		'signup_completed_email' => 'Dirección de correo electrónico de tu Cuenta Maestra:',
+		'signup_completed_phone' => 'Número de móvil de tu Cuenta Maestra:',
+		'signup_completed_pin' => 'Código-PIN de tu Cuenta Maestra:',
+		'signup_completed_password' => 'Contraseña de tu Cuenta Maestra:',
+		'signup_completed_password_and_game' => 'Contraseña de tu cuenta de juego y Maestra:',
+		'signup_completed_subscribe' => 'Consentimiento para recibir correos electrónicos promocionales:',
+
+		'signup_completed_text_1' => 'Un correo electrónico con los datos de registro',
+		'signup_completed_text_2' => 'ha sido enviado a tu dirección de correo electrónico.',
+		'signup_completed_desc_2' => 'Si no ves el correo electrónico, verifica tu carpeta de spam.',
+		'signup_completed_desc_3' => 'NO compartas la información de tu cuenta con otros.',
+        'signup_completed_save_data' => 'Guardar en un archivo .txt.',
+
+		/* signup_code.tpl */
+
+
+		/* sms_send */
+		'signup_ajax_sms_disable' => 'El registro vía SMS está deshabilitado, por favor actualiza la página!',
+		'signup_ajax_sms_phone_code_empty' => 'No se seleccionó ningún código de país!',
+		'signup_ajax_sms_phone_empty' => 'El campo \'Móvil\' no puede estar vacío!',	
+	
+    ),
 );

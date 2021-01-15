@@ -51,4 +51,21 @@ return array(
 
 		 'ajax_empty_cod' => 'Το πεδίο «Εισάγετε το Bonus Code σας» δεν μπορεί να είναι κενό!',
     ),
+	'es' => array(
+		'btn_menu_bonus_cod' => 'Canjear Código de Bonus',
+
+		 'title_popup_lang' => 'Selecciona un servidor en el cual canjear el Código de Bonus: ',
+		 'title_popup_lang_btn' => 'Canjear',
+
+		 'lang_input_enter_cod' => 'Ingresa tu Código de Bonus',
+
+		 'lang_notfound_account' => 'No tienes ninguna cuenta de juego en este servidor:',
+		 'lang_select_account' => 'Selecciona una cuenta de juego',
+		 'lang_select_char' => 'Selecciona una personaje',
+		 'lang_select_char_not_found' => 'No se encontraron personajes',
+		 "ajax_empty_account_name" => 'Completa el campo \'Seleccionar una cuenta de juego\'',
+		 "ajax_empty_char_name" => 'Completa el campo \'Seleccionar un personaje\'',
+
+		 'ajax_empty_cod' => 'El campo \'Ingresa tu Código de Bonus\' no puede estar vacío!',
+    ),
 );

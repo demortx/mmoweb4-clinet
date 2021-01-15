@@ -25,7 +25,7 @@ return array(
     'en' => array(
 	
 	        'lang_title' => 'Enter your Telegram username',
-        'lang_text' => 'The Telegram bot is a digital assistant that will keep you up to date with the most important news and updates..
+        'lang_text' => 'The Telegram bot is a digital assistant that will keep you up to date with the most important news and updates.
             <dt>1. Enter your username</dt>
             <dd><p>In order for the bot to be able to identify you, enter your <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">username</a> on Telegram</p></dd>
             <dt>2. Contact the bot</dt>
@@ -41,7 +41,7 @@ return array(
     'gr' => array(
 	
         'lang_title' => 'Εισάγετε το Telegram username σας',
-    'lang_text' => 'Το Telegram bot είναι ένας ψηφιακός βοηθός ο οποίος σας ενημερώνει σχετικά με τα πιο σημαντικά νέα και ενημερώσεις..
+    'lang_text' => 'Το Telegram bot είναι ένας ψηφιακός βοηθός ο οποίος σας ενημερώνει σχετικά με τα πιο σημαντικά νέα και ενημερώσεις.
         <dt>1. Εισάγετε το username σας</dt>
         <dd><p>Για να μπορέσει το να σας ταυτοποιήσει το bot, εισάγετε το <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">username</a> σας στο Telegram</p></dd>
         <dt>2. Επικοινωνήστε με το bot</dt>
@@ -53,5 +53,21 @@ return array(
 
 
 
-),
+	),
+	'es' => array(
+	
+	        'lang_title' => 'Ingresa tu nombre de usuario de Telegram',
+        'lang_text' => 'El bot de Telegram es un asistente digital que te mantendrá actualizado con las más importantes noticias y actualizaciones.
+            <dt>1. Ingresa tu nombre de usuario</dt>
+            <dd><p>Para que el bot pueda identificarte, ingresa tu <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">nombre de usuario</a> en Telegram</p></dd>
+            <dt>2. Ponte en contacto con el bot</dt>
+            <dd>Finalmente, inicia un chat con el bot: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
+            <dd>Alternativamente, puedes encontrarlo en la aplicación bajo el nombre: <code>@MMORoBot</code></dd>',
+
+        'lang_btn_confirm_telegram' => 'Conectado',
+        'lang_btn_disable_telegram' => 'Desconectado',
+
+	
+	
+    ),
 );

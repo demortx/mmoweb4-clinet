@@ -100,4 +100,35 @@ return array(
 	
 	
 	),
+	'es' => array(
+	
+        'lang_title_dropdown' => 'Administración de Cuenta Maestra',
+        'lang_btn_add' => 'Agregar Cuenta Maestra',
+        'lang_title' => 'Conectar Cuenta Maestra',
+        'lang_input_email_or_phone' => 'Cuenta Maestra<br><small>Correo Eléctronico o Móvil</small>',
+        'lang_input_password' => 'Contraseña',
+
+        "lang_input_password_pin" => "Código-PIN",
+        "lang_button_add" => "Conectar",
+        "lang_list_ma" => "Lista de Cuentas Maestras conectadas",
+        "lang_list_ma_empty" => "No hay Cuentas Maestras conectadas",
+        "lang_account_not_approve" => "La Cuenta Maestra no está verificada",
+
+        "form_confirm_key" => "Clave",
+        "form_confirm_btn" => "Confirmar",
+
+        "table_th_acc" => "Cuenta",
+        "table_th_ip" => "IP",
+        "table_th_login" => "Último inicio de sesión",
+        "table_th_status" => "Estado",
+        "table_th_status_0" => "Confirmación requerida",
+
+
+        "ajax_empty_mid" => "El parámetro no pasa, actualiza la página!",
+        "ajax_empty_key" => "El campo 'Llave' no puede estar vacío!",
+        'ajax_empty_email' => 'El campo \'Móvil o Correo Electrónico\' no puede estar vacío!',
+        'ajax_empty_password' => 'El campo \'Contraseña\' no puede estar vacío!',
+	
+	
+    ),
 );

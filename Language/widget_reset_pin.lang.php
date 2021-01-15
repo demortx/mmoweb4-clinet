@@ -65,4 +65,22 @@ return array(
 	
 	
     ),
+	'es' => array(
+
+        'lang_title_pin' => 'Ajustes de Código-PIN',
+        'lang_title' => 'Restablecer Código-PIN',
+        'lang_description_pin_settings' => 'El Código-PIN puede ayudarte a proteger tu Cuenta Maestra de cambios no deseados relacionados a ajustes y saldo, en caso de que se vea comprometida.
+                                            <br> <code> Nota: </code> <span class = "small text-muted"> Aún si deshabilitas el Código-PIN, necesitarás utilizarlo para modificar los ajustes de tu Cuenta Maestra! </span>',
+        'lang_description' => 'Para recibir un nuevo Código-PIN, selecciona como desearías recibirlo:',
+        'lang_btn_email' => 'Correo Electrónico',
+        'lang_btn_phone' => 'SMS',
+        'lang_btn_telegram' => 'Telegram',
+        'ajax_empty_type' => 'Método de recuperación de Código-PIN no seleccionado!',
+        'ajax_empty_pin' => 'El campo \'Código-PIN\' no puede estar vacío!',
+
+        'lang_label_placeholder_pin' => 'Ingresa tu \'Código-PIN\'',
+        'lang_btn_disable_pin' => 'Deshabilitar Código-PIN',
+	
+	
+    ),
 );

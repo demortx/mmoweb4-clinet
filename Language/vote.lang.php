@@ -35,4 +35,16 @@ return array(
         'no_select_pool' => 'Δεν έχετε επιλέξει τίποτα!',
 
     ),
+	'es' => array(
+        'title_vote' => 'Califícanos <small>Tu opinión es importante!</small>',
+
+        'like1' => 'Malo',
+        'like2' => 'No muy bueno',
+        'like3' => 'Bueno',
+        'like4' => 'Muy bueno!',
+        'like5' => 'Increíble!',
+        'sb_btn' => 'Enviar',
+        'no_select_pool' => 'No has seleccionado nada!',
+
+    ),
 );

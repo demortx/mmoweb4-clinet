@@ -17,4 +17,9 @@ return array(
         'login_menu_lang_btn_logout' => 'Έξοδος',
         'login_menu_lang_btn_signup' => 'Εγγραφή',
     ),
+	'es' => array(
+		'login_menu_lang_btn_signin' => 'Iniciar Sesión',
+        'login_menu_lang_btn_logout' => 'Cerrar Sesión',
+        'login_menu_lang_btn_signup' => 'Registrarse',
+    ),
 );

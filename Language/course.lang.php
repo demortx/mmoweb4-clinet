@@ -46,4 +46,25 @@ return array (
 
         ),
 	),
+	'es' => array (
+	    'course_cfg' => array(
+            'USD' => array(
+                'name' => 'USD',
+                'icon' => '<i class="fa fa-dollar pl-5"></i>',
+                ),
+            'RUB' => array(
+                'name' => 'Рубли',
+                'icon' => '<i class="fa fa-rub pl-5"></i>',
+            ),
+            'EUR' => array(
+                'name' => 'Euro',
+                'icon' => '<i class="fa fa-euro pl-5"></i>',
+            ),
+            'UAH' => array(
+                'name' => 'Гривны',
+                'icon' => '<span class="font-w700 pl-5">₴</span>',
+            ),
+
+        ),
+    ),
 );

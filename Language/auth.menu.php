@@ -8,11 +8,13 @@ return array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
+			'es' => 'Panel',
         ),
         'title_name_min' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
+			'es' => 'Panel',
         ),
 
     ),
@@ -28,11 +30,13 @@ return array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
+			'es' => 'Panel',
         ),
         'title' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
+			'es' => 'Panel',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -49,11 +53,13 @@ return array(
             'ru' => 'Рейтинг',
             'en' => 'Rankings',
             'gr' => 'Κατατάξεις',
+			'es' => 'Rankings',
         ),
         'title' => array(
             'ru' => 'Рейтинг',
             'en' => 'Rankings',
             'gr' => 'Κατατάξεις',
+			'es' => 'Rankings',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -69,11 +75,13 @@ return array(
             'ru' => 'Магазин',
             'en' => 'Store',
             'gr' => 'Μαγαζί',
+			'es' => 'Tienda',
         ),
         'title' => array(
             'ru' => 'Магазин',
             'en' => 'Store',
             'gr' => 'Μαγαζί',
+			'es' => 'Tienda',
         ),
         'function' => function(&$buttons){
             $t = filemtime(ROOT_DIR.'/Library/shop.php');
@@ -98,11 +106,13 @@ return array(
             'ru' => 'Поддержка',
             'en' => 'Support',
             'gr' => 'Υποστήριξη',
+			'es' => 'Soporte',
         ),
         'title' => array(
             'ru' => 'Поддержка',
             'en' => 'Support',
             'gr' => 'Υποστήριξη',
+			'es' => 'Soporte',
         ),
         'function' => function(&$buttons){
             $count = 0;
@@ -129,11 +139,13 @@ return array(
             'ru' => 'Перевести в игру',
             'en' => 'Transfer to the game',
             'gr' => 'Μεταφορά στο παιχνίδι',
+			'es' => 'Transferir al juego',
         ),
         'title' => array(
             'ru' => 'Перевести в игру',
             'en' => 'Transfer to the game',
             'gr' => 'Μεταφορά στο παιχνίδι',
+			'es' => 'Transferir al juego',
         ),
         'function' => function(&$buttons){
             if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
@@ -160,11 +172,13 @@ return array(
             'ru' => 'Баланс',
             'en' => 'Balance',
             'gr' => 'Υπόλοιπο',
+			'es' => 'Saldo',
         ),
         'title' => array(
             'ru' => 'Баланс',
             'en' => 'Balance',
             'gr' => 'Υπόλοιπο',
+			'es' => 'Saldo',
         ),
         'init' => function(&$buttons){
             //если меню горизонтальное подставляем выбор
@@ -180,7 +194,8 @@ return array(
                         'name'=>array(
                             'en'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transfer to game',
                             'ru'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Перевести в игру',
-                            'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Μεταφορά στο παιχνίδι'
+                            'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Μεταφορά στο παιχνίδι',
+							'es'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transferir al juego',
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -192,7 +207,8 @@ return array(
                         'name'=>array(
                             'en'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Top-up balance',
                             'ru'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Пополнить баланс',
-                            'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Ανανέωση υπολοίπου'
+                            'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Ανανέωση υπολοίπου',
+							'es'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recargar saldo',
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -226,11 +242,13 @@ return array(
             'ru' => 'Настройки',
             'en' => 'Settings',
             'gr' => 'Ρυθμίσεις',
+			'es' => 'Ajustes',
         ),
         'title' => array(
             'ru' => 'Настройки',
             'en' => 'Settings',
             'gr' => 'Ρυθμίσεις',
+			'es' => 'Ajustes',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -245,11 +263,13 @@ return array(
             'ru' => 'Рынок',
             'en' => 'Market',
             'gr' => 'Αγορά',
+			'es' => 'Mercado',
         ),
         'title' => array(
             'ru' => 'Рынок',
             'en' => 'Market',
             'gr' => 'Αγορά',
+			'es' => 'Mercado',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -264,11 +284,13 @@ return array(
             'ru' => 'Форум',
             'en' => 'Forum',
             'gr' => 'Forum',
+			'es' => 'Foro',
         ),
         'title' => array(
             'ru' => 'Форум',
             'en' => 'Forum',
             'gr' => 'Forum',
+			'es' => 'Foro',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -284,11 +306,13 @@ return array(
             'ru' => 'На сайт',
             'en' => 'Back to the main site',
             'gr' => 'Επιστροφή στο κεντρικό site',
+			'es' => 'Volver al sitio principal',
         ),
         'title' => array(
             'ru' => 'На сайт',
             'en' => 'Back to the main site',
             'gr' => 'Επιστροφή στο κεντρικό site',
+			'es' => 'Volver al sitio principal',
         ),
         'function' => function(&$buttons){return false;}
     ),

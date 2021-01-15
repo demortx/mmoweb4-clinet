@@ -82,4 +82,29 @@ return array(
 	
 	
 	),
+	'es' => array(
+	
+		'title_popup_lang' => 'Transferir <span class="in-game-title">Coin of Luck</span> al servidor:',
+		'title_popup_lang_price' => 'Cantidad:',
+		'title_popup_lang_btn' => 'Transferir saldo al juego',
+
+		'lang_label_price' => 'Precio',
+		'lang_notfound_type_buy' => 'La moneda de juego para este servidor no ha sido configurada todavía!',
+		'lang_select_account' => 'Selecciona una cuenta de juego',
+		'lang_select_char' => 'Selecciona un personaje',
+		'lang_select_char_not_found' => 'No se encontraron personajes',
+		'lang_current_sale' => 'Descuento',
+		'lang_input_enter_count' => 'Ingresa cantidad',
+
+
+		'lang_notfound_account' => 'No tienes ninguna cuenta de juego en este servidor:',
+
+
+
+		'ajax_empty_type_id' => 'ID de artículo comprado no configurado.',
+		'ajax_empty_count' => 'El campo \'Ingresar cantidad\' no puede estar vacío!',
+		'ajax_empty_account_name' => 'Necesitas seleccionar una cuenta de juego!',
+	
+	
+    ),
 );

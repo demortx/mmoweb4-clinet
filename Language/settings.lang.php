@@ -124,4 +124,44 @@ return array(
 	
 	
 	),
+	'es' => array(
+	
+		'title_change_password_account' => 'Cambiar Contraseña de la Cuenta Maestra:',
+
+		"lang_input_password_old" => "Contraseña actual",
+		"lang_input_password_new" => "Nueva contraseña",
+		"lang_input_password_new_confirm" => "Re-ingresa contraseña",
+		"lang_input_password_pin" => "Ingresa Código-PIN",
+		"lang_input_send" => "Método de entrega",
+		"lang_button_change" => "Cambiar contraseña",
+
+
+		"lang_tab_title_settings" => "Ajustes",
+		"lang_tab_title_settings_desc" => "Ajustes de Cuenta Maestra",
+		"lang_tab_title_manager" => "Administración de Cuenta Maestra",
+		"lang_tab_title_manager_desc" => "Administrar Cuentas Maestras",
+		"lang_tab_title_logs" => "Registro de actividades",
+        "lang_tab_title_invoice" => "Facturas",
+        "lang_tab_title_account_hide" => "Ocultar Cuenta Maestra",
+        "lang_tab_title_account_hide_desc" => "Administración de Cuenta Maestra oculta",
+
+		"lang_tab_title_logs_desc" => "Registro de actividades recientes",
+		"lang_tab_logs_th_action" => "Actividad",
+		"lang_tab_logs_th_date" => "Fecha",
+        "lang_tab_invoice_th_payment" => "Método de pago",
+        "lang_tab_invoice_th_sum" => "Cantidad",
+
+
+
+
+
+		'title_forgot_password_account' => 'Recuperación de Contraseña de la Cuenta Maestra:',
+		"lang_button_forgot" => "Restablecer contraseña",
+
+		// AJAX
+		'ajax_empty_account' => 'La cuenta no puede ser encontrada! Por favor actualiza la página!',
+	
+	
+	
+    ),
 );

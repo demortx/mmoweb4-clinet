@@ -467,5 +467,145 @@ return array(
         ),
 	
     ),  
+	'es'=> array(
 
+        // Configuración general para tu cuenta personal,
+        'init' => array(
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Panel de cuenta para %server_name%'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Panel de cuenta para %server_name%'] ,
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '% site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Panel de cuenta para %server_name%!'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Panel de cuenta para %server_name%!'] ,
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '% site_name% Panel de cuenta para %server_name%!'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Página de soporte
+        'panel_support' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Soporte'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Soporte'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Soporte'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Soporte'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Soporte'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Página de donación
+        'panel_donations' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Recarga de Saldo.'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Recarga de Saldo'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Recarga de Saldo'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Recarga de Saldo'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Recarga de Saldo'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // La página de donación no es para un usuario autorizado
+        'shop' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Tienda para %server_name%'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Tienda para %server_name%'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Tienda - Compra de artículos dentro del juego para el servidor %server_name%'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Tienda - Compra de artículos dentro del juego en el servidor %server_name%'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Tienda - Compra de artículos dentro del juego en el servidor %server_name%' ],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Página de ajustes
+        'panel_settings' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Ajustes de Perfil'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Ajustes de Perfil'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Ajustes de Perfil'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Ajustes de Perfil'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Ajustes de Perfil'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Inicio de sesión al panel de control
+        'sign-in' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Inicio de sesión al Panel de Control'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Inicio de sesión al Panel de Control'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Inicio de sesión al Panel de Control'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Inicio de sesión al Panel de Control'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Inicio de sesión al Panel de Control'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Registrar una nueva cuenta maestra
+        'sign-up' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Crear una Nueva Cuenta Maestra'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Crear una Nueva Cuenta Maestra'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Crear una Nueva Cuenta Maestra'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Crear una Nueva Cuenta Maestra'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Crear una Nueva Cuenta Maestra'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+
+        // Restablecer la contraseña de la cuenta maestra
+        'reminder' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - Restablecimiento de Contraseña de la Cuenta Maestra'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - Restablecimiento de Contraseña de la Cuenta Maestra'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => 'sitio web'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - Restablecimiento de Contraseña de la Cuenta Maestra'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - Restablecimiento de Contraseña de la Cuenta Maestra'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - Restablecimiento de Contraseña de la Cuenta Maestra'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+	
+    ),
 );

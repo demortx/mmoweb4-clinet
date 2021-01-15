@@ -177,4 +177,61 @@ return array(
 
 		'signin_title_not_active_login_type' => '<br> Όλες οι μέθοδοι σύνδεσης είναι απενεργοποιημένες! <br> <br> <br>',
     ),
+	 'es' => array(
+		'signin_title_lang' => 'Bienvenido al Panel de Cuenta',
+		'signin_title_desc_lang' => 'Iniciar Sesión en el Panel de Cuenta',
+
+
+		'signin_title_input_server_lang' => 'Seleccionar Servidor',
+		'signin_title_input_email_lang' => 'Dirección de Correo Electrónico',
+		'signin_title_input_email_lang_placeholder' => 'Dirección de Correo Electrónico',
+
+        'signin_title_input_email_phone_lang' => 'Móvil o Dirección de Correo Electrónico',
+        'signin_title_input_email_phone_lang_placeholder' => 'Móvil o Dirección de Correo Electrónico',
+
+        'signin_title_input_email_phone_login_lang' => 'Móvil, Dirección de Correo Electrónico o ID',
+        'signin_title_input_email_phone_login_lang_placeholder' => 'Móvil, Dirección de Correo Electrónico o ID',
+
+        'signin_title_input_phone_login_lang' => 'Móvil o ID',
+        'signin_title_input_phone_login_lang_placeholder' => 'Móvil o ID',
+
+        'signin_title_input_phone_lang' => 'Móvil',
+        'signin_title_input_phone_lang_placeholder' => 'Móvil',
+
+        'signin_title_input_email_login_lang' => 'Correo Electrónico o ID',
+        'signin_title_input_email__login_lang_placeholder' => 'Correo Electrónico o ID',
+
+
+        'signin_title_input_login_lang' => 'ID',
+        'signin_title_input_login_lang_placeholder' => 'ID',
+
+
+		'signin_title_input_password_lang' => 'Contraseña',
+
+		'signin_title_input_captcha_lang' => 'CAPTCHA',
+
+		'signin_title_btn_remember_me_lang' => 'Recuérdame',
+
+		'signin_title_social' => 'o iniciar sesión con',
+
+		'login_menu_lang_btn_signin' => 'Iniciar Sesión',
+		'login_menu_lang_btn_logout' => 'Cerrar Sesión',
+		'login_menu_lang_btn_signup' => 'Registrarse',
+		'login_menu_lang_btn_reminder' => 'Restablecer contraseña',
+
+
+		/* AJAX */
+
+		'signin_ajax_empty_email_phone' => 'El campo \'Móvil\'/\'Correo Electrónico\' no puede estar vacío!',
+		'signin_ajax_empty_password' => 'El campo \'Contraseña\' no puede estar vacío!',
+		'signin_ajax_empty_sid' => 'Por favor selecciona un servidor de la lista \'Seleccionar Servidor\'!',
+		'signin_ajax_error_captcha' => 'La verificación de CAPTCHA falló, por favor resuelve CAPTCHA nuevamente!',
+		'signin_ajax_empty_phone' => 'El campo \'Móvil\' no puede estar vacío!',
+		'signin_ajax_empty_phone_code' => 'El campo \'Código Móvil\' no puede estar vacío! Por favor contacta con soporte y provéeles los detalles del error!',
+
+        'signin_ajax_login_error_type' => 'Este método de inicio de sesión está deshabilitado. Por favor verifica que estás utilizado una de las opciones disponibles!',
+		'signin_ajax_login_error' => 'Ocurrió un error, por favor contacta con la administración!',
+
+		'signin_title_not_active_login_type' => '<br> Todos los métodos de inicio de sesión están deshabilitados! <br> <br> <br>',
+    ),
 );

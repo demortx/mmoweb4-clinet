@@ -90,4 +90,31 @@ return array(
         'lang_popup_info_last_login' => 'Τελευταία Σύνδεση',
         'lang_popup_info_last_ip' => 'Τελευταία IP',
 	),
+	'es' => array(
+	
+        'lang_w_title_tooltip' => 'Cuentas de Juego',
+        'lang_w_title_chars_list' => 'Lista de cuentas de juego en el servidor:',
+        'lang_w_btn_change_password' => 'Cambiar contraseña',
+        'lang_w_btn_forgot_password' => 'Restablecer contraseña',
+        'lang_w_btn_hide_account' => 'Ocultar cuenta de juego',
+        'lang_w_btn_buy' => 'Comprar',
+        'lang_w_notfound_chars' => 'No hay personajes en esta cuenta de juego.',
+        'lang_w_notfound_account' => 'No tienes ninguna cuenta de juego en este servidor. Crea una. <i class="fa fa-level-up"></i>',
+        'lang_w_refresh_account' => 'Actualizar lista de personajes',
+        'lang_w_exist_hide_acc' => 'Hay cuentas de juego ocultas',
+
+
+        'title_btn_open_popup_lang' => 'Crear una Cuenta de Juego',
+        'title_popup_lang' => 'Crear una cuenta de juego en el servidor:',
+        'title_input_login_lang' => 'ID',
+        'title_input_prefix_lang' => 'Prefijo (será añadido antes de tu ID)',
+        'title_input_password_lang' => 'Contraseña',
+        'lang_button_create_acc' => 'Crear cuenta de juego',
+
+        'lang_popup_info_status' => 'Estado',
+        'lang_popup_info_active' => 'Activa',
+        'lang_popup_info_banned' => 'Prohibida',
+        'lang_popup_info_last_login' => 'Último Inicio de Sesión',
+        'lang_popup_info_last_ip' => 'Última IP',
+    ),
 );
