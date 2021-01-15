@@ -64,23 +64,23 @@ return array(
 
     ),
     'en' => array(
-		'reminder_title_lang' => 'Welcome to the control panel',
-		'reminder_title_desc_lang' => 'Reset master account password',
+		'reminder_title_lang' => 'Welcome to the Account Panel',
+		'reminder_title_desc_lang' => 'Reset Master Account password',
 
 
 		'reminder_title_tab_email_lang' => 'Email',
-		'reminder_title_tab_phone_lang' => 'Phone',
+		'reminder_title_tab_phone_lang' => 'Mobile',
 
 
 		'reminder_title_input_email_lang' => 'Email',
-		'reminder_desc_input_email_lang' => 'A password reset confirmation will be sent to your email!',
-		'reminder_title_input_captcha_lang' => 'Captcha',
+		'reminder_desc_input_email_lang' => 'A password reset confirmation will be sent to your email',
+		'reminder_title_input_captcha_lang' => 'CAPTCHA',
 
 
-		'reminder_title_input_phone_lang' => 'Phone',
-		'reminder_desc_input_phone_lang' => 'SMS with a code will be sent to your phone number!',
-		'reminder_input_phone_sms_lang' => 'SMS code',
-		'reminder_btn_phone_sms_lang' => 'Get SMS code',
+		'reminder_title_input_phone_lang' => 'SMS',
+		'reminder_desc_input_phone_lang' => 'An SMS with a code will be sent to your mobile number',
+		'reminder_input_phone_sms_lang' => 'SMS Code',
+		'reminder_btn_phone_sms_lang' => 'Send SMS',
 
 		'reminder_title_not_active_reminder_type' => '<br> The administrator has disabled all password recovery options! <br> <br> <br>',
 
@@ -91,35 +91,94 @@ return array(
 
 
 		// AJAX
-		'reminder_ajax_email_disable' => 'Email recovery has been disabled by the administrator!',
-		'reminder_ajax_sms_disable' => 'Phone recovery has been disabled by the administrator!',
+		'reminder_ajax_email_disable' => 'The email recovery method has been disabled by the administrator!',
+		'reminder_ajax_sms_disable' => 'The SMS recovery method has been disabled by the administrator!',
 
-		'reminder_ajax_empty_code' => 'The field “SMS code” cannot be empty!',
-		'reminder_ajax_empty_password' => 'Password field cannot be empty!',
+		'reminder_ajax_empty_code' => 'The \'SMS Code\' field cannot be empty!',
+		'reminder_ajax_empty_password' => 'The \'Password\' field cannot be empty!',
 
 
 
 
 		// PAGE
-		'reminder_phone_title' => 'A new password has been sent to your phone',
-		'reminder_phone_text' => 'A new password has been sent to your phone for authorization in the Master Account. Use it to enter your personal account! ',
-		'reminder_phone_text_desc' => 'If you did not receive an SMS message with a new password, try again or inform the project administration!',
+		'reminder_phone_title' => 'A new password has been sent to your mobile number',
+		'reminder_phone_text' => 'A new password has been sent to your mobile number. Use it to recover your Master Account\'s password!',
+		'reminder_phone_text_desc' => 'If you did not receive an SMS with a new password, try again or inform the administration!',
 
-		'reminder_email_title' => 'The instruction was sent to your mail',
-		'reminder_email_text' => 'An instruction has been sent to your mailing address. To change the password, follow the link in the letter! ',
-		'reminder_email_text_desc' => 'If you do not see the message, check the spam folder.',
+		'reminder_email_title' => 'Password recovery instructions sent',
+		'reminder_email_text' => 'An email with instructions on how to recover your password has been sent to your email address. To change the password, follow the link on the email! ',
+		'reminder_email_text_desc' => 'If you do not see the email, check your spam folder.',
 
 
 		// PAGE CODE
-		'reminder_title_code_lang' => 'Welcome to the control panel',
-		'reminder_title_code_desc_lang' => 'Change password',
+		'reminder_title_code_lang' => 'Welcome to the Account Panel',
+		'reminder_title_code_desc_lang' => 'Password recovery',
 
-		'reminder_title_input_code_lang' => 'SMS code',
-		'reminder_desc_input_code_lang' => 'SMS code to change the password',
+		'reminder_title_input_code_lang' => 'SMS Code',
+		'reminder_desc_input_code_lang' => 'SMS Code to change the password',
 
 		'reminder_title_input_password_lang' => 'New password',
-		'reminder_desc_input_password_lang' => 'Enter a new password to enter your account',
+		'reminder_desc_input_password_lang' => 'Enter a new password',
 
 		'reminder_menu_lang_btn_change' => 'Change password',
     ),
+    'gr' => array(
+      'reminder_title_lang' => 'Καλωσήρθατε στο Account Panel',
+      'reminder_title_desc_lang' => 'Ανάκτηση password του Master Account',
+  
+  
+      'reminder_title_tab_email_lang' => 'Email',
+      'reminder_title_tab_phone_lang' => 'Κινητό',
+  
+  
+      'reminder_title_input_email_lang' => 'Email',
+      'reminder_desc_input_email_lang' => 'Ένα email επιβεβαίωσης ανάκτησης κωδικού θα σταλεί στο email σας',
+      'reminder_title_input_captcha_lang' => 'CAPTCHA',
+  
+  
+      'reminder_title_input_phone_lang' => 'SMS',
+      'reminder_desc_input_phone_lang' => 'Ένας κωδικός θα σταλεί με SMS στον αριθμό του κινητού σας',
+      'reminder_input_phone_sms_lang' => 'Κωδικός SMS',
+      'reminder_btn_phone_sms_lang' => 'Αποστολή SMS',
+  
+      'reminder_title_not_active_reminder_type' => '<br> Ο διαχειριστής έχει απενεργοποιήσει όλες τις επιλογές ανάκτησης password! <br> <br> <br>',
+  
+      'reminder_menu_lang_btn_reminder' => 'Ανάκτηση password',
+  
+      'login_menu_lang_btn_signin' => 'Είσοδος',
+      'login_menu_lang_btn_logout' => 'Έξοδος',
+  
+  
+      // AJAX
+      'reminder_ajax_email_disable' => 'Η μέθοδος ανάκτησης κωδικού με email έχει απενεργοποιηθεί από τον διαχειριστή!',
+      'reminder_ajax_sms_disable' => 'Η μέθοδος ανάκτησης κωδικού με SMS έχει απενεργοποιηθεί από τον διαχειριστή!',
+  
+      'reminder_ajax_empty_code' => 'Το πεδίο «Κωδικός SMS» δεν μπορεί να είναι κενό!',
+      'reminder_ajax_empty_password' => 'Το πεδίο «password» δεν μπορεί να είναι κενό!',
+  
+  
+  
+  
+      // PAGE
+      'reminder_phone_title' => 'Ένας νέος κωδικός έχει σταλεί στον αριθμό του κινητού σας',
+      'reminder_phone_text' => 'Ένας νέος κωδικός έχει σταλεί στον αριθμό του κινητού σας. Χρησιμοποιήστε τον για να επαναφέρετε το password του Master Account σας!',
+      'reminder_phone_text_desc' => 'Εάν δεν λάβατε SMS, προσπαθήστε ξανά ή ενημερώστε την διαχείρηση!',
+  
+      'reminder_email_title' => 'Οι οδηγίες ανάκτησης password έχουν αποσταλεί',
+      'reminder_email_text' => 'Ένα email με οδηγίες ανάκτησης κωδικού έχει σταλέι στο email σας. Για να αλλάξετε τον κωδικό πρόσβασής σας, ακολουθήστε τον σύνδεσμο στο email!',
+      'reminder_email_text_desc' => 'Εάν δεν βλέπετε το email, ελέγξτε τον φάκελο ανεπιθύμητης αλληλογραφίας (spam folder).',
+  
+  
+      // PAGE CODE
+      'reminder_title_code_lang' => 'Καλωσήρθατε στο Account Panel',
+      'reminder_title_code_desc_lang' => 'Ανάκτηση κωδικού',
+  
+      'reminder_title_input_code_lang' => 'Κωδικός SMS',
+      'reminder_desc_input_code_lang' => 'Κωδικός SMS για ανάκτηση password',
+  
+      'reminder_title_input_password_lang' => 'Νέο password',
+      'reminder_desc_input_password_lang' => 'Εισάγετε νέο password',
+  
+      'reminder_menu_lang_btn_change' => 'Αλλαγή password',
+      ),
 );

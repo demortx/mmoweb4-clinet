@@ -4,4 +4,6 @@ return array(
     ),
     'en' => array(
     ),
+    'gr' => array(
+    ),
 );

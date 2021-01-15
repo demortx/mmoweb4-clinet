@@ -46,40 +46,80 @@ return array(
     ),
     'en' => array(
 	
-		'title_change_password_account' => 'Change account password:',
+		'title_change_password_account' => 'Change Master Account Password:',
 
 		"lang_input_password_old" => "Current password",
 		"lang_input_password_new" => "New password",
-		"lang_input_password_new_confirm" => "Enter the password again",
-		"lang_input_password_pin" => "Enter PIN-CODE",
+		"lang_input_password_new_confirm" => "Re-enter password",
+		"lang_input_password_pin" => "Enter PIN-Code",
 		"lang_input_send" => "Delivery method",
 		"lang_button_change" => "Change password",
 
 
 		"lang_tab_title_settings" => "Settings",
-		"lang_tab_title_settings_desc" => "Master account settings",
-		"lang_tab_title_manager" => "MA management",
-		"lang_tab_title_manager_desc" => "Manage master accounts",
+		"lang_tab_title_settings_desc" => "Master Account settings",
+		"lang_tab_title_manager" => "Master Account Management",
+		"lang_tab_title_manager_desc" => "Manage Master Accounts",
 		"lang_tab_title_logs" => "Action logs",
-        "lang_tab_title_invoice" => "Invoice",
-        "lang_tab_title_account_hide" => "Hide account",
-        "lang_tab_title_account_hide_desc" => "Hidden Account Management",
+        "lang_tab_title_invoice" => "Invoices",
+        "lang_tab_title_account_hide" => "Hide Master Account",
+        "lang_tab_title_account_hide_desc" => "Hidden Master Account Management",
 
-		"lang_tab_title_logs_desc" => "Logs of recent operations",
+		"lang_tab_title_logs_desc" => "Recent activity logs",
 		"lang_tab_logs_th_action" => "Action",
 		"lang_tab_logs_th_date" => "Date",
-        "lang_tab_invoice_th_payment" => "Payment gateway",
-        "lang_tab_invoice_th_sum" => "Sum",
+        "lang_tab_invoice_th_payment" => "Payment method",
+        "lang_tab_invoice_th_sum" => "Amount",
 
 
 
 
 
-		'title_forgot_password_account' => 'Account password recovery:',
+		'title_forgot_password_account' => 'Master Account Password Recovery:',
 		"lang_button_forgot" => "Reset password",
 
 		// AJAX
-		'ajax_empty_account' => 'Account has not been transferred! Refresh page!',
+		'ajax_empty_account' => 'The account cannot be found! Please refresh the page!',
+	
+	
+	
+    ),
+    'gr' => array(
+	
+		'title_change_password_account' => 'Αλλαγή Password Master Account:',
+
+		"lang_input_password_old" => "Τρέχων password",
+		"lang_input_password_new" => "Νέο password",
+		"lang_input_password_new_confirm" => "Επαλήθευση password",
+		"lang_input_password_pin" => "Εισάγετε PIN-Code",
+		"lang_input_send" => "Μέθοδος αποστολής",
+		"lang_button_change" => "Αλλαγή password",
+
+
+		"lang_tab_title_settings" => "Ρυθμίσεις",
+		"lang_tab_title_settings_desc" => "Ρυθμίσεις Master Account",
+		"lang_tab_title_manager" => "Διαχείρηση Master Account",
+		"lang_tab_title_manager_desc" => "Διαχειριστείτε τα Master Accounts σας",
+		"lang_tab_title_logs" => "Αρχείο ενεργειών",
+        "lang_tab_title_invoice" => "Αποδείξεις",
+        "lang_tab_title_account_hide" => "Απόκρυψη Master Account",
+        "lang_tab_title_account_hide_desc" => "Διαχείρηση Αποκρυμμένων Master Accounts",
+
+		"lang_tab_title_logs_desc" => "Αρχείο πρόσφατων ενεργειών",
+		"lang_tab_logs_th_action" => "Ενέργεια",
+		"lang_tab_logs_th_date" => "Ημερομηνία",
+        "lang_tab_invoice_th_payment" => "Τρόπος πληρωμής",
+        "lang_tab_invoice_th_sum" => "Σύνολο",
+
+
+
+
+
+		'title_forgot_password_account' => 'Ανάκτηση Password Master Account:',
+		"lang_button_forgot" => "Ανάκτηση password",
+
+		// AJAX
+		'ajax_empty_account' => 'Τo account δεν βρέθηκε! Ανανεώστε τη σελίδα!',
 	
 	
 	

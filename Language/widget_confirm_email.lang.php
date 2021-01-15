@@ -38,26 +38,52 @@ return array(
     'en' => array(
 
         'lang_title' => 'Confirm Email!',
-        'lang_btn_send_email' => 'Send an email with a code',
+        'lang_btn_send_email' => 'Send verification email',
         'lang_text_send_email' => 'You will be sent an email with a verification code. Use the code in the email to confirm your email.',
-        'lang_label_input' => 'Enter the received code in this field.',
-        'lang_label_placeholder' => 'Enter a code',
-        'lang_btn_confirm_email' => 'Confirm Email',
-        'lang_desc_confirm' => 'Confirmed E-mail allows you to use the full functionality of your Personal Account.',
+        'lang_label_input' => 'Verification code',
+        'lang_label_placeholder' => 'Enter verification code',
+        'lang_btn_confirm_email' => 'Confirm email',
+        'lang_desc_confirm' => 'A confirmed email address allows you to take advantage of all of the functions of your Master Account.',
 
-        'lang_btn_show_code' => 'I have a code from a letter.',
+        'lang_btn_show_code' => 'I have a verification code',
 
         //ajax
-        'empty_cod_confirm' => 'The CODE field cannot be empty!',
-        'empty_email' => 'The "Email" field cannot be empty!',
+        'empty_cod_confirm' => 'The verification code field cannot be empty!',
+        'empty_email' => 'The email address field cannot be empty!',
 
 
 
         //bind_email
-        'lang_title_bind_email' => 'Connect Email',
-        'lang_desc_bind_email' => 'Connecting E-mail allows you to use the full functionality of your Personal Account.',
-        'lang_pin_label_placeholder' => 'PIN-CODE',
+        'lang_title_bind_email' => 'Associate Email',
+        'lang_desc_bind_email' => 'Associating an email address allows you to take advantage of all of the functions of your Master Account.',
+        'lang_pin_label_placeholder' => 'PIN-Code',
         'lang_btn_send_email_bind_email' => 'Send code',	
+	
+	
+    ),
+    'gr' => array(
+
+        'lang_title' => 'Επιβεβάιωση Διεύθυνσης Email!',
+        'lang_btn_send_email' => 'Αποστολή email επαλήθευσης',
+        'lang_text_send_email' => 'Θα σας σταλεί ένα email με έναν κωδικό επαλήθευσης. Χρησιμοποιήστε τον κωδικό για να εαπληθεύσετε το email σας.',
+        'lang_label_input' => 'Κωδικός επαλήθευσης',
+        'lang_label_placeholder' => 'Εισάγετε τον κωδικό επαλήθευσης',
+        'lang_btn_confirm_email' => 'Επαλήθευση email',
+        'lang_desc_confirm' => 'Μία επαληθευμένη διεύθυνση email σας επιτρέπει να χρησιμοποιήσετε όλες τις λειτουργείες του Master Account σας.',
+
+        'lang_btn_show_code' => 'Έχω κωδικό επαλήθευσης',
+
+        //ajax
+        'empty_cod_confirm' => 'Ο κωδικός επαλήθευσης δεν μπορεί να είναι κενός!',
+        'empty_email' => 'Η διεύθυνση email δεν μπορεί να είναι κενή!',
+
+
+
+        //bind_email
+        'lang_title_bind_email' => 'Σύνδεση Διεθυνσης Email',
+        'lang_desc_bind_email' => 'Η σύνδεση μίας διεύθυνσης email σας επιτρέπει να χρησιμοποιήσετε όλες τις λειτουργείες του Master Account σας.',
+        'lang_pin_label_placeholder' => 'PIN-Code',
+        'lang_btn_send_email_bind_email' => 'Αποστολή κωδικού',	
 	
 	
     ),

@@ -18,20 +18,37 @@ return array(
         'ajax_empty_cod' => 'Поле «Бонус-код» не может быть пустым!',
     ),
     'en' => array(
-		'btn_menu_bonus_cod' => 'Bonus code',
+		'btn_menu_bonus_cod' => 'Redeem Bonus Code',
 
-		 'title_popup_lang' => 'Activation of the bonus code on the server: ',
-		 'title_popup_lang_btn' => 'Activate',
+		 'title_popup_lang' => 'Select a server to redeem the Bonus Code on: ',
+		 'title_popup_lang_btn' => 'Redeem',
 
-		 'lang_input_enter_cod' => 'Enter your bonus code',
+		 'lang_input_enter_cod' => 'Enter your Bonus Code',
 
-		 'lang_notfound_account' => 'You do not have game accounts on this server:',
+		 'lang_notfound_account' => 'You do not have any game accounts on this server:',
 		 'lang_select_account' => 'Select a game account',
-		 'lang_select_char' => 'Select a game character',
-		 'lang_select_char_not_found' => 'No characters',
-		 "ajax_empty_account_name" => 'Fill in the field "Select an account"',
-		 "ajax_empty_char_name" => 'Fill in the field "Select a character"',
+		 'lang_select_char' => 'Select a character',
+		 'lang_select_char_not_found' => 'No characters found',
+		 "ajax_empty_account_name" => 'Fill in the \'Select a game account\' field',
+		 "ajax_empty_char_name" => 'Fill in the \'Select a character\' field',
 
-		 'ajax_empty_cod' => 'The “Bonus code” field cannot be empty!',
+		 'ajax_empty_cod' => 'The \'Enter your Bonus Code\' field cannot be empty!',
+    ),
+    'gr' => array(
+		'btn_menu_bonus_cod' => 'Εξαργύρωση Bonus Code',
+
+		 'title_popup_lang' => 'Επιλέξτε τον server στον οποίο θέλετε να εξαργυρώσετε το Bonus Code: ',
+		 'title_popup_lang_btn' => 'Εξαργύρωση',
+
+		 'lang_input_enter_cod' => 'Εισάγετε το Bonus Code σας',
+
+		 'lang_notfound_account' => 'Δεν έχετε game accounts στον server:',
+		 'lang_select_account' => 'Επιλέξτε game account',
+		 'lang_select_char' => 'Επιλέξτε χαρακτήρα',
+		 'lang_select_char_not_found' => 'Δεν βρέθηκαν χαρακτήρες',
+		 "ajax_empty_account_name" => 'Συμπληρώστε το πεδίο «Επιλέξτε game account»',
+		 "ajax_empty_char_name" => 'Συμπληρώστε το πεδίο «Επιλέξτε χαρακτήρα»',
+
+		 'ajax_empty_cod' => 'Το πεδίο «Εισάγετε το Bonus Code σας» δεν μπορεί να είναι κενό!',
     ),
 );

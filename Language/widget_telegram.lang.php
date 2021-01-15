@@ -25,17 +25,33 @@ return array(
     'en' => array(
 	
 	        'lang_title' => 'Enter your Telegram username',
-        'lang_text' => 'Telegram bot is an electronic assistant that will allow you to always be aware of all the most important news and updates..
-            <dt>1. Enter username</dt>
-            <dd><p>In order for the bot to be able to identify you, enter your <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">username</a> in Telegram</p></dd>
+        'lang_text' => 'The Telegram bot is a digital assistant that will keep you up to date with the most important news and updates..
+            <dt>1. Enter your username</dt>
+            <dd><p>In order for the bot to be able to identify you, enter your <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">username</a> on Telegram</p></dd>
             <dt>2. Contact the bot</dt>
-            <dd>Finally, open a chat with the bot and start communication: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
-            <dd>Or find it in the application by name: <code>@MMORoBot</code></dd>',
+            <dd>Finally, start a chat with the bot: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
+            <dd>Alternatively, you may find it in the application by name: <code>@MMORoBot</code></dd>',
 
         'lang_btn_confirm_telegram' => 'Connect',
         'lang_btn_disable_telegram' => 'Disconnect',
 
 	
 	
-	),
+    ),
+    'gr' => array(
+	
+        'lang_title' => 'Εισάγετε το Telegram username σας',
+    'lang_text' => 'Το Telegram bot είναι ένας ψηφιακός βοηθός ο οποίος σας ενημερώνει σχετικά με τα πιο σημαντικά νέα και ενημερώσεις..
+        <dt>1. Εισάγετε το username σας</dt>
+        <dd><p>Για να μπορέσει το να σας ταυτοποιήσει το bot, εισάγετε το <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">username</a> σας στο Telegram</p></dd>
+        <dt>2. Επικοινωνήστε με το bot</dt>
+        <dd>Τέλος, αρχίστε μία συνομιλία με το bot: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
+        <dd>Διαφορετικά, βρείτε το μέσω του ονόματος: <code>@MMORoBot</code></dd>',
+
+    'lang_btn_confirm_telegram' => 'Σύνδεση',
+    'lang_btn_disable_telegram' => 'Αποσύνδεση',
+
+
+
+),
 );

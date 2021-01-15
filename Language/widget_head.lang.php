@@ -55,43 +55,81 @@ return array(
     'en' => array(
 
         'show_info' => array(
-            'Having a problem? Contact Support!',
-            'Want more info? Go to the forum!',
+            'Need help? Contact support!',
+            'Got game-related questions? Visit the forums!',
             'You should know about the promotions that are taking place now!',
             'Sign up for our newsletter!',
-            'Surely something happened in the world, discuss it on the forum!',
-            'Bored? Section port tavern forum will brighten up the time.',
-            'Something is not clear in the game? Then read the forum!',
-            'Do you want to speak out? Do not keep in yourself! Go to the forum!',
+            'Surely there\'s something that you\'d like to share with the world! Discuss it in the forums!',
+            'Something is not clear in the game? Then visit our wiki!',
         ),
 
 
-        'lang_account_ban' => 'Your account has been suspended.',
-        'lang_title_master_account' => 'Master account',
-        'lang_btn_go_settings' => 'Go to settings',
-        'lang_btn_go_check_email' => 'Confirm Mail',
-        'lang_btn_go_check_phone' => 'Confirm phone',
-        'lang_btn_last_enter' => 'Last entrance',
-        'lang_btn_reset_pin' => 'Reset PIN',
+        'lang_account_ban' => 'Your Master Account has been banned.',
+        'lang_title_master_account' => 'Master Account',
+        'lang_btn_go_settings' => 'Settings',
+        'lang_btn_go_check_email' => 'Confirm email',
+        'lang_btn_go_check_phone' => 'Confirm mobile',
+        'lang_btn_last_enter' => 'Last login',
+        'lang_btn_reset_pin' => 'Reset PIN-Code',
 
 
         'lang_title_warehouse' => 'Warehouse',
         'lang_btn_go_warehouse' => 'Open warehouse',
-        'lang_btn_go_info_warehouse' => 'More details',
+        'lang_btn_go_info_warehouse' => 'More information',
 
 
         'lang_title_balance' => 'Balance',
         'lang_btn_go_transfer_game' => 'Transfer to the game',
-        'lang_btn_go_enroll' => 'Top up balance',
-        'lang_btn_go_refresh' => 'Update',
+        'lang_btn_go_enroll' => 'Top-up balance',
+        'lang_btn_go_refresh' => 'Refresh',
 
 
         'lang_title_sale' => 'Discount',
-        'lang_btn_go_info_sale' => 'Discount Details',
+        'lang_btn_go_info_sale' => 'Discount details',
 
 
-        'lang_btn_bc_title' => 'Cod',
-        'lang_btn_bc_desc' => 'Bonus-cod',
-        'lang_btn_bc_open' => 'Activate',
+        'lang_btn_bc_title' => 'Bonus Code',
+        'lang_btn_bc_desc' => 'Bonus Code',
+        'lang_btn_bc_open' => 'Redeem',
+    ),
+    'gr' => array(
+
+        'show_info' => array(
+            'Χρειάζεστε βοήθεια; Υποβάλετε αίτημα υποστήριξης!',
+            'Έχετε απορίες σχετικά με το παιχνίδι; Επισκεφτείτε το forum!',
+            'Πρέπει να γνωρίζετε για τις προσφορές μας!',
+            'Εγγραφείτε στο newsletter μας!',
+            'Σίγουρα θα υπάρχει κάτι που θέλετε να μοιραστείτε με τον κόσμο! Συζητήστε το στο forum!',
+            'Είναι κάτι σχετικά με το παιχνίδι που δεν σας είναι ξεκάραθο; Τότε επισκεφτείτε την wiki μας!',
+        ),
+
+
+        'lang_account_ban' => 'Το Master Account σας έχει αποκλειστεί.',
+        'lang_title_master_account' => 'Master Account',
+        'lang_btn_go_settings' => 'Ρυθμίσεις',
+        'lang_btn_go_check_email' => 'Επαλήθευση email',
+        'lang_btn_go_check_phone' => 'Επιβεβαίωση αριθμού κινητού',
+        'lang_btn_last_enter' => 'Τελευταία σύνδεση',
+        'lang_btn_reset_pin' => 'Επαναφορά PIN-Code',
+
+
+        'lang_title_warehouse' => 'Warehouse',
+        'lang_btn_go_warehouse' => 'Άνοιγμα warehouse',
+        'lang_btn_go_info_warehouse' => 'Περισσότερες πληροφορίες',
+
+
+        'lang_title_balance' => 'Υπόλοιπο',
+        'lang_btn_go_transfer_game' => 'Μεταφορά στο παιχνίδι',
+        'lang_btn_go_enroll' => 'Ανανέωση υπολοίπου',
+        'lang_btn_go_refresh' => 'Ενημέρωση',
+
+
+        'lang_title_sale' => 'Έκπτωση',
+        'lang_btn_go_info_sale' => 'Λεπτομέρειες έκπτωσης',
+
+
+        'lang_btn_bc_title' => 'Bonus Code',
+        'lang_btn_bc_desc' => 'Bonus Code',
+        'lang_btn_bc_open' => 'Εξαργύρωση',
     ),
 );

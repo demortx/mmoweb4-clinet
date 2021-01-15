@@ -40,32 +40,63 @@ return array(
     ),
     'en' => array(
 	
-        'lang_title_dropdown' => 'AM management',
-        'lang_btn_add' => 'Add account',
-        'lang_title' => 'Connect account master',
-        'lang_input_email_or_phone' => 'Enter login account master<br><small>Email or Phone</small>',
-        'lang_input_password' => 'Enter password',
+        'lang_title_dropdown' => 'Master Account Management',
+        'lang_btn_add' => 'Add Master Account',
+        'lang_title' => 'Connect Master Account',
+        'lang_input_email_or_phone' => 'Master Account<br><small>Email or Mobile</small>',
+        'lang_input_password' => 'Password',
 
-        "lang_input_password_pin" => "Enter PIN-CODE",
+        "lang_input_password_pin" => "PIN-Code",
         "lang_button_add" => "Connect",
-        "lang_list_ma" => "List of connected accounts",
-        "lang_list_ma_empty" => "No connected accounts",
-        "lang_account_not_approve" => "Account not verified",
+        "lang_list_ma" => "List of connected Master Accounts",
+        "lang_list_ma_empty" => "No connected Master Accounts",
+        "lang_account_not_approve" => "Master Account not verified",
 
         "form_confirm_key" => "Key",
         "form_confirm_btn" => "Confirm",
 
         "table_th_acc" => "Account",
         "table_th_ip" => "IP",
-        "table_th_login" => "Last auth",
+        "table_th_login" => "Last login",
         "table_th_status" => "State",
         "table_th_status_0" => "Confirmation Required",
 
 
         "ajax_empty_mid" => "Parameter not passed, refresh page!",
-        "ajax_empty_key" => "The Key field cannot be empty!",
-        'ajax_empty_email' => 'The field "Phone or e-mail" cannot be empty!',
-        'ajax_empty_password' => 'Password field cannot be empty!',
+        "ajax_empty_key" => "The 'Key' field cannot be empty!",
+        'ajax_empty_email' => 'The \'Mobile or e-mail\' field cannot be empty!',
+        'ajax_empty_password' => 'The \'Password\' field cannot be empty!',
+	
+	
+    ),
+    'gr' => array(
+	
+        'lang_title_dropdown' => 'Διαχείρηση Master Accounts',
+        'lang_btn_add' => 'Προσθήκη Master Account',
+        'lang_title' => 'Σύνδεση Master Account',
+        'lang_input_email_or_phone' => 'Master Account<br><small>Email ή Αριθμός Κινητού</small>',
+        'lang_input_password' => 'Password',
+
+        "lang_input_password_pin" => "PIN-Code",
+        "lang_button_add" => "Σύνδεση",
+        "lang_list_ma" => "Λίστα συνδεδεμένων Master Accounts",
+        "lang_list_ma_empty" => "Δεν υπάρχουν συνδεδεμένα Master Accounts",
+        "lang_account_not_approve" => "Μη επαληθευμένο Master Account",
+
+        "form_confirm_key" => "Κλειδί",
+        "form_confirm_btn" => "Επαλήθευση",
+
+        "table_th_acc" => "Account",
+        "table_th_ip" => "IP",
+        "table_th_login" => "Τελευταία σύνδεση",
+        "table_th_status" => "Κατάσταση",
+        "table_th_status_0" => "Μη Επαληθευμένο",
+
+
+        "ajax_empty_mid" => "Parameter not passed, refresh page!",
+        "ajax_empty_key" => "Το πεδίο «Κλειδί» δεν μπορεί να είναι κενό!",
+        'ajax_empty_email' => 'Το πεδίο «Αριθμός κινητού ή e-mail» δεν μπορεί να είναι κενό!',
+        'ajax_empty_password' => 'Το πεδίο «Password» δεν μπορεί να είναι κενό!',
 	
 	
 	),

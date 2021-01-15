@@ -18,11 +18,20 @@ return array(
     ),
     'en' => array(
 
-        'lang_title' => 'Social Authentication!',
+        'lang_title' => 'Connected Social Accounts',
         'lang_text_no_connect' => 'Disconnected',
 
-        'social_empty_token' => 'Token not transferred!',
-        'error_response_data' => 'Profile data not transferred!',
+        'social_empty_token' => 'Token not provided!',
+        'error_response_data' => 'Error retrieving profile data!',
+
+    ),
+    'gr' => array(
+
+        'lang_title' => 'Συνδεδεμένοι Λογαριασμοί Μέσων Κοινωνικής Δικτύωσης',
+        'lang_text_no_connect' => 'Αποσυνδεδεμένο',
+
+        'social_empty_token' => 'Το token είναι άδειο!',
+        'error_response_data' => 'Σφάλμα κατά τη λήψη στοιχείων λογαριασμού!',
 
     ),
 );

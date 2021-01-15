@@ -10,11 +10,13 @@ return array(
         'target' => '',
         'name' => array(
             'ru' => 'Рейтинг',
-            'en' => 'Rating',
+            'en' => 'Rankings',
+            'gr' => 'Κατατάξεις',
         ),
         'title' => array(
             'ru' => 'Рейтинг',
-            'en' => 'Rating',
+            'en' => 'Rankings',
+            'gr' => 'Κατατάξεις',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -27,11 +29,13 @@ return array(
         'target' => '',
         'name' => array(
             'ru' => 'Магазин',
-            'en' => 'Shop',
+            'en' => 'Store',
+            'gr' => 'Μαγαζί',
         ),
         'title' => array(
             'ru' => 'Магазин',
-            'en' => 'Shop',
+            'en' => 'Store',
+            'gr' => 'Μαγαζί',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -45,10 +49,12 @@ return array(
         'name' => array(
             'ru' => 'Пожертвования',
             'en' => 'Donations',
+            'gr' => 'Δωρεές',
         ),
         'title' => array(
             'ru' => 'Пожертвования',
             'en' => 'Donations',
+            'gr' => 'Δωρεές',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -62,10 +68,12 @@ return array(
         'name' => array(
             'ru' => 'Форум',
             'en' => 'Forum',
+            'gr' => 'Forum',
         ),
         'title' => array(
             'ru' => 'Форум',
-            'en' => 'Forum'
+            'en' => 'Forum',
+            'gr' => 'Forum',
         ),
         'function' => function(&$buttons){return false;}
     ),

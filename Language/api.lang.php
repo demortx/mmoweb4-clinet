@@ -12,4 +12,8 @@ return array (
 		'throttle_error' => 'Exceeded the number of queries, try again later!',
 		'session_lost' => 'Your profile session has expired, please log in again!',
 	),
+	'gr' => array (
+		'throttle_error' => 'Έχετε υπερβεί το όριο αιτημάτων, προσπαθήστε ξανά αργότερα!',
+		'session_lost' => 'Το profile session σας έχει λήξει, παρακαλούμε συνδεθείτε ξανά!',
+	),
 );

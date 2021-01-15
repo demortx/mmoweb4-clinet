@@ -44,22 +44,51 @@ return array(
             'top_clan_pvp'     => 'Top Clan PvP',
             'top_ally'         => 'Top Aliance',
             'top_castle'       => 'Castles',
-            'top_clanhols'     => 'Clan hall',
+            'top_clanhols'     => 'Clan Halls',
             'top_hero'         => 'Heroes',
-            'top_statistic'    => 'Common analytics',
-            'online_history'   => 'Online\'s history',
-            'top_rank'         => 'Top rang',
-            'top_pkw'          => 'Top wins',
-            'top_pkt'          => 'Top fights',
+            'top_statistic'    => 'General Statistics',
+            'online_history'   => 'Online History',
+            'top_rank'         => 'Top Rank',
+            'top_pkw'          => 'Top Wins',
+            'top_pkt'          => 'Top Fights',
         ),
         'lang_history'=> array(
             'online' => 'Online',
             'online_multiple' => 'Online',
-            'characters' => 'Game characters',
+            'characters' => 'Characters',
             'clan' => 'Clans',
         ),
 
-        'server_rating_empty' => 'No information on this server! It will appear later.',	
+        'server_rating_empty' => 'No information available yet. Please check back later.',	
+	
+	
+    ),
+    'gr' => array(
+
+        'lang_page' => array(
+            'top_pvp'          => 'Top PvP',
+            'top_pk'           => 'Top PK',
+            'top_exp'          => 'Top EXP',
+            'top_clan'         => 'Top Clan',
+            'top_clan_pvp'     => 'Top Clan PvP',
+            'top_ally'         => 'Top Aliance',
+            'top_castle'       => 'Castles',
+            'top_clanhols'     => 'Clan Halls',
+            'top_hero'         => 'Heroes',
+            'top_statistic'    => 'Γενικά Στατιστικά',
+            'online_history'   => 'Ιστορικό Συνδεσιμότητας',
+            'top_rank'         => 'Top Rank',
+            'top_pkw'          => 'Top Wins',
+            'top_pkt'          => 'Top Fights',
+        ),
+        'lang_history'=> array(
+            'online' => 'Συνδεδεμένος',
+            'online_multiple' => 'Συνδεδεμένος',
+            'characters' => 'Χαρακτήρες',
+            'clan' => 'Clans',
+        ),
+
+        'server_rating_empty' => 'Δεν υπάρχουν ακόμη διαθέσιμες πληροφορίες. Ελέγξτε ξανά αργότερα.',	
 	
 	
     )

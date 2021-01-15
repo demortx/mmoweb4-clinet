@@ -27,15 +27,28 @@ return array(
     ),
     'en' => array(
 
-        "lang_title" => 'Change Password to Master Account',
+        "lang_title" => 'Change Master Account Password',
         "lang_input_password_old" => "Current password",
         "lang_input_password_new" => "New password",
-        "lang_input_password_new_confirm" => "Password again",
-        "lang_input_password_pin" => "Enter the PIN-CODE",
+        "lang_input_password_new_confirm" => "Re-enter password",
+        "lang_input_password_pin" => "Enter your PIN-Code",
         "lang_button_change" => "Change password",
 
-        "ajax_empty_password_old" => 'The "Current Password" field cannot be empty!',
-        "ajax_empty_password_new" => 'The "New password" field cannot be empty!',
-        "ajax_empty_password_new_confirm" => 'The "Password again" field cannot be empty!',
+        "ajax_empty_password_old" => 'The \'Current password\' field cannot be empty!',
+        "ajax_empty_password_new" => 'The \'New password\' field cannot be empty!',
+        "ajax_empty_password_new_confirm" => 'The \'Re-enter password\' field cannot be empty!',
+    ),
+    'gr' => array(
+
+        "lang_title" => 'Αλλαγή Password Master Account',
+        "lang_input_password_old" => "Τρέχων password",
+        "lang_input_password_new" => "Νέο password",
+        "lang_input_password_new_confirm" => "Επαλήθευση password",
+        "lang_input_password_pin" => "Εισάγετε το PIN-Code σας",
+        "lang_button_change" => "Αλλαγή password",
+
+        "ajax_empty_password_old" => 'Το πεδίο «Τρέχων password» δεν μπορεί να είναι κενό!',
+        "ajax_empty_password_new" => 'Το πεδίο «Νέο password» δεν μπορεί να είναι κενό!',
+        "ajax_empty_password_new_confirm" => 'Το πεδίο «Επαλήθευση password» δεν μπορεί να είναι κενό!',
     ),
 );

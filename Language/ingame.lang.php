@@ -8,7 +8,7 @@
 
 return array(
     'ru' => array(
-        'title_popup_lang' => 'Перевести <span class="in-game-title">Game valute</span> на сервер: ',
+        'title_popup_lang' => 'Перевести <span class="in-game-title">Coin of Luck</span> на сервер: ',
         'title_popup_lang_price' => 'К оплате: ',
         'title_popup_lang_btn' => 'Перевести в игру',
 
@@ -34,26 +34,51 @@ return array(
     ),
     'en' => array(
 	
-		'title_popup_lang' => 'Transfer <span class = "in-game-title"> Game valute </span> to the server:',
-		'title_popup_lang_price' => 'To pay:',
-		'title_popup_lang_btn' => 'Transfer money to the game',
+		'title_popup_lang' => 'Transfer <span class="in-game-title">Coin of Luck</span> to the server:',
+		'title_popup_lang_price' => 'Quantity:',
+		'title_popup_lang_btn' => 'Transfer balance to the game',
 
 		'lang_label_price' => 'Price',
 		'lang_notfound_type_buy' => 'The game currency for this server has not yet been configured!',
-		'lang_select_account' => 'Select account',
-		'lang_select_char' => 'Select a game character',
-		'lang_select_char_not_found' => 'No characters',
+		'lang_select_account' => 'Select a game account',
+		'lang_select_char' => 'Select a character',
+		'lang_select_char_not_found' => 'No characters found',
 		'lang_current_sale' => 'Discount',
 		'lang_input_enter_count' => 'Enter quantity',
 
 
-		'lang_notfound_account' => 'You do not have game accounts on this server:',
+		'lang_notfound_account' => 'You do not have any game accounts on this server:',
 
 
 
-		'ajax_empty_type_id' => 'Purchased item id not passed',
-		'ajax_empty_count' => 'Quantity field cannot be empty!',
+		'ajax_empty_type_id' => 'Purchased item ID not configured.',
+		'ajax_empty_count' => 'The \'Enter amount\' field cannot be empty!',
 		'ajax_empty_account_name' => 'You need to select a game account!',
+	
+	
+    ),
+    'gr' => array(
+	
+		'title_popup_lang' => 'Μεταφορά <span class="in-game-title">Coin of Luck</span> στον server:',
+		'title_popup_lang_price' => 'Ποσότητα:',
+		'title_popup_lang_btn' => 'Μεταφορά υπολοίπου στο παιχνίδι',
+
+		'lang_label_price' => 'Τιμή',
+		'lang_notfound_type_buy' => 'Το νόμισμα του παιχνιδιού δεν έχει ρυθμιστεί σε αυτόν τον server.',
+		'lang_select_account' => 'Επιλέξτε game account',
+		'lang_select_char' => 'Επιλέξτε χαρακτήρα',
+		'lang_select_char_not_found' => 'Δεν βρέθηκαν χαρακτήρες',
+		'lang_current_sale' => 'Έκπτωση',
+		'lang_input_enter_count' => 'Εισάγετε ποσότητα',
+
+
+		'lang_notfound_account' => 'Δεν έχετε game accounts στον server:',
+
+
+
+		'ajax_empty_type_id' => 'Το item ID δεν είναι ρυθμισμένο.',
+		'ajax_empty_count' => 'Το πεδίο «Εισάγετε ποσότητα δεν μπορεί να είναι κενό!',
+		'ajax_empty_account_name' => 'Πρέπει να επιλέξετε game account!',
 	
 	
 	),

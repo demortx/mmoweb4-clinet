@@ -7,10 +7,12 @@ return array(
         'title_name' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
+            'gr' => 'Πίνακας Ελέγχου',
         ),
         'title_name_min' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
+            'gr' => 'Πίνακας Ελέγχου',
         ),
 
     ),
@@ -25,10 +27,12 @@ return array(
         'name' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
+            'gr' => 'Πίνακας Ελέγχου',
         ),
         'title' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
+            'gr' => 'Πίνακας Ελέγχου',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -43,11 +47,13 @@ return array(
         'target' => '_self',
         'name' => array(
             'ru' => 'Рейтинг',
-            'en' => 'Rating',
+            'en' => 'Rankings',
+            'gr' => 'Κατατάξεις',
         ),
         'title' => array(
             'ru' => 'Рейтинг',
-            'en' => 'Rating',
+            'en' => 'Rankings',
+            'gr' => 'Κατατάξεις',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -61,11 +67,13 @@ return array(
         'target' => '_self',
         'name' => array(
             'ru' => 'Магазин',
-            'en' => 'Shop',
+            'en' => 'Store',
+            'gr' => 'Μαγαζί',
         ),
         'title' => array(
             'ru' => 'Магазин',
-            'en' => 'Shop',
+            'en' => 'Store',
+            'gr' => 'Μαγαζί',
         ),
         'function' => function(&$buttons){
             $t = filemtime(ROOT_DIR.'/Library/shop.php');
@@ -89,10 +97,12 @@ return array(
         'name' => array(
             'ru' => 'Поддержка',
             'en' => 'Support',
+            'gr' => 'Υποστήριξη',
         ),
         'title' => array(
             'ru' => 'Поддержка',
             'en' => 'Support',
+            'gr' => 'Υποστήριξη',
         ),
         'function' => function(&$buttons){
             $count = 0;
@@ -117,11 +127,13 @@ return array(
         'btn_ajax' => btn_ajax("Modules\Globals\InGameCurrency\InGameCurrency", "open_form", [1]),
         'name' => array(
             'ru' => 'Перевести в игру',
-            'en' => 'Transfer to game',
+            'en' => 'Transfer to the game',
+            'gr' => 'Μεταφορά στο παιχνίδι',
         ),
         'title' => array(
             'ru' => 'Перевести в игру',
-            'en' => 'Transfer to game',
+            'en' => 'Transfer to the game',
+            'gr' => 'Μεταφορά στο παιχνίδι',
         ),
         'function' => function(&$buttons){
             if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
@@ -147,10 +159,12 @@ return array(
         'name' => array(
             'ru' => 'Баланс',
             'en' => 'Balance',
+            'gr' => 'Υπόλοιπο',
         ),
         'title' => array(
             'ru' => 'Баланс',
             'en' => 'Balance',
+            'gr' => 'Υπόλοιπο',
         ),
         'init' => function(&$buttons){
             //если меню горизонтальное подставляем выбор
@@ -165,7 +179,8 @@ return array(
                         'btn_ajax' => btn_ajax("Modules\Globals\InGameCurrency\InGameCurrency", "open_form", [1]),
                         'name'=>array(
                             'en'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transfer to game',
-                            'ru'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Перевести в игру'
+                            'ru'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Перевести в игру',
+                            'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Μεταφορά στο παιχνίδι'
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -175,8 +190,9 @@ return array(
                         'href'=>'/panel/donations',
                         'target' => '_self',
                         'name'=>array(
-                            'en'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Top up balance',
-                            'ru'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Пополнить баланс'
+                            'en'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Top-up balance',
+                            'ru'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Пополнить баланс',
+                            'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Ανανέωση υπολοίπου'
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -209,10 +225,12 @@ return array(
         'name' => array(
             'ru' => 'Настройки',
             'en' => 'Settings',
+            'gr' => 'Ρυθμίσεις',
         ),
         'title' => array(
             'ru' => 'Настройки',
             'en' => 'Settings',
+            'gr' => 'Ρυθμίσεις',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -226,10 +244,12 @@ return array(
         'name' => array(
             'ru' => 'Рынок',
             'en' => 'Market',
+            'gr' => 'Αγορά',
         ),
         'title' => array(
             'ru' => 'Рынок',
             'en' => 'Market',
+            'gr' => 'Αγορά',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -243,10 +263,12 @@ return array(
         'name' => array(
             'ru' => 'Форум',
             'en' => 'Forum',
+            'gr' => 'Forum',
         ),
         'title' => array(
             'ru' => 'Форум',
-            'en' => 'Forum'
+            'en' => 'Forum',
+            'gr' => 'Forum',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -260,11 +282,13 @@ return array(
         'target' => '_blank',
         'name' => array(
             'ru' => 'На сайт',
-            'en' => 'Go to website',
+            'en' => 'Back to the main site',
+            'gr' => 'Επιστροφή στο κεντρικό site',
         ),
         'title' => array(
             'ru' => 'На сайт',
-            'en' => 'Go to website',
+            'en' => 'Back to the main site',
+            'gr' => 'Επιστροφή στο κεντρικό site',
         ),
         'function' => function(&$buttons){return false;}
     ),
