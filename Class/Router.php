@@ -120,7 +120,7 @@ class Router {
 	 *
 	 * @return	void
 	 */
-	public function __construct($routing = NULL , $url)
+	public function __construct($routing, $url)
 	{
 
 		$this->config['allow_get_array'] = TRUE;

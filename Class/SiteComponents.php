@@ -222,7 +222,7 @@ class SiteComponents
                 if (is_array($servers)) {
                     foreach ($servers as $sid => $info) {
                         $temp__ = get_cache('rating_' . $sid, false, true, false);
-                        $rating[$sid] = $temp__['data'];
+                        if ($temp__ !== false){ $rating[$sid] = $temp__['data']; }
                     }
 
                 }
