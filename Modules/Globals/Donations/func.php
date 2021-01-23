@@ -58,9 +58,17 @@ class func
         $event_cfg = get_instance()->config['event'];
         $sid = get_instance()->get_sid();
         if (isset($event_cfg[$sid])){
-            $event_cfg = $event_cfg[$sid];
-            foreach ($event_cfg as &$event){
-                if ($event['item_enable']){
+            $event_list = array();
+            foreach ($event_cfg[$sid] as $id => $event){
+                if (!$event['item_enable']) {
+                    continue;
+                }
+
+                $now = new \DateTime();
+                $start = new \DateTime($event['start']);
+                $end = new \DateTime($event['end']);
+
+                if ($start < $now && $now < $end) {
                     $item_temp = array();
                     foreach ($event['item'] as $item){
 
@@ -73,11 +81,12 @@ class func
                         $item_temp[$item['lv']][] = $item;
                     }
                     $event['item'] = $item_temp;
+                    $event_list[$id] = $event;
                 }
 
             }
         }else
-            $event_cfg = false;
+            $event_list = false;
 
 
         return get_instance()->fenom->fetch(
@@ -87,7 +96,7 @@ class func
                 array(
                     'payment_system' => get_instance()->config['payment_system'],
                     'config_cabinet' => get_instance()->config['cabinet'],
-                    'event_cfg' => $event_cfg,
+                    'event_cfg' => $event_list,
                     'payment_list' => $this->payment_list,
                     get_lang('course.lang')
 
@@ -110,11 +119,20 @@ class func
         $event_cfg = get_instance()->config['event'];
         $sid = get_instance()->get_sid();
         if (isset($event_cfg[$sid])){
-            $event_cfg = $event_cfg[$sid];
-            foreach ($event_cfg as &$event){
-                if ($event['item_enable']){
+            $event_list = array();
+            foreach ($event_cfg[$sid] as $id => $event){
+                if (!$event['item_enable']) {
+                    continue;
+                }
+
+                $now = new \DateTime();
+                $start = new \DateTime($event['start']);
+                $end = new \DateTime($event['end']);
+
+                if ($start < $now && $now < $end) {
+
                     $item_temp = array();
-                    foreach ($event['item'] as $item){
+                    foreach ($event['item'] as $item) {
 
                         $temp_item = set_item($item['id'], false, true);
                         $item['id'] = $temp_item['id'];
@@ -125,11 +143,13 @@ class func
                         $item_temp[$item['lv']][] = $item;
                     }
                     $event['item'] = $item_temp;
+                    $event_list[$id] = $event;
                 }
+
 
             }
         }else
-            $event_cfg = false;
+            $event_list = false;
 
 
         return get_instance()->fenom->fetch(

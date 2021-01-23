@@ -181,7 +181,6 @@ $system = array (
 			array (
 				'rating' => true,
 				'shop' => true,
-				'support' => true,
 				'market' => true,
 				'donations' => true,
 				'settings' => true,
@@ -192,7 +191,6 @@ $system = array (
 			array (
 				'rating' => true,
 				'shop' => true,
-				'support' => true,
 				'market' => true,
 				'donations' => true,
 				'settings' => true,
@@ -203,7 +201,6 @@ $system = array (
 			array (
 				'rating' => true,
 				'shop' => true,
-				'support' => true,
 				'market' => true,
 				'donations' => true,
 				'settings' => true,
@@ -232,8 +229,8 @@ $system = array (
 		'language_list'=>array(
 			'ru' => 'Russian',
 			'en' => 'English',
-			'gr' => 'gr',
-			'es' => 'es',
+			'gr' => 'Greek',
+			'es' => 'Spanish',
 		),
 	),
 	'settings' => 1,
@@ -257,25 +254,26 @@ $system = array (
 		'auto_course' => true,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '73.502399',
-			'EUR' => '0.827815',
-			'UAH' => '28.081133',
-			'BTC' => '2.7579782E-5',
+			'RUB' => '75.2647',
+			'EUR' => '0.821389',
+			'UAH' => '28.181256',
+			'BTC' => '3.0895445E-5',
 		),
 		'sorting_pay'=>array(
-			0 => 'alikassa',
-			1 => 'ips_payment',
-			2 => 'payop',
-			3 => 'payu',
-			4 => 'freekassa',
-			5 => 'g2a',
-			6 => 'unitpay',
-			7 => 'paypal',
-			8 => 'nextpay',
-			9 => 'paygol',
-			10 => 'enot',
-			11 => 'ipay',
-			12 => 'paysafecard',
+			0 => 'digiseller',
+			1 => 'alikassa',
+			2 => 'ips_payment',
+			3 => 'payop',
+			4 => 'payu',
+			5 => 'freekassa',
+			6 => 'g2a',
+			7 => 'unitpay',
+			8 => 'paypal',
+			9 => 'nextpay',
+			10 => 'paygol',
+			11 => 'enot',
+			12 => 'ipay',
+			13 => 'paysafecard',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -309,6 +307,10 @@ $system = array (
 		'paysafecard' => true,
 		'paysafecard_currency' => 'USD',
 		'ips_payment' => true,
+		'digiseller' => true,
+		'digiseller_seller_id' => 953128,
+		'digiseller_product_id' => 2961664,
+		'digiseller_api_guid' => 'A4A2647D4BAA476BA987B4198D06B80A',
 	),
 	'discount'=>array(
 		'project'=>array(
@@ -324,12 +326,119 @@ $system = array (
 			'shop' => 1,
 		),
 	),
-	'event' => false,
-	'in_game_currency' => false,
+	'event'=>array(
+		9 => 
+		array (
+			0 => 
+			array (
+				'id' => 1,
+				'title' => 'Первый евент тестовый',
+				'data'=>array(
+					1 => 
+					array (
+						'start' => 0,
+						'end' => 99,
+						'percent' => 0,
+					),
+					2 => 
+					array (
+						'start' => 100,
+						'end' => 499,
+						'percent' => 1,
+					),
+					3 => 
+					array (
+						'start' => 500,
+						'end' => 999,
+						'percent' => 3,
+					),
+					4 => 
+					array (
+						'start' => 1000,
+						'end' => 2999,
+						'percent' => 5,
+					),
+					5 => 
+					array (
+						'start' => 3000,
+						'end' => 7499,
+						'percent' => 7,
+					),
+					6 => 
+					array (
+						'start' => 7500,
+						'end' => 10000000,
+						'percent' => 10,
+					),
+				),
+				'item_enable' => 1,
+				'item'=>array(
+					1 => 
+					array (
+						'lv' => 2,
+						'id' => 5592,
+						'count' => 50,
+						'enc' => 0,
+					),
+					2 => 
+					array (
+						'lv' => 1,
+						'id' => 5591,
+						'count' => 50,
+						'enc' => 0,
+					),
+					3 => 
+					array (
+						'lv' => 3,
+						'id' => 1538,
+						'count' => 3,
+						'enc' => 0,
+					),
+					4 => 
+					array (
+						'lv' => 3,
+						'id' => 3936,
+						'count' => 1,
+						'enc' => 0,
+					),
+				),
+				'agrigator'=>array(
+					0 => 'all',
+				),
+				'start' => '2019-11-11 13:46:00',
+				'end' => '2020-06-14 12:00:00',
+			),
+		),
+	),
+	'in_game_currency'=>array(
+		9 => 
+		array (
+			'config'=>array(
+				'char' => true,
+			),
+			'settings'=>array(
+				0 => 
+				array (
+					'id' => 1,
+					'type' => 'char',
+					'long_name' => 'Coin of Luck',
+					'short_name' => 'Col',
+					'icon' => 'https://mw4.mmoweb.ru/template/panel/assets/media/icon/8/etc_cp_potion_i00.png',
+					'message' => 'Вы можете передать на персонажа Family Coin
+Обратите внимание!
+Вы можете приобрести все желаемые итемы напрямую в ЛК в разделах &quot;Магазин&quot; и &quot;Услуги&quot;, не переводя Family Coins в игру на персонажа!',
+					'message_no_auth' => 'Вы можете передать на персонажа Family Coin
+не авторизованный',
+					'item_id' => 4037,
+					'give_count' => 1,
+					'price' => '1.000',
+				),
+			),
+		),
+	),
 	'plugins'=>array(
 		'__' => 'pl',
 		2 => 'stop_spam_email',
-		3 => 'support',
 		8 => 'market',
 	),
 	'promo_game' => 0,
