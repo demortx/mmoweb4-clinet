@@ -39,7 +39,7 @@
                             <h2 class="h5 font-w400 text-muted mb-0">Let's get started, it will only take a few seconds!</h2>
                         </div>
                         <!-- END Header -->
-                        <?
+                        <?php
                         $exist_error = false;
                         include ROOT_DIR.'/template/panel/install/folder_rights.php';
                         include ROOT_DIR.'/template/panel/install/checking_modules.php';
@@ -58,7 +58,7 @@
                                     <i class="fa fa-repeat mr-10"></i> Reload
                                 </a>
                             </div>
-                            <?
+                            <?php
                         }else{
 
                             $error_input = array();

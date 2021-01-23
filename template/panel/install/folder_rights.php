@@ -22,7 +22,7 @@ if (count($arr_error) > 0){
         </div>
     </div>
     <ul class="list-group push">
-    <?
+    <?php
     foreach ($arr_error as $err){
         echo '<li class="list-group-item  justify-content-between align-items-center font-w600">
         '.$err.'
@@ -31,7 +31,7 @@ if (count($arr_error) > 0){
 ?>
     </ul>
     <hr>
-<?
+<?php
 }
 unset($arr_error, $folder_list);
 ?>

@@ -134,7 +134,6 @@ class Broadcast
         );
     }
 
-
     public function deleteCacheStream(){
         $cache = scandir(ROOT_DIR.CACHEPATH);
         foreach ($cache as $file) {
@@ -224,7 +223,7 @@ class Broadcast
 
     public function getYoutube($name, $error = true){
         $user_info = array();
-
+//https://www.googleapis.com/youtube/v3/search?channelId=UCocvwThNlcQ8pdRFnXgpGbw&key=AIzaSyByFzmSA806IakLMTOMuU3rt_S2erPiiNI&part=id,snippet&eventType=live&type=video
         $googleApiUrl = 'https://www.googleapis.com/youtube/v3/search?channelId=' . $name . '&key=' . YOUTUBE . '&part=id,snippet&eventType=live&type=video';
 
         $ch = curl_init();

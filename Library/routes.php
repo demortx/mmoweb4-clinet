@@ -73,4 +73,4 @@ $route['(:any)'] = 'Pages/page_static/$1';
 $route['(:any)/(:any)'] = 'Pages/page_static/$1/$2';
 
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = TRUE;

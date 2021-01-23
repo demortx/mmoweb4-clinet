@@ -38,7 +38,7 @@ if (file_exists(ROOT_DIR.'/Config.php')) {
             </div>
         </div>
 
-        <?
+        <?php
     }else
     {
         $write_config = false;
@@ -51,7 +51,7 @@ if (file_exists(ROOT_DIR.'/Config.php')) {
                 <i class="fa fa-fw fa-2x fa-pencil-square-o"></i>
             </div>
         </div>
-        <?
+        <?php
     }
 } else{
     $write_config = false;
@@ -64,5 +64,6 @@ if (file_exists(ROOT_DIR.'/Config.php')) {
             <i class="fa fa-fw fa-2x fa-neuter"></i>
         </div>
     </div>
-    <?
+    <?php
 }
+?>
