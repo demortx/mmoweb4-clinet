@@ -247,6 +247,11 @@ class func
 
         array_sort_by_column($shop, 'sale_id', SORT_DESC);
 
+        if (count($shop) > 6){
+            shuffle($shop);
+            $shop = array_slice($shop, 0, 6);
+        }
+
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_shop_advertising.tpl', get_class($this->this_main)),
             array_merge(
