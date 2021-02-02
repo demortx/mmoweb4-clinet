@@ -59,10 +59,7 @@ class func
         $sid = get_instance()->get_sid();
         if (isset($event_cfg[$sid])){
             $event_list = array();
-            foreach ($event_cfg[$sid] as $id => $event){
-                if (!$event['item_enable']) {
-                    continue;
-                }
+            foreach ($event_cfg[$sid] as $event){
 
                 $now = new \DateTime();
                 $start = new \DateTime($event['start']);
@@ -70,23 +67,26 @@ class func
 
                 if ($start < $now && $now < $end) {
                     $item_temp = array();
-                    foreach ($event['item'] as $item){
+                    if ($event['item_enable']) {
+                        foreach ($event['item'] as $item) {
 
-                        $temp_item = set_item($item['id'], false, true);
-                        $item['id'] = $temp_item['id'];
-                        $item['name'] = $temp_item['name'];
-                        $item['add_name'] = $temp_item['add_name'];
-                        $item['icon'] = $temp_item['icon'];
+                            $temp_item = set_item($item['id'], false, true);
+                            $item['id'] = $temp_item['id'];
+                            $item['name'] = $temp_item['name'];
+                            $item['add_name'] = $temp_item['add_name'];
+                            $item['icon'] = $temp_item['icon'];
 
-                        $item_temp[$item['lv']][] = $item;
+                            $item_temp[$item['lv']][] = $item;
+                        }
                     }
                     $event['item'] = $item_temp;
-                    $event_list[$id] = $event;
+                    $event_list[] = $event;
                 }
 
             }
         }else
             $event_list = false;
+
 
 
         return get_instance()->fenom->fetch(
@@ -120,10 +120,8 @@ class func
         $sid = get_instance()->get_sid();
         if (isset($event_cfg[$sid])){
             $event_list = array();
-            foreach ($event_cfg[$sid] as $id => $event){
-                if (!$event['item_enable']) {
-                    continue;
-                }
+            foreach ($event_cfg[$sid] as $event){
+
 
                 $now = new \DateTime();
                 $start = new \DateTime($event['start']);
@@ -132,18 +130,21 @@ class func
                 if ($start < $now && $now < $end) {
 
                     $item_temp = array();
-                    foreach ($event['item'] as $item) {
+                    if ($event['item_enable']) {
+                        foreach ($event['item'] as $item) {
 
-                        $temp_item = set_item($item['id'], false, true);
-                        $item['id'] = $temp_item['id'];
-                        $item['name'] = $temp_item['name'];
-                        $item['add_name'] = $temp_item['add_name'];
-                        $item['icon'] = $temp_item['icon'];
+                            $temp_item = set_item($item['id'], false, true);
+                            $item['id'] = $temp_item['id'];
+                            $item['name'] = $temp_item['name'];
+                            $item['add_name'] = $temp_item['add_name'];
+                            $item['icon'] = $temp_item['icon'];
 
-                        $item_temp[$item['lv']][] = $item;
+                            $item_temp[$item['lv']][] = $item;
+                        }
                     }
+
                     $event['item'] = $item_temp;
-                    $event_list[$id] = $event;
+                    $event_list[] = $event;
                 }
 
 
@@ -158,7 +159,7 @@ class func
             array_merge(
                 array(
                     'payment_system' => get_instance()->config['payment_system'],
-                    'event_cfg' => $event_cfg,
+                    'event_cfg' => $event_list,
                     'payment_list' => $this->payment_list,
                     get_lang('course.lang')
 

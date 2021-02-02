@@ -87,7 +87,7 @@
                     var temp_agrigator_{$bonus_cfg.id} = {$.php.json_encode($bonus_cfg.agrigator)};
                     if(temp_agrigator_{$bonus_cfg.id}.includes(payment_method) || temp_agrigator_{$bonus_cfg.id}.includes('all')){
                     {foreach $bonus_cfg.data as $lv => $rage first=$first}
-                {if !$first}else {/if}if (num >= {$rage.start} && num <= {$rage.end}) {
+                            {if !$first}else {/if}if (num >= {$rage.start} && num <= {$rage.end}) {
                                 bonus += (num * {$rage.percent} / 100);
                                 {if $bonus_cfg.item_enable == 1}
                                     bonus_item_key[{$bonus_cfg.id}] = {$lv};
