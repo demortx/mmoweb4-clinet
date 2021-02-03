@@ -131,4 +131,33 @@ return array(
 	
 	
     ),
+    'pt' => array(
+    
+        'lang_title_dropdown' => 'Gerenciamento de conta mestre',
+        'lang_btn_add' => 'Adicionar Conta Mestre',
+        'lang_title' => 'Conectar Conta Mestre',
+        'lang_input_email_or_phone' => 'Conta mestre<br><small>E-mail ou Celular</small>',
+        'lang_input_password' => 'Senha',
+
+        "lang_input_password_pin" => "Código PIN",
+        "lang_button_add" => "Conectar",
+        "lang_list_ma" => "Lista de contas mestre conectadas",
+        "lang_list_ma_empty" => "Nenhuma conta mestre conectada",
+        "lang_account_not_approve" => "Conta mestre não verificada",
+
+        "form_confirm_key" => "Chave",
+        "form_confirm_btn" => "Confirmar",
+
+        "table_th_acc" => "Conta",
+        "table_th_ip" => "IP",
+        "table_th_login" => "Último acesso",
+        "table_th_status" => "Estado",
+        "table_th_status_0" => "Necessária confirmação",
+
+        "ajax_empty_mid" => "Parâmetro não aprovado, atualize a página!",
+        "ajax_empty_key" => "O campo 'Chave' não pode estar vazio!",
+        'ajax_empty_email' => 'O campo \'Celular ou e-mail\' não pode estar vazio!',
+        'ajax_empty_password' => 'O campo \'Senha\' não pode estar vazio! ',
+    
+    ),
 );

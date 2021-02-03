@@ -68,4 +68,21 @@ return array(
 
 		 'ajax_empty_cod' => 'El campo \'Ingresa tu Código de Bonus\' no puede estar vacío!',
     ),
+    'pt' => array(
+		'btn_menu_bonus_cod' => 'Inserir Código de Bônus',
+
+		 'title_popup_lang' => 'Selecione o servidor para inserir o código de bônus: ',
+		 'title_popup_lang_btn' => 'Inserir',
+
+		 'lang_input_enter_cod' => 'Insira seu Código de Bônus',
+
+		 'lang_notfound_account' => 'Você não tem nenhuma conta do jogo neste servidor:',
+		 'lang_select_account' => 'Selecione uma conta do jogo',
+		 'lang_select_char' => 'Selecione um personagem',
+		 'lang_select_char_not_found' => 'Nenhum personagem encontrado',
+		 "ajax_empty_account_name" => 'Preencha o campo \'Selecione uma conta do jogo\'',
+		 "ajax_empty_char_name" => 'Preencha o campo \'Selecione um personagem\' field',
+
+		 'ajax_empty_cod' => 'O campo \'Insira seu Código de Bônus\' não pode estar vazio!',
+    ),
 );

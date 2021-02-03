@@ -65,4 +65,19 @@ return array (
 	
 	
 	),
+	'pt'=>array(
+	
+		'lang_title' => 'Alterar senha da Conta Mestre',
+		'label_title_input_phone_lang' => 'Confirmar Celular',
+		'label_desc_input_phone_lang' => 'Um SMS com um código de verificação será enviado para o seu número de celular! ',
+		'label_input_phone_sms_lang' => 'Código SMS',
+		'label_btn_phone_sms_lang' => 'Enviar SMS',
+		'lang_pin_label_placeholder' => 'Código PIN',
+		'lang_btn_show_code' => 'Eu tenho um código SMS.',
+		'lang_label_placeholder' => 'Digite o código SMS',
+		'lang_btn_confirm_phone' => 'Confirmar celular',
+		'lang_text_send_phone' => 'Um SMS com um código de verificação será enviado para o seu número de telefone.',
+		'lang_text_send_phone_2' => 'Um SMS foi enviado para você com um código de verificação. Digite o código recebido e clique em \'Confirmar celular\' .',
+	
+	),
 );

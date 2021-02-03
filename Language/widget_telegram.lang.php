@@ -70,4 +70,18 @@ return array(
 	
 	
     ),
+    'pt' => array(
+    
+            'lang_title' => 'Digite seu nome de usuário do Telegram',
+        'lang_text' => 'O bot do Telegram é um assistente digital que o manterá atualizado com as notícias e atualizações mais importantes. 
+            <dt>1. Entre com seu nome de usuário </dt>
+            <dd><p>Para que o bot seja capaz de identificá-lo, digite seu <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">nome de usuário< / a> no Telegram.</p></dd>
+            <dt>2. Contate o bot</dt>
+            <dd>Por fim, inicie um bate-papo com o bot: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
+            <dd>Alternativamente, você pode encontrá-lo no aplicativo pelo nome: <code>@MMORoBot</code></dd>',
+
+        'lang_btn_confirm_telegram' => 'Conectar',
+        'lang_btn_disable_telegram' => 'Desconectar',    
+    
+    ),
 );

@@ -177,7 +177,7 @@ return array(
 
 		'signin_title_not_active_login_type' => '<br> Όλες οι μέθοδοι σύνδεσης είναι απενεργοποιημένες! <br> <br> <br>',
     ),
-	 'es' => array(
+	'es' => array(
 		'signin_title_lang' => 'Bienvenido al Panel de Cuenta',
 		'signin_title_desc_lang' => 'Iniciar Sesión en el Panel de Cuenta',
 
@@ -233,5 +233,61 @@ return array(
 		'signin_ajax_login_error' => 'Ocurrió un error, por favor contacta con la administración!',
 
 		'signin_title_not_active_login_type' => '<br> Todos los métodos de inicio de sesión están deshabilitados! <br> <br> <br>',
+    ),
+    'pt' => array(
+        'signin_title_lang' => 'Bem-vindo ao Painel de Contas',
+        'signin_title_desc_lang' => 'Faça login no painel de contas',
+
+        'signin_title_input_server_lang' => 'Selecione o servidor',
+        'signin_title_input_email_lang' => 'Endereço de e-mail',
+        'signin_title_input_email_lang_placeholder' => 'Endereço de e-mail',
+
+        'signin_title_input_email_phone_lang' => 'Endereço de e-mail ou celular',
+        'signin_title_input_email_phone_lang_placeholder' => 'Endereço de e-mail ou celular',
+
+        'signin_title_input_email_phone_login_lang' => 'Celular, endereço de e-mail ou ID do jogo',
+        'signin_title_input_email_phone_login_lang_placeholder' => 'Celular, endereço de e-mail ou ID do jogo',
+
+        'signin_title_input_phone_login_lang' => 'Celular ou ID do jogo',
+        'signin_title_input_phone_login_lang_placeholder' => 'Celular ou ID do jogo',
+
+        'signin_title_input_phone_lang' => 'Celular',
+        'signin_title_input_phone_lang_placeholder' => 'Celular',
+
+        'signin_title_input_email_login_lang' => 'E-mail ou ID do jogo',
+        'signin_title_input_email__login_lang_placeholder' => 'E-mail ou ID do jogo',
+
+
+        'signin_title_input_login_lang' => 'ID do jogo',
+        'signin_title_input_login_lang_placeholder' => 'ID do jogo',
+
+
+        'signin_title_input_password_lang' => 'Senha',
+
+        'signin_title_input_captcha_lang' => 'CAPTCHA',
+
+        'signin_title_btn_remember_me_lang' => 'Lembrar',
+
+        'signin_title_social' => 'ou entrar com',
+
+        'login_menu_lang_btn_signin' => 'Login',
+        'login_menu_lang_btn_logout' => 'Sair',
+        'login_menu_lang_btn_signup' => 'Registrar',
+        'login_menu_lang_btn_reminder' => 'Redefinir senha',
+
+
+        /* AJAX */
+
+        'signin_ajax_empty_email_phone' => 'O campo \'Celular\'/\'E-mail\' deve estar preenchido!',
+        'signin_ajax_empty_password' => 'O campo \'Senha\' deve estar preenchido!',
+        'signin_ajax_empty_sid' => 'Please select a server from the \'Select Server\' list!',
+        'signin_ajax_error_captcha' => 'A verificação do CAPTCHA falhou, resolva o CAPTCHA novamente!',
+        'signin_ajax_empty_phone' => 'O campo \'Celular\' deve estar preenchido!',
+        'signin_ajax_empty_phone_code' => 'O campo \'Código do Celular\' deve estar preenchido! Entre em contato com o suporte e forneça os detalhes do erro!',
+
+        'signin_ajax_login_error_type' => 'Este método de login está desabilitado. Verifique se você está usando uma das opções disponíveis!',
+        'signin_ajax_login_error' => 'Ocorreu um erro, entre em contato com a administração!',
+
+        'signin_title_not_active_login_type' => '<br> Todos os métodos de login estão desabilitados! <br> <br> <br>',
     ),
 );

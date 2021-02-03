@@ -8,4 +8,6 @@ return array(
     ),
 	'es' => array(
     ),
+	'pt' => array(
+    ),
 );

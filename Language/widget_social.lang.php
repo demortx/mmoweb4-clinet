@@ -43,4 +43,13 @@ return array(
         'error_response_data' => 'Error al recuperar los datos del perfil!',
 
     ),
+    'pt' => array(
+
+        'lang_title' => 'Contas sociais conectadas',
+        'lang_text_no_connect' => 'Desconectado',
+
+        'social_empty_token' => 'Token não fornecido!',
+        'error_response_data' => 'Erro ao recuperar dados de perfil!',
+
+    ),
 );

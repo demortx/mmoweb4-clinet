@@ -21,11 +21,18 @@ return array(
         'login_menu_lang_btn_signup' => 'Εγγραφή',
 	
     ),
-	 'es' => array(
+	'es' => array(
 
 		'login_menu_lang_btn_signin' => 'Iniciar Sesión',
         'login_menu_lang_btn_logout' => 'Cerrar Sesión',
         'login_menu_lang_btn_signup' => 'Registrarse',
 	
+    ),
+    'pt' => array(
+
+        'login_menu_lang_btn_signin' => 'Entrar',
+        'login_menu_lang_btn_logout' => 'Sair',
+        'login_menu_lang_btn_signup' => 'Registrar',
+    
     ),
 );

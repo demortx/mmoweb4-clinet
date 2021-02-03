@@ -83,4 +83,21 @@ return array(
 	
 	
     ),
+    'pt' => array(
+
+        'lang_title_pin' => 'Configurações de código PIN',
+        'lang_title' => 'Redefinir o código PIN',
+        'lang_description_pin_settings' => 'O código PIN pode ajudar a proteger sua conta mestre de alterações indesejadas relacionadas a configurações e saldo, caso esteja comprometido. 
+                                            <br> <code> Nota: </code> <span class = "small text-muted"> Mesmo se você desabilitar o código PIN, você ainda precisará usá-lo para alterar as configurações da sua conta mestre! </span>',
+        'lang_description' => 'Para receber um novo código PIN, selecione como gostaria de recebê-lo:',
+        'lang_btn_email' => 'E-mail',
+        'lang_btn_phone' => 'SMS',
+        'lang_btn_telegram' => 'Telegram',
+        'ajax_empty_type' => 'Método de recuperação de código PIN não selecionado!',
+        'ajax_empty_pin' => 'O campo \'Código PIN\' não pode estar vazio! ',
+
+        'lang_label_placeholder_pin' => 'Digite seu \'Código PIN\' ',
+        'lang_btn_disable_pin' => 'Desativar código PIN',
+    
+    ),
 );

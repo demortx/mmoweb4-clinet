@@ -9,12 +9,14 @@ return array(
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
+            'pt' => 'Painel',
         ),
         'title_name_min' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
+            'pt' => 'Painel',
         ),
 
     ),
@@ -31,12 +33,14 @@ return array(
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
+            'pt' => 'Painel',
         ),
         'title' => array(
             'ru' => 'Главная',
             'en' => 'Dashboard',
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
+            'pt' => 'Painel',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -54,12 +58,14 @@ return array(
             'en' => 'Rankings',
             'gr' => 'Κατατάξεις',
 			'es' => 'Rankings',
+            'pt' => 'Rankings',
         ),
         'title' => array(
             'ru' => 'Рейтинг',
             'en' => 'Rankings',
             'gr' => 'Κατατάξεις',
 			'es' => 'Rankings',
+            'pt' => 'Rankings',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -76,12 +82,14 @@ return array(
             'en' => 'Store',
             'gr' => 'Μαγαζί',
 			'es' => 'Tienda',
+            'pt' => 'Loja',
         ),
         'title' => array(
             'ru' => 'Магазин',
             'en' => 'Store',
             'gr' => 'Μαγαζί',
 			'es' => 'Tienda',
+            'pt' => 'Loja',
         ),
         'function' => function(&$buttons){
             $t = filemtime(ROOT_DIR.'/Library/shop.php');
@@ -107,12 +115,14 @@ return array(
             'en' => 'Support',
             'gr' => 'Υποστήριξη',
 			'es' => 'Soporte',
+            'pt' => 'Suporte',
         ),
         'title' => array(
             'ru' => 'Поддержка',
             'en' => 'Support',
             'gr' => 'Υποστήριξη',
 			'es' => 'Soporte',
+            'pt' => 'Suporte',
         ),
         'function' => function(&$buttons){
             $count = 0;
@@ -140,12 +150,14 @@ return array(
             'en' => 'Transfer to the game',
             'gr' => 'Μεταφορά στο παιχνίδι',
 			'es' => 'Transferir al juego',
+            'pt' => 'Transferir para o jogo',
         ),
         'title' => array(
             'ru' => 'Перевести в игру',
             'en' => 'Transfer to the game',
             'gr' => 'Μεταφορά στο παιχνίδι',
 			'es' => 'Transferir al juego',
+            'pt' => 'Transferir para o jogo',
         ),
         'function' => function(&$buttons){
             if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
@@ -173,12 +185,14 @@ return array(
             'en' => 'Balance',
             'gr' => 'Υπόλοιπο',
 			'es' => 'Saldo',
+            'pt' => 'Saldo',
         ),
         'title' => array(
             'ru' => 'Баланс',
             'en' => 'Balance',
             'gr' => 'Υπόλοιπο',
 			'es' => 'Saldo',
+            'pt' => 'Saldo',
         ),
         'init' => function(&$buttons){
             //если меню горизонтальное подставляем выбор
@@ -196,6 +210,7 @@ return array(
                             'ru'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Перевести в игру',
                             'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Μεταφορά στο παιχνίδι',
 							'es'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transferir al juego',
+                            'pt' => '<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transferir para o jogo',
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -209,6 +224,7 @@ return array(
                             'ru'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Пополнить баланс',
                             'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Ανανέωση υπολοίπου',
 							'es'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recargar saldo',
+                            'pt'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recarregar saldo',
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -243,12 +259,14 @@ return array(
             'en' => 'Settings',
             'gr' => 'Ρυθμίσεις',
 			'es' => 'Ajustes',
+            'pt' => 'Ajustes',
         ),
         'title' => array(
             'ru' => 'Настройки',
             'en' => 'Settings',
             'gr' => 'Ρυθμίσεις',
 			'es' => 'Ajustes',
+            'pt' => 'Ajustes',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -264,12 +282,14 @@ return array(
             'en' => 'Market',
             'gr' => 'Αγορά',
 			'es' => 'Mercado',
+            'pt' => 'Mercado',
         ),
         'title' => array(
             'ru' => 'Рынок',
             'en' => 'Market',
             'gr' => 'Αγορά',
 			'es' => 'Mercado',
+            'pt' => 'Mercado',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -285,12 +305,14 @@ return array(
             'en' => 'Forum',
             'gr' => 'Forum',
 			'es' => 'Foro',
+            'pt' => 'Forum',
         ),
         'title' => array(
             'ru' => 'Форум',
             'en' => 'Forum',
             'gr' => 'Forum',
 			'es' => 'Foro',
+            'pt' => 'Forum',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -307,12 +329,14 @@ return array(
             'en' => 'Back to the main site',
             'gr' => 'Επιστροφή στο κεντρικό site',
 			'es' => 'Volver al sitio principal',
+            'pt' => 'Voltar à página inicial',
         ),
         'title' => array(
             'ru' => 'На сайт',
             'en' => 'Back to the main site',
             'gr' => 'Επιστροφή στο κεντρικό site',
 			'es' => 'Volver al sitio principal',
+            'pt' => 'Voltar à página inicial',
         ),
         'function' => function(&$buttons){return false;}
     ),

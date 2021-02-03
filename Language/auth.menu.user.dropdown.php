@@ -12,6 +12,7 @@ return array(
             'ru' => 'Настройки',
             'en' => 'Settings',
 			'es' => 'Ajustes',
+            'pt' => 'Ajustes',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -29,6 +30,7 @@ return array(
             'ru' => 'Выйти',
             'en' => 'Logout',
 			'es' => 'Cerrar sesión',
+            'pt' => 'Terminar sessão',
         ),
         'function' => function(&$buttons){return false;}
     ),*/

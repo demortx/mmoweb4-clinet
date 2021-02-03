@@ -47,4 +47,16 @@ return array(
         'no_select_pool' => 'No has seleccionado nada!',
 
     ),
+    'pt' => array(
+        'title_vote' => 'Avalie-nos <small>Sua opnião é importante!</small>',
+
+        'like1' => 'Ruim',
+        'like2' => 'Não muito bom',
+        'like3' => 'Bom',
+        'like4' => 'Muito bom',
+        'like5' => 'Incrível!',
+        'sb_btn' => 'Enviar',
+        'no_select_pool' => 'Você não selecionou nada!',
+
+    ),
 );

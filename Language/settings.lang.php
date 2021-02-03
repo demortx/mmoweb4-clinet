@@ -164,4 +164,39 @@ return array(
 	
 	
     ),
+    'pt' => array(
+	
+		'title_change_password_account' => 'Alterar senha da conta mestre:',
+
+		"lang_input_password_old" => "Senha atual",
+		"lang_input_password_new" => "Nova senha",
+		"lang_input_password_new_confirm" => "Digite novamente a senha",
+		"lang_input_password_pin" => "Digite o código PIN",
+		"lang_input_send" => "Método de Entrega",
+		"lang_button_change" => "Alterar a senha",
+
+		"lang_tab_title_settings" => "Configurações",
+		"lang_tab_title_settings_desc" => "Configurações da conta mestre",
+		"lang_tab_title_manager" => "Gerenciamento de conta mestre",
+		"lang_tab_title_manager_desc" => "Gerenciar contas mestras",
+		"lang_tab_title_logs" => "Registros de ação",
+        "lang_tab_title_invoice" => "Faturas",
+        "lang_tab_title_account_hide" => "Contas ocultas",
+        "lang_tab_title_account_hide_desc" => "Gerenciamento de contas ocultas",
+
+		"lang_tab_title_logs_desc" => "Registro de atividades recentes",
+		"lang_tab_logs_th_action" => "Ação",
+		"lang_tab_logs_th_date" => "Data",
+        "lang_tab_invoice_th_payment" => "Método de pagamento",
+        "lang_tab_invoice_th_sum" => "Quantidade",
+
+		'title_forgot_password_account' => 'Recuperação de senha da conta mestre:',
+		"lang_button_forgot" => "Redefinir senha",
+
+		// AJAX
+		'ajax_empty_account' => 'A conta não pode ser encontrada! Por favor, atualize a página!',
+	
+	
+	
+    ),
 );

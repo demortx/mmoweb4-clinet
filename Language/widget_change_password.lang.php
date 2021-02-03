@@ -64,4 +64,17 @@ return array(
         "ajax_empty_password_new" => 'El campo \'Nueva contraseña\' no puede estar vacío!',
         "ajax_empty_password_new_confirm" => 'El campo \'Re-ingresa contraseña\' no puede estar vacío!',
     ),
+    'pt' => array(
+
+        "lang_title" => 'Alterar senha da Conta Mestre',
+        "lang_input_password_old" => "Senha atual",
+        "lang_input_password_new" => "Nova senha",
+        "lang_input_password_new_confirm" => "Digite a senha novamente",
+        "lang_input_password_pin" => "Digite seu código PIN",
+        "lang_button_change" => "Alterar senha",
+
+        "ajax_empty_password_old" => 'O campo \'Senha atual\' não pode estar vazio! ',
+        "ajax_empty_password_new" => 'O campo \'Nova senha\' não pode estar vazio!',
+        "ajax_empty_password_new_confirm" => 'O campo \'Digite a senha novamente\' não pode estar vazio!',
+    ),
 );

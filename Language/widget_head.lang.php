@@ -172,4 +172,39 @@ return array(
         'lang_btn_bc_desc' => 'Código de Bonus',
         'lang_btn_bc_open' => 'Canjear',
     ),
+    'pt' => array(
+
+        'show_info' => array(
+            'Precisa de ajuda? Contate o suporte!',
+            'Tem perguntas relacionadas ao jogo? Visite os fóruns!',
+            'Fique sabendo sobre as promoções que estão acontecendo agora!',
+            'Assine a nossa newsletter!',
+            'Certamente há algo que você gostaria de compartilhar com o mundo! Discuta isso nos fóruns!',
+            'Algo não está claro no jogo? Então visite nosso Wiki!',
+        ),
+
+        'lang_account_ban' => 'Sua conta mestre foi banida.',
+        'lang_title_master_account' => 'Conta Mestre',
+        'lang_btn_go_settings' => 'Configurações',
+        'lang_btn_go_check_email' => 'Confirmar e-mail',
+        'lang_btn_go_check_phone' => 'Confirmar celular',
+        'lang_btn_last_enter' => 'Último acesso',
+        'lang_btn_reset_pin' => 'Resetar código PIN',
+
+        'lang_title_warehouse' => 'Baú',
+        'lang_btn_go_warehouse' => 'Abrir baú',
+        'lang_btn_go_info_warehouse' => 'Mais informações',
+
+        'lang_title_balance' => 'Saldo',
+        'lang_btn_go_transfer_game' => 'Transferir para o jogo',
+        'lang_btn_go_enroll' => 'Recarga de saldo',
+        'lang_btn_go_refresh' => 'Atualizar',
+
+        'lang_title_sale' => 'Desconto',
+        'lang_btn_go_info_sale' => 'Detalhes do desconto',
+
+        'lang_btn_bc_title' => 'Código de bônus',
+        'lang_btn_bc_desc' => 'Código de bônus',
+        'lang_btn_bc_open' => 'Resgatar',
+    ),
 );

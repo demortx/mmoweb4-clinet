@@ -121,4 +121,28 @@ return array(
         "donate_ajax_empty_type_id" => 'No se seleccionó ninguna moneda del juego!',
 
     ),
+    'pt' => array(
+
+        "donate_title" => 'Recarregar saldo',
+        "donate_input_title_sum" => 'Quantia',
+        "donate_input_title_enter_sum" => 'Especifique a quantidade',
+        "donate_span_title_bonus" => 'Bonus',
+        "donate_title_pay" => 'Escolha um método de pagamento:',
+        "donate_title_pay_btn" => 'Fazer recarga',
+        "donate_title_pay_bonus_item" => 'Itens de presente',
+
+        "donate_ajax_empty_sum" => 'O campo \'Quantia\' não pode estar vazio! ',
+        "donate_ajax_empty_payment_method" => 'Escolha um método de pagamento!',
+
+        //Top-up balance not immediately authorized on the character
+        "d_title_valuta" => 'Moeda do jogo',
+        "d_recipient_char" => 'Especifique o nome do personagem',
+        "d_recipient_account" => 'Especifique um ID de conta de jogo',
+        "d_recipient_count" => 'Especifique a quantidade',
+        'lang_notfound_type_buy' => 'A moeda do jogo para este servidor ainda não foi configurada!',
+
+        "donate_ajax_empty_recipient" => 'O campo do destinatário não pode estar vazio!',
+        "donate_ajax_empty_type_id" => 'Nenhuma moeda do jogo selecionada!',
+
+    ),
 );

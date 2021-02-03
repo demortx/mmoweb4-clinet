@@ -44,4 +44,13 @@ return array(
 
 
     ),
+    'pt' => array(
+
+        'lang_list_hide_account' => 'Contas do jogo ocultas',
+        'lang_list_hide_account_empty' => 'Você não tem contas do jogo ocultas',
+        'text_hide_account_info' => 'Lista de contas do jogo que foram ocultas da página inicial. Você pode vê-las na lista de todas as contas de jogo na página principal de sua Conta Principal. ',
+
+
+
+    ),
 );

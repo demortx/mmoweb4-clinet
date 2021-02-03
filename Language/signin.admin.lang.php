@@ -85,4 +85,21 @@ return array(
 	
 	
     ),
+    'pt' => array(
+
+        'signin_title_desc_lang' => 'Login no Painel de Admin',
+        'signin_title_input_email_lang' => 'Login',
+        'signin_title_input_email_lang_placeholder' => 'Login',
+        'signin_title_input_password_lang' => 'Senha',
+        'login_menu_lang_btn_signin' => 'Entrar',
+        'login_menu_lang_btn_logout' => 'Sair',
+
+        /*         AJAX          */
+
+        'signin_ajax_success_login' => 'Você fez login com sucesso!',
+        'signin_ajax_error_login' => 'Login ou senha errados!',
+        'parser_ajax_success' => 'Todas as alterações foram salvas!',
+        'parser_ajax_error' => 'O formato do arquivo não foi transferido!',
+        'parser_ajax_error_files' => 'Erro ao analisar arquivos!',
+    ),
 );

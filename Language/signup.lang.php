@@ -377,4 +377,90 @@ return array(
 		'signup_ajax_sms_phone_empty' => 'El campo \'Móvil\' no puede estar vacío!',	
 	
     ),
+    'pt' => array(
+
+		'signup_title_lang' => 'Bem-vindo ao Painel de Contas',
+		'signup_title_desc_lang' => 'Crie uma nova conta mestre',
+
+		'signup_title_tab_email_lang' => 'Endereço de E-mail',
+		'signup_title_tab_phone_lang' => 'Celular',
+
+		'signup_title_input_login_lang' => 'ID do jogo',
+		'signup_title_input_server_lang' => 'Selecionar servidor',
+		'signup_title_input_prefix_lang' => 'Prefixo (será adicionado antes do seu ID)',
+		'signup_title_input_email_lang' => 'E-mail',
+		'signup_desc_input_email_lang' => 'Um email de confirmação será enviado ao endereço de email especificado.',
+		'signup_title_btn_add_email_lang' => 'Adicionar e-mail',
+		'signup_title_btn_add_login_lang' => 'Crie a primeira conta do jogo',
+		'signup_title_btn_hide_email_lang' => 'Esconder',
+		'signup_desc_input_email_phone_lang' => 'Um email de confirmação será enviado ao endereço de email especificado.',
+		'signup_title_input_password_lang' => 'Senha',
+		'signup_title_input_password_confirm_lang' => 'Digite novamente a senha',
+
+		'signup_title_input_phone_lang' => 'Celular',
+		'signup_desc_input_phone_lang' => 'Um SMS com um código será enviado para o número de celular especificado.',
+		'signup_input_phone_sms_lang' => 'Código SMS',
+		'signup_btn_phone_sms_lang' => 'Enviar SMS',
+
+		'signup_title_input_terms_lang' => 'Eu li e aceito o Acordo do Usuário',
+		'signup_title_input_subscribe_lang' => 'Eu gostaria de receber e-mails promocionais',
+		'signup_title_btn_submit_lang' => 'Criar conta mestre',
+
+		'signup_title_btn_sign_in_lang' => 'Entrar',
+		'signup_title_btn_read_terms_lang' => 'Leia o Acordo do Usuário ',
+
+		'signup_title_input_captcha_lang' => 'CAPTCHA',
+
+		'signup_title_not_active_reg_type' => '<br> Todos os métodos de registro estão desabilitados! <br> <br> <br>',
+
+		/* AJAX */
+		'signup_ajax_not_found_type_reg' => 'Erro de Registo. Este método de registro não está disponível para esta conta. Por favor, atualize a página! ',
+		'signup_ajax_error_captcha' => 'A verificação CAPTCHA falhou! Resolva o CAPTCHA novamente!',
+		'signup_ajax_not_found_prefix' => 'Prefixo selecionado inválido! Por favor, atualize a página!',
+		'signup_ajax_empty_login' => 'O campo \'ID do jogo\' não pode estar vazio! ',
+		'signup_ajax_empty_sid' => 'Selecione um servidor da lista \'Selecionar Servidor\'!',
+		'signup_ajax_missing_sid' => 'Servidor inválido selecionado na lista \'Selecionar servidor\'! Por favor, atualize a página!',
+		'signup_ajax_empty_password' => 'O campo \'Senha\' deve ser preenchido!',
+		'signup_ajax_empty_email' => 'O campo \'E-mail\' deve ser preenchido!',
+		'signup_ajax_empty_phone' => 'O campo \'Celular\' deve ser preenchido!',
+		'signup_ajax_empty_phone_code' => 'O campo \'Código de Celular\' deve ser preenchido! Entre em contato com o suporte e forneça os detalhes do erro!',
+		'signup_ajax_empty_sms_cod' => 'O campo \'Código SMS\' deve ser preenchido! Entre em contato com o suporte e forneça os detalhes do erro!',
+		'signup_ajax_empty_terms' => 'Você deve aceitar o Acordo do Usuário!',
+
+		/* signup_activation.tpl */
+
+		'signup_activation_title' => 'Ative sua conta mestre',
+		'signup_activation_text_1' => 'Um e-mail com instruções sobre como completar seu cadastro',
+		'signup_activation_text_2' => 'foi enviado para o seu endereço de e-mail.',
+		'signup_activation_text_desc_1' => 'Verifique o link no e-mail para ativar sua conta mestre.',
+		'signup_activation_text_desc_2' => 'Se você não visualizar o e-mail, verifique sua pasta de spam.',
+
+		/* signup_completed.tpl */
+
+		'signup_completed_title' => 'Conta mestre ativada',
+		'signup_completed_desc' => 'ATENÇÃO: <br> Você acabou de criar uma conta mestre. Cada conta mestre pode conter até 10 contas de jogo que podem ser criadas por meio do painel da conta mestre.',
+
+		'signup_completed_prefix' => 'Prefixo da sua conta do jogo:',
+		'signup_completed_login' => 'ID da sua conta do jogo:',
+		'signup_completed_email' => 'Endereço de e-mail da sua conta mestre:',
+		'signup_completed_phone' => 'Número do celular da sua conta mestre:',
+		'signup_completed_pin' => 'Código PIN da sua conta mestre:',
+		'signup_completed_password' => 'Senha da sua conta mestre:',
+		'signup_completed_password_and_game' => 'Sua senha do jogo e da conta mestre:',
+		'signup_completed_subscribe' => 'Consentimento para receber e-mails promocionais:',
+
+		'signup_completed_text_1' => 'Um email com os detalhes do registro ',
+		'signup_completed_text_2' => 'foi enviado para o seu endereço de e-mail.',
+		'signup_completed_desc_2' => 'Se você não vir o e-mail, verifique sua pasta de spam.',
+		'signup_completed_desc_3' => 'NÃO compartilhe as informações da sua conta com outras pessoas. ',
+        'signup_completed_save_data' => 'Salve em um arquivo .txt.',
+
+		/* signup_code.tpl */
+
+		/* sms_send */
+		'signup_ajax_sms_disable' => 'O registro de SMS está desabilitado, atualize a página!',
+		'signup_ajax_sms_phone_code_empty' => 'Nenhum código de país selecionado!',
+		'signup_ajax_sms_phone_empty' => 'O campo \'Celular\' não pode estar vazio!',	
+	
+    ),
 );

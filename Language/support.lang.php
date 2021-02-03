@@ -405,4 +405,95 @@ return array(
 	
 	
     ),
+    'pt' => array(
+    
+        'support_ajax_empty_tid' => 'ID de ticket inválido especificado ',
+        'support_ajax_empty_category' => 'Você precisa selecionar um tópico de ticket',
+        'support_ajax_empty_details' => 'Você precisa fornecer os detalhes do ticket',
+        'support_ajax_empty_title' => 'Por favor insira um assunto válido',
+        'support_ajax_empty_message' => 'Por favor insira uma mensagem válida',
+
+        'title_awaiting_user' => 'Esperando resposta',
+        'title_awaiting_admin' => 'Sendo processado',
+        'title_closed' => 'Fechado',
+        'title_msg_empty' => 'Sem tickets',
+
+        'tabs_all_ticket' => 'Todos os tickets',
+        'tabs_create_ticket' => 'Criar um ticket',
+
+        'btn_create_ticket_1' => 'Outro',
+        'btn_create_ticket_2' => 'Outros problemas e questões',
+
+        'btn_create_donate_1' => 'Problemas de doação',
+        'btn_create_donate_2' => 'Questões relacionadas a doações',
+
+        'btn_create_lost_1' => 'Perda de item',
+        'btn_create_lost_2' => 'Problemas relacionados à perda de itens do jogo',
+
+        'title_create_ticket' => 'Criar um novo ticket',
+
+        'title_create_category_6' => 'Perda de item',
+        'title_create_category_7' => 'Denúncia de Bot',
+        'title_create_category_8' => 'Problemas com recargas de saldo',
+
+        'form_title_category' => 'Tópico',
+        'form_title_account' => 'Conta do jogo',
+        'form_title_char' => 'Personagem',
+        'form_title_char_select' => 'Escolha o personagem',
+        'error_account_char_not_found' => 'Não há personagens nesta conta de jogo.',
+        'form_title_title' => 'Assunto',
+        'form_title_title_text' => 'Especifique o assunto do seu ticket',
+        'form_title_title_files' => 'Anexar imagens
+            <div style="font-size: 0.8em;">O tamanho total do arquivo não pode exceder 2&nbsp;MB</div>
+            <div style="font-size: 0.8em;">Formatos JPG, GIF ou PNG aceitos</div>',
+
+        //Пропал предмет
+        'form_title_sharing' => 'Outros jogadores tiveram acesso à sua conta?',
+        'form_title_yse' => 'Sim',
+        'form_title_yse_text' => 'ATENÇÃO: Se outros jogadores intencionalmente tiveram acesso à sua conta, os itens roubados NÃO serão recuperados. Em casos como esse, só é possível conduzir uma investigação e fornecer detalhes sobre quem acessou e quando acessou sua conta. Este é um serviço pago e o preço é por personagem.',
+        'form_title_no' => 'Não',
+        'form_title_no_text' => 'ATENÇÃO: Se após a investigação for determinado que outros jogadores intencionalmente tiveram acesso à sua conta, a resposta intencionalmente errada fornecida a esta questão será considerada uma tentativa de enganar a administração. Neste caso, sua conta será banida de acordo com o Acordo de Usuário estabelecido.',
+        'form_title_protection' => 'Você habilitou o código PIN?',
+        'form_title_loss' => 'Data estimada de perda do item',
+        'form_title_contact' => 'Método de comunicação',
+        'form_title_message_loss' => 'Especifique uma lista de itens perdidos',
+        'form_title_message_loss_desc' => 'Minha Sword of Miracles foi levada!',
+
+        //проблема с платежом
+        'form_title_payment_method' => 'Escolha um método de pagamento',
+        'form_title_transactions' => 'Pedido ou número de transação',
+        'form_title_pay_date' => 'Data do pagamento',
+        'form_title_pay_time' => 'Hora do pagamento',
+        'form_title_sum' => 'Valor de Pagamento',
+        'form_title_message_comment' => 'Detalhes',
+        'form_title_message_comment_text' => 'Detalhes...',
+
+        //найден бот
+        'form_title_date' => 'Data de detecção suspeita',
+        'form_title_time' => 'Hora',
+        'form_title_bot_name' => 'Nomes de personagens suspeitos',
+        'form_title_message_bot' => 'Detalhes, link para capturas de tela/vídeos',
+
+        'form_title_message' => 'Mensagem',
+        'form_title_message_text' => 'Detalhes da pergunta/problema...',
+
+
+        'form_title_send_btn' => 'Enviar',
+
+
+        'category' => array(
+            //0 => 'Choose subject',
+            1 => 'Questões gerais',
+            2 => 'Website, Forum, Conta Mestre',
+            3 => 'Erros no cliente do jogo',
+            4 => 'Bugs do jogo',
+            5 => 'Banimento de conta/personagem ',
+            6 => 'Perda de item',
+            7 => 'Denúncia de bot',
+            8 => 'Problemas com recargas de saldo',
+            9 => 'Outros',
+        ),
+    
+    
+    ),
 );

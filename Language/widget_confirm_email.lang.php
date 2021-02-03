@@ -113,4 +113,27 @@ return array(
 	
 	
     ),
+    'pt' => array(
+
+        'lang_title' => 'Confirmar e-mail!',
+        'lang_btn_send_email' => 'Enviar e-mail de verificação ',
+        'lang_text_send_email' => 'Você receberá um e-mail com um código de verificação. Use o código do e-mail para confirmar seu e-mail.',
+        'lang_label_input' => 'Código de verificação',
+        'lang_label_placeholder' => 'Digite o código de verificação',
+        'lang_btn_confirm_email' => 'Confirmar e-mail ',
+        'lang_desc_confirm' => 'Um endereço de e-mail confirmado permite que você aproveite todas as funções de sua conta principal.',
+
+        'lang_btn_show_code' => 'Eu tenho um código de verificação',
+
+        //ajax
+        'empty_cod_confirm' => 'O campo do código de verificação não pode estar vazio!',
+        'empty_email' => 'O campo do endereço de email não pode estar vazio!',
+
+        //bind_email
+        'lang_title_bind_email' => 'Email associado',
+        'lang_desc_bind_email' => 'Associar um endereço de e-mail permite que você aproveite todas as funções de sua conta principal.',
+        'lang_pin_label_placeholder' => 'Código PIN',
+        'lang_btn_send_email_bind_email' => 'Enviar código',    
+    
+    ),
 );

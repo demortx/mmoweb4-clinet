@@ -22,6 +22,10 @@ return array (
                 'name' => 'Гривны',
                 'icon' => '<span class="font-w700 pl-5">₴</span>',
             ),
+            'BRL' => array(
+                'name' => 'BRL',
+                'icon' => '<span class="font-w700 pl-5">R$</span>',
+            ),
 
         ),
     ),
@@ -43,6 +47,10 @@ return array (
                 'name' => 'Гривны',
                 'icon' => '<span class="font-w700 pl-5">₴</span>',
             ),
+            'BRL' => array(
+                'name' => 'BRL',
+                'icon' => '<span class="font-w700 pl-5">R$</span>',
+            ),
 
         ),
 	),
@@ -63,6 +71,35 @@ return array (
             'UAH' => array(
                 'name' => 'Гривны',
                 'icon' => '<span class="font-w700 pl-5">₴</span>',
+            ),
+            'BRL' => array(
+                'name' => 'BRL',
+                'icon' => '<span class="font-w700 pl-5">R$</span>',
+            ),
+
+        ),
+    ),
+    'pt' => array (
+        'course_cfg' => array(
+            'USD' => array(
+                'name' => 'Dólar',
+                'icon' => '<i class="fa fa-dollar pl-5"></i>',
+                ),
+            'RUB' => array(
+                'name' => 'Рубли',
+                'icon' => '<i class="fa fa-rub pl-5"></i>',
+            ),
+            'EUR' => array(
+                'name' => 'Euro',
+                'icon' => '<i class="fa fa-euro pl-5"></i>',
+            ),
+            'UAH' => array(
+                'name' => 'Гривны',
+                'icon' => '<span class="font-w700 pl-5">₴</span>',
+            ),
+            'BRL' => array(
+                'name' => 'Real',
+                'icon' => '<span class="font-w700 pl-5">R$</span>',
             ),
 
         ),

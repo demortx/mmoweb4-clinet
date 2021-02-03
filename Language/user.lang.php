@@ -117,4 +117,30 @@ return array(
         'lang_popup_info_last_login' => 'Último Inicio de Sesión',
         'lang_popup_info_last_ip' => 'Última IP',
     ),
+    'pt' => array(
+    
+        'lang_w_title_tooltip' => 'Contas do jogo',
+        'lang_w_title_chars_list' => 'Lista de contas do jogo no servidor:',
+        'lang_w_btn_change_password' => 'Alterar a senha',
+        'lang_w_btn_forgot_password' => 'Restaurar senha',
+        'lang_w_btn_hide_account' => 'Esconder a conta do jogo',
+        'lang_w_btn_buy' => 'Comprar',
+        'lang_w_notfound_chars' => 'Não há personagens nesta conta do jogo. ',
+        'lang_w_notfound_account' => 'Você não tem nenhuma conta do jogo neste servidor. Crie uma <i class="fa fa-level-up"></i>',
+        'lang_w_refresh_account' => 'Atualizar lista de personagens',
+        'lang_w_exist_hide_acc' => 'Existem contas do jogo ocultas',
+
+        'title_btn_open_popup_lang' => 'Crie uma conta do jogo',
+        'title_popup_lang' => 'Crie uma conta de jogo no servidor: ',
+        'title_input_login_lang' => 'ID do jogo',
+        'title_input_prefix_lang' => 'Prefixo (será adicionado antes do seu ID do jogo)',
+        'title_input_password_lang' => 'Senha',
+        'lang_button_create_acc' => 'Criar conta do jogo',
+
+        'lang_popup_info_status' => 'Status',
+        'lang_popup_info_active' => 'Ativo',
+        'lang_popup_info_banned' => 'Banido',
+        'lang_popup_info_last_login' => 'Último acesso',
+        'lang_popup_info_last_ip' => 'Último IP',
+    ),
 );

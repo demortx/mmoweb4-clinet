@@ -20,4 +20,8 @@ return array (
 		'throttle_error' => 'Número de consultas superado, inténtalo nuevamente más tarde!',
 		'session_lost' => 'Tu sesión de perfil ha expirado, por favor inicia sesión nuevamente!',
 	),
+	'pt' => array (
+		'throttle_error' => 'Excedido o número de consultas, tente novamente mais tarde!',
+		'session_lost' => 'Sua sessão expirou, por favor entre novamente!',
+	),
 );

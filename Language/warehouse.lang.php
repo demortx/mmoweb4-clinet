@@ -91,4 +91,23 @@ return array(
 	
 	
     ),
+    'pt' => array(
+    
+        'title_lang' => 'Baú no Server: ',
+        'title_select_wh' => 'Selecione um item',
+        'title_wh_empty' => 'Seu baú está vazio',
+
+        'title_select_account' => 'Selecione uma conta do jogo',
+        'title_select_account_empty' => 'Você não tem contas do jogo neste servidor ',
+        'title_select_char' => 'Selecione um personagem',
+        'title_select_char_empty' => 'Nenhum personagem encontrado',
+        'title_btn_send_item' => 'Transferir para o personagem selecionado',
+
+        'title_tab_char_name' => 'Por nome do personagem',
+        'title_tab_char_name_desc' => 'Transfira um item para outro personagem. Insira o nome do personagem para o qual deseja transferir o item.',
+
+        'ajax_empty_wh_id' => 'Você não selecionou um item!',
+        'ajax_empty_wh_char_name' => 'Você não selecionou um personagem para o qual transferir o item!',
+      
+    ),
 );

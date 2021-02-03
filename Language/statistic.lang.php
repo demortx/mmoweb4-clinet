@@ -121,4 +121,32 @@ return array(
 	
 	
     ),
+    'pt' => array(
+
+        'lang_page' => array(
+            'top_pvp'          => 'Top PvP',
+            'top_pk'           => 'Top PK',
+            'top_exp'          => 'Top EXP',
+            'top_clan'         => 'Top Clan',
+            'top_clan_pvp'     => 'Top Clan PvP',
+            'top_ally'         => 'Top Alliance',
+            'top_castle'       => 'Castelos',
+            'top_clanhols'     => 'Clan Halls',
+            'top_hero'         => 'Heróis',
+            'top_statistic'    => 'Estatísticas Gerais',
+            'online_history'   => 'Histórico Online',
+            'top_rank'         => 'Top Rank',
+            'top_pkw'          => 'Top Vitórias',
+            'top_pkt'          => 'Top Lutas',
+        ),
+        'lang_history'=> array(
+            'online' => 'Online',
+            'online_multiple' => 'Online',
+            'characters' => 'Personagens',
+            'clan' => 'Clans',
+        ),
+
+        'server_rating_empty' => 'Nenhuma informação disponível ainda. Por favor, volte mais tarde.',  
+    
+    ),
 );

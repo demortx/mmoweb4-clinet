@@ -78,4 +78,22 @@ return array(
         'invalid_folder_path' => 'La carpeta de subido no existe o no se puede escribir',
         'default' => 'Error de subida desconocido',
     ),
+    'pt' => array(
+
+        UPLOAD_ERR_INI_SIZE => 'O arquivo carregado excede o upload_max_filesize informado no php.ini',
+        UPLOAD_ERR_FORM_SIZE => 'O arquivo carregado excede o MAX_FILE_SIZE informado no form HTML',
+        UPLOAD_ERR_PARTIAL => 'O arquivo carregado foi parcialmente enviado',
+        UPLOAD_ERR_NO_FILE => 'Nenhum arquivo carregado',
+        UPLOAD_ERR_NO_TMP_DIR => 'Pasta temporária não encontrada',
+        UPLOAD_ERR_CANT_WRITE => 'Falha ao escrever arquivo no disco',
+        UPLOAD_ERR_EXTENSION => 'Envio de arquivo bloqueado por extensão',
+        'accepted_file_types' => 'O tipo de arquivo não é aceito por ',
+        'file_uploads' => 'Opção de envio de arquivos está desabilitada em php.ini',
+        'max_file_size' => ' é muito pesado',
+        'max_files_size' => 'Os arquivos são muito grandes',
+        'max_number_of_files' => 'O número máximo de arquivos foi excedido',
+        'required_and_no_file' => 'Nenhum arquivo selecionado. Por favor, selecione um.',
+        'invalid_folder_path' => 'A pasta upload não existe ou não pode ser editada',
+        'default' => 'Erro de envio desconhecido',
+    ),
 );
