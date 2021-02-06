@@ -40,7 +40,8 @@ class SiteComponents
 
         $news_count = get_cache('news_count', true);
         if ($news_count == false) {
-            $news_count = self::db()->query('SELECT COUNT(*) AS count_all FROM `mw_news` WHERE publish=1;')->fetch(\PDO::FETCH_ASSOC)['count_all'];
+            $db = self::db();
+            $news_count = $db->query('SELECT COUNT(*) AS count_all FROM `mw_news` WHERE publish=1;')->fetch(\PDO::FETCH_ASSOC)['count_all'];
             set_cache('news_count', $news_count, CACHE_NEWS);
         }
 
@@ -48,7 +49,8 @@ class SiteComponents
 
             $data = get_cache('news_' . $page . '_' . $count, false, true);
             if ($data === false OR isset($data['cache_end'])) {
-                $news_list = self::db()->query('SELECT * FROM `mw_news` WHERE publish=1 ORDER BY fixed DESC, `date` DESC LIMIT ' . intval($count) . ' OFFSET ' . ($page * $count) . ';')
+                $db = self::db();
+                $news_list = $db->query('SELECT * FROM `mw_news` WHERE publish=1 ORDER BY fixed DESC, `date` DESC LIMIT ' . intval($count) . ' OFFSET ' . ($page * $count) . ';')
                     ->fetchAll(\PDO::FETCH_ASSOC);
                 if (is_array($news_list)) {
                     set_cache('news_' . $page . '_' . $count, $news_list, CACHE_NEWS);
@@ -489,8 +491,8 @@ class SiteComponents
             if ($data === false OR isset($data['cache_end'])) {
                 set_cache('broadcast_c_'.$count, $data['data'], CACHE_STREAM);
                 self::streamUpdate();
-
-                $stream = self::db()->query('SELECT * FROM `mw_broadcast` WHERE publish=1 AND online=1 LIMIT ' . intval($count) . ';')->fetchAll(\PDO::FETCH_ASSOC);
+                $db = self::db();
+                $stream = $db->query('SELECT * FROM `mw_broadcast` WHERE publish=1 AND online=1 LIMIT ' . intval($count) . ';')->fetchAll(\PDO::FETCH_ASSOC);
 
                 if (is_array($stream) AND count($stream)) {
                     set_cache('broadcast_c_'.$count, $stream, CACHE_STREAM);
@@ -559,7 +561,8 @@ class SiteComponents
         $data = get_cache('iblock_'.$ikey.'_'.$lang.'_'.$count, false, true);
         if ($data === false OR isset($data['cache_end'])) {
             $iblock = array();
-            $iblock_main = self::db()->query('SELECT tpl FROM `mw_iblock` WHERE publish=1 AND ikey='.self::db()->quote($ikey).';');
+            $db = self::db();
+            $iblock_main = $db->query('SELECT tpl FROM `mw_iblock` WHERE publish=1 AND ikey='.self::db()->quote($ikey).';');
 
             if (!$iblock_main)
                 return 'IBlock '.$ikey.' not found from DB';
@@ -568,7 +571,7 @@ class SiteComponents
             if(isset($iblock_main['tpl'])){
                 $iblock['tpl'] = $iblock_main['tpl'];
                 unset($iblock_main);
-                $content_list = self::db()->query('SELECT json,`date` FROM `mw_iblock_content` WHERE publish=1 AND ikey='.self::db()->quote($ikey).' ORDER BY `date` DESC LIMIT ' . intval($count) . ';')->fetchAll(\PDO::FETCH_ASSOC);
+                $content_list = $db->query('SELECT json,`date` FROM `mw_iblock_content` WHERE publish=1 AND ikey='.$db->quote($ikey).' ORDER BY `date` DESC LIMIT ' . intval($count) . ';')->fetchAll(\PDO::FETCH_ASSOC);
                 foreach ($content_list as &$con){
                     $temp_date = $con['date'];
                     $con['json'] = json_decode($con['json'], true);

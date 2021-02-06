@@ -713,7 +713,7 @@ return array(
         'widget_sell_reminder_desc_forum_url' => '#',
         'widget_sell_reminder_alert' => 'Aviso!',
         'widget_sell_reminder_alert_desc' => 'O personagem deve estar offline ao listar seus itens no Mercado',
-        'widget_sell_character_reminder_alert_desc' => 'O personagem deve estar offline antes de ser listado no Market',
+        'widget_sell_character_reminder_alert_desc' => 'O personagem deve estar offline antes de ser listado no market',
         'widget_sell_rules' => 'Concordo com',
         'widget_sell_rules_rules' => 'os Termos de Serviço',
         'widget_sell_rules_url' => '#',
