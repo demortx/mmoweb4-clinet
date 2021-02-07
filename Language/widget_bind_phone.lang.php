@@ -16,6 +16,9 @@ return array (
 		'lang_btn_confirm_phone' => 'Подтвердить Телефон',
 		'lang_text_send_phone' => 'Вам будет отправлено SmS с кодом подтверждения на указанный Вами телефон.',
 		'lang_text_send_phone_2' => 'Вам было отправлено SmS с кодом подтверждения, укажите полученый код и нажмите «Подтвердить Телефон»',
+
+        'lang_text_settings_phone' => 'Этот номер телефона привязан к мастер аккаунту',
+        'label_btn_phone_del_lang' => 'Удалить',
 	),
 	'en'=>array(
 	
@@ -30,8 +33,9 @@ return array (
 		'lang_btn_confirm_phone' => 'Confirm Mobile',
 		'lang_text_send_phone' => 'An SMS with a verification code will be sent to your phone number.',
 		'lang_text_send_phone_2' => 'An SMS was sent to you with a verification code. Enter the code received and click on \'Confirm Mobile\'.',
-	
-	
+
+        'lang_text_settings_phone' => 'This phone number is linked to the master account',
+        'label_btn_phone_del_lang' => 'Delete',
 	),
 	'gr'=>array(
 	
@@ -46,8 +50,9 @@ return array (
 		'lang_btn_confirm_phone' => 'Επιβεβαίωση Αριθμού Κινητού',
 		'lang_text_send_phone' => 'Ένας κωδικός επαλήθευσης θα σταλεί στον αριθμό του κινητού σας μέσω SMS.',
 		'lang_text_send_phone_2' => 'Σας έχει σταλεί ένας κωδικός επαλήθευσης μέσω SMS. Εισάγετε τον κωδικό που λάβατε και πατήστε το κουμπί «Επιβεβαίωση Αριθμού Κινητού».',
-	
-	
+
+        'lang_text_settings_phone' => 'Αυτός ο αριθμός τηλεφώνου είναι συνδεδεμένος με τον κύριο λογαριασμό',
+        'label_btn_phone_del_lang' => 'Διαγράφω',
 	),
 	'es'=>array(
 	
@@ -62,8 +67,9 @@ return array (
 		'lang_btn_confirm_phone' => 'Confirmar móvil',
 		'lang_text_send_phone' => 'Un SMS con un código de verificación será enviado a tu número de móvil.',
 		'lang_text_send_phone_2' => 'Se te envió un SMS con un código de verificación. Ingresa el código recibido y haz click en \'Confirmar Móvil\'.',
-	
-	
+
+        'lang_text_settings_phone' => 'Este número de teléfono está vinculado a la cuenta maestra',
+        'label_btn_phone_del_lang' => 'Eliminar',
 	),
 	'pt'=>array(
 	
@@ -78,6 +84,8 @@ return array (
 		'lang_btn_confirm_phone' => 'Confirmar celular',
 		'lang_text_send_phone' => 'Um SMS com um código de verificação será enviado para o seu número de telefone.',
 		'lang_text_send_phone_2' => 'Um SMS foi enviado para você com um código de verificação. Digite o código recebido e clique em \'Confirmar celular\' .',
-	
+
+        'lang_text_settings_phone' => 'Este número de telefone está vinculado à conta mestre',
+        'label_btn_phone_del_lang' => 'Excluir',
 	),
 );

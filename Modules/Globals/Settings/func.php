@@ -90,7 +90,12 @@ class func
         if (isset(get_instance()->config['cabinet']['signin_type']['phone'])) {
             return get_instance()->fenom->fetch(
                 get_tpl_file('widget_bind_phone.tpl', get_class($this->this_main)),
-                get_lang('widget_bind_phone.lang')
+                array_merge(
+                    get_lang('widget_bind_phone.lang'),
+                    array(
+                        'delete_bind_phone' => isset(get_instance()->config['cabinet']['delete_bind_phone']) ? get_instance()->config['cabinet']['delete_bind_phone'] : false
+                    )
+                )
             );
         }else
             return '';
@@ -1034,6 +1039,62 @@ class func
         }else
             $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
 
+
+        return $send;
+
+
+    }
+
+    public function ajax_delete_bind_phone(){
+
+        if (isset(get_instance()->config['cabinet']['delete_bind_phone']) AND get_instance()->config['cabinet']['delete_bind_phone']) {
+
+            $api = new GlobalApi();
+            $vars = array('bind_phone' => 'delete');
+
+            if (get_instance()->session->isLogin()) {
+
+                if (check_pin("pins_delete_bind_phone")) {
+                    //Проверка сервера
+                    if (!isset($_POST['pin']) or empty($_POST['pin']))
+                        return get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger();
+                    else
+                        $vars["pin"] = $_POST['pin'];
+                }
+
+
+                $response = $api->delete_bind_phone($vars);
+
+                if ($response['ok']) {
+
+                    if (isset($response['error'])) {
+                        if (isset($response["response"]->input))
+                            $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                        else
+                            $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                    } else {
+
+                        if (isset($response["response"]->data->master_account)) {
+
+                            $data = json_encode($response["response"]->data);
+                            $data = json_decode($data, true);
+                            get_instance()->session->updateSessionDB($data);
+
+                            $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/settings')->success();
+
+                        } else
+                            $send = get_instance()->ajaxmsg->notify(get_lang('widget_social.lang')['error_response_data'])->danger();
+                    }
+
+                } else {
+                    $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+                }
+
+            } else
+                $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+        }else
+            $send = get_instance()->ajaxmsg->notify('Unlinking the phone has been disabled by the administration!')->danger();
 
         return $send;
 

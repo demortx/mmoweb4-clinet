@@ -58,6 +58,7 @@ class Settings extends MainModulesClass
             'bind_email' => function () { return $this->func->ajax_bind_email(); },
             'bind_phone_send_code' => function () { return $this->func->ajax_bind_phone_send_code(); },
             'bind_phone' => function () { return $this->func->ajax_bind_phone(); },
+            'delete_bind_phone' => function () { return $this->func->ajax_delete_bind_phone(); },
 
             'change_password_account_open' => function () { return $this->func->ajax_change_password_account_open(); },
             'change_password_account' => function () { return $this->func->ajax_change_password_account(); },

@@ -100,4 +100,37 @@
 
         });
     </script>
+{else}
+    <div class="form-group row div-send-bind-phone">
+        <label class="col-md-4 col-form-label text-right border-right" for="t-signup-phone">
+            {$label_title_input_phone_lang}
+        </label>
+        <div class="col-md-6 pt-5">
+            <div class="form-text text-muted">{$lang_text_settings_phone}</div>
+
+            <form action="/input" method="post" onsubmit="return false;" class="mt-1">
+                {$.php.form_hide_input("Modules\Globals\Settings\Settings", "delete_bind_phone")}
+                <div class="row gutters-tiny">
+
+                    <div class="input-group col-6">
+                        <input id="phone" name="phone" class="form-control" type="tel" value="{$.site.session->session.master_account.phone}" readonly>
+                    </div>
+                    {if $delete_bind_phone AND $.site.session->session.master_account.email?}
+                    <div class="input-group col-6">
+                        {if $.php.check_pin("pins_delete_bind_phone")}
+                            <input type="text" class="form-control" style="max-width: 130px !important;" id="pin" name="pin" placeholder="{$lang_pin_label_placeholder}">
+                        {/if}
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-alt-danger submit-form">
+                                <i class="fa fa-times"></i>
+                                {$label_btn_phone_del_lang}
+                            </button>
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+
+            </form>
+        </div>
+    </div>
 {/if}

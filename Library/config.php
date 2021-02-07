@@ -25,6 +25,7 @@ $system = array (
 		'pins_bind_telegram' => true,
 		'pins_bind_email_send_code' => true,
 		'pins_bind_phone_send_code' => true,
+		'pins_delete_bind_phone' => true,
 		'pins_manager_add' => false,
 		'pins_market_sell_item' => true,
 		'pins_market_buy_shop' => true,
@@ -34,6 +35,7 @@ $system = array (
 		'tab_active_invoice' => true,
 		'tab_active_invoice_detail' => true,
 		'max_game_accounts' => 10,
+		'delete_bind_phone' => true,
 		'signin_type'=>array(
 			'email' => true,
 			'login' => true,
@@ -180,8 +182,6 @@ $system = array (
 			110 => 
 			array (
 				'rating' => true,
-				'shop' => true,
-				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -190,8 +190,6 @@ $system = array (
 			88 => 
 			array (
 				'rating' => true,
-				'shop' => true,
-				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -200,8 +198,6 @@ $system = array (
 			9 => 
 			array (
 				'rating' => true,
-				'shop' => true,
-				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -231,6 +227,7 @@ $system = array (
 			'en' => 'English',
 			'gr' => 'Greek',
 			'es' => 'Spanish',
+			'pt' => 'Portuguese',
 		),
 	),
 	'settings' => 1,
@@ -251,13 +248,13 @@ $system = array (
 		'min_payment' => 5,
 		'max_payment' => 10000,
 		'rec_payment' => 50,
-		'auto_course' => true,
+		'auto_course' => false,
 		'course'=>array(
 			'USD' => 1,
-			'RUB' => '75.2647',
-			'EUR' => '0.821389',
-			'UAH' => '28.181256',
-			'BTC' => '3.0895445E-5',
+			'RUB' => '68.49',
+			'EUR' => '0.885622',
+			'UAH' => '26.591049',
+			'BTC' => '0.000103393749',
 		),
 		'sorting_pay'=>array(
 			0 => 'digiseller',
@@ -274,6 +271,7 @@ $system = array (
 			11 => 'enot',
 			12 => 'ipay',
 			13 => 'paysafecard',
+			14 => 'paymentwall',
 		),
 		'unitpay' => true,
 		'unitpay_project_id' => 182331,
@@ -311,6 +309,9 @@ $system = array (
 		'digiseller_seller_id' => 953128,
 		'digiseller_product_id' => 2961664,
 		'digiseller_api_guid' => 'A4A2647D4BAA476BA987B4198D06B80A',
+		'paymentwall' => true,
+		'paymentwall_project_id' => '04749dbf68d3688879c81b9bef1c2535',
+		'paymentwall_secret_key' => 'a9261690f2a2cb920eface444ff60563',
 	),
 	'discount'=>array(
 		'project'=>array(
@@ -406,7 +407,7 @@ $system = array (
 					0 => 'all',
 				),
 				'start' => '2019-11-11 13:46:00',
-				'end' => '2020-06-14 12:00:00',
+				'end' => '2024-06-14 12:00:00',
 			),
 		),
 	),
@@ -439,7 +440,6 @@ $system = array (
 	'plugins'=>array(
 		'__' => 'pl',
 		2 => 'stop_spam_email',
-		8 => 'market',
 	),
 	'promo_game' => 0,
 );

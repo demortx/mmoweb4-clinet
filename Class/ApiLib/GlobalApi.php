@@ -233,6 +233,14 @@ class GlobalApi extends \Api
         return $response;
     }
 
+    public function delete_bind_phone($vars)
+    {
+
+        $response = $this->init()->addParam('delete_phone', $vars)->delete('v1/Globals/settings/delete-phone')->response();
+
+        return $response;
+    }
+
     //УПРАВЛЕНИЕ МА
 
     public function manager_change($vars)
