@@ -1474,3 +1474,19 @@ if (!function_exists('get_translation')) {
             return $str;
     }
 }
+
+if ( ! function_exists('qplay_decrypt')) {
+
+    function qplay_decrypt($data, $decrypt_key)
+    {
+        $data = base64_decode($data);
+        $l = strlen($decrypt_key);
+        ///выравнивание по размеру ключа
+        if ($l < 16) $decrypt_key = str_repeat($decrypt_key, ceil(16 / $l));
+        ///собственно дешифрование
+        $val = openssl_decrypt($data, 'BF-ECB', $decrypt_key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING);
+
+        return $val;
+    }
+
+}

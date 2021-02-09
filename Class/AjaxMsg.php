@@ -68,6 +68,11 @@ class AjaxMsg
         return $this;
     }
 
+    public function variables($data){
+        $this->response["variables"] = $data;
+        return $this;
+    }
+
     public function notify($text, $url = null, $icon = null , $status = null , $time_show = 2000){
         if(!empty($text)){
             $this->response["text"] = (string) $text;

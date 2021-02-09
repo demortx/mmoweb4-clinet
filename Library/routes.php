@@ -6,6 +6,9 @@ $route['default_controller'] = 'Pages';
 $route['(\w{2})/(.*)'] = '$2';
 $route['(\w{2})'] = $route['default_controller'];
 
+//обработчик приложения
+$route['app'] = "app/index";
+$route['app/(:any)'] = "app/$1";
 
 //Обработчик апи
 $route['api/(:any)'] = "api/$1";

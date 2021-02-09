@@ -46,6 +46,7 @@ class func
         'ipay',
         'paysafecard',
         'ips_payment',
+        'digiseller',
     );
     //Список тикетов
     public $tickets = array(

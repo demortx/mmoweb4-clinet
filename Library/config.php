@@ -212,6 +212,8 @@ $system = array (
 				'site' => true,
 			),
 		),
+		'launcher_app' => true,
+		'launcher_key' => ')WV)kTDO*7',
 	),
 	'site'=>array(
 		'url_website' => 'https://mw4.mmoweb.ru/',
@@ -306,12 +308,7 @@ $system = array (
 		'paysafecard_currency' => 'USD',
 		'ips_payment' => true,
 		'digiseller' => true,
-		'digiseller_seller_id' => 953128,
-		'digiseller_product_id' => 2961664,
-		'digiseller_api_guid' => 'A4A2647D4BAA476BA987B4198D06B80A',
 		'paymentwall' => true,
-		'paymentwall_project_id' => '04749dbf68d3688879c81b9bef1c2535',
-		'paymentwall_secret_key' => 'a9261690f2a2cb920eface444ff60563',
 	),
 	'discount'=>array(
 		'project'=>array(

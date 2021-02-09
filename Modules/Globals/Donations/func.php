@@ -33,6 +33,7 @@ class func
         'ipay',
         'paysafecard',
         'ips_payment',
+        'digiseller',
 
     );
 

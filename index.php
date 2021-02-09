@@ -65,7 +65,29 @@ spl_autoload_register(function ($class) {
 global $URI, $RTR, $_POLL;
 $URI = new URI();
 $ignore_detect_lang_page = array(
-    //'/api',
+    //Приложение
+    '/app',
+    '/app/check_version',
+    '/app/get_current_version',
+    '/app/get_payment_methods',
+    '/app/signin',
+    '/app/signup',
+    '/app/activation',
+    '/app/reminder',
+    '/app/refresh_accounts',
+    '/app/get_account_password',
+    '/app/create_game_account',
+    '/app/refresh_balance',
+    '/app/change_password',
+    '/app/change_password_game_account',
+    '/app/checkout',
+    '/app/buy_in_game_currency',
+    '/app/get_bonus_cod',
+    '/app/get_server_list',
+    '/app/get_in_game_currency',
+    '/app/get_bonus_pay',
+    '/app/server_change',
+    //Апи
     '/api/send_email',
     '/api/update_session',
     '/api/connection_check',
