@@ -16,6 +16,7 @@ $folder_list = array(
     'cache/Pages',
     'Debug',
     'Files',
+    'Files/backup',
     'Library/advertising.php',
     'Library/config.php',
     'Library/forum_config.php',

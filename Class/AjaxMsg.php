@@ -69,7 +69,12 @@ class AjaxMsg
     }
 
     public function variables($data){
-        $this->response["variables"] = $data;
+
+        if (is_object($data))
+            $data = json_decode(json_encode($data),true);
+
+
+        $this->response = array_merge($this->response, $data);
         return $this;
     }
 

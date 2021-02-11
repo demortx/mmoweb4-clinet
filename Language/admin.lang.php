@@ -21,6 +21,9 @@ return array(
         'btn_title_ForumConnect'=> 'Форум',
         'btn_desc_ForumConnect'=> 'новости с форума',
 
+        'btn_title_UpdateCentre'=> 'Обновления',
+        'btn_desc_UpdateCentre'=> 'личного кабинета',
+
         'btn_title_IBlock'=> 'Инфо блоки',
         'btn_desc_IBlock'=> 'слайдеры инфо блоки на сайте',
 
@@ -213,7 +216,17 @@ return array(
         'ParsFileGame_files_format' => 'Формат файлов',
         'ParsFileGame_btn_pars' => 'Парсить файлы',
 
-
+        //UpdateCentre
+        'UpdateCentre_title' => 'Текущая версия MmoWeb',
+        'UpdateCentre_title_install_1' => 'Обновление версии',
+        'UpdateCentre_title_install_2' => 'до',
+        'UpdateCentre_new_version' => 'Доступна новая версия',
+        'UpdateCentre_btn_check' => 'Проверить обновления',
+        'UpdateCentre_btn_update_from' => 'Обновить до',
+        'UpdateCentre_btn_dwn_update' => 'Скачать обновление и установить в ручную',
+        'UpdateCentre_current_version' => 'Вы используете актуальную версию',
+        'UpdateCentre_error' => 'Произошла ошибка при получении обновлений проверьте журнал',
+        'UpdateCentre_install' => 'Установлено',
 
     ),
     'en' => array(
@@ -419,6 +432,18 @@ return array(
         'ParsFileGame_files_format' => 'File format',
         'ParsFileGame_btn_pars' => 'Parse files',
 
+        //UpdateCentre
+        'UpdateCentre_title' => 'Current version MmoWeb',
+        'UpdateCentre_title_install_1' => 'Upgrading version',
+        'UpdateCentre_title_install_2' => 'to',
+        'UpdateCentre_new_version' => 'New version available',
+        'UpdateCentre_btn_check' => 'Check for updates',
+        'UpdateCentre_btn_update_from' => 'Upgrade to',
+        'UpdateCentre_btn_dwn_update' => 'Download update and install manually',
+        'UpdateCentre_current_version' => 'You are using the current version',
+        'UpdateCentre_error' => 'An error occured while getting updates check the log',
+        'UpdateCentre_install' => 'Installed',
+
     ),
     'gr' => array(
 
@@ -623,6 +648,17 @@ return array(
         'ParsFileGame_files_format' => 'File format',
         'ParsFileGame_btn_pars' => 'Parse files',
 
+        //UpdateCentre
+        'UpdateCentre_title' => 'Current version MmoWeb',
+        'UpdateCentre_title_install_1' => 'Upgrading version',
+        'UpdateCentre_title_install_2' => 'to',
+        'UpdateCentre_new_version' => 'New version available',
+        'UpdateCentre_btn_check' => 'Check for updates',
+        'UpdateCentre_btn_update_from' => 'Upgrade to',
+        'UpdateCentre_btn_dwn_update' => 'Download update and install manually',
+        'UpdateCentre_current_version' => 'You are using the current version',
+        'UpdateCentre_error' => 'An error occured while getting updates check the log',
+        'UpdateCentre_install' => 'Installed',
     ),
     'es' => array(
 
@@ -827,6 +863,17 @@ return array(
         'ParsFileGame_files_format' => 'File format',
         'ParsFileGame_btn_pars' => 'Parse files',
 
+        //UpdateCentre
+        'UpdateCentre_title' => 'Current version MmoWeb',
+        'UpdateCentre_title_install_1' => 'Upgrading version',
+        'UpdateCentre_title_install_2' => 'to',
+        'UpdateCentre_new_version' => 'New version available',
+        'UpdateCentre_btn_check' => 'Check for updates',
+        'UpdateCentre_btn_update_from' => 'Upgrade to',
+        'UpdateCentre_btn_dwn_update' => 'Download update and install manually',
+        'UpdateCentre_current_version' => 'You are using the current version',
+        'UpdateCentre_error' => 'An error occured while getting updates check the log',
+        'UpdateCentre_install' => 'Installed',
     ),
     'pt' => array(
 
@@ -1031,5 +1078,16 @@ return array(
         'ParsFileGame_files_format' => 'File format',
         'ParsFileGame_btn_pars' => 'Parse files',
 
+        //UpdateCentre
+        'UpdateCentre_title' => 'Current version MmoWeb',
+        'UpdateCentre_title_install_1' => 'Upgrading version',
+        'UpdateCentre_title_install_2' => 'to',
+        'UpdateCentre_new_version' => 'New version available',
+        'UpdateCentre_btn_check' => 'Check for updates',
+        'UpdateCentre_btn_update_from' => 'Upgrade to',
+        'UpdateCentre_btn_dwn_update' => 'Download update and install manually',
+        'UpdateCentre_current_version' => 'You are using the current version',
+        'UpdateCentre_error' => 'An error occured while getting updates check the log',
+        'UpdateCentre_install' => 'Installed',
     ),
 );

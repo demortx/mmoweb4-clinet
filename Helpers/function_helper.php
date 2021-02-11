@@ -1384,6 +1384,7 @@ if (!function_exists('log_write')){
         fwrite($fw, $msg);
         fclose($fw);
 
+        return $data;
     }
 
 }
@@ -1489,4 +1490,54 @@ if ( ! function_exists('qplay_decrypt')) {
         return $val;
     }
 
+}
+
+
+if ( ! function_exists('UpdateFinishCallback')) {
+
+    function UpdateFinishCallback($updatedVersion, $sim)
+    {
+        $directory = ROOT_DIR . '/install';
+        if (is_dir($directory)){
+            if ($sim == false) {
+                $files = scandir($directory);
+                $files = array_diff($files, array('.', '..'));
+                foreach ($files as $key => $name) {
+                    if (file_exists($directory . $name) and is_file($directory . $name)) {
+                        if (strripos($name, '.php') !== false) {
+                            include $directory . $name;
+                        }
+                    }
+                }
+            }
+            deleteDirectory($directory);
+        }
+    }
+}
+
+
+if ( ! function_exists('deleteDirectory')) {
+
+    function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return true;
+        }
+
+        if (!is_dir($dir)) {
+            return unlink($dir);
+        }
+
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
+
+            if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                return false;
+            }
+
+        }
+
+        return rmdir($dir);
+    }
 }

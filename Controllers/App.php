@@ -13,7 +13,7 @@ class App extends Controller
 {
     public $version = 112;
     public $installer_url = "http://alpachini.com/qplay_updater.exe";
-    public $decrypt_key = "L!3T6";
+    public $decrypt_key = "L!3T6/9dA8cmt>1M";
     public $payment_list = array(
         'freekassa',
         'g2a',
@@ -681,7 +681,7 @@ class App extends Controller
                         get_instance()->session->rebootSession();
 
 
-                        $send = get_instance()->ajaxmsg->variables(array('data' => $response["response"]->data))->notify((string)$response["response"]->success)->success();
+                        $send = get_instance()->ajaxmsg->variables($response["response"]->data)->notify((string)$response["response"]->success)->success();
 
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
@@ -728,7 +728,7 @@ class App extends Controller
                 } else {
 
                     if (isset($response["response"]->data->user_data)) {
-                        $send = get_instance()->ajaxmsg->variables(array('data' => qplay_decrypt($response["response"]->data, $this->decrypt_key)))->notify((string)$response["response"]->success)->success();
+                        $send = get_instance()->ajaxmsg->variables(array('password' => qplay_decrypt($response["response"]->data, $this->decrypt_key)))->notify((string)$response["response"]->success)->success();
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
 
@@ -807,7 +807,7 @@ class App extends Controller
                         get_instance()->session->updateSessionDB($data);
                         get_instance()->session->rebootSession();
 
-                        $send = get_instance()->ajaxmsg->variables(array('data' => $response["response"]->data))->notify((string)$response["response"]->success)->success();
+                        $send = get_instance()->ajaxmsg->variables($response["response"]->data)->notify((string)$response["response"]->success)->success();
 
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
