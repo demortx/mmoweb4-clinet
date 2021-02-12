@@ -834,11 +834,12 @@ class AutoUpdate {
             }
         }
 
-        if (!copy($dir.$files, $backup_dir.$version.'/'.$files)) {
-            $this->log_update[$version][] = log_write('update', sprintf('Failed to backup file: "%s"', $files));
-        }else
-            $this->log_update[$version][] = log_write('update', sprintf('Backup file: "%s"', '/Files/backup/'.$version.'/'.$files));
-
+        if (file_exists($dir.$files)) {
+            if (!copy($dir . $files, $backup_dir . $version . '/' . $files)) {
+                $this->log_update[$version][] = log_write('update', sprintf('Failed to backup file: "%s"', $files));
+            } else
+                $this->log_update[$version][] = log_write('update', sprintf('Backup file: "%s"', '/Files/backup/' . $version . '/' . $files));
+        }
     }
 
     /**

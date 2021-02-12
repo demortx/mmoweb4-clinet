@@ -79,12 +79,14 @@ class Reminder extends MainModulesClass
             else
                 $vars["phone_code"] = $_REQUEST['phone_code'];
 
-            //Проверка телефона
-            if (!isset($_REQUEST['sms_cod']) OR empty($_REQUEST['sms_cod']))
-                return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_sms_cod'])->danger();
-            else
-                $vars["sms_cod"] = $_REQUEST['sms_cod'];
-
+            //проверка на тип востоновления
+            if($cfg['reminder_type_phone']) {
+                //Проверка телефона
+                if (!isset($_REQUEST['sms_cod']) or empty($_REQUEST['sms_cod']))
+                    return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_sms_cod'])->danger();
+                else
+                    $vars["sms_cod"] = $_REQUEST['sms_cod'];
+            }
 
         } else
             return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_not_found_type_reg'])->danger();

@@ -36,7 +36,7 @@
                                 </div>
                                 <div id="ver_{$i}" class="collapse " role="tabpanel" aria-labelledby="accordion_update">
                                     <div class="block-content">
-                                        <p>{$upd.desc}</p>
+                                        <p style="white-space: pre-wrap;">{$upd.desc}</p>
                                     </div>
                                     <div class="block-content text-center p-2">
                                         <a href="{$upd.url}" class="link-effect text-info ">{$UpdateCentre_btn_dwn_update}</a>

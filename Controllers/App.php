@@ -1103,10 +1103,6 @@ class App extends Controller
                 $vars["ymid"] = $this->advertising['ymid'];
             }
 
-            if (!captcha_check())
-                exit(get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_error_captcha'])->eval_js(captcha_reload('checkout'))->danger());
-
-
             //Ставим флаг создания простого платежа
             $vars["type"] = 2;
 
@@ -1259,7 +1255,7 @@ class App extends Controller
                     if (isset($response["response"]->success)) {
 
                         if ($response["response"]->select_recipient){
-                            $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->eval_js('$(\'.select_recipient\').show();$(\'[name="select_recipient"]\').val(1);')->success();
+                            $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->variables(array('action'=>'show_chars'))->success();
                         }else{
 
                             if (isset($response["response"]->data)) {

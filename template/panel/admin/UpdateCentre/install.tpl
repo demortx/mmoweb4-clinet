@@ -37,7 +37,7 @@
                                     </div>
                                     <div id="ver_{$i}" class="collapse " role="tabpanel" aria-labelledby="accordion_update">
                                         <div class="block-content pb-10">
-                                            <p>{$upd.desc}</p>
+                                            <p style="white-space: pre-wrap;">{$upd.desc}</p>
                                             {if $logs[$upd.version]}
                                                 <textarea class="form-control pb-3" rows="{$.php.count($logs[$upd.version])}">{foreach $logs[$upd.version] as $line}- {$line}{$.const.PHP_EOL}{/foreach}</textarea>
                                             {/if}

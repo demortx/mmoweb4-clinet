@@ -76,7 +76,7 @@
                                             <code>{$reminder_desc_input_phone_lang}</code>
                                         </div>
                                     </div>
-
+                                    {if $config.cabinet.reminder_type_phone}
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <label for="t-reminder-sms-cod">{$reminder_input_phone_sms_lang}</label>
@@ -90,7 +90,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    {/if}
                                 </div>
                             {/if}
                         </div>
@@ -155,7 +155,7 @@
     </div>
 </div>
 
-{if $config.cabinet.registration_type.phone?}
+{if $config.cabinet.reminder_type.phone?}
     {$.site._SEO->addTegHTML('head', 'telInput_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/css/intl-telInput/intlTelInput.css?ver=0.1'])}
     {$.site._SEO->addTegHTML('footer', 'telInput', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/intl-telInput/intlTelInput.js?ver=0.1'])}
 
@@ -180,14 +180,14 @@
             });
             $('.nav-link.active').click();
 
-
+            {if $config.cabinet.reminder_type_phone}
             $('body').on('click', '.send-sms',function(e){
                 e.preventDefault();
                 var phone_code = $("input[name=phone_code]").val();
                 var phone = $("input[name=phone]").val();
                 send_ajax('{$.php.http_build_query(['module_form' => "Modules\Globals\Reminder\Reminder",'module' => "reminder_sms"])}&phone_code='+phone_code+'&phone='+phone, true);
             });
-
+            {/if}
         });
     </script>
 {/if}
