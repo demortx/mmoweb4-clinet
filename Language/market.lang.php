@@ -153,6 +153,9 @@ return array(
         'widget_history_withdrawal_item' => 'Withdrawal request for: ',
         'widget_log_title_comment' => 'Comment',
 
+        'widget_user_bar_balance_up' => 'top up balance',
+
+
     ),
     'ru' => array(
         'title_popup_lang' => 'Buy Item',
@@ -299,6 +302,8 @@ return array(
         'widget_sell_sell_type_3' => 'Продажа персонажа',
         'widget_history_withdrawal_item' => 'Заявка на вывод, ',
         'widget_log_title_comment' => 'Комментарий',
+
+        'widget_user_bar_balance_up' => 'пополнить',
 
     ),
     'gr' => array(
@@ -447,6 +452,8 @@ return array(
         'widget_history_withdrawal_item' => 'Αίτημα ανάληψης για: ',
         'widget_log_title_comment' => 'Σχόλιο',
 
+        'widget_user_bar_balance_up' => 'top up balance',
+
     ),
 	'es' => array(
         'title_popup_lang' => 'Compra de artículos',
@@ -594,6 +601,8 @@ return array(
         'widget_history_withdrawal_item' => 'Solicitud de retiro para: ',
         'widget_log_title_comment' => 'Comentario',
 
+        'widget_user_bar_balance_up' => 'top up balance',
+
     ),
     'pt' => array(
         'title_popup_lang' => 'Compra de item',
@@ -740,6 +749,8 @@ return array(
         'widget_sell_sell_type_3' => 'Venda de personagens',
         'widget_history_withdrawal_item' => 'Pedido de retirada para: ',
         'widget_log_title_comment' => 'Comentário',
+
+        'widget_user_bar_balance_up' => 'top up balance',
 
     ),
 );

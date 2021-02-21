@@ -1,6 +1,6 @@
 <div class="block block-rounded">
     <div class="block-header block-header-default">
-        <h3 class="block-title">{$donate_title}</h3>
+        <h3 class="block-title">{$donate_title_market}</h3>
     </div>
     <form action="/input" method="post" onsubmit="return false;">
         {$.php.form_hide_input("Modules\Lineage2\Market\Market", "checkout")}

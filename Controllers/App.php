@@ -162,7 +162,63 @@ class App extends Controller
      */
     public function get_server_list(){
 
-        exit( json_encode(array('servers' => get_instance()->config['project']['server_info'])));
+        $server_site_cfg = require ROOT_DIR . '/Library/server_config.php';
+        $list = array();
+        foreach (get_instance()->config['project']['server_info'] as $platform => $servers_temp)
+        {
+            if (is_array($servers_temp)) {
+                $servers = array();
+                foreach ($servers_temp as $sid => $info) {
+
+
+                    $chronicle = isset($server_site_cfg[$sid]['description']) ? $server_site_cfg[$sid]['description'] : 'none';
+
+                    $servers[$chronicle][$sid]['name'] = $info['name'];
+                    $servers[$chronicle][$sid]['rate'] = $info['rate'];
+
+                    if (isset($server_site_cfg[$sid])) {
+
+
+                        if(isset($server_site_cfg[$sid]['hide']) AND $server_site_cfg[$sid]['hide'] == 0) {
+                            unset($servers[$chronicle][$sid]);
+                            continue;
+                        }
+
+                        if ($server_site_cfg[$sid]['re_name'] AND !empty($server_site_cfg[$sid]['name']))
+                            $servers[$chronicle][$sid]['name'] = $server_site_cfg[$sid]['name'];
+
+                        if ($server_site_cfg[$sid]['re_rate'])
+                            $servers[$chronicle][$sid]['rate'] = $server_site_cfg[$sid]['rate'];
+
+                        $servers[$chronicle][$sid]['icon'] = $server_site_cfg[$sid]['icon'];
+                        $servers[$chronicle][$sid]['img'] = $server_site_cfg[$sid]['img'];
+                        $servers[$chronicle][$sid]['link'] = $server_site_cfg[$sid]['link'];
+                        $servers[$chronicle][$sid]['chronicle'] = $server_site_cfg[$sid]['chronicle'];
+                        $servers[$chronicle][$sid]['description'] = $server_site_cfg[$sid]['description'];
+                        $servers[$chronicle][$sid]['date'] = $server_site_cfg[$sid]['date'];
+                        $servers[$chronicle][$sid]['time'] = $server_site_cfg[$sid]['time'];
+                        $servers[$chronicle][$sid]['time_zone'] = $server_site_cfg[$sid]['time_zone'];
+                    } else {
+                        $servers[$chronicle][$sid]['img'] = '';
+                        $servers[$chronicle][$sid]['icon'] = '';
+                        $servers[$chronicle][$sid]['link'] = '';
+                        $servers[$chronicle][$sid]['chronicle'] = '';
+                        $servers[$chronicle][$sid]['description'] = '';
+                        $servers[$chronicle][$sid]['date'] = '';
+                        $servers[$chronicle][$sid]['time'] = '';
+                        $servers[$chronicle][$sid]['time_zone'] = '';
+                    }
+
+
+
+                    $list[$platform] = $servers;
+                }
+            }
+        }
+
+
+
+        exit(json_encode($list));
     }
     /**
      * Версия лаунчера

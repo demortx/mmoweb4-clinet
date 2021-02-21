@@ -5,7 +5,7 @@
             {$widget_user_profile}
             <small class="float-right text-center"><a href="{$.php.set_url('/panel/market/donations')}" class="text-primary-dark">{$widget_user_balance} {$.php.intval($.site.session->session.user_data.market.balance)}</a>
                 <br>
-                <a href="{$.php.set_url('/panel/market/donations')}" class="font-size-sm font-w300 link-effect">пополнить</a>
+                <a href="{$.php.set_url('/panel/market/donations')}" class="font-size-sm font-w300 link-effect">{$widget_user_bar_balance_up}</a>
             </small>
         </h5>
 

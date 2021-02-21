@@ -296,13 +296,19 @@ return array(
                 if (!isset(get_instance()->session->session['user_data']['market']['balance']))
                     return '';
 
+                if (!isset(get_instance()->market['balance']))
+                    return '';
+
+                if (get_instance()->market['balance'])
+                    return '';
+
                 $balance = get_instance()->session->session['user_data']['market']['balance'];
 
                 if (floatval($balance) <= 0)
                     return '';
                 else {
                     $name_valute = get_instance()->config['payment_system']['short_name_valute'];
-                    return ': <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
+                    return ': <span class="text-success balance_html_market">' . $balance . ' ' . $name_valute . '</span>';
                 }
             }else
                 return '';

@@ -23,6 +23,7 @@ return array (
 		'time_zone' => '+3',
 		'max_online' => 500,
 		'on_login' => 1,
+
 	),
 	9 => 
 	array (

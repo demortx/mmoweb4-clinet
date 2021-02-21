@@ -11,7 +11,8 @@ return array(
 
 
 
-        "donate_title" => 'ПОПОЛНЕНИЕ БАЛАНСА',
+        "donate_title" => 'ПОПОЛНЕНИЕ БАЛАНСА МАСТЕР АККАУНТА',
+        "donate_title_market" => 'ПОПОЛНЕНИЕ БАЛАНСА РЫНКА',
         "donate_input_title_sum" => 'Сумма',
         "donate_input_title_enter_sum" => 'Укажите количество',
         "donate_span_title_bonus" => 'Бонус',
@@ -39,7 +40,8 @@ return array(
     ),
     'en' => array(
 
-        "donate_title" => 'Top-up Balance',
+        "donate_title" => 'Top-up Balance master account',
+        "donate_title_market" => 'Top-up Balance market',
         "donate_input_title_sum" => 'Amount',
         "donate_input_title_enter_sum" => 'Specify quantity',
         "donate_span_title_bonus" => 'Bonus',
@@ -67,7 +69,8 @@ return array(
     ),
     'gr' => array(
 
-        "donate_title" => 'Ανανεώση Υπολοίπου',
+        "donate_title" => 'Ανανεώση Υπολοίπου master account',
+        "donate_title_market" => 'Ανανεώση Υπολοίπου market',
         "donate_input_title_sum" => 'Ποσό',
         "donate_input_title_enter_sum" => 'Εισάγετε ποσό',
         "donate_span_title_bonus" => 'Bonus',
@@ -95,7 +98,8 @@ return array(
     ),
 	'es' => array(
 
-        "donate_title" => 'Recargar Saldo',
+        "donate_title" => 'Recargar Saldo master account',
+        "donate_title_market" => 'Recargar Saldo market',
         "donate_input_title_sum" => 'Monto',
         "donate_input_title_enter_sum" => 'Especifica cantidad',
         "donate_span_title_bonus" => 'Bonus',
@@ -123,7 +127,8 @@ return array(
     ),
     'pt' => array(
 
-        "donate_title" => 'Recarregar saldo',
+        "donate_title" => 'Recarregar saldo master account',
+        "donate_title_market" => 'Recarregar saldo market',
         "donate_input_title_sum" => 'Quantia',
         "donate_input_title_enter_sum" => 'Especifique a quantidade',
         "donate_span_title_bonus" => 'Bonus',
