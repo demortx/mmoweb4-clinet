@@ -67,6 +67,7 @@ $system = array (
 			'email' => true,
 			'phone' => true,
 		),
+		'reminder_type_phone' => false,
 		'captcha' => 'recaptchav2',
 		'recaptcha_public_key' => '6LeCmeoZAAAAANZaPVS-pdnIGTiWo9f7bWKa4QVg',
 		'recaptcha_secret_key' => '6LeCmeoZAAAAAJPRRDUp4c2J1-DrIrA4gtl2pt-V',
@@ -83,9 +84,8 @@ $system = array (
 		'secret_key' => 'vSItF01ZW^s0z7HU(m5A',
 		'server'=>array(
 			'lineage2'=>array(
-				0 => 110,
-				1 => 88,
-				2 => 9,
+				0 => 88,
+				1 => 9,
 			),
 			'boi'=>array(
 				0 => 7,
@@ -95,7 +95,6 @@ $system = array (
 			'lineage2'=>array(
 				0 => 9,
 				1 => 88,
-				2 => 110,
 			),
 			'boi'=>array(
 				0 => 7,
@@ -103,13 +102,6 @@ $system = array (
 		),
 		'server_info'=>array(
 			'lineage2'=>array(
-				110 => 
-				array (
-					'name' => 'Advext GF',
-					'status' => true,
-					'game' => 'lineage2',
-					'rate' => 1,
-				),
 				88 => 
 				array (
 					'name' => 'MasterWork',
@@ -136,10 +128,6 @@ $system = array (
 			),
 		),
 		'server_options'=>array(
-			110 => 
-			array (
-				'global_balance' => true,
-			),
 			88 => 
 			array (
 				'global_balance' => true,
@@ -154,12 +142,6 @@ $system = array (
 			),
 		),
 		'server_plugins'=>array(
-			110 => 
-			array (
-				'bonus_cod' => true,
-				'warehouse' => true,
-				'discount' => true,
-			),
 			88 => 
 			array (
 				'bonus_cod' => true,
@@ -179,17 +161,11 @@ $system = array (
 			),
 		),
 		'server_menu'=>array(
-			110 => 
-			array (
-				'rating' => true,
-				'donations' => true,
-				'settings' => true,
-				'forum' => true,
-				'site' => true,
-			),
 			88 => 
 			array (
 				'rating' => true,
+				'shop' => true,
+				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -198,6 +174,8 @@ $system = array (
 			9 => 
 			array (
 				'rating' => true,
+				'shop' => true,
+				'market' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -437,6 +415,7 @@ $system = array (
 	'plugins'=>array(
 		'__' => 'pl',
 		2 => 'stop_spam_email',
+		8 => 'market',
 	),
 	'promo_game' => 0,
 );

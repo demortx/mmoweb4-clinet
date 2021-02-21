@@ -47,7 +47,7 @@
                     <div class="font-size-h4 font-w600">Admin site</div>
                     <div class="text-muted">Site management</div>
                     <div class="pt-20">
-                        <a class="btn btn-rounded btn-alt-success" href="javascript:void(0)">
+                        <a class="btn btn-rounded btn-alt-success" href="/admin">
                             <i class="fa fa-share mr-5"></i> Settings CMS
                         </a>
                     </div>

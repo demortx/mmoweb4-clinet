@@ -17,6 +17,7 @@
     <input type="hidden" name="shop_id" value="{$item.id}">
     <input type="hidden" id="type_buy" name="type_buy" value="#ma">
     {set $sale = $.php.get_shop_sale($item.sale_id)}
+    {if $sale.sale_ma == false}{set $sale_ma = false}{/if}
     <div class="row">
 
         <div class="col-md-8">

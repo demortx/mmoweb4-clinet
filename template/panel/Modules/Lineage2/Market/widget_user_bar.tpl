@@ -1,7 +1,14 @@
 <div  id="w_user_info">
 <div class="block rounded">
     <div class="block-content">
-        <h5>{$widget_user_profile}  <small class="float-right">{$widget_user_balance} {$.php.intval($.site.session->session.user_data.market.balance)}</small></h5>
+        <h5>
+            {$widget_user_profile}
+            <small class="float-right text-center"><a href="{$.php.set_url('/panel/market/donations')}" class="text-primary-dark">{$widget_user_balance} {$.php.intval($.site.session->session.user_data.market.balance)}</a>
+                <br>
+                <a href="{$.php.set_url('/panel/market/donations')}" class="font-size-sm font-w300 link-effect">пополнить</a>
+            </small>
+        </h5>
+
         <div class="row no-gutters">
 
             <div class="col-12 col-md-7">

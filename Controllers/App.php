@@ -346,9 +346,8 @@ class App extends Controller
 
                 //Проверка префикса
                 if ($cfg['registration_login_prefix']) {
-                    if (isset($_POST["prefix"]) AND isset($_SESSION["prefix_list"])) {
-                        if (in_array($_POST["prefix"], $_SESSION['prefix_list']))
-                            $vars['prefix'] = $_POST["prefix"];
+                    if (isset($_POST["prefix"])) {
+                        $vars['prefix'] = $_POST["prefix"];
                     }
 
                     if (!isset($vars['prefix']))
@@ -727,7 +726,7 @@ class App extends Controller
 
                 } else {
 
-                    if (isset($response["response"]->data->user_data)) {
+                    if (isset($response["response"]->data)) {
                         $send = get_instance()->ajaxmsg->variables(array('password' => qplay_decrypt($response["response"]->data, $this->decrypt_key)))->notify((string)$response["response"]->success)->success();
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
@@ -757,9 +756,8 @@ class App extends Controller
 
         //Проверка префикса
         if ($cfg['registration_login_prefix'] AND !empty($_REQUEST['login'])) {
-            if (isset($_REQUEST["prefix"]) AND isset($_SESSION["prefix_list"])) {
-                if (in_array($_REQUEST["prefix"], $_SESSION['prefix_list']))
-                    $vars['prefix'] = $_REQUEST["prefix"];
+            if (isset($_REQUEST["prefix"])) {
+               $vars['prefix'] = $_REQUEST["prefix"];
             }
 
             if (!isset($vars['prefix']))

@@ -241,7 +241,7 @@ return array(
                     return '';
                 else {
                     $name_valute = get_instance()->config['payment_system']['short_name_valute'];
-                    return ' : <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
+                    return ': <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
                 }
             }else
                 return '';
@@ -291,7 +291,22 @@ return array(
 			'es' => 'Mercado',
             'pt' => 'Mercado',
         ),
-        'function' => function(&$buttons){return false;}
+        'function' => function(&$buttons){
+            if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
+                if (!isset(get_instance()->session->session['user_data']['market']['balance']))
+                    return '';
+
+                $balance = get_instance()->session->session['user_data']['market']['balance'];
+
+                if (floatval($balance) <= 0)
+                    return '';
+                else {
+                    $name_valute = get_instance()->config['payment_system']['short_name_valute'];
+                    return ': <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
+                }
+            }else
+                return '';
+        }
     ),
     'forum' => array(
         'enable' => true,

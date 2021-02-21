@@ -47,6 +47,7 @@
                         <div class="block-content block-content-full shop-price">
                             <div class="font-w600">
                                 {if $sale.status}
+                                    {if $sale.sale_ma == false}{set $sale_ma = false}{/if}
                                     {if $shop.complect == 0}{$price_from} {/if}{$.php.percentage($shop.price, $sale.sale + $sale_ma)} {$payment_system.short_name_valute}
                                     <br>
                                     <small><del class="" style="color: rgb(146, 146, 146);">

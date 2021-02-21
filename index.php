@@ -108,6 +108,7 @@ $ignore_detect_lang_page = array(
     '/captcha/img',
     '/prefix/refresh',
     '/promo-game',
+    '/input',
 );
 
 $search_get = strstr($_SERVER['REQUEST_URI'], '?', true);

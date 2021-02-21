@@ -311,12 +311,7 @@ class Panel extends Controller {
         $cfg = get_instance()->config['cabinet'];
 
         //Проверяем сессию если авторизован то переноправляем в кабинет
-        if ($this->session->isLogin() ){
-            header('Location: '.set_url('/panel', false), TRUE, 301);
-            die;
-
-            //Проверяем ключь по регулярке
-        }elseif ($cfg['registration_confirmation'] == false OR !preg_match("/^[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}$/i", $code)){
+        if ($cfg['registration_confirmation'] == false OR !preg_match("/^[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}+-[_\.0-9a-z-]{4}$/i", $code)){
             header('Location: '.set_url('/sign-up', false), TRUE, 301);
             die;
         }

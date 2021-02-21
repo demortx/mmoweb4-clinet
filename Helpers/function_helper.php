@@ -1286,6 +1286,7 @@ if (!function_exists('get_shop_sale')) {
             'timer' => false,
             'time_ribbon' => '',
             'date_step' => 0,
+            'sale_ma' => true,
         );
 
         if (isset(get_instance()->shop['sale'][$sale_id])) {
@@ -1300,6 +1301,7 @@ if (!function_exists('get_shop_sale')) {
                 $result['timer'] =  $sale['timer'] == 1;
                 $result['date_unix'] = strtotime($sale['end']);
                 $result['date_step'] = $sale['step'] > 0 ? (time() + get_shop_step($sale['end'], (int) $sale['step'])) : 0;
+                $result['sale_ma'] = $sale['sale_ma'];
 
                 if ($sale['timer'] == 1){
                     if ($sale['step'] > 0)

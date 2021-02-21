@@ -99,6 +99,7 @@ class Market extends MainModulesClass
             'ajax_show_inventory' => function () { return $this->func->ajax_show_inventory(); },
             'ajax_stop_selling' => function () { return $this->func->ajax_stop_selling(); },
             'ajax_refresh_info' => function () { return $this->func->ajax_refresh_info(); },
+            'checkout' => function () { return $this->func->ajax_checkout(); },
 
         );
 
@@ -281,6 +282,20 @@ class Market extends MainModulesClass
                         'class' => 'col-12 col-md-12',
                         'level' => 1,
                         'widget_sell' => function() { return $this->func->widget_history();},
+                    ),
+
+                ),
+
+
+            ),
+            '/panel/market/donations' => array(
+                //'header' => get_lang('market.lang')['history_title'],
+
+                'row justify-content-center' => array(
+                    array(
+                        'class' => 'col-lg-8 col-md-12 col-xs-12',
+                        'level' => 1,
+                        'widget_donations' => function() { return $this->func->widget_donations();},
                     ),
 
                 ),

@@ -48,6 +48,7 @@ $market = array (
 			),
 		),
 		'commision' => 20,
+		'min_withdrawal' => 201,
 		'withdrawal_ma' => true,
 		'withdrawal_bank' => true,
 		'withdrawal_bank_list'=>array(
@@ -57,6 +58,8 @@ $market = array (
 			'money_yandex' => 'Яндекс деньги',
 			'card' => 'Card Visa, MasterCard',
 		),
+		'withdrawal_commision' => 15,
+		'withdrawal_rate' => 1,
 		'moderation' => false,
 		'options'=>array(
 			0 => 'augmentation',
@@ -108,6 +111,10 @@ $market = array (
 				'step' => 10,
 				'note' => 'Соски',
 			),
+		),
+		'balance' => false,
+		'payment'=>array(
+			'unitpay' => true,
 		),
 	),
 	9 => 
@@ -167,6 +174,7 @@ $market = array (
 				'note' => null,
 			),
 		),
+		'balance' => true,
 	),
 );
 return $market;

@@ -373,6 +373,12 @@ class GlobalApi extends \Api
 
         return $response;
     }
+    //Launcher
+    public function in_game($vars){
+        $response = $this->init()->addParam('in_game', $vars)->get('v1/Globals/user/in-game')->response();
+
+        return $response;
+    }
 
 
 }

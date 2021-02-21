@@ -18,6 +18,7 @@ class func
     public $this_main = false;
     public $market = array();
     public $sid;
+    public $advertising;
     public $att = array(
         0 => "Fire",
         1 => "Water",
@@ -26,7 +27,24 @@ class func
         4 => "Holy",
         5 => "Dark",
     );
-
+    public $payment_list = array(
+        'freekassa',
+        'g2a',
+        'unitpay',
+        'payu',
+        'paypal',
+        'payop',
+        'paymentwall',
+        'pagseguro',
+        'nextpay',
+        'paygol',
+        'alikassa',
+        'enot',
+        'ipay',
+        'paysafecard',
+        'ips_payment',
+        'digiseller',
+    );
 
     public $datatable;
     public $datatable_column;
@@ -38,6 +56,14 @@ class func
         $this->this_main = $this_main;
         $this->market = $this->this_main->market;
         $this->sid = get_sid();
+
+        if($this->market['balance'] == false) {
+            if ($this->advertising === false)
+                $this->advertising = include ROOT_DIR . '/Library/advertising.php';
+
+            if (isset($this->market['payment']))
+                $this->payment_list = array_keys($this->market['payment']);
+        }
 
         $this->datatable  = new \DataTable('Modules\\\Lineage2\\\Market\\\Market', 'ajax_get_market_list');
         $this->datatable_column = array(
@@ -834,7 +860,108 @@ class func
 
     }
 
+    public function widget_donations(){
+
+
+
+        if($this->market['balance'] !== false)
+            return error_404_html();
+
+        get_instance()->seo->addTeg('head', 'rangeslider_css', 'link', array('rel' => 'stylesheet', 'href' => VIEWPATH.'/panel/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css'));
+        get_instance()->seo->addTeg('footer', 'rangeslider', 'script', array('src' => VIEWPATH.'/panel/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js'));
+
+
+        return get_instance()->fenom->fetch(
+            get_tpl_file('widget_donations.tpl', get_class($this->this_main)),
+            array_merge(
+                array(
+                    'payment_system' => get_instance()->config['payment_system'],
+                    'payment_list' => $this->payment_list,
+                    get_lang('course.lang')
+
+                ),
+                get_lang('widget_donate.lang')
+            )
+
+        );
+
+    }
+
     //AJAX
+
+
+    public function ajax_checkout(){
+
+        if($this->market['balance'] !== false)
+            return get_instance()->ajaxmsg->notify(get_lang('widget_donate.lang')['donate_ajax_empty_payment_method'])->danger();
+
+        $api = new GlobalApi();
+        $vars = array();
+
+        if (get_instance()->session->isLogin()) {
+
+            //Проверка сервера
+            if (!isset($_REQUEST['sum']) OR empty($_REQUEST['sum']))
+                return get_instance()->ajaxmsg->notify(get_lang('widget_donate.lang')['donate_ajax_empty_sum'])->danger();
+            else
+                $vars["sum"] = $_REQUEST['sum'];
+
+
+            //Проверка сервера
+            if (!isset($_REQUEST['payment_method']) OR empty($_REQUEST['payment_method']))
+                return get_instance()->ajaxmsg->notify(get_lang('widget_donate.lang')['donate_ajax_empty_payment_method'])->danger();
+            else
+                $vars["payment_method"] = $_REQUEST['payment_method'];
+
+            if (isset($this->advertising['gawpid']) AND !empty($this->advertising['gawpid'])){
+                if (isset($_COOKIE['_ga']) AND !empty($_COOKIE['_ga']))
+                    $vars["_ga"] = $_COOKIE['_ga'];
+
+                $vars["gaid"] = $this->advertising['gawpid'];
+            }
+            if (isset($this->advertising['ymid']) AND !empty($this->advertising['ymid'])) {
+                if (isset($_COOKIE['_ym_uid']) AND !empty($_COOKIE['_ym_uid']))
+                    $vars["_ym"] = $_COOKIE['_ym_uid'];
+
+                $vars["ymid"] = $this->advertising['ymid'];
+            }
+
+
+            //Ставим флаг создания простого платежа
+            $vars["type"] = 4;
+
+            $response = $api->checkout($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+                } else {
+                    if (isset($response["response"]->redirect)) {
+
+                        if (isset($response["response"]->post) AND !empty($response["response"]->post) > 0)
+                            $send = get_instance()->ajaxmsg->post($response["response"]->post)->notify((string)$response["response"]->success, (string)$response["response"]->redirect)->success();
+                        else
+                            $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, (string)$response["response"]->redirect)->success();
+
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+                }
+
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+
+        return $send;
+
+    }
 
     /**
      * @return false|string
