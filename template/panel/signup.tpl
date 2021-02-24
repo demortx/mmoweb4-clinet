@@ -248,7 +248,7 @@
                     </div>
                     <div class="block-content bg-body-light">
                         <div class="form-group text-center">
-                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="#">
+                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{$signup_title_btn_read_terms_url}" target="_blank">
                                 <i class="fa fa-book text-muted mr-5"></i> {$signup_title_btn_read_terms_lang}
                             </a>
                             <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{$.php.set_url('sign-in')}">

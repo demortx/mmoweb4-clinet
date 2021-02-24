@@ -34,6 +34,7 @@ return array(
 
         'signup_title_btn_sign_in_lang' => 'Авторизоваться',
         'signup_title_btn_read_terms_lang' => 'Ознакомиться с правилами',
+        'signup_title_btn_read_terms_url' => '#',
 
         'signup_title_input_captcha_lang' => 'Капча',
 
@@ -129,6 +130,7 @@ return array(
 
 		'signup_title_btn_sign_in_lang' => 'Sign in',
 		'signup_title_btn_read_terms_lang' => 'Read the User Agreement',
+        'signup_title_btn_read_terms_url' => '#',
 
 		'signup_title_input_captcha_lang' => 'CAPTCHA',
 
@@ -223,6 +225,7 @@ return array(
 
 		'signup_title_btn_sign_in_lang' => 'Είσοδος',
 		'signup_title_btn_read_terms_lang' => 'Διαβάστε τους Όρους Χρήσης',
+        'signup_title_btn_read_terms_url' => '#',
 
 		'signup_title_input_captcha_lang' => 'CAPTCHA',
 
@@ -317,6 +320,7 @@ return array(
 
 		'signup_title_btn_sign_in_lang' => 'Iniciar Sesión',
 		'signup_title_btn_read_terms_lang' => 'Leer Acuerdo de Usuario',
+        'signup_title_btn_read_terms_url' => '#',
 
 		'signup_title_input_captcha_lang' => 'CAPTCHA',
 
@@ -408,6 +412,7 @@ return array(
 
 		'signup_title_btn_sign_in_lang' => 'Entrar',
 		'signup_title_btn_read_terms_lang' => 'Leia o Acordo do Usuário ',
+        'signup_title_btn_read_terms_url' => '#',
 
 		'signup_title_input_captcha_lang' => 'CAPTCHA',
 

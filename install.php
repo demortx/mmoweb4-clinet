@@ -81,7 +81,7 @@ $db_table_install = array(
                                   `description` varchar(1200) DEFAULT NULL,
                                   `icon` varchar(100) DEFAULT NULL,
                                   `icon_panel` varchar(100) DEFAULT NULL,
-                                  `grade` varchar(3) DEFAULT NULL,
+                                  `grade` varchar(15) DEFAULT NULL,
                                   `type` varchar(10) DEFAULT NULL,
                                   `stackable` int(1) NOT NULL DEFAULT '0',
                                   `sid` int(11) NOT NULL DEFAULT '0'

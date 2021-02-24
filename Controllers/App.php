@@ -171,7 +171,7 @@ class App extends Controller
                 foreach ($servers_temp as $sid => $info) {
 
 
-                    $chronicle = isset($server_site_cfg[$sid]['description']) ? $server_site_cfg[$sid]['description'] : 'none';
+                    $chronicle = isset($server_site_cfg[$sid]['chronicle']) ? $server_site_cfg[$sid]['chronicle'] : 'none';
 
                     $servers[$chronicle][$sid]['name'] = $info['name'];
                     $servers[$chronicle][$sid]['rate'] = $info['rate'];

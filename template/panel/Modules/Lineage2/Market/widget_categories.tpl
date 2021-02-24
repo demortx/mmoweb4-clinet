@@ -53,7 +53,9 @@
 
 
 <a class="btn btn-block btn-hero btn-noborder btn-rounded btn-success mb-10" href="{$.php.set_url('/panel/market/sell')}"><i class="fa fa-gavel mr-5"></i> {$sell_items}</a>
+{if $.php.in_array('character', $section_status)}
 <a class="btn btn-block btn-hero btn-noborder btn-rounded btn-primary mb-10" href="{$.php.set_url('/panel/market/sell-character')}"><i class="fa fa-female mr-5"></i> {$sell_character}</a>
+{/if}
 <p class="text-center">
     <a class="text-muted" href="{$.php.set_url('/panel/market/rules')}">{$rules}</a>
     <br>

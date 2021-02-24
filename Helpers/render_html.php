@@ -933,15 +933,15 @@ if (!function_exists('render_formbuilder')){
                     .($form['multiple'] ? ' multiple' : '')
                     .'>';
 
-                    foreach ($form['values'] as $opt){
-                        if ($value != '')
-                            $opt['selected'] = false;
-                        if ($value != '' AND $value == $opt['value'])
-                            $opt['selected'] = true;
+                foreach ($form['values'] as $opt){
+                    if ($value != '')
+                        $opt['selected'] = false;
+                    if ($value != '' AND $value == $opt['value'])
+                        $opt['selected'] = true;
 
 
-                        $str .= '<option value="'.$opt['value'].'"   '.($opt['selected']? 'selected' : '').'>'.$opt['label'].'</option>';
-                    }
+                    $str .= '<option value="'.$opt['value'].'"   '.($opt['selected']? 'selected' : '').'>'.$opt['label'].'</option>';
+                }
                 $str .= '</select>';
                 break;
 

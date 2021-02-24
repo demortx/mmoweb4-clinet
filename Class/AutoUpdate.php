@@ -773,10 +773,16 @@ class AutoUpdate {
             $fileStats        = $zip->statIndex($i);
 
             $filename         = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $fileStats['name']);
+            if(stristr($filename, '.DS_Store') !== FALSE) {
+                continue;
+            }
+
             $foldername       = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR,
                 $this->installDir . dirname($filename));
             $absoluteFilename = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $this->installDir);
             $this->log_update[$version][] = log_write('update', sprintf('Updating file "%s"', $filename));
+
+
 
             if (!is_dir($foldername) && !mkdir($foldername, $this->dirPermissions, true) && !is_dir($foldername)) {
                 $this->log_update[$version][] = log_write('update', sprintf('Directory "%s" has to be writeable!', $foldername));

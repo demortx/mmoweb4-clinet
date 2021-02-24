@@ -16,9 +16,9 @@ define('API_URL',       "https://api.mmoweb.ru/");
 * This is where the connection to the hosting database is configured.
 */
 define('DB_HOST',       'localhost');
-define('DB_NAME',       'mw4BSp');
-define('DB_USER',       'u_mw4BSp');
-define('DB_PASSWORD',   'fSf8D2UT');
+define('DB_NAME',       'admin_mw4');
+define('DB_USER',       'admin_mw4');
+define('DB_PASSWORD',   'mVyOIbFVrq');
 
 /**
 * Прочие настройки
