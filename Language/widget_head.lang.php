@@ -24,7 +24,7 @@ return array(
         'lang_account_ban' => 'Ваш аккаунт заблокирован',
         'lang_title_master_account' => 'Мастер аккаунт',
         'lang_btn_go_settings' => 'Перейти к настройкам',
-        'lang_btn_go_check_email' => 'Потвердить почту',
+        'lang_btn_go_check_email' => 'Подтвердить почту',
         'lang_btn_go_check_phone' => 'Привязать телефон',
         'lang_btn_last_enter' => 'Последний вход',
         'lang_btn_reset_pin' => 'Сбросить PIN-code',

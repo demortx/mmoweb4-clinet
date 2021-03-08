@@ -62,28 +62,14 @@
             ]
         });
 
-        {foreach $btn_add as $btn_}
-        $("div.toolbar_table").append('<button type="button" class="btn {$btn_.class} {$btn_.trigger}">{$btn_.name}</button>');
-        $('body').on('click', '.{$btn_.trigger}', function (event) {
-            {if $btn_.confirm?}
-            if(!confirm('{$btn_.confirm}'))
-                return false;
-            {/if}
-            if ($('.row_delete:checked').length < 1) {
-                alert('No records selected');
-                return false;
-            }
-            send_ajax("module_form={$module_form}&module={$btn_.ajax_module}&"+$('.row_delete:checked').serialize(), false);
-        });
-        {/foreach}
-
-
         {foreach $form_add as $in}
             var $row = $("<div>", {  "class": "{$in.col_class}" });
             var $div = $("<div>", {  "class": "{$in.class}", {$in.att} });
             {foreach $in.inputs as $input}
                 {if $input.___type == 'prepend'}
                     $div.append('<div class="input-group-prepend input-group-append "><span class="input-group-text font-w600">{$input.name}</span></div>');
+                {elseif  $input.___type == 'hide'}
+                    $('#{$input.id}').change(function(){ {$ajax_module}.ajax.reload(); });
                 {else}
                     $div.append($("<{$input.___type}>", {$.php.json_encode($input)}).change(function(){ {$ajax_module}.ajax.reload(); }));
                 {/if}

@@ -21,7 +21,7 @@ return array(
         "lang_account_not_approve" => "Аккаунт не потвержден",
 
         "form_confirm_key" => "Ключ",
-        "form_confirm_btn" => "Потвердить",
+        "form_confirm_btn" => "Подтвердить",
 
         "table_th_acc" => "Аккаунт",
         "table_th_ip" => "IP",

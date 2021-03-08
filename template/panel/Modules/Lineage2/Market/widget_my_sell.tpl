@@ -26,13 +26,13 @@
                         {if $item.char_info == "0"}
                             <td>
                                 <div class="item-name">
-                                    <img src="{$.php.check_icon_item($item.icon, $sid)}">
+                                    <img {$.php.get_icon_item($item.icon,$item.icon_panel, $sid)}>
                                     <div>
-                                    <span class="item-name__content">{$item.name} <span class="item-name__additional">{$item.add_name}</span>
-                                    {if $item.enc > 0}
-                                        +{$item.enc}
-                                    {/if}
-                                    </span>
+                                        <span class="item-name__content">{$item.name} <span class="item-name__additional">{$item.add_name}</span>
+                                        {if $item.enc > 0}
+                                            +{$item.enc}
+                                        {/if}
+                                        </span>
                                     </div>
                                 </div>
                             </td>
@@ -49,7 +49,7 @@
                             </td>
                         {/if}
                         <td class="text-center">
-                            {$item.price}
+                            {$.php.floatval($item.price)}
                         </td>
                         <td class="text-right">
                             <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_stop_selling", ['id' => $item.id])}>{$widget_my_sell_remove}</button>

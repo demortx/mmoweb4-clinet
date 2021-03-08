@@ -174,7 +174,7 @@ if ( ! function_exists('get_sid')) {
 
         if($sid !== false) {
             if (in_array($sid, $system['project']['server_sort'][get_platform()]))
-                return $sid;
+                return intval($sid);
         }
 
         if (isset($system['project']['server_sort'][get_platform()]) AND is_array($system['project']['server_sort'][get_platform()]) AND count($system['project']['server_sort'][get_platform()]))
@@ -1541,5 +1541,14 @@ if ( ! function_exists('deleteDirectory')) {
         }
 
         return rmdir($dir);
+    }
+}
+
+
+if ( ! function_exists('clean_phone')) {
+
+    function clean_phone($phone)
+    {
+        return str_replace(array("+7", "(", ")", "-", " "), "", $phone);
     }
 }

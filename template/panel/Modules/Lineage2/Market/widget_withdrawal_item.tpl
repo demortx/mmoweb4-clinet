@@ -26,7 +26,7 @@
                 <tr>
                     <td>{$widget_log_title_system}</td>
                     <td>
-                        {if $log_list.system != null}
+                        {if $log_list.system != 'ma'}
                             {$log_list.system}
                             <br>
                             <small>{if $log_list.wallet != null}{$log_list.wallet}{/if}</small>
@@ -34,9 +34,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>{$widget_log_title_amount}</td>
+                    <td>{$widget_log_t_amount}</td>
                     <td>
-                        {if $log_list.system != null}{$log_list.took}{else}{$log_list.transfer}{/if}
+                        {if $log_list.system != 'ma'}{$log_list.took}{else}{$log_list.transfer}{/if}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{$widget_log_t_amount_w}</td>
+                    <td>
+                        {if $log_list.system != 'ma'}{$.php.percentage($log_list.took,$market_cfg.withdrawal_commision)} ({$widget_user_comission}: {$market_cfg.withdrawal_commision}%){else}{$log_list.transfer}{/if}
                     </td>
                 </tr>
                 {if $.php.strlen($log_list.comment)}

@@ -4,48 +4,54 @@
 <div class="row">
     <div class="col-lg-12 text-center">
         {if $item.type == '3'}
-            <div id="product-image">
+            <div id="product-image mb" class="mb-3">
                 {$item.char_info.name}
                 <br>
                 <small>{$.php.get_class_name($item.char_info.class_id)} (Lv. {$item.char_info.level})</small>
             </div>
         {else}
-            <div id="product-image">
-                <img src="{$.php.check_icon_item($item.icon, $sid)}"> {$item.name}
+            <div id="product-image" class="mb-3">
+                <img {$.php.get_icon_item($item.icon,$item.icon_panel, $sid)}> {$item.name}
             </div>
+            {if $item.description?}
+            <footer class="blockquote-footer mb-3">{$item.description}</footer>
+            {/if}
         {/if}
         <table class="table table-borderless table-striped table-vcenter">
             {if $items_all != null}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_contains}</b></td>
+                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_contains}</b></td>
                     <td class="text-left">
-                        {foreach $items_all as $item}
-                            <div><img width="16px" src="{$.php.check_icon_item($item.icon, $sid)}"> {$item.name} x{$item.count}</div>
+                        {foreach $items_all as $item_}
+                            <div><img width="16px" {$.php.get_icon_item($item_.icon,$item_.icon_panel, $sid)}> {$item_.name} x{$item_.count}</div>
                         {/foreach}
                     </td>
                 </tr>
             {/if}
             {if $item.enc > 0}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_enchant}</b></td><td class="text-left">+{$item.enc}</td>
+                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_enchant}</b></td><td class="text-left">+{$item.enc}</td>
                 </tr>
             {/if}
             {if $items_all == null && $item.type != "3"}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_amount}</b></td><td class="text-left">{$.php.number_format($item.count, 0, ',', ',')}</td>
+                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_amount}</b></td><td class="text-left">{$.php.number_format($item.count, 0, ',', ',')}</td>
                 </tr>
             {/if}
             {if $item.count > 1}
                 <tr>
-                    <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier" data-value="{$step}">{$.php.number_format($step, 0, ',', ',')}</span></td>
+                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier" data-value="{$step}">{$.php.number_format($step, 0, ',', ',')}</span></td>
                 </tr>
             {/if}
             <tr>
-                <td style="width: 50%" class="text-right"><b>{$ajax_buy_shop_price}</b></td><td class="text-left">{$package_price}{if $step} {$ajax_buy_shop_for} {$.php.number_format($step, 0, ',', ',')}{/if}</td>
+                <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_price}</b>
+                </td>
+
+                <td class="text-left">{$package_price}{if $item.type == 1} <code>{$widget_sell_sell_type_1}</code> {else}{if $step} {$ajax_buy_shop_for} {$.php.number_format($step, 0, ',', ',')}{/if}{/if}</td>
             </tr>
             {if $item.aug_1 != "0"}
                 <tr>
-                    <td style="width: 50%" class="text-right">
+                    <td style="width: 30%" class="text-right">
                         <b>{$ajax_buy_shop_augment}</b>
                     </td>
                     <td class="text-left">
@@ -55,7 +61,7 @@
             {/if}
             {if $item.a_att_type > 0 || $item.d_att_0 > 0 || $item.d_att_1 > 0 || $item.d_att_2 > 0 || $item.d_att_3 > 0 || $item.d_att_4 > 0 || $item.d_att_5 > 0}
                 <tr>
-                    <td style="width: 50%" class="text-right">
+                    <td style="width: 30%" class="text-right">
                         <b>{$ajax_buy_shop_attribute}</b>
                     </td>
                     <td class="text-left">
@@ -216,7 +222,7 @@
 
         $('#count').keyup(function() {
             $('.price-multiplier').text((parseFloat(initial) * $('#count').val()).toLocaleString('en-US'));
-            $('#price-final').text((initial_price * $('#count').val()).toFixed(2));
+            $('#price-final').text(' '+ (initial_price * $('#count').val()).toFixed(2));
         })
     })
 </script>

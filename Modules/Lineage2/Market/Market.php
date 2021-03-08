@@ -166,7 +166,7 @@ class Market extends MainModulesClass
 
                 ),
             ),
-            '/panel/market/(armor|weapon|jewelry|consumables|coin|character|etc)' => array(
+            '/panel/market/(armor|weapon|jewelry|consumables|coin|character|etc|rare|accessory|stones|recipes)' => array(
                 'header' => get_lang('market.lang')['market_title'],
                 'row' => array(
                     array(
@@ -174,14 +174,19 @@ class Market extends MainModulesClass
                         'level' => 1,
                         'widget_categories_vertical' => function() { return $this->func->widget_categories_vertical();},
                     ),
+
                     array(
                         'class' => 'col-12 col-md-9',
-
                         'level' => 2,
                         'row gutters-tiny' => array(
                             array(
                                 'class' => 'col-md-12',
                                 'level' => 1,
+                                'widget_filter' => function() { return $this->func->widget_filter();},
+                            ),
+                            array(
+                                'class' => 'col-md-12',
+                                'level' => 100,
                                 'widget_list_market' => function() { return $this->func->widget_list_market();},
                             ),
                         ),

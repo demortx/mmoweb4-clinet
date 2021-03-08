@@ -82,7 +82,7 @@
                 var bonus_item_show = false;
                 var payment_method = $("input[name='payment_method']:checked"). val();
 
-                {*/*Перебираем все бонусы и отрисовываем*/*}
+                {* Перебираем все бонусы и отрисовываем *}
                 {foreach $event_cfg as $bonus_cfg}
                     var temp_agrigator_{$bonus_cfg.id} = {$.php.json_encode($bonus_cfg.agrigator)};
                     if(temp_agrigator_{$bonus_cfg.id}.includes(payment_method) || temp_agrigator_{$bonus_cfg.id}.includes('all')){
@@ -124,8 +124,7 @@
                     $('#item_board').hide();
                 }
 
-
-                /*calculation_board item_board*/
+                {*calculation_board item_board*}
 
                 if(bonus > 0){
                     $('#bonus_sum').html('+'+ Math.floor(bonus) + ' {$donate_span_title_bonus}');
@@ -174,5 +173,7 @@
             return parseInt(pos);
         }
         window.changeSum(document.getElementById("coin").value,true);
+
+
     });
 </script>

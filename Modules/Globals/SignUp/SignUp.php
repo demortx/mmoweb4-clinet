@@ -124,7 +124,7 @@ class SignUp extends MainModulesClass
             if (!isset($_POST['phone']) OR empty($_POST['phone']))
                 return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_empty_phone'])->danger();
             else
-                $vars["phone"] = $_POST['phone'];
+                $vars["phone"] = clean_phone($_POST["phone"]);
 
             //Проверка телефона
             if (!isset($_POST['phone_code']) OR empty($_POST['phone_code']))
@@ -231,7 +231,7 @@ class SignUp extends MainModulesClass
             $vars = array();
             $vars["type"] = 'sms';
             $vars["phone_code"] = isset($_POST["phone_code"]) ? intval($_POST["phone_code"]) : 0;
-            $vars["phone"] = isset($_POST["phone"]) ? intval($_POST["phone"]) : 0;
+            $vars["phone"] = isset($_POST["phone"]) ? intval(clean_phone($_POST["phone"])) : 0;
 
             if ($vars["phone_code"] < 1)
                 $send = get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_sms_phone_code_empty'])->danger();

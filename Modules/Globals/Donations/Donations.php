@@ -14,12 +14,27 @@ class Donations extends MainModulesClass
 
     public function __construct()
     {
-
         $this->mDir = dirname(__FILE__);
 
         include_once $this->mDir."/func.php";
         $this->func = new \Donations\func( $this );
 
+    }
+
+    public function onLoad()
+    {
+
+        //Digiseller.ru
+        if (isset($_GET['uniquecode']) AND isset(get_instance()->config['payment_system']['digiseller']) AND get_instance()->config['payment_system']['digiseller']){
+            if (!empty($_GET['uniquecode']) AND strlen($_GET['uniquecode']) == 16){
+                $curl = new \Curl\Curl(API_URL);
+                $curl->setTimeout(100);
+                $curl->setHeader('Content-Type', 'application/x-www-form-urlencoded');
+                $curl->get(API_URL.'v1/Payment/ipn/digiseller', $_GET);
+            }
+        }
+
+        return false;
     }
 
     public function info()
@@ -80,9 +95,5 @@ class Donations extends MainModulesClass
         return $content;
         //return isset($content[$uri]) ? $content[$uri] : false;
     }
-
-
-
-
 
 }

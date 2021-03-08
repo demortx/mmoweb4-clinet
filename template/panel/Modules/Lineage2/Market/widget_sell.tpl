@@ -51,7 +51,7 @@
                             {/if}
                             {if $.php.in_array('weapon', $section_status)}
                                 <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="weapon" >
-                                    <img src="/template/panel/assets/media/market/sword.png" width="32" width="32" class="mr-15">
+                                    <img src="/template/panel/assets/media/market/weapon.png" width="32" width="32" class="mr-15">
                                     <span class="mr-auto">{$weapon} <br><small>{$weapon_desc}</small></span>
                                     <span class="badge badge-pill badge-secondary">{if $count_section['weapon']?}{$count_section['weapon']}{else}0{/if}</span>
 
@@ -64,23 +64,51 @@
                                     <span class="badge badge-pill badge-secondary">{if $count_section['jewelry']?}{$count_section['jewelry']}{else}0{/if}</span>
                                 </button>
                             {/if}
+                            {if $.php.in_array('rare', $section_status)}
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="rare" >
+                                    <img src="/template/panel/assets/media/market/rare.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">{$rare} <br><small>{$rare_desc}</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['rare']?}{$count_section['rare']}{else}0{/if}</span>
+                                </button>
+                            {/if}
                             {if $.php.in_array('consumables', $section_status)}
                                 <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="consumables" >
-                                    <img src="/template/panel/assets/media/market/miscellaneous.png" width="32" width="32" class="mr-15">
+                                    <img src="/template/panel/assets/media/market/consumables.png" width="32" width="32" class="mr-15">
                                     <span class="mr-auto">{$consumables} <br><small>{$consumables_desc}</small></span>
                                     <span class="badge badge-pill badge-secondary">{if $count_section['consumables']?}{$count_section['consumables']}{else}0{/if}</span>
                                 </button>
                             {/if}
                             {if $.php.in_array('coin', $section_status)}
                                 <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="coin" >
-                                    <img src="/template/panel/assets/media/market/money.png" width="32" width="32" class="mr-15">
+                                    <img src="/template/panel/assets/media/market/coin.png" width="32" width="32" class="mr-15">
                                     <span class="mr-auto">{$coin} <br><small>{$coin_desc}</small></span>
                                     <span class="badge badge-pill badge-secondary">{if $count_section['coin']?}{$count_section['coin']}{else}0{/if}</span>
                                 </button>
                             {/if}
+                            {if $.php.in_array('stones', $section_status)}
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="stones" >
+                                    <img src="/template/panel/assets/media/market/stones.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">{$stones} <br><small>{$stones_desc}</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['stones']?}{$count_section['stones']}{else}0{/if}</span>
+                                </button>
+                            {/if}
+                            {if $.php.in_array('accessory', $section_status)}
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="accessory" >
+                                    <img src="/template/panel/assets/media/market/accessory.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">{$accessory} <br><small>{$accessory_desc}</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['accessory']?}{$count_section['accessory']}{else}0{/if}</span>
+                                </button>
+                            {/if}
+                            {if $.php.in_array('recipes', $section_status)}
+                                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="recipes" >
+                                    <img src="/template/panel/assets/media/market/recipes.png" width="32" width="32" class="mr-15">
+                                    <span class="mr-auto">{$recipes} <br><small>{$recipes_desc}</small></span>
+                                    <span class="badge badge-pill badge-secondary">{if $count_section['recipes']?}{$count_section['recipes']}{else}0{/if}</span>
+                                </button>
+                            {/if}
                             {if $.php.in_array('etc', $section_status)}
                                 <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center btn-section" data-type="etc" >
-                                    <img src="/template/panel/assets/media/market/shelf.png" width="32" width="32" class="mr-15">
+                                    <img src="/template/panel/assets/media/market/etc.png" width="32" width="32" class="mr-15">
                                     <span class="mr-auto">{$etc} <br><small>{$etc_desc}</small></span>
                                     <span class="badge badge-pill badge-secondary">{if $count_section['etc']?}{$count_section['etc']}{else}0{/if}</span>
                                 </button>
@@ -143,11 +171,11 @@
                             <div class="col-12">
                                 <div class="custom-control custom-radio custom-control-inline mb-5">
                                     <input class="custom-control-input sell-type" type="radio" name="type" id="example-radio1" value="2" checked="">
-                                    <label class="custom-control-label" for="example-radio1">{$widget_sell_sell_type_1}</label>
+                                    <label class="custom-control-label" for="example-radio1">{$widget_sell_sell_type_2}</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline mb-5">
                                     <input class="custom-control-input sell-type" type="radio" name="type" id="example-radio2" value="1">
-                                    <label class="custom-control-label" for="example-radio2">{$widget_sell_sell_type_2}</label>
+                                    <label class="custom-control-label" for="example-radio2">{$widget_sell_sell_type_1}</label>
                                 </div>
 
                             </div>

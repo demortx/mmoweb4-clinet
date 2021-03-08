@@ -8,7 +8,6 @@
                 <a href="{$.php.set_url('/panel/market/donations')}" class="font-size-sm font-w300 link-effect">{$widget_user_bar_balance_up}</a>
             </small>
         </h5>
-
         <div class="row no-gutters">
 
             <div class="col-12 col-md-7">
@@ -46,16 +45,16 @@
 
             </div>
             <div class="col-12 col-md-5 text-center">
+                {if $market.bl_status}
                 <div class="font-size-h4 font-w600">{$.php.intval($.site.session->session.user_data.market.level)}</div>
                 <div class="font-size-sm font-w600 text-uppercase text-muted">{$widget_user_lvl}</div>
+                {/if}
                 <p class="mt-10">
                     <a href="{$.php.set_url('/panel/market/history')}" class="mr-5" title="Общая история"><i class="si si-book-open fa-2x"></i></a>
                     <a href="javascript:void();" title="{$widget_user_refresh}" class="submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_refresh_info")}><i class="si si-refresh fa-2x"></i></a>
                 </p>
 
             </div>
-
-
             <div class="col-12 col-md-12 text-center">
                 <a href="{$.php.set_url('/panel/market/withdrawal')}" class="btn btn-block btn-outline-primary  mb-10 mt-10">{$widget_user_withdraw}</a>
             </div>

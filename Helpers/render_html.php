@@ -325,7 +325,7 @@ if (!function_exists('set_url')) {
 
 if (!function_exists('set_item')) {
 
-    function set_item($item_id, $sid = false, $return_array = true, $pattern = '<div data-item="%id%"><img src="%icon%" width="15px">%name% %add_name%</div>')
+    function set_item($item_id, $sid = false, $return_array = true, $pattern = '<div data-item="%id%"><img src="%icon%" data-src="%src%" width="15px">%name% %add_name%</div>')
     {
         global $TEMP;
         if ($sid === false)
@@ -353,6 +353,7 @@ if (!function_exists('set_item')) {
                 'name' => 'No name',
                 'add_name' => '',
                 'description' => '',
+                'src' => '',
                 'icon' => '',
                 'icon_panel' => '',
                 'grade' => '',
@@ -363,8 +364,13 @@ if (!function_exists('set_item')) {
         }
 
         //поиск картинки предмета
+        $item['src'] = $item['icon'];
+        $item['src_panel'] = $item['icon_panel'];
         $item['icon'] = check_icon_item($item['icon'], $sid);
-
+        if (!empty($item['icon_panel'])) {
+            $item['icon_panel'] = str_replace("icon.", "", $item['icon_panel']);
+            $item['icon_panel'] = check_icon_item($item['icon_panel'], $sid);
+        }
         if ($return_array) {
             $item['id'] = isset($item['id']) ? $item['id'] : 0;
             $item['item_id'] = $item_id;
@@ -380,7 +386,7 @@ if (!function_exists('set_item')) {
             return $item;
         }else{
             unset($item['popup']);
-            return str_replace(array('%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%grade%', '%stackable%', '%type%', '%sid%' ) , array_values($item), $pattern);
+            return str_replace(array('%id%', '%item_id%', '%name%', '%add_name%', '%description%', '%icon%', '%icon_panel%', '%src%', '%src_panel%', '%grade%', '%stackable%', '%type%', '%sid%' ) , array_values($item), $pattern);
         }
 
     }
@@ -407,6 +413,27 @@ if (!function_exists('check_icon_item')) {
     }
 
 }
+
+if (!function_exists('get_icon_item')) {
+
+    function get_icon_item($icon,$icon_panel, $sid, $dir = true){
+
+        if (!empty($icon_panel)) {
+            if ($dir)
+                $icon_panel = str_replace("icon.", "", $icon_panel);
+            $bg = 'style="background: url('.($dir ? check_icon_item($icon, $sid) : $icon).') no-repeat; background-size: 100%;"';
+            $icon = $dir ? check_icon_item($icon_panel, $sid) : $icon_panel;
+        }else{
+            $bg = '';
+            $icon = $dir ? check_icon_item($icon, $sid) : $icon;
+        }
+
+        return 'src="'.$icon.'" '.$bg;
+    }
+
+}
+
+
 
 if (!function_exists('render_menu_server')) {
 

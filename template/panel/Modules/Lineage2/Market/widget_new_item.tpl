@@ -42,19 +42,19 @@
                                     <td>
                                         {if $category == "character"}
                                             <span>
-                                    <b>{$item.char_info.name}</b>
-                                    <br>
-                                    <small>{$.php.get_class_name($item.char_info.class_id)} (Lv. {$item.char_info.level})</small>
-                                </span>
+                                                <b>{$item.char_info.name}</b>
+                                                <br>
+                                                <small>{$.php.get_class_name($item.char_info.class_id)} (Lv. {$item.char_info.level})</small>
+                                            </span>
                                         {else}
                                             <div class="item-name">
-                                                <img src="{$.php.check_icon_item($item.icon, $sid)}">
+                                                <img {$.php.get_icon_item($item.icon,$item.icon_panel, $sid)}>
                                                 <div>
-                                        <span class="item-name__content">{$item.name} <span class="item-name__additional">{$item.add_name}</span>
-                                        {if $item.enc > 0}
-                                            +{$item.enc}
-                                        {/if}
-                                        </span>
+                                                    <span class="item-name__content">{$item.name} <span class="item-name__additional">{$item.add_name}</span>
+                                                    {if $item.enc > 0}
+                                                        +{$item.enc}
+                                                    {/if}
+                                                    </span>
                                                 </div>
                                             </div>
                                         {/if}
@@ -104,7 +104,7 @@
                                     {/if}
                                     <td class="text-right">
                                         <div class="btn-group">
-                                            <span class="item-price">{$item.price}</span>
+                                            <span class="item-price">{$.php.floatval($item.price)}</span>
                                             <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $item.id])}>{$buy}</button>
                                         </div>
                                     </td>

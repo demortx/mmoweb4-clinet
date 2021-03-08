@@ -72,11 +72,12 @@ class func
                 'orderable' => 'false',
                 'position' => 0,
                 'formatter' => function($val, $row) {
-                    return '<div class="item-name">'
-                        . '<img src="'.check_icon_item($val, $this->sid).'">'
+
+                    return '<div class="item-name" title="'.$row['description'].'">'
+                        . '<img '.get_icon_item($val,$row['icon_panel'], $this->sid).'>'
                         . '<div>'
-                        . "<span class='item-name__content'>" . $row['name'] . ' <span class="item-name__additional">' . $row['add_name'] . "</span>"
-                        . ($row['enc'] > 0 ? "+" . $row['enc'] : '') . "</span>"
+                        . "<span class='item-name__content'>" . $row['name'] . ' <span class="item-name__additional">' . htmlspecialchars($row['add_name']) . "</span>"
+                        . ($row['enc'] > 0 ? " +" . $row['enc'] : '') . "</span>"
                         . (get_augmentation($row['aug_1']) != "" ? "<span class='item-augment'>"
                             . "<span>" . get_augmentation($row['aug_1']) . "</span><span>" . get_augmentation($row['aug_2']) . "</span>"
                             . "</span>" : "")
@@ -127,9 +128,9 @@ class func
                     $r = '<div class="btn-group"><span class="item-price">';
                     if (isset($cfg["step"])){
 
-                        $r .= number_format((float) $val, 2, '.', '') . ' за x'.$cfg["step"];
+                        $r .= floatval(number_format((float) $val, 2, '.', '') ). ' '.get_lang('market.lang')['ajax_buy_shop_for'].' '.$this->number_format_short($cfg["step"]);
                     }else
-                        $r .= number_format((float) $val, 2, '.', '');
+                        $r .= floatval(number_format((float) $val, 2, '.', ''));
 
                     $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>' . get_lang('market.lang')['buy'] . '</button>';
 
@@ -201,11 +202,12 @@ class func
     private function get_count_section(){
         $this->this_main->init_db();
         $count_section = array();
-        $count_temp = $this->this_main->db->query('SELECT 
+        $count_temp = $this->this_main->db->query("SELECT 
             s.section, COUNT(i.id) as counts
             FROM `mw_market_shop_items` AS i
             LEFT JOIN `mw_market_shop` AS s ON s.id = i.shop_id
-            GROUP BY s.section')
+            WHERE s.sid = {$this->sid}
+            GROUP BY s.section")
             ->fetchAll(\PDO::FETCH_ASSOC);
 
         if (!is_null($count_temp)){
@@ -233,6 +235,44 @@ class func
 
     }
 
+    public function widget_filter(){
+        $this->this_main->init_db();
+
+        $grade_temp = $this->this_main->db->query("SELECT 
+             d.grade
+            FROM `mw_market_shop_items` AS i
+            LEFT JOIN `mw_market_shop` AS s ON s.id = i.shop_id
+            LEFT JOIN `mw_item_db` AS d ON d.item_id = i.item_id
+            WHERE s.sid = {$this->sid} AND d.sid = {$this->sid}
+            GROUP BY d.grade")
+            ->fetchAll(\PDO::FETCH_ASSOC);
+
+
+        $type_temp = $this->this_main->db->query("SELECT 
+             d.type
+            FROM `mw_market_shop_items` AS i
+            LEFT JOIN `mw_market_shop` AS s ON s.id = i.shop_id
+            LEFT JOIN `mw_item_db` AS d ON d.item_id = i.item_id
+            WHERE s.sid = {$this->sid} AND d.sid = {$this->sid}
+            GROUP BY d.type")
+            ->fetchAll(\PDO::FETCH_ASSOC);
+
+        return get_instance()->fenom->fetch(
+            get_tpl_file('widget_filter.tpl', get_class($this->this_main)),
+            array_merge(
+                array(
+                    'count_section' => $this->get_count_section(),
+                    'section_status' => $this->market['section'],
+                    'att' => $this->att,
+                    'grade_list' => $grade_temp,
+                    'type_list' => $type_temp,
+                ),
+                get_lang('market.lang')
+            )
+        );
+
+    }
+
     public function widget_list_market(){
         $url_array = get_instance()->url->segment_array();
         if(isset($url_array[3]) AND in_array($url_array[3], $this->market['section'])){
@@ -245,6 +285,42 @@ class func
                 $this->datatable->loudColumn($this->datatable_column_character);
 
             $this->datatable->addPost(['sid' => $this->sid, 'section' => $section]);
+
+            $this->datatable->add_form(array(
+                    array(
+                        'col_class' => 'col-md-4', // может быть любым
+                        'class' => 'input-group',
+                        'att' => '',
+                        'inputs' => array(
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"name", 'name'=>"name", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"price_from", 'name'=>"price_from", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"price_to", 'name'=>"price_to", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"grade", 'name'=>"grade", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"enc_from", 'name'=>"enc_from", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"enc_to", 'name'=>"enc_to", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"rarity", 'name'=>"rarity", 'placeholder'=>""
+                            ),
+                            array(
+                                '___type'=> 'hide' ,'type'=>"text", 'class'=>"form-control", 'id'=>"attributes", 'name'=>"attributes", 'placeholder'=>""
+                            ),
+                        )
+                    ),
+
+                )
+            );
 
             return get_instance()->fenom->fetch(
                 get_tpl_file('widget_list_market.tpl', get_class($this->this_main)),
@@ -306,8 +382,6 @@ class func
                     }
                     $key = null;
                 }
-
-
             }
 
             if ($order_)
@@ -326,9 +400,75 @@ class func
                     $globalSearch[] = "$column LIKE ".$this->this_main->db->quote('%'.$search['value'].'%');
                 }
                 if (is_array($globalSearch) AND count( $globalSearch ) ) {
-                    $where = 'AND ('.implode(' OR ', $globalSearch).')';
+                    $where .= 'AND ('.implode(' OR ', $globalSearch).') ';
                 }
                 unset($globalSearch);
+            }
+
+            $filter_array = array(
+                'name' => array(
+                    'field' => array('i.`name`', 'i.`add_name`', 'i.`description`'),
+                    'formatted' => function($val){ return $this->this_main->db->quote('%'.$val.'%');},
+                    'operator' => 'LIKE'
+                ),
+                'price_from' => array(
+                    'field' => array('si.`price`'),
+                    'formatted' => function($val){ return intval($val);},
+                    'operator' => '>='
+                ),
+                'price_to' => array(
+                    'field' => array('si.`price`'),
+                    'formatted' => function($val){ return intval($val);},
+                    'operator' => '<='
+                ),
+                'grade' => array(
+                    'field' => array('i.`grade`'),
+                    'formatted' => function($val){ return $this->this_main->db->quote($val);},
+                    'operator' => '='
+                ),
+                'enc_from' => array(
+                    'field' => array('si.`enc`'),
+                    'formatted' => function($val){ return intval($val);},
+                    'operator' => '>='
+                ),
+                'enc_to' => array(
+                    'field' => array('si.`enc`'),
+                    'formatted' => function($val){ return intval($val);},
+                    'operator' => '<='
+                ),
+                'rarity' => array(
+                    'field' => array('i.`description`'),
+                    'formatted' => function($val){
+
+                        if ($val == 'rare')
+                            return $this->this_main->db->quote('Masterwork%');
+                        else
+                            return $this->this_main->db->quote('Masterwork%');
+
+                        },
+                    'operator' => 'LIKE'
+                ),
+                'attributes' => array(
+                    'field' => array('si.`a_att_type`'),
+                    'formatted' => function($val){ return intval($val);},
+                    'operator' => '='
+                ),
+            );
+
+
+            foreach ($_POST['custom'] as $k => $v){
+                $v = trim($v);
+                if (isset($filter_array[$k]) AND $v != '') {
+
+                    $globalSearch = array();
+                    foreach ($filter_array[$k]['field'] as $column) {
+                        $globalSearch[] = "$column ".$filter_array[$k]['operator']." " . $filter_array[$k]['formatted']($v);
+                    }
+                    if (is_array($globalSearch) and count($globalSearch)) {
+                        $where .= 'AND (' . implode(' OR ', $globalSearch) . ') ';
+                    }
+                    unset($globalSearch);
+                }
             }
 
             $section = $this->this_main->db->quote($section);
@@ -368,6 +508,7 @@ class func
                                                     WHERE s.sid = {$this->sid} AND s.`section`= {$section}  {$where}
                                               {$order_sql}
                                               {$limit_sql};")->fetchAll(\PDO::FETCH_ASSOC);
+
             $out = array();
             foreach($result as $value){
                 $row = array();
@@ -478,6 +619,7 @@ class func
             get_tpl_file('widget_user_bar.tpl', get_class($this->this_main)),
             array_merge(
                 array(
+                    'market' => $this->market
                     //'social_list' => $this->soc_network,
                     //'soc_list' => $soc_list,
                 ),
@@ -563,6 +705,7 @@ class func
             array_merge(
                 array(
                     'market_cfg' => $this->market,
+                    'payment_system' => get_instance()->config['payment_system'],
                 ),
                 get_lang('market.lang')
             )
@@ -617,6 +760,7 @@ class func
                                     2 => get_lang('market.lang')['rejected_refunded'],
                                     3 => get_lang('market.lang')['rejected_not_refunded']
                                 ],
+                                'market_cfg' => $this->market,
                             ),
                             get_lang('market.lang')
                         )
@@ -704,6 +848,7 @@ class func
                                     2 => get_lang('market.lang')['rejected_refunded'],
                                     3 => get_lang('market.lang')['rejected_not_refunded']
                                 ],
+                                'market_cfg' => $this->market,
                             ),
                             get_lang('market.lang')
                         )
@@ -840,8 +985,10 @@ class func
                                     2 => get_lang('market.lang')['widget_sell_sell_type_2'],
                                     3 => get_lang('market.lang')['widget_sell_sell_type_3'],
                                 ],
+                                'payment_system' => get_instance()->config['payment_system'],
                             ),
-                            get_lang('market.lang')
+                            get_lang('market.lang'),
+
                         )
                     );
 
@@ -1073,10 +1220,10 @@ class func
                 $item = array_merge($item, $item_info);
                 if($this->check_item($item) AND $type == 'select') {
                     $price = $this->check_price($item["i_i"]);
-                    $html_item .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u' . $item['uid'] . '" data-uid="' . $item['uid'] . '"  data-count="' . $item['i_c'] . '"  data-stackable="' . $item['stackable'] . '" data-name="' . $item['name'] . ' ' . $enc . ' ' . $count . '" data-icon="' . $item['icon'] . '" '.$price.' href="javascript:void(0)" title="' . $att . ' ' . $aug . '"><img src="' . $item['icon'] . '" width="22px" class="mr-1" title="' . $item['name'] . '">' . $item['name'] . ' ' . $enc . ' ' . $count . '</a>';
+                    $html_item .= '<a class="list-group-item list-group-item-action text-left p-1 select_item_mr" id="u' . $item['uid'] . '" data-uid="' . $item['uid'] . '"  data-count="' . $item['i_c'] . '"  data-stackable="' . $item['stackable'] . '" data-name="' . $item['name'] . ' ' . $enc . ' ' . $count . '" data-icon="' . $item['icon'] . '" '.$price.' href="javascript:void(0)" title="' . $att . ' ' . $aug . '"><img '.get_icon_item($item['icon'], $item['icon_panel'], $this->sid, false).'  data-i-src="'.$item['src'].'" data-i-panel="'.$item['src_panel'].'" width="22px" height="22px" class="mr-1" title="' . $item['name'] . '">' . $item['name'] . ' ' . $enc . ' ' . $count . '</a>';
 
-                }else
-                    $html_item_disable .= '<div class="list-group-item list-group-item-action text-left p-1 not-sell"  title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1 imgdis" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</div>';
+                }//else
+                //    $html_item_disable .= '<div class="list-group-item list-group-item-action text-left p-1 not-sell"  title="'.$att.' '.$aug.'"><img src="'.$item['icon'].'" width="22px" class="mr-1 imgdis" title="'.$item['name'].'">'.$item['name'].' '.$enc.' '.$count.'</div>';
 
             }
 
@@ -1120,15 +1267,16 @@ class func
      */
     public function check_item($item){
 
-        if(in_array($item["i_i"] , explode(',',$this->market["items_allowed"])))
-            return true;
-        elseif( in_array($item["i_i"] , explode(',',$this->market["items_prohibited"])))
+
+        if( ($item["a_a_t"] > -1) AND !in_array("attributes", $this->market["options"]))
             return false;
         elseif( ($item["i_a_1"] != 0) AND !in_array("augmentation", $this->market["options"]))
             return false;
-        elseif( ($item["stackable"] != 0) AND !in_array("stackable", $this->market["options"]))
+        elseif(in_array($item["i_i"] , explode(',',$this->market["items_allowed"])))
+            return true;
+        elseif( in_array($item["i_i"] , explode(',',$this->market["items_prohibited"])))
             return false;
-        elseif( ($item["a_a_t"] > -1) AND !in_array("attributes", $this->market["options"]))
+        elseif( ($item["stackable"] != 0) AND !in_array("stackable", $this->market["options"]))
             return false;
         else{
 
@@ -1389,15 +1537,19 @@ class func
 
             }
 
-            $title = "Покупка " . $item['name'];
+            $title = get_lang('shop.lang')['ajax_buy_shop_title']." " . $item['name'];
 
             $package_price = 0;
 
             if ($items_all != null)
             {
-                foreach ($items_all as $value)
+                foreach ($items_all as $k => $value)
                 {
                     $package_price += $value['price'];
+
+                    if ($item['id'] == $value['id'])
+                        unset($items_all[$k]);
+
                 }
             }
             else
@@ -1427,8 +1579,8 @@ class func
             );
 
             $footer = '<div class="row justify-content-between">
-                    <span class="pull-left" style="line-height: 30px;">' . get_lang('market.lang')['pay_amount'] . '<span id="price-final" data-initial="' . $package_price . '">' . $package_price . '</span></span>
-                    <button type="submit" class="btn btn-alt-primary pull-right submit-form"><i class="si si-action-redo mr-5"></i> ' . get_lang('market.lang')['buy'] .'</button>
+                    <span class="pull-left ml-15" style="line-height: 30px;font-weight: 600;">' . get_lang('market.lang')['pay_amount'] . '<span id="price-final" data-initial="' . $package_price . '"> ' . $package_price . '</span></span>
+                    <button type="submit" class="btn btn-alt-primary pull-right submit-form mr-15"><i class="si si-action-redo "></i> ' . get_lang('market.lang')['buy'] .'</button>
                    </div>';
 
             return get_instance()->ajaxmsg->popup($title, $content, $footer)->send();
@@ -1490,11 +1642,13 @@ class func
             $vars = array();
 
             if (!isset($_POST['account_name']) OR empty($_POST['account_name']))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_shop_id'])->danger();
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_account_name'])->danger();
             else
                 $vars['account'] = $_POST['account_name'];
 
-            if (isset($_POST['char_name']))
+            if (!isset($_POST['char_name']) OR empty($_POST['char_name']))
+                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_char_name'])->danger();
+            else
                 $vars['character'] = $_POST['char_name'];
 
             if (!isset($_POST['id']) OR empty($_POST['id']))
@@ -1682,7 +1836,37 @@ class func
 
     }
 
+    public function number_format_short( $n, $precision = 1 ) {
 
+        if ($n < 900) {
+            // 0 - 900
+            $n_format = number_format($n, $precision);
+            $suffix = '';
+        } else if ($n < 900000) {
+            // 0.9k-850k
+            $n_format = number_format($n / 1000, $precision);
+            $suffix = 'k';
+        } else if ($n < 900000000) {
+            // 0.9m-850m
+            $n_format = number_format($n / 1000000, $precision);
+            $suffix = 'kk';
+        } else if ($n < 900000000000) {
+            // 0.9b-850b
+            $n_format = number_format($n / 1000000000, $precision);
+            $suffix = 'kkk';
+        } else {
+            // 0.9t+
+            $n_format = number_format($n / 1000000000000, $precision);
+            $suffix = 'kkkk';
+        }
+        // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
+        // Intentionally does not affect partials, eg "1.50" -> "1.50"
+        if ( $precision > 0 ) {
+            $dotzero = '.' . str_repeat( '0', $precision );
+            $n_format = str_replace( $dotzero, '', $n_format );
+        }
+        return $n_format . $suffix;
+    }
 
 
 

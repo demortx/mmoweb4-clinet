@@ -139,7 +139,7 @@ $db_table_install = array(
                       `char_inventory` mediumtext NOT NULL COMMENT 'Информация об инвентаре персонажа',
                       `price` decimal(12,6) NOT NULL COMMENT 'Цена за товар или еденицу товара',
                       `item_id` int(11) NOT NULL COMMENT 'ид предмета',
-                      `count` int(11) NOT NULL COMMENT 'количество предметов',
+                      `count` BIGINT(20) NOT NULL COMMENT 'количество предметов',
                       `enc` int(11) NOT NULL DEFAULT '0' COMMENT 'Улучшение предмета',
                       `aug_1` int(11) NOT NULL DEFAULT '0' COMMENT 'Аугоментация предмета',
                       `aug_2` int(11) NOT NULL DEFAULT '0' COMMENT 'Аугоментация предмета',
