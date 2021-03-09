@@ -121,6 +121,46 @@ class func
                                     }
                                 }
 
+                                if ($key == 'npc_id'){
+
+                                    if (is_numeric($row['rb_online'])){
+                                        if ($row['rb_online'] == 1)
+                                            $row['rb_online'] = true;
+                                        elseif ($row['rb_online'] == 0)
+                                            $row['rb_online'] = false;
+                                        else{
+                                            if (strlen($row['rb_online']) > 11)
+                                                $row['rb_online'] = $row['rb_online'] / 1000;
+
+                                            $row['rb_online'] = date('d-m H:M', $row['rb_online']);
+                                        }
+                                    }else{
+                                        $row['rb_online'] = date('d-m H:M', strtotime($row['rb_online']));
+                                    }
+
+                                    $row['level'] = $row['rb_level'];
+                                    $row['respawn'] = 0;
+                                    $row['random'] = 0;
+                                    if ($val > 0) {
+                                        foreach ($lib['raidboss'] as $rb_key => $rb_info) {
+                                            if ($rb_info['npc_id'] == $val) {
+                                                $row['rb_name'] = $rb_info['npc_name'];
+                                                $row['level'] = $rb_info['level'];
+                                                $row['respawn'] = $rb_info['respawn'];
+                                                $row['random'] = $rb_info['random'];
+                                                break;
+                                            }
+                                        }
+                                    }else{
+                                        if (isset($lib['raidboss'][$row['rb_name']])){
+                                            $row['rb_name'] = $lib['raidboss'][$row['rb_name']]['npc_name'];
+                                            $row['level'] = $lib['raidboss'][$row['rb_name']]['level'];
+                                            $row['respawn'] = $lib['raidboss'][$row['rb_name']]['respawn'];
+                                            $row['random'] = $lib['raidboss'][$row['rb_name']]['random'];
+                                        }
+                                    }
+                                }
+
                                 if ($key == 'siege' AND !is_numeric($val)){
                                     if (!empty($val))
                                         $val = strtotime($val);

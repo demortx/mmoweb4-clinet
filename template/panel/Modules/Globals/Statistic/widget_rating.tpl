@@ -26,7 +26,7 @@
                 {elseif $.php.file_exists( $.const.ROOT_DIR ~ $.const.VIEWPATH ~ "/panel/Modules/Globals/Statistic/{$platform}/{$tab_c}.tpl")}
                     {include "/panel/Modules/Globals/Statistic/{$platform}/{$tab_c}.tpl" top_list=$top.data}
                 {else}
-                    No support template {$tab_c}
+                    No support template: {$tab_c}
                 {/if}
             {else}
                 <pre>{$top.data}</pre>
