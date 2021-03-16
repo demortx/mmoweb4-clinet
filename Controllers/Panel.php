@@ -212,14 +212,7 @@ class Panel extends Controller {
 
 
         if($this->config['cabinet']['registration_login_prefix']) {
-            if(isset($_SESSION['prefix_list']))
-                unset($_SESSION['prefix_list']);
-
-            $i = 0;
-            while ($i < $this->config['cabinet']['registration_login_prefix_count']) {
-                $i++;
-                $_SESSION['prefix_list'][] = prefix();
-            }
+            gen_prefix_tpl();
         }
 
         $iframe = false;

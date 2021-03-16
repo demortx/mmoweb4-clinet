@@ -3,9 +3,14 @@
 namespace Template;
 trait Pages {
 
-    public function __construct()
-    {
-        parent::__construct();
+    /**
+     * Callback _construct
+     */
+    public function tpl__construct(){
+        //Пример кастомного тега вызывается в шаблоне {test_func}  - создается в SiteComponents.php в корне шаблона
+        $this->fenom->addFunctionSmart('test_func', 'Template\SiteComponents::test_func');
+        //произвольный код _construct
+
     }
 
     /**

@@ -53,14 +53,7 @@ class In extends Controller
     public function prefix_list(){
 
         if($this->config['cabinet']['registration_login_prefix']) {
-            if(isset($_SESSION['prefix_list']))
-                unset($_SESSION['prefix_list']);
-
-            $i = 0;
-            while ($i < $this->config['cabinet']['registration_login_prefix_count']) {
-                $i++;
-                $_SESSION['prefix_list'][] = prefix();
-            }
+            gen_prefix_tpl();
             foreach ($_SESSION['prefix_list'] as $px) {
                 $send[] = array('name' => $px, 'value' => $px);
             }
@@ -130,17 +123,16 @@ class In extends Controller
             if (!isset($_SESSION['promo_game']['items']))
                 exit($this->ajaxmsg->notify('You need to start the game')->post('need_start')->danger());
 
-            if ($this->config['promo_game'][(int)$_POST['id']]['max'] <= (count($_SESSION['promo_game']['items']) + 1))
+            if ($this->config['promo_game'][(int)$_POST['id']]['max'] <= count($_SESSION['promo_game']['items']))
                 exit($this->ajaxmsg->notify('You won max number of items: '.$this->config['promo_game'][(int)$_POST['id']]['max'])->post('max_win')->danger());
 
-
-            $items = $this->get_random_item((int)$_POST['id'], 1, (count($_SESSION['promo_game']['items']) + 1));
+            $items = $this->get_random_item((int)$_POST['id'], 1, count($_SESSION['promo_game']['items']) + 1);
             if (count($items) > 0){
                 foreach ($items as $id => $item){
-                    $_SESSION['promo_bonus'][] = $id;
+                    $_SESSION['promo_game']['items'][] = $id;
                 }
 
-                if ($this->config['promo_game'][(int)$_POST['id']]['max'] <= (count($_SESSION['promo_game']['items']) + 1)){
+                if ($this->config['promo_game'][(int)$_POST['id']]['max'] <= count($_SESSION['promo_game']['items'])){
                     $_SESSION['promo_game']['status'] = 'finish';
                     $finish = true;
                 }else{
@@ -149,8 +141,9 @@ class In extends Controller
                 }
 
 
-                exit($this->ajaxmsg->notify('Your prize')->post(['items' => $items, 'next' => $finish])->success());
-            }
+                exit($this->ajaxmsg->notify('Your prize')->post(['items' => $items, 'next' => $finish, 'count' => count($_SESSION['promo_game']['items'])])->success());
+            }else
+                exit($this->ajaxmsg->notify('Error empty items')->danger());
 
         }
 

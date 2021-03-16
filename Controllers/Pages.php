@@ -12,8 +12,8 @@ class Pages extends Controller {
 
     public function __construct()
     {
-        parent::__construct();
 
+        parent::__construct();
         if ($this->config['site']['status'] == 0) {
             header('Location: '.set_url('/sign-in', false), TRUE, 301);
             die;
@@ -51,20 +51,25 @@ class Pages extends Controller {
         $this->fenom->addFunctionSmart('streams', 'SiteComponents::Streams');
         $this->fenom->addFunctionSmart('language', 'SiteComponents::Language');
         $this->fenom->addFunctionSmart('iblock', 'SiteComponents::IBlock');
-
+        if (method_exists($this, 'tpl__construct')) {
+            if (file_exists(ROOT_DIR . TEMPLATE_DIR . '/SiteComponents.php')) {
+                include_once ROOT_DIR . TEMPLATE_DIR . '/SiteComponents.php';
+            }
+            $this->tpl__construct();
+        }
     }
 
     public function page_static($s1 = false, $s2 = false){
 
         $s1 = trim(strtolower($s1));
 
-        if (in_array($s1, array('page_static', 'initTPL', 'index')))
+        if (in_array($s1, array('page_static', 'initTPL', 'index', 'tpl__construct', 'tpl')))
             show_404();
 
 
         $s2 = trim(strtolower($s2));
         $s1_this = str_replace('-', '_', $s1);
-        if (in_array($s1_this, array('page_static', 'initTPL', 'index')))
+        if (in_array($s1_this, array('page_static', 'initTPL', 'index', 'tpl__construct', 'tpl')))
             show_404();
 
         if(method_exists($this, $s1_this)){

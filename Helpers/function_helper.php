@@ -487,6 +487,25 @@ if ( ! function_exists('prefix')) {
 
     }
 }
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('gen_prefix_tpl')) {
+
+    function gen_prefix_tpl()
+    {
+        if(get_instance()->config['cabinet']['registration_login_prefix']) {
+            if(isset($_SESSION['prefix_list']))
+                unset($_SESSION['prefix_list']);
+
+            $i = 0;
+            while ($i < get_instance()->config['cabinet']['registration_login_prefix_count']) {
+                $i++;
+                $_SESSION['prefix_list'][] = prefix();
+            }
+        }
+
+    }
+}
 if ( ! function_exists('is_https'))
 {
     /**

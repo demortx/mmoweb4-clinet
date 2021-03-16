@@ -247,14 +247,7 @@ class User extends MainModulesClass
         $title = get_lang('user.lang')['title_popup_lang'] . get_sid_name(false);
 
         if(get_instance()->config['cabinet']['registration_login_prefix']) {
-            if(isset($_SESSION['prefix_list']))
-                unset($_SESSION['prefix_list']);
-
-            $i = 0;
-            while ($i < get_instance()->config['cabinet']['registration_login_prefix_count']) {
-                $i++;
-                $_SESSION['prefix_list'][] = prefix();
-            }
+            gen_prefix_tpl();
         }
 
         $content = get_instance()->fenom->fetch(
