@@ -116,7 +116,7 @@ class func
                 'orderable' => 'true',
                 'position' => 3,
                 'formatter' => function($val, $row) {
-                    return $val;
+                    return number_format($val);
                 }
             ),
             'price' => array(
@@ -128,9 +128,9 @@ class func
                     $r = '<div class="btn-group"><span class="item-price">';
                     if (isset($cfg["step"])){
 
-                        $r .= floatval(number_format((float) $val, 2, '.', '') ). ' '.get_lang('market.lang')['ajax_buy_shop_for'].' '.$this->number_format_short($cfg["step"]);
+                        $r .= floatval(number_format($val, 2, '.', '')). ' '.get_lang('market.lang')['ajax_buy_shop_for'].' '.$this->number_format_short($cfg["step"]);
                     }else
-                        $r .= floatval(number_format((float) $val, 2, '.', ''));
+                        $r .= floatval(number_format($val, 2, '.', ''));
 
                     $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>' . get_lang('market.lang')['buy'] . '</button>';
 
@@ -140,6 +140,9 @@ class func
 
 
         );//Создаем разметку для таблицы
+
+
+
         $this->datatable_column_character = array(
             'char_info' => array(
                 'name' => get_lang('market.lang')['character_column'],
@@ -987,7 +990,7 @@ class func
                                 ],
                                 'payment_system' => get_instance()->config['payment_system'],
                             ),
-                            get_lang('market.lang'),
+                            get_lang('market.lang')
 
                         )
                     );

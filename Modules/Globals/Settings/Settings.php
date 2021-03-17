@@ -70,6 +70,7 @@ class Settings extends MainModulesClass
             'manager_delete' => function () { return $this->func->ajax_manager_delete(); },
             'manager_add' => function () { return $this->func->ajax_manager_add(); },
             'manager_confirm' => function () { return $this->func->ajax_manager_confirm(); },
+
         );
 
     }

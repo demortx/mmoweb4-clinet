@@ -37,15 +37,23 @@ class func
     }
 
     public function fragment_account_list(){
-        $platform = get_instance()->get_platform();
 
         if (!isset(get_instance()->session->session["user_data"]["account"]['error_exception']))
         {
+            $platform = get_instance()->get_platform();
+            $sid = get_instance()->get_sid();
+
+            $server_info = isset(get_instance()->config['project']['server_info'][$platform][$sid]) ? get_instance()->config['project']['server_info'][$platform][$sid] : array();
 
             return get_instance()->fenom->fetch(
                 get_tpl_file('widget_account_list_'.$platform.'.tpl', get_class($this->this_main)),
                 array_merge(
-                    array('payment_system' => get_instance()->config['payment_system'],),
+                    array(
+                        'payment_system' => get_instance()->config['payment_system'],
+                        'server_info' => $server_info,
+
+
+                        ),
                     get_lang('user.lang')
                 )
             );

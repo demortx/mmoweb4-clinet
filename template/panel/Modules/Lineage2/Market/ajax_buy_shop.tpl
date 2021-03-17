@@ -157,7 +157,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calculator"></i></span>
                         </div>
-                        <input type="number" maxlength="4" name="count" class="form-control" id="count" value="1">
+                        <input type="number" min="1" max="9999999" name="count" class="form-control" id="count" value="1">
                     </div>
                 </div>
             </div>

@@ -6,7 +6,6 @@
             {set $hide_account = $hide_account + 1}
             {continue}
         {/if}
-
         <div class="block block-bordered block-rounded mb-2 list_account {if $first}open{/if}">
             <div class="block-header pt-10 pb-10 pr-10 accordion_account" role="tab" id="account_list_info__{$login}_h1">
 
@@ -24,19 +23,27 @@
                             <tr>
                                 <th>Name</th>
                                 <th class="d-none d-sm-table-cell" style="width: 15%;">LvL</th>
-                                <th class="text-right" style="width: 200px;"></th>
+                                <th class="text-right"  style="width: 60%;"></th>
                             </tr>
                             </thead>
                             <tbody>
                             {foreach $info.char_list as $char_id => $char}
+                                {set $char.bind_hwid = 'true'}
                                 <tr>
-                                    <td>{if $char.ban == 1}<span class="badge badge-danger"><i class="fa fa-ban mr-5"></i>BAN</span> {/if}{$char.name}</td>
+                                    <td>{if $char.ban == 1}<span class="badge badge-danger"><i class="fa fa-ban mr-5"></i>BAN</span> {/if} {if $char.bind_hwid == 'true'}<i class="fa fa-expeditedssl" title="HWID"></i>{/if} {$char.name}</td>
                                     <td class="d-none d-sm-table-cell">{$char.level}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            {*<button type="button" class="btn btn-sm btn-outline-secondary" >
-                                                В город
-                                            </button>*}
+                                            {if $server_info.teleport_char? AND $server_info.teleport_char AND $char.ban != 1}
+                                            <button type="button" class="btn btn-sm btn-outline-secondary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Character\Character", "ingame_teleport_char", ['login' => $login, 'char' => $char.name])}>{$lang_w_btn_teleport_char}</button>
+                                            {/if}
+                                            {if $server_info.hwid_char? AND $server_info.hwid_char AND $char.bind_hwid == 'true'}
+                                            <button type="button" class="btn btn-sm btn-outline-secondary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Character\Character", "ingame_reset_hwid_char", ['login' => $login, 'char' => $char.name])}>{$lang_w_btn_reset_hwid_char}</button>
+                                            {/if}
+                                            {if $server_info.pin_char? AND $server_info.pin_char}
+                                            <button type="button" class="btn btn-sm btn-outline-secondary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Character\Character", "ingame_reset_pin_char", ['login' => $login, 'char' => $char.name])}>{$lang_w_btn_reset_pin_char}</button>
+                                            {/if}
+
 
                                             {if $.site.config.in_game_currency[get_sid()]['config']['char']? AND $.php.is_array($.site.config.in_game_currency[get_sid()]['settings'])}
                                                 {foreach $.site.config.in_game_currency[get_sid()]['settings'] as $_currency}
@@ -62,6 +69,8 @@
                         <button type="button" class="btn btn-sm btn-noborder btn-outline-primary min-width-125 mr-5 submit-btn" {$.php.btn_ajax("Modules\Globals\Settings\Settings", "change_password_account_open", ['account'=>$login])}><i class="fa fa-retweet mr-5"></i>{$lang_w_btn_change_password}</button>
                         <button type="button" class="btn btn-sm btn-noborder btn-outline-primary min-width-125 submit-btn" {$.php.btn_ajax("Modules\Globals\Settings\Settings", "forgot_password_account_open", ['account'=>$login])}><i class="fa fa-key mr-5"></i>{$lang_w_btn_forgot_password}</button>
                         <button type="button" class="btn btn-sm btn-noborder btn-outline-primary min-width-125 submit-btn" {$.php.btn_ajax("Modules\Globals\User\User", "hide_game_account", ['account'=>$login])}><i class="fa fa-eye-slash mr-5"></i>{$lang_w_btn_hide_account}</button>
+                        {if $server_info.pin_account? AND $server_info.pin_account}<button type="button" class="btn btn-sm btn-noborder btn-outline-primary min-width-125 mr-5 submit-btn" {$.php.btn_ajax("Modules\Lineage2\Character\Character", "ingame_reset_pin_account", ['login'=>$login])}><i class="fa fa-expeditedssl mr-5" title="PIN-CODE"></i>{$lang_w_btn_reset_pin_account}</button>{/if}
+                        {if $server_info.hwid_account? AND $server_info.hwid_account}<button type="button" class="btn btn-sm btn-noborder btn-outline-primary min-width-125 mr-5 submit-btn" {$.php.btn_ajax("Modules\Lineage2\Character\Character", "ingame_reset_hwid_account", ['login'=>$login])}><i class="fa fa-expeditedssl mr-5" title="HWID"></i>{$lang_w_btn_reset_hwid_account}</button>{/if}
                     </div>
                 </div>
             </div>
