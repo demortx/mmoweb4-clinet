@@ -42,6 +42,8 @@ class Controller
     public $config = null;
     public $shop = null;
     public $market = null;
+    public $lucky_wheel = null;
+    public $cases = null;
 
     /* Project ID*/
     public $pid = null;
@@ -101,6 +103,12 @@ class Controller
 
         if (file_exists(ROOT_DIR . '/Library/market.php'))
             $this->market = include ROOT_DIR . '/Library/market.php';
+
+        if (file_exists(ROOT_DIR . '/Library/lucky_wheel.php'))
+            $this->lucky_wheel = include ROOT_DIR . '/Library/lucky_wheel.php';
+
+        if (file_exists(ROOT_DIR . '/Library/cases.php'))
+            $this->cases = include ROOT_DIR . '/Library/cases.php';
 
 
         if (!is_array($this->config))

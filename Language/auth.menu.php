@@ -314,6 +314,72 @@ return array(
                 return '';
         }
     ),
+    'lucky_wheel' => array(
+        'enable' => function(){ return get_instance()->check_plugin('lucky_wheel');},
+        'level' => 650,
+        'empty_hide' => false,
+        'href' => '/panel/lucky-wheel',
+        'icon' => 'fa fa-superpowers',
+        'target' => '_self',
+        'name' => array(
+            'ru' => 'Колесо фортуны',
+            'en' => 'Lucky wheel',
+            'gr' => 'Lucky wheel',
+			'es' => 'Lucky wheel',
+            'pt' => 'Lucky wheel',
+        ),
+        'title' => array(
+            'ru' => 'Колесо фортуны',
+            'en' => 'Lucky wheel',
+            'gr' => 'Lucky wheel',
+			'es' => 'Lucky wheel',
+            'pt' => 'Lucky wheel',
+        ),
+        'function' => function(&$buttons){
+            $t = filemtime(ROOT_DIR.'/Library/lucky_wheel.php');
+            if (isset($_COOKIE['lucky_wheel_new'])){
+                if ($_COOKIE['lucky_wheel_new'] != $t)
+                    return ' <span class="badge badge-success animated swing infinite">New</span>';
+                else
+                    return '';
+            }
+            else
+                return ' <span class="badge badge-success animated swing infinite">New</span>';
+        }
+    ),
+    'cases' => array(
+        'enable' => function(){ return get_instance()->check_plugin('cases');},
+        'level' => 650,
+        'empty_hide' => false,
+        'href' => '/panel/cases',
+        'icon' => 'fa fa-briefcase',
+        'target' => '_self',
+        'name' => array(
+            'ru' => 'Кейсы',
+            'en' => 'Cases',
+            'gr' => 'Cases',
+			'es' => 'Cases',
+            'pt' => 'Cases',
+        ),
+        'title' => array(
+            'ru' => 'Кейсы',
+            'en' => 'Cases',
+            'gr' => 'Cases',
+			'es' => 'Cases',
+            'pt' => 'Cases',
+        ),
+        'function' => function(&$buttons){
+            $t = filemtime(ROOT_DIR.'/Library/cases.php');
+            if (isset($_COOKIE['cases_new'])){
+                if ($_COOKIE['cases_new'] != $t)
+                    return ' <span class="badge badge-success animated swing infinite">New</span>';
+                else
+                    return '';
+            }
+            else
+                return ' <span class="badge badge-success animated swing infinite">New</span>';
+        }
+    ),
     'forum' => array(
         'enable' => true,
         'level' => 700,

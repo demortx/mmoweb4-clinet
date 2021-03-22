@@ -112,7 +112,7 @@ class Api extends Controller
 
         $POST = array_merge($this->config,$_POST);
 
-        if(SaveProjectConfig($POST)) {
+        if(SaveConfig($POST, 'config', 'system')) {
             echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
         }else
             echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
@@ -126,7 +126,39 @@ class Api extends Controller
 
             $cfg = unserialize($_POST['cfg']);
 
-            if(SaveShopConfig($cfg)) {
+            if(SaveConfig($cfg, 'shop')) {
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
+            }else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
+        }else
+            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Not found cfg!", "status" => "error"));
+
+    }
+
+    public function lucky_wheel(){
+        $this->gateway();
+
+        if (isset($_POST['cfg'])){
+
+            $cfg = unserialize($_POST['cfg']);
+
+            if(SaveConfig($cfg, 'lucky_wheel')) {
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
+            }else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
+        }else
+            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Not found cfg!", "status" => "error"));
+
+    }
+
+    public function cases(){
+        $this->gateway();
+
+        if (isset($_POST['cfg'])){
+
+            $cfg = unserialize($_POST['cfg']);
+
+            if(SaveConfig($cfg, 'cases')) {
                 echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
             }else
                 echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
@@ -142,7 +174,7 @@ class Api extends Controller
 
             $cfg = unserialize($_POST['cfg']);
 
-            if (SaveMarketConfig($cfg)) {
+            if (SaveConfig($cfg, 'market')) {
                 echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config", "text" => "Successfully updated the project settings!", "status" => "success"));
             } else
                 echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config", "text" => "Error! Failed to update configuration!", "status" => "error"));

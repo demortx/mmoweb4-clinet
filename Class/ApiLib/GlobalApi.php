@@ -380,5 +380,34 @@ class GlobalApi extends \Api
         return $response;
     }
 
+    //Lucky Wheel
+
+    public function lucky_wheel_buy($vars){
+        $response = $this->init()->addParam('lucky_wheel', $vars)->post('v1/Plugins/lucky-wheel/buy')->response();
+
+        return $response;
+    }
+
+
+    public function lucky_wheel_history($vars){
+        $response = $this->init()->addParam('lucky_wheel', $vars)->get('v1/Plugins/lucky-wheel/history')->response();
+
+        return $response;
+    }
+
+    //Cases
+
+    public function cases_buy($vars){
+        $response = $this->init()->addParam('cases', $vars)->post('v1/Plugins/cases/buy')->response();
+
+        return $response;
+    }
+
+
+    public function cases_history($vars){
+        $response = $this->init()->addParam('cases', $vars)->get('v1/Plugins/cases/history')->response();
+
+        return $response;
+    }
 
 }

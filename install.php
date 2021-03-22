@@ -22,6 +22,8 @@ $folder_list = array(
     'Library/forum_config.php',
     'Library/server_config.php',
     'Library/shop.php',
+    'Library/cases.php',
+    'Library/lucky_wheel.php',
     'template/compiled',
 );
 $php_module_list = array(

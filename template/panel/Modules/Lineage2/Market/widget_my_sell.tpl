@@ -49,7 +49,7 @@
                             </td>
                         {/if}
                         <td class="text-center">
-                            {$.php.floatval($item.price)}
+                            {$.php.number_format($.php.floatval($item.price))}
                         </td>
                         <td class="text-right">
                             <button type="submit" class="btn btn-sm btn-outline-primary submit-btn" {$.php.btn_ajax("Modules\Lineage2\Market\Market", "ajax_stop_selling", ['id' => $item.id])}>{$widget_my_sell_remove}</button>

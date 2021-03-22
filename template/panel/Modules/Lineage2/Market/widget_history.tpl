@@ -59,9 +59,9 @@
                                             <small>
                                                 {$item_status[$sell.status]}
                                                 {if $sell.status == 1}
-                                                    {$ajax_buy_shop_for}: {$.php.floatval($.php.number_format($sell.earned_money, 2, ".", ""))} {$payment_system.short_name_valute} <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="{$comission_notify}">?</span>
+                                                    {$ajax_buy_shop_for}: {$.php.number_format($.php.floatval($.php.number_format($sell.earned_money, 2, ".", "")))} {$payment_system.short_name_valute} <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="{$comission_notify}">?</span>
                                                 {elseif $sell.status == 0}
-                                                    {$ajax_buy_shop_for}: {$.php.floatval($.php.number_format($sell.price, 2, ".", ""))} {$payment_system.short_name_valute}
+                                                    {$ajax_buy_shop_for}: {$.php.number_format($.php.floatval($.php.number_format($sell.price, 2, ".", "")))} {$payment_system.short_name_valute}
                                                 {/if}
                                             </small>
                                         </a>

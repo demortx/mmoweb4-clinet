@@ -296,15 +296,17 @@ if( ! function_exists('loud_lang_site')){
     }
 }
 
-
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('SaveProjectConfig')) {
+if ( ! function_exists('SaveConfig')) {
 
-    function SaveProjectConfig($savedata)
+    function SaveConfig($savedata, $file_name, $arr_name = false)
     {
+        if ($arr_name === false)
+            $arr_name = $file_name;
 
-        $cfg_file = ROOT_DIR . "/Library/config.php";
+
+        $cfg_file = ROOT_DIR . "/Library/".$file_name.".php";
 
 
         $fopen = fopen($cfg_file, "w");
@@ -321,10 +323,10 @@ if ( ! function_exists('SaveProjectConfig')) {
                 fwrite($fopen, "* Config - Global\n");
                 fwrite($fopen, " ********************************/\n");
                 fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");
-                fwrite($fopen, "\$system = array();\n");
+                fwrite($fopen, "\${$arr_name} = array();\n");
 
-                cfgWrite($fopen, $savedata, "\$system =");
-                fwrite($fopen, "return \$system;");
+                cfgWrite($fopen, $savedata, "\${$arr_name} =");
+                fwrite($fopen, "return \${$arr_name};");
                 fclose($fopen);
 
                 return true;
@@ -336,84 +338,7 @@ if ( ! function_exists('SaveProjectConfig')) {
 
     }
 }
-// ------------------------------------------------------------------------
 
-if ( ! function_exists('SaveShopConfig')) {
-
-    function SaveShopConfig($savedata)
-    {
-
-        $cfg_file = ROOT_DIR . "/Library/shop.php";
-
-
-        $fopen = fopen($cfg_file, "w");
-
-        if (file_exists($cfg_file)) {
-
-
-            if ($fopen) {
-                fwrite($fopen, "<?php\n");
-                fwrite($fopen, "/********************************\n");
-                fwrite($fopen, "* Dev and Code by Demort\n");
-                fwrite($fopen, "* Skype x88xax88x / email : demortx@gmail.com\n");
-                fwrite($fopen, "* https://mmoweb.ru\n");
-                fwrite($fopen, "* Shop - Global\n");
-                fwrite($fopen, " ********************************/\n");
-                fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");
-                fwrite($fopen, "\$shop = array();\n");
-
-                cfgWrite($fopen, $savedata, "\$shop =");
-                fwrite($fopen, "return \$shop;");
-                fclose($fopen);
-
-                return true;
-
-            }
-
-        } else
-            return false;
-
-    }
-}
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('SaveMarketConfig')) {
-
-    function SaveMarketConfig($savedata)
-    {
-
-        $cfg_file = ROOT_DIR . "/Library/market.php";
-
-
-        $fopen = fopen($cfg_file, "w");
-
-        if (file_exists($cfg_file)) {
-
-
-            if ($fopen) {
-                fwrite($fopen, "<?php\n");
-                fwrite($fopen, "/********************************\n");
-                fwrite($fopen, "* Dev and Code by Demort\n");
-                fwrite($fopen, "* Skype x88xax88x / email : demortx@gmail.com\n");
-                fwrite($fopen, "* https://mmoweb.ru\n");
-                fwrite($fopen, "* Market - Lineage\n");
-                fwrite($fopen, " ********************************/\n");
-                fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");
-                fwrite($fopen, "\$market = array();\n");
-
-                cfgWrite($fopen, $savedata, "\$market =");
-                fwrite($fopen, "return \$market;");
-                fclose($fopen);
-
-                return true;
-
-            }
-
-        } else
-            return false;
-
-    }
-}
 
 // ------------------------------------------------------------------------
 
@@ -1333,6 +1258,58 @@ if (!function_exists('get_shop_sale')) {
         }
 
         $TEMP['shop_sale'][$sale_id] = $result;
+
+        return $result;
+    }
+}
+
+if (!function_exists('get_cases_sale')) {
+
+    function get_cases_sale($sale_id)
+    {
+        global $TEMP;
+
+        //get_instance()->config['site']['time_zone'];
+        if (isset($TEMP['cases_sale'][$sale_id]))
+            return $TEMP['cases_sale'][$sale_id];
+
+        $result = array(
+            'status' => false,
+            'start' => '',
+            'end' => '',
+            'sale' => 0,
+            'name' => '',
+            'timer' => false,
+            'time_ribbon' => '',
+            'date_step' => 0,
+            'sale_ma' => true,
+        );
+
+        if (isset(get_instance()->cases['sale'][$sale_id])) {
+            $sale = get_instance()->cases['sale'][$sale_id];
+
+            if (strtotime($sale['start']) <= time() AND time() <= strtotime($sale['end'])){
+                $result['status'] = true;
+                $result['name'] = $sale['name'];
+                $result['start'] = $sale['start'];
+                $result['end'] = $sale['end'];
+                $result['sale'] = (int)$sale['sale'];
+                $result['timer'] =  $sale['timer'] == 1;
+                $result['date_unix'] = strtotime($sale['end']);
+                $result['date_step'] = $sale['step'] > 0 ? (time() + get_shop_step($sale['end'], (int) $sale['step'])) : 0;
+                $result['sale_ma'] = $sale['sale_ma'];
+
+                if ($sale['timer'] == 1){
+                    if ($sale['step'] > 0)
+                        $result['time_ribbon'] = '<div class="box__mark" title="'.$sale['name'].' - '.$sale['sale'].' %"><span data-sale-timer="'.($result['date_step']).'" data-sale-date="0">00:00:00</span> - '.$sale['sale'].' %</div>';
+                    else
+                        $result['time_ribbon'] = '<div class="box__mark" title="'.$sale['name'].' - '.$sale['sale'].' %"><span data-sale-timer="'.$result['date_unix'].'" data-sale-date="'.((($result['date_unix'] - 86000) > time()) ? 1 : 0).'">00:00:00</span> - '.$sale['sale'].' %</div>';
+                }else
+                    $result['time_ribbon'] = '<div class="box__mark" title="'.$sale['name'].' - '.$sale['sale'].'% - End: '.$sale['end'].'">'.$sale['name'].' - '.$sale['sale'].' %</div>';
+            }
+        }
+
+        $TEMP['cases_sale'][$sale_id] = $result;
 
         return $result;
     }
