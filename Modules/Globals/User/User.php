@@ -22,6 +22,7 @@ class User extends MainModulesClass
 
         include_once $this->mDir."/func.php";
         $this->func = new \User\func( $this );
+        include_once ROOT_DIR.'/Library/aiondb.php';
 
     }
 
