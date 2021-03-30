@@ -468,4 +468,194 @@ return array(
 		'signup_ajax_sms_phone_empty' => 'O campo \'Celular\' não pode estar vazio!',	
 	
     ),
+	'cn' => array(
+
+		'signup_title_lang' => '欢迎访问帐户小组',
+		'signup_title_desc_lang' => '创建新的主帐户',
+
+		'signup_title_tab_email_lang' => '电子邮件地址',
+		'signup_title_tab_phone_lang' => '移动的',
+
+		'signup_title_input_login_lang' => 'ID',
+		'signup_title_input_server_lang' => '选择服务器',
+		'signup_title_input_prefix_lang' => '前缀（它将添加到ID之前）',
+		'signup_title_input_email_lang' => '电子邮件',
+		'signup_desc_input_email_lang' => '确认电子邮件将发送到指定的电子邮件地址.',
+		'signup_title_btn_add_email_lang' => '添加电子邮件',
+		'signup_title_btn_add_login_lang' => '创建第一个游戏账号',
+		'signup_title_btn_hide_email_lang' => '躲藏',
+		'signup_desc_input_email_phone_lang' => '确认电子邮件将发送到指定的电子邮件地址.',
+		'signup_title_input_password_lang' => '密码',
+		'signup_title_input_password_confirm_lang' => '重新输入密码',
+
+		'signup_title_input_phone_lang' => '移动的',
+		'signup_desc_input_phone_lang' => '带有代码的短信将被发送到指定的手机号码.',
+		'signup_input_phone_sms_lang' => '短信代码',
+		'signup_btn_phone_sms_lang' => '发送短信',
+
+
+		'signup_title_input_terms_lang' => '我已经阅读并接受了用户协议',
+		'signup_title_input_subscribe_lang' => '我想收到促销邮件',
+		'signup_title_btn_submit_lang' => '创建主帐户',
+
+
+
+		'signup_title_btn_sign_in_lang' => '登入',
+		'signup_title_btn_read_terms_lang' => '阅读用户协议',
+        'signup_title_btn_read_terms_url' => '/terms',
+
+		'signup_title_input_captcha_lang' => 'CAPTCHA',
+
+
+		'signup_title_not_active_reg_type' => '<br> 所有注册方法均被禁用! <br> <br> <br>',
+
+
+		/* AJAX */
+		'signup_ajax_not_found_type_reg' => '注册错误.此帐户无法使用此注册方法。请刷新页面!',
+		'signup_ajax_error_captcha' => 'CAPTCHA验证失败!请再次解决CAPTCHA!',
+		'signup_ajax_not_found_prefix' => '选定的前缀无效!请刷新页面!',
+		'signup_ajax_empty_login' => '\'ID\' 字段不能为空!',
+		'signup_ajax_empty_sid' => '请从中选择一台服务器 \'选择服务器\' 清单!',
+		'signup_ajax_missing_sid' => '从选择的服务器无效 \'选择服务器\' 列表!请刷新页面!',
+		'signup_ajax_empty_password' => '\'密码\' 字段不能为空!',
+		'signup_ajax_empty_email' => '\'电子邮件地址\' 字段不能为空!',
+		'signup_ajax_empty_phone' => '\'移动的\' 字段不能为空!',
+		'signup_ajax_empty_phone_code' => '\'移动的 代码\' 字段不能为空! 请联系支持,并向他们提供错误详细信息!',
+		'signup_ajax_empty_sms_cod' => '\'SMS 代码\' 字段不能为空!请联系支持,并向他们提供错误详细信息!',
+		'signup_ajax_empty_terms' => '您必须接受用户协议!',
+
+
+		/* signup_activation.tpl */
+
+		'signup_activation_title' => '激活主帐户',
+		'signup_activation_text_1' => '包含如何完成注册说明的电子邮件',
+		'signup_activation_text_2' => '已发送到您的电子邮件地址.',
+		'signup_activation_text_desc_1' => '按照电子邮件上的链接激活主帐户.',
+		'signup_activation_text_desc_2' => '如果看不到电子邮件,请检查垃圾邮件文件夹.',
+
+		/* signup_completed.tpl */
+
+
+		'signup_completed_title' => '已激活主帐户',
+		'signup_completed_desc' => '警告: <br> 您刚刚创建了主帐户。每个主帐户最多可包含10个通过主帐户创建的游戏帐户\'仪表板.',
+
+		'signup_completed_prefix' => '您的游戏帐户的前缀:',
+		'signup_completed_login' => '您的游戏帐户\的ID:',
+		'signup_completed_email' => '您的主帐户的电子邮件地址:',
+		'signup_completed_phone' => '您的主帐户的移动号码:',
+		'signup_completed_pin' => '您的主帐户的PIN码:',
+		'signup_completed_password' => '您的主帐户的密码:',
+		'signup_completed_password_and_game' => '您的游戏和主帐户的密码:',
+		'signup_completed_subscribe' => '同意接收促销邮件:',
+
+		'signup_completed_text_1' => '包含注册详细信息的电子邮件',
+		'signup_completed_text_2' => '已发送到您的电子邮件地址.',
+		'signup_completed_desc_2' => '如果看不到电子邮件,请检查垃圾邮件文件夹.',
+		'signup_completed_desc_3' => '不要与他人共享您的帐户信息.',
+        'signup_completed_save_data' => '保存到.txt文件.',
+
+		/* signup_code.tpl */
+
+
+		/* sms_send */
+		'signup_ajax_sms_disable' => '短信注册被禁用，请刷新页面!',
+		'signup_ajax_sms_phone_code_empty' => '未选择国家/地区代码!',
+		'signup_ajax_sms_phone_empty' => '\'移动的\' 字段不能为空!',	
+	
+    ),
+	'ko' => array(
+
+		'signup_title_lang' => '계정 패널에 오신 것을 환영합',
+		'signup_title_desc_lang' => '새 마스터 계정 만들기',
+
+		'signup_title_tab_email_lang' => '이메일 주소',
+		'signup_title_tab_phone_lang' => '모바일',
+
+		'signup_title_input_login_lang' => 'ID',
+		'signup_title_input_server_lang' => '서버 선택',
+		'signup_title_input_prefix_lang' => '접두사 (ID 앞에 추가됩니다)',
+		'signup_title_input_email_lang' => '이메일',
+		'signup_desc_input_email_lang' => '확인 이메일이 지정된 이메일 주소로 전송됩니다.',
+		'signup_title_btn_add_email_lang' => '이메일 추가',
+		'signup_title_btn_add_login_lang' => '첫 번째 게임 계정 만들기',
+		'signup_title_btn_hide_email_lang' => '숨기기',
+		'signup_desc_input_email_phone_lang' => '확인 이메일이 지정된 이메일 주소로 전송됩니다.',
+		'signup_title_input_password_lang' => '비밀번호',
+		'signup_title_input_password_confirm_lang' => '암호를 다시 입력하십시',
+
+		'signup_title_input_phone_lang' => '모바일',
+		'signup_desc_input_phone_lang' => '코드가있는 SMS는 지정된 휴대폰 번호로 전송됩니다.',
+		'signup_input_phone_sms_lang' => 'SMS 코드',
+		'signup_btn_phone_sms_lang' => 'SMS 보내기',
+
+
+		'signup_title_input_terms_lang' => '사용자 계약을 읽고 수락했습니다',
+		'signup_title_input_subscribe_lang' => '프로모션 이메일을 받고 싶습니다',
+		'signup_title_btn_submit_lang' => '마스터 계정 만들기',
+
+
+
+		'signup_title_btn_sign_in_lang' => '로그인',
+		'signup_title_btn_read_terms_lang' => '사용자 계약 읽기',
+        'signup_title_btn_read_terms_url' => '/terms',
+
+		'signup_title_input_captcha_lang' => 'CAPTCHA',
+
+
+		'signup_title_not_active_reg_type' => '<br> 모든 등록 방법이 비활성화되었습 <br> <br> <br>',
+
+
+		/* AJAX */
+		'signup_ajax_not_found_type_reg' => '등록 오류. 이 등록 방법은이 계정에서 사용할 수 없습니다. 페이지를 새로 고침하십!',
+		'signup_ajax_error_captcha' => 'CAPTCHA 검증이 실패했습니다! CAPTCHA를 다시 해결하십시오!',
+		'signup_ajax_not_found_prefix' => '잘못된 접두사가 선택되 페이지를 새로 고침하십!',
+		'signup_ajax_empty_login' => '\'ID\' 필드를 비울 수 없습니다!',
+		'signup_ajax_empty_sid' => '에서 서버를 선택하십시오 \'서버 선택\' 목록!',
+		'signup_ajax_missing_sid' => '에서 잘못된 서버 선택 \'서버 선택\' 목록! 페이지를 새로 고침하십!',
+		'signup_ajax_empty_password' => '\'비밀번호\' 필드를 비울 수 없습니다!',
+		'signup_ajax_empty_email' => '\'이메일 주소\' 필드를 비울 수 없습니다!',
+		'signup_ajax_empty_phone' => '\'모바일\' 필드를 비울 수 없습니다!',
+		'signup_ajax_empty_phone_code' => '\'모바일 코드\' 필드를 비울 수 없습니다! 지원에 연락하여 오류 세부 정보를 제공하십시오!',
+		'signup_ajax_empty_sms_cod' => '\'SMS 코드\' 필드를 비울 수 없습니다! 지원에 연락하여 오류 세부 정보를 제공하십시오!',
+		'signup_ajax_empty_terms' => '사용자 계약을 수락해야합니다!',
+
+
+		/* signup_activation.tpl */
+
+		'signup_activation_title' => '마스터 계정 활성화',
+		'signup_activation_text_1' => '등록을 완료하는 방법에 대한 지침이 포함 된 이메일',
+		'signup_activation_text_2' => '이메일 주소로 전송되었습니다.',
+		'signup_activation_text_desc_1' => '마스터 계정을 활성화하려면 이메일의 링크를 따르십시오.',
+		'signup_activation_text_desc_2' => '이메일이 보이지 않으면 스팜 폴더를 확인하십시오.',
+
+		/* signup_completed.tpl */
+
+
+		'signup_completed_title' => '마스터 계정 활성화',
+		'signup_completed_desc' => '경고: <br>마스터 계정을 만들었습니다. 각 마스터 계정에는 마스터 계정을 통해 만들 수있는 최대 10 개의 게임 계정이 포함될 수 있습니\'대시 보드.',
+
+		'signup_completed_prefix' => '게임 계정\의 접두사:',
+		'signup_completed_login' => '당신의 게임 계정\의 ID:',
+		'signup_completed_email' => '마스터 계정\의 이메일 주소:',
+		'signup_completed_phone' => '마스터 계정\의 휴대폰 번호:',
+		'signup_completed_pin' => '당신의 마스터 계정:',
+		'signup_completed_password' => '마스터 계정\의 비밀번호:',
+		'signup_completed_password_and_game' => '게임 및 마스터 계정\의 비밀번호:',
+		'signup_completed_subscribe' => '프로모션 이메일 수신에 동의:',
+
+		'signup_completed_text_1' => '등록 정보가있는 이메일',
+		'signup_completed_text_2' => '이메일 주소로 전송되었습니다.',
+		'signup_completed_desc_2' => '이메일이 보이지 않으면 스팜 폴더를 확인하십시오.',
+		'signup_completed_desc_3' => '계정 정보를 다른 사람과 공유하지 마십시오.',
+        'signup_completed_save_data' => '.txt 파일에 저장.',
+
+		/* signup_code.tpl */
+
+
+		/* sms_send */
+		'signup_ajax_sms_disable' => 'SMS 등록이 비활성화되었습니다. 페이지를 새!',
+		'signup_ajax_sms_phone_code_empty' => '국가 코드를 선택하지 않!',
+		'signup_ajax_sms_phone_empty' => '\'모바일\' 필드를 비울 수 없습니다!',	
+	
+    ),
 );

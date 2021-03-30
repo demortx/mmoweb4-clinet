@@ -150,4 +150,62 @@ return array(
         "donate_ajax_empty_type_id" => 'Nenhuma moeda do jogo selecionada!',
 
     ),
+	'cn' => array(
+
+        "donate_title" => '补足余额主帐户',
+        "donate_title_market" => '充值平衡市场',
+        "donate_input_title_sum" => '金额',
+        "donate_input_title_enter_sum" => '指定数量',
+        "donate_span_title_bonus" => '奖金的奖金',
+        "donate_title_pay" => '选择支付方式:',
+        "donate_title_pay_btn" => '补货',
+        "donate_title_pay_bonus_item" => '礼品物品',
+
+
+
+        "donate_ajax_empty_sum" => '\'金额\' 字段不能为空!',
+        "donate_ajax_empty_payment_method" => '选择支付方式!',
+
+
+        //Top-up balance not immediately authorized on the character
+        "d_title_valuta" => '博弈货币',
+        "d_recipient_char" => '指定字符的名称',
+        "d_recipient_account" => '指定游戏帐户ID',
+        "d_recipient_count" => '指定数量',
+        'lang_notfound_type_buy' => '此服务器的游戏货币尚未配置!',
+
+
+        "donate_ajax_empty_recipient" => '收件人字段不能为空!',
+        "donate_ajax_empty_type_id" => '未选择游戏货币!',
+
+    ),
+	'ko' => array(
+
+        "donate_title" => '최고 균형 마스터 계정',
+        "donate_title_market" => '최고 균형 시장',
+        "donate_input_title_sum" => '금액',
+        "donate_input_title_enter_sum" => '수량 지정',
+        "donate_span_title_bonus" => '보너스',
+        "donate_title_pay" => '결제 방법 선택:',
+        "donate_title_pay_btn" => '탑업',
+        "donate_title_pay_bonus_item" => '선물 아이템',
+
+
+
+        "donate_ajax_empty_sum" => '\'금액\' 필드를 비울 수 없습니다!',
+        "donate_ajax_empty_payment_method" => '결제 방법 선택!',
+
+
+        //Top-up balance not immediately authorized on the character
+        "d_title_valuta" => '게임 통화',
+        "d_recipient_char" => '문자의 이름 지정',
+        "d_recipient_account" => '게임 계정 ID 지정',
+        "d_recipient_count" => '수량 지정',
+        'lang_notfound_type_buy' => '이 서버의 게임 통화는 아직 구성되지 않았습니다!',
+
+
+        "donate_ajax_empty_recipient" => '수신자 필드를 비울 수 없습니!',
+        "donate_ajax_empty_type_id" => '게임 통화가 선택되지 않!',
+
+    ),
 );

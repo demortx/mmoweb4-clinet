@@ -85,4 +85,38 @@ return array(
 
 		 'ajax_empty_cod' => 'O campo \'Insira seu Código de Bônus\' não pode estar vazio!',
     ),
+	'cn' => array(
+		'btn_menu_bonus_cod' => '兑换奖金代码',
+
+		 'title_popup_lang' => '选择要在上兑换奖励代码的服务器: ',
+		 'title_popup_lang_btn' => '赎回',
+
+		 'lang_input_enter_cod' => '输入您的奖金代码',
+
+		 'lang_notfound_account' => '此服务器上没有任何游戏帐户:',
+		 'lang_select_account' => '选择游戏帐户',
+		 'lang_select_char' => '选择一个字符',
+		 'lang_select_char_not_found' => '未找到任何字符',
+		 "ajax_empty_account_name" => '填写\'选择游戏帐户\'字段',
+		 "ajax_empty_char_name" => '填写\'选择字符\'字段',
+
+		 'ajax_empty_cod' => '\'输入您的奖励代码\'字段不能为空!',
+    ),
+	'ko' => array(
+		'btn_menu_bonus_cod' => '보너스 코드 축소',
+
+		 'title_popup_lang' => '보너스 코드를 사용할 서버를 선택하십시오: ',
+		 'title_popup_lang_btn' => '구속',
+
+		 'lang_input_enter_cod' => '보너스 코드를 입력하십시오',
+
+		 'lang_notfound_account' => '이 서버에 게임 계정이 없습니다:',
+		 'lang_select_account' => '게임 계정 선택',
+		 'lang_select_char' => '문자 선택',
+		 'lang_select_char_not_found' => '문자를 찾을 수 없습',
+		 "ajax_empty_account_name" => '에 채우기 \'게임 계정 선택\' 필드',
+		 "ajax_empty_char_name" => '에 채우기 \'문자 선택\' 필드',
+
+		 'ajax_empty_cod' => '\'보너스 코드 입력\' 필드를 비울 수 없습니다!',
+    ),
 );

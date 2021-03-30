@@ -496,4 +496,204 @@ return array(
     
     
     ),
+	'cn' => array(
+	
+        'support_ajax_empty_tid' => '指定的票证ID无效',
+        'support_ajax_empty_category' => '您需要选择票证主题',
+        'support_ajax_empty_details' => '您需要提供机票详细信息',
+        'support_ajax_empty_title' => '请输入有效的主题',
+        'support_ajax_empty_message' => '请输入有效消息',
+
+        'title_awaiting_user' => '正在等待响应',
+        'title_awaiting_admin' => '正在处理的问题',
+        'title_closed' => '已关闭',
+        'title_msg_empty' => '没有门票',
+
+        'tabs_all_ticket' => '所有门票',
+        'tabs_create_ticket' => '创建票证',
+
+        'btn_create_ticket_1' => '其他的',
+        'btn_create_ticket_2' => '其他问题和问题',
+
+        'btn_create_donate_1' => '捐赠问题',
+        'btn_create_donate_2' => '与捐款有关的问题',
+
+        'btn_create_lost_1' => '物品损失',
+        'btn_create_lost_2' => '与游戏中物品丢失有关的问题',
+
+        'title_create_ticket' => '创建新票证',
+
+        'title_create_category_6' => '物品损失',
+        'title_create_category_7' => '机器人报告',
+        'title_create_category_8' => '平衡顶盖的问题',
+
+
+
+        'form_title_category' => '主题',
+        'form_title_account' => '游戏帐号',
+        'form_title_char' => '人物',
+        'form_title_char_select' => '选择角色',
+        'error_account_char_not_found' => '这个游戏帐户上没有任何角色.',
+        'form_title_title' => '主题',
+        'form_title_title_text' => '指定票证的主题',
+        'form_title_title_files' => '附加图像
+            <div style="font-size: 0.8em;">文件总大小不能超过2&nbsp;MB</div>
+            <div style="font-size: 0.8em;">接受JPG、GIF或PNG格式</div>',
+
+        //Пропал предмет
+        'form_title_sharing' => '其他玩家是否可以访问您的帐户?',
+        'form_title_yse' => '是的',
+        'form_title_yse_text' => '注意：如果其他玩家明知有权访问您的帐户，那么被盗物品将无法追回。在这样的情况下,只能进行调查,并向您提供有关访问对象和访问您的帐户的详细信息。这是一项收费服务，价格为每人.',
+        'form_title_no' => '没有',
+        'form_title_no_text' => '注意事项：如果在调查之后确定其他参与者明知有权访问您的帐户，那么对该问题的故意错误答复将被视为企图欺骗管理部门。在这种情况下,您的帐户将根据既定的用户协议被禁止.',
+        'form_title_protection' => '是否启用了PIN码?',
+        'form_title_loss' => '物品损失估计日期',
+        'form_title_contact' => '沟通方式',
+        'form_title_message_loss' => '指定缺少项目的列表',
+        'form_title_message_loss_desc' => '我的奇迹之剑不见了!',
+
+        //проблема с платежом
+        'form_title_payment_method' => '选择付款方式',
+        'form_title_transactions' => '订单或交易编号',
+        'form_title_pay_date' => '付款日期',
+        'form_title_pay_time' => '付款时间',
+        'form_title_sum' => '付款金额',
+        'form_title_message_comment' => '详细资料',
+        'form_title_message_comment_text' => '详细资料...',
+
+
+        //найден бот
+        'form_title_date' => '可疑侦测日期',
+        'form_title_time' => '时间',
+        'form_title_bot_name' => '疑似人物姓名',
+        'form_title_message_bot' => '详细信息,指向屏幕截图/视频的链接',
+
+
+
+        'form_title_message' => '信息',
+        'form_title_message_text' => '问题/问题细节...',
+
+
+
+
+        'form_title_send_btn' => '提交',
+
+
+
+        'category' => array(
+            //0 => 'Choose subject',
+            1 => '一般问题',
+            2 => '网站、论坛、总帐户',
+            3 => '客户端错误',
+            4 => 'Game Bugs',
+            5 => '帐户/字符禁令',
+            6 => '物品损失',
+            7 => '机器人报告',
+            8 => '平衡顶盖的问题',
+            9 => '其他的',
+        ),
+	
+	
+	
+    ),
+	'ko' => array(
+	
+        'support_ajax_empty_tid' => '잘못된 티켓 ID가 지정',
+        'support_ajax_empty_category' => '티켓 주제를 선택해야합니다',
+        'support_ajax_empty_details' => '티켓 세부 정보를 제공해야합니다',
+        'support_ajax_empty_title' => '유효한 주제를 입력하십시오',
+        'support_ajax_empty_message' => '유효한 메시지를 입력하십시',
+
+        'title_awaiting_user' => '응답 대기 중',
+        'title_awaiting_admin' => '처리 중',
+        'title_closed' => '닫힘',
+        'title_msg_empty' => '티켓 없음',
+
+        'tabs_all_ticket' => '모든 티켓',
+        'tabs_create_ticket' => '티켓 만들기',
+
+        'btn_create_ticket_1' => '다른 사람',
+        'btn_create_ticket_2' => '다른 문제 및 질문',
+
+        'btn_create_donate_1' => '기부 문제',
+        'btn_create_donate_2' => '기부와 관련된 문제',
+
+        'btn_create_lost_1' => '품목 손실',
+        'btn_create_lost_2' => '게임 내 아이템 손실과 관련된 문제',
+
+        'title_create_ticket' => '새 항공권 만들기',
+
+        'title_create_category_6' => '품목 손실',
+        'title_create_category_7' => '봇 보고서',
+        'title_create_category_8' => '밸런스 탑업 문제',
+
+
+
+        'form_title_category' => '주제',
+        'form_title_account' => '게임 계정',
+        'form_title_char' => '캐릭터',
+        'form_title_char_select' => '캐릭터 선택',
+        'error_account_char_not_found' => '이 게임 계정에는 캐릭터가 없습니다.',
+        'form_title_title' => '주제',
+        'form_title_title_text' => '항공권의 주제를 지정하십시오',
+        'form_title_title_files' => '그림 첨부
+            <div style="font-size: 0.8em;">전체 파일 크기가 2를 초과할 수 없습니&nbsp;MB</div>
+            <div style="font-size: 0.8em;">JPG, PI 또는 PNG형식이 허용됩니다</div>',
+
+        //Пропал предмет
+        'form_title_sharing' => '다른 플레이어가 귀하의 계정에 액세스 할 수?',
+        'form_title_yse' => '예',
+        'form_title_yse_text' => '방법: 다른 플레이어가 의도적으로 귀하의 계정에 액세스 할 수 있다면 도난당한 아이템은 복구되지 않습니다. 이와 같은 경우 조사를 수행하고 계정에 액세스 한 사람 및시기에 대한 세부 정보를 제공 할 수 있습니다. 이것은 청구 가능한 서비스이며 가격은 문자 당.',
+        'form_title_no' => '아니요',
+        'form_title_no_text' => '결정: 조사 후 다른 플레이어가 의도적으로 귀하의 계정에 액세스 할 수 있다고 판단되면, 이 질문에 제공된 의도적으로 잘못된 응답은 행정부를 속이려는 시도로 간주됩니다. 이 경우 기존 사용자 계약에 따라 계정이 금지됩니다..',
+        'form_title_protection' => 'PIN 코드를 활성화 했습니까??',
+        'form_title_loss' => '품목 손실 예상 날짜',
+        'form_title_contact' => '통신 방법',
+        'form_title_message_loss' => '누락 된 항목 목록 지정하기',
+        'form_title_message_loss_desc' => '내 기적의 검이 사라졌습니다!',
+
+        //проблема с платежом
+        'form_title_payment_method' => '결제 방법 선택',
+        'form_title_transactions' => '주문 또는 거래 번호',
+        'form_title_pay_date' => '결제 날짜',
+        'form_title_pay_time' => '결제 시간',
+        'form_title_sum' => '결제 금액',
+        'form_title_message_comment' => '세부 사항',
+        'form_title_message_comment_text' => '세부 사항...',
+
+
+        //найден бот
+        'form_title_date' => '용의자 탐지 날짜',
+        'form_title_time' => '시간',
+        'form_title_bot_name' => '의심되는 문자 이름',
+        'form_title_message_bot' => '세부 사항, 스크린 샷/비디오 링크',
+
+
+
+        'form_title_message' => '메시지',
+        'form_title_message_text' => '질문/문제 세부 사항...',
+
+
+
+
+        'form_title_send_btn' => 'Submit',
+
+
+
+        'category' => array(
+            //0 => 'Choose subject',
+            1 => '일반적인 질문',
+            2 => '웹 사이트, 포럼, 마스터 계정',
+            3 => '클라이언트 오',
+            4 => '게임 버그',
+            5 => '계정/문자 금지',
+            6 => '품목 손실',
+            7 => '봇 보고서',
+            8 => '밸런스 탑업 문제',
+            9 => '다른 사람',
+        ),
+	
+	
+	
+    ),
 );

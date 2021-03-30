@@ -199,4 +199,84 @@ return array(
 	
 	
     ),
+	'cn' => array(
+	
+		'title_change_password_account' => '更改主帐户密码:',
+
+		"lang_input_password_old" => "当前密码",
+		"lang_input_password_new" => "新密码",
+		"lang_input_password_new_confirm" => "重新输入密码",
+		"lang_input_password_pin" => "输入PIN码",
+		"lang_input_send" => "交货方式",
+		"lang_button_change" => "更改密码",
+
+
+		"lang_tab_title_settings" => "设置",
+		"lang_tab_title_settings_desc" => "主帐户设置",
+		"lang_tab_title_manager" => "主客户管理",
+		"lang_tab_title_manager_desc" => "管理主帐户",
+		"lang_tab_title_logs" => "操作日志",
+        "lang_tab_title_invoice" => "发票",
+        "lang_tab_title_account_hide" => "隐藏主帐户",
+        "lang_tab_title_account_hide_desc" => "隐藏主帐户管理",
+
+		"lang_tab_title_logs_desc" => "最近的活动日志",
+		"lang_tab_logs_th_action" => "行动",
+		"lang_tab_logs_th_date" => "日期",
+        "lang_tab_invoice_th_payment" => "支付方式",
+        "lang_tab_invoice_th_sum" => "金额",
+
+
+
+
+
+		'title_forgot_password_account' => '主帐户密码恢复:',
+		"lang_button_forgot" => "重置密码",
+
+		// AJAX
+		'ajax_empty_account' => '无法找到帐户!请刷新页面!',
+	
+	
+	
+    ),
+	    'ko' => array(
+	
+		'title_change_password_account' => '마스터 계정 비밀번호 변:',
+
+		"lang_input_password_old" => "현재 비밀번호",
+		"lang_input_password_new" => "새 비밀번호",
+		"lang_input_password_new_confirm" => "암호를 다시 입력하십시",
+		"lang_input_password_pin" => "입력 PIN-코드",
+		"lang_input_send" => "배달 방법",
+		"lang_button_change" => "암호 변경",
+
+
+		"lang_tab_title_settings" => "설정",
+		"lang_tab_title_settings_desc" => "마스터 계정 설정",
+		"lang_tab_title_manager" => "마스터 계정 관리",
+		"lang_tab_title_manager_desc" => "마스터 계정 관리",
+		"lang_tab_title_logs" => "동작 기록",
+        "lang_tab_title_invoice" => "음성",
+        "lang_tab_title_account_hide" => "마스터 계정 숨기기",
+        "lang_tab_title_account_hide_desc" => "숨겨진 마스터 계정 관리",
+
+		"lang_tab_title_logs_desc" => "최근 활동 로그",
+		"lang_tab_logs_th_action" => "행동",
+		"lang_tab_logs_th_date" => "날짜",
+        "lang_tab_invoice_th_payment" => "결제 방법",
+        "lang_tab_invoice_th_sum" => "금액",
+
+
+
+
+
+		'title_forgot_password_account' => '마스터 계정 비밀번호 복구:',
+		"lang_button_forgot" => "비밀번호 초기",
+
+		// AJAX
+		'ajax_empty_account' => '계정을 찾을 수 없습니다! 페이지를 새로 고침하십!',
+	
+	
+	
+    ),
 );

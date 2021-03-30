@@ -159,4 +159,66 @@ return array(
         'server_rating_empty' => 'Nenhuma informação disponível ainda. Por favor, volte mais tarde.',  
     
     ),
+	'cn' => array(
+
+        'lang_page' => array(
+            'top_pvp'          => '最好的 PvP',
+            'top_pk'           => '最好的 PK',
+            'top_exp'          => '最好的 EXP',
+            'top_clan'         => '最好的 氏族',
+            'top_clan_pvp'     => '最好的 氏族 PvP',
+            'top_ally'         => '最好的 联盟',
+            'top_castle'       => '卡斯尔斯',
+            'top_clanhols'     => '氏族厅',
+            'top_hero'         => '英雄们',
+            'top_hero_active'  => '现在的英雄',
+            'top_raidboss'     => '突袭老板',
+            'top_statistic'    => '一般统计数字',
+            'online_history'   => '在线的 历史',
+            'top_rank'         => '最好的 排名',
+            'top_pkw'          => '最好的 获得胜利',
+            'top_pkt'          => '最好的 战斗',
+        ),
+        'lang_history'=> array(
+            'online' => '在线的',
+            'online_multiple' => '在线的',
+            'characters' => '人物',
+            'clan' => '氏族属',
+        ),
+
+        'server_rating_empty' => '尚无可用信息。请稍后再检查.',	
+	
+	
+    ),
+	'ko' => array(
+
+        'lang_page' => array(
+            'top_pvp'          => '최고 PvP',
+            'top_pk'           => '최고 PK',
+            'top_exp'          => '최고 EXP',
+            'top_clan'         => '최고 클랜',
+            'top_clan_pvp'     => '최고 클랜 PvP',
+            'top_ally'         => '최고 얼라이언',
+            'top_castle'       => '성',
+            'top_clanhols'     => '클랜 홀',
+            'top_hero'         => '영웅',
+            'top_hero_active'  => '현재 영웅',
+            'top_raidboss'     => '레이드 보스',
+            'top_statistic'    => '일반 통계',
+            'online_history'   => '온라인 역사',
+            'top_rank'         => '최고 순위',
+            'top_pkw'          => '최고 승리',
+            'top_pkt'          => '최고 싸움',
+        ),
+        'lang_history'=> array(
+            'online' => '온라인',
+            'online_multiple' => '온라인',
+            'characters' => '캐릭터',
+            'clan' => '클랜',
+        ),
+
+        'server_rating_empty' => '아직 사용 가능한 정보가 없습 나중에 다시 확인하십시.',	
+	
+	
+    ),
 );

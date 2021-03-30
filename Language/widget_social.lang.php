@@ -52,4 +52,22 @@ return array(
         'error_response_data' => 'Erro ao recuperar dados de perfil!',
 
     ),
+	'cn' => array(
+
+        'lang_title' => '关联的社会帐户',
+        'lang_text_no_connect' => '已断开连接',
+
+        'social_empty_token' => '未提供令牌!',
+        'error_response_data' => '检索配置文件数据时出错!',
+
+    ),
+	'ko' => array(
+
+        'lang_title' => '연결된 소셜 계정',
+        'lang_text_no_connect' => '연결이 끊',
+
+        'social_empty_token' => '제공되지 않은 토큰!',
+        'error_response_data' => '프로필 데이터 검색 오류!',
+
+    ),
 );

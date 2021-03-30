@@ -84,4 +84,36 @@ return array(
         'lang_btn_disable_telegram' => 'Desconectar',    
     
     ),
+	'cn' => array(
+	
+	        'lang_title' => '输入您的电报用户名',
+        'lang_text' => '电报机器人是数字助理，可让您随时了解最重要的新闻和更新.
+            <dt>1. 输入用户名</dt>
+            <dd><p>为了使机器人能够识别您,请输入您的<a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">用户名</a> 在电报上</p></dd>
+            <dt>2. 联系机器人</dt>
+            <dd>最后，开始与机器人聊天: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
+            <dd>或者,您也可以在应用程序中按名称找到它: <code>@MMORoBot</code></dd>',
+
+        'lang_btn_confirm_telegram' => '联系',
+        'lang_btn_disable_telegram' => '断开连接',
+
+	
+	
+    ),
+	'ko' => array(
+	
+	        'lang_title' => '텔레 그램 사용자 이름을 입력하십시오',
+        'lang_text' => '전보 봇은 가장 중요한 뉴스와 업데이트를 최신 상태로 유지하는 디지털 비서입니다..
+            <dt>1. 사용자 이름을 입력</dt>
+            <dd><p>봇이 당신을 식별 할 수 있도록 <a href="https://telegram.org.ru/387-kak-ustanovit-ili-izmenit-imya-v-telegramm.html">사용자 이</a> 전보에</p></dd>
+            <dt>2. 봇에 연락</dt>
+            <dd>마지막으로 봇과 대화를 시작하십시오: <a href="https://t.me/MMORoBot">t.me/MMORoBot</a></dd>
+            <dd>또는 이름으로 응용 프로그램에서 찾을 수 있습니다.: <code>@MMORoBot</code></dd>',
+
+        'lang_btn_confirm_telegram' => '연결',
+        'lang_btn_disable_telegram' => '분리',
+
+	
+	
+    ),
 );

@@ -47,4 +47,22 @@ return array(
         'info_title' => 'Information',
         'info_desc' => 'The won items are automatically delivered to the <a href="'.set_url('panel/warehouse').'">warehouse</a> of the master account!',
     ),
+	'cn' => array(
+        'items_not_cfg' => '此服务器上未配置桉例:',
+        'title_select_cases' => '选择一个桉例',
+        'title_tab_all' => '所有的',
+        'open_cases' => '打开的情况下',
+        'cases_items' => '桉例内容',
+        'info_title' => '三.信息',
+        'info_desc' => '韩元物品会自动传送至 <a href="'.set_url('panel/warehouse').'">仓库</a> 主帐户的!',
+    ),
+	'ko' => array(
+        'items_not_cfg' => '이 서버에 사례가 설정되어 있지 않습니다:',
+        'title_select_cases' => '사례 선택',
+        'title_tab_all' => '모두',
+        'open_cases' => '공개 케이스',
+        'cases_items' => '사례 컨텐츠',
+        'info_title' => '정보',
+        'info_desc' => '원 아이템은 자동으로 <a href="'.set_url('panel/warehouse').'">창고</a> 마스터 계정의!',
+    ),
 );

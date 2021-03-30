@@ -608,4 +608,286 @@ return array(
         ),
 	
     ),
+		'cn'=> array(
+
+        // General config for your personal account,
+        'init' => array(
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 的帐户面板 %server_name%'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 的帐户面板 %server_name%'] ,
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '% site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 的帐户面板 %server_name%!'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 的帐户面板 %server_name%!'] ,
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '% site_name% 的帐户面板 %server_name%!'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Support page
+        'panel_support' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 支持'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 支持'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 支持'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 支持'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 支持'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Donation page
+        'panel_donations' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 补足平衡.'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 补足平衡'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 补足平衡'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 补足平衡'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 补足平衡'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Donation page is not for an authorized User
+        'shop' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 店鋪 為了 %server_name%'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 店鋪 為了 %server_name%'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 商店-购买游戏中的物品 %server_name% 服务器'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 商店-购买游戏中的物品 %server_name% 服务器'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 商店-购买游戏中的物品 %server_name% 服务器' ],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Settings page
+        'panel_settings' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 配置文件设置'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 配置文件设置'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 配置文件设置'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 配置文件设置'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 配置文件设置'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Login to the control panel
+        'sign-in' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 登录到帐户面板'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 登录到帐户面板'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 登录到帐户面板'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 登录到帐户面板'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 登录到帐户面板'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Register a new master account
+        'sign-up' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 创建新的主帐户'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 创建新的主帐户'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 创建新的主帐户'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 创建新的主帐户'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 创建新的主帐户'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+
+        // Reset the password from the master account
+        'reminder' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 重置主帐户密码'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 重置主帐户密码'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '网站'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 重置主帐户密码'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 重置主帐户密码'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 重置主帐户密码'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+	
+    ),
+		'ko'=> array(
+
+        // General config for your personal account,
+        'init' => array(
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 계정 패널 %server_name%'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 계정 패널 %server_name%'] ,
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '% site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 계정 패널 %server_name%!'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 계정 패널 %server_name%!'] ,
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '% site_name% 계정 패널 %server_name%!'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Support page
+        'panel_support' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 지원하다'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 지원하다'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 지원하다'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 지원하다'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 지원하다'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Donation page
+        'panel_donations' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 최고 균형.'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 최고 균형'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 최고 균형'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 최고 균형'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 최고 균형'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Donation page is not for an authorized User
+        'shop' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 쇼핑 %server_name%'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 쇼핑 %server_name%'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 상점-게임 내 아이템 구매 %server_name% 서버'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 상점-게임 내 아이템 구매 %server_name% 서버'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 상점-게임 내 아이템 구매 %server_name% 서버' ],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Settings page
+        'panel_settings' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 프로필 설정'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 프로필 설정'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 프로필 설정'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 프로필 설정'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 프로필 설정'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Login to the control panel
+        'sign-in' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 계정 판넬에 로그인'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 계정 판넬에 로그인'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 계정 판넬에 로그인'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 계정 판넬에 로그인'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 계정 판넬에 로그인'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+        // Register a new master account
+        'sign-up' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 새 마스터 계정 만들기'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 새 마스터 계정 만들기'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 새 마스터 계정 만들기'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 새 마스터 계정 만들기'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 새 마스터 계정 만들기'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+
+        // Reset the password from the master account
+        'reminder' => array (
+            'head' => array (
+                ['idx' => 'title', 'typex' => 'title', 'content' => '%site_name% - 마스터 계정 비밀번호 설'],
+                ['idx' => 'og: title', 'typex' => 'meta', 'property' => 'og: title', 'content' => '%site_name% - 마스터 계정 비밀번호 설'],
+                ['idx' => 'og: site_name', 'typex' => 'meta', 'property' => 'og: site_name', 'content' => '%site_name%'],
+                ['idx' => 'og: type', 'typex' => 'meta', 'property' => 'og: type', 'content' => '웹 사이트'],
+                ['idx' => 'og: url', 'typex' => 'meta', 'property' => 'og: url', 'content' => '%this_url%'],
+
+                ['idx' => 'desc', 'typex' => 'meta', 'name' => 'description', 'content' => '%site_name% - 마스터 계정 비밀번호 설'],
+                ['idx' => 'og: description', 'typex' => 'meta', 'property' => 'og: description', 'content' => '%site_name% - 마스터 계정 비밀번호 설'],
+                ['idx' => 'tw_desc', 'typex' => 'meta', 'property' => 'twitter: description', 'content' => '%site_name% - 마스터 계정 비밀번호 설'],
+
+                ['idx' => 'keywords', 'typex' => 'meta', 'name' => 'keywords', 'content' => 'mmoweb, mmoweb4'],
+
+            ),
+        ),
+	
+    ),
 );

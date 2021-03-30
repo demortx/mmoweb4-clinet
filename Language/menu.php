@@ -14,6 +14,8 @@ return array(
             'gr' => 'Κατατάξεις',
 			'es' => 'Rankings',
             'pt' => 'Rankings',
+			'cn' => '排名',
+			'ko' => '랭킹',
         ),
         'title' => array(
             'ru' => 'Рейтинг',
@@ -21,6 +23,8 @@ return array(
             'gr' => 'Κατατάξεις',
 			'es' => 'Rankings',
             'pt' => 'Rankings',
+			'cn' => '排名',
+			'ko' => '랭킹',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -37,6 +41,8 @@ return array(
             'gr' => 'Μαγαζί',
 			'es' => 'Tienda',
             'pt' => 'Loja',
+			'cn' => '商店',
+			'ko' => '상점',
         ),
         'title' => array(
             'ru' => 'Магазин',
@@ -44,6 +50,8 @@ return array(
             'gr' => 'Μαγαζί',
 			'es' => 'Tienda',
             'pt' => 'Loja',
+			'cn' => '商店',
+			'ko' => '상점',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -60,6 +68,8 @@ return array(
             'gr' => 'Δωρεές',
 			'es' => 'Donaciones',
             'pt' => 'Doações',
+			'cn' => '四.捐款',
+			'ko' => '기부',
         ),
         'title' => array(
             'ru' => 'Пожертвования',
@@ -67,6 +77,8 @@ return array(
             'gr' => 'Δωρεές',
 			'es' => 'Donaciones',
             'pt' => 'Doações',
+			'cn' => '四.捐款',
+			'ko' => '기부',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -83,6 +95,8 @@ return array(
             'gr' => 'Forum',
 			'es' => 'Foro',
             'pt' => 'Forum',
+			'cn' => '论坛',
+			'ko' => '포럼',
         ),
         'title' => array(
             'ru' => 'Форум',
@@ -90,6 +104,8 @@ return array(
             'gr' => 'Forum',
 			'es' => 'Foro',
             'pt' => 'Forum',
+			'cn' => '论坛',
+			'ko' => '포럼',
         ),
         'function' => function(&$buttons){return false;}
     ),

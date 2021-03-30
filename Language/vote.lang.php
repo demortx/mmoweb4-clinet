@@ -59,4 +59,28 @@ return array(
         'no_select_pool' => 'Você não selecionou nada!',
 
     ),
+	'cn' => array(
+        'title_vote' => '评价我们 <small>你的意见很重要!</small>',
+
+        'like1' => '不好的',
+        'like2' => '不是很好',
+        'like3' => '好的',
+        'like4' => '很好的!',
+        'like5' => '太棒了!',
+        'sb_btn' => '提交',
+        'no_select_pool' => '您未选择任何内容!',
+
+    ),
+	'ko' => array(
+        'title_vote' => '우리를 평가 <small>당신의 의견은 중요합니!</small>',
+
+        'like1' => '나쁜',
+        'like2' => '그리 좋지 않다',
+        'like3' => '좋은',
+        'like4' => '아주 좋은!',
+        'like5' => '멋진!',
+        'sb_btn' => '제출',
+        'no_select_pool' => '당신은 아무것도 선택하지 않!',
+
+    ),
 );

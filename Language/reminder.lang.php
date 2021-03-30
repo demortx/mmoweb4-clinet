@@ -299,4 +299,122 @@ return array(
 
       'reminder_menu_lang_btn_change' => 'Alterar a senha',
     ),
+	'cn' => array(
+  		'reminder_title_lang' => '欢迎访问帐户小组',
+  		'reminder_title_desc_lang' => '重置主帐户密码',
+
+
+  		'reminder_title_tab_email_lang' => '电子邮件',
+  		'reminder_title_tab_phone_lang' => '移動的',
+
+
+  		'reminder_title_input_email_lang' => '电子邮件',
+  		'reminder_desc_input_email_lang' => '密码重置确认将发送到您的电子邮件',
+  		'reminder_title_input_captcha_lang' => '驗證碼',
+
+
+  		'reminder_title_input_phone_lang' => '短信',
+  		'reminder_desc_input_phone_lang' => '带有代码的短信将发送到您的手机号码',
+  		'reminder_input_phone_sms_lang' => '短信代码',
+  		'reminder_btn_phone_sms_lang' => '发送短信',
+
+  		'reminder_title_not_active_reminder_type' => '<br> 管理员已禁用所有密码恢复选项! <br> <br> <br>',
+
+  		'reminder_menu_lang_btn_reminder' => '重置密码',
+
+  		'login_menu_lang_btn_signin' => '登录',
+  		'login_menu_lang_btn_logout' => '注销',
+
+
+  		// AJAX
+  		'reminder_ajax_email_disable' => '管理员已禁用电子邮件恢复方法!',
+  		'reminder_ajax_sms_disable' => '管理员已禁用SMS恢复方法!',
+
+  		'reminder_ajax_empty_code' => '\'短信代码\'字段不能为空!',
+  		'reminder_ajax_empty_password' => '\'密码\'字段不能为空!',
+
+
+
+
+  		// PAGE
+  		'reminder_phone_title' => '已向您的手机号码发送新密码',
+  		'reminder_phone_text' => '已向您的手机号码发送新密码。使用它恢复主帐户的密码!',
+  		'reminder_phone_text_desc' => '如果您没有收到带有新密码的短信,请重试或通知管理部门!',
+
+  		'reminder_email_title' => '发送的密码恢复说明',
+  		'reminder_email_text' => '已将包含如何恢复密码说明的电子邮件发送到您的电子邮件地址。要更改密码,请按照电子邮件上的链接! ',
+  		'reminder_email_text_desc' => '如果看不到电子邮件,请检查垃圾邮件文件夹.',
+
+
+  		// PAGE CODE
+  		'reminder_title_code_lang' => '欢迎访问帐户小组',
+  		'reminder_title_code_desc_lang' => '密码恢复',
+
+  		'reminder_title_input_code_lang' => '短信代码',
+  		'reminder_desc_input_code_lang' => '短信代码更改密码',
+
+  		'reminder_title_input_password_lang' => '新密码',
+  		'reminder_desc_input_password_lang' => '输入新密码',
+
+  		'reminder_menu_lang_btn_change' => '更改密码',
+    ),
+	'ko' => array(
+  		'reminder_title_lang' => '계정 패널에 오신 것을 환영합',
+  		'reminder_title_desc_lang' => '마스터 계정 비밀번호 초',
+
+
+  		'reminder_title_tab_email_lang' => '이메일',
+  		'reminder_title_tab_phone_lang' => '모바일',
+
+
+  		'reminder_title_input_email_lang' => '이메일',
+  		'reminder_desc_input_email_lang' => '암호 재설정 확인이 이메일로 전송됩니다',
+  		'reminder_title_input_captcha_lang' => '보안 문자',
+
+
+  		'reminder_title_input_phone_lang' => 'SMS',
+  		'reminder_desc_input_phone_lang' => '코드가있는 SMS가 휴대폰 번호로 전송됩니다',
+  		'reminder_input_phone_sms_lang' => 'SMS 코드',
+  		'reminder_btn_phone_sms_lang' => 'SMS 보내기',
+
+  		'reminder_title_not_active_reminder_type' => '<br> 관리자가 모든 비밀번호 복구 옵션을 비활성화했 <br> <br> <br>',
+
+  		'reminder_menu_lang_btn_reminder' => '비밀번호 초기',
+
+  		'login_menu_lang_btn_signin' => '로그인',
+  		'login_menu_lang_btn_logout' => '로그아웃',
+
+
+  		// AJAX
+  		'reminder_ajax_email_disable' => '관리자가 전자 메일 복구 방법을 비활성화했습니다!',
+  		'reminder_ajax_sms_disable' => '관리자가 SMS 복구 방법을 비활성화했습니다!',
+
+  		'reminder_ajax_empty_code' => '\'SMS 코드\' 필드를 비울 수 없습니다!',
+  		'reminder_ajax_empty_password' => '\' 비밀번호\' 필드를 비울 수 없습니다!',
+
+
+
+
+  		// PAGE
+  		'reminder_phone_title' => '새 암호가 휴대폰 번호로 전송되었습니다',
+  		'reminder_phone_text' => '새 암호가 휴대폰 번호로 전송되었습니다. 마스터 계정\의 비밀번호를 복구하는 데 사용하십시오!',
+  		'reminder_phone_text_desc' => '새 암호가있는 SMS를받지 못한 경우 다시 시도하거나 관리자에게 알리십시오.!',
+
+  		'reminder_email_title' => '비밀번호 복구 명령어 보',
+  		'reminder_email_text' => '비밀번호 복구 방법에 대한 지침이 포함 된 이메일이 이메일 주소로 전송되었습니다. 암호를 변경하려면 이메일의 링크를 따르십시오.! ',
+  		'reminder_email_text_desc' => '이메일이 보이지 않으면 스팜 폴더를 확인하십시오.',
+
+
+  		// PAGE CODE
+  		'reminder_title_code_lang' => '계정 패널에 오신 것을 환영합',
+  		'reminder_title_code_desc_lang' => '비밀번호 복구',
+
+  		'reminder_title_input_code_lang' => 'SMS 코드',
+  		'reminder_desc_input_code_lang' => '암호를 변경하는 SMS 코드',
+
+  		'reminder_title_input_password_lang' => '새 비밀번호',
+  		'reminder_desc_input_password_lang' => '새 암호를 입력하십시오',
+
+  		'reminder_menu_lang_btn_change' => '암호 변경',
+    ),
 );

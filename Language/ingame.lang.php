@@ -132,4 +132,54 @@ return array(
 	
 	
     ),
+	'cn' => array(
+	
+		'title_popup_lang' => '转会 <span class="in-game-title">幸運硬幣</span> 到服务器:',
+		'title_popup_lang_price' => '数量:',
+		'title_popup_lang_btn' => '向博弈转移平衡',
+
+		'lang_label_price' => '价格',
+		'lang_notfound_type_buy' => '此服务器的游戏货币尚未配置!',
+		'lang_select_account' => '选择游戏帐户',
+		'lang_select_char' => '选择一个字符',
+		'lang_select_char_not_found' => '未找到任何字符',
+		'lang_current_sale' => '折扣优惠',
+		'lang_input_enter_count' => '输入数量',
+
+
+		'lang_notfound_account' => '此服务器上没有任何游戏帐户:',
+
+
+
+		'ajax_empty_type_id' => '未配置已购买的项目ID.',
+		'ajax_empty_count' => '\'输入金额\'字段不能为空!',
+		'ajax_empty_account_name' => '你需要选择一个游戏帐户!',
+	
+	
+    ),
+	'ko' => array(
+	
+		'title_popup_lang' => '전송 <span class="in-game-title">행운의 동전</span> 서버로:',
+		'title_popup_lang_price' => '수량:',
+		'title_popup_lang_btn' => '게임으로 밸런스 전송',
+
+		'lang_label_price' => '가격',
+		'lang_notfound_type_buy' => '이 서버의 게임 통화가 아직 구성되지 않았습니다!',
+		'lang_select_account' => '게임 계정 선택',
+		'lang_select_char' => '문자 선택',
+		'lang_select_char_not_found' => '문자를 찾을 수 없습',
+		'lang_current_sale' => '할인',
+		'lang_input_enter_count' => '수량을 입력하',
+
+
+		'lang_notfound_account' => '이 서버에 게임 계정이 없습니다:',
+
+
+
+		'ajax_empty_type_id' => '구매한 항목 ID가 설정되지 않았.',
+		'ajax_empty_count' => '\'금액 입력 \'필드는 비워 둘 수 없습니다.!',
+		'ajax_empty_account_name' => '게임 계정을 선택해야 합니다!',
+	
+	
+    ),
 );

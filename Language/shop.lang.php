@@ -289,4 +289,120 @@ return array(
 
       "service_no_auth" => 'Apenas usuários logados podem comprar produtos!',
     ),
+	'cn' => array(
+  		'shop_title' => '商店',
+  		'tab_all' => '所有的',
+  		'price_from' => '从',
+
+  		'lang_list_item' => '产品列表',
+  		'lang_item_name' => '名称',
+  		'lang_service_time' => '选择过期日期',
+  		'lang_service_color' => '选择所需的颜色',
+  		'lang_item_count' => '数量.',
+  		'lang_pa_day' => '天数',
+  		'lang_item_price' => '价格',
+  		'lang_label_sale' => '折扣优惠:',
+  		'lang_sum_price' => '付款收据',
+  		'lang_trans_game' => '转会至游戏',
+  		'lang_trans_wh' => '转移到您的仓库',
+  		'lang_trans_nick' => '按名称',
+  		'lang_label_nick' => '输入字符的名称',
+  		'lang_label_nick_desc' => '物品将在购买后5分钟内交付给角色.',
+  		'lang_label_nick_desc_no_login' => '物品将在购买后5分钟内交付给角色.',
+
+  		'lang_label_wh' => '输入主帐户的移动号码或电子邮件地址',
+  		'lang_label_wh_desc' => '物品在购买后会立即传送至您的主帐户的仓库.',
+  		'lang_label_wh_desc_no_login' => '物品将在购买后立即交付指定主帐号的仓库.',
+  		'lang_btn_buy' => '买',
+  		'lang_item_desc' => '描述',
+
+  		'lang_notfound_account' => '此服务器上没有任何游戏帐户:',
+  		'lang_notfound_items' => '服务器上没有待售产品:',
+  		'lang_select_account' => '选择游戏帐户',
+  		'lang_select_char' => '选择一个字符',
+  		'lang_select_char_not_found' => '未找到任何字符',
+  		"shop_title_pay" => '选择付款方式',
+  		"shop_item_no_start" => '此物品尚无法购买。发售开始于 ',
+  		"shop_item_end" => '物品全部售罄!',
+
+
+
+  		"ajax_empty_shop_id" => '已购买物品ID未设定',
+  		"ajax_empty_type_buy" => '购买类型不设置',
+  		"ajax_empty_account_name" => '填写\'选择游戏帐户\'字段',
+  		"ajax_empty_char_name" => '填写\'选择字符\'字段',
+  		"ajax_empty_nick_name" => '输入字符的名称',
+  		"ajax_empty_email" => '输入主帐户的移动号码或电子邮件地址',
+  		"ajax_shop_not_found" => '未找到此产品,请刷新页面或通知管理部门!',
+  		"ajax_empty_items" => '您尚未选择任何产品!',
+  		"ajax_empty_payment_method" => '选择支付方式!',
+
+
+
+  		//Services
+  		"l2_clan_name_change_placeholder" => '新氏族名',
+  		"l2_char_transfer_new_acc" => '新游戏帐号ID',
+  		"l2_name_change_new" => '新字元名',
+  		"l2_name_reserved" => '要保留的字符名称',
+
+  		"service_no_auth" => '仅登录用户可购买产品!',
+    ),
+	'ko' => array(
+  		'shop_title' => '상점',
+  		'tab_all' => '모두',
+  		'price_from' => '에서',
+
+  		'lang_list_item' => '제품 목록',
+  		'lang_item_name' => '이름',
+  		'lang_service_time' => '만료일을 선택하십시오',
+  		'lang_service_color' => '원하는 색상 선택',
+  		'lang_item_count' => '수량.',
+  		'lang_pa_day' => '일',
+  		'lang_item_price' => '가격',
+  		'lang_label_sale' => '할인:',
+  		'lang_sum_price' => '결제 영수증',
+  		'lang_trans_game' => '게임으로 이동',
+  		'lang_trans_wh' => '창고로 옮기기',
+  		'lang_trans_nick' => '이름으로',
+  		'lang_label_nick' => '문자를 입력하십시\'이름',
+  		'lang_label_nick_desc' => '품목은 구매 후 5 분 이내에 캐릭터에게 배달됩니다..',
+  		'lang_label_nick_desc_no_login' => '품목은 구매 후 5 분 이내에 캐릭터에게 배달됩니다..',
+
+  		'lang_label_wh' => '마스터 계정의 휴대폰 번호 또는 이메일 주소를 입력하십시',
+  		'lang_label_wh_desc' => '아이템은 구매 직후 마스터 계정\의 창고로 배송됩니다.',
+  		'lang_label_wh_desc_no_login' => '품목은 구매 직후 지정된 마스터 계정의 창고로 배송됩니다.',
+  		'lang_btn_buy' => '구매',
+  		'lang_item_desc' => '설명',
+
+  		'lang_notfound_account' => '이 서버에 게임 계정이 없습니다:',
+  		'lang_notfound_items' => '서버에 판매 할 제품이 없습니다:',
+  		'lang_select_account' => '게임 계정 선택',
+  		'lang_select_char' => '문자 선택',
+  		'lang_select_char_not_found' => '문자를 찾을 수 없습',
+  		"shop_title_pay" => '결제 방법 선택',
+  		"shop_item_no_start" => '이 품목은 아직 구매할 수 없습니다. 판매가 시작됩니다 ',
+  		"shop_item_end" => '모든 품목이 매진되었습니다!',
+
+
+
+  		"ajax_empty_shop_id" => '구매 한 항목 ID가 설정되지 않았',
+  		"ajax_empty_type_buy" => '설정되지 않은 구매 유형',
+  		"ajax_empty_account_name" => '에 채우기 \'게임 계정 선택\' 필드',
+  		"ajax_empty_char_name" => '에 채우기 \'문자 선택\' 필드',
+  		"ajax_empty_nick_name" => '문자를 입력하십시\'이름',
+  		"ajax_empty_email" => '마스터 계정의 휴대폰 번호 또는 이메일 주소를 입력하십시',
+  		"ajax_shop_not_found" => '이 제품을 찾지 못하거나 페이지를 새로 고치거나 관리자에게 알리지!',
+  		"ajax_empty_items" => '제품을 선택하지 않았습니다!',
+  		"ajax_empty_payment_method" => '결제 방법 선택!',
+
+
+
+  		//Services
+  		"l2_clan_name_change_placeholder" => '새로운 클랜 이름',
+  		"l2_char_transfer_new_acc" => '새 게임 계정 ID',
+  		"l2_name_change_new" => '새 문자 이름',
+  		"l2_name_reserved" => '예약할 문자 이름',
+
+  		"service_no_auth" => '로그인 한 사용자 만 제품을 구입할 수 있!',
+    ),
 );

@@ -35,4 +35,19 @@ return array(
 
 
     ),
+
+	'cn' => array(
+
+		'login_menu_lang_btn_signin' => '登入',
+        'login_menu_lang_btn_logout' => '注销',
+        'login_menu_lang_btn_signup' => '寄存器',
+	
+    ),
+	'ko' => array(
+
+		'login_menu_lang_btn_signin' => '로그인',
+        'login_menu_lang_btn_logout' => '로그아웃',
+        'login_menu_lang_btn_signup' => '등록',
+	
+    ),
 );

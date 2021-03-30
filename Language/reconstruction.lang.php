@@ -10,4 +10,8 @@ return array(
     ),
 	'pt' => array(
     ),
+	'cn' => array(
+    ),
+	'ko' => array(
+    ),
 );

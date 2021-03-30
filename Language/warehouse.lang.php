@@ -110,4 +110,46 @@ return array(
         'ajax_empty_wh_char_name' => 'Você não selecionou um personagem para o qual transferir o item!',
       
     ),
+	'cn' => array(
+	
+	    'title_lang' => '服务器上的仓库: ',
+        'title_select_wh' => '选择项目',
+        'title_wh_empty' => '你的仓库是空的',
+
+        'title_select_account' => '选择游戏帐户',
+        'title_select_account_empty' => '此服务器上没有游戏帐户',
+        'title_select_char' => '选择一个字符',
+        'title_select_char_empty' => '未找到任何字符',
+        'title_btn_send_item' => '传输到选定的字符',
+
+        'title_tab_char_name' => '按字符名称',
+        'title_tab_char_name_desc' => '将项目转移到另一个字符。输入要将项目传输到的字符的名称.',
+
+
+        'ajax_empty_wh_id' => '您尚未选择项目!',
+        'ajax_empty_wh_char_name' => '您尚未选择要将项目传输到的字符!',
+	
+	
+    ),
+	'ko' => array(
+	
+	    'title_lang' => '서버의 창고: ',
+        'title_select_wh' => '항목 선택',
+        'title_wh_empty' => '창고가 비어 있습니다',
+
+        'title_select_account' => '게임 계정 선택',
+        'title_select_account_empty' => '이 서버에 게임 계정이 없습니다',
+        'title_select_char' => '캐릭터 선택',
+        'title_select_char_empty' => '문자를 찾을 수 없습',
+        'title_btn_send_item' => '선택한 문자로 전송',
+
+        'title_tab_char_name' => '문자 이름으로',
+        'title_tab_char_name_desc' => '아이템을 다른 캐릭터로 옮깁니다. 항목을 전송하려는 문자의 이름을 입력하십시오.',
+
+
+        'ajax_empty_wh_id' => '항목을 선택하지 않았습니다!',
+        'ajax_empty_wh_char_name' => '항목을 전송할 문자를 선택하지 않았습니다!',
+	
+	
+    ),
 );

@@ -160,4 +160,66 @@ return array(
         'ajax_empty_password' => 'O campo \'Senha\' não pode estar vazio! ',
     
     ),
+	'cn' => array(
+	
+        'lang_title_dropdown' => '主客户管理',
+        'lang_btn_add' => '添加主帐户',
+        'lang_title' => '连接主帐户',
+        'lang_input_email_or_phone' => '主账户<br><small>电子邮件或移动邮件</small>',
+        'lang_input_password' => '密码',
+
+        "lang_input_password_pin" => "PIN-代码",
+        "lang_button_add" => "连接",
+        "lang_list_ma" => "连接的主帐户列表",
+        "lang_list_ma_empty" => "没有连接的主帐户",
+        "lang_account_not_approve" => "主帐户未验证",
+
+        "form_confirm_key" => "钥匙",
+        "form_confirm_btn" => "确认",
+
+        "table_th_acc" => "帐户",
+        "table_th_ip" => "IP",
+        "table_th_login" => "上次登录",
+        "table_th_status" => "州",
+        "table_th_status_0" => "需要确认",
+
+
+        "ajax_empty_mid" => "未传递参数,刷新页面!",
+        "ajax_empty_key" => "\"密钥\"字段不能为空!",
+        'ajax_empty_email' => '\'移动或电子邮件\' 字段不能为空!',
+        'ajax_empty_password' => '\'密码\' 字段不能为空!',
+	
+	
+    ),
+	'ko' => array(
+	
+        'lang_title_dropdown' => '마스터 계정 관리',
+        'lang_btn_add' => '마스터 계정 추가',
+        'lang_title' => '마스터 계정을 연결',
+        'lang_input_email_or_phone' => '마스터 계정<br><small>이메일 또는 모바일</small>',
+        'lang_input_password' => '비밀번호',
+
+        "lang_input_password_pin" => "PIN-코드",
+        "lang_button_add" => "연결",
+        "lang_list_ma" => "연결된 마스터 계정 목록",
+        "lang_list_ma_empty" => "연결된 마스터 계정이 없",
+        "lang_account_not_approve" => "마스터 계정이 확인되지",
+
+        "form_confirm_key" => "키",
+        "form_confirm_btn" => "확인",
+
+        "table_th_acc" => "계정",
+        "table_th_ip" => "IP",
+        "table_th_login" => "마지막 로그인",
+        "table_th_status" => "상태",
+        "table_th_status_0" => "확인 필요",
+
+
+        "ajax_empty_mid" => "매개 변수가 전달되지 않음, 새로 고침!",
+        "ajax_empty_key" => "'키' 필드를 비울 수 없습니다!",
+        'ajax_empty_email' => '\'모바일 또는 전자 메일\' 필드를 비울 수 없습니다!',
+        'ajax_empty_password' => '\'비밀번호 \'필드는 비워 둘 수 없습니다.!',
+	
+	
+    ),
 );

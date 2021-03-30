@@ -290,4 +290,118 @@ return array(
 
         'signin_title_not_active_login_type' => '<br> Todos os métodos de login estão desabilitados! <br> <br> <br>',
     ),
+	'cn' => array(
+		'signin_title_lang' => '欢迎访问帐户小组',
+		'signin_title_desc_lang' => '登录到帐户面板',
+
+
+		'signin_title_input_server_lang' => '选择服务器',
+		'signin_title_input_email_lang' => '电子邮件地址',
+		'signin_title_input_email_lang_placeholder' => '电子邮件地址',
+
+        'signin_title_input_email_phone_lang' => '移动或电子邮件地址',
+        'signin_title_input_email_phone_lang_placeholder' => '移动或电子邮件地址',
+
+        'signin_title_input_email_phone_login_lang' => '移动、电子邮件地址或ID',
+        'signin_title_input_email_phone_login_lang_placeholder' => '移动、电子邮件地址或ID',
+
+        'signin_title_input_phone_login_lang' => '移动或ID',
+        'signin_title_input_phone_login_lang_placeholder' => '移动或ID',
+
+        'signin_title_input_phone_lang' => '移动的',
+        'signin_title_input_phone_lang_placeholder' => '移动的',
+
+        'signin_title_input_email_login_lang' => '电子邮件或ID',
+        'signin_title_input_email__login_lang_placeholder' => '电子邮件或ID',
+
+
+        'signin_title_input_login_lang' => 'ID',
+        'signin_title_input_login_lang_placeholder' => 'ID',
+
+
+		'signin_title_input_password_lang' => '密码',
+
+		'signin_title_input_captcha_lang' => 'CAPTCHA',
+
+		'signin_title_btn_remember_me_lang' => '记住我',
+
+		'signin_title_social' => '或登录',
+
+		'login_menu_lang_btn_signin' => '登录',
+		'login_menu_lang_btn_logout' => '注销',
+		'login_menu_lang_btn_signup' => '寄存器',
+		'login_menu_lang_btn_reminder' => '重置密码',
+
+
+		/* AJAX */
+
+		'signin_ajax_empty_email_phone' => 'The \'移动的\'/\'电子邮件\' 字段不能为空!',
+		'signin_ajax_empty_password' => 'The \'密码\' 字段不能为空!',
+		'signin_ajax_empty_sid' => '请从 \'选择服务器\' 清单!',
+		'signin_ajax_error_captcha' => 'CAPTCHA 验证失败,请再次解决CAPTCHA!',
+		'signin_ajax_empty_phone' => '\'移动的\' 字段不能为空!',
+		'signin_ajax_empty_phone_code' => '\'移动代码\' 字段不能为空!请联系支持,并向他们提供错误详细信息!',
+
+        'signin_ajax_login_error_type' => '此登录方法已禁用。请检查您是否正在使用可用的选项之一!',
+		'signin_ajax_login_error' => '出现错误,请与管理部门联系!',
+
+		'signin_title_not_active_login_type' => '<br>所有登录方法均被禁用! <br> <br> <br>',
+    ),
+	'ko' => array(
+		'signin_title_lang' => '계정 패널에 오신 것을 환영합',
+		'signin_title_desc_lang' => '계정 패널에 로그인',
+
+
+		'signin_title_input_server_lang' => '서버 선택',
+		'signin_title_input_email_lang' => '이메일 주소',
+		'signin_title_input_email_lang_placeholder' => '이메일 주소',
+
+        'signin_title_input_email_phone_lang' => '모바일 또는 이메일 주소',
+        'signin_title_input_email_phone_lang_placeholder' => '모바일 또는 이메일 주소',
+
+        'signin_title_input_email_phone_login_lang' => '모바일, 이메일 주소 또는 ID',
+        'signin_title_input_email_phone_login_lang_placeholder' => '모바일, 이메일 주소 또는 ID',
+
+        'signin_title_input_phone_login_lang' => '모바일 또는 ID',
+        'signin_title_input_phone_login_lang_placeholder' => '모바일 또는 ID',
+
+        'signin_title_input_phone_lang' => '모바일',
+        'signin_title_input_phone_lang_placeholder' => '모바일',
+
+        'signin_title_input_email_login_lang' => '이메일 또는 ID',
+        'signin_title_input_email__login_lang_placeholder' => '이메일 또는 ID',
+
+
+        'signin_title_input_login_lang' => 'ID',
+        'signin_title_input_login_lang_placeholder' => 'ID',
+
+
+		'signin_title_input_password_lang' => '비밀번호',
+
+		'signin_title_input_captcha_lang' => 'CAPTCHA',
+
+		'signin_title_btn_remember_me_lang' => '기억해',
+
+		'signin_title_social' => '또는 로그인',
+
+		'login_menu_lang_btn_signin' => '로그인',
+		'login_menu_lang_btn_logout' => '로그아웃',
+		'login_menu_lang_btn_signup' => '등록',
+		'login_menu_lang_btn_reminder' => '비밀번호 초기',
+
+
+		/* AJAX */
+
+		'signin_ajax_empty_email_phone' => '\'모바일\'/\'이메일\' 필드를 비울 수 없습니다!',
+		'signin_ajax_empty_password' => '\'비밀번호\' 필드를 비울 수 없습니다!',
+		'signin_ajax_empty_sid' => '에서 서버를 선택하십시오 \'서버를 선택하십시\' 목록!',
+		'signin_ajax_error_captcha' => 'CAPTCHA 검증이 실패했습니다. CAPTCHA를 다시 풀어주세요.!',
+		'signin_ajax_empty_phone' => '\'모바일\' 필드를 비울 수 없습니다!',
+		'signin_ajax_empty_phone_code' => '\'모바일 코드\' 필드를 비울 수 없습니다! 지원에 연락하여 오류 세부 정보를 제공하십시오!',
+
+        'signin_ajax_login_error_type' => '이 로그인 방법이 비활성화되었습 사용 가능한 옵션 중 하나를 사용하고 있는지 확인하십시오!',
+		'signin_ajax_login_error' => '오류가 발생했습니다. 관리자에게 문의하십시!',
+
+		'signin_title_not_active_login_type' => '<br> 모든 로그인 방법이 비활성화! <br> <br> <br>',
+    ),
 );

@@ -88,4 +88,38 @@ return array (
         'lang_text_settings_phone' => 'Este número de telefone está vinculado à conta mestre',
         'label_btn_phone_del_lang' => 'Excluir',
 	),
+	'cn'=>array(
+	
+		'lang_title' => '更改主帐户密码',
+		'label_title_input_phone_lang' => '确认移动',
+		'label_desc_input_phone_lang' => '带有验证码的短信将发送到您的手机号码!',
+		'label_input_phone_sms_lang' => '短信代码',
+		'label_btn_phone_sms_lang' => '发送短信',
+		'lang_pin_label_placeholder' => 'PIN码',
+		'lang_btn_show_code' => '我有短信代码.',
+		'lang_label_placeholder' => '输入短信代码',
+		'lang_btn_confirm_phone' => '确认移动设备',
+		'lang_text_send_phone' => '带有验证码的短信将发送到您的电话号码.',
+		'lang_text_send_phone_2' => '已向您发送带有验证代码的短信。输入收到的代码,然后单击 \'确认移动设备\'.',
+
+        'lang_text_settings_phone' => '此电话号码链接到主帐户',
+        'label_btn_phone_del_lang' => '删除',
+	),
+	'ko'=>array(
+	
+		'lang_title' => '마스터 계정 비밀번호 변',
+		'label_title_input_phone_lang' => '모바일 확인',
+		'label_desc_input_phone_lang' => '검증 코드가있는 SMS가 휴대폰 번호로 전송됩니다!',
+		'label_input_phone_sms_lang' => 'SMS 코드',
+		'label_btn_phone_sms_lang' => 'SMS 보내기',
+		'lang_pin_label_placeholder' => 'PIN-코드',
+		'lang_btn_show_code' => '나는 SMS 코드.',
+		'lang_label_placeholder' => '입력 SMS 코드',
+		'lang_btn_confirm_phone' => '모바일 확인',
+		'lang_text_send_phone' => '검증 코드가있는 SMS가 전화 번호로 전송됩니다.',
+		'lang_text_send_phone_2' => '검증 코드와 함께 SMS가 귀하에게 전송되었습니다. 수신 된 코드를 입력하고 클릭하십시오 \'모바일 확인\'.',
+
+        'lang_text_settings_phone' => '이 전화 번호는 마스터 계정에 연결되어 있습니다',
+        'label_btn_phone_del_lang' => '삭제하기',
+	),
 );

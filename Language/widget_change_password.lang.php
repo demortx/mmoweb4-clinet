@@ -77,4 +77,30 @@ return array(
         "ajax_empty_password_new" => 'O campo \'Nova senha\' não pode estar vazio!',
         "ajax_empty_password_new_confirm" => 'O campo \'Digite a senha novamente\' não pode estar vazio!',
     ),
+	'cn' => array(
+
+        "lang_title" => '更改主帐户密码',
+        "lang_input_password_old" => "当前密码",
+        "lang_input_password_new" => "新密码",
+        "lang_input_password_new_confirm" => "重新输入密码",
+        "lang_input_password_pin" => "输入您的PIN码",
+        "lang_button_change" => "更改密码",
+
+        "ajax_empty_password_old" => '\'当前密码\'字段不能为空!',
+        "ajax_empty_password_new" => '\'新密码\'字段不能为空!',
+        "ajax_empty_password_new_confirm" => '\'重新输入密码\'字段不能为空!',
+    ),
+	'ko' => array(
+
+        "lang_title" => '마스터 계정 비밀번호 변',
+        "lang_input_password_old" => "현재 비밀번호",
+        "lang_input_password_new" => "새 비밀번호",
+        "lang_input_password_new_confirm" => "암호를 다시 입력하십시",
+        "lang_input_password_pin" => "여러분을 입력 PIN-코드",
+        "lang_button_change" => "암호 변경",
+
+        "ajax_empty_password_old" => '의 \'현재 비밀번호\' 필드를 비울 수 없습니다!',
+        "ajax_empty_password_new" => '의 \'새 비밀번호\' 필드를 비울 수 없습니다!',
+        "ajax_empty_password_new_confirm" => '의 \'암호를 다시 입력하십시\' 필드를 비울 수 없습니다!',
+    ),
 );

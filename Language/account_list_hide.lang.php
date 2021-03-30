@@ -53,4 +53,22 @@ return array(
 
 
     ),
+    'cn' => array(
+
+        'lang_list_hide_account' => '隐藏的游戏帐号',
+        'lang_list_hide_account_empty' => '你没有隐藏的游戏帐号',
+        'text_hide_account_info' => '隐藏在主页的游戏帐号列表。您可以在主人翁帐户主页上的所有游戏帐户列表中看到它们.',
+
+
+
+    ),
+    'ko' => array(
+
+        'lang_list_hide_account' => '숨겨진 게임 계정',
+        'lang_list_hide_account_empty' => '숨겨진 게임 계정이 없습니다',
+        'text_hide_account_info' => '메인 페이지에서 숨겨진 게임 계정 목록. 마스터 계정의 메인 페이지에있는 모든 게임 계정 목록에서 볼 수 있습니다.',
+
+
+
+    ),
 );

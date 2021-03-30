@@ -10,6 +10,8 @@ return array(
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
             'pt' => 'Painel',
+			'cn' => '佩内尔',
+			'ko' => '패널',
         ),
         'title_name_min' => array(
             'ru' => 'Главная',
@@ -17,6 +19,8 @@ return array(
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
             'pt' => 'Painel',
+			'cn' => '佩内尔',
+			'ko' => '패널',
         ),
 
     ),
@@ -34,6 +38,8 @@ return array(
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
             'pt' => 'Painel',
+			'cn' => '佩内尔',
+			'ko' => '패널',
         ),
         'title' => array(
             'ru' => 'Главная',
@@ -41,6 +47,8 @@ return array(
             'gr' => 'Πίνακας Ελέγχου',
 			'es' => 'Panel',
             'pt' => 'Painel',
+			'cn' => '佩内尔',
+			'ko' => '패널',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -59,6 +67,8 @@ return array(
             'gr' => 'Κατατάξεις',
 			'es' => 'Rankings',
             'pt' => 'Rankings',
+			'cn' => '排名',
+			'ko' => '랭킹',
         ),
         'title' => array(
             'ru' => 'Рейтинг',
@@ -66,6 +76,8 @@ return array(
             'gr' => 'Κατατάξεις',
 			'es' => 'Rankings',
             'pt' => 'Rankings',
+			'cn' => '排名',
+			'ko' => '랭킹',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -83,6 +95,8 @@ return array(
             'gr' => 'Μαγαζί',
 			'es' => 'Tienda',
             'pt' => 'Loja',
+			'cn' => '商店',
+			'ko' => '상점',
         ),
         'title' => array(
             'ru' => 'Магазин',
@@ -90,6 +104,8 @@ return array(
             'gr' => 'Μαγαζί',
 			'es' => 'Tienda',
             'pt' => 'Loja',
+			'cn' => '商店',
+			'ko' => '상점',
         ),
         'function' => function(&$buttons){
             $t = filemtime(ROOT_DIR.'/Library/shop.php');
@@ -116,6 +132,9 @@ return array(
             'gr' => 'Υποστήριξη',
 			'es' => 'Soporte',
             'pt' => 'Suporte',
+			'cn' => '支持',
+			'ko' => '지원',
+			
         ),
         'title' => array(
             'ru' => 'Поддержка',
@@ -123,6 +142,8 @@ return array(
             'gr' => 'Υποστήριξη',
 			'es' => 'Soporte',
             'pt' => 'Suporte',
+			'cn' => '支持',
+			'ko' => '지원',
         ),
         'function' => function(&$buttons){
             $count = 0;
@@ -151,6 +172,8 @@ return array(
             'gr' => 'Μεταφορά στο παιχνίδι',
 			'es' => 'Transferir al juego',
             'pt' => 'Transferir para o jogo',
+			'cn' => '转会至游戏',
+			'ko' => '게임으로 이동',
         ),
         'title' => array(
             'ru' => 'Перевести в игру',
@@ -158,6 +181,8 @@ return array(
             'gr' => 'Μεταφορά στο παιχνίδι',
 			'es' => 'Transferir al juego',
             'pt' => 'Transferir para o jogo',
+			'cn' => '转会至游戏',
+			'ko' => '게임으로 이동',
         ),
         'function' => function(&$buttons){
             if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
@@ -186,6 +211,8 @@ return array(
             'gr' => 'Υπόλοιπο',
 			'es' => 'Saldo',
             'pt' => 'Saldo',
+			'cn' => '平衡',
+			'ko' => '균형',
         ),
         'title' => array(
             'ru' => 'Баланс',
@@ -193,6 +220,8 @@ return array(
             'gr' => 'Υπόλοιπο',
 			'es' => 'Saldo',
             'pt' => 'Saldo',
+			'cn' => '平衡',
+			'ko' => '균형',
         ),
         'init' => function(&$buttons){
             //если меню горизонтальное подставляем выбор
@@ -211,6 +240,8 @@ return array(
                             'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Μεταφορά στο παιχνίδι',
 							'es'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transferir al juego',
                             'pt' => '<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Transferir para o jogo',
+							'cn'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> 转会至游戏',
+							'ko'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> 게임으로 이동',
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -225,6 +256,8 @@ return array(
                             'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Ανανέωση υπολοίπου',
 							'es'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recargar saldo',
                             'pt'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recarregar saldo',
+							'cn'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> 补足平衡',
+							'ko'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> 최고 균형',
                         ),
                         'function' => function(&$buttons){return false;}
 
@@ -260,6 +293,8 @@ return array(
             'gr' => 'Ρυθμίσεις',
 			'es' => 'Ajustes',
             'pt' => 'Ajustes',
+			'cn' => '设置',
+			'ko' => '설정',
         ),
         'title' => array(
             'ru' => 'Настройки',
@@ -267,6 +302,8 @@ return array(
             'gr' => 'Ρυθμίσεις',
 			'es' => 'Ajustes',
             'pt' => 'Ajustes',
+			'cn' => '设置',
+			'ko' => '설정',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -283,6 +320,8 @@ return array(
             'gr' => 'Αγορά',
 			'es' => 'Mercado',
             'pt' => 'Mercado',
+			'cn' => '市场',
+			'ko' => '시장',
         ),
         'title' => array(
             'ru' => 'Рынок',
@@ -290,6 +329,8 @@ return array(
             'gr' => 'Αγορά',
 			'es' => 'Mercado',
             'pt' => 'Mercado',
+			'cn' => '市场',
+			'ko' => '시장',
         ),
         'function' => function(&$buttons){
             if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
@@ -327,6 +368,8 @@ return array(
             'gr' => 'Lucky wheel',
 			'es' => 'Lucky wheel',
             'pt' => 'Lucky wheel',
+			'cn' => '幸运轮',
+			'ko' => '운이 좋은 바퀴',
         ),
         'title' => array(
             'ru' => 'Колесо фортуны',
@@ -334,6 +377,8 @@ return array(
             'gr' => 'Lucky wheel',
 			'es' => 'Lucky wheel',
             'pt' => 'Lucky wheel',
+			'cn' => '幸运轮',
+			'ko' => '운이 좋은 바퀴',
         ),
         'function' => function(&$buttons){
             $t = filemtime(ROOT_DIR.'/Library/lucky_wheel.php');
@@ -360,6 +405,8 @@ return array(
             'gr' => 'Cases',
 			'es' => 'Cases',
             'pt' => 'Cases',
+			'cn' => '案子',
+			'ko' => '사례',
         ),
         'title' => array(
             'ru' => 'Кейсы',
@@ -367,6 +414,8 @@ return array(
             'gr' => 'Cases',
 			'es' => 'Cases',
             'pt' => 'Cases',
+			'cn' => '案子',
+			'ko' => '사례',
         ),
         'function' => function(&$buttons){
             $t = filemtime(ROOT_DIR.'/Library/cases.php');
@@ -393,6 +442,8 @@ return array(
             'gr' => 'Forum',
 			'es' => 'Foro',
             'pt' => 'Forum',
+			'cn' => '论坛',
+			'ko' => '포럼',
         ),
         'title' => array(
             'ru' => 'Форум',
@@ -400,6 +451,8 @@ return array(
             'gr' => 'Forum',
 			'es' => 'Foro',
             'pt' => 'Forum',
+			'cn' => '论坛',
+			'ko' => '포럼',
         ),
         'function' => function(&$buttons){return false;}
     ),
@@ -417,6 +470,8 @@ return array(
             'gr' => 'Επιστροφή στο κεντρικό site',
 			'es' => 'Volver al sitio principal',
             'pt' => 'Voltar à página inicial',
+			'cn' => '回到主站点',
+			'ko' => '기본 사이트로 돌아 가기',
         ),
         'title' => array(
             'ru' => 'На сайт',
@@ -424,6 +479,8 @@ return array(
             'gr' => 'Επιστροφή στο κεντρικό site',
 			'es' => 'Volver al sitio principal',
             'pt' => 'Voltar à página inicial',
+			'cn' => '回到主站点',
+			'ko' => '기본 사이트로 돌아 가기',
         ),
         'function' => function(&$buttons){return false;}
     ),

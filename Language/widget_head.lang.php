@@ -207,4 +207,84 @@ return array(
         'lang_btn_bc_desc' => 'Código de bônus',
         'lang_btn_bc_open' => 'Resgatar',
     ),
+	'cn' => array(
+
+        'show_info' => array(
+            '需要帮助？联系支持!',
+            '有游戏相关问题？参观论坛!',
+            '您应该知道现在正在进行的促销活动!',
+            '注册我们的新闻通讯!',
+            '当然有你想和世界分享的东西！在论坛上讨论!',
+            '游戏中有不清楚的地方吗？然后访问我们的维基!',
+        ),
+
+
+        'lang_account_ban' => '您的主帐户已被禁止.',
+        'lang_title_master_account' => '主账户',
+        'lang_btn_go_settings' => '设置',
+        'lang_btn_go_check_email' => '确认电子邮件',
+        'lang_btn_go_check_phone' => '确认移动',
+        'lang_btn_last_enter' => '上次登录',
+        'lang_btn_reset_pin' => '重置 PIN-代码',
+
+
+        'lang_title_warehouse' => '仓库',
+        'lang_btn_go_warehouse' => '开放的 仓库',
+        'lang_btn_go_info_warehouse' => '更多信息',
+
+
+        'lang_title_balance' => '平衡',
+        'lang_btn_go_transfer_game' => '转会至游戏',
+        'lang_btn_go_enroll' => '补足平衡',
+        'lang_btn_go_refresh' => '刷新',
+
+
+        'lang_title_sale' => '折扣优惠',
+        'lang_btn_go_info_sale' => '优惠细节',
+
+
+        'lang_btn_bc_title' => '奖金代码',
+        'lang_btn_bc_desc' => '奖金代码',
+        'lang_btn_bc_open' => '赎回',
+    ),
+	'ko' => array(
+
+        'show_info' => array(
+            '도움이 필요하십니 연락처 지원!',
+            '게임 관련 질문이 있습니까? 포럼 방문!',
+            '지금 진행중인 프로모션에 대해 알아야합니다!',
+            '뉴스 레터에 가입하십시오!',
+            '분명히 당신이 세상과 공유하고 싶어하는 것이 있습니다! 포럼에서 토론!',
+            '게임에서 명확하지 않은 것이 있습니까? 그런 다음 위키를 방문하!',
+        ),
+
+
+        'lang_account_ban' => '마스터 계정이 금지되었습니다.',
+        'lang_title_master_account' => '마스터 계정',
+        'lang_btn_go_settings' => '설정',
+        'lang_btn_go_check_email' => '이메일 확인 중',
+        'lang_btn_go_check_phone' => '모바일 확인',
+        'lang_btn_last_enter' => '마지막 로그인',
+        'lang_btn_reset_pin' => '재설정 PIN-코드',
+
+
+        'lang_title_warehouse' => '창고',
+        'lang_btn_go_warehouse' => '열린 창고',
+        'lang_btn_go_info_warehouse' => '더 많은 정보',
+
+
+        'lang_title_balance' => '균형',
+        'lang_btn_go_transfer_game' => '게임으로 이동',
+        'lang_btn_go_enroll' => '최고 균형',
+        'lang_btn_go_refresh' => '새로 고침',
+
+
+        'lang_title_sale' => '할인',
+        'lang_btn_go_info_sale' => '할인 세부 정보',
+
+
+        'lang_btn_bc_title' => '보너스 코드',
+        'lang_btn_bc_desc' => '보너스 코드',
+        'lang_btn_bc_open' => '구속',
+    ),
 );

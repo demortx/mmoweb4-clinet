@@ -100,4 +100,40 @@ return array(
         'lang_btn_disable_pin' => 'Desativar código PIN',
     
     ),
+	'cn' => array(
+
+        'lang_title_pin' => 'PIN码设置',
+        'lang_title' => '重置PIN码',
+        'lang_description_pin_settings' => 'PIN码可帮助保护您的主帐户免受与设置和平衡相关的有害更改的影响,以防其受到损害.
+                                            <br> <code> 注：: </code> <span class = "small text-muted"> 即使禁用PIN码,您仍需要使用它才能更改主帐户的设置! </span>',
+        'lang_description' => '要接收新的PIN碼，請選擇接收方式:',
+        'lang_btn_email' => '电子邮件',
+        'lang_btn_phone' => '短信',
+        'lang_btn_telegram' => '電報',
+        'ajax_empty_type' => '未选择PIN代码恢复方法!',
+        'ajax_empty_pin' => '\'PIN代码\'字段不能为空!',
+
+        'lang_label_placeholder_pin' => '输入您的\'密码\'',
+        'lang_btn_disable_pin' => '禁用PIN码',
+	
+	
+    ),
+	'ko' => array(
+
+        'lang_title_pin' => 'PIN-코드 설정',
+        'lang_title' => '재설정 PIN-코드',
+        'lang_description_pin_settings' => 'PIN 코드는 설정 및 잔액과 관련된 원치 않는 변경으로부터 마스터 계정을 보호 할 수 있습니다..
+                                            <br> <code> 참고: </code> <span class = "small text-muted"> PIN 코드를 비활성화하더라도 마스터 계정의 설정을 변경하려면 PIN 코드를 사용해야합니다.! </span>',
+        'lang_description' => '새 PIN 코드를 받으려면받을 방법을 선택하십시오.:',
+        'lang_btn_email' => '이메일',
+        'lang_btn_phone' => 'SMS',
+        'lang_btn_telegram' => '전보',
+        'ajax_empty_type' => 'PIN 코드 복구 방법이 선택되지 않았습니다.!',
+        'ajax_empty_pin' => '\'PIN- 코드 \'필드는 비워 둘 수 없습니다.!',
+
+        'lang_label_placeholder_pin' => '\'PIN 코드 \를 입력하세요.\'',
+        'lang_btn_disable_pin' => 'PIN 코드 비활성화',
+	
+	
+    ),
 );

@@ -136,4 +136,56 @@ return array(
         'lang_btn_send_email_bind_email' => 'Enviar código',    
     
     ),
+	'cn' => array(
+
+        'lang_title' => '确认电子邮件!',
+        'lang_btn_send_email' => '发送验证电子邮件',
+        'lang_text_send_email' => '您将收到带有验证代码的电子邮件。使用电子邮件中的代码确认您的电子邮件.',
+        'lang_label_input' => '验证码',
+        'lang_label_placeholder' => '输入验证码',
+        'lang_btn_confirm_email' => '确认电子邮件',
+        'lang_desc_confirm' => '确认的电子邮件地址允许您利用主帐户的所有功能.',
+
+        'lang_btn_show_code' => '我有验证码',
+
+        //ajax
+        'empty_cod_confirm' => '验证代码字段不能为空!',
+        'empty_email' => '电子邮件地址字段不能为空!',
+
+
+
+        //bind_email
+        'lang_title_bind_email' => '关联电子邮件',
+        'lang_desc_bind_email' => '通过关联电子邮件地址,您可以利用主帐户的所有功能.',
+        'lang_pin_label_placeholder' => 'PIN-代码',
+        'lang_btn_send_email_bind_email' => '发送代码',	
+	
+	
+    ),
+	'ko' => array(
+
+        'lang_title' => '전자 우편 확인!',
+        'lang_btn_send_email' => '확인 이메일 보내기',
+        'lang_text_send_email' => '확인 코드가있는 이메일이 발송됩니다. 이메일의 코드를 사용하여 이메일을 확인하십시오.',
+        'lang_label_input' => '검증 코드',
+        'lang_label_placeholder' => '검증 코드를 입력하',
+        'lang_btn_confirm_email' => '이메일 확인 중',
+        'lang_desc_confirm' => '확인 된 이메일 주소를 사용하면 마스터 계정의 모든 기능을 활용할 수 있습니다.',
+
+        'lang_btn_show_code' => '검증 코드가 있습니다',
+
+        //ajax
+        'empty_cod_confirm' => '검증 코드 필드를 비울 수 없습니다!',
+        'empty_email' => '이메일 주소 필드를 비울 수 없습니다!',
+
+
+
+        //bind_email
+        'lang_title_bind_email' => '준회원 이메일',
+        'lang_desc_bind_email' => '이메일 주소를 연결하면 마스터 계정의 모든 기능을 활용할 수 있습니다.',
+        'lang_pin_label_placeholder' => 'PIN-코드',
+        'lang_btn_send_email_bind_email' => '코드 보내기',	
+	
+	
+    ),
 );
