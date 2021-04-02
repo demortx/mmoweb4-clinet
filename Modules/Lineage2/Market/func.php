@@ -1013,9 +1013,10 @@ class func
     public function widget_donations(){
 
 
-
-        if($this->market['balance'] !== false)
-            return error_404_html();
+        if($this->market['balance'] !== false) {
+            header('Location: '.set_url('/panel/donations', false), TRUE, 301);
+            die;
+        }
 
         get_instance()->seo->addTeg('head', 'rangeslider_css', 'link', array('rel' => 'stylesheet', 'href' => VIEWPATH.'/panel/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css'));
         get_instance()->seo->addTeg('footer', 'rangeslider', 'script', array('src' => VIEWPATH.'/panel/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js'));

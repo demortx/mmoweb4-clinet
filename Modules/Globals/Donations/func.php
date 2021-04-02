@@ -16,6 +16,8 @@ class func
 
     public $this_main = false;
     public $advertising = false;
+    public $market = false;
+    public $sid = false;
 
     public $payment_list = array(
         'freekassa',
@@ -47,6 +49,20 @@ class func
 
         if (isset(get_instance()->config['payment_system']['sorting_pay']))
             $this->payment_list = get_instance()->config['payment_system']['sorting_pay'];
+
+        $this->market = get_instance()->market;
+        $this->sid = get_instance()->sid;
+
+        if (isset($this->market[$this->sid])) {
+            $this->market = $this->market[$this->sid];
+
+            if (isset($this->market['balance']))
+                $this->market = $this->market['balance'] == false;
+            else
+                $this->market = false;
+        }else
+            $this->market = false;
+
 
     }
     public function widget_donations_no_auth(){
@@ -160,6 +176,7 @@ class func
             array_merge(
                 array(
                     'payment_system' => get_instance()->config['payment_system'],
+                    'market' => $this->market,
                     'event_cfg' => $event_list,
                     'payment_list' => $this->payment_list,
                     get_lang('course.lang')

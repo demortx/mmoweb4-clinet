@@ -22,7 +22,7 @@ class Market extends MainModulesClass
 
         $this->mDir = dirname(__FILE__);
 
-        $this->market = &get_instance()->market;
+        $this->market = get_instance()->market;
         $this->sid = get_instance()->sid;
 
         if (isset($this->market[$this->sid]))
