@@ -139,7 +139,7 @@
                 'advlist autolink lists link image charmap preview hr anchor pagebreak',
                 'searchreplace wordcount visualblocks visualchars code fullscreen',
                 'insertdatetime media nonbreaking table contextmenu directionality',
-                'emoticons paste textcolor colorpicker textpattern imagetools codesample toc',
+                'paste textcolor colorpicker textpattern imagetools codesample toc',
                 'codemirror'
             ],
             toolbar1: "insert | styleselect | fontselect fontsizeselect | table | link unlink | media image |  outdent indent |  codesample | code preview",
