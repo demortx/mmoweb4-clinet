@@ -100,7 +100,7 @@
         </div>
     </div>
     {/if}
-
+    {if $status_balance}
     <div class="col-4 col-xl-2">
         <div class="block block-rounded block-bordered block-link-shadow options-container" >
             <div class="block-content block-content-full clearfix">
@@ -134,6 +134,8 @@
             </div>
         </div>
     </div>
+    {/if}
+
     {if $status_discount}
     <div class="col-4 col-xl-2">
         <div class="block block-rounded block-bordered block-link-shadow options-container" >

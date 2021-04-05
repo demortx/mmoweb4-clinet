@@ -24,8 +24,12 @@ class func
         $status_warehouse = get_instance()->status_plugin('warehouse');
         $status_discount = get_instance()->status_plugin('discount');
         $status_bonus_cod = get_instance()->status_plugin('bonus_cod');
+        $status_balance = get_instance()->status_plugin('balance');
 
-        $col = 10; //за вычетом кнопки перевести в игру и банера
+        $col = 12; //за вычетом кнопки перевести в игру и банера
+
+        if ($status_balance)
+            $col -= 2;
 
         if ($status_warehouse)
             $col -= 2;
@@ -45,6 +49,7 @@ class func
                     'status_warehouse' => $status_warehouse,
                     'status_discount' => $status_discount,
                     'status_bonus_cod' => $status_bonus_cod,
+                    'status_balance' => $status_balance,
                     'row_col' => $col,
                 ),
                 get_lang('widget_head.lang')
