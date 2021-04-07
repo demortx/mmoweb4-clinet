@@ -113,6 +113,7 @@ $ignore_detect_lang_page = array(
     '/api/payment/ips_payment/'.PAYMENT_KEY,
     '/api/payment/digiseller/'.PAYMENT_KEY,
     '/api/payment/paymentwall/'.PAYMENT_KEY,
+    '/api/payment/qiwi/'.PAYMENT_KEY,
     '/text',
     '/captcha/img',
     '/prefix/refresh',

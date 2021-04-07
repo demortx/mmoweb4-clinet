@@ -32,11 +32,6 @@ class NewsSite
             echo error_404_html(500, 'Error connecting to database', DEBUG ? $e->getMessage() : '', '/', true);
             exit;
         }
-
-        $table = $this->db->query("SHOW TABLES LIKE 'mw_news'")->fetch(\PDO::FETCH_ASSOC);
-        if ($table === false){
-            $this->install();
-        }
     }
 
     static function info(){

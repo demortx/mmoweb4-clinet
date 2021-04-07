@@ -37,11 +37,6 @@ class Broadcast
             exit;
         }
 
-        $table = $this->db->query("SHOW TABLES LIKE 'mw_broadcast'")->fetch(\PDO::FETCH_ASSOC);
-        if ($table === false){
-            $this->install();
-        }
-
     }
 
     static function info(){

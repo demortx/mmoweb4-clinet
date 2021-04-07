@@ -36,6 +36,7 @@ class func
         'paysafecard',
         'ips_payment',
         'digiseller',
+        'qiwi',
 
     );
 

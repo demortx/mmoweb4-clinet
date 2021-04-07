@@ -31,6 +31,7 @@ class App extends Controller
         'paysafecard',
         'ips_payment',
         'digiseller',
+        'qiwi',
     );
 
     public $advertising = false;
