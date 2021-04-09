@@ -166,6 +166,14 @@ fabric.properties
 /template/site/valhalla-age/
 /template/site/valhalla-age/*
 /template/site/valhalla-age/**/
+/template/site/levelend
+/template/site/levelend/
+/template/site/levelend/*
+/template/site/levelend/**/
+/template/site/la-craft
+/template/site/la-craft/
+/template/site/la-craft/*
+/template/site/la-craft/**/
 
 
 template/site/.DS_Store
