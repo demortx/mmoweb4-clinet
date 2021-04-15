@@ -135,29 +135,43 @@ class Pages extends Controller {
                     }
                 }
             }
-            if (!isset($_CONTENT)){
-                header("HTTP/1.0 404 Not Found");
-                $_CONTENT = error_404_html();
-            }
 
-            if(isset($json['template']) AND $json['template'] == 'site') {
-                $this->TPL(
-                    array(
-                        '_CONTENT' => $_CONTENT,
-                    )
-                );
-            }else{
-                $this->initTPL(
-                    array_merge(
+
+            $IS_HTML = true;
+            if (!isset($_CONTENT)){
+
+                //ишем возможные катологи html в папке
+                $_CONTENT = find_html_pages($s1, $s2);
+                if ($_CONTENT === false){
+                    header("HTTP/1.0 404 Not Found");
+                    $_CONTENT = error_404_html();
+
+                }else{
+                    echo $_CONTENT;
+                    $IS_HTML = false;
+                }
+
+            }
+            if ($IS_HTML) {
+                if (isset($json['template']) and $json['template'] == 'site') {
+                    $this->TPL(
                         array(
                             '_CONTENT' => $_CONTENT,
-                            '_PAGE_CONTENT_CLASS' => 'main-content-boxed',
-                            '_FOOTER' => true,
-                        ),
-                        get_lang('login.menu.lang')
-                    )
-                );
+                        )
+                    );
+                } else {
+                    $this->initTPL(
+                        array_merge(
+                            array(
+                                '_CONTENT' => $_CONTENT,
+                                '_PAGE_CONTENT_CLASS' => 'main-content-boxed',
+                                '_FOOTER' => true,
+                            ),
+                            get_lang('login.menu.lang')
+                        )
+                    );
 
+                }
             }
         }
 

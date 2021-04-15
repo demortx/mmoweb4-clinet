@@ -28,6 +28,15 @@
     {/foreach}
 </div>
 *}
+<style>
+    .w-32 {
+        width: 32px !important;
+    }
+    .h-32 {
+        height: 32px !important;
+    }
+</style>
+
 <div class="block rounded">
     <div class="block-content block-content-full">
         <ul class="list list-timeline list-timeline-modern pull-t">
@@ -35,7 +44,7 @@
 
             <li data-toggle="tooltip" data-placement="left" title="{$shop_status[$item.update.shop.status]}">
                 <div class="list-timeline-time">#{$item.update.shop.id}</div>
-                <img src="/template/panel/assets/media/market/{$item.update.shop.section}.png" width="32" width="32" class="list-timeline-icon rounded">
+                <img src="/template/panel/assets/media/market/{$item.update.shop.section}.png" width="32" height="32" class="list-timeline-icon rounded">
 
                 <div class="list-timeline-content">
                     <p class="font-w600">{$.php.get_translation($item.update.shop.section)} ({$shop_type[$item.update.shop.type]})</p>
@@ -46,7 +55,12 @@
                                 {foreach $item.update.item_shop as $sell}
                                     <li>
                                         <a href="javascript:void(0);" style="padding:3px 0px 3px 62px;">
-                                            {$.php.set_item($sell.item_id, false,false, '<img src="%icon%" class="img-avatar rounded" style="width: 32px;height: 32px;">%name% x'~$sell.count~'<div class="font-w400 font-size-xs text-muted">%add_name%</div>')}
+                                            <img {$.php.get_icon_item($val,$row['icon_panel'], $this->sid)}  class="img-avatar rounded w-32 h-32">
+
+                                            {if $sell.count > 1}{set $count_ = '<span class="text-primary-darker">x'~$sell.count~'</span>'}{else}{set $count_ = ''}{/if}
+                                            {if $sell.enc > 0}{set $enc_ = '<span class="text-warning">+'~$sell.enc~'</span>'}{else}{set $enc_ = ''}{/if}
+
+                                            {$.php.set_item($sell.item_id, false,false, '%name% '~$count_~$enc_~'<div class="font-w400 font-size-xs text-muted">%add_name%</div>')}
                                             {if $sell.status == 0}
                                                 <i class="fa fa-circle text-info" style="left: 32px;top: 32px;"></i>
                                             {elseif $sell.status == 1}

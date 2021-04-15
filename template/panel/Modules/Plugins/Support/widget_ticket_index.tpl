@@ -313,7 +313,9 @@
             tabs.addTab({
                 id: 'chat-window' + data.head.tid,
                 title: '<img class="img-avatar img-avatar16" src="/template/panel/assets/media/avatars/avatar.png" alt=""><span class="ml-5">' + theme + '</span>',
-                html: '<div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="' + data.head.tid + '" style="height: 140px;"></div>' +
+                html: '<div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="' + data.head.tid + '" style="height: 140px;">' +
+                    '<div class="font-size-sm font-italic text-muted text-center mt-20 mb-10">Ticket №: ' + data.head.tid + '</div>' +
+                    '</div>' +
                     '<div class="js-chat-form block-content block-content-full block-content-sm bg-body-light">' +
                     '<form action="/input" method="post" onsubmit="return false;">{$.php.form_hide_input("Modules\\\Plugins\\\Support\\\Support", "send_msg")}'+
                     '<input type="hidden" name="ticket_id" value="' + data.head.tid + '">' +

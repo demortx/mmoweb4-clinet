@@ -10,11 +10,23 @@
                 <small>{$.php.get_class_name($item.char_info.class_id)} (Lv. {$item.char_info.level})</small>
             </div>
         {else}
-            <div id="product-image" class="mb-3">
-                <img {$.php.get_icon_item($item.icon,$item.icon_panel, $sid)}> {$item.name}
+
+
+            <div class="mb-3">
+                <img {$.php.get_icon_item($item.icon,$item.icon_panel, $sid)}>
+                <span class="font-w600 ml-5">{$item.name} {if $item.enc>0 AND $items_all != null}<span class="text-warning">+{$item.enc}</span>{/if}</span>
+                {if $item.add_name?}
+                <div class="font-w400 font-size-xs text-muted">{$item.add_name}</div>
+                {/if}
             </div>
+
+            {*
+            <div id="product-image" class="mb-3">
+                <img {$.php.get_icon_item($item.icon,$item.icon_panel, $sid)}> {$item.name} {if $item.enc>0 AND $items_all != null}<span class="text-warning">+{$item.enc}</span>{/if}
+            </div>
+            *}
             {if $item.description?}
-            <footer class="blockquote-footer mb-3">{$item.description}</footer>
+            <footer class="blockquote-footer mb-3">{$item.description|replace:'\n':"<br>"}</footer>
             {/if}
         {/if}
         <table class="table table-borderless table-striped table-vcenter">
@@ -23,16 +35,49 @@
                     <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_contains}</b></td>
                     <td class="text-left">
                         {foreach $items_all as $item_}
-                            <div><img width="16px" {$.php.get_icon_item($item_.icon,$item_.icon_panel, $sid)}> {$item_.name} x{$item_.count}</div>
+                            <div>
+                                <img width="16px" {$.php.get_icon_item($item_.icon,$item_.icon_panel, $sid)}>
+                                {$item_.name}
+                                {if $item_.count>1}x{$item_.count}{/if}
+                                {if $item_.enc>0}<span class="text-warning">+{$item_.enc}</span>{/if}
+
+                                {if $item_.a_att_type > 0 || $item_.d_att_0 > 0 || $item_.d_att_1 > 0 || $item_.d_att_2 > 0 || $item_.d_att_3 > 0 || $item_.d_att_4 > 0 || $item_.d_att_5 > 0}
+                                <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="
+                                    {if $item.a_att_type > 0}
+                                        {$att[$item.a_att_type]} {$item.a_att_value}
+                                    {/if}
+                                    {if $item.d_att_0 > 0}
+                                        {$att[0]} {$item.d_att_0}
+                                    {/if}
+                                    {if $item.d_att_1 > 0}
+                                        {$att[1]} {$item.d_att_1}
+                                    {/if}
+                                    {if $item.d_att_2 > 0}
+                                        {$att[2]} {$item.d_att_2}
+                                    {/if}
+                                    {if $item.d_att_3 > 0}
+                                        {$att[3]} {$item.d_att_3}
+                                    {/if}
+                                    {if $item.d_att_4 > 0}
+                                        {$att[4]} {$item.d_att_4}
+                                    {/if}
+                                    {if $item.d_att_5 > 0}
+                                        {$att[5]} {$item.d_att_5}
+                                    {/if}">ATT</span>
+                                {/if}
+
+                            </div>
                         {/foreach}
                     </td>
                 </tr>
+            {else}
+                {if $item.enc > 0}
+                    <tr>
+                        <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_enchant}</b></td><td class="text-left">+{$item.enc}</td>
+                    </tr>
+                {/if}
             {/if}
-            {if $item.enc > 0}
-                <tr>
-                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_enchant}</b></td><td class="text-left">+{$item.enc}</td>
-                </tr>
-            {/if}
+
             {if $items_all == null && $item.type != "3"}
                 <tr>
                     <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_amount}</b></td><td class="text-left">{$.php.number_format($item.count, 0, ',', ',')}</td>
@@ -40,7 +85,7 @@
             {/if}
             {if $item.count > 1}
                 <tr>
-                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier" data-value="{$step}">{$.php.number_format($step, 0, ',', ',')}</span></td>
+                    <td style="width: 30%" class="text-right"><b>{$ajax_buy_shop_get}</b></td><td class="text-left"><span class="price-multiplier" data-max="{$item.count}" data-value="{$step}">{$.php.number_format($step, 0, ',', ',')}</span></td>
                 </tr>
             {/if}
             <tr>
@@ -153,11 +198,21 @@
             <div class="form-group row justify-content-center">
                 <label class="col-10" for="count">{$ajax_buy_shop_enter_amount}</label>
                 <div class="col-10">
-                    <div class="input-group input-group-lg">
+                    <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calculator"></i></span>
                         </div>
                         <input type="number" min="1" max="9999999" name="count" class="form-control" id="count" value="1">
+                        {if $item.count>1}
+                            {set $count_all_ = $item.count}
+                            {if $step > 0}
+                                {set $count_all_ = $item.count/$step}
+                            {/if}
+
+                            <div class="input-group-append">
+                                <span onclick="$('#count').val({$count_all_}).trigger('change')" class="btn btn-outline-secondary">All</span>
+                            </div>
+                        {/if}
                     </div>
                 </div>
             </div>
@@ -217,10 +272,16 @@
     $('#account_name_market').trigger('change');
 
     $(document).ready(function() {
-        var initial = $('.price-multiplier:eq(0)').data('value');
-        var initial_price = $('#price-final').data('initial');
+        let initial = $('.price-multiplier:eq(0)').data('value');
+        let max = $('.price-multiplier:eq(0)').data('max');
+        let initial_price = $('#price-final').data('initial');
 
-        $('#count').keyup(function() {
+        $('#count').on('change paste keyup', function() {
+            if(parseFloat(initial) * $('#count').val() > max){
+                $('.price-multiplier').addClass('text-danger');
+            }else{
+                $('.price-multiplier').removeClass('text-danger');
+            }
             $('.price-multiplier').text((parseFloat(initial) * $('#count').val()).toLocaleString('en-US'));
             $('#price-final').text(' '+ (initial_price * $('#count').val()).toFixed(2));
         })

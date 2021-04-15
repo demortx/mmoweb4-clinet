@@ -3,9 +3,12 @@
  * Dev and Code by Demort
  * email : demortx@mail.ru
  ********************************/
+
+
 define("ROOT_DIR", dirname(__FILE__));
 require_once ROOT_DIR . "/Config.php";
 //Developer log error
+
 if (DEBUG OR $_SERVER[HEADER_IP] == DEBUG_IP) {
     error_reporting(E_ALL & ~E_NOTICE);
     @ini_set('display_errors', 1);
