@@ -1030,9 +1030,17 @@ if (!function_exists('find_html_pages')){
 
             return file_get_contents(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'.html');
 
+        }else if (file_exists(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'/index.html' )) {
+
+            return file_get_contents(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'/index.html');
+
         }else if (file_exists(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'/'.$dir_2.'.html' )) {
 
             return file_get_contents(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'/'.$dir_2.'.html');
+
+        }else if (file_exists(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'/'.$dir_2.'/index.html' )) {
+
+            return file_exists(ROOT_DIR . '/Catalog_html/'.select_lang().'/'.$dir_1.'/'.$dir_2.'/index.html' );
 
         }
 
