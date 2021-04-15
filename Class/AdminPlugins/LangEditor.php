@@ -22,14 +22,6 @@ class LangEditor
 
     public $sid;
     public $platform;
-    public $action = array(
-        'index',
-        'open',
-        'delete',
-        'parser',
-        'install',
-        'icon',
-    );
 
     public function __construct(&$fenom, &$ajaxmsg, &$config)
     {
@@ -135,6 +127,8 @@ class LangEditor
                                 fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");
                                 cfgWrite($fopen, $_POST['lang'], "return");
                                 fclose($fopen);
+                                echo $this->ajaxmsg->notify('Save')->success();
+                                exit;
                             }
                         } else
                             return 'File not found: ' . $file;
@@ -225,6 +219,8 @@ class LangEditor
                             fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");
                             cfgWrite($fopen, $_POST, "return");
                             fclose($fopen);
+                            echo $this->ajaxmsg->notify('Save '.$s2)->success();
+                            exit;
                         }
                     }
 

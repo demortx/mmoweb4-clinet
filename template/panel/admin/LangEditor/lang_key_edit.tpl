@@ -5,7 +5,7 @@
         <div class="block-content">
             <div class="row justify-content-center py-20">
                 <div class="col-xl-9">
-                    <form action="{$.php.set_url($.const.ADMIN_URL~'/lang/'~$tpl_name~'?lang='~$s_lang~'&save=1', false, false)}" method="post" novalidate="novalidate">
+                    <form action="{$.php.set_url($.const.ADMIN_URL~'/lang/'~$tpl_name~'?lang='~$s_lang~'&save=1', false, false)}" method="post" novalidate="novalidate" onsubmit="return false;">
                         <div class="input_list">
                         {foreach $lang_key as $key => $value}
                             {if is_bool($value)}
@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-12 mr-auto">
-                                <button type="submit" class="btn btn-alt-primary"><i class="fa fa-upload mr-5"></i>{$LangEditor_btn_save}</button>
+                                <button type="submit" class="btn btn-alt-primary submit-form"><i class="fa fa-upload mr-5"></i>{$LangEditor_btn_save}</button>
                                 <button type="reset" class="btn btn-alt-secondary ml-10"><i class="fa fa-repeat mr-5"></i>{$LangEditor_btn_reset}</button>
                                 <button type="button" class="btn btn-alt-success ml-10 add_key"><i class="fa fa-plus mr-5"></i>{$LangEditor_btn_add}</button>
                             </div>
