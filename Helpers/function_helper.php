@@ -114,7 +114,10 @@ if ( ! function_exists('select_lang')) {
 
         if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-            if (in_array($language, array('ru', 'be', 'uk', 'ky', 'ab', 'mo', 'et', 'lv'))) {
+
+            if (array_key_exists($language, $system["site"]["language_list"])){
+                return $language;
+            }elseif (in_array($language, array('ru', 'be', 'uk', 'ky', 'ab', 'mo', 'et', 'lv'))) {
                 $language = 'ru';
             } else {
                 $language = 'en';
