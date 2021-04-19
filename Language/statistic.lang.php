@@ -5,7 +5,6 @@
  * Date: 28.02.2020
  * Time: 16:33
  */
-
 return array(
     'ru' => array(
         'lang_page' => array(
@@ -25,7 +24,12 @@ return array(
             'top_rank'         => 'Топ Ранг',
             'top_pkw'          => 'Топ Побед',
             'top_pkt'          => 'Топ Боев',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
+
         'lang_history'=> array(
             'online' => 'Онлайн',
             'online_multiple' => 'Онлайн',
@@ -55,6 +59,10 @@ return array(
             'top_rank'         => 'Top Rank',
             'top_pkw'          => 'Top Wins',
             'top_pkt'          => 'Top Fights',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
         'lang_history'=> array(
             'online' => 'Online',
@@ -86,6 +94,10 @@ return array(
             'top_rank'         => 'Top Rank',
             'top_pkw'          => 'Top Wins',
             'top_pkt'          => 'Top Fights',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
         'lang_history'=> array(
             'online' => 'Συνδεδεμένος',
@@ -117,6 +129,10 @@ return array(
             'top_rank'         => 'Top Rank',
             'top_pkw'          => 'Top Wins',
             'top_pkt'          => 'Top Fights',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
         'lang_history'=> array(
             'online' => 'En línea',
@@ -148,6 +164,10 @@ return array(
             'top_rank'         => 'Top Rank',
             'top_pkw'          => 'Top Vitórias',
             'top_pkt'          => 'Top Lutas',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
         'lang_history'=> array(
             'online' => 'Online',
@@ -178,6 +198,10 @@ return array(
             'top_rank'         => '最好的 排名',
             'top_pkw'          => '最好的 获得胜利',
             'top_pkt'          => '最好的 战斗',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
         'lang_history'=> array(
             'online' => '在线的',
@@ -209,6 +233,10 @@ return array(
             'top_rank'         => '최고 순위',
             'top_pkw'          => '최고 승리',
             'top_pkt'          => '최고 싸움',
+            'rankings_glory'   => 'Glory Points',
+            'rankings_abyss'   => 'Abyss',
+            'rankings_kills'   => 'Kills',
+            'rankings_legion'  => 'Legions',
         ),
         'lang_history'=> array(
             'online' => '온라인',

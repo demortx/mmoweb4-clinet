@@ -802,10 +802,16 @@ if (!function_exists('render_widget_ma_manager')) {
 
 if (!function_exists('get_crest')) {
 
-    function get_crest($id, $sid, $class = '')
+    function get_crest($id, $sid, $class = '', $pattern = '<img class="%class%" src="%src%">')
     {
         if (!empty($id) AND !empty($sid) AND file_exists(ROOT_DIR.CACHEPATH.'/crest/'.$sid.'/'.$id.'.png')){
-            return '<img class="'.$class.'" src="'.CACHEPATH.'/crest/'.$sid.'/'.$id.'.png">';
+
+            $crest = array(
+                'class' => $class,
+                'src' => CACHEPATH.'/crest/'.$sid.'/'.$id.'.png',
+            );
+
+            return str_replace(array('%class%', '%src%') , array_values($crest), $pattern);
         }else
             return '';
     }
