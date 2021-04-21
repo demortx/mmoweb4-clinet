@@ -341,7 +341,7 @@ if (!function_exists('set_item')) {
                 exit;
             }
 
-            $result = $db->prepare('SELECT `id`, `item_id`, `name`, `add_name`, `description`, `icon`, `icon_panel`, `grade`, `type`, `stackable` FROM mw_item_db WHERE `item_id` = :item_id AND `sid`=:sid ');
+            $result = $db->prepare('SELECT `id`, `item_id`, `name`, `add_name`, `description`, `icon`, `icon_panel`, \'\' AS src, \'\' AS src_panel, `grade`, `type`, `stackable`,`sid` FROM mw_item_db WHERE `item_id` = :item_id AND `sid`=:sid ');
             $result->execute(array(':item_id' => $item_id, ':sid' => $sid));
             $item = $TEMP[$sid][$item_id] = $result->fetch(PDO::FETCH_ASSOC);
             unset($result);
@@ -353,12 +353,13 @@ if (!function_exists('set_item')) {
                 'name' => 'No name',
                 'add_name' => '',
                 'description' => '',
-                'src' => '',
                 'icon' => '',
                 'icon_panel' => '',
+                'src' => '',
+                'src_panel' => '',
                 'grade' => '',
-                'type' => '',
                 'stackable' => 0,
+                'type' => '',
                 'sid' => $sid,
             );
         }
@@ -381,7 +382,6 @@ if (!function_exists('set_item')) {
             $item['grade'] = isset($item['grade']) ? $item['grade'] : '';
             $item['type'] = isset($item['type']) ? $item['type'] : '';
             $item['stackable'] = isset($item['stackable']) ? $item['stackable'] : 0;
-            $item['sid'] = $sid;
 
             return $item;
         }else{
@@ -395,6 +395,7 @@ if (!function_exists('set_item')) {
 if (!function_exists('check_icon_item')) {
 
     function check_icon_item($icon, $sid){
+
         if (!empty($icon)){
             if (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.png'))
                 $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.png';
