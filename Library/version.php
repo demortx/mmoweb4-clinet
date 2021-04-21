@@ -4,4 +4,4 @@
  * /admin/updating
  ********************************/
 defined('ROOT_DIR') OR exit('No direct script access allowed');
-return '0.0.7';
+return '0.0.8';
