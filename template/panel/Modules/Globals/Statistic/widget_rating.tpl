@@ -20,22 +20,30 @@
         {foreach $rating as $tab_c => $top first=$first2}
         <div class="tab-pane {if $first2}active{/if}  table-responsive" id="tab-{$tab_c}" role="tabpanel">
 
-            {if $top.error == '0'}
-                {if $.php.file_exists( $.const.ROOT_DIR ~ $.const.VIEWPATH ~ "/panel/Modules/Globals/Statistic/custom/{$platform}/{$tab_c}.tpl")}
-                    {include "/panel/Modules/Globals/Statistic/custom/{$platform}/{$tab_c}.tpl" top_list=$top.data}
-                {elseif $.php.file_exists( $.const.ROOT_DIR ~ $.const.VIEWPATH ~ "/panel/Modules/Globals/Statistic/{$platform}/{$tab_c}.tpl")}
-                    {include "/panel/Modules/Globals/Statistic/{$platform}/{$tab_c}.tpl" top_list=$top.data}
+            {if isset($top.error)}
+                {if $top.error == '0'}
+                    {if $.php.file_exists( $.const.ROOT_DIR ~ $.const.VIEWPATH ~ "/panel/Modules/Globals/Statistic/custom/{$platform}/{$tab_c}.tpl")}
+                        {include "/panel/Modules/Globals/Statistic/custom/{$platform}/{$tab_c}.tpl" top_list=$top.data}
+                    {elseif $.php.file_exists( $.const.ROOT_DIR ~ $.const.VIEWPATH ~ "/panel/Modules/Globals/Statistic/{$platform}/{$tab_c}.tpl")}
+                        {include "/panel/Modules/Globals/Statistic/{$platform}/{$tab_c}.tpl" top_list=$top.data}
+                    {else}
+                        No support template: {$tab_c}
+                    {/if}
                 {else}
-                    No support template: {$tab_c}
+                    <pre>{$top.data}</pre>
+                {/if}
+
+                {if $top.date?}
+                    <blockquote class="blockquote text-right mb-0">
+                    <footer class="blockquote-footer">{$top.date}</footer>
+                    </blockquote>
                 {/if}
             {else}
-                <pre>{$top.data}</pre>
-            {/if}
-
-            {if $top.date?}
-                <blockquote class="blockquote text-right mb-0">
-                <footer class="blockquote-footer">{$top.date}</footer>
-                </blockquote>
+                <code>When receiving statistics, an error occurred, perhaps this is due to the incorrect setting of the game server or the tariff has expired!</code>
+                <br>
+                <pre>
+                    {$.php.var_export($top)}
+                </pre>
             {/if}
         </div>
         {/foreach}

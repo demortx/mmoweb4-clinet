@@ -79,6 +79,7 @@ $db_table_install = array(
                                   `id` int(11) NOT NULL,
                                   `item_id` bigint(20) NOT NULL,
                                   `name` varchar(250) DEFAULT NULL,
+                                  `name_obj` varchar(60) DEFAULT NULL,
                                   `add_name` varchar(250) DEFAULT NULL,
                                   `description` varchar(1200) DEFAULT NULL,
                                   `icon` varchar(100) DEFAULT NULL,

@@ -12,7 +12,7 @@
     document.addEventListener("DOMContentLoaded", function(event) {
 
         var {$ajax_module} = $('.{$ajax_module}').DataTable({
-            dom: "<'row'<'col-sm-6 col-md-3'l><'col-sm-6 col-md-3'f><'col-sm-12 col-md-6'B<\"btn-group flex-wrap toolbar_table  ml-5\">>>" +
+            dom: "<'row'<'col-sm-6 col-md-3'l><'col-sm-6 col-md-3'f><'col-sm-12 col-md-6'Bp<\"btn-group flex-wrap toolbar_table  ml-5\">>>" +
                 "<'row'<'col-sm-12'<\"row gutters-tiny toolbar_table_input mt-5\">tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             pageLength: 30,

@@ -239,11 +239,12 @@ class ParsFileGame
                 $i = 0;
                 foreach ($items as $id => $item){
                     $i++;
-                    $this->db->prepare("INSERT INTO mw_item_db(`item_id`,`name`,`add_name`,`description`,`icon`,`icon_panel`,`grade`,`type`,`stackable`,`sid`) VALUES(:item_id, :name, :add_name, :description, :icon, :icon_panel, :grade, :type, :stackable, :sid);")
+                    $this->db->prepare("INSERT INTO mw_item_db(`item_id`,`name`,`name_obj`,`add_name`,`description`,`icon`,`icon_panel`,`grade`,`type`,`stackable`,`sid`) VALUES(:item_id, :name, :name_obj, :add_name, :description, :icon, :icon_panel, :grade, :type, :stackable, :sid);")
                         ->execute(
                             array(
                                 ':item_id' => $id,
                                 ':name' => $item['name'],
+                                ':name_obj' => $item['name_obj'],
                                 ':add_name' => $item['add_name'],
                                 ':description' => $item['description'],
                                 ':icon' => $item['icon'],
@@ -303,6 +304,7 @@ class ParsFileGame
                                   `id` int(11) NOT NULL,
                                   `item_id` bigint(20) NOT NULL,
                                   `name` varchar(250) DEFAULT NULL,
+                                  `name_obj` varchar(60) DEFAULT NULL,
                                   `add_name` varchar(250) DEFAULT NULL,
                                   `description` varchar(1200) DEFAULT NULL,
                                   `icon` varchar(100) DEFAULT NULL,

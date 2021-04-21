@@ -65,6 +65,7 @@ class ParserItem
                     if ($file_name == 'itemname-e.txt'){
 
                         $items[$item_id]['name'] = $item['name'];
+                        $items[$item_id]['name_obj'] = '';
                         $items[$item_id]['add_name'] = $item['add_name'];
                         $items[$item_id]['description'] = filter_var(str_replace(array('u,', '\\0'), "", $item['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $items[$item_id]['icon'] = '';
@@ -128,6 +129,7 @@ class ParserItem
                         }
 
                         $items[$item_id]['name'] = $this->trim($item['name']);
+                        $items[$item_id]['name_obj'] = '';
                         $items[$item_id]['add_name'] = $item['additionalname'];
                         $items[$item_id]['description'] = filter_var($this->trim($item['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $items[$item_id]['icon'] = '';
@@ -185,8 +187,10 @@ class ParserItem
 
                 if ($file_name == 'itemdata.txt' AND file_exists($dir)) {
                     $items_server = $this->getServerFile($dir);
+
                     foreach ($items_server as $id => $it){
                         if (isset($items[$id])){
+                            $items[$id]['name_obj'] = $it['name'];
                             $items[$id]['grade'] = $it['grade'];
                             $items[$id]['stackable'] = $it['stackable'];
                             $items[$id]['type'] = $it['gtype'];
@@ -380,8 +384,10 @@ class ParserItem
             if(preg_match('/item_begin\s*(\w*)\s*(\d*)\s*\[(.*?)\]\s*/x',$str,$item)){
                 $gtype     = $item[1];
                 $item_id   = $item[2];
+                $item_name = $item[3];
 
                 $items[$item_id] = array(
+                    'name'          => $item_name,
                     'gtype'         => $gtype,
                     'grade'         => NULL,
                     'stackable'     => NULL,

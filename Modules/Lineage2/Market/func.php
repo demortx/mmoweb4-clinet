@@ -79,8 +79,8 @@ class func
                         . '<div>'
                         . "<span class='item-name__content'>" . $row['name'] . ' <span class="item-name__additional">' . htmlspecialchars($row['add_name']) . "</span>"
                         . ($row['enc'] > 0 ? " +" . $row['enc'] : '') . "</span>"
-                        . (get_augmentation($row['aug_1']) != "" ? "<span class='item-augment'>"
-                            . "<span>" . get_augmentation($row['aug_1']) . "</span><span>" . get_augmentation($row['aug_2']) . "</span>"
+                        . ($row['aug_1'] > 0 ? "<span class='item-augment'>"
+                            . "<span>" . implode(",", get_augmentation($row['aug_1'])) . "</span><span>" . implode(",", get_augmentation($row['aug_2'])) . "</span>"
                             . "</span>" : "")
                         . "</div>"
                         . "</div>";
@@ -441,13 +441,15 @@ class func
                     'operator' => '<='
                 ),
                 'rarity' => array(
-                    'field' => array('i.`description`'),
+                    'field' => array('i.`description`','i.`name`'),
                     'formatted' => function($val){
 
                         if ($val == 'rare')
                             return $this->this_main->db->quote('Masterwork%');
-                        else
-                            return $this->this_main->db->quote('Masterwork%');
+                        elseif ($val == 'special')
+                            return $this->this_main->db->quote('Special%');
+                        elseif ($val == 'amazing')
+                            return $this->this_main->db->quote('Amazing%');
 
                         },
                     'operator' => 'LIKE'
@@ -1212,8 +1214,8 @@ class func
                 if($item['i_a_1'] > 0){
                     $aug .= 'Augmentation' . PHP_EOL;
 
-                    $aug .= get_augmentation($item['i_a_1']) . PHP_EOL;
-                    $aug .= get_augmentation($item['i_a_1']);
+                    $aug .= implode(",", get_augmentation($item['i_a_1'])) . PHP_EOL;
+                    $aug .= implode(",", get_augmentation($item['i_a_2']));
                 }
 
 
