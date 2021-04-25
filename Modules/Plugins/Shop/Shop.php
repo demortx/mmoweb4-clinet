@@ -64,15 +64,12 @@ class Shop extends MainModulesClass
         $content = array(
             '/panel' => array(
                 //'header' => get_lang($this->lang)['title'] . ' <small>' . get_lang($this->lang)['title_small'] . '</small>',
-                'row' => array(
-                    4 =>
-                        array(
-                            'class' => 'col-6 col-xl-4',
-                            'level' => 5,
-                            'widget_shop_advertising' => function() { return $this->func->widget_shop_advertising();},
-                        ),
-
-
+                'grid' => array(
+                    array(
+                        'class' => 'grid-item col-12 col-md-6 col-xl-4',
+                        'level' => 6,
+                        'widget_shop_advertising' => function() { return $this->func->widget_shop_advertising();},
+                    ),
                 ),
             ),
 

@@ -47,13 +47,17 @@ class HeadInfo extends MainModulesClass
 
             '/panel' => array(
                 //'header' => get_lang($this->lang)['title'] . ' <small>' . get_lang($this->lang)['title_small'] . '</small>',
-                'row' => array(
-                    0 =>
-                        array(
-                            'class' => 'col-md-12  col-sm-12',
-                            'level' => 1,
-                            'widget_head' => function() { return $this->func->widget_head();},
-                        ),
+                'grid' => array(
+                    array(
+                        'class' => 'grid-sizer col-12 col-md-6 col-xl-4',
+                        'level' => 1,
+                        'widget_head' => function() { return ' ';},
+                    ),
+                    array(
+                        'class' => 'grid-item col-md-12  col-sm-12',
+                        'level' => 2,
+                        'widget_head' => function() { return $this->func->widget_head();},
+                    ),
 
                 ),
             ),

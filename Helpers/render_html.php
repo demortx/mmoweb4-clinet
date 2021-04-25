@@ -577,6 +577,8 @@ if (!function_exists('valid_parse_row')) {
             $row_key = 'row gutters-tiny';
         elseif (array_key_exists('row no-gutters', $array))
             $row_key = 'row no-gutters';
+        elseif (array_key_exists('grid', $array))
+            $row_key = 'grid';
         else
             $row_key = false;
 

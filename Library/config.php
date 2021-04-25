@@ -18,7 +18,7 @@ $system = array (
 			'donations' => true,
 			'forum' => true,
 		),
-		'pin_shield' => true,
+		'pin_shield' => false,
 		'pins_change_password_account' => true,
 		'pins_forgot_password_account' => true,
 		'pins_change_pwd_ma' => true,
@@ -55,7 +55,6 @@ $system = array (
 			'phone' => true,
 		),
 		'registration_confirmation' => true,
-		'registration_stop_temp_email' => true,
 		'registration_login' => true,
 		'registration_login_optional' => false,
 		'registration_login_hide' => false,
@@ -68,24 +67,29 @@ $system = array (
 			'phone' => true,
 		),
 		'reminder_type_phone' => false,
+		'reminder_type_ga' => false,
 		'captcha' => 'recaptchav2',
 		'recaptcha_public_key' => '6LeCmeoZAAAAANZaPVS-pdnIGTiWo9f7bWKa4QVg',
 		'recaptcha_secret_key' => '6LeCmeoZAAAAAJPRRDUp4c2J1-DrIrA4gtl2pt-V',
 	),
 	'game'=>array(
 		0 => 'lineage2',
-		1 => 'boi',
+		1 => 'aion',
+		2 => 'boi',
 	),
 	'pid' => 1,
 	'project'=>array(
 		'name' => 'MmoWeb',
 		'url_site' => 'https://mw4.mmoweb.ru/',
 		'protocol_site' => 'https',
-		'secret_key' => 'vSItF01ZW^s0z7HU(m5A',
+		'secret_key' => 'AAoQm7c2FtIeI8t3t52-',
 		'server'=>array(
 			'lineage2'=>array(
 				0 => 88,
 				1 => 9,
+			),
+			'aion'=>array(
+				0 => 182,
 			),
 			'boi'=>array(
 				0 => 7,
@@ -95,6 +99,9 @@ $system = array (
 			'lineage2'=>array(
 				0 => 9,
 				1 => 88,
+			),
+			'aion'=>array(
+				0 => 182,
 			),
 			'boi'=>array(
 				0 => 7,
@@ -107,6 +114,11 @@ $system = array (
 					'name' => 'MasterWork',
 					'status' => true,
 					'game' => 'lineage2',
+					'teleport_char' => false,
+					'hwid_char' => false,
+					'hwid_account' => false,
+					'pin_char' => false,
+					'pin_account' => false,
 					'rate' => 1,
 				),
 				9 => 
@@ -114,6 +126,25 @@ $system = array (
 					'name' => 'L2R Old',
 					'status' => true,
 					'game' => 'lineage2',
+					'teleport_char' => true,
+					'hwid_char' => true,
+					'hwid_account' => true,
+					'pin_char' => true,
+					'pin_account' => true,
+					'rate' => 1,
+				),
+			),
+			'aion'=>array(
+				182 => 
+				array (
+					'name' => 'Aion',
+					'status' => true,
+					'game' => 'aion',
+					'teleport_char' => false,
+					'hwid_char' => false,
+					'hwid_account' => false,
+					'pin_char' => false,
+					'pin_account' => false,
 					'rate' => 1,
 				),
 			),
@@ -123,6 +154,11 @@ $system = array (
 					'name' => 'Gaia PvP',
 					'status' => true,
 					'game' => 'boi',
+					'teleport_char' => false,
+					'hwid_char' => false,
+					'hwid_account' => false,
+					'pin_char' => false,
+					'pin_account' => false,
 					'rate' => 15,
 				),
 			),
@@ -133,6 +169,10 @@ $system = array (
 				'global_balance' => true,
 			),
 			9 => 
+			array (
+				'global_balance' => true,
+			),
+			182 => 
 			array (
 				'global_balance' => true,
 			),
@@ -147,10 +187,19 @@ $system = array (
 				'bonus_cod' => true,
 				'warehouse' => true,
 				'discount' => true,
+				'balance' => true,
 			),
 			9 => 
 			array (
 				'bonus_cod' => true,
+				'warehouse' => true,
+				'discount' => true,
+				'balance' => true,
+			),
+			182 => 
+			array (
+				'bonus_cod' => true,
+				'warehouse' => true,
 				'discount' => true,
 			),
 			7 => 
@@ -164,8 +213,7 @@ $system = array (
 			88 => 
 			array (
 				'rating' => true,
-				'shop' => true,
-				'market' => true,
+				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -174,8 +222,16 @@ $system = array (
 			9 => 
 			array (
 				'rating' => true,
-				'shop' => true,
-				'market' => true,
+				'support' => true,
+				'donations' => true,
+				'settings' => true,
+				'forum' => true,
+				'site' => true,
+			),
+			182 => 
+			array (
+				'rating' => true,
+				'support' => true,
 				'donations' => true,
 				'settings' => true,
 				'forum' => true,
@@ -208,6 +264,8 @@ $system = array (
 			'gr' => 'Greek',
 			'es' => 'Spanish',
 			'pt' => 'Portuguese',
+			'cn' => 'China',
+			'ko' => 'Korean',
 		),
 	),
 	'settings' => 1,
@@ -252,12 +310,11 @@ $system = array (
 			12 => 'ipay',
 			13 => 'paysafecard',
 			14 => 'paymentwall',
+			15 => 'qiwi',
 		),
-		'unitpay' => true,
 		'unitpay_project_id' => 182331,
 		'unitpay_pay_type' => false,
 		'unitpay_currency' => 'RUB',
-		'unitpay_platform' => 'unitpay.ru',
 		'nextpay' => true,
 		'nextpay_product_id' => 10611,
 		'freekassa' => true,
@@ -287,6 +344,7 @@ $system = array (
 		'ips_payment' => true,
 		'digiseller' => true,
 		'paymentwall' => true,
+		'qiwi' => false,
 	),
 	'discount'=>array(
 		'project'=>array(
@@ -390,22 +448,54 @@ $system = array (
 		9 => 
 		array (
 			'config'=>array(
-				'char' => true,
+				'account' => true,
 			),
 			'settings'=>array(
 				0 => 
 				array (
-					'id' => 1,
+					'id' => 2,
+					'type' => 'account',
+					'long_name' => 'Point',
+					'short_name' => 'PB',
+					'icon' => 'https://mw4.mmoweb.ru/template/panel/assets/media/avatars/avatar.png',
+					'message' => 'Покупка поинтов в комюнити борд',
+					'message_no_auth' => null,
+					'item_id' => 0,
+					'give_count' => 1,
+					'price' => '12.001',
+				),
+			),
+		),
+		182 => 
+		array (
+			'config'=>array(
+				'char' => true,
+				'account' => true,
+			),
+			'settings'=>array(
+				0 => 
+				array (
+					'id' => 184,
 					'type' => 'char',
 					'long_name' => 'Coin of Luck',
-					'short_name' => 'Col',
-					'icon' => 'https://mw4.mmoweb.ru/template/panel/assets/media/icon/8/etc_cp_potion_i00.png',
-					'message' => 'Вы можете передать на персонажа Family Coin
-Обратите внимание!
-Вы можете приобрести все желаемые итемы напрямую в ЛК в разделах &quot;Магазин&quot; и &quot;Услуги&quot;, не переводя Family Coins в игру на персонажа!',
-					'message_no_auth' => 'Вы можете передать на персонажа Family Coin
-не авторизованный',
-					'item_id' => 4037,
+					'short_name' => 'CoL',
+					'icon' => '/template/panel/assets/media/icon/6/etc_cp_potion_i00.png',
+					'message' => null,
+					'message_no_auth' => null,
+					'item_id' => 188053399,
+					'give_count' => 1,
+					'price' => '1.000',
+				),
+				1 => 
+				array (
+					'id' => 185,
+					'type' => 'account',
+					'long_name' => 'Coin of Luck',
+					'short_name' => 'CoL',
+					'icon' => '/template/panel/assets/media/icon/6/etc_cp_potion_i00.png',
+					'message' => null,
+					'message_no_auth' => null,
+					'item_id' => 0,
 					'give_count' => 1,
 					'price' => '1.000',
 				),
@@ -415,8 +505,121 @@ $system = array (
 	'plugins'=>array(
 		'__' => 'pl',
 		2 => 'stop_spam_email',
+		3 => 'support',
+		5 => 'manager_account',
+		6 => 'bonus_cod',
+		7 => 'promo_game',
 		8 => 'market',
+		10 => 'lucky_wheel',
+		12 => 'referral',
 	),
-	'promo_game' => 0,
+	'promo_game'=>array(
+		6 => 
+		array (
+			'id' => 6,
+			'name' => 'Бонус при регистрации',
+			'treatment' => 0,
+			'sid' => 88,
+			'pid' => 1,
+			'items'=>array(
+				1 => 
+				array (
+					'gr' => 1,
+					'id' => 57,
+					'count' => 100,
+					'enc' => 0,
+					'name' => 'Adena',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 15,
+				),
+				2 => 
+				array (
+					'gr' => 1,
+					'id' => 57,
+					'count' => 200,
+					'enc' => 0,
+					'name' => 'Adena',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 30,
+				),
+				3 => 
+				array (
+					'gr' => 1,
+					'id' => 57,
+					'count' => 300,
+					'enc' => 0,
+					'name' => 'Adena',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 55,
+				),
+				4 => 
+				array (
+					'gr' => 2,
+					'id' => 4037,
+					'count' => 1,
+					'enc' => 0,
+					'name' => 'CoL',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 25,
+				),
+				5 => 
+				array (
+					'gr' => 2,
+					'id' => 4037,
+					'count' => 100,
+					'enc' => 0,
+					'name' => 'CoL',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 45,
+				),
+				6 => 
+				array (
+					'gr' => 2,
+					'id' => 4037,
+					'count' => 1000,
+					'enc' => 0,
+					'name' => 'CoL',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 30,
+				),
+				7 => 
+				array (
+					'gr' => 3,
+					'id' => 17,
+					'count' => 135,
+					'enc' => 0,
+					'name' => 'Arrow',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 33,
+				),
+				8 => 
+				array (
+					'gr' => 3,
+					'id' => 17,
+					'count' => 543,
+					'enc' => 0,
+					'name' => 'Arrow',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 33,
+				),
+				9 => 
+				array (
+					'gr' => 3,
+					'id' => 17,
+					'count' => 678,
+					'enc' => 0,
+					'name' => 'Arrow',
+					'img' => '/template/site/2/images/game/gift__item_full.png',
+					'chance' => 34,
+				),
+			),
+			'max' => 3,
+		),
+	),
+	'referral'=>array(
+		'status' => true,
+		'sale' => true,
+		'commission' => true,
+	),
 );
 return $system;

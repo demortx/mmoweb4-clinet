@@ -66,13 +66,12 @@ class User extends MainModulesClass
 
             '/panel' => array(
                 //'header' => get_lang($this->lang)['title'] . ' <small>' . get_lang($this->lang)['title_small'] . '</small>',
-                'row' => array(
-                    1 =>
-                        array(
-                            'class' => 'col-12 col-xl-8',
-                            'level' => 2,
-                            'widget_account_list' => function() { return $this->func->widget_account_list();},
-                        ),
+                'grid' => array(
+                    array(
+                        'class' => 'grid-item col-12 col-xl-8',
+                        'level' => 3,
+                        'widget_account_list' => function() { return $this->func->widget_account_list();},
+                    ),
 
 
                 ),

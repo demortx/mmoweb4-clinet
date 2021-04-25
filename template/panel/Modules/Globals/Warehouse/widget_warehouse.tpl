@@ -21,7 +21,10 @@
                                     {$items.name}
                                     <span class="float-right mr-5 ">
                                     {foreach $items.data as $item first=$first}
-                                        {$.php.set_item($item.id,false,false,'<img data-item="'~$items.id~'" src="%icon%" class="ml-1" width="17px" data-toggle="popover" data-placement="top" data-content="%description%" data-original-title="%name% %add_name% x'~$item.count~'" >')}
+
+                                            {$.php.set_item($item.id,false,false,'<span class="badge badge-pill badge-secondary" data-toggle="popover" data-placement="top" data-content="%description%" data-original-title="%name% %add_name% x'~$item.count~'"><img data-item="'~$items.id~'" src="%icon%" class="mr-1" width="17px">x'~$item.count~'</span>')}
+
+
                                     {/foreach}
                                     </span>
                                 </a>

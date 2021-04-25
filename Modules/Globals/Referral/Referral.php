@@ -6,17 +6,17 @@
  * Time: 19:38
  */
 
-namespace Modules\Globals\VoteSystem;
+namespace Modules\Globals\Referral;
 use Modules\MainModulesClass;
 
-class VoteSystem extends MainModulesClass
+class Referral extends MainModulesClass
 {
 
     public function __construct()
     {
         $this->mDir = dirname(__FILE__);
         include_once $this->mDir."/func.php";
-        $this->func = new \VoteSystem\func( $this );
+        $this->func = new \Referral\func( $this );
     }
 
     public function info()
@@ -26,22 +26,16 @@ class VoteSystem extends MainModulesClass
             "game" => "Globals",
             "version" => "1.0",
             "description" => array(
-                'ru' => 'Голосование',
-                'en' => 'Vote',
+                'ru' => 'Реферальная система',
+                'en' => 'Referral system',
             ),
             "url" => "https://forum.mmoweb.ru/",
-            "created" => "15.06.2020",
-            "lastUpdated" => "15.06.2020",
+            "created" => "24.04.2021",
+            "lastUpdated" => "24.04.2021",
             "class" => __CLASS__,
         );
     }
 
-    public function onAjax()
-    {
-        return array(
-            'ajax_cast' => function () { return $this->func->ajax_cast(); },
-        );
-    }
 
     public function renderWindow()
     {
@@ -51,8 +45,8 @@ class VoteSystem extends MainModulesClass
                 'grid' => array(
                     array(
                         'class' => 'grid-item col-12 col-md-6 col-xl-4',
-                        'level' => 5,
-                        'widget_vote' => function() { return $this->func->widget_vote();},
+                        'level' => 4,
+                        'widget_referral' => function() { return $this->func->widget_referral();},
 
                     ),
                 ),

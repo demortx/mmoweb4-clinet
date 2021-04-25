@@ -33,10 +33,11 @@ return array(
 
                 ['idx' => 'notify', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js'],
                 ['idx' => 'history-tabs', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/plugins/bootstrap-history-tabs/bootstrap-history-tabs.js?v=2'],
+                ['idx' => 'masonry', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/plugins/masonry/masonry.pkgd.min.js'],
 
                 ['idx' => 'js_mmoweb', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/mmoweb.js?v=' . filemtime(ROOT_DIR.VIEWPATH.'/panel/assets/js/mmoweb.js')],
                 ['idx' => 'webstat', 'typex' => 'script', 'src' => 'https://mmo24.ru/webstat/watch.js'],
-                ['idx'=> 'historyTabs', 'typex' => 'script', 'js' => "$('.nav-tabs a').historyTabs();"],
+                ['idx'=> 'historyTabs', 'typex' => 'script', 'js' => "$('.grid').masonry({itemSelector: '.grid-item',columnWidth: '.grid-sizer',percentPosition: true});$('.nav-tabs a').historyTabs();"],
             ),
         ],
 
