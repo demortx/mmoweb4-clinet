@@ -54,7 +54,8 @@ class func
         $data = get_cache('rating_'.$sid, false, true);
         if ($data === false){
             $data = $this->api_get_rating($sid);
-            if (isset($data['error']) AND $data['error'] == 0) {
+
+            if (!isset($data['error'])) {
                 $data = $this->pars_rating($data, $platform);
                 set_cache('rating_' . $sid, $data, CACHE_RATING);
             }
@@ -62,7 +63,7 @@ class func
             $data_new = $this->api_get_rating($sid);
             $data = $data["data"];
 
-            if (isset($data['error']) AND $data['error'] == 0) {
+            if (!isset($data_new['error'])) {
                 $data_new = $this->pars_rating($data_new, $platform);
                 set_cache('rating_'.$sid, $data_new, CACHE_RATING);
                 $data = $data_new;
