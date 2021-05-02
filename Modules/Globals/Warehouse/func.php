@@ -33,7 +33,7 @@ class func
             if (!isset($_REQUEST['wh_id']) OR empty($_REQUEST['wh_id']))
                 return get_instance()->ajaxmsg->notify(get_lang('warehouse.lang')['ajax_empty_wh_id'])->danger();
             else
-                $vars["wh_id"] = intval($_REQUEST['wh_id']);
+                $vars["wh_id"] = $_REQUEST['wh_id'];
 
             //Количество покупаемых предметов
             if ((!isset($_REQUEST['wh_char_name']) OR empty($_REQUEST['wh_char_name'])) AND (!isset($_REQUEST['wh_char_name_out']) OR empty($_REQUEST['wh_char_name_out'])))

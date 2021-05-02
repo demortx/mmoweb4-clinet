@@ -14,17 +14,14 @@
                             {foreach $.site.session->session.user_data.warehouse as $items}
                                 <a class="list-group-item list-group-item-action align-items-center check_box_wh p-1" data-id="{$items.id}" data-give-type="{$items.give_type}" href="javascript:void(0)">
                                     <label class="css-control css-control-sm css-control-secondary css-checkbox ml-1 mr-5">
-                                        <input type="radio" class="css-control-input check_box_wh_{$items.id}" name="wh_id" value="{$items.id}">
+                                        <input type="checkbox" class="css-control-input check_box_wh_{$items.id}" name="wh_id[]" value="{$items.id}">
                                         <span class="css-control-indicator"></span>
                                     </label>
 
                                     {$items.name}
                                     <span class="float-right mr-5 ">
                                     {foreach $items.data as $item first=$first}
-
                                             {$.php.set_item($item.id,false,false,'<span class="badge badge-pill badge-secondary" data-toggle="popover" data-placement="top" data-content="%description%" data-original-title="%name% %add_name% x'~$item.count~'"><img data-item="'~$items.id~'" src="%icon%" class="mr-1" width="17px">x'~$item.count~'</span>')}
-
-
                                     {/foreach}
                                     </span>
                                 </a>
@@ -137,16 +134,21 @@
 
         $('.check_box_wh').on('click', function(){
             var id = $(this).data('id');
-            var type = $(this).data('give-type');
 
-            if (type == 2)
-                $('#char-name-tab').show();
-            else
+            if($('.check_box_wh_'+id).prop("checked")){
+                $('.check_box_wh_'+id).prop("checked", false);
+                $(this).removeClass('active');
+            }else{
+                $('.check_box_wh_'+id).prop("checked", true);
+                $(this).addClass('active');
+            }
+
+            if ($('[data-give-type=1]').find('input').is(':checked')){
                 $('#char-name-tab').hide();
+            }else{
+                $('#char-name-tab').show();
+            }
 
-            $('.check_box_wh').removeClass('active');
-            $(this).addClass('active');
-            $('.check_box_wh_'+id).prop("checked", true);
         });
 
         $('.check_char_wh').on('click', function(){
@@ -166,12 +168,6 @@
             $('[name="wh_char_name"]').prop("checked", false);
             $('[name="wh_account"]').prop("checked", false);
         });
-
-        $('[data-item]').on('click',function(){
-            var item_id = $(this).data('item');
-            console.log(item_id);
-        });
-
 
 
     });
