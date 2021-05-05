@@ -64,7 +64,7 @@
                 <th>File</th>
                 <th>Status</th>
                 <th>Dir</th>
-                <th class="text-right">Encoding</th>
+                {if $encoding_check?}<th class="text-right">Encoding</th>{/if}
             </tr>
             </thead>
             <tbody>
@@ -79,9 +79,11 @@
                     <td>
                         <span class="text-black">{if $file_dir === true} {else}{$file_dir}{/if}</span>
                     </td>
+                    {if $encoding_check?}
                     <td  class="text-right">
                         {if $encoding_check[$file_name] !== true}<span class="badge badge-danger">Set UTF-8 without BOM</span>{else}<span class="badge badge-success">UTF-8 [OK]</span>{/if}
                     </td>
+                    {/if}
                 </tr>
             {/foreach}
             </tbody>
@@ -122,7 +124,18 @@
 
         {/if}
 
+        {if $select_platform == 'aion'}
 
+            <form action="{$.php.set_url($.const.ADMIN_URL~'/files/parser?sid='~$select_sid, false, false)}" method="post" onsubmit="return false;">
+                <input type="hidden" name="type" value="AionXML" checked="">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-alt-primary submit-form">{$ParsFileGame_btn_pars}</button>
+                    </div>
+                </div>
+            </form>
+
+        {/if}
 
 
     </div>

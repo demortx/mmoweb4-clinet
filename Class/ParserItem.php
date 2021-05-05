@@ -28,6 +28,10 @@ class ParserItem
 
                 $this->files_list = $files_list;
                 break;
+            case 'aion':
+
+                $this->files_list = $files_list;
+                break;
 
         }
 
@@ -42,8 +46,32 @@ class ParserItem
 
                 return $this->lineage2();
                 break;
+            case 'aion':
+
+                return $this->aion();
+                break;
 
         }
+    }
+
+    public function aion(){
+        $items = array();
+        ini_set('max_execution_time', 900);
+        foreach ($this->files_list as $file_name => $dir) {
+            var_dump($file_name);
+            var_dump($dir);
+
+            $xmlr = new AionXMLReader();
+            $r = $xmlr->parse_item($dir);
+
+            echo '<pre>';
+            var_dump(count($r));
+            echo '</pre>';
+            break;
+        }
+
+
+
     }
 
     public function lineage2(){

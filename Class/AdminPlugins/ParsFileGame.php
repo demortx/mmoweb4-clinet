@@ -45,6 +45,20 @@ class ParsFileGame
         'boi' => array(
             'itemname-e.txt',
         ),
+        'aion' => array(
+            'client_items_armor.xml',
+            'client_items_etc.xml',
+            'client_items_misc.xml',
+
+            'client_strings_dic_etc.xml',
+            'client_strings_dic_item.xml',
+            'client_strings_etc.xml',
+            'client_strings_item.xml',
+            'client_strings_item2.xml',
+            'client_strings_item3.xml',
+
+
+        ),
 
 
     );
@@ -102,14 +116,7 @@ class ParsFileGame
 
     //Парсер файлов
     public function files_pars_tpl($s2){
-        $this->action = array(
-            'index',
-            'open',
-            'delete',
-            'parser',
-            'install',
-            'icon',
-        );
+
         if (isset($_GET['sid'])){
             $this->sid = intval($_GET['sid']);
             foreach ($this->config['project']['server_info'] as $platform => $server_list) {
@@ -175,6 +182,10 @@ class ParsFileGame
         //Проверка наличие файлов
         foreach ($this->files[$this->platform] as $file){
             $files_check[$file] = file_exists(ROOT_DIR.'/Files/'.$this->sid.'/'.$file) ? true : ROOT_DIR.'/Files/'.$this->sid.'/'.$file;
+
+            if (in_array($this->platform, ['aion', 'boi']))
+                continue;
+
 
             if ($files_check[$file] === true) {
                 $str = file_get_contents(ROOT_DIR.'/Files/'.$this->sid.'/'.$file);
