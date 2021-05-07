@@ -8,7 +8,7 @@
     </div>*}
     <div class="game mt-15">
         <div class="game__header">
-            <div class="game__ttl ttl">Winter Luck</div>
+            <div class="game__ttl ttl">{$item.name}</div>
             <div class="game__control">
                 <div class="sound" data-game-sound="true"></div>
             </div>
