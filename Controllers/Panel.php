@@ -36,7 +36,7 @@ class Panel extends Controller {
 
         //проверяем на отключение страницы
 
-        $rules = $this->session->isLogin ? $this->config['project']['server_menu'][$this->get_sid()] : $this->config['cabinet']['page_active_no_auth'];
+        $rules = $this->session->isLogin ? $this->config['project']['server_menu'][$this->get_sid()] : (isset($this->config['cabinet']['page_active_no_auth']) ? $this->config['cabinet']['page_active_no_auth'] : array());
 
         $rules['sign-in'] = true;
         $rules['sign-up'] = true;

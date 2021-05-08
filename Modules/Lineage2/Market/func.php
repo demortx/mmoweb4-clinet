@@ -56,147 +56,150 @@ class func
         /**@var $this_main \Modules\Lineage2\Market\Market*/
         $this->this_main = $this_main;
         $this->market = $this->this_main->market;
-        $this->sid = get_sid();
 
-        if($this->market['balance'] == false) {
-            if ($this->advertising === false)
-                $this->advertising = include ROOT_DIR . '/Library/advertising.php';
-
-            if (isset($this->market['payment']))
-                $this->payment_list = array_keys($this->market['payment']);
-        }
-
-        $this->datatable  = new \DataTable('Modules\\\Lineage2\\\Market\\\Market', 'ajax_get_market_list');
-        $this->datatable_column = array(
-            'icon' => array(
-                'name' => '',
-                'orderable' => 'false',
-                'position' => 0,
-                'formatter' => function($val, $row) {
-
-                    return '<div class="item-name" title="'.$row['description'].'">'
-                        . '<img '.get_icon_item($val,$row['icon_panel'], $this->sid).'>'
-                        . '<div>'
-                        . "<span class='item-name__content'>" . $row['name'] . ' <span class="item-name__additional">' . htmlspecialchars($row['add_name']) . "</span>"
-                        . ($row['enc'] > 0 ? " +" . $row['enc'] : '') . "</span>"
-                        . ($row['aug_1'] > 0 ? "<span class='item-augment'>"
-                            . "<span>" . implode(",", get_augmentation($row['aug_1'])) . "</span><span>" . implode(",", get_augmentation($row['aug_2'])) . "</span>"
-                            . "</span>" : "")
-                        . "</div>"
-                        . "</div>";
-                }
-            ),
-            'grade' => array(
-                'name' => get_lang('market.lang')['grade'],
-                'orderable' => 'true',
-                'position' => 1,
-                'formatter' => function($val, $row) {
-                    return '<span class="item-grade">' . ($val == "non" ? "NG" : $val) . '</span>';
-                }
-            ),
-            'a_att_type' => array(
-                'name' => get_lang('market.lang')['attribute'],
-                'orderable' => 'false',
-                'position' => 2,
-                'formatter' => function($val, $row) {
-
-                    $att = ($row['a_att_value'] > 0 ? $this->att[$val] . ' ' . $row['a_att_value'] . "<br>" : '');
-
-                    $att .= ($row["d_att_0"] != 0 ? $this->att[0] . " " . $row["d_att_0"] . '<br>' : '');
-                    $att .= ($row["d_att_1"] != 0 ? $this->att[1] . " " . $row["d_att_1"] . '<br>' : '');
-                    $att .= ($row["d_att_2"] != 0 ? $this->att[2] . " " . $row["d_att_2"] . '<br>' : '');
-                    $att .= ($row["d_att_3"] != 0 ? $this->att[3] . " " . $row["d_att_3"] . '<br>' : '');
-                    $att .= ($row["d_att_4"] != 0 ? $this->att[4] . " " . $row["d_att_4"] . '<br>' : '');
-                    $att .= ($row["d_att_5"] != 0 ? $this->att[5] . " " . $row["d_att_5"] : '');
-
-                    return $att;
-                }
-            ),
-            'count' => array(
-                'name' => get_lang('market.lang')['quantity'],
-                'orderable' => 'true',
-                'position' => 3,
-                'formatter' => function($val, $row) {
-                    return number_format($val);
-                }
-            ),
-            'price' => array(
-                'name' => get_lang('market.lang')['price'],
-                'orderable' => 'true',
-                'position' => 4,
-                'formatter' => function($val, $row) {
-                    $cfg = $this->check_price($row["item_id"], 'array');
-                    $r = '<div class="btn-group"><span class="item-price">';
-                    if (isset($cfg["step"])){
-
-                        $r .= floatval(number_format($val, 2, '.', '')). ' '.get_lang('market.lang')['ajax_buy_shop_for'].' '.$this->number_format_short($cfg["step"]);
-                    }else
-                        $r .= floatval(number_format($val, 2, '.', ''));
-
-                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>' . get_lang('market.lang')['buy'] . '</button>';
-
-                    return $r . "</div>";
-                }
-            ),
+        if ($this->market != false) {
 
 
-        );//Создаем разметку для таблицы
+            $this->sid = get_sid();
 
+            if ($this->market['balance'] == false) {
+                if ($this->advertising === false)
+                    $this->advertising = include ROOT_DIR . '/Library/advertising.php';
 
+                if (isset($this->market['payment']))
+                    $this->payment_list = array_keys($this->market['payment']);
+            }
 
-        $this->datatable_column_character = array(
-            'char_info' => array(
-                'name' => get_lang('market.lang')['character_column'],
-                'orderable' => 'true',
-                'position' => 0,
-                'formatter' => function($val, $row) {
-                    $char = json_decode($val, true);
+            $this->datatable = new \DataTable('Modules\\\Lineage2\\\Market\\\Market', 'ajax_get_market_list');
+            $this->datatable_column = array(
+                'icon' => array(
+                    'name' => '',
+                    'orderable' => 'false',
+                    'position' => 0,
+                    'formatter' => function ($val, $row) {
 
-                    return
-                        "<span>"
-                        . $char['name'] . "<br><small>" . get_class_name($char['class_id']) . " (Lv. " . $char['level'] . ")</small>"
-                        . "</span>";
-                }
-            ),
-            'char_inventory' => array(
-                'name' => get_lang('market.lang')['inventory'],
-                'orderable' => 'true',
-                'position' => 1,
-                'formatter' => function($val, $row) {
-                    $inv = array_values(json_decode($val, true));
-
-                    $r = "";
-
-                    for ($i = 0; $i < 5; $i++) {
-                        $r .= set_item($inv[$i]['i_i'], false, false, '<span data-item="%id%" style="margin: 0 1px;"><img src="%icon%" width="32px"></span>');
+                        return '<div class="item-name" title="' . $row['description'] . '">'
+                            . '<img ' . get_icon_item($val, $row['icon_panel'], $this->sid) . '>'
+                            . '<div>'
+                            . "<span class='item-name__content'>" . $row['name'] . ' <span class="item-name__additional">' . htmlspecialchars($row['add_name']) . "</span>"
+                            . ($row['enc'] > 0 ? " +" . $row['enc'] : '') . "</span>"
+                            . ($row['aug_1'] > 0 ? "<span class='item-augment'>"
+                                . "<span>" . implode(",", get_augmentation($row['aug_1'])) . "</span><span>" . implode(",", get_augmentation($row['aug_2'])) . "</span>"
+                                . "</span>" : "")
+                            . "</div>"
+                            . "</div>";
                     }
+                ),
+                'grade' => array(
+                    'name' => get_lang('market.lang')['grade'],
+                    'orderable' => 'true',
+                    'position' => 1,
+                    'formatter' => function ($val, $row) {
+                        return '<span class="item-grade">' . ($val == "non" ? "NG" : $val) . '</span>';
+                    }
+                ),
+                'a_att_type' => array(
+                    'name' => get_lang('market.lang')['attribute'],
+                    'orderable' => 'false',
+                    'position' => 2,
+                    'formatter' => function ($val, $row) {
 
-                    return $r . '<button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $row['shop_id']]).'>'.get_lang('market.lang')['all_inventory'].'</button>';
-                }
-            ),
-            'price' => array(
-                'name' => 'Цена',
-                'orderable' => 'true',
-                'position' => 2,
-                'formatter' => function($val, $row) {
-                    $cfg = $this->check_price($row["item_id"], 'array');
-                    $r = '<div class="btn-group"><span class="item-price">';
-                    if (isset($cfg["step"])){
+                        $att = ($row['a_att_value'] > 0 ? $this->att[$val] . ' ' . $row['a_att_value'] . "<br>" : '');
 
-                        $r .= number_format((float) $val, 2, '.', '') . ' за x'.$cfg["step"];
-                    }else
-                        $r .= number_format((float) $val, 2, '.', '');
+                        $att .= ($row["d_att_0"] != 0 ? $this->att[0] . " " . $row["d_att_0"] . '<br>' : '');
+                        $att .= ($row["d_att_1"] != 0 ? $this->att[1] . " " . $row["d_att_1"] . '<br>' : '');
+                        $att .= ($row["d_att_2"] != 0 ? $this->att[2] . " " . $row["d_att_2"] . '<br>' : '');
+                        $att .= ($row["d_att_3"] != 0 ? $this->att[3] . " " . $row["d_att_3"] . '<br>' : '');
+                        $att .= ($row["d_att_4"] != 0 ? $this->att[4] . " " . $row["d_att_4"] . '<br>' : '');
+                        $att .= ($row["d_att_5"] != 0 ? $this->att[5] . " " . $row["d_att_5"] : '');
 
-                    $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" '.btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]).'>'.get_lang('market.lang')['buy'].'</button>';
+                        return $att;
+                    }
+                ),
+                'count' => array(
+                    'name' => get_lang('market.lang')['quantity'],
+                    'orderable' => 'true',
+                    'position' => 3,
+                    'formatter' => function ($val, $row) {
+                        return number_format($val);
+                    }
+                ),
+                'price' => array(
+                    'name' => get_lang('market.lang')['price'],
+                    'orderable' => 'true',
+                    'position' => 4,
+                    'formatter' => function ($val, $row) {
+                        $cfg = $this->check_price($row["item_id"], 'array');
+                        $r = '<div class="btn-group"><span class="item-price">';
+                        if (isset($cfg["step"])) {
 
-                    return $r . "</div>";
-                }
-            ),
+                            $r .= floatval(number_format($val, 2, '.', '')) . ' ' . get_lang('market.lang')['ajax_buy_shop_for'] . ' ' . $this->number_format_short($cfg["step"]);
+                        } else
+                            $r .= floatval(number_format($val, 2, '.', ''));
+
+                        $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" ' . btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]) . '>' . get_lang('market.lang')['buy'] . '</button>';
+
+                        return $r . "</div>";
+                    }
+                ),
 
 
-        );//Создаем разметку для таблицы
+            );//Создаем разметку для таблицы
 
 
+            $this->datatable_column_character = array(
+                'char_info' => array(
+                    'name' => get_lang('market.lang')['character_column'],
+                    'orderable' => 'true',
+                    'position' => 0,
+                    'formatter' => function ($val, $row) {
+                        $char = json_decode($val, true);
+
+                        return
+                            "<span>"
+                            . $char['name'] . "<br><small>" . get_class_name($char['class_id']) . " (Lv. " . $char['level'] . ")</small>"
+                            . "</span>";
+                    }
+                ),
+                'char_inventory' => array(
+                    'name' => get_lang('market.lang')['inventory'],
+                    'orderable' => 'true',
+                    'position' => 1,
+                    'formatter' => function ($val, $row) {
+                        $inv = array_values(json_decode($val, true));
+
+                        $r = "";
+
+                        for ($i = 0; $i < 5; $i++) {
+                            $r .= set_item($inv[$i]['i_i'], false, false, '<span data-item="%id%" style="margin: 0 1px;"><img src="%icon%" width="32px"></span>');
+                        }
+
+                        return $r . '<button type="submit" class="btn btn-sm btn-outline-primary submit-btn ml-1" ' . btn_ajax("Modules\Lineage2\Market\Market", "ajax_show_inventory", ['id' => $row['shop_id']]) . '>' . get_lang('market.lang')['all_inventory'] . '</button>';
+                    }
+                ),
+                'price' => array(
+                    'name' => 'Цена',
+                    'orderable' => 'true',
+                    'position' => 2,
+                    'formatter' => function ($val, $row) {
+                        $cfg = $this->check_price($row["item_id"], 'array');
+                        $r = '<div class="btn-group"><span class="item-price">';
+                        if (isset($cfg["step"])) {
+
+                            $r .= number_format((float)$val, 2, '.', '') . ' за x' . $cfg["step"];
+                        } else
+                            $r .= number_format((float)$val, 2, '.', '');
+
+                        $r .= '</span><button type="submit" class="btn btn-sm btn-outline-primary submit-btn" ' . btn_ajax("Modules\Lineage2\Market\Market", "ajax_buy_shop_popup", ['id' => $row['id']]) . '>' . get_lang('market.lang')['buy'] . '</button>';
+
+                        return $r . "</div>";
+                    }
+                ),
+
+
+            );//Создаем разметку для таблицы
+
+        }
 
     }
 

@@ -20,7 +20,7 @@ if (!function_exists('render_menu')) {
             $rules['panel'] = true;
         } else {
             $file = 'menu';
-            $rules = get_instance()->config['cabinet']['page_active_no_auth'];
+            $rules = isset(get_instance()->config['cabinet']['page_active_no_auth']) ? get_instance()->config['cabinet']['page_active_no_auth'] : array();
         }
 
         if (!isset($TEMP['menu']) AND file_exists(ROOT_DIR . "/Language/" . $file . ".php"))
