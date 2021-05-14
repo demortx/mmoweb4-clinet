@@ -37,7 +37,7 @@ return array(
 
                 ['idx' => 'js_mmoweb', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/mmoweb.js?v=' . filemtime(ROOT_DIR.VIEWPATH.'/panel/assets/js/mmoweb.js')],
                 ['idx' => 'webstat', 'typex' => 'script', 'src' => 'https://mmo24.ru/webstat/watch.js'],
-                ['idx'=> 'historyTabs', 'typex' => 'script', 'js' => "$('.grid').masonry({itemSelector: '.grid-item',columnWidth: '.grid-sizer',percentPosition: true});$('.nav-tabs a').historyTabs();"],
+                ['idx'=> 'historyTabs', 'typex' => 'script', 'js' => "window.masonry_div = $('.grid').masonry({itemSelector: '.grid-item',columnWidth: '.grid-sizer',percentPosition: true});$('.nav-tabs a').historyTabs();"],
             ),
         ],
 

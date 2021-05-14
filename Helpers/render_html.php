@@ -194,7 +194,7 @@ if (!function_exists('array_sort_by_column')) {
 
                     foreach ($row as $rowKey => $rowVal) {
 
-                        $arSort = [];
+                        $arSort = array();
                         if (is_array($rowVal)) {
                             foreach ($rowVal as $keyRow => $secondVal) {
 
@@ -207,7 +207,7 @@ if (!function_exists('array_sort_by_column')) {
 
                                     foreach ($secondVal as $thirdKey => $thirdAr) {
                                         if (is_array($thirdAr)) {
-                                            $arSortThird = [];
+                                            $arSortThird = array();
 
                                             foreach ($thirdAr as $thirdKeyRow => $thirdVal) {
 

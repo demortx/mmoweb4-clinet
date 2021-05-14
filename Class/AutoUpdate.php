@@ -74,14 +74,14 @@ class AutoUpdate {
      *
      * @var array
      */
-    private $onEachUpdateFinishCallbacks = [];
+    private $onEachUpdateFinishCallbacks = array();
 
     /*
      * Callbacks to be called when all updates are finished
      *
      * @var array
      */
-    private $onAllUpdateFinishCallbacks = [];
+    private $onAllUpdateFinishCallbacks = array();
 
     /**
      * If curl should verify the host certificate.
@@ -350,7 +350,7 @@ class AutoUpdate {
             }, $this->updates);
         }
 
-        return [];
+        return array();
     }
 
     /**
@@ -364,7 +364,7 @@ class AutoUpdate {
             return $this->updates;
         }
 
-        return [];
+        return array();
     }
 
     /**
@@ -413,7 +413,7 @@ class AutoUpdate {
 
         // Reset previous updates
         $this->latestVersion = '0.0.0';
-        $this->updates       = [];
+        $this->updates       = array();
 
         $versions = get_cache('update-versions');
 
@@ -645,7 +645,7 @@ class AutoUpdate {
             return false;
         }
 
-        $files           = [];
+        $files           = array();
         $simulateSuccess = true;
 
         for ($i = 0; $i < $zip->numFiles; $i++) {

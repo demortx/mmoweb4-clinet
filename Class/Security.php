@@ -239,7 +239,7 @@ class Security
      */
     public function remove_invisible_characters($str, $url_encoded = true)
     {
-        $non_displayables = [];
+        $non_displayables = array();
         // every control character except newline (dec 10),
         // carriage return (dec 13) and horizontal tab (dec 09)
         if ($url_encoded) {
@@ -313,7 +313,7 @@ class Security
         }
         do {
             $count = 0;
-            $attribs = [];
+            $attribs = array();
             // find occurrences of illegal attribute strings with quotes (042 and 047 are octal quotes)
             preg_match_all('/(' . implode('|', $evil_attributes) . ')\s*=\s*(\042|\047)([^\\2]*?)(\\2)/is', $str, $matches, PREG_SET_ORDER);
             foreach ($matches as $attr) {

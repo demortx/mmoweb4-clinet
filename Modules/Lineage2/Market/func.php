@@ -242,7 +242,7 @@ class func
 
         if ($data === false OR isset($data['cache_end'])) {
             $this->this_main->init_db();
-            $new = [];
+            $new = array();
             foreach ($this->market['section'] as $section) {
                 $result = $this->this_main->db->prepare("SELECT
                                                     si.`id`, 

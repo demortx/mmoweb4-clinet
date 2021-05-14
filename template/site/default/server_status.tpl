@@ -9,7 +9,7 @@
                 {$info.name} <span class="color-orange">x{$info.rate}</span>
             </div>
             <div class="server__online">
-                {if $info.online.server}
+                {if $info.online.server? AND $info.online.server == 1}
                 {$L_SERVER_ONLINE}
                 <span class="server__online-marker" title="Date update: {$info.online.date}, Max online: {$info.online.max_online_multiple}">
                     {$info.online.online_multiple}

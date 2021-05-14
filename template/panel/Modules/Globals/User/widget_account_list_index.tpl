@@ -33,6 +33,7 @@
             }else{
                 $(this).parent().parent().addClass('open');
             }
+            setTimeout(() => window.masonry_div.masonry('layout'), 200);
         });
     });
 </script>
