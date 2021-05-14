@@ -69,7 +69,7 @@
                                     {/if}
                                     {if $category != "coin" && $category != "character"}
                                         <td class="text-center">
-                                            {if $item.grade != "" && $item.grade != "non"}
+                                            {if $item.grade != "" && $item.grade != "none"}
                                                 <span class="item-grade">{$item.grade}</span>
                                             {/if}
                                         </td>

@@ -16,6 +16,8 @@ class Market extends MainModulesClass
     public $market = array();
     public $sid;
     public $db = false;
+    /**@var $func \Market\func*/
+    public $func = false;
 
     public function __construct()
     {

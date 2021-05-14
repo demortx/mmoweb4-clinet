@@ -207,23 +207,96 @@ class func
      * @return array
      */
     private function get_count_section(){
-        $this->this_main->init_db();
-        $count_section = array();
-        $count_temp = $this->this_main->db->query("SELECT 
+
+        $data = get_cache('widget_market_get_count_section_'.$this->sid, false, true);
+
+        if ($data === false OR isset($data['cache_end'])) {
+
+            $this->this_main->init_db();
+            $count_section = array();
+            $count_temp = $this->this_main->db->query("SELECT 
             s.section, COUNT(i.id) as counts
             FROM `mw_market_shop_items` AS i
             LEFT JOIN `mw_market_shop` AS s ON s.id = i.shop_id
             WHERE s.sid = {$this->sid}
             GROUP BY s.section")
-            ->fetchAll(\PDO::FETCH_ASSOC);
+                ->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (!is_null($count_temp)){
-            foreach ($count_temp as $sec) {
-                $count_section[$sec['section']] = $sec['counts'];
+            if (!is_null($count_temp)){
+                foreach ($count_temp as $sec) {
+                    $count_section[$sec['section']] = $sec['counts'];
+                }
+
+            }
+            set_cache('widget_market_get_count_section_'.$this->sid, $count_section, 15);
+        }else
+            $count_section = $data['data'];
+
+
+        return $count_section;
+    }
+
+    public function get_new_items($count){
+
+        $data = get_cache('widget_market_get_new_items_'.$count.'_'.$this->sid, false, true);
+
+        if ($data === false OR isset($data['cache_end'])) {
+            $this->this_main->init_db();
+            $new = [];
+            foreach ($this->market['section'] as $section) {
+                $result = $this->this_main->db->prepare("SELECT
+                                                    si.`id`, 
+                                                    si.`shop_id`,
+                                                    s.`type`,
+                                                    s.`data_create`,
+                                                    si.`char_info`,
+                                                    si.`char_inventory`,
+                                                    si.`item_id`,
+                                                    si.`price`, 
+                                                    si.`count`, 
+                                                    si.`enc`, 
+                                                    si.`aug_1`, 
+                                                    si.`aug_2`, 
+                                                    si.`a_att_type`, 
+                                                    si.`a_att_value`, 
+                                                    si.`d_att_0`, 
+                                                    si.`d_att_1`, 
+                                                    si.`d_att_2`, 
+                                                    si.`d_att_3`, 
+                                                    si.`d_att_4`, 
+                                                    si.`d_att_5`,
+                                                    i.`name`,
+                                                    i.`add_name`,
+                                                    i.`description`,
+                                                    i.`icon`,
+                                                    i.`icon_panel`,
+                                                    i.`grade`,
+                                                    i.`stackable`
+                                                    FROM `mw_market_shop_items` AS si
+                                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
+                                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
+                                                    WHERE s.sid = :sid AND s.`section` = :section LIMIT " . intval($count) . ";");
+                $result->bindValue(":sid", $this->sid);
+                $result->bindValue(":section", $section);
+                $result->execute();
+
+                $data = $result->fetchAll();
+
+                if ($section == "character") {
+                    foreach ($data as &$item) {
+                        $item['char_info'] = json_decode($item['char_info'], true);
+                        $item['char_inventory'] = array_values(json_decode($item['char_inventory'], true));
+                    }
+                }
+
+                $new[$section] = $data;
             }
 
-        }
-        return $count_section;
+            set_cache('widget_market_get_new_items_' . $count . '_' . $this->sid, $new, 15);
+        }else
+            $new = $data['data'];
+
+        return $new;
     }
 
     public function widget_categories_vertical(){
@@ -639,65 +712,13 @@ class func
 
     public function widget_new_item()
     {
-        $new = [];
 
-        foreach ($this->market['section'] as $section)
-        {
-            $result = $this->this_main->db->prepare("SELECT
-                                                    si.`id`, 
-                                                    si.`shop_id`,
-                                                    s.`type`,
-                                                    s.`data_create`,
-                                                    si.`char_info`,
-                                                    si.`char_inventory`,
-                                                    si.`item_id`,
-                                                    si.`price`, 
-                                                    si.`count`, 
-                                                    si.`enc`, 
-                                                    si.`aug_1`, 
-                                                    si.`aug_2`, 
-                                                    si.`a_att_type`, 
-                                                    si.`a_att_value`, 
-                                                    si.`d_att_0`, 
-                                                    si.`d_att_1`, 
-                                                    si.`d_att_2`, 
-                                                    si.`d_att_3`, 
-                                                    si.`d_att_4`, 
-                                                    si.`d_att_5`,
-                                                    i.`name`,
-                                                    i.`add_name`,
-                                                    i.`description`,
-                                                    i.`icon`,
-                                                    i.`icon_panel`,
-                                                    i.`grade`,
-                                                    i.`stackable`
-                                                    FROM `mw_market_shop_items` AS si
-                                                    LEFT JOIN  `mw_market_shop` AS s ON s.id = si.shop_id
-                                                    LEFT JOIN  `mw_item_db` AS i ON i.item_id = si.item_id AND i.sid = s.sid
-                                                    WHERE s.sid = :sid AND s.`section` = :section LIMIT 5;");
-            $result->bindValue(":sid", $this->sid);
-            $result->bindValue(":section", $section);
-            $result->execute();
-
-            $data = $result->fetchAll();
-
-            if ($section == "character")
-            {
-                foreach ($data as &$item)
-                {
-                    $item['char_info'] = json_decode($item['char_info'], true);
-                    $item['char_inventory'] = array_values(json_decode($item['char_inventory'], true));
-                }
-            }
-
-            $new[$section] = $data;
-        }
 
         return get_instance()->fenom->fetch(
             get_tpl_file('widget_new_item.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    'new' => $new,
+                    'new' => $this->get_new_items(5),
                     'att_type' => $this->att,
                     'sid' => $this->sid,
                 ),
@@ -706,6 +727,7 @@ class func
         );
 
     }
+
 
     public function widget_withdrawal(){
 

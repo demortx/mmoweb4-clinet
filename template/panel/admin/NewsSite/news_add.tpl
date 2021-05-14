@@ -40,6 +40,28 @@
                                     </div>
                                 </div>
 
+
+
+
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-icon-{$lg}">Custom ICON</label>
+                                    <div class="col-lg-8">
+                                        <input type="text" class="form-control" id="val-icon-{$lg}" name="news[{$lg}][icon]" value="" placeholder="#">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-color-{$lg}">Custom COLOR</label>
+                                    <div class="col-lg-8">
+                                        <div class="js-colorpicker input-group" data-format="hex">
+                                            <input type="text" class="form-control" id="val-color-{$lg}" name="news[{$lg}][color]" value="#42a5f5">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text colorpicker-input-addon">
+                                                    <i></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         {/foreach}
                     </div>
@@ -106,6 +128,8 @@
 
 </div>
 
+{$.site._SEO->addTegHTML('head', 'colorpicker_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css'])}
+{$.site._SEO->addTegHTML('footer', 'colorpicker', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js?v=3'])}
 
 {if $.const.TEMPLATE_WYSIWYG}
 {$.site._SEO->addTegHTML('footer', 'tiny_mce', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/tiny_mce/tinymce.min.js?v=3'])}
@@ -154,6 +178,10 @@
                 });
             }
         });
+
+        jQuery(function(){ Codebase.helpers(['colorpicker']);});
     });
 </script>
+
+
 {/if}

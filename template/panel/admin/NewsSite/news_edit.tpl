@@ -42,6 +42,27 @@
                                     </div>
                                 </div>
 
+
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-icon-{$lg}">Custom ICON</label>
+                                    <div class="col-lg-8">
+                                        <input type="text" class="form-control" id="val-icon-{$lg}" name="news[{$lg}][icon]" value="{if $news_param.json[$lg]['icon']?}{$news_param.json[$lg]['icon']}{/if}" placeholder="#">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-color-{$lg}">Custom COLOR</label>
+                                    <div class="col-lg-8">
+                                        <div class="js-colorpicker input-group" data-format="hex">
+                                            <input type="text" class="form-control" id="val-color-{$lg}" name="news[{$lg}][color]" value="{if $news_param.json[$lg]['color']?}{$news_param.json[$lg]['color']}{/if}">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text colorpicker-input-addon">
+                                                    <i></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         {/foreach}
                     </div>
