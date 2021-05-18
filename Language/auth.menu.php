@@ -334,13 +334,16 @@ return array(
         ),
         'function' => function(&$buttons){
             if(get_instance()->config['visualization']['cabinet_layout_login'] != 'top') {
+                
                 if (!isset(get_instance()->session->session['user_data']['market']['balance']))
                     return '';
 
-                if (!isset(get_instance()->market['balance']))
+                $sid = get_sid();
+
+                if (!isset(get_instance()->market[$sid]['balance']))
                     return '';
 
-                if (get_instance()->market['balance'])
+                if (get_instance()->market[$sid]['balance'])
                     return '';
 
                 $balance = get_instance()->session->session['user_data']['market']['balance'];
