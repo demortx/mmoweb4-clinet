@@ -104,6 +104,26 @@
     <div class="inf mt-15">
         <div class="inf__title">{$info_title}</div>
         <div class="inf__content">{$info_desc}</div>
+        <br>
+        <div class="inf__title">{$info_prize}</div>
+        <div class="cases">
+            <div class="cases__list">
+                {foreach $items as $i}
+
+                <a href="javascript:void(0);" class="cases__case case">
+                    <div class="case__pic">
+                        <img src="{$i.img}" alt="{$i.name}" class="case__img">
+                    </div>
+                    <div class="case__title">{$i.name} {if $i.enc > 0}<span class="text-warning">+{$i.enc}</span>{/if}</div>
+                    <div class="case__type">x{$i.count}</div>
+                </a>
+                {/foreach}
+
+            </div> <!-- END cases__list  -->
+        </div>
+
+
+
     </div>
     <!-- game resources -->
     <!-- tippy -->

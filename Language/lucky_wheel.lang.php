@@ -14,6 +14,7 @@ return array(
         'balance_up' => 'Пополнить баланс',
         'start_game' => 'Испытать удачу',
         'info_title' => 'Информация',
+        'info_prize' => 'Содержимое колеса фортуны',
         'info_desc' => 'Выигранные предметы автоматически доставляются на <a href="'.set_url('panel/warehouse').'">склад</a> мастер аккаунта!',
 
 
@@ -31,6 +32,7 @@ return array(
         'balance_up' => 'Top up balance',
         'start_game' => 'Try your luck',
         'info_title' => 'Information',
+        'info_prize' => 'Lucky Wheel items',
         'info_desc' => 'The won items are automatically delivered to the <a href="'.set_url('panel/warehouse').'">warehouse</a> of the master account!',
     ),
     'gr' => array(
@@ -45,7 +47,8 @@ return array(
         'price_title' => 'Purchase<br>price',
         'balance_up' => 'Top up balance',
         'start_game' => 'Try your luck',
-        'info_title' => 'Информация',
+        'info_title' => 'Information',
+        'info_prize' => 'Lucky Wheel items',
         'info_desc' => 'The won items are automatically delivered to the <a href="'.set_url('panel/warehouse').'">warehouse</a> of the master account!',
     ),
     'es' => array(
@@ -60,7 +63,8 @@ return array(
         'price_title' => 'Purchase<br>price',
         'balance_up' => 'Top up balance',
         'start_game' => 'Try your luck',
-        'info_title' => 'Информация',
+        'info_title' => 'Information',
+        'info_prize' => 'Lucky Wheel items',
         'info_desc' => 'The won items are automatically delivered to the <a href="'.set_url('panel/warehouse').'">warehouse</a> of the master account!',
     ),
     'pt' => array(
@@ -75,7 +79,8 @@ return array(
         'price_title' => 'Purchase<br>price',
         'balance_up' => 'Top up balance',
         'start_game' => 'Try your luck',
-        'info_title' => 'Информация',
+        'info_title' => 'Information',
+        'info_prize' => 'Lucky Wheel items',
         'info_desc' => 'The won items are automatically delivered to the <a href="'.set_url('panel/warehouse').'">warehouse</a> of the master account!',
     ),
 	'cn' => array(
@@ -91,6 +96,7 @@ return array(
         'balance_up' => '补足平衡',
         'start_game' => '试试你的运气',
         'info_title' => '信息',
+        'info_prize' => 'Lucky Wheel items',
         'info_desc' => '韩元物品会自动传送至 <a href="'.set_url('panel/warehouse').'">仓库</a> 主帐户的!',
     ),
 	'ko' => array(
@@ -106,6 +112,7 @@ return array(
         'balance_up' => '최고 균형',
         'start_game' => '당신의 행운을 시험',
         'info_title' => '정보',
+        'info_prize' => 'Lucky Wheel items',
         'info_desc' => '원 아이템은 자동으로 <a href="'.set_url('panel/warehouse').'">창고</a> 마스터 계정의!',
     ),
 );
