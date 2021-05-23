@@ -12,6 +12,14 @@ if (!defined('ROOT_DIR')) {
 class In extends Controller
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+    }
+
     public function index()
     {
 

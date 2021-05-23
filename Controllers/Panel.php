@@ -54,7 +54,12 @@ class Panel extends Controller {
         if(!in_array($this->url->segment(1) ,array_keys($rules)))
             show_404();
 
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
     }
+
 
 
     public function main(){

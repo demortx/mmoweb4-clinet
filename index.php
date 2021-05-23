@@ -27,10 +27,6 @@ if (CLOUD_FLARE)
 //Отслеживание рекламы
 get_utm();
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 //include class
 spl_autoload_register(function ($class) {
 
