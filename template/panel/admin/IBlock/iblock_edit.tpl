@@ -55,7 +55,7 @@
 
 {$.site._SEO->addTegHTML('footer', 'jquery-ui', 'script', ['src'=> 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'])}
 {$.site._SEO->addTegHTML('footer', 'formbuilder', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/form-builder/form-builder.min.js'])}
-
+{$.site._SEO->addTegHTML('footer', 'form-render', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/form-builder/form-render.min.js'])}
 <style>
     .form-group input[type="radio"], .form-group input[type="checkbox"] {
         display: block;

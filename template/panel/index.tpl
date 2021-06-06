@@ -7,6 +7,9 @@
             {if $_IFRAME == false}{$_MENU}{/if}
             <!-- Main Container -->
             <main {if $_IFRAME == false}id="main-container"{/if}>
+                {if $_CONTENT_HERO?}
+                    {$_CONTENT_HERO}
+                {/if}
                 {if $_CONTENT?}
                     <div class="content content-full">
                         {$_CONTENT}

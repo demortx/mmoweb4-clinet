@@ -79,6 +79,9 @@ class App extends Controller
                 '/get_server_list' => array(
                     'session' => false,
                 ),
+                '/get_daily_rewards' => array(
+                    'session' => false,
+                ),
                 '/check_version' => array(
                     'session' => false,
                 ),
@@ -130,6 +133,9 @@ class App extends Controller
                 '/server_change' => array(
                     'session' => true,
                 ),
+                '/give_daily_rewards' => array(
+                    'session' => true,
+                ),
             ),
 
         );
@@ -157,6 +163,18 @@ class App extends Controller
             exit( json_encode(array('in_game_currency' => get_instance()->config['in_game_currency'][$_POST['sid']])));
         else
             exit( json_encode(array('in_game_currency' => get_instance()->config['in_game_currency'])));
+    }
+    /**
+     * Список наград за ежедневный вход
+     */
+    public function get_daily_rewards(){
+
+        $daily_rewards_cfg = require ROOT_DIR . '/Library/daily_rewards.php';
+
+        if (isset($_POST['sid']) AND isset($daily_rewards_cfg[$_POST['sid']]))
+            exit( json_encode(array('daily_rewards' => $daily_rewards_cfg[$_POST['sid']])));
+        else
+            exit( json_encode(array('daily_rewards' => $daily_rewards_cfg)));
     }
     /**
      * Список серверов
@@ -1391,6 +1409,64 @@ class App extends Controller
 
 
         exit($send);
+    }
+
+    public function give_daily_rewards(){
+
+        $api = new GlobalApi();
+        $vars = array('temp' => 0);
+
+        if (get_instance()->session->isLogin()) {
+
+            $sid = get_instance()->get_sid();
+
+            if (!isset($_POST['day']) OR empty($_POST['day']))
+                return get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_empty_day'])->danger();
+            else
+                $vars['day'] = (int) $_POST['day'];
+
+
+
+            if (!isset($this->daily_rewards[$sid]))
+                return get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_daily_rewards_disable'])->danger();
+
+
+            if (!isset($this->daily_rewards[$sid]["rewards"][$vars['day']]))
+                return get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_missing_day'])->danger();
+
+
+            $response = $api->give_daily_rewards($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->data->user_data)) {
+
+                        $data = json_encode($response["response"]->data);
+                        $data = json_decode($data, true);
+                        get_instance()->session->updateSessionDB($data);
+                        get_instance()->session->rebootSession();
+
+
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->success();
+
+                    }else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+                }
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        return $send;
     }
 
 }

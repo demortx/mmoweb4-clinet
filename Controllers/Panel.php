@@ -69,11 +69,12 @@ class Panel extends Controller {
             die;
         }
 
-        //var_dump(get_lang('auth.menu'));
+
         $this->initTPL(
             array_merge(
                 array(
                     '_CONTENT' => parse_row($this->render_data['content']),
+                    '_CONTENT_HERO' => parse_row_hero($this->render_data['content_hero']),
 
                 ),
                 get_lang('login.menu.lang')

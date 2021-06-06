@@ -60,6 +60,10 @@ class MainModulesClass
         return array();
     }
 
+    public function renderWindowHero(){
+        return array();
+    }
+
     public function renderSide(){
         return false;
     }

@@ -410,4 +410,14 @@ class GlobalApi extends \Api
         return $response;
     }
 
+    //Daily Rewards
+
+    public function give_daily_rewards($vars){
+        $response = $this->init()->addParam('daily_rewards', $vars)->get('v1/Plugins/daily-rewards/give')->response();
+
+        return $response;
+    }
+
+
+
 }

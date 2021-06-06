@@ -25,6 +25,7 @@ class Controller
         'settings' => array(),
         'search' => array(),
         'content' => array(),
+        'content_hero' => array(),
 
     );
     /** @var Fenom $fenom */
@@ -44,6 +45,7 @@ class Controller
     public $market = null;
     public $lucky_wheel = null;
     public $cases = null;
+    public $daily_rewards = null;
 
     /* Project ID*/
     public $pid = null;
@@ -109,6 +111,9 @@ class Controller
 
         if (file_exists(ROOT_DIR . '/Library/cases.php'))
             $this->cases = include ROOT_DIR . '/Library/cases.php';
+
+        if (file_exists(ROOT_DIR . '/Library/daily_rewards.php'))
+            $this->daily_rewards = include ROOT_DIR . '/Library/daily_rewards.php';
 
 
         if (!is_array($this->config))
@@ -249,12 +254,12 @@ class Controller
         }
         return false;
     }
-    #TODO Реализовать рендеринг модулей
+
     public function render_main_loud(array $install_modules)
     {
         foreach ($install_modules as $module => $obj) {
 
-
+            $href = false;
             if ($href = $this->is_render_content($obj->renderWindow())) {
                 //отрисовка по найденому урл регулярному выражению
                 if (isset($this->render_data['content'][$href]))
@@ -264,10 +269,21 @@ class Controller
             }
 
 
+            $href = false;
+            if ($href = $this->is_render_content($obj->renderWindowHero())) {
+
+                //отрисовка по найденому урл регулярному выражению
+                if (isset($this->render_data['content_hero'][$href]))
+                    $this->render_data['content_hero'][$href] = array_merge_recursive($this->render_data['content_hero'][$href], $obj->renderWindowHero()[$href]);
+                else
+                    $this->render_data['content_hero'][$href] = $obj->renderWindowHero()[$href];
+            }
+
             $this->render_data['side'][] = $obj->renderSide();
 
 
         }
+
     }
 
     public function ajax_main_loud(array $install_modules)
@@ -421,6 +437,13 @@ class Controller
      */
     public function initTPL($param){
 
+
+        //page-header-modern
+        //
+        //sidebar-inverse page-header-glass page-header-inverse
+
+
+
         $page_container_class = '';
         $menu = '';
         if (!isset($param['_PAGE_CONTENT_CLASS'])) {
@@ -448,6 +471,9 @@ class Controller
                 if ($this->config['visualization']['cabinet_layout_no_login_menu_fixed'] == 'fixed') $page_container_class .= ' page-header-fixed';
                 //Конец определения стилей
             }
+
+            if (isset($param['_CONTENT_HERO']) AND !empty($param['_CONTENT_HERO']))
+                $page_container_class .= ' page-header-glass page-header-inverse';
         }
         if (!isset($param['_MENU'])) {
             if ($menu == 'left')
@@ -463,6 +489,8 @@ class Controller
                     '_PAGE_CONTENT_CLASS' => $page_container_class,
                     '_PAGE_CONTENT_CLASS_ADD' => '',
                     '_MENU' => $menu,
+                    '_CONTENT_HERO' => '',
+                    '_CONTENT' => '',
                     '_CONTENT_FULL' => '',
                     '_FOOTER' => true,
                     '_SEO_HEAD' => $this->seo->getHead(),

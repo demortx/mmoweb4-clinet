@@ -24,6 +24,7 @@ $folder_list = array(
     'Library/shop.php',
     'Library/cases.php',
     'Library/lucky_wheel.php',
+    'Library/daily_rewards.php',
     'template/compiled',
 );
 $php_module_list = array(

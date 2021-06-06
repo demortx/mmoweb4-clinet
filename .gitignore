@@ -178,8 +178,13 @@ fabric.properties
 /template/site/lineage2dex/
 /template/site/lineage2dex/*
 /template/site/lineage2dex/**/
+/sys_pathlist
+/sys_pathlist/
+/sys_pathlist/*
+/sys_pathlist/**/
 
 
 template/site/.DS_Store
 template/.DS_Store
 .DS_Store
+path_list.php

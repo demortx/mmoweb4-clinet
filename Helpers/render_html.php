@@ -590,6 +590,9 @@ if (!function_exists('parse_row')) {
 
     function parse_row($pages)
     {
+        if (empty($pages))
+            return false;
+
         if (empty($render_tpl))
             $render_tpl = '';
 
@@ -598,9 +601,6 @@ if (!function_exists('parse_row')) {
             $render_tpl .= "<h2 class=\"content-heading\">{$pages['header']}</h2>";
             unset($pages['header']);
         }
-
-
-
 
 
         $row_key = valid_parse_row($pages);
@@ -624,7 +624,7 @@ if (!function_exists('parse_row')) {
                 if (valid_parse_row($row)) {
                     $render_tpl .= parse_row($row);
                 } else {
-                    foreach ($row as $key => $widget_content) {
+                    foreach ($row as $widget_content) {
 
                         if (empty($render_tpl))
                             $render_tpl = '';
@@ -647,6 +647,34 @@ if (!function_exists('parse_row')) {
         if (empty($render_tpl))
             $render_tpl = error_404_html();
 
+
+        return $render_tpl;
+
+    }
+}
+
+if (!function_exists('parse_row_hero')) {
+
+    function parse_row_hero($pages)
+    {
+        if (empty($pages))
+            return '';
+        $render_tpl = '';
+
+        $row_key = array_key_first($pages);
+        if (is_numeric($row_key)) {
+            array_sort_by_column($pages, 'level');
+            foreach ($pages as $key => $row) {
+                unset($row['level']);
+                foreach ($row as $widget_content) {
+                    $render_tpl .= trim($widget_content());
+                }
+            }
+
+        } elseif (is_array($pages)) {
+            foreach ($pages as $page)
+                $render_tpl .= parse_row_hero($page);
+        }
 
         return $render_tpl;
 
