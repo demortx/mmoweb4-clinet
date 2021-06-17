@@ -55,12 +55,13 @@
                                 {foreach $item.update.item_shop as $sell}
                                     <li>
                                         <a href="javascript:void(0);" style="padding:3px 0px 3px 62px;">
-                                            <img {$.php.get_icon_item($val,$row['icon_panel'], $this->sid)}  class="img-avatar rounded w-32 h-32">
+
+                                            {set $it = $.php.set_item($sell.item_id, false,true)}
+                                            <img {$.php.get_icon_item($it.icon,$it.icon_panel, $this->sid, false)}  class="img-avatar rounded w-32 h-32">
 
                                             {if $sell.count > 1}{set $count_ = '<span class="text-primary-darker">x'~$sell.count~'</span>'}{else}{set $count_ = ''}{/if}
                                             {if $sell.enc > 0}{set $enc_ = '<span class="text-warning">+'~$sell.enc~'</span>'}{else}{set $enc_ = ''}{/if}
-
-                                            {$.php.set_item($sell.item_id, false,false, '%name% '~$count_~$enc_~'<div class="font-w400 font-size-xs text-muted">%add_name%</div>')}
+                                            {$it.name} {$count_}{$enc_}<div class="font-w400 font-size-xs text-muted">{$it.add_name}</div>
                                             {if $sell.status == 0}
                                                 <i class="fa fa-circle text-info" style="left: 32px;top: 32px;"></i>
                                             {elseif $sell.status == 1}

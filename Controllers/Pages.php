@@ -73,9 +73,6 @@ class Pages extends Controller {
             show_404();
 
         if(method_exists($this, $s1_this)){
-            //Перезагружаем заголовки и файлы
-            $this->seo->loudSite();
-
             $this->$s1_this($s2);
         }else{
 

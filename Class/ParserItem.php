@@ -39,7 +39,7 @@ class ParserItem
     }
 
     public function parsStart(){
-
+        ini_set('memory_limit', '-1');
         switch ($this->platform){
 
             case 'lineage2':
@@ -199,6 +199,7 @@ class ParserItem
                             $items[$item_id]['icon'] = strtolower($item["icon"][count($item["icon"]) - 1]);
                         }
                     }
+                    unset($temp[$item_id]);
 
                 }
                 unset($temp);
@@ -315,12 +316,24 @@ class ParserItem
 
             foreach ($temp as $t)
                 $keys[] = $this->getKey($t);
+
+            if (in_array('id', $keys)){
+                $idx1 = array_search('id', $keys, true)+1;
+            }
+
+            if (in_array('object_id', $keys)){
+                $idx1 = array_search('object_id', $keys, true)+1;
+            }
+
         }
 
         do
         {
             if ($str === false)
                 return $arr;
+
+
+
 
             if (trim($str) != "")
             {
@@ -336,7 +349,7 @@ class ParserItem
                 {
                     $temp2 = array();
 
-                    for ($j = 0; $j < count($temp); $j++){
+                    for ($j = 0, $jMax = count($temp); $j < $jMax; $j++){
                         if (is_array($field)){
                             if (in_array($keys[$j], $field))
                                 $temp2[$keys[$j]] = $this->getValue($temp[$j]);

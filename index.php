@@ -86,6 +86,9 @@ $ignore_detect_lang_page = array(
     '/app/get_in_game_currency',
     '/app/get_bonus_pay',
     '/app/server_change',
+    '/app/get_daily_rewards',
+    '/app/give_daily_rewards',
+    '/app/get_user_info',
     //Апи
     '/api/send_email',
     '/api/update_session',

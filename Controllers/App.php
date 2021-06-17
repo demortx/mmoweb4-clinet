@@ -136,6 +136,9 @@ class App extends Controller
                 '/give_daily_rewards' => array(
                     'session' => true,
                 ),
+                '/get_user_info' => array(
+                    'session' => true,
+                ),
             ),
 
         );
@@ -197,18 +200,13 @@ class App extends Controller
 
                     if (isset($server_site_cfg[$sid])) {
 
-
-                        if(isset($server_site_cfg[$sid]['hide']) AND $server_site_cfg[$sid]['hide'] == 0) {
-                            unset($servers[$chronicle][$sid]);
-                            continue;
-                        }
-
                         if ($server_site_cfg[$sid]['re_name'] AND !empty($server_site_cfg[$sid]['name']))
                             $servers[$chronicle][$sid]['name'] = $server_site_cfg[$sid]['name'];
 
                         if ($server_site_cfg[$sid]['re_rate'])
                             $servers[$chronicle][$sid]['rate'] = $server_site_cfg[$sid]['rate'];
 
+                        $servers[$chronicle][$sid]['hide'] = $server_site_cfg[$sid]['hide'];
                         $servers[$chronicle][$sid]['icon'] = $server_site_cfg[$sid]['icon'];
                         $servers[$chronicle][$sid]['img'] = $server_site_cfg[$sid]['img'];
                         $servers[$chronicle][$sid]['link'] = $server_site_cfg[$sid]['link'];
@@ -218,6 +216,7 @@ class App extends Controller
                         $servers[$chronicle][$sid]['time'] = $server_site_cfg[$sid]['time'];
                         $servers[$chronicle][$sid]['time_zone'] = $server_site_cfg[$sid]['time_zone'];
                     } else {
+                        $servers[$chronicle][$sid]['hide'] = '';
                         $servers[$chronicle][$sid]['img'] = '';
                         $servers[$chronicle][$sid]['icon'] = '';
                         $servers[$chronicle][$sid]['link'] = '';
@@ -1421,18 +1420,18 @@ class App extends Controller
             $sid = get_instance()->get_sid();
 
             if (!isset($_POST['day']) OR empty($_POST['day']))
-                return get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_empty_day'])->danger();
+                exit(get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_empty_day'])->danger());
             else
                 $vars['day'] = (int) $_POST['day'];
 
 
 
             if (!isset($this->daily_rewards[$sid]))
-                return get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_daily_rewards_disable'])->danger();
+                exit(get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_daily_rewards_disable'])->danger());
 
 
             if (!isset($this->daily_rewards[$sid]["rewards"][$vars['day']]))
-                return get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_missing_day'])->danger();
+                exit(get_instance()->ajaxmsg->notify(get_lang('daily_rewards.lang')['ajax_missing_day'])->danger());
 
 
             $response = $api->give_daily_rewards($vars);
@@ -1452,11 +1451,8 @@ class App extends Controller
                         $data = json_encode($response["response"]->data);
                         $data = json_decode($data, true);
                         get_instance()->session->updateSessionDB($data);
-                        get_instance()->session->rebootSession();
 
-
-                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->success();
-
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->variables($data)->success();
                     }else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
                 }
@@ -1466,7 +1462,18 @@ class App extends Controller
         }else
             $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
 
-        return $send;
+        exit($send);
+
+    }
+
+    public function get_user_info(){
+
+        if (get_instance()->session->isLogin()) {
+            $send = get_instance()->ajaxmsg->notify('Full user info')->variables(get_instance()->session->session)->success();
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+        exit($send);
     }
 
 }
