@@ -41,12 +41,11 @@
                         <h6 class="mb-10"><i class="fa fa-arrow-down"></i> {$title_select_account}</h6>
                         <div class="list-group push"  id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             {foreach $.site.session->session.user_data.account as $login => $info first=$first index=$index}
-                                <a class="list-group-item list-group-item-action align-items-center p-1 pl-10 {if $first}active{/if} check_account_wh" id="{$login}-tab" data-idx="{$index}" data-toggle="pill" href="#{$login}" role="tab" aria-controls="{$login}" aria-selected="true">
+                                <a class="list-group-item list-group-item-action align-items-center p-1 pl-10 {if $first}active{/if} check_account_wh" id="tab-{$login}" data-idx="{$index}" data-toggle="pill" href="#w-{$login}" role="tab" aria-controls="w-{$login}" aria-selected="true">
                                     <label class="css-control css-control-sm css-control-secondary css-checkbox ml-1 mr-5">
                                         <input type="radio" class="css-control-input check_account_wh_{$index}" name="wh_account" value="{$login}">
                                         <span class="css-control-indicator"></span>
                                     </label>
-
                                     {$login}
                                 </a>
                             {/foreach}
@@ -61,7 +60,7 @@
                         <div class="tab-content" id="v-pills-tabContent">
 
                             {foreach $.site.session->session.user_data.account as $login => $info first=$first2}
-                                <div class="tab-pane fade {if $first2}show active{/if}" id="{$login}" role="tabpanel" aria-labelledby="{$login}-tab">
+                                <div class="tab-pane fade {if $first2}show active{/if}" id="w-{$login}" role="tabpanel" aria-labelledby="tab-{$login}">
                                     <div class="list-group push">
                                     {if $.php.is_array($info.char_list) AND $.php.count($info.char_list)}
                                     {foreach $info.char_list as $char_id => $char}

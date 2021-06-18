@@ -28,7 +28,6 @@
                             </thead>
                             <tbody>
                             {foreach $info.char_list as $char_id => $char}
-                                {set $char.bind_hwid = 'true'}
                                 <tr>
                                     <td>{if $char.ban == 1}<span class="badge badge-danger"><i class="fa fa-ban mr-5"></i>BAN</span> {/if} {if $char.bind_hwid == 'true'}<i class="fa fa-expeditedssl" title="HWID"></i>{/if} {$char.name}</td>
                                     <td class="d-none d-sm-table-cell">{$char.level}</td>
