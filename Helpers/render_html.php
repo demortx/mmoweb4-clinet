@@ -405,9 +405,13 @@ if (!function_exists('check_icon_item')) {
                 $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.gif';
             elseif (file_exists(ROOT_DIR.'/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.jpeg'))
                 $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.jpeg';
+            elseif(DEBUG)
+                $icon = '/template/panel/assets/media/icon/'.$sid.'/'.$icon.'.png';
             else
                 $icon = '/template/panel/assets/media/icon/no_icon.png';
-        }else
+        }elseif(DEBUG)
+            $icon = 'Item not icon in DB!';
+        else
             $icon = '/template/panel/assets/media/icon/no_icon.png';
 
         return $icon;
