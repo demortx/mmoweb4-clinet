@@ -133,10 +133,10 @@ class func
                                             if (strlen($row['rb_online']) > 11)
                                                 $row['rb_online'] = $row['rb_online'] / 1000;
 
-                                            $row['rb_online'] = date('d-m H:M', $row['rb_online']);
+                                            $row['rb_online'] = date('d-m H:i', $row['rb_online']);
                                         }
                                     }else{
-                                        $row['rb_online'] = date('d-m H:M', strtotime($row['rb_online']));
+                                        $row['rb_online'] = date('d-m H:i', strtotime($row['rb_online']));
                                     }
 
                                     $row['level'] = $row['rb_level'];
