@@ -104,6 +104,12 @@ class GlobalApi extends \Api
         return $response;
     }
 
+    public function refresh_warehouse($vars)
+    {
+        $response = $this->init()->addParam('refresh_warehouse', $vars)->get('v1/Globals/user/refresh-warehouse')->response();
+        return $response;
+    }
+
     public function hide_account($vars)
     {
         $response = $this->init()->addParam('hide_account', $vars)->post('v1/Globals/user/hide-account')->response();

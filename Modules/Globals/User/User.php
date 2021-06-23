@@ -49,6 +49,7 @@ class User extends MainModulesClass
 
         return array(
             'ajax_refresh_accounts' => function () { return $this->ajax_refresh_accounts(); },
+            'ajax_refresh_warehouse' => function () { return $this->ajax_refresh_warehouse(); },
             'hide_game_account' => function () { return $this->ajax_hide_game_account(); },
             'show_game_account' => function () { return $this->ajax_show_game_account(); },
 
@@ -115,6 +116,52 @@ class User extends MainModulesClass
 
 
                         $send = get_instance()->ajaxmsg->html($this->func->fragment_account_list(), '#account_list_info')->notify((string)$response["response"]->success)->success();
+
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+
+                }
+
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+
+        return $send;
+    }
+
+    public function ajax_refresh_warehouse()
+    {
+        $api = new GlobalApi();
+        $vars = array('temp');
+
+        if (get_instance()->session->isLogin()) {
+
+            $response = $api->refresh_warehouse($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->data->user_data)) {
+
+
+                        $data = json_encode($response["response"]->data);
+                        $data = json_decode($data, true);
+                        get_instance()->session->updateSessionDB($data);
+                        get_instance()->session->rebootSession();
+
+
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success)->eval_js('document.location.reload(true);')->success();
 
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();

@@ -1,8 +1,12 @@
 <div class="block block-rounded">
     <div class="block-header block-header-default">
         <h3 class="block-title">{$title_lang} <span>{get_sid_name(true, true)}</span></h3>
+        <div class="block-options">
+            <button type="button" class="btn-block-option submit-btn" {$.php.btn_ajax("Modules\Globals\User\User", "ajax_refresh_warehouse", [0])}>
+                <i class="fa fa-refresh"></i>
+            </button>
+        </div>
     </div>
-
     <form action="/input" method="post" onsubmit="return false;">
         {$.php.form_hide_input("Modules\Globals\Warehouse\Warehouse", "send_item")}
         <div class="block-content pl-50 pr-50">
