@@ -466,17 +466,6 @@ class SiteComponents
     }
 
     /**
-     *
-     */
-    static function streamUpdate(){
-        $fenom = false;
-        $ajaxsmg = false;
-        $config = false;
-        $adm = new \AdminPlugins\Broadcast($fenom, $ajaxsmg, $config);
-        $adm->updateStreams();
-    }
-
-    /**
      * @param int $count
      * @param string $tpl
      * @return mixed|string
@@ -490,10 +479,9 @@ class SiteComponents
 
             if ($data === false OR isset($data['cache_end'])) {
                 set_cache('broadcast_c_'.$count, $data['data'], CACHE_STREAM);
-                self::streamUpdate();
-                $db = self::db();
-                $stream = $db->query('SELECT * FROM `mw_broadcast` WHERE publish=1 AND online=1 LIMIT ' . intval($count) . ';')->fetchAll(\PDO::FETCH_ASSOC);
 
+                $stream = self::db()->query('SELECT * FROM `mw_broadcast` WHERE publish=1 ORDER BY `position` ASC LIMIT ' . (int)$count . ';')->fetchAll(\PDO::FETCH_ASSOC);
+                
                 if (is_array($stream) AND count($stream)) {
                     set_cache('broadcast_c_'.$count, $stream, CACHE_STREAM);
                 } else {
@@ -503,16 +491,24 @@ class SiteComponents
                 $stream = $data['data'];
 
             foreach ($stream as &$item) {
-                if ($item['type'] == 'twitch') {
-                    $item['link'] = 'https://player.twitch.tv/?channel=' . $item['chanel'].'&parent='.urlencode($_SERVER['HTTP_HOST']);
-                    $item['key'] = $item['chanel'];
-                } else if ($item['type'] == 'youtube') {
-                    $item['json'] = json_decode($item['json'], true);
-                    $item['link'] = 'https://www.youtube.com/watch?v=' . $item['json']['items'][0]['id']['videoId'];
-                    $item['key'] = $item['json']['items'][0]['id']['videoId'];
-                }
+                if ($item['platform'] == 'twitch') {
+                    $param = array(
+                        'parent' => $_SERVER['HTTP_HOST'],
+                        'autoplay' => $item['autoplay'] == 1 ? 'true' : 'false',
+                        'muted' => $item['muted'] == 1 ? 'true' : 'false',
+                    );
+                    $item['stream'] = $item['stream'].'&'.http_build_query($param);
+                } elseif ($item['platform'] == 'youtube') {
 
-                unset($item['json'], $item['online'], $item['preview'], $item['date'], $item['id']);
+                    $param = array(
+                        'origin' => $_SERVER['HTTP_HOST'],
+                        'autoplay' => $item['autoplay'],
+                        'muted' => $item['muted'],
+                    );
+
+                    $item['stream'] = $item['stream'].'?'.http_build_query($param);
+                }
+                unset($item['preview'], $item['date']);
             }
 
             return get_instance()->fenom->fetch('site:'.$tpl,

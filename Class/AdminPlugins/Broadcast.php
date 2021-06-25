@@ -22,6 +22,7 @@ class Broadcast
     public $stream_type = array(
         'twitch' => 'Twitch.tv',
         'youtube' => 'YouTube',
+        'other' => 'Other service',
     );
 
     public function __construct(&$fenom, &$ajaxmsg, &$config)
@@ -77,6 +78,10 @@ class Broadcast
                 return $this->addStream();
             } elseif ($s2 == 'add_save') {
                 return $this->addSave();
+            } elseif ($s2 == 'edit') {
+                return $this->editStream();
+            } elseif ($s2 == 'edit_save') {
+                return $this->editSave();
             } elseif ($s2 == 'refresh'){
                 $this->refreshSteam();
             } elseif ($s2 == 'status'){
@@ -85,8 +90,6 @@ class Broadcast
 
                 if($s2 == 'delete')
                     $this->deleteStream();
-
-
 
                 if($s2 == 'delete_cache')
                     $this->deleteCacheStream();
@@ -100,7 +103,7 @@ class Broadcast
 
     public function broadcast_list(){
 
-        $stream_list = $this->db->query('SELECT * FROM `mw_broadcast` ORDER BY publish,`date` DESC;')->fetchAll(\PDO::FETCH_ASSOC);
+        $stream_list = $this->db->query('SELECT * FROM `mw_broadcast` ORDER BY `position` ASC, publish,`date` DESC;')->fetchAll(\PDO::FETCH_ASSOC);
         foreach ($stream_list as &$stream) {
             $stream['json'] = json_decode($stream['json'], true);
         }
@@ -129,6 +132,29 @@ class Broadcast
         );
     }
 
+    public function editStream() {
+
+        if(isset($_GET['id'])) {
+            $stream_id = (int) $_GET['id'];
+            $stream_param = $this->db->query('SELECT * FROM `mw_broadcast` where `id`='.$stream_id.' limit 1;')->fetch(\PDO::FETCH_ASSOC);
+            if (isset($stream_param['id'])) {
+                return $this->fenom->fetch("panel:admin/Broadcast/edit_stream.tpl",
+                    array_merge(
+                        array(
+                            'language_list' => $this->config["site"]["language_list"],
+                            'stream_type' => $this->stream_type,
+                            'stream_param' => $stream_param,
+                            'stream_id' => $stream_id
+                        ),
+                        get_lang('admin.lang')
+                    )
+                );
+            }
+        }
+        
+        return error_404_html();
+    }
+
     public function deleteCacheStream(){
         $cache = scandir(ROOT_DIR.CACHEPATH);
         foreach ($cache as $file) {
@@ -140,215 +166,126 @@ class Broadcast
         }
     }
 
-    public function getUserIdTW($name){
-        $ch = curl_init();
+    private function validate($data) {
 
-        curl_setopt($ch, CURLOPT_URL, 'https://api.twitch.tv/kraken/users?login='.$name);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        switch($data['platform']) {
 
-        $headers = array();
-        $headers[] = 'Accept: application/vnd.twitchtv.v5+json';
-        $headers[] = 'Client-Id: '.TWITCH;
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            case 'youtube':
+                if(!preg_match('/^https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9]*)$/', $data['stream'])) {
+                    echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_youtube_error'])->danger();
+                    exit();
+                }
+            break;
 
-        $result = curl_exec($ch);
-        if (curl_errno($ch)) {
-            echo $this->ajaxmsg->notify('getUserIdTW - Error:' . curl_error($ch))->danger();
-            exit;
-        }
-        curl_close($ch);
+            case 'twitch':
+                if(!preg_match('/^https:\/\/player\.twitch\.tv\/\?channel\=([a-zA-Z0-9_]+)(\&parent\=[a-zA-Z0-9\.]+)?$/', $data['stream'])) {
+                    echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_twitch_error'])->danger();
+                    exit();
+                }
+                $position = strpos($_POST['stream'], '&');
+                if($position) {
+                    $_POST['stream'] = substr($_POST['stream'], 0, $position);
+                }
+            break;
 
-        return $result;
-    }
+            case 'other':
+                // iframe код
+            break;
 
-    public function getTwithc($name, $error = true)
-    {
+            default:
+                echo $this->ajaxmsg->notify('unknown platform')->danger();
+                exit();
+            break;
 
-        $user_info = array();
-        $id = $this->getUserIdTW($name);
-
-        $id = json_decode($id, true);
-        if (is_array($id) AND isset($id['users'])) {
-
-            $users = array_shift($id['users']);
-            $user_info['name'] = $users['display_name'];
-            $user_info['user_id'] = (int)$users['_id'];
-            $user_info['logo'] = $users['logo'];
-
-            $ch = curl_init();
-
-            curl_setopt($ch, CURLOPT_URL, 'https://api.twitch.tv/kraken/streams/' . $user_info['user_id']);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-
-
-            $headers = array();
-            $headers[] = 'Accept: application/vnd.twitchtv.v5+json';
-            $headers[] = 'Client-Id: ' . TWITCH;
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-            $result = curl_exec($ch);
-            if (curl_errno($ch) AND $error) {
-                log_write('broadcast', 'getTwithc - Error:' . curl_error($ch));
-                return false;
-                //echo $this->ajaxmsg->notify('getTwithc - Error:' . curl_error($ch))->danger();
-                //exit;
-            }
-            curl_close($ch);
-            $result = remove_emoji($result);
-            $json = json_decode($result,true);
-
-            if($json != NULL AND isset($json['stream'])){
-                $user_info['preview'] = $json['stream']['preview']['small'];
-                $user_info['game'] = $json['stream']['game'];
-                $user_info['json'] = $result;
-                $user_info['online'] = 1;
-            }else{
-                log_write('broadcast', 'getTwithc - Error json:' .$result);
-                $user_info['preview'] = '';
-                $user_info['game'] = '';
-                $user_info['json'] = '';
-                $user_info['online'] = 0;
-            }
         }
 
-        return $user_info;
-    }
-
-    public function getYoutube($name, $error = true){
-        $user_info = array();
-//https://www.googleapis.com/youtube/v3/search?channelId=UCocvwThNlcQ8pdRFnXgpGbw&key=AIzaSyByFzmSA806IakLMTOMuU3rt_S2erPiiNI&part=id,snippet&eventType=live&type=video
-        $googleApiUrl = 'https://www.googleapis.com/youtube/v3/search?channelId=' . $name . '&key=' . YOUTUBE . '&part=id,snippet&eventType=live&type=video';
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_VERBOSE, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $response = remove_emoji($response);
-        $data = json_decode($response, true);
-
-        if (is_array($data) AND isset($data['items'])){
-            if (count($data['items'])) {
-                $users                  = array_shift($data['items']);
-                $user_info['name']      = $users["snippet"]["channelTitle"];
-                $user_info['user_id']   = $users["snippet"]['channelId'];
-                $user_info['logo']      = $users["snippet"]["thumbnails"]["default"]["url"];
-                $user_info['preview']   = $users["snippet"]["thumbnails"]["medium"]["url"];
-                $user_info['online']    = 1;
-            }else{
-                log_write('broadcast', 'getYoutube - Error json:' . $response);
-                $user_info['name'] = $name;
-                $user_info['user_id'] = $name;
-                $user_info['logo'] = '';
-                $user_info['preview'] = '';
-                $user_info['online'] = 0;
-            }
-            $user_info['game'] = '--//--';
-            $user_info['json'] = $response;
-
-        }else{
-            if ($error) {
-                log_write('broadcast', 'getYoutube - Error:' . $response);
-                return false;
-                //echo $this->ajaxmsg->notify('getYoutube - Error:' . $response)->danger();
-                //exit;
-            }
-        }
-
-        return $user_info;
-    }
-
-    public function addSave(){
-        $user = trim($_POST['profile']);
-
-        if ($_POST['platform'] == 'twitch') {
-            $user_info = $this->getTwithc(strtolower($user));
-        }elseif ($_POST['platform'] == 'youtube'){
-            $user_info = $this->getYoutube($user);
-        }else{
-            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_not_profile'])->danger();
+        if(!filter_var($data['avatar'], FILTER_VALIDATE_URL)) {
+            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_avatar_error'])->danger();
             exit();
         }
 
-        if (is_array($user_info) AND isset($user_info['json'])){
+        if(!filter_var($data['preview'], FILTER_VALIDATE_URL)) {
+            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_preview_error'])->danger();
+            exit();
+        }
 
-            $STH = $this->db->prepare('INSERT INTO `mw_broadcast` (`chanel`,`name`,`user_id`,`logo`,`type`,`game`,`online`,`preview`,`date`, `json`, `publish`)
-                                            VALUES (:chanel, :name, :user_id, :logo, :type, :game, :online, :preview, :date, :json,  :publish);');
+    }
+    
+    public function addSave() {
+        
+        $stream = trim($_POST['stream']);
 
-            $STH->bindValue(':chanel', $user);
-            $STH->bindValue(':name', $user_info['name']);
-            $STH->bindValue(':user_id', $user_info['user_id']);
-            $STH->bindValue(':logo', $user_info['logo']);
-            $STH->bindValue(':type', $_POST['platform']);
-            $STH->bindValue(':game', $user_info['game']);
-            $STH->bindValue(':online', $user_info['online']);
-            $STH->bindValue(':preview', $user_info['preview']);
-            $STH->bindValue(':date', date("Y-m-d H:i:s"));
-            $STH->bindValue(':json', $user_info['json']);
+        $this->validate([
+            'platform' => $_POST['platform'], 
+            'stream' => $_POST['stream'],
+            'avatar' => $_POST['avatar'],
+            'preview' => $_POST['preview'],
+        ]);
+
+        $STH = $this->db->prepare('insert into `mw_broadcast` (`stream`, `platform`, `name`, `title`, `avatar`,  `preview`, `autoplay`, `mute`, `date`, `position`, `publish`)  values (:stream, :platform, :name, :title, :avatar,  :preview, :autoplay, :mute, :date, :position, :publish)');
+        $STH->bindValue(':stream', $stream);
+        $STH->bindValue(':platform', $_POST['platform']);
+        $STH->bindValue(':name', $_POST['name']);
+        $STH->bindValue(':title', $_POST['title']);
+        $STH->bindValue(':avatar', $_POST['avatar']);
+        $STH->bindValue(':preview', $_POST['preview']);
+        $STH->bindValue(':autoplay', (int) $_POST['autoplay']);
+        $STH->bindValue(':mute', (int) $_POST['mute']);
+        $STH->bindValue(':date', date("Y-m-d H:i:s"));
+        $STH->bindValue(':position', (int) $_POST['position']);
+        $STH->bindValue(':publish', (int) $_POST['publish']);
+
+        $STH->execute();
+
+        echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_save_stream'])->location(ADMIN_URL.'/broadcast')->success();
+        exit;
+    }
+
+    public function editSave() {
+        
+
+
+        if(isset($_GET['id'])) {
+            $_POST['stream'] = trim($_POST['stream']);
+            $stream_id = (int) $_GET['id'];
+
+            $this->validate([
+                'platform' => $_POST['platform'], 
+                'stream' => $_POST['stream'],
+                'avatar' => $_POST['avatar'],
+                'preview' => $_POST['preview'],
+            ]);
+
+    
+            $STH = $this->db->prepare('update `mw_broadcast` set `stream`=:stream, `platform`=:platform, `name`=:name, `title`=:title, `avatar`=:avatar,  `preview`=:preview, `autoplay`=:autoplay, `mute`=:mute, `position`=:position, `publish`=:publish where `id`=:id;');
+            $STH->bindValue(':id', $stream_id);
+            $STH->bindValue(':stream', $_POST['stream']);
+            $STH->bindValue(':platform', $_POST['platform']);
+            $STH->bindValue(':name', $_POST['name']);
+            $STH->bindValue(':title', $_POST['title']);
+            $STH->bindValue(':avatar', $_POST['avatar']);
+            $STH->bindValue(':preview', $_POST['preview']);
+            $STH->bindValue(':autoplay', (int) $_POST['autoplay']);
+            $STH->bindValue(':mute', (int) $_POST['mute']);
+            $STH->bindValue(':position', (int) $_POST['position']);
             $STH->bindValue(':publish', (int) $_POST['publish']);
+    
             $STH->execute();
-
-            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_add_stream'])->location(ADMIN_URL.'/broadcast')->success();
-            exit;
-
-        }else {
-            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_error_add_stream'])->danger();
+    
+            echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_save_stream'])->location(ADMIN_URL.'/broadcast')->success();
             exit;
         }
 
+        
     }
 
     public function deleteStream(){
         if (isset($_GET['stream'])){
-            $id = intval($_GET['stream']);
+            $id = (int) $_GET['stream'];
             $this->db->query('DELETE FROM `mw_broadcast` WHERE id='.$id.';')->fetch();
         }
     }
 
-    public function refreshSteam(){
-        if (isset($_GET['stream'])){
-            $id = intval($_GET['stream']);
-
-            $cfg = $this->db->query('SELECT * FROM `mw_broadcast` WHERE id='.$id.' LIMIT 1;')->fetch(\PDO::FETCH_ASSOC);
-
-            if ( $cfg['type'] == 'twitch') {
-                $user_info = $this->getTwithc($cfg['chanel']);
-            }elseif ( $cfg['type'] == 'youtube'){
-                $user_info = $this->getYoutube($cfg['chanel']);
-            }else{
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_not_profile'])->danger();
-                exit();
-            }
-           
-
-            if (is_array($user_info) AND isset($user_info['json'])){
-                $STH = $this->db->prepare('UPDATE `mw_broadcast` SET `name` = :name, `user_id` = :user_id, `logo` = :logo, `game` = :game, `online` = :online, `preview` = :preview, `json` = :json WHERE id=:id;');
-                $STH->bindValue(':name', $user_info['name']);
-                $STH->bindValue(':user_id', $user_info['user_id']);
-                $STH->bindValue(':logo', $user_info['logo']);
-                $STH->bindValue(':game', $user_info['game']);
-                $STH->bindValue(':online', $user_info['online']);
-                $STH->bindValue(':preview', $user_info['preview']);
-                $STH->bindValue(':json', $user_info['json']);
-                $STH->bindValue(':id', $id);
-                $STH->execute();
-
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_update_stream'])->location(ADMIN_URL.'/broadcast')->success();
-                exit;
-
-            }else {
-                echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_error_add_stream'])->danger();
-                exit;
-            }
-
-        }
-    }
 
     public function statusStream(){
         if (isset($_POST['stream'])) {
@@ -365,58 +302,26 @@ class Broadcast
         }
     }
 
-    public function updateStreams(){
-
-        $list = $this->db->query('SELECT * FROM `mw_broadcast` WHERE publish=1;')->fetchAll(\PDO::FETCH_ASSOC);
-
-        foreach ($list as $cfg) {
-            $user_info = array();
-            if ($cfg['type'] == 'twitch') {
-                $user_info = $this->getTwithc($cfg['chanel']);
-            } elseif ($cfg['type'] == 'youtube') {
-                $user_info = $this->getYoutube($cfg['chanel']);
-            }else
-                continue;
-
-            if (is_array($user_info) AND isset($user_info['json'])) {
-                $STH = $this->db->prepare('UPDATE `mw_broadcast` SET `name` = :name, `user_id` = :user_id, `logo` = :logo, `game` = :game, `online` = :online, `preview` = :preview, `json` = :json WHERE id=:id;');
-                $STH->bindValue(':name', $user_info['name']);
-                $STH->bindValue(':user_id', $user_info['user_id']);
-                $STH->bindValue(':logo', $user_info['logo']);
-                $STH->bindValue(':game', $user_info['game']);
-                $STH->bindValue(':online', $user_info['online']);
-                $STH->bindValue(':preview', $user_info['preview']);
-                $STH->bindValue(':json', $user_info['json']);
-                $STH->bindValue(':id', $cfg['id']);
-                $STH->execute();
-            }
-        }
-    }
-
     public function install(){
         $this->db->query("
             DROP TABLE IF EXISTS `mw_broadcast`;
             CREATE TABLE `mw_broadcast` (
-              `id` int(11) NOT NULL,
-              `chanel` varchar(150) NOT NULL,
-              `name` varchar(150) NOT NULL,
-              `user_id` varchar(50) NOT NULL,
-              `logo` varchar(250) NOT NULL,
-              `type` varchar(15) NOT NULL,
-              `game` varchar(40) NOT NULL,
-              `online` int(1) NOT NULL DEFAULT '0',
-              `preview` varchar(150) NOT NULL,
-              `json` mediumtext NOT NULL,
-              `date` datetime NOT NULL,
-              `publish` int(1) NOT NULL DEFAULT '1'
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-            
-            ALTER TABLE `mw_broadcast`
-              ADD PRIMARY KEY (`id`),
-              ADD KEY `publish` (`publish`);
-            
-            ALTER TABLE `mw_broadcast`
-              MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;");
+              `id` INT(10) NOT NULL AUTO_INCREMENT,
+              `stream` VARCHAR(2500) NOT NULL,
+              `platform` VARCHAR(32) NOT NULL,
+              `name` VARCHAR(150) NOT NULL,
+              `title` VARCHAR(255) NOT NULL,
+              `avatar` VARCHAR(250) NOT NULL,
+              `preview` VARCHAR(150) NOT NULL,
+              `autoplay` TINYINT(1) NOT NULL DEFAULT '0',
+              `mute` TINYINT(1) NOT NULL DEFAULT '1',
+              `date` DATETIME NOT NULL,
+              `position` INT(10) NOT NULL DEFAULT '0',
+              `publish` INT(10) NOT NULL DEFAULT '1',
+              PRIMARY KEY (`id`) USING BTREE,
+              INDEX `publish` (`publish`) USING BTREE
+            )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            ;");
     }
 
 

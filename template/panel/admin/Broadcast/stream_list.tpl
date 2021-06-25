@@ -1,34 +1,33 @@
 <div class="content">
     {include $.php.get_tpl_file('breadcrumb.tpl')}
     <h2 class="content-heading">
-        {$Broadcast_title}
+        Broadcast
         <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/add')}" class="btn btn-sm btn-rounded btn-outline-primary float-right"><i class="fa fa-plus mr-5"></i>{$Broadcast_btn_add}</a>
         <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/delete_cache')}" class="btn btn-sm btn-rounded btn-outline-secondary float-right mr-5"><i class="fa fa-braille mr-5"></i>{$Broadcast_btn_delete_cache}</a>
     </h2>
     <div class="block block-rounded">
         <div class="block-content  p-0">
 
-            <table class="table table-hover table-vcenter">
+            <table class="table table-hover table-vcenter" id="stream_list">
                 <thead>
                 <tr>
-                    <th style="width: 15%;"></th>
-                    <th style="width: 15%;">Stream</th>
-                    <th style="width: 35%;">{$Broadcast_th_user}</th>
-                    <th style="width: 11%;">{$Broadcast_th_publish}</th>
-                    <th style="width: 11%;">{$Broadcast_th_game}</th>
-                    <th class="text-center" style="width: 13%;"></th>
+                    <th style="width: 32px;" data-sort-method='none' class="no-sort"></th>
+                    <th style="width: auto;">{$Broadcast_in_platform}</th>
+                    <th style="width: auto;">{$Broadcast_streamer_name}</th>
+                    <th style="width: 35%;">{$Broadcast_title}</th>
+                    <th style="width: auto;" class="no-sort" data-sort-method='none'>{$Broadcast_in_enable}</th>
+                    <th class="text-center no-sort" style="width: 13%;" data-sort-method='none'></th>
                 </tr>
                 </thead>
                 <tbody>
                 {foreach $stream_list as $stream}
                     <tr>
-                        <td class="font-w600"><img src="{$stream.logo}" width="32"></td>
-                        <td>{$stream.type}</td>
+                        <td class="font-w600"><img src="{$stream.avatar}" width="32"></td>
+                        <td>{$stream.platform}</td>
+                        <td>{$stream.name}</td>
                         <td>
-                            {if $stream.type == 'twitch'}
-                                <a href="https://player.twitch.tv/?channel={$stream.chanel}&parent={$.php.urlencode($.server['HTTP_HOST'])}" target="_blank">{$stream.name}</a>
-                            {else}
-                                <a href="https://www.youtube.com/channel/{$stream.chanel}" target="_blank">{$stream.name}</a>
+                            {if $stream.platform != 'other'}
+                                <a href="{$stream.stream}&parent={$.php.urlencode($.server['HTTP_HOST'])}" target="_blank">{$stream.title}</a>
                             {/if}
                         </td>
                         <td>
@@ -37,14 +36,10 @@
                                 <span class="css-control-indicator"></span>
                             </label>
                         </td>
-                        <td>{$stream.game}</td>
                         <td class="d-none d-sm-table-cell">
-                            <form action="{$.php.set_url($.const.ADMIN_URL~'/broadcast/refresh?stream='~$stream.id, false, false)}" novalidate="novalidate" method="post" onsubmit="return false;" style="display: inline-block;">
-                                <input type="hidden" name="stream" value="{$stream.id}">
-                                <button type="submit" class="btn btn-sm btn-circle btn-alt-warning mr-5 mb-5 submit-form" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_refresh_page}">
-                                    <i class="fa fa-refresh"></i>
-                                </button>
-                            </form>
+                            <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/edit?id='~$stream.id)}" class="btn btn-sm btn-circle btn-alt-primary mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_edit_stream}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
                             <a href="{$.php.set_url($.const.ADMIN_URL~'/broadcast/delete?stream='~$stream.id)}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-circle btn-alt-danger mr-5 mb-5" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$Broadcast_delete_stream}">
                                 <i class="fa fa-trash-o"></i>
                             </a>
@@ -53,6 +48,9 @@
                 {/foreach}
                 </tbody>
             </table>
+            <script>
+                new Tablesort(document.getElementById('stream_list'));
+            </script>
         </div>
     </div>
 </div>
