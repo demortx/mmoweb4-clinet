@@ -48,9 +48,6 @@
                 {/foreach}
                 </tbody>
             </table>
-            <script>
-                new Tablesort(document.getElementById('stream_list'));
-            </script>
         </div>
     </div>
 </div>

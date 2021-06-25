@@ -37,21 +37,21 @@ $php_module_list = array(
 $db_table_install = array(
 
     'mw_broadcast' => "CREATE TABLE `mw_broadcast` (
-                          `id` int(11) NOT NULL AUTO_INCREMENT,
-                          `chanel` varchar(150) NOT NULL,
-                          `name` varchar(150) NOT NULL,
-                          `user_id` varchar(50) NOT NULL,
-                          `logo` varchar(250) NOT NULL,
-                          `type` varchar(15) NOT NULL,
-                          `game` varchar(40) NOT NULL,
-                          `online` int(1) NOT NULL DEFAULT '0',
-                          `preview` varchar(150) NOT NULL,
-                          `json` mediumtext NOT NULL,
-                          `date` datetime NOT NULL,
-                          `publish` int(1) NOT NULL DEFAULT '1',
-                          PRIMARY KEY (`id`),
-                          KEY `publish` (`publish`)
-                        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;",
+                      `id` INT(10) NOT NULL AUTO_INCREMENT,
+                      `stream` VARCHAR(2500) NOT NULL,
+                      `platform` VARCHAR(32) NOT NULL,
+                      `name` VARCHAR(150) NOT NULL,
+                      `title` VARCHAR(255) NOT NULL,
+                      `avatar` VARCHAR(250) NOT NULL,
+                      `preview` VARCHAR(150) NOT NULL,
+                      `autoplay` TINYINT(1) NOT NULL DEFAULT '0',
+                      `mute` TINYINT(1) NOT NULL DEFAULT '1',
+                      `date` DATETIME NOT NULL,
+                      `position` INT(10) NOT NULL DEFAULT '0',
+                      `publish` INT(10) NOT NULL DEFAULT '1',
+                      PRIMARY KEY (`id`) USING BTREE,
+                      INDEX `publish` (`publish`) USING BTREE
+                    )ENGINE=InnoDB DEFAULT CHARSET=utf8;",
     'mw_iblock' => "CREATE TABLE `mw_iblock` (
                           `id` int(11) NOT NULL AUTO_INCREMENT,
                           `name` varchar(100) NOT NULL,

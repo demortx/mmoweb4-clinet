@@ -83,13 +83,6 @@ define('DEL_CACHE_THROTTLER',           86400);
 define('DEL_CACHE_DEBUG',               604800);
 
 /**
- * Ключи стриминговых площадок
- * Streaming Keys
- */
-define('TWITCH',                '3ayqtffruo2goxf0cvyp75wjm28g4pq');
-define('YOUTUBE',               'AIzaSyDYcMbUnQGYPFTO-ADy1D4MrYI4xt-0_FY');
-
-/**
  * Визуальная подгрузка предметов из базы данных кабинета
  * Visual loading of items from the cabinet database
  * /template/webdb.js  -- <span class='webdb-item' webdb-id="3936" title="" s-sid="8" s-name="true" s-add="true" s-icon="true" s-descr="true"></span>
