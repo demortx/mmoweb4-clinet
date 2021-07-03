@@ -489,27 +489,29 @@ class SiteComponents
                 }
             } else
                 $stream = $data['data'];
+            if (is_array($stream) AND count($stream)) {
+                foreach ($stream as &$item) {
+                    if ($item['platform'] == 'twitch') {
+                        $param = array(
+                            'parent' => $_SERVER['HTTP_HOST'],
+                            'autoplay' => $item['autoplay'] == 1 ? 'true' : 'false',
+                            'muted' => $item['muted'] == 1 ? 'true' : 'false',
+                        );
+                        $item['stream'] = $item['stream'] . '&' . http_build_query($param);
+                    } elseif ($item['platform'] == 'youtube') {
 
-            foreach ($stream as &$item) {
-                if ($item['platform'] == 'twitch') {
-                    $param = array(
-                        'parent' => $_SERVER['HTTP_HOST'],
-                        'autoplay' => $item['autoplay'] == 1 ? 'true' : 'false',
-                        'muted' => $item['muted'] == 1 ? 'true' : 'false',
-                    );
-                    $item['stream'] = $item['stream'].'&'.http_build_query($param);
-                } elseif ($item['platform'] == 'youtube') {
+                        $param = array(
+                            'origin' => $_SERVER['HTTP_HOST'],
+                            'autoplay' => $item['autoplay'],
+                            'muted' => $item['muted'],
+                        );
 
-                    $param = array(
-                        'origin' => $_SERVER['HTTP_HOST'],
-                        'autoplay' => $item['autoplay'],
-                        'muted' => $item['muted'],
-                    );
-
-                    $item['stream'] = $item['stream'].'?'.http_build_query($param);
+                        $item['stream'] = $item['stream'] . '?' . http_build_query($param);
+                    }
+                    unset($item['preview'], $item['date']);
                 }
-                unset($item['preview'], $item['date']);
-            }
+            }else
+                $stream = array();
 
             return get_instance()->fenom->fetch('site:'.$tpl,
                 array_merge(

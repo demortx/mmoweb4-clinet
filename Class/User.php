@@ -268,10 +268,13 @@ class User
      */
     public function getName(){
 
-        if (is_array($this->session['master_account']['email']))
+        if (!empty($this->session['master_account']['email']))
+            return $this->session['master_account']['email'];
+        elseif (!empty($this->session['master_account']['phone']))
             return $this->session['master_account']['phone'];
         else
-            return $this->session['master_account']['email'];
+            return 'Bind your email to master account!';
+
 
     }
 
