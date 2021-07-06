@@ -121,6 +121,9 @@ class App extends Controller
                 '/change_password_game_account' => array(
                     'session' => true,
                 ),
+                '/forgot_password_game_account' => array(
+                    'session' => true,
+                ),
                 '/checkout' => array(
                     'session' => false,
                 ),
@@ -1038,6 +1041,58 @@ class App extends Controller
         if (get_instance()->session->isLogin()) {
 
             $response = $api->change_password_account($vars);
+
+            if ($response['ok']) {
+
+                if (isset($response['error'])) {
+                    if (isset($response["response"]->input))
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->input_error($response["response"]->input)->danger();
+                    else
+                        $send = get_instance()->ajaxmsg->notify($response['error'])->danger();
+
+                } else {
+
+                    if (isset($response["response"]->success)) {
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel')->success();
+                    } else
+                        $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
+                }
+
+            } else {
+                $send = get_instance()->ajaxmsg->notify('Error: ' . $response['http_error'] . '<br>Code: ' . $response['http_code'])->danger();
+            }
+
+        }else
+            $send = get_instance()->ajaxmsg->notify(get_lang('api.lang')['session_lost'])->location('sign-in')->danger();
+
+
+        exit($send);
+    }
+
+    /**
+     * Восстановление пароля игрового аккаунта
+     */
+    public function forgot_password_game_account(){
+        $api = new GlobalApi();
+        $vars = array();
+
+        if (!isset($_POST['account']) OR empty($_POST['account']))
+            exit(get_instance()->ajaxmsg->notify(get_lang('settings.lang')['ajax_empty_account'])->danger());
+        else
+            $vars['account'] = $_POST['account'];
+
+        //Проверка пин кода
+        if (check_pin("pins_forgot_password_account")) {
+            if (!isset($_POST['pin']) OR empty($_POST['pin']))
+                exit(get_instance()->ajaxmsg->notify(get_lang('widget_reset_pin.lang')['ajax_empty_pin'])->danger());
+            else
+                $vars["pin"] = $_POST['pin'];
+        }
+
+
+        if (get_instance()->session->isLogin()) {
+
+            $response = $api->forgot_password_account($vars);
 
             if ($response['ok']) {
 

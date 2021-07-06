@@ -171,7 +171,7 @@ class Broadcast
         switch($data['platform']) {
 
             case 'youtube':
-                if(!preg_match('/^https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9]*)$/', $data['stream'])) {
+                if(!preg_match('/^https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9-_]*)$/', $data['stream'])) {
                     echo $this->ajaxmsg->notify(get_lang('admin.lang')['Broadcast_ajax_youtube_error'])->danger();
                     exit();
                 }

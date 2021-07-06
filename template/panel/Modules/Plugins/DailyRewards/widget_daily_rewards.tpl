@@ -1,3 +1,4 @@
+{if $.site.session->session.user_data.daily_rewards.day != null}
 {*bg-gd-primary
 bg-gd-dusk
 bg-gd-cherry
@@ -192,3 +193,4 @@ t*}
         })();
     });
 </script>
+{/if}
