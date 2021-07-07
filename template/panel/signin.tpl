@@ -32,13 +32,14 @@
                     <div class="block-content">
                         <div class="form-group">
                             <label for="select-server">{$signin_title_input_server_lang}</label>
+                            {set $opt_show = ($.php.count($.site.config.project.server_info) > 1)}
                             <select class="form-control" id="select-server" name="sid"> <!-- select_server() -->
                                 {foreach $.site.config.project.server_info as $platform => $server_list}
-                                    <optgroup label="{$.php.ucfirst($platform)}">
+                                    {if $opt_show}<optgroup label="{$.php.ucfirst($platform)}">{/if}
                                         {foreach $server_list as $sid => $server}
                                             <option value="{$sid}" {if $.php.get_instance()->get_sid() == $sid}selected{/if} {if $server.status == false}disabled{/if}>{$server.name} {if $server.rate > 0}[x{$server.rate}]{/if}</option>
                                         {/foreach}
-                                    </optgroup>
+                                    {if $opt_show}</optgroup>{/if}
                                 {/foreach}
                             </select>
                         </div>

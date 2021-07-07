@@ -474,9 +474,13 @@ if (!function_exists('render_menu_server')) {
             $str .= $server_select;
             $str .= '</button>';
 
+            $show_opt = (count($server_info) > 1);
+
+
             $str .= '<div class="dropdown-menu" aria-labelledby="toolbarDrop">';
             foreach ($server_info as $game => $server_list) {
-                $str .= '<h6 class="dropdown-header min-width-175">' . '<img class="img-avatar img-avatar20 img-avatar-thumb" src="/template/panel/assets/media/icon_platform/' . $game . '.png" alt="' . ucfirst($game) . '">' . ucfirst($game) . '</h6>';
+                if ($show_opt)
+                    $str .= '<h6 class="dropdown-header min-width-175">' . '<img class="img-avatar img-avatar20 img-avatar-thumb" src="/template/panel/assets/media/icon_platform/' . $game . '.png" alt="' . ucfirst($game) . '">' . ucfirst($game) . '</h6>';
                 $str .= '<div class="ml-10 ">';
                 foreach ($server_list as $id => $server) {
                     if ($server['status']) {
@@ -540,7 +544,7 @@ if (!function_exists('render_menu_server')) {
                 }
 
             }
-
+            $show_opt = (count($server_info) > 1);
             $str .= '<button type="button" class="btn btn-block btn-alt-success btn-rounded dropdown-toggle push d-flex align-items-center justify-content-between min-width-175" id="toolbarDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="' . ucfirst($game_select) . '">';
             $str .= '<img class="img-avatar img-avatar16 img-avatar-thumb m-0" src="/template/panel/assets/media/icon_platform/' . $game_select . '.png" alt="' . $game_select . '">';
             $str .= $server_select;
@@ -548,7 +552,8 @@ if (!function_exists('render_menu_server')) {
 
             $str .= '<div class="dropdown-menu" aria-labelledby="toolbarDrop">';
             foreach ($server_info as $game => $server_list) {
-                $str .= '<h6 class="dropdown-header min-width-175">' . '<img class="img-avatar img-avatar20 img-avatar-thumb" src="/template/panel/assets/media/icon_platform/' . $game . '.png" alt="' . ucfirst($game) . '">' . ucfirst($game) . '</h6>';
+                if ($show_opt)
+                    $str .= '<h6 class="dropdown-header min-width-175">' . '<img class="img-avatar img-avatar20 img-avatar-thumb" src="/template/panel/assets/media/icon_platform/' . $game . '.png" alt="' . ucfirst($game) . '">' . ucfirst($game) . '</h6>';
                 $str .= '<div class="ml-10 ">';
                 foreach ($server_list as $sid => $server) {
                     if ($server['status']) {

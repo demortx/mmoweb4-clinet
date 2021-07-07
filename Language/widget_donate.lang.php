@@ -11,8 +11,8 @@ return array(
 
 
 
-        "donate_title" => 'ПОПОЛНЕНИЕ БАЛАНСА МАСТЕР АККАУНТА',
-        "donate_title_market" => 'ПОПОЛНЕНИЕ БАЛАНСА РЫНКА',
+        "donate_title" => 'ПОЖЕРТВОВАНИЕ НА МАСТЕР АККАУНТА',
+        "donate_title_market" => 'ПОЖЕРТВОВАНИЕ НА РЫНОК',
         "donate_input_title_sum" => 'Сумма',
         "donate_input_title_enter_sum" => 'Укажите количество',
         "donate_span_title_bonus" => 'Бонус',

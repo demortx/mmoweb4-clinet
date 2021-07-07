@@ -35,7 +35,7 @@ return array(
         'lang_btn_go_info_warehouse' => 'Подробнее',
 
 
-        'lang_title_balance' => 'Баланс',
+        'lang_title_balance' => 'Пожертвования',
         'lang_btn_go_transfer_game' => 'Перевести в игру',
         'lang_btn_go_enroll' => 'Пополнить',
         'lang_btn_go_refresh' => 'Обновить',

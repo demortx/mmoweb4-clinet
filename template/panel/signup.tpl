@@ -57,14 +57,14 @@
                             <div class="form-group add-login" {if $config.cabinet.registration_login_hide AND $config.cabinet.registration_login_optional}style="display: none;"{/if}>
                                 <label for="t-signup-server">{$signup_title_input_server_lang}</label>
                                 {if $config.cabinet.registration_login_optional}<a href="javascript:void(0)" class="float-right text-primary-light login-hide" style="font-size: 11px;">{$signup_title_btn_hide_email_lang}</a>{/if}
-
+                                {set $opt_show = ($.php.count($.site.config.project.server_info) > 1)}
                                 <select class="form-control" id="t-signup-server" name="sid">
                                     {foreach $.site.config.project.server_info as $platform => $server_list}
-                                        <optgroup label="{$.php.ucfirst($platform)}">
+                                        {if $opt_show}<optgroup label="{$.php.ucfirst($platform)}">{/if}
                                             {foreach $server_list as $sid => $server}
                                                 <option value="{$sid}" {if $server.status == false}disabled{/if}>{$server.name}  {if $server.rate > 0}[x{$server.rate}]{/if}</option>
                                             {/foreach}
-                                        </optgroup>
+                                        {if $opt_show}</optgroup>{/if}
                                     {/foreach}
                                 </select>
                             </div>

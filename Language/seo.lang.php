@@ -50,15 +50,15 @@ return array(
         //Страница пожертвования
         'panel_donations' => array(
             'head' => array(
-                ['idx' => 'title',      'typex' => 'title',                                         'content' => '%site_name% Пополнения баланса.'],
-                ['idx' => 'og:title',   'typex' => 'meta', 'property' => 'og:title',                'content' => '%site_name% Пополнения баланса'],
+                ['idx' => 'title',      'typex' => 'title',                                         'content' => '%site_name% Пожертвования.'],
+                ['idx' => 'og:title',   'typex' => 'meta', 'property' => 'og:title',                'content' => '%site_name% Пожертвования'],
                 ['idx' => 'og:site_name',  'typex' => 'meta', 'property' => 'og:site_name',            'content' => '%site_name%'],
                 ['idx' => 'og:type',    'typex' => 'meta', 'property' => 'og:type',                 'content' => 'website'],
                 ['idx' => 'og:url',     'typex' => 'meta', 'property' => 'og:url',                  'content' => '%this_url%'],
 
-                ['idx' => 'desc',       'typex' => 'meta', 'name' => 'description',                 'content' => '%site_name% Пополнения баланса'],
-                ['idx' => 'og:description',    'typex' => 'meta', 'property' => 'og:description',          'content' => '%site_name% Пополнения баланса'],
-                ['idx' => 'tw_desc',    'typex' => 'meta', 'property' => 'twitter:description',     'content' => '%site_name% Пополнения баланса'],
+                ['idx' => 'desc',       'typex' => 'meta', 'name' => 'description',                 'content' => '%site_name% Пожертвования'],
+                ['idx' => 'og:description',    'typex' => 'meta', 'property' => 'og:description',          'content' => '%site_name% Пожертвования'],
+                ['idx' => 'tw_desc',    'typex' => 'meta', 'property' => 'twitter:description',     'content' => '%site_name% Пожертвования'],
 
                 ['idx' => 'keywords',   'typex' => 'meta', 'name' => 'keywords',                    'content' => 'mmoweb, mmoweb4'],
 
@@ -67,15 +67,15 @@ return array(
         //Страница пожертвования не для авторизованного
         'donations' => array(
             'head' => array(
-                ['idx' => 'title',      'typex' => 'title',                                         'content' => '%site_name% Пополнения баланса персонажа на сервере %server_name%.'],
-                ['idx' => 'og:title',   'typex' => 'meta', 'property' => 'og:title',                'content' => '%site_name% Пополнения баланса персонажа на сервере %server_name%'],
+                ['idx' => 'title',      'typex' => 'title',                                         'content' => '%site_name% Пожертвования на персонажа сервер %server_name%.'],
+                ['idx' => 'og:title',   'typex' => 'meta', 'property' => 'og:title',                'content' => '%site_name% Пожертвования на персонажа сервер %server_name%'],
                 ['idx' => 'og:site_name',  'typex' => 'meta', 'property' => 'og:site_name',            'content' => '%site_name%'],
                 ['idx' => 'og:type',    'typex' => 'meta', 'property' => 'og:type',                 'content' => 'website'],
                 ['idx' => 'og:url',     'typex' => 'meta', 'property' => 'og:url',                  'content' => '%this_url%'],
 
-                ['idx' => 'desc',       'typex' => 'meta', 'name' => 'description',                 'content' => '%site_name% Пополнения баланса персонажа на сервере %server_name%'],
-                ['idx' => 'og:description',    'typex' => 'meta', 'property' => 'og:description',          'content' => '%site_name% Пополнения баланса персонажа на сервере %server_name%'],
-                ['idx' => 'tw_desc',    'typex' => 'meta', 'property' => 'twitter:description',     'content' => '%site_name% Пополнения баланса персонажа на сервере %server_name%'],
+                ['idx' => 'desc',       'typex' => 'meta', 'name' => 'description',                 'content' => '%site_name% Пожертвования на персонажа сервер %server_name%'],
+                ['idx' => 'og:description',    'typex' => 'meta', 'property' => 'og:description',          'content' => '%site_name% Пожертвования на персонажа сервер сервере %server_name%'],
+                ['idx' => 'tw_desc',    'typex' => 'meta', 'property' => 'twitter:description',     'content' => '%site_name% Пожертвования на персонажа сервер %server_name%'],
 
                 ['idx' => 'keywords',   'typex' => 'meta', 'name' => 'keywords',                    'content' => 'mmoweb, mmoweb4'],
 

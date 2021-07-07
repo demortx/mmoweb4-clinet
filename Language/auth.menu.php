@@ -206,7 +206,7 @@ return array(
         'icon' => 'si si-diamond',
         'target' => '_self',
         'name' => array(
-            'ru' => 'Баланс',
+            'ru' => 'Пожертвования',
             'en' => 'Balance',
             'gr' => 'Υπόλοιπο',
 			'es' => 'Saldo',
@@ -215,7 +215,7 @@ return array(
 			'ko' => '균형',
         ),
         'title' => array(
-            'ru' => 'Баланс',
+            'ru' => 'Пожертвования',
             'en' => 'Balance',
             'gr' => 'Υπόλοιπο',
 			'es' => 'Saldo',
@@ -252,7 +252,7 @@ return array(
                         'target' => '_self',
                         'name'=>array(
                             'en'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Top-up balance',
-                            'ru'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Пополнить баланс',
+                            'ru'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Пожертвовать',
                             'gr'=>'<i class="fa fa-fw fa-gamepad mr-5 d-none d-lg-inline"></i> Ανανέωση υπολοίπου',
 							'es'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recargar saldo',
                             'pt'=>'<i class="si fa-fw si-plus mr-5 d-none d-lg-inline" style="color: #fab81b;"></i> Recarregar saldo',

@@ -108,7 +108,17 @@
                     <i class="fa fa-diamond fa-2x -light"></i>
                 </div>
                 <div class="font-size-h3 font-w600 balance_html">{$.php.intval($.site.session->session.user_data.balance)}</div>
-                <div class="font-size-sm font-w600 text-uppercase text-muted">{$lang_title_balance}</div>
+                <div class="font-size-sm font-w600 text-uppercase text-muted">
+                    {if $.site.config.payment_system.long_name_valute?}
+                        {if $.php.strlen($.site.config.payment_system.long_name_valute) > 10}
+                            {$.site.config.payment_system.short_name_valute}
+                        {else}
+                            {$.site.config.payment_system.long_name_valute}
+                        {/if}
+                    {else}
+                        {$lang_title_balance}
+                    {/if}
+                    </div>
             </div>
             <div class="options-overlay bg-white">
                 <div class="options-overlay-content">

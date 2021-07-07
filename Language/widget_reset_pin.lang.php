@@ -13,7 +13,7 @@ return array(
 
         'lang_title_pin' => 'Настройки PIN-CODE',
         'lang_title' => 'Сброс PIN-CODE',
-        'lang_description_pin_settings' => 'Защита PIN-CODE поможет защитить ваш аккаунт, от нежелательных действий, связанных с настройками и балансом.
+        'lang_description_pin_settings' => 'Защита PIN-CODE поможет защитить ваш аккаунт, от нежелательных действий, связанных с настройками и пожертвованиеями.
                                             <br><code>Примечание:</code> <span class="small text-muted">Отключая PIN-CODE он не перестает работать для действий связанных с изменением настроек мастер аккаунта!</span>',
         'lang_description' => 'Для получения нового PIN-CODE выберите способ доставки.',
         'lang_btn_email' => 'Email',

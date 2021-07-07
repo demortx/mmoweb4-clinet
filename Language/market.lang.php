@@ -141,7 +141,7 @@ return array(
         'widget_sell_send' => 'Подтвердить',
         'widget_sell_go' => 'Вперед',
         'widget_user_profile' => 'Профиль',
-        'widget_user_balance' => 'Баланс:',
+        'widget_user_balance' => 'Пожертвования:',
         'widget_user_active' => 'Активных',
         'widget_user_sold' => 'Продажи',
         'widget_user_comission' => 'Комиссия',
