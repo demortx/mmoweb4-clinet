@@ -514,33 +514,39 @@ if (!function_exists('render_menu_server')) {
 
             $server_info = get_instance()->config['project']['server_info'];
 
-            if (isset($url_array[2]) AND $game_select != $url_array[2]) {
-                if (isset($server_info[$url_array[2]]))
-                    $game_select = $url_array[2];
-            }
+
             //Проверка если что то выбрано
-            if (isset($url_array[3])) {
-                foreach ($server_info[$game_select] as $sid => $srv) {
-                    if (prepareStringForUrl($srv['name']).'.'.$sid == $url_array[3] AND $sid == $select_sid){
-                        $server_select = $srv['name'] . (empty($srv["rate"]) ? '' : ' [x'.$srv["rate"].']');
-                        break;
-                    }elseif (prepareStringForUrl($srv['name']).'.'.$sid == $url_array[3]){
-                        $server_select = false;
-                        $select_sid = $sid;
-                        break;
+            if (isset($url_array[2])) {
+                foreach ($server_info as $game => $server_list) {
+
+                    foreach ($server_list as $sid => $srv) {
+                        if (prepareStringForUrl($srv['name']).'.'.$sid == $url_array[2] AND $sid == $select_sid){
+                            $server_select = $srv['name'] . (empty($srv["rate"]) ? '' : ' [x'.$srv["rate"].']');
+                            $game_select = $game;
+                            break;
+                        }elseif (prepareStringForUrl($srv['name']).'.'.$sid == $url_array[2]){
+                            $server_select = false;
+                            $select_sid = $sid;
+                            $game_select = $game;
+                            break;
+                        }
                     }
                 }
+
+
+
             }
+
             //проверка на первый запуск
             if ($server_select == false) {
                 $server_select = $server_info[$game_select][$select_sid]["name"];
 
                 get_instance()->set_sid($select_sid);
                 if (true){
-                    header('Location: '. set_url($page_select . '/' . $game_select . '/' . prepareStringForUrl($server_select).'.'.$select_sid), TRUE, 301);
+                    header('Location: '. set_url($page_select . '/' . prepareStringForUrl($server_select).'.'.$select_sid), TRUE, 301);
                     die;
                 }else{
-                    $str .= '<script type="text/javascript">document.location.href="' . set_url($page_select . '/' . $game_select . '/' . prepareStringForUrl($server_select).'.'.$select_sid) . '";</script>';
+                    $str .= '<script type="text/javascript">document.location.href="' . set_url($page_select . '/' . prepareStringForUrl($server_select).'.'.$select_sid) . '";</script>';
                 }
 
             }
@@ -559,7 +565,7 @@ if (!function_exists('render_menu_server')) {
                     if ($server['status']) {
                         $str .= '<a class="dropdown-item '
                             . (ucfirst($server_select) == ucfirst($server['name']) ? 'active' : "")
-                            . '" href="' . set_url($page_select . '/' . $game . '/' . prepareStringForUrl( $server['name']).'.'.$sid) . '">'
+                            . '" href="' . set_url($page_select . '/' . prepareStringForUrl( $server['name']).'.'.$sid) . '">'
                             . $server['name'] . (empty($server["rate"]) ? '' : ' [x'.$server["rate"].']')
                             . '</a>';
                     }

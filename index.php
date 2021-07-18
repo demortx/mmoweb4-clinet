@@ -79,6 +79,7 @@ $ignore_detect_lang_page = array(
     '/app/refresh_balance',
     '/app/change_password',
     '/app/change_password_game_account',
+    '/app/forgot_password_game_account',
     '/app/checkout',
     '/app/buy_in_game_currency',
     '/app/get_bonus_cod',

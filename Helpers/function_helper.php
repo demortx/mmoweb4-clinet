@@ -197,8 +197,9 @@ if ( ! function_exists('get_sid_name')) {
         $system = $system['project']['server_info'][get_platform()][$sid];
         $str = '';
 
-        if ($platform_show)
-            $str .= ucfirst(get_platform()) . ' > ';
+        #TODO Решить проблему с платформой
+        //if ($platform_show)
+        //    $str .= ucfirst(get_platform()) . ' > ';
 
         $str .= $system['name'];
 

@@ -238,6 +238,12 @@ class func
     public function widget_shop_advertising(){
         $sid = get_instance()->get_sid();
 
+
+        if (!isset(get_instance()->config['project']['server_menu'][$sid]['shop']))
+            return '';
+
+
+
         $category = array();
         if (isset($this->shop['category'][$sid]))
             $category = $this->shop['category'][$sid];
