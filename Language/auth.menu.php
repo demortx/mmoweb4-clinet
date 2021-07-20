@@ -86,7 +86,7 @@ return array(
         'enable' => true,
         'level' => 200,
         'empty_hide' => false,
-        'href' => '/shop',
+        'href' => '/panel/shop',
         'icon' => 'fa fa-shopping-cart',
         'target' => '_self',
         'name' => array(

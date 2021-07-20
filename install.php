@@ -130,13 +130,21 @@ $db_table_install = array(
                       `id` int(11) NOT NULL COMMENT 'ID Магазина',
                       `mid` int(11) NOT NULL COMMENT 'ID мастер аккаунта',
                       `section` varchar(15) NOT NULL COMMENT 'Раздел лавки',
-                      `type` tinyint(1) NOT NULL COMMENT 'Тип магазина 1 - оптом, \r\n2 - розница,\r\n3 - продажа персонажа',
+                      `type` tinyint(1) NOT NULL COMMENT 'Тип магазина 1 - оптом, 2 - розница, 3 - продажа персонажа',
                       `count` int(2) NOT NULL COMMENT 'Кол-во предметов в магазине',
                       `data_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата создания',
                       `sid` int(11) NOT NULL COMMENT 'ID сервера'
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                     
-                    CREATE TABLE `mw_market_shop_items` (
+                    ALTER TABLE `mw_market_shop`
+                      ADD KEY (`id`),
+                      ADD KEY `sid` (`sid`),
+                      ADD KEY `mid` (`mid`);
+                      
+                    ALTER TABLE `mw_market_shop`
+                      MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Магазина';
+                    COMMIT;",
+    'mw_market_shop_items' => "CREATE TABLE `mw_market_shop_items` (
                       `id` int(11) NOT NULL,
                       `shop_id` int(11) NOT NULL COMMENT 'Ид магазина',
                       `char_info` text NOT NULL COMMENT 'Информация о персонаже',
@@ -157,18 +165,9 @@ $db_table_install = array(
                       `d_att_5` int(11) NOT NULL DEFAULT '0' COMMENT 'стихия'
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                     
-                    ALTER TABLE `mw_market_shop`
-                      ADD KEY (`id`),
-                      ADD KEY `sid` (`sid`),
-                      ADD KEY `mid` (`mid`);
-                    
                     ALTER TABLE `mw_market_shop_items`
                       ADD KEY (`id`),
                       ADD KEY `shop_id` (`shop_id`);
-                    
-                    
-                    ALTER TABLE `mw_market_shop`
-                      MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Магазина';
                     
                     ALTER TABLE `mw_market_shop_items`
                       MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
