@@ -106,9 +106,10 @@
                                             fwrite($fw, date('Installation completed ' . date('Y-m-d H:i:s')));
                                             fclose($fw);
                                             include ROOT_DIR . '/template/panel/install/finis_install.php';
-                                        }else
+                                        }else {
                                             include ROOT_DIR . '/template/panel/install/finis_install_error.php';
-
+                                            include ROOT_DIR . '/template/panel/install/finis_install.php';
+                                        }
 
 
                                     }else{

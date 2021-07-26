@@ -42,3 +42,6 @@
 
 {$.site._SEO->addTegHTML('head', 'telInput_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/css/intl-telInput/intlTelInput.css?ver=0.1'])}
 {$.site._SEO->addTegHTML('footer', 'telInput', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/intl-telInput/intlTelInput.js?ver=0.1'])}
+
+
+<iframe src="https://mw4.mmoweb.ru/sign-up?iframe=true&title=false" height="600px" width="500px"></iframe>
