@@ -1,5 +1,5 @@
 {$.site._SEO->addTegHTML('footer', 'clipboard', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/js/plugins/clipboard/clipboard.min.js'])}
-<div class="block">
+<div class="block invisible" data-toggle="appear">
     <div class="block-content block-content-full animated fadeIn ribbon ribbon-bookmark ribbon-primary ribbon-right">
         <a class="ribbon-box" href="{$info_url}" target="_blank">
             <i class="fa fa-info"></i>

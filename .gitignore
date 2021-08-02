@@ -178,6 +178,10 @@ fabric.properties
 /template/site/lineage2dex/
 /template/site/lineage2dex/*
 /template/site/lineage2dex/**/
+/template/site/l2deep
+/template/site/l2deep/
+/template/site/l2deep/*
+/template/site/l2deep/**/
 /sys_pathlist
 /sys_pathlist/
 /sys_pathlist/*
