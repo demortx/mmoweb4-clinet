@@ -108,7 +108,7 @@ class ParserItem
 
                         if (isset($item["crystal_type"])){
                             $item["crystal_type"] = str_replace(array("[", "]"), "", $item["crystal_type"]);
-                            $items[$item_id]['grade'] = $item["crystal_type"] == 'crystal_free' ? '' : $item["crystal_type"];
+                            $items[$item_id]['grade'] = $item["crystal_type"] == 'crystal_free' ? '' : $this->getGradeName((int) $item["crystal_type"]);
                         }
 
                         if (isset($item["consume_type"])){
@@ -119,6 +119,22 @@ class ParserItem
                                 case"consume_type_asset":     $items[$item_id]['stackable'] = 1; break;
                             }
                         }
+
+                        if (isset($item["stackable"])){
+                            $item["stackable"] = str_replace(array("[", "]"), "", $item["stackable"]);
+                            switch($item["stackable"]){
+                                case "0":   $items[$item_id]['stackable'] = 0; break;
+                                case "2":   $items[$item_id]['stackable'] = 1; break;
+                                case "3":   $items[$item_id]['stackable'] = 1; break;
+                            }
+                        }
+
+                        if ($file_name == 'armorgrp.txt')
+                            $items[$item_id]['type'] = 'armor';
+                        elseif ($file_name == 'weapongrp.txt')
+                            $items[$item_id]['type'] = 'weapon';
+                        else
+                            $items[$item_id]['type'] = 'etcitem';
 
                         if(!empty(trim($item['icon[4]']))){
                             $items[$item_id]['icon'] = explode(".", trim($item['icon[4]']));
@@ -506,4 +522,71 @@ class ParserItem
         }
     }
     /// Pars PTS files END
+
+
+    private function getGradeName($id_grade){
+        switch ($id_grade) {
+            case 0: // D grade_d
+                $grade = "ng";
+                break;
+            case 1: // D grade_d
+                $grade = "d";
+                break;
+
+            case 2: // C grade_c
+                $grade = "c";
+                break;
+
+            case 3: // B grade_b
+                $grade = "b";
+                break;
+
+            case 4: // A grade_a
+                $grade = "a";
+                break;
+
+            case 5: // S grade_s
+                $grade = "s";
+                break;
+
+            case 6: // S80 Grade_S80
+                $grade = "s80";
+                break;
+
+            case 7: // S84 Grade_S84
+                $grade = "s84";
+                break;
+
+            case 8: // R Grade_R
+                $grade = "r";
+                break;
+
+            case 9: // R95 Grade_R95
+                $grade = "r95";
+                break;
+
+            case 10: // R99 Grade_R99
+                $grade = "r99";
+                break;
+            case 11: // R99
+                $grade = "r99";
+                break;
+
+            case 12: // X99
+                $grade = "x99";
+                break;
+
+            case 13: // Y99
+                $grade = "y99";
+                break;
+
+            case 14: // Z99
+                $grade = "z99";
+                break;
+            default;
+                $grade = '';
+        }
+
+        return $grade;
+    }
 }
