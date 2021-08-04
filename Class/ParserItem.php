@@ -98,7 +98,7 @@ class ParserItem
                         $items[$item_id]['description'] = filter_var(str_replace(array('u,', '\\0'), "", $item['description']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $items[$item_id]['icon'] = '';
                         $items[$item_id]['icon_panel'] = '';
-                        $items[$item_id]['grade'] = '';
+                        $items[$item_id]['grade'] = 'none';
                         $items[$item_id]['type'] = '';
                         $items[$item_id]['stackable'] = 0;
 
@@ -584,7 +584,7 @@ class ParserItem
                 $grade = "z99";
                 break;
             default;
-                $grade = '';
+                $grade = 'none';
         }
 
         return $grade;
