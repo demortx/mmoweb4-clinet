@@ -1,4 +1,4 @@
-[MMOWEB](https://mmoweb.ru/) - CMS для mmorpg серверов (L2, BOI, AION, GTA SA)
+[MMOWEB](https://mmoweb.ru/) - CMS для mmorpg серверов (BOI, GTA SA)
 ==================================================
 Как начать
 ---------------------------
