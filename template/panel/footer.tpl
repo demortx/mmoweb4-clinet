@@ -1,9 +1,7 @@
 <!-- Footer -->
 <footer id="page-footer" class="opacity-0">
     <div class="content py-20 font-size-xs clearfix">
-        <div class="float-right" style="margin: 7px;">
-            Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://mmoweb.ru/" target="_blank">Demort</a>
-        </div>
+
 
         <div class="float-right">
             <div class="form-material pt-0">
