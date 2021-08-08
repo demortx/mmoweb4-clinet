@@ -9,7 +9,7 @@ define('API_KEY',       "q08YmsGbX0lC)54U7ZJ1");
 * Это URL центрального API
 * This is the central API URL.
 */
-define('API_URL',       "https://api.mmoweb.ru/");
+define('API_URL',       "https://api.mmoweb.biz/");
 
 /**
 * Тут настраивается подключение к базе хостинга
