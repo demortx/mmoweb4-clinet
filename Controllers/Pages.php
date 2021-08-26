@@ -100,14 +100,25 @@ class Pages extends Controller {
                             $this->seo->loudSite();
 
                             $_CONTENT = $this->fenom->fetch("site:static.tpl",
-                                array(
-                                    'title' => $page["title"],
-                                    'content' => $page["body"],
+                                array_merge(
+                                    loud_lang_site(),//Загрузка языка сайта из шаблона
+                                    array(
+                                        '_SEO_HEAD' => $this->seo->getHead(),
+                                        '_SEO_BODY' => $this->seo->getBody(),
+                                        '_SEO_FOOTER' => $this->seo->getFooter(),
+                                        '_LANG' => select_lang(),
+                                        'title' => $page["title"],
+                                        'content' => $page["body"],
+                                    )
                                 )
                             );
                         }else {
                             $_CONTENT = $this->fenom->fetch("panel:static.tpl",
                                 array(
+                                    '_SEO_HEAD' => $this->seo->getHead(),
+                                    '_SEO_BODY' => $this->seo->getBody(),
+                                    '_SEO_FOOTER' => $this->seo->getFooter(),
+                                    '_LANG' => select_lang(),
                                     'title' => $page["title"],
                                     'content' => $page["body"],
                                 )
