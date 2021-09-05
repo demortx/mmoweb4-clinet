@@ -424,6 +424,13 @@ class GlobalApi extends \Api
         return $response;
     }
 
+    //Gift code
+
+    public function gift_code_buy($vars){
+        $response = $this->init()->addParam('gift_code', $vars)->get('v1/Plugins/gift-code/buy')->response();
+
+        return $response;
+    }
 
 
 }

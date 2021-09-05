@@ -183,6 +183,38 @@ class Api extends Controller
 
     }
 
+    public function gift_code(){
+        $this->gateway();
+
+        if (isset($_POST['cfg'])){
+
+            $cfg = unserialize($_POST['cfg']);
+
+            if(SaveConfig($cfg, 'gift_code')) {
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
+            }else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
+        }else
+            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Not found cfg!", "status" => "error"));
+
+    }
+
+    public function money_withdrawal(){
+        $this->gateway();
+
+        if (isset($_POST['cfg'])){
+
+            $cfg = unserialize($_POST['cfg']);
+
+            if(SaveConfig($cfg, 'money_withdrawal')) {
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update success! config","text" => "Successfully updated the project settings!", "status" => "success"));
+            }else
+                echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Failed to update configuration!", "status" => "error"));
+        }else
+            echo (new \Curl\XMLFormatter())->format(array("title" => "Update Error! config","text" => "Error! Not found cfg!", "status" => "error"));
+
+    }
+
     public function market(){
         $this->gateway();
 
