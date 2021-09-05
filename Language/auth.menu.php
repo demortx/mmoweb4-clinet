@@ -432,6 +432,43 @@ return array(
                 return ' <span class="badge badge-success animated swing infinite">New</span>';
         }
     ),
+    'gift_code' => array(
+        'enable' => function(){ return get_instance()->check_plugin('gift_code');},
+        'level' => 650,
+        'empty_hide' => false,
+        'href' => '/panel/gift-code',
+        'icon' => 'fa fa-gift',
+        'target' => '_self',
+        'name' => array(
+            'ru' => 'Подарочные коды',
+            'en' => 'Gift code',
+            'gr' => 'Gift code',
+            'es' => 'Gift code',
+            'pt' => 'Gift code',
+            'cn' => '礼品码',
+            'ko' => '선물 코드',
+        ),
+        'title' => array(
+            'ru' => 'Подарочные коды',
+            'en' => 'Gift code',
+            'gr' => 'Gift code',
+            'es' => 'Gift code',
+            'pt' => 'Gift code',
+            'cn' => '礼品码',
+            'ko' => '선물 코드',
+        ),
+        'function' => function(&$buttons){
+            $t = filemtime(ROOT_DIR.'/Library/gift_code.php');
+            if (isset($_COOKIE['gift_code_new'])){
+                if ($_COOKIE['gift_code_new'] != $t)
+                    return ' <span class="badge badge-success animated swing infinite">New</span>';
+                else
+                    return '';
+            }
+            else
+                return ' <span class="badge badge-success animated swing infinite">New</span>';
+        }
+    ),
     'forum' => array(
         'enable' => true,
         'level' => 700,

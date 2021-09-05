@@ -1,4 +1,4 @@
-<div class="block">
+<div class="block rounded">
     <div class="block-header block-header-default">
         <h3 class="block-title">{$th_title}</h3>
     </div>

@@ -6,7 +6,7 @@
     <div class="row  animated fadeIn mt-50" data-toggle="appear">
         {foreach $items as $id => $item}
             <div class="col-md-4">
-                <div class="block">
+                <div class="block rounded">
                     <div class="block-content block-content-full ribbon ribbon-modern ribbon-primary">
                         <div class="ribbon-box">
                             {$lang_denomination}: {$item.denomination} {$payment_system.short_name_valute}
