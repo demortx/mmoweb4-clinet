@@ -101,6 +101,8 @@ $ignore_detect_lang_page = array(
     '/api/cases',
     '/api/lucky_wheel',
     '/api/daily_rewards',
+    '/api/gift_code',
+    '/api/money_withdrawal',
     '/api/item',
     '/api/payment/unitpay/'.PAYMENT_KEY,
     '/api/payment/nextpay/'.PAYMENT_KEY,
