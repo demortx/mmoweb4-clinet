@@ -109,6 +109,33 @@ return array(
         ),
         'function' => function(&$buttons){return false;}
     ),
+    'site' => array(
+        'enable' => true,
+        'level' => 500,
+        'empty_hide' => false,
+        'href' => isset(get_instance()->config['site']['url_website']) ? get_instance()->config['site']['url_website'] : '/',
+        'icon' => 'si si-action-undo',
+        'target' => '_blank',
+        'name' => array(
+            'ru' => 'На сайт',
+            'en' => 'Back to the main site',
+            'gr' => 'Επιστροφή στο κεντρικό site',
+            'es' => 'Volver al sitio principal',
+            'pt' => 'Voltar à página inicial',
+            'cn' => '回到主站点',
+            'ko' => '기본 사이트로 돌아 가기',
+        ),
+        'title' => array(
+            'ru' => 'На сайт',
+            'en' => 'Back to the main site',
+            'gr' => 'Επιστροφή στο κεντρικό site',
+            'es' => 'Volver al sitio principal',
+            'pt' => 'Voltar à página inicial',
+            'cn' => '回到主站点',
+            'ko' => '기본 사이트로 돌아 가기',
+        ),
+        'function' => function(&$buttons){return false;}
+    ),
 
 
 );

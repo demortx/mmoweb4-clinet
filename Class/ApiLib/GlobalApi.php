@@ -432,5 +432,16 @@ class GlobalApi extends \Api
         return $response;
     }
 
+    //Money Withdrawal
+    public function withdrawal_log($vars){
+        $response = $this->init()->addParam('withdrawal', $vars)->get('v1/Plugins/withdrawal/log')->response();
 
+        return $response;
+    }
+
+    public function withdrawal($vars){
+        $response = $this->init()->addParam('withdrawal', $vars)->post('v1/Plugins/withdrawal/send')->response();
+
+        return $response;
+    }
 }
