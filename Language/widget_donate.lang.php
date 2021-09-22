@@ -11,7 +11,7 @@ return array(
 
 
 
-        "donate_title" => 'ПОЖЕРТВОВАНИЕ НА МАСТЕР АККАУНТА',
+        "donate_title" => 'ПОЖЕРТВОВАНИЕ НА МАСТЕР АККАУНТ',
         "donate_title_market" => 'ПОЖЕРТВОВАНИЕ НА РЫНОК',
         "donate_input_title_sum" => 'Сумма',
         "donate_input_title_enter_sum" => 'Укажите количество',
