@@ -469,6 +469,32 @@ return array(
                 return ' <span class="badge badge-success animated swing infinite">New</span>';
         }
     ),
+    'money_withdrawal' => array(
+        'enable' => function(){ return get_instance()->check_plugin('money_withdrawal');},
+        'level' => 660,
+        'empty_hide' => false,
+        'href' => '/panel/withdrawal',
+        'icon' => 'fa fa-money',
+        'target' => '_self',
+        'name' => array(
+            'ru' => 'Вывод средств',
+            'en' => 'Withdrawal',
+            'gr' => 'Withdrawal',
+            'es' => 'Withdrawal',
+            'pt' => 'Withdrawal',
+            'cn' => 'Withdrawal',
+            'ko' => 'Withdrawal',
+        ),
+        'title' => array(
+            'ru' => 'Вывод средств',
+            'en' => 'Withdrawal',
+            'gr' => 'Withdrawal',
+            'es' => 'Withdrawal',
+            'pt' => 'Withdrawal',
+            'cn' => 'Withdrawal',
+            'ko' => 'Withdrawal',
+        )
+    ),
     'forum' => array(
         'enable' => true,
         'level' => 700,
