@@ -35,9 +35,9 @@ $route['donations/(:any)/(:any)'] = "Panel/donations/$1/$2";
 
 
 $route['shop'] = "Panel/shop"; // обработчик переноправит на платформу - сервер
-$route['shop/(:any)'] = "Panel/shop/$1"; //обработчик отправит на сервер
-$route['shop/(:any)/(:any)'] = "Panel/shop/$1/$2"; // обработчик откроет списко магазина
-$route['shop/(:any)/(:any)/(:any)'] = "Panel/shop/$1/$2/$3"; // обработчик откроет товар
+$route['shop/(:any)'] = "Panel/shop/$1"; //обработчик откроет списко магазина
+$route['shop/(:any)/(:any)'] = "Panel/shop/$1/$2"; //  обработчик откроет товар
+
 
 $route['sign-in'] = "Panel/signin";
 $route['sign-in/(:any)'] = "Panel/signin/$1";

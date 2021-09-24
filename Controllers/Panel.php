@@ -109,7 +109,7 @@ class Panel extends Controller {
 
     }
 
-    public function shop($s1 = false, $s2 = false, $s3 = false){
+    public function shop($s1 = false, $s2 = false){
 
         if ($this->session->isLogin()) {
             header('Location: '.set_url('/panel/shop', false), TRUE, 301);
@@ -122,7 +122,7 @@ class Panel extends Controller {
         $this->initTPL(
             array_merge(
                 array(
-                    '_CONTENT' => $donations->onRequestShop($s1 , $s2, $s3),
+                    '_CONTENT' => $donations->onRequestShop($s1 , $s2),
                 ),
                 get_lang('login.menu.lang')
             )

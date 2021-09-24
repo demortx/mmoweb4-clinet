@@ -40,11 +40,12 @@ class Shop extends MainModulesClass
         );
     }
 
-    public function onRequestShop($s1 , $s2, $s3){
-        if ($s3 == false)
+    public function onRequestShop($s1 , $s2){
+
+        if ($s2 == false)
             return $this->func->widget_shop_no_auth();
         else
-            return $this->func->widget_item_no_auth($s3);
+            return $this->func->widget_item_no_auth($s2);
     }
 
 
