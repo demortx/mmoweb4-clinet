@@ -219,7 +219,7 @@ class func
                             get_instance()->session->updateSessionDB($data);
                         }
 
-                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/withdrawal')->success();
+                        $send = get_instance()->ajaxmsg->notify((string)$response["response"]->success, '/panel/withdrawal')->success();
                     } else
                         $send = get_instance()->ajaxmsg->notify(get_lang('signin.lang')['signin_ajax_login_error'])->danger();
 
