@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 05.03.2019
  * Time: 19:38
  */
@@ -18,7 +18,7 @@ class SignIn extends MainModulesClass
     public function info()
     {
         return array(
-            "author" => "Demort",
+            "author" => "mmoweb",
             "game" => "Global",
             "version" => "1.0",
             "description" => array(

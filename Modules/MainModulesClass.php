@@ -2,7 +2,7 @@
 namespace Modules;
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 26.10.2017
  */
 class MainModulesClass
@@ -20,7 +20,7 @@ class MainModulesClass
     public function info(){
 
         return array(
-            "author" => "Demort",
+            "author" => "mmoweb",
             "game" => "Lineage",
             "version" => "1.0",
             "description" => array(

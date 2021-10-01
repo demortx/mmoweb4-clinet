@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 14.03.2020
  * Time: 23:31
  */
@@ -35,7 +35,7 @@ class ClearCache
                 'ru' => 'Очиистка временных файлов',
                 'en' => 'Cleanup temporary files',
             ),
-            'author' => 'Demort',
+            'author' => 'mmoweb',
             'version' => '0.1'
         );
     }

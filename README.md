@@ -2,15 +2,15 @@
 ==================================================
 Как начать
 ---------------------------
-Полная документация [RU](https://docs.mmoweb.ru/v/ru/) [EN](https://docs.mmoweb.ru/v/en/)
+Полная документация [RU](https://docs.mmoweb.biz/v/ru/) [EN](https://docs.mmoweb.biz/v/en/)
 
 Установка
 ---------------------------
-Подробная установка [RU](https://docs.mmoweb.ru/v/ru/nachalo-rabot/ustanovka-cms) * [EN](https://docs.mmoweb.ru/v/en/quick-start-guide/cms-setup)
+Подробная установка [RU](https://docs.mmoweb.biz/v/ru/nachalo-rabot/ustanovka-cms) * [EN](https://docs.mmoweb.biz/v/en/quick-start-guide/cms-setup)
 
-1. Скачать [CMS](https://github.com/demortx/mmoweb4-clinet/archive/master.zip)
+1. Скачать [CMS](https://github.com/demort/mmoweb4-clinet/archive/master.zip)
 2. Разархивировать в корень сайта
-3. Ввести ключ в файле **Сonfig.php** на **7** строке параметр **API_KEY** (будет Ваш уникальный ключ найти его можно в панели mmoweb.ru на главной)
+3. Ввести ключ в файле **Сonfig.php** на **7** строке параметр **API_KEY** (будет Ваш уникальный ключ найти его можно в панели mmoweb.biz на главной)
 4. Настроить файл подключения к БД **Сonfig.php**
 5. Запустить **install.php** (находится в корне сайта) после чего удалить или переименовать
 

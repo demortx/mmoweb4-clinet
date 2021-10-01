@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 28.01.2020
  * Time: 14:15
  */
@@ -25,7 +25,7 @@ class InGameCurrency extends MainModulesClass
     public function info()
     {
         return array(
-            "author" => "Demort",
+            "author" => "mmoweb",
             "game" => "Global",
             "version" => "1.0",
             "description" => array(

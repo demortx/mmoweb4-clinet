@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 14.03.2020
  * Time: 23:31
  */
@@ -35,7 +35,7 @@ class Advertising
                 'ru' => 'Рекламная аналитика',
                 'en' => 'Advertising analytics',
             ),
-            'author' => 'Demort',
+            'author' => 'mmoweb',
             'version' => '0.1'
         );
     }

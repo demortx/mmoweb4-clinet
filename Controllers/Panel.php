@@ -1,7 +1,6 @@
 <?php
 /********************************
- * Dev and Code by Demort
- * ICQ 642168666 / email : demortx@mail.ru
+ * Dev and Code by MmoWeb
   * Date: 06.10.2015
  ********************************/
 

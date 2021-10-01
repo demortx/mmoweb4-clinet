@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 14.03.2020
  * Time: 23:31
  */
@@ -41,7 +41,7 @@ class IBlock
                 'ru' => 'Настройки инфо блоков',
                 'en' => 'Info Block Settings',
             ),
-            'author' => 'Demort',
+            'author' => 'mmoweb',
             'version' => '0.1'
         );
     }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 14.03.2020
  * Time: 23:31
  */
@@ -40,7 +40,7 @@ class NewsSite
                 'ru' => 'Новости для сайта',
                 'en' => 'News for the site',
             ),
-            'author' => 'Demort',
+            'author' => 'mmoweb',
             'version' => '0.1'
         );
     }

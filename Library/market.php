@@ -1,7 +1,6 @@
 <?php
 /********************************
-* Dev and Code by Demort
-* Skype x88xax88x / email : demortx@gmail.com
+* Dev and Code by MmoWeb
 * https://mmoweb.ru
 * Market - Lineage
  ********************************/

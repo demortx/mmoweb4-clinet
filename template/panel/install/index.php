@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>MmoWeb v4 - Install</title>
-    <meta name="author" content="Demort">
+    <meta name="author" content="mmoweb">
     <meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" href="/template/panel/assets/media/favicons/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700&display=swap">

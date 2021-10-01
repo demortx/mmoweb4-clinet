@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 14.03.2020
  * Time: 23:31
  */
@@ -81,7 +81,7 @@ class ParsFileGame
                 'ru' => 'Парсер игровых файлов',
                 'en' => 'Game file parser',
             ),
-            'author' => 'Demort',
+            'author' => 'mmoweb',
             'version' => '0.3'
         );
     }

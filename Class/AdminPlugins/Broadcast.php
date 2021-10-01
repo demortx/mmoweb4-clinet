@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 14.03.2020
  * Time: 23:31
  */
@@ -46,7 +46,7 @@ class Broadcast
                 'ru' => 'Трансляции на сайте',
                 'en' => 'Broadcasts on the site',
             ),
-            'author' => 'Demort',
+            'author' => 'mmoweb',
             'version' => '0.1'
         );
     }

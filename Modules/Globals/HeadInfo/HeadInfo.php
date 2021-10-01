@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 23.09.2019
  * Time: 13:08
  */
@@ -25,7 +25,7 @@ class HeadInfo extends MainModulesClass
     public function info()
     {
         return array(
-            "author" => "Demort",
+            "author" => "mmoweb",
             "game" => "Global",
             "version" => "1.0",
             "description" => array(

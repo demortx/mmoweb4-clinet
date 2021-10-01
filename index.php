@@ -1,7 +1,6 @@
 <?php
 /********************************
- * Dev and Code by Demort
- * email : demortx@mail.ru
+ * Dev and Code by MmoWeb
  ********************************/
 
 

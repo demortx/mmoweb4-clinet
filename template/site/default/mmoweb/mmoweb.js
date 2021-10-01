@@ -1,5 +1,5 @@
 /**
- * Created by Demort on 15.10.2017.
+ * Created by mmoweb on 15.10.2017.
  */
 function type(value) {
     var regex = /^\[object (\S+?)\]$/;

@@ -1,7 +1,6 @@
 <?php
 /********************************
- * Dev and Code by Demort
- * ICQ 642168666 / email : demortx@mail.ru
+ * Dev and Code by MmoWeb
  * Date: 23.12.2015
  ********************************/
 
@@ -321,9 +320,7 @@ if ( ! function_exists('SaveConfig')) {
             if ($fopen) {
                 fwrite($fopen, "<?php\n");
                 fwrite($fopen, "/********************************\n");
-                fwrite($fopen, "* Dev and Code by Demort\n");
-                fwrite($fopen, "* Skype x88xax88x / email : demortx@gmail.com\n");
-                fwrite($fopen, "* https://mmoweb.ru\n");
+                fwrite($fopen, "* Dev and Code by https://mmoweb.ru\n");
                 fwrite($fopen, "* Config - Global\n");
                 fwrite($fopen, " ********************************/\n");
                 fwrite($fopen, "defined('ROOT_DIR') OR exit('No direct script access allowed');\n");

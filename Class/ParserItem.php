@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 03.12.2019
  * Time: 21:53
  */
@@ -315,7 +315,7 @@ class ParserItem
     /**
         Описание:  класс для загрузки клиентских файлов Lineage 2, раскодированных при помощи L2ClientDat
         Автор: Gaikotsu
-        Изменил: Demort
+        Изменил: mmoweb
     */
     public function L2ClientDat($fName, $type, $idx1 = -1, $idx2 = -1, $idx3 = -1, $field = false){
 

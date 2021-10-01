@@ -1,7 +1,6 @@
 <?php
 /********************************
- * Dev and Code by Demort
- * ICQ 642168666 / email : demortx@mail.ru
+ * Dev and Code by MmoWeb
  ********************************/
 if (!defined('ROOT_DIR')) {
     exit ("Error, wrong way to file.<a href=\"/\">Go to main</a>.");

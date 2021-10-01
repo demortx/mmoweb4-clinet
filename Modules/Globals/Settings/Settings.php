@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Demort
+ * User: mmoweb
  * Date: 29.09.2019
  * Time: 21:00
  */
@@ -24,7 +24,7 @@ class Settings extends MainModulesClass
     public function info()
     {
         return array(
-            "author" => "Demort",
+            "author" => "mmoweb",
             "game" => "Global",
             "version" => "1.0",
             "description" => array(

@@ -1,8 +1,7 @@
 <?php
 
 /********************************
- * Dev and Code by Demort
- * Email : demortx@gmail.com
+ * Dev and Code by MmoWeb
  * Date: 18.03.2020
  ********************************/
 header("Content-type: application/json; charset=utf-8");
