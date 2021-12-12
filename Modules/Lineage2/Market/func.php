@@ -1678,7 +1678,7 @@ class func
             else
                 $vars['account'] = $_POST['account_name'];
 
-            if (!isset($_POST['char_name']) OR empty($_POST['char_name']))
+            if (!isset($_POST['char_name']))
                 return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_empty_char_name'])->danger();
             else
                 $vars['character'] = $_POST['char_name'];
