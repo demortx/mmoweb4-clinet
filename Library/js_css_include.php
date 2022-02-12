@@ -36,7 +36,7 @@ return array(
                 ['idx' => 'masonry', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/plugins/masonry/masonry.pkgd.min.js'],
 
                 ['idx' => 'js_mmoweb', 'typex' => 'script', 'src' => VIEWPATH.'/panel/assets/js/mmoweb.js?v=' . filemtime(ROOT_DIR.VIEWPATH.'/panel/assets/js/mmoweb.js')],
-                ['idx' => 'webstat', 'typex' => 'script', 'src' => 'https://mmo24.ru/webstat/watch.js'],
+                ['idx' => 'webstat', 'typex' => 'script', 'src' => 'https://mmoweb.biz/watch.js'],
                 ['idx'=> 'historyTabs', 'typex' => 'script', 'js' => "window.masonry_div = $('.grid').masonry({itemSelector: '.grid-item',columnWidth: '.grid-sizer',percentPosition: true});$('.nav-tabs a').historyTabs();"],
             ),
         ],
