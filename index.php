@@ -125,6 +125,8 @@ $ignore_detect_lang_page = array(
     '/api/payment/interkassa/'.PAYMENT_KEY,
     '/api/payment/primepayments/'.PAYMENT_KEY,
     '/api/payment/liqpay/'.PAYMENT_KEY,
+    '/api/payment/paypalych/'.PAYMENT_KEY,
+    '/api/payment/lava/'.PAYMENT_KEY,
     '/text',
     '/captcha/img',
     '/prefix/refresh',
