@@ -1,3 +1,8 @@
+<Files ~ "\.tpl$"> 
+Order allow,deny 
+Deny from all 
+</Files>
+
 # Initialization
 AddDefaultCharset UTF-8
 Options -Indexes
