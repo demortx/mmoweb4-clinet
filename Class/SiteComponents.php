@@ -310,8 +310,7 @@ class SiteComponents
                 $line = array_slice($data['data']['online_history']["data"]["online_multiple"], -$count);
                 if (is_array($line) AND count($line) > 0) {
                     foreach ($line as $ln){
-
-                        $online[] = $ln[1];
+                        $online[] = [$ln[0], $ln[1]];
                     }
                 }
             }
