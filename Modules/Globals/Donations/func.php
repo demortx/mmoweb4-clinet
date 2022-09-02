@@ -180,6 +180,7 @@ class func
                     'market' => $this->market,
                     'event_cfg' => $event_list,
                     'payment_list' => $this->payment_list,
+                    'config_cabinet' => get_instance()->config['cabinet'],
                     get_lang('course.lang')
 
                 ),
@@ -224,6 +225,8 @@ class func
 
                 $vars["ymid"] = $this->advertising['ymid'];
             }
+            if (!captcha_check())
+                return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_error_captcha'])->eval_js(captcha_reload('checkout'))->danger();
 
 
             //Ставим флаг создания простого платежа

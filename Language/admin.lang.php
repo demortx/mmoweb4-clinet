@@ -27,6 +27,9 @@ return array(
         'btn_title_IBlock'=> 'Инфо блоки',
         'btn_desc_IBlock'=> 'слайдеры инфо блоки на сайте',
 
+        'btn_title_PatchNotes'=> 'Патчноуты',
+        'btn_desc_PatchNotes'=> 'Патчноуты на сайте',
+
         'btn_title_LangEditor'=> 'Языки',
         'btn_desc_LangEditor'=> 'языковые настройки сайта',
 
@@ -256,6 +259,9 @@ return array(
 
         'btn_title_IBlock'=> 'Infoblocks',
         'btn_desc_IBlock'=> 'sliders with info blocks on the site',
+
+        'btn_title_PatchNotes'=> 'Patch notes',
+        'btn_desc_PatchNotes'=> 'Patch notes on the site',
 
         'btn_title_LangEditor'=> 'Languages',
         'btn_desc_LangEditor'=> 'site language settings',

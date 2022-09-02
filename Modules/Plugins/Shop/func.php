@@ -114,6 +114,7 @@ class func
                         'payment_list' => $this->payment_list,
                         'categorys' => $category,
                         'item' => $item,
+                        'config_cabinet' => get_instance()->config['cabinet'],
                     ),
                     get_lang('shop.lang'),
                     get_lang('course.lang')
@@ -177,6 +178,9 @@ class func
                     $vars["email"] = $_POST['email'];
             }
         }
+
+        if (!captcha_check())
+            return get_instance()->ajaxmsg->notify(get_lang('signup.lang')['signup_ajax_error_captcha'])->eval_js(captcha_reload('checkout'))->danger();
 
         $sid = get_instance()->get_sid();
 
