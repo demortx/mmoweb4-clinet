@@ -174,20 +174,20 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group row justify-content-center char_name_div_market" style="display: none;">
-                <div class="col-lg-10">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-street-view"></i></span>
+            {if $item.type == '3'}
+                <div class="form-group row justify-content-center char_name_div_market" style="display: none;">
+                    <div class="col-lg-10">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-street-view"></i></span>
+                            </div>
+                            <select id="char_name_market" name="char_name" class="form-control" size="1">
+                                <option value="0">{$lang_select_char}</option>
+                            </select>
                         </div>
-                        <select id="char_name_market" name="char_name" class="form-control" size="1">
-                            <option value="0">{$lang_select_char}</option>
-                        </select>
                     </div>
                 </div>
-            </div>
-
+            {/if}
         {else}
             <p class="alert alert-warning font-w600 text-center" style="border-radius: 3px;">
                 {$ajax_buy_shop_no_accs}  {$.php.get_sid_name()}
