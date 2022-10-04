@@ -35,7 +35,7 @@
                                 Payment: {$response_data.payment_system}<br>
                                 Date create: {$response_data.date_create}<br>
                                 Date complete: {$response_data.date_complete}<br>
-                                Status: {if $response_data.status == 1}complete{else}refund{/if}
+                                Status: {if $response_data.status == 0}waiting{elseif $response_data.status == 1}complete{elseif $response_data.status == 2}refund{elseif $response_data.status == 3}waiting for confirmation{else}Status:{$response_data.status}{/if}
 
                             </address>
                         </div>

@@ -22,6 +22,7 @@
                 </a>
             </li>
             {foreach $categorys as $cat}
+
                 {if $.php.in_array($.site._LANG, $cat.lang)}
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-category-link="cat_{$cat.id}">{$cat.name}</a>
@@ -31,8 +32,11 @@
         </ul>
     </div>
     <div class="row items-push">
-        {foreach $shops as $shop}
-            {if $categorys[$shop.category]! AND $.php.in_array($.site._LANG, $categorys[$shop.category]['lang'])}
+        {foreach $categorys as $cat}
+			{foreach $shops as $shop}
+				{if $shop.category != $cat.id || !$.php.in_array($.site._LANG, $categorys[$shop.category]['lang'])}
+                    {continue}
+                {/if}
                 <div class="col-md-6 col-lg-4 col-xl-3" data-category="cat_{$shop.category}">
                     {set $sale = $.php.get_shop_sale($shop.sale_id)}
 
@@ -60,7 +64,7 @@
                         </div>
                     </a>
                 </div>
-            {/if}
+            {/foreach}
         {/foreach}
     </div>
 </div>

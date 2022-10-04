@@ -30,8 +30,11 @@
         </ul>
     </div>
     <div class="row items-push">
-        {foreach $shops as $shop}
-            {if $categorys[$shop.category]! AND $.php.in_array($.site._LANG, $categorys[$shop.category]['lang'])}
+        {foreach $categorys as $cat}
+            {foreach $shops as $shop}
+                {if $shop.category != $cat.id || !$.php.in_array($.site._LANG, $categorys[$shop.category]['lang'])}
+                    {continue}
+                {/if}
                 <div class="col-md-6 col-lg-4 col-xl-3" data-category="cat_{$shop.category}">
                     {set $sale = $.php.get_shop_sale($shop.sale_id)}
                     <a class="block block-link-shadow block-rounded ribbon ribbon-bookmark ribbon-left ribbon-warning text-center shop-item" href="{$.server.REQUEST_URI}/{$.php.prepareStringForUrl($shop.name)}.{$shop.id}">
@@ -58,7 +61,7 @@
                         </div>
                     </a>
                 </div>
-            {/if}
+            {/foreach}
         {/foreach}
     </div>
 </div>

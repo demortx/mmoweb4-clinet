@@ -100,6 +100,7 @@
                     <th class="">{$.site.config.payment_system.long_name_valute}</th>
                     <th class="">{$lang_tab_invoice_th_sum}</th>
                     <th class="d-none d-sm-table-cell">{$lang_tab_logs_th_date}</th>
+                    <th class="d-none d-sm-table-cell">Status</th>
                     {if $.site.config.cabinet.tab_active_invoice_detail}<th class=""></th>{/if}
                 </tr>
                 </thead>
@@ -116,6 +117,7 @@
                             <td class="font-w600">{$invoice.c}</td>
                             <td class="font-w600">{$invoice.s} {$invoice.cur}</td>
                             <td class="d-none d-sm-table-cell">{$invoice.dc}</td>
+                            <td class="d-none d-sm-table-cell">{if $invoice.st == 0}waiting{elseif $invoice.st == 1}complete{elseif $invoice.st == 2}refund{elseif $invoice.st == 3}waiting for confirmation{else}Status:{$invoice.st}{/if}</td>
                             {if $.site.config.cabinet.tab_active_invoice_detail}<td class="text-center"><a href="{$.php.set_url('/invoice/'~$invoice.payid)}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-external-link"></i></a></td>{/if}
                         </tr>
                     {/foreach}
