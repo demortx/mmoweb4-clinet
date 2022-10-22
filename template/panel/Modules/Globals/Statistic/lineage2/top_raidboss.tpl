@@ -9,20 +9,22 @@
     </thead>
     <tbody>
     {foreach $top_list as $key => $row  index=$index}
-        <tr>
-            <th scope="row">{$index+1}</th>
-            <td>{$row.rb_name}</td>
-            <td>{$row.level}</td>
-            <td>
-                {if $row.rb_online === true}
-                    <span class="text-success">Alive</span>
-                {elseif $row.rb_online === false}
-                    <span class="text-danger">Dead</span>
-                {else}
-                    <span class="text-danger">{$row.rb_online}</span>
-                {/if}
-            </td>
-        </tr>
+        {if $row.rb_name?}
+            <tr>
+                <th scope="row">{$index+1}</th>
+                <td>{$row.rb_name}</td>
+                <td>{$row.level}</td>
+                <td>
+                    {if $row.rb_online === true} 
+                        <span class="text-success">Alive</span>
+                    {elseif $row.rb_online === false}
+                        <span class="text-danger">Dead</span>
+                    {else}
+                        <span class="text-danger">{$row.rb_online}</span>
+                    {/if}
+                </td>
+            </tr>
+        {/if}
     {/foreach}
     </tbody>
 </table>
