@@ -30,18 +30,19 @@ class func
     public function widget_gift_code(){
         $this->set_label_new();
         $sid = get_instance()->get_sid();
+        $config = false;
 
         if (isset($this->gift_code[$sid]['items'])){
-            $items = $this->gift_code[$sid]['items'];
-        }else
-            $items = false;
+            $config = $this->gift_code[$sid];
+        }
+
 
 
         return get_instance()->fenom->fetch(
             get_tpl_file('gift_code.tpl', get_class($this->this_main)),
             array_merge(
                 array(
-                    'items' => $items,
+                    'config' => $config,
                     'payment_system' => get_instance()->config['payment_system'],
                     'module_form' => 'Modules\\\\Plugins\\\\GiftCode\\\\GiftCode',
                     'module' => 'ajax_buy_gift',
@@ -76,14 +77,24 @@ class func
             if (!isset($this->gift_code[$sid]['items']))
                 return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_shop_not_found'])->danger();
 
+
+
+
             if (!isset($_POST['id']) OR empty($_POST['id']))
                 exit(get_instance()->ajaxmsg->notify(get_lang('gift_code.lang')['ajax_empty_id'])->danger());
             else
                 $vars['id'] = (int) $_POST['id'];
 
-            if (!isset($this->gift_code[$sid]['items'][(int)$_POST['id']]))
-                return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_shop_not_found'])->danger();
+            if ($vars['id'] > 0) {
+                if (!isset($this->gift_code[$sid]['items'][(int)$_POST['id']]))
+                    return get_instance()->ajaxmsg->notify(get_lang('shop.lang')['ajax_shop_not_found'])->danger();
+            }else{
+                if (!isset($_POST['sum']) OR empty($_POST['sum']))
+                    exit(get_instance()->ajaxmsg->notify(get_lang('gift_code.lang')['ajax_empty_sum'])->danger());
 
+
+                $vars['sum'] = $_POST['sum'];
+            }
 
             $response = $api->gift_code_buy($vars);
 
