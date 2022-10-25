@@ -14,10 +14,14 @@
                     <iframe src="{$stream.stream}" frameborder="0" allowfullscreen="true" scrolling="no" height="140" width="250"></iframe>
                 {elseif $stream.platform == 'youtube'}
                     <iframe id="ytplayer_{$stream.id}" type="text/html" width="250" height="140" src="{$stream.stream}" frameborder="0" allowfullscreen></iframe>
+                {elseif $stream.platform == 'trovo'}
+                    <iframe type="text/html" width="250" height="140" src="{$stream.stream}" frameborder="0" allowfullscreen>
                 {elseif $stream.platform == 'other'}
                     {$stream.stream}
                 {/if}
-            
+
+
+
             {/foreach}
         {else}
             <div><span class="article__title">Здесь мог быть ваш стрим!</span></div>

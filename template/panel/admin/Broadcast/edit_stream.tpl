@@ -24,8 +24,9 @@
                                 <input type="text" class="form-control" id="val-stream" value="{$stream_param.stream}" name="stream">
                                 <div class="form-text text-muted">{$Broadcast_stream_desc}</div>
                                 <div class="form-text text-muted"><strong>Example: </strong></div>
-                                <div class="form-text text-muted">Twitch - https://player.twitch.tv/?channel=streamer_name&parent=www.example.com</div>
-                                <div class="form-text text-muted">YouTube - https://www.youtube.com/embed/lnPmXTpYAs8</div>
+                                <div class="form-text text-muted">Twitch - https://player.twitch.tv/?channel=<code>streamer_name</code>&parent=<code>www.your-site.com</code></div>
+                                <div class="form-text text-muted">YouTube - https://www.youtube.com/embed/<code>streamer_name</code></div>
+                                <div class="form-text text-muted">Trovo - https://player.trovo.live/embed/player?streamername=<code>streamer_name</code></div>
                                 <div class="form-text text-muted">Other service - iframe html code</div>
                             </div>
                         </div>

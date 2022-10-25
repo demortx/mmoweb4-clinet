@@ -187,6 +187,10 @@ class Broadcast
                     $_POST['stream'] = substr($_POST['stream'], 0, $position);
                 }
             break;
+            //https://player.trovo.live/embed/player?streamername=<streamer_username>
+            case 'trovo':
+
+            break;
 
             case 'other':
                 // iframe код
