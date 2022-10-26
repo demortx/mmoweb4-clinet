@@ -98,7 +98,7 @@ class func
                     //перебераем рейтинг
                     if (isset($top_data['data']) AND is_array($top_data['data'])) {
                         $top_data['data'] = array_values($top_data['data']);
-                        foreach ($top_data['data'] as &$row) {
+                        foreach ($top_data['data'] as $i => &$row) {
                             //перебераем данные из позиции
                             foreach ($row as $key => &$val) {
 
@@ -142,6 +142,8 @@ class func
                                     $row['level'] = $row['rb_level'];
                                     $row['respawn'] = 0;
                                     $row['random'] = 0;
+
+                                    $find = false;
                                     if ($val > 0) {
                                         foreach ($lib['raidboss'] as $rb_key => $rb_info) {
                                             if ($rb_info['npc_id'] == $val) {
@@ -149,17 +151,24 @@ class func
                                                 $row['level'] = $rb_info['level'];
                                                 $row['respawn'] = $rb_info['respawn'];
                                                 $row['random'] = $rb_info['random'];
+                                                $find = true;
                                                 break;
                                             }
                                         }
-                                    }else{
-                                        if (isset($lib['raidboss'][$row['rb_name']])){
-                                            $row['rb_name'] = $lib['raidboss'][$row['rb_name']]['npc_name'];
-                                            $row['level'] = $lib['raidboss'][$row['rb_name']]['level'];
-                                            $row['respawn'] = $lib['raidboss'][$row['rb_name']]['respawn'];
-                                            $row['random'] = $lib['raidboss'][$row['rb_name']]['random'];
-                                        }
                                     }
+
+                                    if (!$find AND isset($lib['raidboss'][$row['rb_name']])){
+                                        $row['rb_name'] = $lib['raidboss'][$row['rb_name']]['npc_name'];
+                                        $row['level'] = $lib['raidboss'][$row['rb_name']]['level'];
+                                        $row['respawn'] = $lib['raidboss'][$row['rb_name']]['respawn'];
+                                        $row['random'] = $lib['raidboss'][$row['rb_name']]['random'];
+                                        $find = true;
+                                    }
+
+                                    if (!$find){
+                                        unset($top_data['data'][$i]);
+                                    }
+
                                 }
 
                                 if ($key == 'siege' AND !is_numeric($val)){
