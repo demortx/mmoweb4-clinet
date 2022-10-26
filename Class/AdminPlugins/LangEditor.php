@@ -202,6 +202,15 @@ class LangEditor
 
                 if (isset($_GET['save']) AND count($_POST) > 0) {
 
+                    if (isset($_POST['_arr']) AND is_array($_POST['_arr'])){
+                        foreach ($_POST['_arr'] as $k) {
+                            if (isset($_POST[$k]) AND !empty($_POST[$k])){
+                                $_POST[$k] = json_decode($_POST[$k], true);
+                            }
+                        }
+                    }
+                    unset($_POST['_arr']);
+
                     $fd = ROOT_DIR . VIEWPATH . '/site/' . $s2 . '/Lang/' . $s_lang . '.php';
                     $tpl_info = include_once ROOT_DIR . VIEWPATH . '/site/' . $s2 . '/Info.php';
 

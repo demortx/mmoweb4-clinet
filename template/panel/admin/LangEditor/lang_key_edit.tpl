@@ -22,6 +22,14 @@
                                         </div>
                                     </div>
                                 </div>
+                            {elseif is_array($value)}
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-{$key}">{$key} <code>*[array^json]</code></label>
+                                    <div class="col-lg-8">
+                                        <input type="hidden" name="_arr[]" value="{$key}">
+                                        <textarea type="text" class="form-control" id="val-{$key}" name="{$key}" rows="{(substr_count($.php.json_encode($value, 128), "\n") + 1)}" placeholder="Укажите значение ключа">{$.php.json_encode($value, 128)}</textarea>
+                                    </div>
+                                </div>
                             {else}
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-{$key}">{$key}</label>
