@@ -22,6 +22,7 @@ class Broadcast
     public $stream_type = array(
         'twitch' => 'Twitch.tv',
         'youtube' => 'YouTube',
+        'trovo' => 'Trovo',
         'other' => 'Other service',
     );
 
