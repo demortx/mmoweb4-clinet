@@ -19,7 +19,7 @@ use Fenom\Template;
  */
 class Fenom
 {
-    const VERSION = '2.9';
+    const VERSION = '2.12';
     const REV = 1;
     /* Actions */
     const INLINE_COMPILER = 1;
@@ -421,7 +421,7 @@ class Fenom
             throw new InvalidArgumentException("Source must be a valid path or provider object");
         }
         $fenom = new static($provider);
-        /** @var Fenom $fenom */
+        /* @var Fenom $fenom */
         $fenom->setCompileDir($compile_dir);
         if ($options) {
             $fenom->setOptions($options);
