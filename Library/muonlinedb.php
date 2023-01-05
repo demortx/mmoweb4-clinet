@@ -59,7 +59,7 @@ return array(
         199 => array('Mystic Mage', 'MYM', 'lem.jpg', 'base_stats' => array('str' => 18, 'agi' => 18, 'vit' => 19, 'ene' => 30, 'cmd' => 0), 'class_group' => 192),
     ),
     "character_cmd" => array(64, 66, 70),
-    "race" => array(
+    "gens_ranks" => array(
         10000 => 'Knight',
         6000 => 'Guard',
         3000 => 'Officer',

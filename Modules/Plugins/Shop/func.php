@@ -480,7 +480,7 @@ class func
                 $vars["items"] = $_POST['items'];
 
             unset($_POST['module_form'],$_POST['module'],$_POST['shop_id'],$_POST['items']);
-            //перебераем входяшие данные
+            //перебираем входяшие данные
             foreach ($_POST as $key => $item) {
                 $vars[$key] = $item;
             }

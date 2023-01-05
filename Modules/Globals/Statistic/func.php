@@ -26,10 +26,7 @@ class func
         $rating_sid = get_instance()->get_sid();
 
         $data = $this->get_cache_rating($rating_sid, $platform);
-        //$data['online_history'] = $this->get_cache_online_history($rating_sid);
-
-
-
+        //$data['online_history'] = $this->get_cache_online_history($rating_sid);;
 
 
         return get_instance()->fenom->fetch(
@@ -89,17 +86,17 @@ class func
             case 'lineage2':
                 //Загружаем бибилотеку
                 $lib = include_once ROOT_DIR.'/Library/lineage2db.php';
-                //перебераем массивы с рейтингами
+                //перебираем массивы с рейтингами
                 foreach ($data as $type_rating => &$top_data) {
                     //если есть ошибка пропускаем
                     if ($top_data['error'] == '1')
                         continue;
 
-                    //перебераем рейтинг
+                    //перебираем рейтинг
                     if (isset($top_data['data']) AND is_array($top_data['data'])) {
                         $top_data['data'] = array_values($top_data['data']);
                         foreach ($top_data['data'] as $i => &$row) {
-                            //перебераем данные из позиции
+                            //перебираем данные из позиции
                             foreach ($row as $key => &$val) {
 
                                 if (is_array($val) AND count($val) == 0) $val = '';
@@ -192,17 +189,17 @@ class func
             case 'boi':
                 //Загружаем бибилотеку
                 $lib = include_once ROOT_DIR.'/Library/boidb.php';
-                //перебераем массивы с рейтингами
+                //перебираем массивы с рейтингами
                 foreach ($data as $type_rating => &$top_data) {
                     //если есть ошибка пропускаем
                     if ($top_data['error'] == '1')
                         continue;
 
-                    //перебераем рейтинг
+                    //перебираем рейтинг
                     if (isset($top_data['data']) AND is_array($top_data['data'])) {
                         $top_data['data'] = array_values($top_data['data']);
                         foreach ($top_data['data'] as &$row) {
-                            //перебераем данные из позиции
+                            //перебираем данные из позиции
                             foreach ($row as $key => &$val) {
 
                                 if (is_array($val) AND count($val) == 0) $val = '';
@@ -215,6 +212,53 @@ class func
                         }
                     }
 
+                }
+                break;
+
+            case 'muonline':
+                //Загружаем бибилотеку
+                $lib = include_once ROOT_DIR.'/Library/muonlinedb.php';
+
+                //перебираем массивы с рейтингами
+                foreach ($data as $type_rating => &$top_data) {
+                    //если есть ошибка пропускаем
+                    if ($top_data['error'] == '1')
+                        continue;
+
+
+                    //перебираем рейтинг
+                    if (isset($top_data['data']) AND is_array($top_data['data'])) {
+                        $top_data['data'] = array_values($top_data['data']);
+                        foreach ($top_data['data'] as &$row) {
+
+                            //перебираем данные из позиции
+                            foreach ($row as $key => &$val) {
+
+                                if (is_array($val) AND count($val) == 0) $val = '';
+
+                                if ($key == 'Class') {
+                                    if (isset($lib['class'][$val][0])) {
+                                        $row['class_img'] = $lib['class'][$val][2];
+                                        $val = $lib['class'][$val][0];
+                                    }else{
+                                        $val = '-//-';
+                                        $row['class_img'] = 'avatar.jpg';
+                                    }
+                                }
+
+
+
+                                if ($key == 'MapNumber') {
+                                    $val = $lib['map_list'][$val];
+                                }
+                                if ($key == 'G_Mark' AND !empty($val)) {
+                                    $val = md5($val);
+                                }
+
+                            }
+
+                        }
+                    }
                 }
                 break;
         }
@@ -248,7 +292,6 @@ class func
 
         //если переданы картинки
         if (isset($data['crest'])) {
-            $data['crest']['sid'];
             //считываем фаил
             $file = base64_decode($data['crest']['file']);
             //создаем деректори.
