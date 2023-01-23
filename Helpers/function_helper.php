@@ -346,9 +346,10 @@ if ( ! function_exists('SaveConfig')) {
 if ( ! function_exists('cfgWrite')) {
 
     function  cfgWrite($fopen, &$savedata, $amp = "")
-    {
+    { 
 
         $php_code = var_export($savedata, TRUE);
+        $php_code = str_replace(['->','::','cfgWrite','stream_socket_client','pfsockopen','fsockopen','mail','gzinflate','str_rot13','eval','base64_decode','$_POST','$_GET','$_REQUEST','$','exec', 'system', 'passthru', 'shell_exec', 'pcntl_exec', 'proc_open', 'popen','call_user_func', 'call_user_func_array'],'', $php_code);
         $php_code = preg_replace("/'\s*=>\s*array\s*\(/m","'=>array(",$php_code);
         $php_code = preg_replace("/'(\d*)'/m","$1",$php_code);
         //$php_code = preg_replace("/'((?:\d+)?(?:.\d+)?)'/m","$1",$php_code);
