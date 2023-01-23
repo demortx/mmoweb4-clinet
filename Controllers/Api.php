@@ -21,11 +21,18 @@ class Api extends Controller
             echo (new \Curl\XMLFormatter())->format(array("error" => "Not Hash","code" => 0));
             exit;
         }
+        if (get_ip() != '54.37.239.226'){
+            exit( (new \Curl\XMLFormatter())->format(array("error" => "IP error API", 'code' => 1 , 'IP' => get_ip())));
+        }
+
         $HASH = $_POST['hash'];
         unset($_POST['hash']);
 
         ksort($_POST);
         $signature = hash_hmac('sha256', json_encode($_POST), API_KEY);
+
+
+
 
         if($HASH !== $signature){
             exit( (new \Curl\XMLFormatter())->format(array("error" => "Signature", 'code' => 1 , 'hash' => $HASH)));
