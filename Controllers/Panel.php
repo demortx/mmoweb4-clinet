@@ -54,7 +54,11 @@ class Panel extends Controller {
             show_404();
 
         if (!isset($_SESSION)) {
-            session_start();
+            $ok = @session_start();
+            if(!$ok){
+                session_regenerate_id(true); // replace the Session ID
+                session_start();
+            }
         }
 
     }
