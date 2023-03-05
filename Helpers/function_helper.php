@@ -373,8 +373,9 @@ if ( ! function_exists('get_ip')) {
     function get_ip()
     {
         $ipaddress = '';
-        if (isset($_SERVER['HTTP_CLIENT_IP']) AND !empty($_SERVER['HTTP_CLIENT_IP']))
-            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+
+        if (isset($_SERVER[HEADER_IP]) AND !empty($_SERVER[HEADER_IP]))
+            $ipaddress = $_SERVER[HEADER_IP];
         /*else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_X_FORWARDED_FOR']))
             $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];*/
         else if (isset($_SERVER['HTTP_X_FORWARDED']) AND !empty($_SERVER['HTTP_X_FORWARDED']))
@@ -383,10 +384,16 @@ if ( ! function_exists('get_ip')) {
             $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
         else if (isset($_SERVER['HTTP_FORWARDED']) AND !empty($_SERVER['HTTP_FORWARDED']))
             $ipaddress = $_SERVER['HTTP_FORWARDED'];
-        else if (isset($_SERVER[HEADER_IP]) AND !empty($_SERVER[HEADER_IP]))
-            $ipaddress = $_SERVER[HEADER_IP];
+        elseif (isset($_SERVER['REMOTE_ADDR']) AND !empty($_SERVER['REMOTE_ADDR']))
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
         else
             $ipaddress = 'UNKNOWN';
+
+        if (strpos($ipaddress, ',') !== false){
+            $ips = explode(',',$ipaddress);
+            $ipaddress = array_pop($ips);
+        }
+
 
         return $ipaddress;
     }
