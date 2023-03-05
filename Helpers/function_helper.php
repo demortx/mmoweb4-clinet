@@ -376,8 +376,8 @@ if ( ! function_exists('get_ip')) {
 
         if (isset($_SERVER[HEADER_IP]) AND !empty($_SERVER[HEADER_IP]))
             $ipaddress = $_SERVER[HEADER_IP];
-        /*else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];*/
+        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
         else if (isset($_SERVER['HTTP_X_FORWARDED']) AND !empty($_SERVER['HTTP_X_FORWARDED']))
             $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
         else if (isset($_SERVER['HTTP_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_FORWARDED_FOR']))
