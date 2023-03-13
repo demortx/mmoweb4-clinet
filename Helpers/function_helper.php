@@ -1465,7 +1465,7 @@ if (!function_exists('get_augmentation')) {
         if (isset($TEMP[$lib]['augmentation'][$aug_id]))
             return $TEMP[$lib]['augmentation'][$aug_id];
         else
-            return 'N/A';
+            return ['NOT FOUND AUG ID:'.$aug_id];
     }
 }
 
