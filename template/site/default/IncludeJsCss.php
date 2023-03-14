@@ -36,7 +36,7 @@ return array(
                 //<!-- Main app -->
                 ['idx' => 'jquery', 'typex' => 'script', 'src' => TEMPLATE_DIR.'/js/app.js?ver=' . filemtime(ROOT_DIR.TEMPLATE_DIR.'/js/app.js')],
                 //MMOWEB STAT
-                ['idx' => 'webstat', 'typex' => 'script', 'src' => 'https://mmo24.ru/webstat/watch.js'],
+                ['idx' => 'webstat', 'typex' => 'script', 'src' => 'https://mmoweb.biz/watch.js'],
 
                 //['idx'=> '', 'typex' => 'script', 'js' => 'alert(1)'],
             ),
