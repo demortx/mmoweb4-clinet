@@ -192,7 +192,7 @@ return array(
                     return '';
                 else {
                     $name_valute = get_instance()->config['payment_system']['short_name_valute'];
-                    return ' : <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
+                    return ' : <span class="text-success"> <span class="balance_html">' . $balance . '</span> ' . $name_valute . '</span>';
                 }
             }else
                 return '';
@@ -274,7 +274,7 @@ return array(
                     return '';
                 else {
                     $name_valute = get_instance()->config['payment_system']['short_name_valute'];
-                    return ': <span class="text-success balance_html">' . $balance . ' ' . $name_valute . '</span>';
+                    return ' : <span class="text-success"> <span class="balance_html">' . $balance . '</span> ' . $name_valute . '</span>';
                 }
             }else
                 return '';
@@ -352,7 +352,7 @@ return array(
                     return '';
                 else {
                     $name_valute = get_instance()->config['payment_system']['short_name_valute'];
-                    return ': <span class="text-success balance_html_market">' . $balance . ' ' . $name_valute . '</span>';
+                    return ' : <span class="text-success"> <span class="balance_html_market">' . $balance . '</span> ' . $name_valute . '</span>';
                 }
             }else
                 return '';

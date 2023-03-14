@@ -64,7 +64,7 @@ define('TEMPLATE_WYSIWYG',  true); //Использовать WYSIWYG HTML Edito
 * Advanced settings
 */
 define('CLOUD_FLARE',        true);         // Переопределение IP адресов от https://www.cloudflare.com/
-define('HEADER_IP',         'REMOTE_ADDR'); // Источник ип адреса по умолчанию: REMOTE_ADDR
+define('HEADER_IP',         'HTTP_CLIENT_IP'); // Источник ип адреса по умолчанию: REMOTE_ADDR
 
 /**
 * Кеширование информации сайт и лк. Время в секундах
