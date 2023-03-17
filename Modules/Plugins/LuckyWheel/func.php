@@ -104,6 +104,7 @@ class func
                             'result'    => 'success', //success/error/warning/info
                             'balance'    => (float) $response["response"]->data->user_data->balance,
                             'info'    => $response["response"]->data->user_data->lucky_wheel,
+                            'price'    => $this->lucky_wheel[$sid]['price'],
                             'count'    => round($response["response"]->data->user_data->balance / $this->lucky_wheel[$sid]['price']),
                             'item'    => array(
                                 'name' => (string) $response["response"]->items->name,
