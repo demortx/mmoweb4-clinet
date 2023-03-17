@@ -87,10 +87,24 @@
                 module_form: '{$module_form}',
                 module: '{$module}',
                 /* Папка со звуками */
-                urlSounds: '{$.const.VIEWPATH}/panel/assets/game/sounds/'
-            }
+                urlSounds: '{$.const.VIEWPATH}/panel/assets/game/sounds/',
+                /* Платные прокрутки */
+                paid: {
+                    status:{if $max_price_spin >0} true, {else} false, {/if}
+                    count: {if $max_price_spin >0}{$.site.session->session.user_data.lucky_wheel.paid.count}, {else} 0, {/if}
+                    date: {if $max_price_spin >0}"{$.site.session->session.user_data.lucky_wheel.paid.date}" {else} "" {/if}
+                },
+                /* Бесплатные прокрутки */
+                free: {
+                    status:{if $free_spin >0} true, {else} false, {/if}
+                    count: {if $free_spin >0} {$.site.session->session.user_data.lucky_wheel.free.count}, {else} 0, {/if}
+                    date: {if $free_spin >0} "{$.site.session->session.user_data.lucky_wheel.free.date}" {else} "" {/if}
+                },
+                price: "{$price}",
 
+            }
         </script>
+
         <div class="wh__wheel wheel">
             <div class="wheel__arrow"></div>
             <div class="wheel__sound sound" data-game-sound="true"></div>

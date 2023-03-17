@@ -32,9 +32,14 @@ class func
         $sid = get_instance()->get_sid();
 
         $price = 1;
+        $free_spin = 0;
+        $max_price_spin = 0;
         if (isset($this->lucky_wheel[$sid]['items'])){
             $items = array_values($this->lucky_wheel[$sid]['items']);
             $price = floatval($this->lucky_wheel[$sid]['price']);
+            $free_spin = intval($this->lucky_wheel[$sid]['free_spin']);
+            $max_price_spin = intval($this->lucky_wheel[$sid]['max_price_spin']);
+
         }else
             $items = false;
 
@@ -51,7 +56,8 @@ class func
                 array(
                     'items' => $items,
                     'price' => $price,
-
+                    'free_spin' => $free_spin,
+                    'max_price_spin' => $max_price_spin,
                     'module_form' => 'Modules\\\\Plugins\\\\LuckyWheel\\\\LuckyWheel',
                     'module' => 'ajax_get_prize',
                 ),
@@ -92,10 +98,12 @@ class func
                         $data = json_encode($response["response"]->data);
                         $data = json_decode($data, true);
                         get_instance()->session->updateSessionDB($data);
+
                         header("Content-type: application/json");
                         $send =  json_encode(array(
                             'result'    => 'success', //success/error/warning/info
                             'balance'    => (float) $response["response"]->data->user_data->balance,
+                            'info'    => $response["response"]->data->user_data->lucky_wheel,
                             'count'    => round($response["response"]->data->user_data->balance / $this->lucky_wheel[$sid]['price']),
                             'item'    => array(
                                 'name' => (string) $response["response"]->items->name,
