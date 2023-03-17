@@ -30,7 +30,7 @@
                     </div> <!-- END  history__list -->
                 </div> <!-- END  history__box -->
                 <div class="history_loud">
-                <button type="button" class="btn btn-sm btn-outline-secondary submit-btn" {$.php.btn_ajax("Modules\Plugins\LuckyWheel\LuckyWheel", "ajax_get_history")}>{$history_loud}</button>
+                <button type="button" class="gbtn gbtn_size_small gbtn_without_accent submit-btn" {$.php.btn_ajax("Modules\Plugins\LuckyWheel\LuckyWheel", "ajax_get_history")}>{$history_loud}</button>
                 </div>
 
             </div> <!-- END  history__container -->
@@ -38,14 +38,22 @@
         <div class="wh__gamef gamef">
             <div class="ttl mb-10">{$balance_title}</div>
             <div class="gamef__balance mb-20">
-                <div class="gamef__gbal gbal gbal_color">
-                    <div class="gbal__num">{$.php.intval($.site.session->session.user_data.balance / $price)}</div>
-                    <div class="gbal__content">{$balance_now}</div>
+                <div class="gamef__gbal gbal" data-bprize-price-container>
+                    <div class="gbal__num" data-bprize-price>{$price}</div>
+                    <div class="gbal__content">{$price_title} ({$.site.session->config.payment_system.short_name_valute})</div>
                 </div>
-                <div class="gamef__gbal gbal">
-                    <div class="gbal__num_price">{$price}</div>
-                    <div class="gbal__content">{$price_title}</div>
+                {if $max_price_spin > 0}
+                <div class="gamef__gbal gbal gbal_color" data-bprize-paid-container data-bprize-paid-msg="{$paid_msg}">
+                    <div class="gbal__num" data-bprize-paid-count>0</div>
+                    <div class="gbal__content">{$paid_content}</div>
                 </div>
+                {/if}
+                {if $free_spin > 0}
+                <div class="gamef__gbal gbal gbal_color" data-bprize-free-container data-bprize-free-msg="{$free_msg}">
+                    <div class="gbal__num" data-bprize-free-count>0</div>
+                    <div class="gbal__content">{$free_content}</div>
+                </div>
+                {/if}
             </div>
             <div class="gamef__btns">
                 <a href="{$.php.set_url('panel/donations')}" class="gbt mb-10">
@@ -88,23 +96,29 @@
                 module: '{$module}',
                 /* Папка со звуками */
                 urlSounds: '{$.const.VIEWPATH}/panel/assets/game/sounds/',
-                /* Платные прокрутки */
-                paid: {
-                    status:{if $max_price_spin >0} true, {else} false, {/if}
-                    count: {if $max_price_spin >0}{$.site.session->session.user_data.lucky_wheel.paid.count}, {else} 0, {/if}
-                    date: {if $max_price_spin >0}"{$.site.session->session.user_data.lucky_wheel.paid.date}" {else} "" {/if}
-                },
-                /* Бесплатные прокрутки */
-                free: {
-                    status:{if $free_spin >0} true, {else} false, {/if}
-                    count: {if $free_spin >0} {$.site.session->session.user_data.lucky_wheel.free.count}, {else} 0, {/if}
-                    date: {if $free_spin >0} "{$.site.session->session.user_data.lucky_wheel.free.date}" {else} "" {/if}
-                },
                 price: "{$price}",
-
+               
+                info: {if $max_price_spin > 0 || $free_spin > 0} 
+                    {
+                        {if $max_price_spin > 0 } 
+                            /* Платные прокрутки */
+                            paid: {
+                                count: {if $max_price_spin > 0}{$.site.session->session.user_data.lucky_wheel.paid.count} {else} 0 {/if}, 
+                                date: {if $max_price_spin > 0}"{$.site.session->session.user_data.lucky_wheel.paid.date}" {else} "" {/if},
+                            },
+                        {/if}
+                        {if $free_spin > 0 }
+                            /* Бесплатные прокрутки */
+                            free: {
+                                count: {if $free_spin > 0} {$.site.session->session.user_data.lucky_wheel.free.count} {else} 0 {/if},
+                                date: {if $free_spin > 0} "{$.site.session->session.user_data.lucky_wheel.free.date}" {else} "" {/if},
+                        {/if}
+                    },
+                    {else} false {/if}
+                }
             }
-        </script>
 
+        </script>
         <div class="wh__wheel wheel">
             <div class="wheel__arrow"></div>
             <div class="wheel__sound sound" data-game-sound="true"></div>
@@ -140,10 +154,11 @@
 
     </div>
     <!-- game resources -->
-    <!-- tippy -->
-    {$.site._SEO->addTegHTML('head', 'game_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/game/css/style.css?v1'])}
+    
+    
+    {$.site._SEO->addTegHTML('head', 'game_css', 'link', ['rel'=>'stylesheet', 'href'=> $.const.VIEWPATH~'/panel/assets/game/css/style.css?v46'])}
     {$.site._SEO->addTegHTML('footer', 'popper.min', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/game/libs/tippy/js/popper.min.js'])}
     {$.site._SEO->addTegHTML('footer', 'tippy-bundle', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/game/libs/tippy/js/tippy-bundle.iife.min.js'])}
-    {$.site._SEO->addTegHTML('footer', 'game-app', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/game/js/app.js?v12'])}
+    {$.site._SEO->addTegHTML('footer', 'game-app', 'script', ['src'=> $.const.VIEWPATH~'/panel/assets/game/js/app.js?v46'])}
     {/if}
 </div>

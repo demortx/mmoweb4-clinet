@@ -11,7 +11,7 @@
                     </div>
                     <div class="hitem__container">
                         <div class="hitem__title">{$i.name}</div>
-                        <div class="hitem__desc">{if $i.desc?}{$i.desc}{else}There is no description{/if}</div>
+                        <div class="hitem__desc">{if $i.desc?}{$i.desc}{/if}</div>
                         <div class="hitem__info">
                             {if $i.count > 1}<div class="hitem__rate">x{$i.count}</div>{/if}
                             {if $i.enc > 0}<div class="hitem__type">+{$i.enc}</div>{/if}

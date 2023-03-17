@@ -1,3 +1,5 @@
+/* Front-end developer: Vitalii P. |  Get-Web.Site */
+
 document.addEventListener("DOMContentLoaded", function (event) {
     /* game */
     let gameListBox = $('[data-game-list]');
@@ -183,7 +185,7 @@ function CasesItemsBuilder(items) {
             </div>
             <div class="case__title">${item.name}</div>
             <div class="case__content">${item.desc}</div>
-            ${item.count>1?'<div class="case__type">x'+item.count+'</div>':""}
+            ${item.count > 1 ? '<div class="case__type">x' + item.count + '</div>' : ""}
         </a>
         `
     });
@@ -277,11 +279,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     wheel.win.item = data.item
                 }
 
+                // Обновляем баланс
                 $('.balance_html').html(data.balance);
-                $('.gbal__num').html(data.count);
+
+                // Обрабатываем цену, на всякий случай, если вдуг изменилась конфигурация во время игры
+                if (data.price) {
+                    $('[data-bprize-price]').html(data.price);
+                }
+
+                infoHandler(data.info);
 
                 /* Вставляем выиграшный итем последним и добавляем класс itm_win */
-
                 wheel.itemsStorage.push(...itemsStorageBuilder([wheel.win.item], wheel.styles, 1, 'itm_win'));
 
                 /* Вставляем в конце еще два итем чтобы заполнить пустоту */
@@ -383,6 +391,40 @@ document.addEventListener("DOMContentLoaded", function (event) {
         btnStart.attr('data-wheel-start', 'true');
 
     });
+
+    infoHandler(wheel.info)
+
+    function infoHandler(info) {
+        if (info && info.paid) {
+            paidHandler(info.paid);
+        } else {
+            $('[data-bprize-paid-container]').remove();
+        }
+        if (info && info.free) {
+            freeHandler(info.free);
+        } else {
+            $('[data-bprize-free-container]').remove();
+        }
+    }
+
+
+    function paidHandler(d) {
+        // Обрабатываем платные прокрутки
+        if (d.count > 0) {
+            $('[data-bprize-paid-count]').html('<span class="animated-num">' + d.count + '</span>');
+        } else if (d.count <= 0 && d.date && d.date != "") {
+            $('[data-bprize-paid-msg]').html('<div class="infostate animated-box">' + $('[data-bprize-paid-msg]').attr('data-bprize-paid-msg') + '<br><span class="color-accent">' + d.date + '</span>' + '</div>');
+        }
+    }
+
+    function freeHandler(d) {
+        // Обрабатываем платные прокрутки
+        if (d.count > 0) {
+            $('[data-bprize-free-count]').html('<span class="animated-num">' + d.count + '</span>');
+        } else if (d.count <= 0 && d.date && d.date != "") {
+            $('[data-bprize-free-msg]').html('<div class="infostate animated-box">' + $('[data-bprize-free-msg]').attr('data-bprize-free-msg') + '<br><span class="color-accent">' + d.date + '</span>' + '</div>');
+        }
+    }
 
 
 });
