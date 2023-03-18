@@ -98,24 +98,29 @@
                 urlSounds: '{$.const.VIEWPATH}/panel/assets/game/sounds/',
                 price: "{$price}",
                
-                info: {if $max_price_spin > 0 || $free_spin > 0} 
+                info: {if $max_price_spin > 0 || $free_spin > 0}
                     {
-                        {if $max_price_spin > 0 } 
-                            /* Платные прокрутки */
-                            paid: {
-                                count: {if $max_price_spin > 0}{$.site.session->session.user_data.lucky_wheel.paid.count} {else} 0 {/if}, 
-                                date: {if $max_price_spin > 0}"{$.site.session->session.user_data.lucky_wheel.paid.date}" {else} "" {/if},
-                            },
+                        {if $max_price_spin > 0 }
+                        /* Платные прокрутки */
+                        paid: {
+                            count: {if $max_price_spin > 0}{$.site.session->session.user_data.lucky_wheel.paid.count} {else}
+                            0 {/if},
+                            date: {if $max_price_spin > 0}"{$.site.session->session.user_data.lucky_wheel.paid.date}" {else}
+                            "" {/if},
+                        },
                         {/if}
                         {if $free_spin > 0 }
-                            /* Бесплатные прокрутки */
-                            free: {
-                                count: {if $free_spin > 0} {$.site.session->session.user_data.lucky_wheel.free.count} {else} 0 {/if},
-                                date: {if $free_spin > 0} "{$.site.session->session.user_data.lucky_wheel.free.date}" {else} "" {/if},
+                        /* Бесплатные прокрутки */
+                        free: {
+                            count: {if $free_spin > 0} {$.site.session->session.user_data.lucky_wheel.free.count} {else}
+                            0 {/if},
+                            date: {if $free_spin > 0} "{$.site.session->session.user_data.lucky_wheel.free.date}" {else}
+                            "" {/if},
+                        },
                         {/if}
-                    },
+                    }
                     {else} false {/if}
-                }
+
             }
 
         </script>
