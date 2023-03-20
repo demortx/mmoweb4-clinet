@@ -117,6 +117,10 @@ class Api extends Controller
     public function config(){
         $this->gateway();
 
+        if (isset($_POST['cfg'])){
+            $_POST = unserialize($_POST['cfg']);
+        }
+
         $POST = array_merge($this->config,$_POST);
 
         if(SaveConfig($POST, 'config', 'system')) {
