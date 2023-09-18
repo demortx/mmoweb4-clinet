@@ -79,6 +79,9 @@ class func
             $event_list = array();
             foreach ($event_cfg[$sid] as $event){
 
+                if (isset($event['type']) AND $event['type'] == true) {
+                    continue;
+                }
                 $now = new \DateTime();
                 $start = new \DateTime($event['start']);
                 $end = new \DateTime($event['end']);
@@ -132,6 +135,10 @@ class func
         get_instance()->seo->addTeg('head', 'rangeslider_css', 'link', array('rel' => 'stylesheet', 'href' => VIEWPATH.'/panel/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css'));
         get_instance()->seo->addTeg('footer', 'rangeslider', 'script', array('src' => VIEWPATH.'/panel/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js'));
 
+        if (isset(get_instance()->session->session["master_account"]['mid']))
+            $mid = get_instance()->session->session["master_account"]['mid'];
+        else
+            $mid = 0;
 
         //Вычисление бонуса к выбронуму серверу
         $event_cfg = get_instance()->config['event'];
@@ -160,13 +167,33 @@ class func
                             $item_temp[$item['lv']][] = $item;
                         }
                     }
-
                     $event['item'] = $item_temp;
-                    $event_list[] = $event;
+
+                    if (isset($event['type']) AND $event['type']){
+                        if (!in_array($mid, $event['individual'])){
+                            continue;
+                        }
+
+                        if (isset($event['link'])){
+                            foreach ($event['link'] as $ids){
+                                unset($event_list[$ids]);
+                            }
+                        }
+                    }
+
+                    $event_list[$event['id']] = $event;
                 }
-
-
             }
+            foreach ($event_list as $event){
+                if (isset($event['type']) AND isset($event['link'])){
+                    foreach ($event['link'] as $ids) {
+                        unset($event_list[$ids]);
+                    }
+                }
+            }
+
+            $event_list = array_values($event_list);
+
         }else
             $event_list = false;
 
