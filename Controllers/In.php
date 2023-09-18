@@ -38,12 +38,12 @@ class In extends Controller
                     if ($send = $this->ajax_data[$module_form][$module]())
 
                         if (empty($send))
-                            $send = $this->ajaxmsg->notify('This module does not accept requests. (array)' . $module_form)->danger();
+                            $send = $this->ajaxmsg->notify('This module does not accept requests. (array)' . htmlspecialchars($module_form))->danger();
 
                 } else
-                    $send = $this->ajaxmsg->notify('Method - ' . $module . ' not found module - ' . $module_form)->danger();
+                    $send = $this->ajaxmsg->notify('Method - ' . htmlspecialchars($module) . ' not found module - ' . htmlspecialchars($module_form))->danger();
             } else
-                $send = $this->ajaxmsg->notify('Module not found - ' . $module_form)->danger();
+                $send = $this->ajaxmsg->notify('Module not found - ' . htmlspecialchars($module_form))->danger();
 
 
         } else
