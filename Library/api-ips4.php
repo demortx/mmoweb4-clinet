@@ -24,7 +24,7 @@ class api {
 		$INFO['sql_driver'] = 'mysql';
         try {
             return new PDO(
-                $INFO['sql_driver'].":host=".$INFO['sql_host'].";dbname=".$INFO['sql_database'].";charset=".$this->dbcoll,
+                $INFO['sql_driver'].":host=".$INFO['sql_host'].";port=".$INFO['sql_port'].";dbname=".$INFO['sql_database'].";charset=".$this->dbcoll,
                 $INFO['sql_user'],
                 $INFO['sql_pass']
             );
