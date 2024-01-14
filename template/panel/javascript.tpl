@@ -1,1 +1,0 @@
-{$_SEO_FOOTER}
