@@ -1,0 +1,32 @@
+.webdb-icon + .webdb-name {
+	margin-left: 5px;
+}
+
+
+ .webdb-name {
+	font-weight: 700;
+	font-size: 14px;
+}
+
+/*
+.webdb-icon {
+	margin-left: 5px;
+} */
+
+.webdb-add {
+	margin-left: 5px;
+	color: #cca300;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.s-error {
+	color: black;
+	
+	font-weight: bold;
+}
+
+.s-error__id {
+	color: red;
+	font-weight: bold;
+}

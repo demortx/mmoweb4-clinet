@@ -1,0 +1,105 @@
+.not-sell {
+    cursor: not-allowed! important;
+    background-color: rgba(0,0,0,.03);
+}
+.imgdis {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: gray;
+    -webkit-filter: grayscale(1);
+}
+.dd-handle > span.pull-right {
+    font-size: 9px;
+}
+.check_char_market.active .dd-handle {
+    color: #3f9ce8;
+}
+
+.item-name {
+    font-weight: bold;
+    display: flex;
+    white-space: nowrap;
+    /*max-width: 200px;*/
+}
+
+.item-name img {
+    margin-right: 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.item-name > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.item-name > div > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.item-grade {
+    display: inline-block;
+    min-width: 16px;
+    padding: 0 4px;
+    height: 16px;
+    background: #333;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: 10%;
+    text-transform: uppercase;
+}
+
+.item-price {
+    margin-right: 10px;
+    line-height: 32px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.item-name__additional {
+    color: #ff3b00;
+}
+
+.item-augment {
+    font-size: 9px;
+}
+
+.item-augment span:first-child::after {
+    display: inline;
+    content: " \00B7";
+}
+
+.item-augment span:last-child {
+    margin-left: 3px;
+}
+
+.ajax_get_market_list {
+    font-size: 13px;
+}
+
+.ajax_get_market_list td {
+    text-align: center;
+}
+
+.ajax_get_market_list td,
+.ajax_get_market_list th {
+    border: none;
+}
+
+.ajax_get_market_list td:first-child {
+    text-align: left;
+}
+
+.ajax_get_market_list td:last-child {
+    text-align: right;
+}
